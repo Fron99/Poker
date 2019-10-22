@@ -34,6 +34,8 @@
  *
  * public void aumentarDinero(int dinero);
  *
+ * public CartaImpl obtenerCarta(int posicion);
+ *
  */
 
 
@@ -102,6 +104,10 @@ public class JugadorImpl implements Jugador {
 
     public void aumentarDinero(int dinero){
         this.dinero = this.dinero + dinero;
+    }
+
+    public CartaImpl obtenerCarta(int posicion){
+        return this.cartas[posicion];
     }
 
 

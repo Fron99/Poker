@@ -81,7 +81,8 @@
 
 import Clases.Basicas.CartaImpl;
 import Clases.Basicas.JugadorImpl;
-import Clases.Gestoras.GestoraJugador;
+import Clases.Basicas.ManoImpl;
+import Clases.Gestoras.GestoraJugadorImpl;
 
 
 
@@ -94,12 +95,13 @@ public class ElBromasMain {
 
         Random random = new Random();
         Scanner teclado = new Scanner(System.in);
-        GestoraJugador gesJugador = new GestoraJugador();
+        GestoraJugadorImpl gesJugador = new GestoraJugadorImpl();
 
         String usuarioJugador;
         int dineroInicialJugador, turnoJugador, apuestaInicial = 0, totalApuestas = 0, cantidadJugadas = 0, apuestaJugador;
         JugadorImpl[] jugadores = new JugadorImpl[5];
         CartaImpl[] cartas = new CartaImpl[54];
+        ManoImpl mesa = new ManoImpl();
 
         cartas[0]= new CartaImpl('P',"A");
         cartas[1]= new CartaImpl('P',"2");
