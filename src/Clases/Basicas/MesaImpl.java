@@ -34,11 +34,22 @@ import Clases.Interfaces.Mano;
 
 public class ManoImpl implements Mano {
 
-    private CartaImpl[] cartasMesa = new CartaImpl[5];
+    private CartaImpl[] cartasMesa;
     private int totalApuestas;
 
     public ManoImpl(){
+        this.cartasMesa = new CartaImpl[5];
+        this.totalApuestas = 0;
+    }
 
+    public ManoImpl(CartaImpl[] cartas, int totalApuestas){
+        this.cartasMesa = cartas;
+        this.totalApuestas = totalApuestas;
+    }
+
+    public ManoImpl(ManoImpl otro){
+        this.cartasMesa = otro.getCartasMesa();
+        this.totalApuestas = otro.getTotalApuestas();
     }
 
     public CartaImpl[] getCartasMesa(){
