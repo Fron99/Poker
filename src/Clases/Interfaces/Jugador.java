@@ -34,6 +34,8 @@
  *
  * public void aumentarDinero(int dinero);
  *
+ * public CartaImpl obtenerCarta(int posicion);
+ *
  */
 
 

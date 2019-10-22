@@ -5,7 +5,7 @@ import Clases.Basicas.JugadorImpl;
 import java.util.Random;
 import java.util.Scanner;
 
-public class GestoraJugador {
+public class GestoraJugadorImpl {
 
     /*
      * SIGNATURA: public int leerYValidarDineroInicial();

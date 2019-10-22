@@ -29,10 +29,10 @@
 package Clases.Interfaces;
 
 
-
 public interface Carta {
 
     public char getPalo();
 
     public String getNumero();
+
 }
