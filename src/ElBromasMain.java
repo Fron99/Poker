@@ -3,77 +3,53 @@
  * PG0
  * INICIO
  *
- *  //leerUsuario
- *  //leerYValidarDineroInicial
- *  //cargarBots
+ *  leerUsuario*
+ *  leerYValidarDineroInicial*
+ *  cargarBots*
  *  repetir
- *      //generar3Cartas
- *      //mostrar3Cartas
+ *      restaurarBaraja*
+ *      limpiarMesa*
+ *      sacar3Cartas*
+ *      mostrarJuegoPrimeraMano*
  *      //generarIniciador
- *      si(iniciador == idUsuario)
- *          //leerYValidarApuestaJugador
- *          mientras(queden bots sin apostar)
- *              //generarCantidadApuesta
- *              //incrementarTotalApuestas
- *          finMientras
- *      siNo
- *          mientras(no se llegue al final del array)
- *              //generarCantidadApuesta
- *              //incrementarTotalApuestas
- *          finMientras
- *          //leerYValidarApuestaJugador
- *          //incrementarTotalApuestas
- *          mientras(queden bots sin apostar)
- *              //generarCantidadApuesta
- *              //incrementarTotalApuestas
- *          finMientras
- *      finSi
+ *      realizarJugadas*
  *      //incrementarIniciador
- *      //generarCartas
- *      //mostrarCartas
- *      si(iniciador == idUsuario)
- *          //leerYValidarApuestaJugador
- *          mientras(queden bots sin apostar)
- *              //generarCantidadApuesta
- *              //incrementarTotalApuestas
- *          finMientras
- *      siNo
- *          mientras(no se llegue al final del array)
- *              //generarCantidadApuesta
- *              //incrementarTotalApuestas
- *          finMientras
- *          //leerYValidarApuestaJugador
- *          //incrementarTotalApuestas
- *          mientras(queden bots sin apostar)
- *              //generarCantidadApuesta
- *              //incrementarTotalApuestas
- *          finMientras
- *      finSi
+ *      generarCartas*
+ *      mostrarCartas*
+ *      realizarJugadas*
  *      //incrementarIniciador
- *      //generarCartas
- *      //mostrarCartas
- *      si(iniciador == idUsuario)
- *          //leerYValidarApuestaJugador
- *          mientras(queden bots sin apostar)
- *              //generarCantidadApuesta
- *              //incrementarTotalApuestas
- *          finMientras
- *      siNo
- *          mientras(no se llegue al final del array)
- *              //generarCantidadApuesta
- *              //incrementarTotalApuestas
- *          finMientras
- *          //leerYValidarApuestaJugador
- *          //incrementarTotalApuestas
- *          mientras(queden bots sin apostar)
- *              //generarCantidadApuesta
- *              //incrementarTotalApuestas
- *          finMientras
- *      finSi
- *      //calcularGanador
- *      //ingresarDineroGanador
- *  mientras(usuario tenga dinero)
+ *      generarCartas*
+ *      mostrarCartas*
+ *      realizarJugadas*
+ *      calcularGanador*
+ *      ingresarDineroGanador*
+ *  mientras(usuario tenga dinero y queden bots)
  *
+ * FIN
+ *
+ *
+ * //realizarJugadas*
+ *
+ * PG1
+ * INICIO
+ * si(iniciador == idUsuario)
+ *  //leerYValidarApuestaJugador
+ *  mientras(queden bots sin apostar)
+ *      //generarCantidadApuesta
+ *      //incrementarTotalApuestas
+ *  finMientras
+ * siNo
+ *  mientras(no se llegue al final del array)
+ *      //generarCantidadApuesta
+ *      //incrementarTotalApuestas
+ *  finMientras
+ *  //leerYValidarApuestaJugador
+ *  //incrementarTotalApuestas
+ *  mientras(queden bots sin apostar)
+ *      //generarCantidadApuesta
+ *      //incrementarTotalApuestas
+ *  finMientras
+ * finSi
  * FIN
  *
  */
@@ -83,7 +59,7 @@ import Clases.Basicas.CartaImpl;
 import Clases.Basicas.JugadorImpl;
 import Clases.Basicas.MesaImpl;
 import Clases.Gestoras.GestoraJugadorImpl;
-
+import Clases.Gestoras.GestoraMesaImpl;
 
 
 import java.util.Random;
@@ -96,25 +72,61 @@ public class ElBromasMain {
         Random random = new Random();
         Scanner teclado = new Scanner(System.in);
         GestoraJugadorImpl gesJugador = new GestoraJugadorImpl();
+        GestoraMesaImpl gesMesa = new GestoraMesaImpl();
 
-        String usuarioJugador;
-        int dineroInicialJugador, turnoJugador, apuestaInicial = 0, totalApuestas = 0, cantidadJugadas = 0, apuestaJugador;
-        JugadorImpl[] jugadores = new JugadorImpl[5];
-        CartaImpl[] cartas = new CartaImpl[54];
+        String usuarioJugador = "DEFECTO";
+        int dineroInicialJugador = 5000, turnoJugador, apuestaInicial = 0, totalApuestas = 0, cantidadJugadas = 0, apuestaJugador;
         MesaImpl mesa = new MesaImpl();
+        CartaImpl[] baraja = new CartaImpl[54];
 
         //leerUsuario
-        usuarioJugador = gesJugador.leerUsuario();
+        //usuarioJugador = gesJugador.leerUsuario();
 
         //leerYValidarDineroInicial
-        dineroInicialJugador = gesJugador.leerYValidarDineroInicial();
+        //dineroInicialJugador = gesJugador.leerYValidarDineroInicial();
 
-        jugadores[0] = new JugadorImpl(usuarioJugador,dineroInicialJugador);
+        //El usuario que juega se colocara siempre en la posicion 0
+        mesa.anhadirJugador(0,new JugadorImpl(usuarioJugador,dineroInicialJugador));
 
         //cargarBots
-        gesJugador.cargarJugadores(jugadores);
+        gesJugador.cargarJugadores(mesa.getJugadores());  //Coloca en el array de jugadores jugadores con valores generados
 
-        do {
+
+        //do {
+
+            //restaurarCartas
+            gesMesa.inicializarBaraja(baraja);
+
+            //limpiarMesa
+            gesMesa.limpiarMesa(mesa.getCartasMesa());
+
+            //sacar3Cartas
+            gesMesa.sacar3Cartas(baraja,mesa.getCartasMesa());  //Coloca 3 cartas aleatorias en el array de las cartas que hay en esta mesa
+
+            gesMesa.mostrarJuegoPrimeraMano(mesa);
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+ *      mostrarJuegoPrimeraMano*
+ *      //generarIniciador
+ *      realizarJugadas*
+ *      //incrementarIniciador
+ *      generarCartas*
+
+
+
+
            //generarIniciador
             turnoJugador = random.nextInt(5);
             if (turnoJugador == jugadores[0].getID()){
@@ -142,7 +154,7 @@ public class ElBromasMain {
 
         for ( JugadorImpl usuario : jugadores ) {
             System.out.println(usuario.toString());
-        }
+        }*/
 
         System.out.println("En construccion");
 

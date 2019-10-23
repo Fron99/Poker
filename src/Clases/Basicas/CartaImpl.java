@@ -37,7 +37,7 @@ public class CartaImpl implements Carta{
 
     public CartaImpl(){
         this.palo = 'D';
-        this.numero = "Default";
+        this.numero = "D";
     }
 
     public CartaImpl(char palo, String numero){
@@ -56,6 +56,11 @@ public class CartaImpl implements Carta{
 
     public String getNumero(){
         return this.numero;
+    }
+
+    @Override
+    public String toString(){
+        return ("Palo: "+this.getPalo()+" Numero: "+this.numero);
     }
 
 }

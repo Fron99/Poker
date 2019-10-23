@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9a3eddb-34fe-4dec-b858-4173adae43d5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Basicas/JugadorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basicas/JugadorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Basicas/ManoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Interfaces/Carta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Interfaces/Carta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Interfaces/Jugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Interfaces/Jugador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Interfaces/Mano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Interfaces/Mesa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ElBromasMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ElBromasMain.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -24,84 +17,62 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-<<<<<<< Updated upstream
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Clases/Interfaces/Carta.java">
+        <entry file="file://$PROJECT_DIR$/src/ElBromasMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="136">
+              <caret line="77" column="39" selection-start-line="77" selection-start-column="39" selection-end-line="77" selection-end-column="39" />
               <folding>
-                <element signature="e#0#444#0" expanded="true" />
+                <element signature="e#0#4617#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1241">
-              <caret line="81" column="4" selection-start-line="81" selection-start-column="4" selection-end-line="87" selection-end-column="5" />
+            <state relative-caret-position="106">
+              <caret line="66" selection-start-line="66" selection-end-line="66" />
               <folding>
                 <element signature="e#0#2606#0" expanded="true" />
-=======
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Clases/Interfaces/Carta.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
-              <folding>
-                <element signature="e#0#444#0" expanded="true" />
->>>>>>> Stashed changes
+                <element signature="e#1694#1695#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-<<<<<<< Updated upstream
-        <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+            <state relative-caret-position="155">
+              <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
+              <folding>
+                <element signature="e#824#825#0" expanded="true" />
+                <element signature="e#856#857#0" expanded="true" />
+                <element signature="e#888#889#0" expanded="true" />
+                <element signature="e#922#923#0" expanded="true" />
+                <element signature="e#971#972#0" expanded="true" />
+                <element signature="e#998#999#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-=======
-        <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="34" column="22" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
+            <state relative-caret-position="203">
+              <caret line="184" column="94" lean-forward="true" selection-start-line="184" selection-start-column="94" selection-end-line="184" selection-end-column="94" />
               <folding>
-                <element signature="e#0#927#0" expanded="true" />
-              </folding>
->>>>>>> Stashed changes
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< Updated upstream
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="34" column="22" lean-forward="true" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#927#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-=======
->>>>>>> Stashed changes
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -115,11 +86,6 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>mesa</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -132,15 +98,16 @@
         <option value="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugador.java" />
         <option value="$PROJECT_DIR$/src/Clases/Basicas/EnumNumerosCartas.java" />
         <option value="$PROJECT_DIR$/src/Clases/Basicas/EnumPalos.java" />
-        <option value="$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java" />
         <option value="$PROJECT_DIR$/src/Clases/Interfaces/Mano.java" />
-        <option value="$PROJECT_DIR$/src/ElBromasMain.java" />
         <option value="$PROJECT_DIR$/src/Clases/Basicas/ManoImpl.java" />
-        <option value="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" />
         <option value="$PROJECT_DIR$/src/Clases/Interfaces/Mesa.java" />
         <option value="$PROJECT_DIR$/src/Clases/Interfaces/Jugador.java" />
         <option value="$PROJECT_DIR$/src/Clases/Basicas/JugadorImpl.java" />
         <option value="$PROJECT_DIR$/src/Clases/Interfaces/Carta.java" />
+        <option value="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" />
+        <option value="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" />
+        <option value="$PROJECT_DIR$/src/ElBromasMain.java" />
+        <option value="$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java" />
         <option value="$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java" />
       </list>
     </option>
@@ -157,12 +124,19 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="ElBromas" type="b2602c69:ProjectViewProjectNode" />
               <item name="ElBromas" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ElBromas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ElBromas" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ElBromas" type="b2602c69:ProjectViewProjectNode" />
@@ -200,38 +174,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="Repository.Attach.Annotations" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="Repository.Attach.Sources" value="false" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="aspect.path.notification.shown" value="true" />
-<<<<<<< Updated upstream
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571742867910" />
-=======
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571743731192" />
->>>>>>> Stashed changes
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="create.test.in.the.same.root" value="true" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="Clases.Gestoras" />
-      <recent name="Tests" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571830624755" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -274,13 +220,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14757000" />
+    <option name="totallyTimeSpent" value="7068000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17549168" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -289,7 +235,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.25204584" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.492635" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -299,7 +245,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="Messages" order="12" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3289689" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -310,9 +256,6 @@
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout>
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -326,159 +269,84 @@
       </breakpoints>
     </breakpoint-manager>
   </component>
-  <component name="debuggerHistoryManager">
-    <expressions id="evaluateExpression">
-      <expression>
-        <expression-string>random.nextInt()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
-  </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/String.java">
+    <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/JugadorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5336">
-          <caret line="131" column="7" lean-forward="true" selection-start-line="131" selection-start-column="7" selection-end-line="131" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tests/TestGestoraJugador.java" />
-    <entry file="file://$PROJECT_DIR$/src/Tests/GestoraJugadorTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Updated upstream
-    <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/EnumNumerosCartas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="20" lean-forward="true" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/EnumPalos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="46" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
+        <state relative-caret-position="119">
+          <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="87" column="48" selection-start-line="87" selection-start-column="48" selection-end-line="87" selection-end-column="48" />
+        <state relative-caret-position="-194">
+          <caret line="60" column="16" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="66" selection-start-line="66" selection-end-line="66" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#2606#0" expanded="true" />
+            <element signature="e#1694#1695#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ElBromasMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1768">
-          <caret line="104" selection-start-line="104" selection-end-line="104" />
+        <state relative-caret-position="136">
+          <caret line="77" column="39" selection-start-line="77" selection-start-column="39" selection-end-line="77" selection-end-column="39" />
           <folding>
-            <element signature="e#0#61#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-=======
-    <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/EnumNumerosCartas.java" />
-    <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/EnumPalos.java" />
-    <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="34" column="22" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#927#0" expanded="true" />
->>>>>>> Stashed changes
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/Interfaces/Mesa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#866#0" expanded="true" />
+            <element signature="e#0#4617#0" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/JugadorImpl.java">
+    <entry file="file://$USER_HOME$/Desktop/ElBromas/src/ElBromas.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="109" column="35" selection-start-line="109" selection-start-column="35" selection-end-line="109" selection-end-column="35" />
+        <state relative-caret-position="103">
+          <caret line="44" column="8" selection-start-line="44" selection-start-column="8" selection-end-line="49" selection-end-column="84" />
           <folding>
-            <element signature="e#0#2163#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/Interfaces/Jugador.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="38" column="3" selection-start-line="38" selection-start-column="3" selection-end-line="38" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#954#0" expanded="true" />
+            <element signature="e#0#1814#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="34" column="22" lean-forward="true" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
+        <state relative-caret-position="155">
+          <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
           <folding>
-            <element signature="e#0#927#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/Interfaces/Carta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="e#0#444#0" expanded="true" />
+            <element signature="e#824#825#0" expanded="true" />
+            <element signature="e#856#857#0" expanded="true" />
+            <element signature="e#888#889#0" expanded="true" />
+            <element signature="e#922#923#0" expanded="true" />
+            <element signature="e#971#972#0" expanded="true" />
+            <element signature="e#998#999#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="81" column="4" selection-start-line="81" selection-start-column="4" selection-end-line="87" selection-end-column="5" />
+        <state relative-caret-position="203">
+          <caret line="184" column="94" lean-forward="true" selection-start-line="184" selection-start-column="94" selection-end-line="184" selection-end-column="94" />
           <folding>
-            <element signature="e#0#2606#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/Interfaces/Carta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#444#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

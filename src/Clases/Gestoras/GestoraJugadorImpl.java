@@ -24,7 +24,7 @@ public class GestoraJugadorImpl {
         do {
             System.out.print("Introduce dinero con el que iniciar: ");
             dinero = teclado.nextInt();
-        }while (dinero < 3000);
+        }while (dinero < 3000 || dinero > 10000);
         return dinero;
     }
 
