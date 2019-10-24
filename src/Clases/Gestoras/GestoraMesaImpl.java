@@ -135,6 +135,38 @@ public class GestoraMesaImpl {
 
 
     /*
+     * SIGNATURA:
+     * COMENTARIO:
+     * PRECONDICIONES: -
+     * ENTRADA: -
+     * SALIDA: -
+     * ENTRADA/SALIDA: -
+     * POSTCONDICIONES:
+     */
+
+
+    public void generarCartasJugadores(CartaImpl[] baraja, MesaImpl mesa) {
+
+        Random r = new Random();
+        int numPosicionCarta = 0;
+
+        numPosicionCarta = r.nextInt(54);
+
+        for (int i = 0; i<mesa.getJugadores().length;i++){
+            for (int j = 0; j<2; j++){
+                do {
+                    if (baraja[numPosicionCarta].getPalo() != 'D') {
+                        mesa.getJugadores()[i].getCartas()[j] = baraja[numPosicionCarta];
+                        baraja[numPosicionCarta] = new CartaImpl();
+                    }
+                    numPosicionCarta = r.nextInt(54);
+                } while (baraja[numPosicionCarta].getPalo() == 'D');
+            }
+        }
+    }
+
+
+    /*
      * SIGNATURA: public void mostrarPanelJuego (MesaImpl mesa);
      * COMENTARIO: Imprime por pantalla las cartas que hay en la mesa, el dinero de los demas jugadores y el total del bote de la mesa
      * PRECONDICIONES: - Nada
@@ -149,6 +181,15 @@ public class GestoraMesaImpl {
         int dinJugador, dinBot1, dinBot2, dinBot3, dinBot4;
         char paloCarta0, paloCarta1, paloCarta2, paloCarta3, paloCarta4;
         String numeroCarta0, numeroCarta1, numeroCarta2, numeroCarta3, numeroCarta4, userJugador, userBot1, userBot2, userBot3, userBot4;
+        String numCar1Bot1, numCar2Bot1, numCar1Bot2, numCar2Bot2, numCar1Bot3, numCar2Bot3, numCar1Bot4, numCar2Bot4, numCar1Usuario, numCar2Usuario;
+        char paloCar1Bot1, paloCar2Bot1, paloCar1Bot2, paloCar2Bot2, paloCar1Bot3, paloCar2Bot3, paloCar1Bot4, paloCar2Bot4, paloCar1Usuario, paloCar2Usuario;
+
+        numCar1Usuario = mesa.getJugadores()[0].getCartas()[0].getNumero();
+        numCar2Usuario = mesa.getJugadores()[0].getCartas()[1].getNumero();
+
+        paloCar1Usuario = mesa.getJugadores()[0].getCartas()[0].getPalo();
+        paloCar2Usuario = mesa.getJugadores()[0].getCartas()[1].getPalo();
+
 
         userJugador = mesa.getJugadores()[0].getUsuario();
         userBot1 = mesa.getJugadores()[1].getUsuario();
@@ -177,19 +218,24 @@ public class GestoraMesaImpl {
         System.out.println("                                      " + userBot2 + "                                       " + userBot3);
         System.out.println();
         System.out.println("                                      " + dinBot2 + "€                                               " + dinBot3 + "€");
-        System.out.println("                                      |º º|                                               |º º|");
-        System.out.println("                                      |---|                                               |---|");
+        System.out.println("                                      |º º|     -----        -----                                    |º º|    -----        -----");
+        System.out.println("                                      |---|    | ?   |      | ?   |                                   |---|   | ?   |      | ?   |  ");
+        System.out.println("                                               | ?   |      | ?   |                                           | ?   |      | ?   |");
+        System.out.println("                                                -----        -----                                             -----        -----");
+
+
 
         System.out.println();
         System.out.println();
         System.out.println();
 
-        System.out.println("       " + userBot1 + "                                                                                                                                                                                                     " + userBot4);
-        System.out.println("                                    ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- ");
-        System.out.println("       " + dinBot1 + "€                       | " + paloCarta0 + "   |" + "       " + "| " + paloCarta1 + "   |" + "       " + "| " + paloCarta2 + "   |" + "       " + "| " + paloCarta3 + "   |" + "       " + "| " + paloCarta4 + "   |                      " + dinBot4 + "€");
-        System.out.println("       |º º|                       | " + numeroCarta0 + "   |" + "       " + "| " + numeroCarta1 + "   |" + "       " + "| " + numeroCarta2 + "   |" + "       " + "| " + numeroCarta3 + "   |" + "       " + "| " + numeroCarta4 + "   |                      |º º|");
-        System.out.println("       |---|                       |     |" + "       " + "|     |" + "       " + "|     |" + "       " + "|     |" + "       " + "|     |" + "                      |---|");
-        System.out.println("                                    ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- ");
+        System.out.println("       " + userBot1 + "                                                                                                                              " + userBot4);
+        System.out.println("                                                        ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- ");
+        System.out.println("       " + dinBot1 + "€                                           | " + paloCarta0 + "   |" + "       " + "| " + paloCarta1 + "   |" + "       " + "| " + paloCarta2 + "   |" + "       " + "| " + paloCarta3 + "   |" + "       " + "| " + paloCarta4 + "   |                      " + dinBot4 + "€");
+        System.out.println("       |º º|       -----        -----                  | " + numeroCarta0 + "   |" + "       " + "| " + numeroCarta1 + "   |" + "       " + "| " + numeroCarta2 + "   |" + "       " + "| " + numeroCarta3 + "   |" + "       " + "| " + numeroCarta4 + "   |                      |º º|      -----        -----");
+        System.out.println("       |---|      | ?   |      | ?   |                 |     |" + "       " + "|     |" + "       " + "|     |" + "       " + "|     |" + "       " + "|     |" + "                      |---|     | ?   |      | ?   |");
+        System.out.println("                  | ?   |      | ?   |                  ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " -----                                 |     | ?    | ?   |");
+        System.out.println("                   -----        -----                                                                                                                  -----        -----");
 
         System.out.println();
         System.out.println("                                                              DINERO EN MESA: " + mesa.getTotalApuestas() + "€");
@@ -202,12 +248,12 @@ public class GestoraMesaImpl {
         System.out.println("                                                           _______________________");
         System.out.println("                                                          |                       |");
         System.out.println("                                                          |    __           __    |");
-        System.out.println("                                                          |   |º |         |º |   |");
-        System.out.println("                                                          |    --           --    |");
-        System.out.println("                                                          |                       |");
-        System.out.println("                                                          |   \\              /    |");
-        System.out.println("                                                          |     \\___________/     |");
-        System.out.println("                                                          |                       |");
+        System.out.println("                                                          |   |º |         |º |   |            ----------           ----------");
+        System.out.println("                                                          |    --           --    |           | "+paloCar1Usuario+"        |         | "+paloCar2Usuario+"        |");
+        System.out.println("                                                          |                       |           | "+numCar1Usuario+"        |         | "+numCar2Usuario+"        |");
+        System.out.println("                                                          |   \\              /    |           |          |         |          |");
+        System.out.println("                                                          |     \\___________/     |           |          |         |          |");
+        System.out.println("                                                          |                       |            ----------           ----------");
         System.out.println("                                                           -----------------------");
         System.out.println();
 
@@ -286,11 +332,13 @@ public class GestoraMesaImpl {
 
     /*
      * INICIO
-     * si(iniciador == idUsuario)
-     *  //leerYValidarApuestaJugador
+     * si(turnoJugador == idUsuario)
+     *  leerYValidarApuestaJugador*
+     *  //disminuirDineroJugador
+     *  //incrementarTotalApuestas
      *  mientras(queden bots sin apostar)
-     *      //generarCantidadApuesta
      *      //incrementarTotalApuestas
+     *      //disminuirDineroBot
      *  finMientras
      * siNo
      *  mientras(no se llegue al final del array)
@@ -312,28 +360,30 @@ public class GestoraMesaImpl {
         GestoraJugadorImpl gesJugador = new GestoraJugadorImpl();
         int apuestaInicial, cantidadJugadas = 0;
 
-        //TODO Disminuir saldo al apostar a cada jugador
-
         if (turnoJugador == mesa.getJugadores()[0].getID()) {
-            apuestaInicial = gesJugador.leerYValidarApuesta(mesa.getJugadores()[0]);
+            apuestaInicial = gesJugador.leerYValidarApuesta(mesa.getJugadores()[0]);    //Pregunta al jugador cuento quiere apostar
+            mesa.getJugadores()[0].disminuirDinero(apuestaInicial);
             mesa.incrementarTotalApuestas(apuestaInicial);
             turnoJugador++;
-            while (turnoJugador < mesa.getJugadores().length) {
-                mesa.incrementarTotalApuestas(apuestaInicial);
+            while (turnoJugador<mesa.getJugadores().length){
+                //TODO Falta generar apuesta conforme las cartas que tenga el bot
+                mesa.incrementarTotalApuestas(apuestaInicial);  //Apuesta lo mismo que elige el jugador porque aun no se ha implementado la IA
+                mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaInicial);  //Disminuye el dinero apostado del saldo del usuario
                 turnoJugador++;
             }
         } else {
             while (turnoJugador < mesa.getJugadores().length && cantidadJugadas < 5) {
-                apuestaInicial = 2000;
+                apuestaInicial = 10;      //Colocamos 10 euros por defecto porque aun no se ha generado el metodo el cual el bot genere la cantidad a apostar segun sus cartas
                 if (turnoJugador == 4) {
-                    turnoJugador = 0;
                     mesa.incrementarTotalApuestas(apuestaInicial);
-                    turnoJugador++;
+                    mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaInicial);  //Disminuye el dinero apostado del saldo del usuario
+                    turnoJugador = 0;
                     cantidadJugadas++;
                 }
                 if (cantidadJugadas < 5) {
                     mesa.incrementarTotalApuestas(apuestaInicial);
                     //TODO De esta manera solo elige cantidad a apostar cuando el usuario empieza, si no empieza apuesta lo que apueste el primero.
+                    mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaInicial);  //Disminuye el dinero apostado del saldo del usuario
                     turnoJugador++;
                     cantidadJugadas++;
                 }

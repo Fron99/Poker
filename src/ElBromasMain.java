@@ -11,6 +11,7 @@
  *  repetir
  *      restaurarBaraja*
  *      limpiarMesa*
+ *      generarCartasJugadores*
  *      generar3Cartas*
  *      mostrarPanelJuego*
  *      realizarJugadas*
@@ -20,9 +21,9 @@
  *      generarCarta*
  *      mostrarPanelJuego*
  *      realizarJugadas*
+ *      mostrarPanelJuego*
  *      calcularGanador*
  *      ingresarDineroGanador*
- *      mostrarPanelJuego*
  *      //incrementarTurnoJugador
  *  mientras(usuario tenga dinero y queden bots)
  *
@@ -69,7 +70,6 @@ public class ElBromasMain {
 
     public static void main (String[] args){
 
-        Random random = new Random();
         GestoraJugadorImpl gesJugador = new GestoraJugadorImpl();
         GestoraMesaImpl gesMesa = new GestoraMesaImpl();
         ResguardosMesaImpl resMesa = new ResguardosMesaImpl();
@@ -91,17 +91,23 @@ public class ElBromasMain {
         //cargarBots
         gesJugador.cargarBots(mesa.getJugadores());  //Coloca en el array de jugadores jugadores con valores generados
 
+        /*
+
         //generarIniciador
         turnoJugador = random.nextInt(5);   //Genera un numero del 0 al 4 que es la cantidad de jugadores que hay
                                                     //para saber quien empieza a apostar
+        */
+        turnoJugador = 0;
 
         do {
-
             //restaurarBaraja
             gesMesa.inicializarBaraja(baraja);
 
             //limpiarMesa
             gesMesa.limpiarMesa(mesa);
+
+            //generarCartasJugadores
+            gesMesa.generarCartasJugadores(baraja,mesa);
 
             //generar3Cartas
             gesMesa.generar3Cartas(baraja,mesa.getCartasMesa());  //Coloca 3 cartas aleatorias en el array de las cartas que hay en esta mesa
@@ -130,14 +136,16 @@ public class ElBromasMain {
             //realizarJugadas
             gesMesa.realizarJugadas(turnoJugador,mesa);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
 
+            //mostrarPanelJuego
+            gesMesa.mostrarPanelJuego(mesa);
+
             //calcularGanador
             jugadorGanador = resMesa.calcularGanador(mesa);
 
             //ingresarDineroGanador
             gesMesa.ingresarDineroGanador(jugadorGanador,mesa);
 
-            //mostrarPanelJuego
-            gesMesa.mostrarPanelJuego(mesa);
+            /*
 
             //incrementarTurnoJugador
             if (turnoJugador < 4){
@@ -145,6 +153,7 @@ public class ElBromasMain {
             }else{
                 turnoJugador = 0;
             }
+            */
 
         }while (mesa.getJugadores()[0].getDinero()>0);
 
