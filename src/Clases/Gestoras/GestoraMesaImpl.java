@@ -113,7 +113,7 @@ public class GestoraMesaImpl {
      */
 
 
-    public void sacar3Cartas(CartaImpl[] baraja, CartaImpl[] cartas){
+    public void generar3Cartas(CartaImpl[] baraja, CartaImpl[] cartas){
 
         Random r = new Random();
         int numPosicionCarta = 0;
@@ -134,8 +134,8 @@ public class GestoraMesaImpl {
 
 
     /*
-     * SIGNATURA: public void mostrarJuegoPrimeraMano(MesaImpl mesa);
-     * COMENTARIO: Imprime por pantalla las 3 cartas que han salido y el dinero de los demas jugadores
+     * SIGNATURA: public void mostrarPanelJuego (MesaImpl mesa);
+     * COMENTARIO: Imprime por pantalla las cartas que hay en la mesa, el dinero de los demas jugadores y el total del bote de la mesa
      * PRECONDICIONES: - Nada
      * ENTRADA: - Un objeto Mesa
      * SALIDA: - Nada
@@ -143,11 +143,17 @@ public class GestoraMesaImpl {
      * POSTCONDICIONES: - No devuelve nada, solo imprime por pantalla el estado actual en el que se encuentran los jugadores y las cartas
      */
 
-    public void mostrarJuegoPrimeraMano(MesaImpl mesa){
+    public void mostrarPanelJuego(MesaImpl mesa){
 
         int dinJugador, dinBot1, dinBot2, dinBot3, dinBot4;
         char paloCarta0, paloCarta1, paloCarta2,paloCarta3,paloCarta4;
-        String numeroCarta0, numeroCarta1, numeroCarta2, numeroCarta3, numeroCarta4;
+        String numeroCarta0, numeroCarta1, numeroCarta2, numeroCarta3, numeroCarta4, userJugador, userBot1, userBot2, userBot3, userBot4;
+
+        userJugador = mesa.getJugadores()[0].getUsuario();
+        userBot1 = mesa.getJugadores()[1].getUsuario();
+        userBot2 = mesa.getJugadores()[2].getUsuario();
+        userBot3 = mesa.getJugadores()[3].getUsuario();
+        userBot4 = mesa.getJugadores()[4].getUsuario();
 
         dinJugador = mesa.getJugadores()[0].getDinero();
         dinBot1 = mesa.getJugadores()[1].getDinero();
@@ -167,6 +173,8 @@ public class GestoraMesaImpl {
         numeroCarta3 = mesa.getCartasMesa()[3].getNumero();
         numeroCarta4 = mesa.getCartasMesa()[4].getNumero();
 
+        System.out.println("                                      "+userBot2+"                                       "+userBot3);
+        System.out.println();
         System.out.println("                                      "+dinBot2+"€                                               "+dinBot3+"€");
         System.out.println("                                      |º º|                                               |º º|");
         System.out.println("                                      |---|                                               |---|");
@@ -175,8 +183,9 @@ public class GestoraMesaImpl {
         System.out.println();
         System.out.println();
 
+        System.out.println("       "+userBot1+"                                                                                                                                                                                                     "+userBot4);
         System.out.println("                                    ----- "+"       "+" ----- "+"       "+" ----- "+"       "+" ----- "+"       "+" ----- ");
-        System.out.println("       "+dinBot1+"€                       | "+paloCarta0+"   |"+"       "+"| "+paloCarta1+"   |"+"       "+"| "+paloCarta2+"   |"+"       "+"| "+paloCarta3+"   |"+"       "+"| "+paloCarta4+"   |                      "+dinBot1+"€");
+        System.out.println("       "+dinBot1+"€                       | "+paloCarta0+"   |"+"       "+"| "+paloCarta1+"   |"+"       "+"| "+paloCarta2+"   |"+"       "+"| "+paloCarta3+"   |"+"       "+"| "+paloCarta4+"   |                      "+dinBot4+"€");
         System.out.println("       |º º|                       | "+numeroCarta0+"   |"+"       "+"| "+numeroCarta1+"   |"+"       "+"| "+numeroCarta2+"   |"+"       "+"| "+numeroCarta3+"   |"+"       "+"| "+numeroCarta4+"   |                      |º º|");
         System.out.println("       |---|                       |     |"+"       "+"|     |"+"       "+"|     |"+"       "+"|     |"+"       "+"|     |"+"                      |---|");
         System.out.println("                                    ----- "+"       "+" ----- "+"       "+" ----- "+"       "+" ----- "+"       "+" ----- ");
@@ -186,6 +195,7 @@ public class GestoraMesaImpl {
         System.out.println();
         System.out.println();
 
+        System.out.println("                                                                     "+userJugador);
         System.out.println("                                                              TU SALDO ES: "+dinJugador+"€");
         System.out.println();
         System.out.println("                                                           _______________________");
@@ -199,6 +209,49 @@ public class GestoraMesaImpl {
         System.out.println("                                                          |                       |");
         System.out.println("                                                           -----------------------");
         System.out.println();
+
+    }
+
+
+    /*
+     * SIGNATURA: public void generarCarta(CartaImpl[] baraja, CartaImpl[] cartas);
+     * COMENTARIO: Saca 1 cartas de la baraja y las coloca en el segundo array pasado por parametro
+     * PRECONDICIONES: - El primer array debe tener 54 campos
+     *                 - El segundo array debe tener 5 campos
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Un array de CartaImpl con todas las cartas posibles
+     *                 - Un array de CartaImpl con las cartas de la mesa
+     * POSTCONDICIONES: Modifica el array pasado por parametro eliminando las cartas que se saquen aleatoriamente y anhadiendose
+     *                  al segundo array pasado por parametro que son las cartas de la mesa
+     */
+
+
+    public void generarCarta(CartaImpl[] baraja, CartaImpl[] cartas){
+
+        Random r = new Random();
+        int numPosicionCarta, indiceCartaGenerar = 0;
+
+        numPosicionCarta = r.nextInt(54);
+
+        //Calcula cual es la siguiente carta sin levantar y guarda el indice
+        for (int i = 0; i<cartas.length&&cartas[i].getPalo()!='D';i++){
+            if ((i+1)<=cartas.length){
+                if (cartas[i+1].getPalo()=='D'){
+                    indiceCartaGenerar = i+1;
+                }
+            }
+        }
+
+        //Guarda la carta que se ha sacado de la baraja en las cartas de la mesa
+        do {
+            if (baraja[numPosicionCarta].getPalo() != 'D') {
+                cartas[indiceCartaGenerar] = baraja[numPosicionCarta];
+                baraja[numPosicionCarta] = new CartaImpl();
+            }
+            numPosicionCarta = r.nextInt(54);
+        }while (baraja[numPosicionCarta].getPalo() == 'D');
+
 
     }
 

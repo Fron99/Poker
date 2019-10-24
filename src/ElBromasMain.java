@@ -6,23 +6,22 @@
  *  leerUsuario*
  *  leerYValidarDineroInicial*
  *  cargarBots*
+ *  //generarTurnoJugador
  *  repetir
  *      restaurarBaraja*
  *      limpiarMesa*
- *      sacar3Cartas*
- *      mostrarJuegoPrimeraMano*
- *      //generarIniciador
+ *      generar3Cartas*
+ *      mostrarPanelJuego*
  *      realizarJugadas*
- *      //incrementarIniciador
- *      generarCartas*
- *      mostrarCartas*
+ *      generarCarta*
+ *      mostrarPanelJuego*
  *      realizarJugadas*
- *      //incrementarIniciador
- *      generarCartas*
- *      mostrarCartas*
+ *      generarCarta*
+ *      mostrarPanelJuego*
  *      realizarJugadas*
  *      calcularGanador*
  *      ingresarDineroGanador*
+ *      //incrementarTurnoJugador
  *  mientras(usuario tenga dinero y queden bots)
  *
  * FIN
@@ -32,7 +31,7 @@
  *
  * PG1
  * INICIO
- * si(iniciador == idUsuario)
+ * si(turnoJugador == idUsuario)
  *  //leerYValidarApuestaJugador
  *  mientras(queden bots sin apostar)
  *      //generarCantidadApuesta
@@ -60,6 +59,7 @@ import Clases.Basicas.JugadorImpl;
 import Clases.Basicas.MesaImpl;
 import Clases.Gestoras.GestoraJugadorImpl;
 import Clases.Gestoras.GestoraMesaImpl;
+import Clases.Resguardos.ResguardosMesaImpl;
 
 
 import java.util.Random;
@@ -70,20 +70,20 @@ public class ElBromasMain {
     public static void main (String[] args){
 
         Random random = new Random();
-        Scanner teclado = new Scanner(System.in);
         GestoraJugadorImpl gesJugador = new GestoraJugadorImpl();
         GestoraMesaImpl gesMesa = new GestoraMesaImpl();
+        ResguardosMesaImpl resMesa = new ResguardosMesaImpl();
 
-        String usuarioJugador = "DEFECTO";
-        int dineroInicialJugador = 5000, turnoJugador, apuestaInicial = 0, totalApuestas = 0, cantidadJugadas = 0, apuestaJugador;
+        String usuarioJugador;
+        int dineroInicialJugador, turnoJugador, jugadorGanador;
         MesaImpl mesa = new MesaImpl();
         CartaImpl[] baraja = new CartaImpl[54];
 
         //leerUsuario
-        //usuarioJugador = gesJugador.leerUsuario();
+        usuarioJugador = gesJugador.leerUsuario();
 
         //leerYValidarDineroInicial
-        //dineroInicialJugador = gesJugador.leerYValidarDineroInicial();
+        dineroInicialJugador = gesJugador.leerYValidarDineroInicial();
 
         //El usuario que juega se colocara siempre en la posicion 0
         mesa.anhadirJugador(0,new JugadorImpl(usuarioJugador,dineroInicialJugador));
@@ -91,6 +91,10 @@ public class ElBromasMain {
         //cargarBots
         gesJugador.cargarJugadores(mesa.getJugadores());  //Coloca en el array de jugadores jugadores con valores generados
 
+        //generarIniciador
+
+        turnoJugador = random.nextInt(5);   //Genera un numero del 0 al 4 que es la cantidad de jugadores que hay
+        //para saber quien empieza a apostar
 
         //do {
 
@@ -100,34 +104,53 @@ public class ElBromasMain {
             //limpiarMesa
             gesMesa.limpiarMesa(mesa.getCartasMesa());
 
-            //sacar3Cartas
-            gesMesa.sacar3Cartas(baraja,mesa.getCartasMesa());  //Coloca 3 cartas aleatorias en el array de las cartas que hay en esta mesa
+            //generar3Cartas
+            gesMesa.generar3Cartas(baraja,mesa.getCartasMesa());  //Coloca 3 cartas aleatorias en el array de las cartas que hay en esta mesa
 
-            gesMesa.mostrarJuegoPrimeraMano(mesa);
+            //mostrarPanelJuego
+            gesMesa.mostrarPanelJuego(mesa);
+
+            //realizarJugadas
+            resMesa.realizarJugadas(turnoJugador,mesa);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
+
+            //generarCarta
+            gesMesa.generarCarta(baraja,mesa.getCartasMesa());
+
+            //mostrarPanelJuego
+            gesMesa.mostrarPanelJuego(mesa);
+
+            //realizarJugadas
+            resMesa.realizarJugadas(turnoJugador,mesa);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
+
+            //generarCarta
+            gesMesa.generarCarta(baraja,mesa.getCartasMesa());
+
+            //mostrarPanelJuego
+            gesMesa.mostrarPanelJuego(mesa);
+
+            //realizarJugadas
+            resMesa.realizarJugadas(turnoJugador,mesa);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
+
+            //calcularGanador
+            jugadorGanador = resMesa.calcularGanador(mesa);
+
+            //calcularGanador
+            resMesa.ingresarDineroGanador(jugadorGanador,mesa);
+
+            //incrementarTurnoJugador
+            if (turnoJugador < 4){
+                turnoJugador++;
+            }else{
+                turnoJugador = 0;
+            }
+
+        //}while (mesa.getJugadores()[0].getDinero()>0);
 
 
 
 
 
-
-
-
-
-
-
-
-/*
-
- *      mostrarJuegoPrimeraMano*
- *      //generarIniciador
- *      realizarJugadas*
- *      //incrementarIniciador
- *      generarCartas*
-
-
-
-
-           //generarIniciador
+           /*
             turnoJugador = random.nextInt(5);
             if (turnoJugador == jugadores[0].getID()){
                 apuestaInicial = gesJugador.leerYValidarApuesta(jugadores[0]);
@@ -148,15 +171,9 @@ public class ElBromasMain {
                     apuestaJugador = gesJugador.leerYValidarApuesta(jugadores[0]);
                     totalApuestas += apuestaJugador;
                 }
-           }
+           }*/
 
-        }while (jugadores[0].getDinero()>0);
 
-        for ( JugadorImpl usuario : jugadores ) {
-            System.out.println(usuario.toString());
-        }*/
-
-        System.out.println("En construccion");
 
     }
 
