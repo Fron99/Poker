@@ -23,10 +23,10 @@ public class ResguardosMesaImpl {
     }
 
     /*
-     * SIGNATURA: public void realizarJugadas(int iniciador, MesaImpl mesa);
+     * SIGNATURA: public void realizarJugadas(int turnoJugador, MesaImpl mesa);
      * COMENTARIO: Realiza el proceso de apuestas de cada ronda segun el orden pasado.
-     * PRECONDICIONES: - El iniciador no puede ser mayor a 4 ni menor que 0
-     * ENTRADA: - Un entero para el iniciador
+     * PRECONDICIONES: - El turnoJugador no puede ser mayor a 4 ni menor que 0
+     * ENTRADA: - Un entero para el turnoJugador
      * SALIDA: - Nada
      * ENTRADA/SALIDA: - Un objeto mesa con el que se este jugando
      * POSTCONDICIONES: - Modifica la apuesta total de la mesa pasada por parametro incrementando su valor conforme los jugadores apuesten
@@ -56,8 +56,8 @@ public class ResguardosMesaImpl {
      * FIN
      */
 
-    public void realizarJugadas(int iniciador, MesaImpl mesa){
-        System.out.println("Metodo en resguardo");
+    public void realizarJugadas(int turnoJugador, MesaImpl mesa){
+        System.out.println("Metodo realizarJugadas en resguardo");
     }
 
 
@@ -73,16 +73,16 @@ public class ResguardosMesaImpl {
      */
 
     public int calcularGanador(MesaImpl mesa){
-        System.out.println("Metodo en resguardo");
+        System.out.println("Metodo calcularGanador en resguardo");
         return 0;
     }
 
 
     /*
      * SIGNATURA: public void ingresarDineroGanador(int ganador, MesaImpl mesa);
-     * COMENTARIO: Calcula cual es el jugador que ha ganado en la mano actual.
-     * PRECONDICIONES: - El array de cartas que contiene el objeto MesaImpl debe tener las 5 cartas.
-     * ENTRADA: - Un entero con el valor del ganador de la ronda
+     * COMENTARIO: Aumenta el saldo del usuario ganador de la mano
+     * PRECONDICIONES: - El ganador no puede ser menor de 0 ni mayor de 5
+     * ENTRADA: - Un entero con el ganador
      * SALIDA: - Nada
      * ENTRADA/SALIDA: - Un objeto mesa
      * POSTCONDICIONES: - Modifica el objeto mesa incrementando el saldo del usuario ganador con el total de apuestas de la mano jugada.
@@ -90,7 +90,7 @@ public class ResguardosMesaImpl {
      */
 
     public void ingresarDineroGanador(int ganador, MesaImpl mesa){
-        System.out.println("Metodo en resguardo");
+        System.out.println("Metodo ingresarDineroGanador en resguardo");
     }
 
 

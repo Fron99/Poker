@@ -58,7 +58,7 @@ public class GestoraJugadorImpl {
      *
      */
 
-    public void cargarJugadores(JugadorImpl[] jugadores){
+    public void cargarBots(JugadorImpl[] jugadores){
 
         Random random = new Random();
         String[] nombresAleatorios = {"Kun","Wang","Yan Yan","Zhao","Yun","Sasha","Volodia","Hedeon","Grigory"};
