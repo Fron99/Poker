@@ -5,6 +5,7 @@
  *
  *  leerUsuario*
  *  leerYValidarDineroInicial*
+ *  //añadirJugador
  *  cargarBots*
  *  //generarTurnoJugador
  *  repetir
@@ -21,11 +22,11 @@
  *      realizarJugadas*
  *      calcularGanador*
  *      ingresarDineroGanador*
+ *      mostrarPanelJuego*
  *      //incrementarTurnoJugador
  *  mientras(usuario tenga dinero y queden bots)
  *
  * FIN
- *
  *
  * //realizarJugadas*
  *
@@ -63,7 +64,6 @@ import Clases.Resguardos.ResguardosMesaImpl;
 
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class ElBromasMain {
 
@@ -89,20 +89,19 @@ public class ElBromasMain {
         mesa.anhadirJugador(0,new JugadorImpl(usuarioJugador,dineroInicialJugador));
 
         //cargarBots
-        gesJugador.cargarJugadores(mesa.getJugadores());  //Coloca en el array de jugadores jugadores con valores generados
+        gesJugador.cargarBots(mesa.getJugadores());  //Coloca en el array de jugadores jugadores con valores generados
 
         //generarIniciador
-
         turnoJugador = random.nextInt(5);   //Genera un numero del 0 al 4 que es la cantidad de jugadores que hay
-        //para saber quien empieza a apostar
+                                                    //para saber quien empieza a apostar
 
-        //do {
+        do {
 
-            //restaurarCartas
+            //restaurarBaraja
             gesMesa.inicializarBaraja(baraja);
 
             //limpiarMesa
-            gesMesa.limpiarMesa(mesa.getCartasMesa());
+            gesMesa.limpiarMesa(mesa);
 
             //generar3Cartas
             gesMesa.generar3Cartas(baraja,mesa.getCartasMesa());  //Coloca 3 cartas aleatorias en el array de las cartas que hay en esta mesa
@@ -111,7 +110,7 @@ public class ElBromasMain {
             gesMesa.mostrarPanelJuego(mesa);
 
             //realizarJugadas
-            resMesa.realizarJugadas(turnoJugador,mesa);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
+            gesMesa.realizarJugadas(turnoJugador,mesa);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
 
             //generarCarta
             gesMesa.generarCarta(baraja,mesa.getCartasMesa());
@@ -120,7 +119,7 @@ public class ElBromasMain {
             gesMesa.mostrarPanelJuego(mesa);
 
             //realizarJugadas
-            resMesa.realizarJugadas(turnoJugador,mesa);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
+            gesMesa.realizarJugadas(turnoJugador,mesa);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
 
             //generarCarta
             gesMesa.generarCarta(baraja,mesa.getCartasMesa());
@@ -129,13 +128,16 @@ public class ElBromasMain {
             gesMesa.mostrarPanelJuego(mesa);
 
             //realizarJugadas
-            resMesa.realizarJugadas(turnoJugador,mesa);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
+            gesMesa.realizarJugadas(turnoJugador,mesa);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
 
             //calcularGanador
             jugadorGanador = resMesa.calcularGanador(mesa);
 
-            //calcularGanador
-            resMesa.ingresarDineroGanador(jugadorGanador,mesa);
+            //ingresarDineroGanador
+            gesMesa.ingresarDineroGanador(jugadorGanador,mesa);
+
+            //mostrarPanelJuego
+            gesMesa.mostrarPanelJuego(mesa);
 
             //incrementarTurnoJugador
             if (turnoJugador < 4){
@@ -144,36 +146,7 @@ public class ElBromasMain {
                 turnoJugador = 0;
             }
 
-        //}while (mesa.getJugadores()[0].getDinero()>0);
-
-
-
-
-
-           /*
-            turnoJugador = random.nextInt(5);
-            if (turnoJugador == jugadores[0].getID()){
-                apuestaInicial = gesJugador.leerYValidarApuesta(jugadores[0]);
-                totalApuestas += apuestaInicial;
-                turnoJugador++;
-                while (turnoJugador<jugadores.length){
-                    totalApuestas += apuestaInicial;
-                    turnoJugador++;
-                }
-           }else{
-                while (turnoJugador<jugadores.length){
-                    apuestaInicial = 2000;
-                    totalApuestas += apuestaInicial;
-                    turnoJugador++;
-                    cantidadJugadas++;
-                }
-                if(cantidadJugadas<5){
-                    apuestaJugador = gesJugador.leerYValidarApuesta(jugadores[0]);
-                    totalApuestas += apuestaJugador;
-                }
-           }*/
-
-
+        }while (mesa.getJugadores()[0].getDinero()>0);
 
     }
 
