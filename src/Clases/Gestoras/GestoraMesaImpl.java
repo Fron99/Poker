@@ -312,6 +312,8 @@ public class GestoraMesaImpl {
         GestoraJugadorImpl gesJugador = new GestoraJugadorImpl();
         int apuestaInicial, cantidadJugadas = 0;
 
+        //TODO Disminuir saldo al apostar a cada jugador
+
         if (turnoJugador == mesa.getJugadores()[0].getID()) {
             apuestaInicial = gesJugador.leerYValidarApuesta(mesa.getJugadores()[0]);
             mesa.incrementarTotalApuestas(apuestaInicial);

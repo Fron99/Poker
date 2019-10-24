@@ -82,6 +82,7 @@ public class GestoraJugadorImpl {
     public int leerYValidarApuesta(JugadorImpl jugador){
         Scanner teclado = new Scanner(System.in);
         int cantidadApuesta;
+        //TODO Controlar que no se apueste mas del saldo que tiene
         do {
             System.out.println("Dispone de "+jugador.getDinero()+" de saldo");
             System.out.print("Introduce cuanto quiere apostar: ");
