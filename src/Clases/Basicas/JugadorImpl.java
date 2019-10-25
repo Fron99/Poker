@@ -7,6 +7,7 @@
  *  - usuario: String, Consultable
  *  - dinero: int, Consultable, Modificable
  *  - cartas: CartaImpl[], Consultable, Modificable
+ *  - activo: boolean, Consultable, Modificable
  *
  * PROPIEDADES DERIVADAS:
  *
@@ -27,6 +28,9 @@
  *
  *  public CartaImpl[] getCartas();
  *  public void setCartas(CartaImpl[] cartas);
+ *
+ *  public boolean getActivo();
+ *  public void setActivo(boolean activo);
  *
  * METODOS AÑADIDOS:
  *
@@ -49,6 +53,7 @@ public class JugadorImpl implements Jugador {
     private String usuario;
     private int dinero;
     private CartaImpl[] cartas = new CartaImpl[3];
+    private boolean activo;
 
     private static int contadorID = 0;
 
@@ -58,6 +63,7 @@ public class JugadorImpl implements Jugador {
         contadorID++;
         this.usuario = "DEFAULT";
         this.dinero = 0;
+        this.activo = true;
     }
 
     public JugadorImpl(String usuario, int dinero){
@@ -65,6 +71,7 @@ public class JugadorImpl implements Jugador {
         contadorID++;
         this.usuario = usuario;
         this.dinero = dinero;
+        this.activo = true;
     }
 
     public JugadorImpl(JugadorImpl otro){
@@ -72,6 +79,7 @@ public class JugadorImpl implements Jugador {
         contadorID++;
         this.usuario = otro.getUsuario();
         this.dinero = otro.getDinero();
+        this.activo = otro.getActivo();
     }
 
     public int getID(){
@@ -96,6 +104,14 @@ public class JugadorImpl implements Jugador {
 
     public void setCartas(CartaImpl[] cartas){
         this.cartas = cartas;
+    }
+
+    public boolean getActivo(){
+        return this.activo;
+    }
+
+    public void setActivo(boolean activo){
+        this.activo = activo;
     }
 
     public void disminuirDinero(int dinero){

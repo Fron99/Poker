@@ -63,7 +63,7 @@ public class GestoraJugadorImpl {
         Random random = new Random();
         String[] nombresAleatorios = {"Kun","Wang","Yan Yan","Zhao","Yun","Sasha","Volodia","Hedeon","Grigory"};
         for (int i = 1; i<jugadores.length;i++){
-            jugadores[i] = new JugadorImpl(nombresAleatorios[random.nextInt(8)],3000);
+            jugadores[i] = new JugadorImpl(nombresAleatorios[random.nextInt(8)],jugadores[0].getDinero());
         }
 
     }
@@ -82,7 +82,6 @@ public class GestoraJugadorImpl {
     public int leerYValidarApuesta(JugadorImpl jugador){
         Scanner teclado = new Scanner(System.in);
         int cantidadApuesta;
-        //TODO Controlar que no se apueste mas del saldo que tiene
         do {
             System.out.println("Dispone de "+jugador.getDinero()+" de saldo");
             System.out.print("Introduce cuanto quiere apostar: ");
