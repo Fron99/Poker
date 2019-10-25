@@ -7,6 +7,7 @@
  *  - usuario: String, Consultable
  *  - dinero: int, Consultable, Modificable
  *  - cartas: CartaImpl[], Consultable, Modificable
+ *  - activo: boolean, Consultable, Modificable
  *
  * PROPIEDADES DERIVADAS:
  *
@@ -27,6 +28,9 @@
  *
  *  public CartaImpl[] getCartas();
  *  public void setCartas(CartaImpl[] cartas);
+ *
+ *  public boolean getActivo();
+ *  public void setActivo(boolean activo);
  *
  * METODOS AÑADIDOS:
  *
@@ -53,5 +57,8 @@ public interface Jugador {
 
     public CartaImpl[] getCartas();
     public void setCartas(CartaImpl[] cartas);
+
+    public boolean getActivo();
+    public void setActivo(boolean activo);
 
 }

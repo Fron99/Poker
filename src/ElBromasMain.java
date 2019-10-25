@@ -32,26 +32,6 @@
  * //realizarJugadas*
  *
  * PG1
- * INICIO
- * si(turnoJugador == idUsuario)
- *  //leerYValidarApuestaJugador
- *  mientras(queden bots sin apostar)
- *      //generarCantidadApuesta
- *      //incrementarTotalApuestas
- *  finMientras
- * siNo
- *  mientras(no se llegue al final del array)
- *      //generarCantidadApuesta
- *      //incrementarTotalApuestas
- *  finMientras
- *  //leerYValidarApuestaJugador
- *  //incrementarTotalApuestas
- *  mientras(queden bots sin apostar)
- *      //generarCantidadApuesta
- *      //incrementarTotalApuestas
- *  finMientras
- * finSi
- * FIN
  *
  */
 
@@ -70,6 +50,7 @@ public class ElBromasMain {
 
     public static void main (String[] args){
 
+        Random random = new Random();
         GestoraJugadorImpl gesJugador = new GestoraJugadorImpl();
         GestoraMesaImpl gesMesa = new GestoraMesaImpl();
         ResguardosMesaImpl resMesa = new ResguardosMesaImpl();
@@ -91,13 +72,10 @@ public class ElBromasMain {
         //cargarBots
         gesJugador.cargarBots(mesa.getJugadores());  //Coloca en el array de jugadores jugadores con valores generados
 
-        /*
 
         //generarIniciador
         turnoJugador = random.nextInt(5);   //Genera un numero del 0 al 4 que es la cantidad de jugadores que hay
-                                                    //para saber quien empieza a apostar
-        */
-        turnoJugador = 0;
+                                                    //para saber quien empieza a aposta
 
         do {
             //restaurarBaraja
@@ -107,16 +85,16 @@ public class ElBromasMain {
             gesMesa.limpiarMesa(mesa);
 
             //generarCartasJugadores
-            gesMesa.generarCartasJugadores(baraja,mesa);
-
-            //generar3Cartas
-            gesMesa.generar3Cartas(baraja,mesa.getCartasMesa());  //Coloca 3 cartas aleatorias en el array de las cartas que hay en esta mesa
+            gesMesa.generarCartasJugadores(baraja,mesa);    //Asigna 2 cartas a cada jugador sin reeptir carta.
 
             //mostrarPanelJuego
             gesMesa.mostrarPanelJuego(mesa);
 
+            //generar3Cartas
+            gesMesa.generar3Cartas(baraja,mesa.getCartasMesa());  //Coloca 3 cartas aleatorias en el array de las cartas que hay en esta mesa
+
             //realizarJugadas
-            gesMesa.realizarJugadas(turnoJugador,mesa);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
+            gesMesa.realizarApuestas(turnoJugador,mesa);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
 
             //generarCarta
             gesMesa.generarCarta(baraja,mesa.getCartasMesa());
