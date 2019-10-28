@@ -1,13 +1,14 @@
 /*
  * PROPIEDADES BASICAS:
  *
- *  - cartasMesa: CartaImpl[5], Consultable, Modificable
- *  - totalApuestas: int, Consultable, Modificable
- *  - jugadores: JugadorImpl[5], Consultable, Modificable
+ *  - baraja: CartaImpl[], Consultable, Modificable
+ *  - jugadores: JugadorImpl[], Consultable, Modificable
+ *  - cartasMesa: CartaImpl[], Consultable, Modificable
+ *  - apuestasJugadores: int[][], Consultable, Modificable
  *
  * PROPIEDADES DERIVADAS:
  *
- *  - No hay
+ *  - apuestaTotal: int, Consultable
  *
  * PROPIEDADES COMPARTIDAS:
  *
@@ -15,23 +16,30 @@
  *
  * METODOS:
  *
- *  public CartaImpl[] getCartasMesa();
- *  public void setCartasMesa(CartaImpl[] cartas);
- *
- *  public int getTotalApuestas();
- *  public void setTotalApuestas(int totalApuestas);
+ *  public CartaImpl[] getCartasBaraja();
+ *  public void setCartasBaraja(CartaImpl[] baraja);
  *
  *  public JugadorImpl[] getJugadores();
  *  public void setJugadores(JugadorImpl[] jugadores);
  *
+ *  public CartaImpl[] getCartasMesa();
+ *  public void setCartasMesa(CartaImpl[] cartas);
+ *
+ *  public int[][] getApuestasJugadores();
+ *  public void setApuestasJugadores(int[][] apuestas);
+ *
+ *  public int getApuestaTotal();
+ *
  * METODOS AÑADIDOS:
  *
- *  public void anhadirCarta(int posicion, CartaImpl carta);
+ *  public void anhadirCartaMesa(int posicion, CartaImpl carta);
+ *  public void limpiarCartasMesa();
  *
- *  public void incrementarTotalApuestas(int cantidadIncrementar);
+ *  public void cargarBaraja();
  *
  *  public JugadorImpl getJugador(int posicion);
  *  public void setJugador(int posicion, JugadorImpl jugador)
+ *
  *
  */
 
@@ -42,13 +50,18 @@ import Clases.Basicas.JugadorImpl;
 
 public interface Mesa {
 
-    public CartaImpl[] getCartasMesa();
-    public void setCartasMesa(CartaImpl[] cartas);
-
-    public int getTotalApuestas();
-    public void setTotalApuestas(int totalApuestas);
+    public CartaImpl[] getCartasBaraja();
+    public void setCartasBaraja(CartaImpl[] baraja);
 
     public JugadorImpl[] getJugadores();
     public void setJugadores(JugadorImpl[] jugadores);
+
+    public CartaImpl[] getCartasMesa();
+    public void setCartasMesa(CartaImpl[] cartas);
+
+    public int[][] getApuestasJugadores();
+    public void setApuestasJugadores(int[][] apuestas);
+
+    public int getApuestaTotal();
 
 }

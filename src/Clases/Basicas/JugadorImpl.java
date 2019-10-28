@@ -52,7 +52,7 @@ public class JugadorImpl implements Jugador {
     private int ID;
     private String usuario;
     private int dinero;
-    private CartaImpl[] cartas = new CartaImpl[3];
+    private CartaImpl[] cartas = new CartaImpl[2];
     private boolean activo;
 
     private static int contadorID = 0;

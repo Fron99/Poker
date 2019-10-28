@@ -3,11 +3,35 @@
  * PG0
  * INICIO
  *
- *  leerUsuario*
- *  leerYValidarDineroInicial*
- *  //añadirJugador
- *  cargarBots*
- *  //generarTurnoJugador
+ * leerUsuario*
+ * leerYValidarDineroInicial*
+ * //añadirJugador
+ * cargarBots*
+ * //generarTurnoJugador
+ * repetir
+ *
+ * mientras()
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  *  repetir
  *      restaurarBaraja*
  *      limpiarMesa*
