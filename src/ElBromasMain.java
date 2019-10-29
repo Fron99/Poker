@@ -103,7 +103,7 @@ public class ElBromasMain {
 
         do {
             //restaurarBaraja
-            gesMesa.inicializarBaraja(baraja);
+            mesa.restaurarBaraja();
 
             //limpiarMesa
             gesMesa.limpiarMesa(mesa);

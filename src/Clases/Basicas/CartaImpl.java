@@ -58,6 +58,8 @@ public class CartaImpl implements Carta{
         return this.numero;
     }
 
+    //TODO Sobreescribir metodos heredados
+
     @Override
     public String toString(){
         return ("Palo: "+this.getPalo()+" Numero: "+this.numero);

@@ -16,30 +16,32 @@
  *
  * METODOS:
  *
- *  public CartaImpl[] getCartasBaraja();
- *  public void setCartasBaraja(CartaImpl[] baraja);
+ * public CartaImpl[] getCartasBaraja();
+ * public void setCartasBaraja(CartaImpl[] baraja);
  *
- *  public JugadorImpl[] getJugadores();
- *  public void setJugadores(JugadorImpl[] jugadores);
+ * public JugadorImpl[] getJugadores();
+ * public void setJugadores(JugadorImpl[] jugadores);
  *
- *  public CartaImpl[] getCartasMesa();
- *  public void setCartasMesa(CartaImpl[] cartas);
+ * public CartaImpl[] getCartasMesa();
+ * public void setCartasMesa(CartaImpl[] cartas);
  *
- *  public int[][] getApuestasJugadores();
- *  public void setApuestasJugadores(int[][] apuestas);
+ * public int[][] getApuestasJugadores();
+ * public void setApuestasJugadores(int[][] apuestas);
  *
- *  public int getApuestaTotal();
+ * public int getApuestaTotal();
  *
  * METODOS AÑADIDOS:
  *
- *  public void anhadirCartaMesa(int posicion, CartaImpl carta);
- *  public void limpiarCartasMesa();
+ * public void anhadirCartaMesa(int posicion, CartaImpl carta);
+ * public void limpiarCartasMesa();
  *
- *  public void cargarBaraja();
+ * public void cargarBaraja();
  *
- *  public JugadorImpl getJugador(int posicion);
- *  public void setJugador(int posicion, JugadorImpl jugador)
+ * public JugadorImpl obtenerJugador(int posicion);
+ * public void anhadirJugador(int posicion, JugadorImpl jugador)
  *
+ * public void anhadirApuesta(int jugador, int rondaApuesta, int cantidad)
+ * public int obtenerApuesta(int jugador, int rondaApuesta)
  *
  */
 
@@ -50,8 +52,8 @@ import Clases.Basicas.JugadorImpl;
 
 public interface Mesa {
 
-    public CartaImpl[] getCartasBaraja();
-    public void setCartasBaraja(CartaImpl[] baraja);
+    public CartaImpl[] getBaraja();
+    public void setBaraja(CartaImpl[] baraja);
 
     public JugadorImpl[] getJugadores();
     public void setJugadores(JugadorImpl[] jugadores);

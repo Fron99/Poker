@@ -7,81 +7,6 @@ import java.util.Random;
 
 public class GestoraMesaImpl {
 
-
-    /*
-     * SIGNATURA: public void inicializarBaraja(CartaImpl[] cartas)
-     * COMENTARIO: Anhade todas las cartas posibles al array pasado por parametro
-     * PRECONDICIONES: - El array debe tener como minimo 54 campos
-     * ENTRADA: - Nada
-     * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Un array de CartaImpl
-     * POSTCONDICIONES: Modifica el array pasado por parametro anhadiendo todas las cartas posibles
-     */
-
-    public void inicializarBaraja(CartaImpl[] cartas) {
-
-        cartas[0] = new CartaImpl('P', "A");
-        cartas[1] = new CartaImpl('P', "2");
-        cartas[2] = new CartaImpl('P', "3");
-        cartas[3] = new CartaImpl('P', "4");
-        cartas[4] = new CartaImpl('P', "5");
-        cartas[5] = new CartaImpl('P', "6");
-        cartas[6] = new CartaImpl('P', "7");
-        cartas[7] = new CartaImpl('P', "8");
-        cartas[8] = new CartaImpl('P', "9");
-        cartas[9] = new CartaImpl('P', "10");
-        cartas[10] = new CartaImpl('P', "J");
-        cartas[11] = new CartaImpl('P', "Q");
-        cartas[12] = new CartaImpl('P', "K");
-
-        cartas[13] = new CartaImpl('C', "A");
-        cartas[14] = new CartaImpl('C', "2");
-        cartas[15] = new CartaImpl('C', "3");
-        cartas[16] = new CartaImpl('C', "4");
-        cartas[17] = new CartaImpl('C', "5");
-        cartas[18] = new CartaImpl('C', "6");
-        cartas[19] = new CartaImpl('C', "7");
-        cartas[20] = new CartaImpl('C', "8");
-        cartas[21] = new CartaImpl('C', "9");
-        cartas[22] = new CartaImpl('C', "10");
-        cartas[23] = new CartaImpl('C', "J");
-        cartas[24] = new CartaImpl('C', "Q");
-        cartas[25] = new CartaImpl('C', "K");
-
-        cartas[26] = new CartaImpl('R', "A");
-        cartas[27] = new CartaImpl('R', "2");
-        cartas[28] = new CartaImpl('R', "3");
-        cartas[29] = new CartaImpl('R', "4");
-        cartas[30] = new CartaImpl('R', "5");
-        cartas[31] = new CartaImpl('R', "6");
-        cartas[32] = new CartaImpl('R', "7");
-        cartas[33] = new CartaImpl('R', "8");
-        cartas[34] = new CartaImpl('R', "9");
-        cartas[35] = new CartaImpl('R', "10");
-        cartas[36] = new CartaImpl('R', "J");
-        cartas[37] = new CartaImpl('R', "Q");
-        cartas[38] = new CartaImpl('R', "K");
-
-        cartas[39] = new CartaImpl('T', "A");
-        cartas[40] = new CartaImpl('T', "2");
-        cartas[41] = new CartaImpl('T', "3");
-        cartas[42] = new CartaImpl('T', "4");
-        cartas[43] = new CartaImpl('T', "5");
-        cartas[44] = new CartaImpl('T', "6");
-        cartas[45] = new CartaImpl('T', "7");
-        cartas[46] = new CartaImpl('T', "8");
-        cartas[47] = new CartaImpl('T', "9");
-        cartas[48] = new CartaImpl('T', "10");
-        cartas[49] = new CartaImpl('T', "J");
-        cartas[50] = new CartaImpl('T', "Q");
-        cartas[51] = new CartaImpl('T', "K");
-
-        cartas[52] = new CartaImpl('J', "J");
-        cartas[53] = new CartaImpl('J', "J");
-
-    }
-
-
     /*
      * SIGNATURA: public void limpiarMesa(MesaImpl mesa)
      * COMENTARIO: Coloca en defecto todas las cartas del array pasado por parametro y el total de las apuestas en 0
@@ -96,7 +21,7 @@ public class GestoraMesaImpl {
         for (int i = 0; i < mesa.getCartasMesa().length; i++) {
             mesa.getCartasMesa()[i] = new CartaImpl();
         }
-        mesa.setTotalApuestas(0);
+        //mesa.setTotalApuestas(0);
     }
 
 
@@ -241,7 +166,7 @@ public class GestoraMesaImpl {
         System.out.println("                   -----        -----                                                                                                                  -----        -----");
 
         System.out.println();
-        System.out.println("                                                              DINERO EN MESA: " + mesa.getTotalApuestas() + "€");
+        //System.out.println("                                                              DINERO EN MESA: " + mesa.getTotalApuestas() + "€");
         System.out.println();
         System.out.println();
 
@@ -317,8 +242,8 @@ public class GestoraMesaImpl {
 
     public void ingresarDineroGanador(int ganador, MesaImpl mesa) {
         int cantidadMesa;
-        cantidadMesa = mesa.getTotalApuestas();
-        mesa.getJugadores()[ganador].aumentarDinero(cantidadMesa);
+        //cantidadMesa = mesa.getTotalApuestas();
+        //mesa.getJugadores()[ganador].aumentarDinero(cantidadMesa);
     }
 
 
@@ -341,11 +266,11 @@ public class GestoraMesaImpl {
         if (turnoJugador == mesa.getJugadores()[0].getID()) {
             apuestaInicial = gesJugador.leerYValidarApuesta(mesa.getJugadores()[0]);    //Pregunta al jugador cuento quiere apostar
             mesa.getJugadores()[0].disminuirDinero(apuestaInicial);
-            mesa.incrementarTotalApuestas(apuestaInicial);
+            //mesa.incrementarTotalApuestas(apuestaInicial);
             turnoJugador++;
             while (turnoJugador<mesa.getJugadores().length){
                 //TODO Falta generar apuesta conforme las cartas que tenga el bot
-                mesa.incrementarTotalApuestas(apuestaInicial);  //Apuesta lo mismo que elige el jugador porque aun no se ha implementado la IA
+                //mesa.incrementarTotalApuestas(apuestaInicial);  //Apuesta lo mismo que elige el jugador porque aun no se ha implementado la IA
                 mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaInicial);  //Disminuye el dinero apostado del saldo del usuario
                 turnoJugador++;
             }
@@ -353,13 +278,13 @@ public class GestoraMesaImpl {
             while (turnoJugador < mesa.getJugadores().length && cantidadJugadas < 5) {
                 apuestaInicial = 10;      //Colocamos 10 euros por defecto porque aun no se ha generado el metodo el cual el bot genere la cantidad a apostar segun sus cartas
                 if (turnoJugador == 4) {
-                    mesa.incrementarTotalApuestas(apuestaInicial);
+                    //mesa.incrementarTotalApuestas(apuestaInicial);
                     mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaInicial);  //Disminuye el dinero apostado del saldo del usuario
                     turnoJugador = 0;
                     cantidadJugadas++;
                 }
                 if (cantidadJugadas < 5) {
-                    mesa.incrementarTotalApuestas(apuestaInicial);
+                    //mesa.incrementarTotalApuestas(apuestaInicial);
                     //TODO De esta manera solo elige cantidad a apostar cuando el usuario empieza, si no empieza apuesta lo que apueste el primero.
                     mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaInicial);  //Disminuye el dinero apostado del saldo del usuario
                     turnoJugador++;
@@ -391,7 +316,7 @@ public class GestoraMesaImpl {
             apuestaJugador = gesJugador.leerYValidarApuesta(mesa.getJugadores()[0]);    //Pregunta al jugador cuento quiere apostar
             apuestaBase = apuestaJugador;   //Como este jugador es el primero en jugar se coloca su apuesta como apuesta base
             mesa.getJugadores()[0].disminuirDinero(apuestaJugador);
-            mesa.incrementarTotalApuestas(apuestaJugador);
+            //mesa.incrementarTotalApuestas(apuestaJugador);
             turnoJugador++;
             cantidadJugadas++;
             while (turnoJugador<mesa.getJugadores().length && cantidadJugadas < totalJugadas){
@@ -405,13 +330,13 @@ public class GestoraMesaImpl {
                     }else{
                         totalJugadas++;
                     }
-                    mesa.incrementarTotalApuestas(apuestaJugador);  //Apuesta lo mismo que elige el jugador porque aun no se ha implementado la IA
+                    //mesa.incrementarTotalApuestas(apuestaJugador);  //Apuesta lo mismo que elige el jugador porque aun no se ha implementado la IA
                     mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaJugador);  //Disminuye el dinero apostado del saldo del usuario
                     turnoJugador++;
                     cantidadJugadas++;
                 }else{
                     if (apuestaJugador == apuestaBase){
-                        mesa.incrementarTotalApuestas(apuestaJugador);  //Apuesta lo mismo que elige el jugador porque aun no se ha implementado la IA
+                        //mesa.incrementarTotalApuestas(apuestaJugador);  //Apuesta lo mismo que elige el jugador porque aun no se ha implementado la IA
                         mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaJugador);  //Disminuye el dinero apostado del saldo del usuario
                         turnoJugador++;
                         cantidadJugadas++;

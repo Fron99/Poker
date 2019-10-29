@@ -3,9 +3,8 @@
  *
  * PROPIEDADES BASICAS:
  *
- *  - ID: int, Consultable
  *  - usuario: String, Consultable
- *  - dinero: int, Consultable, Modificable
+ *  - saldo: int, Consultable, Modificable
  *  - cartas: CartaImpl[], Consultable, Modificable
  *  - activo: boolean, Consultable, Modificable
  *
@@ -19,12 +18,10 @@
  *
  * METODOS:
  *
- *  public int getID();
- *
  *  public String getUsuario();
  *
- *  public int getDinero();
- *  public void setDinero(int dinero);
+ *  public int getSaldo();
+ *  public void setSaldo(int saldo);
  *
  *  public CartaImpl[] getCartas();
  *  public void setCartas(CartaImpl[] cartas);
@@ -34,11 +31,13 @@
  *
  * METODOS AÑADIDOS:
  *
- * public void disminuirDinero(int dinero);
+ * public void disminuirSaldo(int saldo);
  *
- * public void aumentarDinero(int dinero);
+ * public void aumentarSaldo(int saldo);
  *
  * public CartaImpl obtenerCarta(int posicion);
+ *
+ * public void asignarCarta(int posicion, CartaImpl carta);
  *
  */
 
@@ -48,12 +47,10 @@ import Clases.Basicas.CartaImpl;
 
 public interface Jugador {
 
-    public int getID();
-
     public String getUsuario();
 
-    public int getDinero();
-    public void setDinero(int dinero);
+    public int getSaldo();
+    public void setSaldo(int saldo);
 
     public CartaImpl[] getCartas();
     public void setCartas(CartaImpl[] cartas);

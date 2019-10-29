@@ -3,9 +3,8 @@
  *
  * PROPIEDADES BASICAS:
  *
- *  - ID: int, Consultable
  *  - usuario: String, Consultable
- *  - dinero: int, Consultable, Modificable
+ *  - saldo: int, Consultable, Modificable
  *  - cartas: CartaImpl[], Consultable, Modificable
  *  - activo: boolean, Consultable, Modificable
  *
@@ -19,12 +18,10 @@
  *
  * METODOS:
  *
- *  public int getID();
- *
  *  public String getUsuario();
  *
- *  public int getDinero();
- *  public void setDinero(int dinero);
+ *  public int getSaldo();
+ *  public void setSaldo(int saldo);
  *
  *  public CartaImpl[] getCartas();
  *  public void setCartas(CartaImpl[] cartas);
@@ -34,11 +31,13 @@
  *
  * METODOS AÑADIDOS:
  *
- * public void disminuirDinero(int dinero);
+ * public void disminuirSaldo(int saldo);
  *
- * public void aumentarDinero(int dinero);
+ * public void aumentarSaldo(int saldo);
  *
  * public CartaImpl obtenerCarta(int posicion);
+ *
+ * public void asignarCarta(int posicion, CartaImpl carta);
  *
  */
 
@@ -49,53 +48,50 @@ import Clases.Interfaces.Jugador;
 
 public class JugadorImpl implements Jugador {
 
-    private int ID;
     private String usuario;
-    private int dinero;
-    private CartaImpl[] cartas = new CartaImpl[2];
+    private int saldo;
+    private CartaImpl[] cartas;
     private boolean activo;
 
-    private static int contadorID = 0;
-
-
     public JugadorImpl(){
-        this.ID = contadorID;
-        contadorID++;
         this.usuario = "DEFAULT";
-        this.dinero = 0;
+        this.saldo = 0;
+        cartas = new CartaImpl[2];
         this.activo = true;
     }
 
     public JugadorImpl(String usuario, int dinero){
-        this.ID = contadorID;
-        contadorID++;
         this.usuario = usuario;
-        this.dinero = dinero;
+        this.saldo = dinero;
+        this.cartas = new CartaImpl[2];
         this.activo = true;
     }
 
-    public JugadorImpl(JugadorImpl otro){
-        this.ID = contadorID;
-        contadorID++;
-        this.usuario = otro.getUsuario();
-        this.dinero = otro.getDinero();
-        this.activo = otro.getActivo();
+    public JugadorImpl(String usuario, int dinero, CartaImpl[] cartas){
+        this.usuario = usuario;
+        this.saldo = dinero;
+        this.cartas = cartas;
+        this.activo = true;
     }
 
-    public int getID(){
-        return this.ID;
+
+    public JugadorImpl(JugadorImpl otro){
+        this.usuario = otro.getUsuario();
+        this.saldo = otro.getSaldo();
+        this.cartas = otro.getCartas();
+        this.activo = otro.getActivo();
     }
 
     public String getUsuario(){
         return this.usuario;
     }
 
-    public int getDinero(){
-        return this.dinero;
+    public int getSaldo(){
+        return this.saldo;
     }
 
-    public void setDinero(int dinero){
-        this.dinero = dinero;
+    public void setSaldo(int saldo){
+        this.saldo = saldo;
     }
 
     public CartaImpl[] getCartas(){
@@ -114,22 +110,27 @@ public class JugadorImpl implements Jugador {
         this.activo = activo;
     }
 
-    public void disminuirDinero(int dinero){
-        this.dinero = this.dinero - dinero;
+    //METODOS ANHADIDOS
+
+    //TODO DOCUMENTAR METODOS RAROS
+
+    public void disminuirDinero(int saldo){
+        this.saldo -= saldo;
     }
 
-    public void aumentarDinero(int dinero){
-        this.dinero = this.dinero + dinero;
+    public void aumentarDinero(int saldo){
+        this.saldo += saldo;
     }
 
     public CartaImpl obtenerCarta(int posicion){
         return this.cartas[posicion];
     }
 
-
-    @Override
-    public String toString(){
-        return (this.getID()+", "+this.getUsuario()+", "+this.getDinero());
+    public void asignarCarta(int posicion, CartaImpl carta){
+        this.cartas[posicion] = carta;
     }
+
+    //TODO Sobreescribir metodos heredados
+
 
 }
