@@ -70,7 +70,7 @@ import Clases.Resguardos.ResguardosMesaImpl;
 
 import java.util.Random;
 
-public class ElBromasMain {
+public class PokerMain {
 
     public static void main (String[] args){
 
@@ -157,7 +157,7 @@ public class ElBromasMain {
             }
             */
 
-        }while (mesa.getJugadores()[0].getDinero()>0);
+        }while (mesa.getJugadores()[0].getSaldo()>0);
 
     }
 
