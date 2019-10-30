@@ -28,7 +28,7 @@
  * public int[][] getApuestasJugadores();
  * public void setApuestasJugadores(int[][] apuestas);
  *
- * public int getApuestaTotal();
+ * public int getTotalApuestas();
  *
  * METODOS AÑADIDOS:
  *
@@ -56,6 +56,9 @@ public class MesaImpl implements Mesa {
     private CartaImpl[] cartasMesa;
     private int[][] apuestasJugadores;
 
+    /**
+     * This constructor places the default attributes
+     */
 
     public MesaImpl(){
         this.baraja = new CartaImpl[52];
@@ -64,12 +67,25 @@ public class MesaImpl implements Mesa {
         this.apuestasJugadores = new int[5][5];
     }
 
+    /**
+     * This constructor places the default attributes
+     * @param baraja array of letters
+     * @param jugadores array of players
+     * @param cartas array of letters
+     * @param apuestasJugadores array of int
+     */
+
     public MesaImpl(CartaImpl[] baraja, JugadorImpl[] jugadores, CartaImpl[] cartas, int[][] apuestasJugadores){
         this.baraja = baraja;
         this.jugadores = jugadores;
         this.cartasMesa = cartas;
         this.apuestasJugadores = apuestasJugadores;
     }
+
+    /**
+     * This constructor places the default attributes
+     * @param otro another mesa we want to copy their values ​​from
+     */
 
     public MesaImpl(MesaImpl otro){
         this.baraja = otro.getBaraja();
@@ -78,39 +94,84 @@ public class MesaImpl implements Mesa {
         this.apuestasJugadores = otro.getApuestasJugadores();
     }
 
+    /**
+     * Return array of attribute "baraja"
+     * @return CartaImpl[] array of attribute "baraja"
+     */
+
     public CartaImpl[] getBaraja(){
         return this.baraja;
     }
+
+    /**
+     * Set array passed by parameter in attribute "baraja"
+     * @param baraja new value of attribute "baraja"
+     */
 
     public void setBaraja(CartaImpl[] baraja){
         this.baraja = baraja;
     }
 
+    /**
+     * Return array of attribute "jugadores"
+     * @return JugadorImpl[] array of attribute "jugadores"
+     */
+
     public JugadorImpl[] getJugadores(){
         return this.jugadores;
     }
+
+    /**
+     * Set array passed by parameter in attribute "jugadores"
+     * @param jugadores new value of attribute "jugadores"
+     */
 
     public void setJugadores(JugadorImpl[] jugadores){
         this.jugadores = jugadores;
     }
 
+    /**
+     * Return array of attribute "cartasMesa"
+     * @return CartaImpl[] array of attribute "cartasMesa"
+     */
+
     public CartaImpl[] getCartasMesa(){
         return this.cartasMesa;
     }
+
+    /**
+     * Set array passed by parameter in attribute "cartas"
+     * @param cartas new value of attribute "cartas"
+     */
 
     public void setCartasMesa(CartaImpl[] cartas){
         this.cartasMesa = cartas;
     }
 
+    /**
+     * Return array of attribute "apuestasJugadores"
+     * @return int[][] array of attribute "apuestasJugadores"
+     */
+
     public int[][] getApuestasJugadores(){
         return this.apuestasJugadores;
     }
+
+    /**
+     * Set array passed by parameter in attribute "apuestasJugadores"
+     * @param apuestas new value of attribute "apuestas"
+     */
 
     public void setApuestasJugadores(int[][] apuestas){
         this.apuestasJugadores = apuestas;
     }
 
-    public int getApuestaTotal(){
+    /**
+     * Return value of sum all bets
+     * @return int value of sum all bets
+     */
+
+    public int getTotalApuestas(){
         int total = 0;
         for (int i = 0; i<this.apuestasJugadores.length; i++){
             for (int j = 0; j<this.apuestasJugadores.length; j++){
@@ -120,9 +181,13 @@ public class MesaImpl implements Mesa {
         return total;
     }
 
-    //TODO DOCUMENTAR METODOS RAROS
-
     //METODOS ANHADIDOS
+
+    /**
+     *
+     *
+     *
+     */
 
     public void anhadirCartaMesa(int posicion, CartaImpl carta){
         this.cartasMesa[posicion] = carta;
@@ -136,6 +201,12 @@ public class MesaImpl implements Mesa {
      * SALIDA: - Nada
      * ENTRADA/SALIDA: - Un array de CartaImpl
      * POSTCONDICIONES: Modifica el array pasado por parametro colocando todas las cartas de la mesa con palo D y numero D
+     */
+
+    /**
+     *
+     *
+     *
      */
 
     public void limpiarCartasMesa(){
@@ -152,6 +223,12 @@ public class MesaImpl implements Mesa {
      * SALIDA: - Nada
      * ENTRADA/SALIDA: - Un array de CartaImpl
      * POSTCONDICIONES: Modifica el array pasado por parametro anhadiendo todas las cartas posibles
+     */
+
+    /**
+     *
+     *
+     *
      */
 
     public void restaurarBaraja(){
@@ -216,24 +293,106 @@ public class MesaImpl implements Mesa {
 
     }
 
+    /**
+     *
+     *
+     *
+     */
+
     public JugadorImpl obtenerJugador(int posicion){
         return this.jugadores[posicion];
     }
+
+    /**
+     *
+     *
+     *
+     */
 
     public void anhadirJugador(int posicion, JugadorImpl jugador){
         this.jugadores[posicion] = jugador;
     }
 
+    /**
+     *
+     *
+     *
+     */
+
     public void anhadirApuesta(int jugador, int rondaApuesta, int cantidad){
         this.apuestasJugadores[jugador][rondaApuesta] = cantidad;
     }
+
+    /**
+     * 
+     *
+     *
+     */
 
     public int obtenerApuesta(int jugador, int rondaApuesta){
         return this.apuestasJugadores[jugador][rondaApuesta];
     }
 
 
-    //TODO Sobreescribir metodos heredados
+    /**
+     * This method return a String with attributes of the table
+     * @return String with attributes of the table
+     */
+
+    @Override
+    public String toString(){
+        return this.getBaraja().toString()+"  "+this.getJugadores().toString()+"  "+this.getCartasMesa().toString()+"  "+this.getApuestasJugadores().toString();
+    }
+
+    /**
+     * This method return an int with value of hashCode of the table
+     * @return int with value of hashCode of the table
+     */
+
+    @Override
+    public int hashCode(){
+        return this.getTotalApuestas()+this.getJugadores().hashCode();
+    }
+
+    /**
+     * This method returns a Boolean value depending on whether the value of the table passed by parameter is equal to that compared
+     * @return boolean its value depending on whether the value of the table passed by parameter is equal to that compared
+     */
+
+    @Override
+    public boolean equals(Object objeto){
+        boolean resul = false;
+        if (this == objeto){
+            resul = true;
+        }else{
+            if (objeto != null && objeto instanceof MesaImpl){
+                MesaImpl nueva = (MesaImpl) objeto;
+                if (this.getBaraja()==nueva.getBaraja()
+                    && this.getCartasMesa()==nueva.getCartasMesa()
+                    && this.getJugadores()==nueva.getJugadores()
+                    && this.getApuestasJugadores()==nueva.getApuestasJugadores()){
+                    resul = true;
+                }
+            }
+        }
+        return resul;
+    }
+
+    /**
+     * This method returns a object MesaImpl cloned from which it is called
+     * @return MesaImpl Cloned table
+     */
+
+    @Override
+    public MesaImpl clone() {
+        MesaImpl mesa = null;
+        try {
+            mesa = (MesaImpl) super.clone();
+        } catch(CloneNotSupportedException error) {
+            System.out.println("Error en la copia");
+        }
+        return mesa;
+    }
 
 
 

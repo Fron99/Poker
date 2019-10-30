@@ -28,7 +28,7 @@
  * public int[][] getApuestasJugadores();
  * public void setApuestasJugadores(int[][] apuestas);
  *
- * public int getApuestaTotal();
+ * public int getTotalApuestas();
  *
  * METODOS AÑADIDOS:
  *
@@ -64,6 +64,6 @@ public interface Mesa {
     public int[][] getApuestasJugadores();
     public void setApuestasJugadores(int[][] apuestas);
 
-    public int getApuestaTotal();
+    public int getTotalApuestas();
 
 }
