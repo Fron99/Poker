@@ -1,61 +1,53 @@
 /*
+ * Programa: PokerMain.java
+ * Comentario: Este programa trata sobre un juego de poker tradicional pero informatizado y de una manera en la que se puede jugar solo sin nadie mas.
+ *              Este programa incluye una serie de funcionalidades que hace que los demas jugadores de la mesa en la que juegas "piensen" sus apuestas.
+ *              Cada bot que hay en la mesa realiza las apuestas en funcion de las cartas que tienen y de las posibilidades que creen que tienen de ganar la partida.
+ *
+ * Entrada:
+ *  - Un String con el usuario
+ *  - Un int con la cantidad de saldo inicial
+ *
+ * Salida:
+ *  - Mensajes al usuario
+ *  - Eco de los datos
+ *  - Resultado de las acciones elegidas por el usuario
+ *
+ * Restricciones:
+ *  - El saldo inicial no puede ser menor de 2000€ ni superior a 10000€
  *
  * PG0
  * INICIO
- *
- * leerUsuario*
- * leerYValidarDineroInicial*
- * //añadirJugador
- * cargarBots*
- * //generarTurnoJugador
- * repetir
- *
- * mientras()
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
+ *  leerUsuario*
+ *  leerYValidarSaldoInicial*
+ *  //añadirJugador
+ *  cargarBots*
+ *  //generarTurnoJugador
  *  repetir
+ *      limpiarCartasMesa*
  *      restaurarBaraja*
- *      limpiarMesa*
  *      generarCartasJugadores*
- *      generar3Cartas*
- *      mostrarPanelJuego*
- *      realizarJugadas*
- *      generarCarta*
- *      mostrarPanelJuego*
- *      realizarJugadas*
- *      generarCarta*
- *      mostrarPanelJuego*
- *      realizarJugadas*
- *      mostrarPanelJuego*
+ *      mostrarMesa*
+ *      realizarApuestas*
+ *      generarTresCartasMesa*
+ *      mostrarMesa*
+ *      realizarApuestas*
+ *      para(contador = 0; contador < 2; contador++)
+ *          generarCartaMesa*
+ *          mostrarMesa*
+ *          realizarApuestas*
+ *      finPara
+ *      mostrarMesaCompleta*
  *      calcularGanador*
- *      ingresarDineroGanador*
- *      //incrementarTurnoJugador
- *  mientras(usuario tenga dinero y queden bots)
- *
+ *      ingresarBoteGanador*
+ *      si(turno jugador == 4)
+ *          turno jugador = 0
+ *      sino
+ *          //incrementar turno jugador
+ *      finSi
+ *  mientras(saldo usuario > 0 && queden bots con saldo)
+ *  mostrarResultadoJugador*
  * FIN
- *
- * //realizarJugadas*
- *
- * PG1
  *
  */
 
@@ -88,7 +80,7 @@ public class PokerMain {
         usuarioJugador = gesJugador.leerUsuario();
 
         //leerYValidarDineroInicial
-        dineroInicialJugador = gesJugador.leerYValidarDineroInicial();
+        dineroInicialJugador = gesJugador.leerYValidarSaldoInicial();
 
         //El usuario que juega se colocara siempre en la posicion 0
         mesa.anhadirJugador(0,new JugadorImpl(usuarioJugador,dineroInicialJugador));

@@ -184,9 +184,9 @@ public class MesaImpl implements Mesa {
     //METODOS ANHADIDOS
 
     /**
-     *
-     * @param posicion
-     * @param carta
+     * This method add the carte passed by parameter to array of letters of table in the position passed by parameter
+     * @param posicion position where the card is added
+     * @param carta carte to add
      */
 
     public void anhadirCartaMesa(int posicion, CartaImpl carta){
@@ -204,13 +204,13 @@ public class MesaImpl implements Mesa {
      */
 
     /**
-     * Set all
+     * Set all the table cards by default
      */
 
     public void limpiarCartasMesa(){
-     for (int i = 0; i<this.cartasMesa.length; i++){
-         this.cartasMesa[i] = new CartaImpl();
-     }
+        for (int i = 0; i<this.cartasMesa.length; i++){
+            this.cartasMesa[i] = new CartaImpl();
+        }
     }
 
     /*
@@ -224,7 +224,7 @@ public class MesaImpl implements Mesa {
      */
 
     /**
-     *
+     * Place all possible cards in the deck in an array
      */
 
     public void restaurarBaraja(){
@@ -271,9 +271,9 @@ public class MesaImpl implements Mesa {
     }
 
     /**
-     *
-     * @param posicion
-     *
+     * This method returns the player of the position passed by parameter
+     * @param posicion position of the player you want to get
+     * @return JugadorImpl player yo want to get
      */
 
     public JugadorImpl obtenerJugador(int posicion){
@@ -281,10 +281,9 @@ public class MesaImpl implements Mesa {
     }
 
     /**
-     *
-     * @param posicion
-     * @param jugador
-     *
+     * This method adds the player or parameter passed to the array of players
+     * @param posicion position where the player wants to add
+     * @param jugador player you want to add
      */
 
     public void anhadirJugador(int posicion, JugadorImpl jugador){

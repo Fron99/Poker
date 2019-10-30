@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class GestoraJugadorImpl {
 
     /*
-     * SIGNATURA: public int leerYValidarDineroInicial();
+     * SIGNATURA: public int leerYValidarSaldoInicial();
      * COMENTARIO: Lee y valida el dinero inicial del jugador
      * PRECONDICIONES: - Ninguna
      * ENTRADA: - Nada
@@ -18,7 +18,7 @@ public class GestoraJugadorImpl {
      *
      */
 
-    public int leerYValidarDineroInicial(){
+    public int leerYValidarSaldoInicial(){
         int dinero;
         Scanner teclado = new Scanner(System.in);
         do {

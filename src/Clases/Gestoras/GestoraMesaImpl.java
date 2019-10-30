@@ -242,8 +242,8 @@ public class GestoraMesaImpl {
 
     public void ingresarDineroGanador(int ganador, MesaImpl mesa) {
         int cantidadMesa;
-        //cantidadMesa = mesa.getTotalApuestas();
-        //mesa.getJugadores()[ganador].aumentarDinero(cantidadMesa);
+        cantidadMesa = mesa.getTotalApuestas();
+        mesa.getJugadores()[ganador].aumentarDinero(cantidadMesa);
     }
 
 
