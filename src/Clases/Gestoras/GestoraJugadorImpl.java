@@ -63,7 +63,7 @@ public class GestoraJugadorImpl {
         Random random = new Random();
         String[] nombresAleatorios = {"Kun","Wang","Yan Yan","Zhao","Yun","Sasha","Volodia","Hedeon","Grigory"};
         for (int i = 1; i<jugadores.length;i++){
-            jugadores[i] = new JugadorImpl(nombresAleatorios[random.nextInt(8)],jugadores[0].getDinero());
+            jugadores[i] = new JugadorImpl(nombresAleatorios[random.nextInt(8)],jugadores[0].getSaldo());
         }
 
     }
@@ -83,10 +83,10 @@ public class GestoraJugadorImpl {
         Scanner teclado = new Scanner(System.in);
         int cantidadApuesta;
         do {
-            System.out.println("Dispone de "+jugador.getDinero()+" de saldo");
+            System.out.println("Dispone de "+jugador.getSaldo()+" de saldo");
             System.out.print("Introduce cuanto quiere apostar: ");
             cantidadApuesta = teclado.nextInt();
-        }while (cantidadApuesta<0 || cantidadApuesta > jugador.getDinero());
+        }while (cantidadApuesta<0 || cantidadApuesta > jugador.getSaldo());
         return cantidadApuesta;
     }
 

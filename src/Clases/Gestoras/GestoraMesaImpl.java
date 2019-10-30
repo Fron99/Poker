@@ -125,11 +125,11 @@ public class GestoraMesaImpl {
         userBot3 = mesa.getJugadores()[3].getUsuario();
         userBot4 = mesa.getJugadores()[4].getUsuario();
 
-        dinJugador = mesa.getJugadores()[0].getDinero();
-        dinBot1 = mesa.getJugadores()[1].getDinero();
-        dinBot2 = mesa.getJugadores()[2].getDinero();
-        dinBot3 = mesa.getJugadores()[3].getDinero();
-        dinBot4 = mesa.getJugadores()[4].getDinero();
+        dinJugador = mesa.getJugadores()[0].getSaldo();
+        dinBot1 = mesa.getJugadores()[1].getSaldo();
+        dinBot2 = mesa.getJugadores()[2].getSaldo();
+        dinBot3 = mesa.getJugadores()[3].getSaldo();
+        dinBot4 = mesa.getJugadores()[4].getSaldo();
 
         paloCarta0 = mesa.getCartasMesa()[0].getPalo();
         paloCarta1 = mesa.getCartasMesa()[1].getPalo();
@@ -263,7 +263,7 @@ public class GestoraMesaImpl {
         GestoraJugadorImpl gesJugador = new GestoraJugadorImpl();
         int apuestaInicial, cantidadJugadas = 0;
 
-        if (turnoJugador == mesa.getJugadores()[0].getID()) {
+        if (turnoJugador == 0) {
             apuestaInicial = gesJugador.leerYValidarApuesta(mesa.getJugadores()[0]);    //Pregunta al jugador cuento quiere apostar
             mesa.getJugadores()[0].disminuirDinero(apuestaInicial);
             //mesa.incrementarTotalApuestas(apuestaInicial);

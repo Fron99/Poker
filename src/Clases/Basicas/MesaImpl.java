@@ -185,8 +185,8 @@ public class MesaImpl implements Mesa {
 
     /**
      *
-     *
-     *
+     * @param posicion
+     * @param carta
      */
 
     public void anhadirCartaMesa(int posicion, CartaImpl carta){
@@ -204,9 +204,7 @@ public class MesaImpl implements Mesa {
      */
 
     /**
-     *
-     *
-     *
+     * Set all
      */
 
     public void limpiarCartasMesa(){
@@ -227,66 +225,45 @@ public class MesaImpl implements Mesa {
 
     /**
      *
-     *
-     *
      */
 
     public void restaurarBaraja(){
 
-        //TODO Mejorar esta parte y hacerla mas eficiente
-
         this.baraja[0] = new CartaImpl('P', "A");
-        this.baraja[1] = new CartaImpl('P', "2");
-        this.baraja[2] = new CartaImpl('P', "3");
-        this.baraja[3] = new CartaImpl('P', "4");
-        this.baraja[4] = new CartaImpl('P', "5");
-        this.baraja[5] = new CartaImpl('P', "6");
-        this.baraja[6] = new CartaImpl('P', "7");
-        this.baraja[7] = new CartaImpl('P', "8");
-        this.baraja[8] = new CartaImpl('P', "9");
-        this.baraja[9] = new CartaImpl('P', "10");
+        for (int i = 1, numero = 2; i<10;i++){
+            this.baraja[i] = new CartaImpl('P', ""+numero);
+            numero++;
+        }
         this.baraja[10] = new CartaImpl('P', "J");
         this.baraja[11] = new CartaImpl('P', "Q");
         this.baraja[12] = new CartaImpl('P', "K");
 
+
         this.baraja[13] = new CartaImpl('C', "A");
-        this.baraja[14] = new CartaImpl('C', "2");
-        this.baraja[15] = new CartaImpl('C', "3");
-        this.baraja[16] = new CartaImpl('C', "4");
-        this.baraja[17] = new CartaImpl('C', "5");
-        this.baraja[18] = new CartaImpl('C', "6");
-        this.baraja[19] = new CartaImpl('C', "7");
-        this.baraja[20] = new CartaImpl('C', "8");
-        this.baraja[21] = new CartaImpl('C', "9");
-        this.baraja[22] = new CartaImpl('C', "10");
+        for (int i = 14, numero = 2; i<23;i++){
+            this.baraja[i] = new CartaImpl('C', ""+numero);
+            numero++;
+        }
         this.baraja[23] = new CartaImpl('C', "J");
         this.baraja[24] = new CartaImpl('C', "Q");
         this.baraja[25] = new CartaImpl('C', "K");
 
+
         this.baraja[26] = new CartaImpl('R', "A");
-        this.baraja[27] = new CartaImpl('R', "2");
-        this.baraja[28] = new CartaImpl('R', "3");
-        this.baraja[29] = new CartaImpl('R', "4");
-        this.baraja[30] = new CartaImpl('R', "5");
-        this.baraja[31] = new CartaImpl('R', "6");
-        this.baraja[32] = new CartaImpl('R', "7");
-        this.baraja[33] = new CartaImpl('R', "8");
-        this.baraja[34] = new CartaImpl('R', "9");
-        this.baraja[35] = new CartaImpl('R', "10");
+        for (int i = 27, numero = 2; i<36;i++){
+            this.baraja[i] = new CartaImpl('R', ""+numero);
+            numero++;
+        }
         this.baraja[36] = new CartaImpl('R', "J");
         this.baraja[37] = new CartaImpl('R', "Q");
         this.baraja[38] = new CartaImpl('R', "K");
 
+
         this.baraja[39] = new CartaImpl('T', "A");
-        this.baraja[40] = new CartaImpl('T', "2");
-        this.baraja[41] = new CartaImpl('T', "3");
-        this.baraja[42] = new CartaImpl('T', "4");
-        this.baraja[43] = new CartaImpl('T', "5");
-        this.baraja[44] = new CartaImpl('T', "6");
-        this.baraja[45] = new CartaImpl('T', "7");
-        this.baraja[46] = new CartaImpl('T', "8");
-        this.baraja[47] = new CartaImpl('T', "9");
-        this.baraja[48] = new CartaImpl('T', "10");
+        for (int i = 40, numero = 2; i<49;i++){
+            this.baraja[i] = new CartaImpl('T', ""+numero);
+            numero++;
+        }
         this.baraja[49] = new CartaImpl('T', "J");
         this.baraja[50] = new CartaImpl('T', "Q");
         this.baraja[51] = new CartaImpl('T', "K");
@@ -295,7 +272,7 @@ public class MesaImpl implements Mesa {
 
     /**
      *
-     *
+     * @param posicion
      *
      */
 
@@ -305,7 +282,8 @@ public class MesaImpl implements Mesa {
 
     /**
      *
-     *
+     * @param posicion
+     * @param jugador
      *
      */
 
@@ -314,9 +292,10 @@ public class MesaImpl implements Mesa {
     }
 
     /**
-     *
-     *
-     *
+     * Add user bet in an exact round
+     * @param jugador int index of the user you want set bet
+     * @param rondaApuesta int index of the round you want set bet
+     * @param cantidad int amount to add
      */
 
     public void anhadirApuesta(int jugador, int rondaApuesta, int cantidad){
@@ -324,9 +303,10 @@ public class MesaImpl implements Mesa {
     }
 
     /**
-     * 
-     *
-     *
+     * Get user bet in an exact round
+     * @param jugador int index of the user you want get bet
+     * @param rondaApuesta int index of the round you want get bet
+     * @return int bet of the user in the round
      */
 
     public int obtenerApuesta(int jugador, int rondaApuesta){

@@ -49,7 +49,7 @@ public class TestMesaImpl {
 
         mesa.setApuestasJugadores(apuestas);
 
-        System.out.println("Deberia dar 12500 y da: "+mesa.getApuestaTotal());
+        System.out.println("Deberia dar 12500 y da: "+mesa.getTotalApuestas());
 
     }
 
