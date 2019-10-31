@@ -86,6 +86,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="GestoraMesaImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ElBromas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.GestoraMesaImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MesaImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ElBromas" />
       <extension name="coverage">
@@ -101,9 +116,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MesaImplTest.restaurarBaraja" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ElBromas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.MesaImplTest" />
+      <option name="METHOD_NAME" value="restaurarBaraja" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.MesaImplTest" />
+        <item itemvalue="JUnit.MesaImplTest.restaurarBaraja" />
+        <item itemvalue="JUnit.GestoraMesaImplTest" />
         <item itemvalue="Application.TestMesaImpl" />
         <item itemvalue="Application.ElBromasMain" />
       </list>
@@ -126,6 +159,7 @@
       <workItem from="1572337704261" duration="9143000" />
       <workItem from="1572420549247" duration="10752000" />
       <workItem from="1572458694687" duration="10039000" />
+      <workItem from="1572514910304" duration="11844000" />
     </task>
     <servers />
   </component>

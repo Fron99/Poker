@@ -24,7 +24,7 @@ public class GestoraJugadorImpl {
         do {
             System.out.print("Introduce dinero con el que iniciar: ");
             dinero = teclado.nextInt();
-        }while (dinero < 3000 || dinero > 10000);
+        }while (dinero < 2000 || dinero > 10000);
         return dinero;
     }
 
@@ -61,7 +61,7 @@ public class GestoraJugadorImpl {
     public void cargarBots(JugadorImpl[] jugadores){
 
         Random random = new Random();
-        String[] nombresAleatorios = {"Kun","Wang","Yan Yan","Zhao","Yun","Sasha","Volodia","Hedeon","Grigory"};
+        String[] nombresAleatorios = {"Kun","Wang","YanYan","Zhao","Yun","Sasha","Volodia","Hedeon","Grigory"};
         for (int i = 1; i<jugadores.length;i++){
             jugadores[i] = new JugadorImpl(nombresAleatorios[random.nextInt(8)],jugadores[0].getSaldo());
         }

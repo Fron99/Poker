@@ -24,29 +24,35 @@
  *  cargarBots*
  *  //generarTurnoJugador
  *  repetir
- *      limpiarCartasMesa*
+ *      limpiarMesa*
  *      restaurarBaraja*
  *      generarCartasJugadores*
- *      mostrarMesa*
+ *      mostrarPanelJuego*
  *      realizarApuestas*
  *      generarTresCartasMesa*
- *      mostrarMesa*
+ *      mostrarPanelJuego*
  *      realizarApuestas*
  *      para(contador = 0; contador < 2; contador++)
  *          generarCartaMesa*
- *          mostrarMesa*
+ *          mostrarPanelJuego*
  *          realizarApuestas*
  *      finPara
- *      mostrarMesaCompleta*
- *      calcularGanador*
- *      ingresarBoteGanador*
+ *      mostrarPanelJuegoCompleto*
+ *      calcularCantidadGanadores*
+ *      si(cantidad ganadores > 1)
+ *          obtenerGanadores*
+ *          ingresarSaldoGanadores*
+ *      sino
+ *          obtenerGanador*
+ *          ingresarSaldoGanador*
+ *      finSi
  *      si(turno jugador == 4)
  *          turno jugador = 0
  *      sino
  *          //incrementar turno jugador
  *      finSi
  *  mientras(saldo usuario > 0 && queden bots con saldo)
- *  mostrarResultadoJugador*
+ *  //mostrarJuegosFin
  * FIN
  *
  */
@@ -72,7 +78,7 @@ public class PokerMain {
         ResguardosMesaImpl resMesa = new ResguardosMesaImpl();
 
         String usuarioJugador;
-        int dineroInicialJugador, turnoJugador, jugadorGanador;
+        int saldoInicialJugador, turnoJugador, cantidadGanadores = 0;
         MesaImpl mesa = new MesaImpl();
         CartaImpl[] baraja = new CartaImpl[54];
 
@@ -80,25 +86,25 @@ public class PokerMain {
         usuarioJugador = gesJugador.leerUsuario();
 
         //leerYValidarDineroInicial
-        dineroInicialJugador = gesJugador.leerYValidarSaldoInicial();
+        saldoInicialJugador = gesJugador.leerYValidarSaldoInicial();
 
+        //añadirJugador
         //El usuario que juega se colocara siempre en la posicion 0
-        mesa.anhadirJugador(0,new JugadorImpl(usuarioJugador,dineroInicialJugador));
+        mesa.anhadirJugador(0,new JugadorImpl(usuarioJugador,saldoInicialJugador));
 
         //cargarBots
         gesJugador.cargarBots(mesa.getJugadores());  //Coloca en el array de jugadores jugadores con valores generados
 
-
-        //generarIniciador
-        turnoJugador = random.nextInt(5);   //Genera un numero del 0 al 4 que es la cantidad de jugadores que hay
-                                                    //para saber quien empieza a aposta
+        //generarTurnoJugador
+        turnoJugador = random.nextInt(5);   //Genera un numero del 0 al 4 que es la cantidad de jugadores que hay para saber quien empieza a apostar
 
         do {
-            //restaurarBaraja
-            mesa.restaurarBaraja();
 
             //limpiarMesa
             gesMesa.limpiarMesa(mesa);
+
+            //restaurarBaraja
+            mesa.restaurarBaraja();
 
             //generarCartasJugadores
             gesMesa.generarCartasJugadores(baraja,mesa);    //Asigna 2 cartas a cada jugador sin reeptir carta.
@@ -106,50 +112,53 @@ public class PokerMain {
             //mostrarPanelJuego
             gesMesa.mostrarPanelJuego(mesa);
 
-            //generar3Cartas
-            gesMesa.generar3Cartas(baraja,mesa.getCartasMesa());  //Coloca 3 cartas aleatorias en el array de las cartas que hay en esta mesa
-
-            //realizarJugadas
+            //realizarApuestas
             gesMesa.realizarApuestas(turnoJugador,mesa);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
 
-            //generarCarta
-            gesMesa.generarCarta(baraja,mesa.getCartasMesa());
+            //generarTresCartasMesa
+            gesMesa.generarTresCartasMesa(baraja,mesa.getCartasMesa());  //Coloca 3 cartas aleatorias en el array de las cartas que hay en esta mesa
 
             //mostrarPanelJuego
             gesMesa.mostrarPanelJuego(mesa);
 
-            //realizarJugadas
-            gesMesa.realizarJugadas(turnoJugador,mesa);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
+            //realizarApuestas
+            gesMesa.realizarApuestas(turnoJugador,mesa);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
 
-            //generarCarta
-            gesMesa.generarCarta(baraja,mesa.getCartasMesa());
+            for (int contador = 0; contador < 2; contador++){
 
-            //mostrarPanelJuego
-            gesMesa.mostrarPanelJuego(mesa);
+                //generarCartaMesa
+                gesMesa.generarCartaMesa(baraja,mesa.getCartasMesa());
 
-            //realizarJugadas
-            gesMesa.realizarJugadas(turnoJugador,mesa);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
+                //mostrarPanelJuego
+                gesMesa.mostrarPanelJuego(mesa);
 
-            //mostrarPanelJuego
-            gesMesa.mostrarPanelJuego(mesa);
+                //realizarApuestas
+                gesMesa.realizarApuestas(turnoJugador,mesa);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
 
-            //calcularGanador
-            jugadorGanador = resMesa.calcularGanador(mesa);
-
-            //ingresarDineroGanador
-            gesMesa.ingresarDineroGanador(jugadorGanador,mesa);
-
-            /*
-
-            //incrementarTurnoJugador
-            if (turnoJugador < 4){
-                turnoJugador++;
-            }else{
-                turnoJugador = 0;
             }
-            */
+
+            //mostrarPanelJuegoCompleto
+            resMesa.mostrarPanelJuegoCompleto(mesa);
+
+            //calcularCantidadGanadores
+
+            if (cantidadGanadores > 1){
+                //obtenerGanadores
+                //ingresarSaldoGanadores
+            }else{
+                //obtenerGanador
+                //ingresarSaldoGanador
+            }
+
+            if (turnoJugador == 4){
+                turnoJugador = 0;
+            }else{
+                turnoJugador++; //incrementar turno jugador
+            }
 
         }while (mesa.getJugadores()[0].getSaldo()>0);
+
+        System.out.println("El jugador "+usuarioJugador+" empezo con "+saldoInicialJugador+" y acabo con "+(saldoInicialJugador-mesa.getJugadores()[0].getSaldo())+"");
 
     }
 

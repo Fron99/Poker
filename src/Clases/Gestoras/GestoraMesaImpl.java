@@ -9,24 +9,29 @@ public class GestoraMesaImpl {
 
     /*
      * SIGNATURA: public void limpiarMesa(MesaImpl mesa)
-     * COMENTARIO: Coloca en defecto todas las cartas del array pasado por parametro y el total de las apuestas en 0
-     * PRECONDICIONES: - El array debe tener 5 campos
+     * COMENTARIO: Coloca en defecto todas las cartas del array pasado por parametro y coloca todas las apuestas de los jugadores a 0
+     * PRECONDICIONES: - Nada
      * ENTRADA: - Nada
      * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Un array de CartaImpl
-     * POSTCONDICIONES: Modifica el array pasado por parametro colocando por defecto todas las cartas y las apuestas en 0
+     * ENTRADA/SALIDA: - Un objeto MesaImpl
+     * POSTCONDICIONES: Modifica los atributo cartasMesa y apuestasJugadores del objeto MesaImpl pasado por
+     *                  parametro colocando en defecto todas las cartas del array pasado por parametro y coloca todas las apuestas de los jugadores a 0.
      */
 
     public void limpiarMesa(MesaImpl mesa) {
         for (int i = 0; i < mesa.getCartasMesa().length; i++) {
             mesa.getCartasMesa()[i] = new CartaImpl();
         }
-        //mesa.setTotalApuestas(0);
+        for (int i = 0; i < mesa.getApuestasJugadores().length; i++) {
+            for (int j = 0; j < mesa.getApuestasJugadores().length; j++) {
+                mesa.getApuestasJugadores()[i][j] = 0;
+            }
+        }
     }
 
 
     /*
-     * SIGNATURA: public void sacar3Cartas(CartaImpl[] baraja, CartaImpl[] cartas);
+     * SIGNATURA: public void generarTresCartasMesa(CartaImpl[] baraja, CartaImpl[] cartas);
      * COMENTARIO: Saca 3 cartas de la baraja y las coloca en el segundo array pasado por parametro
      * PRECONDICIONES: - El primer array debe tener 54 campos
      *                 - El segundo array debe tener 5 campos
@@ -39,7 +44,7 @@ public class GestoraMesaImpl {
      */
 
 
-    public void generar3Cartas(CartaImpl[] baraja, CartaImpl[] cartas) {
+    public void generarTresCartasMesa(CartaImpl[] baraja, CartaImpl[] cartas) {
 
         Random r = new Random();
         int numPosicionCarta = 0;
@@ -105,6 +110,100 @@ public class GestoraMesaImpl {
      */
 
     public void mostrarPanelJuego(MesaImpl mesa) {
+
+        int dinJugador, dinBot1, dinBot2, dinBot3, dinBot4;
+        char paloCarta0, paloCarta1, paloCarta2, paloCarta3, paloCarta4;
+        String numeroCarta0, numeroCarta1, numeroCarta2, numeroCarta3, numeroCarta4, userJugador, userBot1, userBot2, userBot3, userBot4;
+        String numCar1Usuario, numCar2Usuario;
+        char paloCar1Usuario, paloCar2Usuario;
+
+        numCar1Usuario = mesa.getJugadores()[0].getCartas()[0].getNumero();
+        numCar2Usuario = mesa.getJugadores()[0].getCartas()[1].getNumero();
+
+        paloCar1Usuario = mesa.getJugadores()[0].getCartas()[0].getPalo();
+        paloCar2Usuario = mesa.getJugadores()[0].getCartas()[1].getPalo();
+
+
+        userJugador = mesa.getJugadores()[0].getUsuario();
+        userBot1 = mesa.getJugadores()[1].getUsuario();
+        userBot2 = mesa.getJugadores()[2].getUsuario();
+        userBot3 = mesa.getJugadores()[3].getUsuario();
+        userBot4 = mesa.getJugadores()[4].getUsuario();
+
+        dinJugador = mesa.getJugadores()[0].getSaldo();
+        dinBot1 = mesa.getJugadores()[1].getSaldo();
+        dinBot2 = mesa.getJugadores()[2].getSaldo();
+        dinBot3 = mesa.getJugadores()[3].getSaldo();
+        dinBot4 = mesa.getJugadores()[4].getSaldo();
+
+        paloCarta0 = mesa.getCartasMesa()[0].getPalo();
+        paloCarta1 = mesa.getCartasMesa()[1].getPalo();
+        paloCarta2 = mesa.getCartasMesa()[2].getPalo();
+        paloCarta3 = mesa.getCartasMesa()[3].getPalo();
+        paloCarta4 = mesa.getCartasMesa()[4].getPalo();
+
+        numeroCarta0 = mesa.getCartasMesa()[0].getNumero();
+        numeroCarta1 = mesa.getCartasMesa()[1].getNumero();
+        numeroCarta2 = mesa.getCartasMesa()[2].getNumero();
+        numeroCarta3 = mesa.getCartasMesa()[3].getNumero();
+        numeroCarta4 = mesa.getCartasMesa()[4].getNumero();
+
+        System.out.println("                                      " + userBot2 + "                                       " + userBot3);
+        System.out.println();
+        System.out.println("                                      " + dinBot2 + "€                                               " + dinBot3 + "€");
+        System.out.println("                                      |º º|     -----        -----                                    |º º|    -----        -----");
+        System.out.println("                                      |---|    | ?   |      | ?   |                                   |---|   | ?   |      | ?   |  ");
+        System.out.println("                                               | ?   |      | ?   |                                           | ?   |      | ?   |");
+        System.out.println("                                                -----        -----                                             -----        -----");
+
+
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
+        System.out.println("       " + userBot1 + "                                                                                                                              " + userBot4);
+        System.out.println("                                                        ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- ");
+        System.out.println("       " + dinBot1 + "€                                           | " + paloCarta0 + "   |" + "       " + "| " + paloCarta1 + "   |" + "       " + "| " + paloCarta2 + "   |" + "       " + "| " + paloCarta3 + "   |" + "       " + "| " + paloCarta4 + "   |                      " + dinBot4 + "€");
+        System.out.println("       |º º|       -----        -----                  | " + numeroCarta0 + "   |" + "       " + "| " + numeroCarta1 + "   |" + "       " + "| " + numeroCarta2 + "   |" + "       " + "| " + numeroCarta3 + "   |" + "       " + "| " + numeroCarta4 + "   |                      |º º|      -----        -----");
+        System.out.println("       |---|      | ?   |      | ?   |                 |     |" + "       " + "|     |" + "       " + "|     |" + "       " + "|     |" + "       " + "|     |" + "                      |---|     | ?   |      | ?   |");
+        System.out.println("                  | ?   |      | ?   |                  ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " -----                                 |     | ?    | ?   |");
+        System.out.println("                   -----        -----                                                                                                                  -----        -----");
+
+        System.out.println();
+        System.out.println("                                                              DINERO EN MESA: " + mesa.getTotalApuestas() + "€");
+        System.out.println();
+        System.out.println();
+
+        System.out.println("                                                                     " + userJugador);
+        System.out.println("                                                              TU SALDO ES: " + dinJugador + "€");
+        System.out.println();
+        System.out.println("                                                           _______________________");
+        System.out.println("                                                          |                       |");
+        System.out.println("                                                          |    __           __    |");
+        System.out.println("                                                          |   |º |         |º |   |            ----------           ----------");
+        System.out.println("                                                          |    --           --    |           | "+paloCar1Usuario+"        |         | "+paloCar2Usuario+"        |");
+        System.out.println("                                                          |                       |           | "+numCar1Usuario+"        |         | "+numCar2Usuario+"        |");
+        System.out.println("                                                          |   \\              /    |           |          |         |          |");
+        System.out.println("                                                          |     \\___________/     |           |          |         |          |");
+        System.out.println("                                                          |                       |            ----------           ----------");
+        System.out.println("                                                           -----------------------");
+        System.out.println();
+
+    }
+
+
+    /*
+     * SIGNATURA:
+     * COMENTARIO:
+     * PRECONDICIONES:
+     * ENTRADA:
+     * SALIDA:
+     * ENTRADA/SALIDA:
+     * POSTCONDICIONES:
+     */
+
+    public void uj(MesaImpl mesa) {
 
         int dinJugador, dinBot1, dinBot2, dinBot3, dinBot4;
         char paloCarta0, paloCarta1, paloCarta2, paloCarta3, paloCarta4;
@@ -189,7 +288,7 @@ public class GestoraMesaImpl {
 
 
     /*
-     * SIGNATURA: public void generarCarta(CartaImpl[] baraja, CartaImpl[] cartas);
+     * SIGNATURA: public void generarCartaMesa(CartaImpl[] baraja, CartaImpl[] cartas);
      * COMENTARIO: Saca 1 cartas de la baraja y las coloca en el segundo array pasado por parametro
      * PRECONDICIONES: - El primer array debe tener 54 campos
      *                 - El segundo array debe tener 5 campos
@@ -202,7 +301,7 @@ public class GestoraMesaImpl {
      */
 
 
-    public void generarCarta(CartaImpl[] baraja, CartaImpl[] cartas) {
+    public void generarCartaMesa(CartaImpl[] baraja, CartaImpl[] cartas) {
 
         Random r = new Random();
         int numPosicionCarta, indiceCartaGenerar = 0;

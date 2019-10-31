@@ -79,7 +79,7 @@ public class ResguardosMesaImpl {
 
 
     /*
-     * SIGNATURA: public void ingresarDineroGanador(int ganador, MesaImpl mesa);
+     * SIGNATURA: public void ingresarBoteGanador(int ganador, MesaImpl mesa);
      * COMENTARIO: Aumenta el saldo del usuario ganador de la mano
      * PRECONDICIONES: - El ganador no puede ser menor de 0 ni mayor de 5
      * ENTRADA: - Un entero con el ganador
@@ -89,9 +89,25 @@ public class ResguardosMesaImpl {
      *
      */
 
-    public void ingresarDineroGanador(int ganador, MesaImpl mesa){
-        System.out.println("Metodo ingresarDineroGanador en resguardo");
+    public void ingresarBoteGanador(int ganador, MesaImpl mesa){
+        System.out.println("Metodo ingresarBoteGanador en resguardo");
     }
 
+
+
+    /*
+     * SIGNATURA: public void mostrarPanelJuegoCompleto(MesaImpl mesa);
+     * COMENTARIO: Muestra todas las cartas de la mesa y la de todos los jugadores.
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Un objeto MesaImpl
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: Imprime por pantalla todas las cartas de los jugadores y las cartas de la mesa.
+     *
+     */
+
+    public void mostrarPanelJuegoCompleto(MesaImpl mesa){
+        System.out.println("Metodo mostrarPanelJuegoCompleto en resguardo");
+    }
 
 }
