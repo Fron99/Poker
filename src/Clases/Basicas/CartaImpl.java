@@ -104,6 +104,9 @@ public class CartaImpl implements Carta{
         return this.numero.hashCode();
     }
 
+
+    //TODO Realizar compareTo para despues poder ordenar las cartas y evaluar las cartas que tiene
+
     /**
      * This method returns a Boolean value depending on whether the value of the carte passed by parameter is equal to that compared
      * @return boolean its value depending on whether the value of the carte passed by parameter is equal to that compared
