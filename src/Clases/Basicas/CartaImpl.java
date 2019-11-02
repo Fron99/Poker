@@ -8,7 +8,7 @@
  *
  * PROPIEDADES DERIVADAS:
  *
- *  - No hay
+ *  - valorNumero: int, Consultable
  *
  * PROPIEDADES COMPARTIDAS:
  *
@@ -22,7 +22,7 @@
  *
  * METODOS AÑADIDOS:
  *
- *  - No hay
+ *  public int getValorNumero();
  *
  */
 
@@ -84,6 +84,57 @@ public class CartaImpl implements Carta{
     }
 
     /**
+     * Return the equivalent value in int of the card number
+     * @return valor int with equivalent value in int of the card number
+     */
+
+    public int getValorNumero(){
+        int valor = 0;
+        switch (this.getNumero()){
+            case "A":
+                valor = 12;
+                break;
+            case "2":
+                valor = 0;
+                break;
+            case "3":
+                valor = 1;
+                break;
+            case "4":
+                valor = 2;
+                break;
+            case "5":
+                valor = 3;
+                break;
+            case "6":
+                valor = 4;
+                break;
+            case "7":
+                valor = 5;
+                break;
+            case "8":
+                valor = 6;
+                break;
+            case "9":
+                valor = 7;
+                break;
+            case "10":
+                valor = 8;
+                break;
+            case "J":
+                valor = 9;
+                break;
+            case "Q":
+                valor = 10;
+                break;
+            case "K":
+                valor = 11;
+                break;
+        }
+        return valor;
+    }
+
+    /**
      * This method return a String with attributes of the carte
      * @return String of a String with attributes of the carte
      */
@@ -105,7 +156,19 @@ public class CartaImpl implements Carta{
     }
 
 
-    //TODO Realizar compareTo para despues poder ordenar las cartas y evaluar las cartas que tiene
+    //TODO Documentar compareTo y desarrollar javadoc
+
+    public int compareTo(CartaImpl otra){
+        int resultado = -1;
+        if (this.getValorNumero() == otra.getValorNumero()){
+            resultado = 0;
+        }else{
+            if (this.getValorNumero() > otra.getValorNumero()){
+                resultado = 1;
+            }
+        }
+        return resultado;
+    }
 
     /**
      * This method returns a Boolean value depending on whether the value of the carte passed by parameter is equal to that compared

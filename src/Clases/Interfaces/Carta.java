@@ -8,7 +8,7 @@
  *
  * PROPIEDADES DERIVADAS:
  *
- *  - No hay
+ *  - valorNumero: int, Consultable
  *
  * PROPIEDADES COMPARTIDAS:
  *
@@ -22,7 +22,7 @@
  *
  * METODOS AÑADIDOS:
  *
- *  - No hay
+ *  public int getValorNumero();
  *
  */
 

@@ -84,5 +84,23 @@ public class GestoraCartaImpl {
         return cartasTotales;
     }
 
+    //TODO Desarrollar javadoc
+    //TODO Desarrollar interfaz
+    //TODO Realizar test
+
+    public void ordenarCartas(CartaImpl[] cartas){
+        CartaImpl cartaAux;
+        for(int i = 0; i < cartas.length - 1; i++){
+            for(int j = 0; j < cartas.length - 1; j++){
+                if (cartas[j].compareTo(cartas[j + 1]) == -1){
+                    cartaAux = cartas[j+1];
+                    cartas[j+1] = cartas[j];
+                    cartas[j] = cartaAux;
+                }
+            }
+        }
+    }
+
+
 
 }
