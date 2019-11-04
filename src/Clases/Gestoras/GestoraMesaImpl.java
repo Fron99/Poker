@@ -18,6 +18,8 @@ public class GestoraMesaImpl {
      *                  parametro colocando en defecto todas las cartas del array pasado por parametro y coloca todas las apuestas de los jugadores a 0.
      */
 
+    //TODO Desarrollar javadoc
+
     public void limpiarMesa(MesaImpl mesa) {
         for (int i = 0; i < mesa.getCartasMesa().length; i++) {
             mesa.getCartasMesa()[i] = new CartaImpl();
@@ -43,6 +45,7 @@ public class GestoraMesaImpl {
      *                  al segundo array pasado por parametro que son las cartas de la mesa
      */
 
+    //TODO Desarrollar javadoc
 
     public void generarTresCartasMesa(CartaImpl[] baraja, CartaImpl[] cartas) {
 
@@ -77,6 +80,7 @@ public class GestoraMesaImpl {
      *                      asignando las cartas a los jugadores de la mesa
      */
 
+    //TODO Desarrollar javadoc
 
     public void generarCartasJugadores(CartaImpl[] baraja, MesaImpl mesa) {
 
@@ -108,6 +112,8 @@ public class GestoraMesaImpl {
      * ENTRADA/SALIDA: - Nada
      * POSTCONDICIONES: - No devuelve nada, solo imprime por pantalla el estado actual en el que se encuentran los jugadores y las cartas
      */
+
+    //TODO Desarrollar javadoc
 
     public void mostrarPanelJuego(MesaImpl mesa) {
 
@@ -202,6 +208,9 @@ public class GestoraMesaImpl {
      * ENTRADA/SALIDA:
      * POSTCONDICIONES:
      */
+
+    //TODO Desarrollar javadoc
+    //TODO Desarrollar interfaz
 
     public void uj(MesaImpl mesa) {
 
@@ -300,6 +309,7 @@ public class GestoraMesaImpl {
      *                  al segundo array pasado por parametro que son las cartas de la mesa
      */
 
+    //TODO Desarrollar javadoc
 
     public void generarCartaMesa(CartaImpl[] baraja, CartaImpl[] cartas) {
 
@@ -339,6 +349,8 @@ public class GestoraMesaImpl {
      *
      */
 
+    //TODO Desarrollar javadoc
+
     public void ingresarDineroGanador(int ganador, MesaImpl mesa) {
         int cantidadMesa;
         cantidadMesa = mesa.getTotalApuestas();
@@ -356,6 +368,8 @@ public class GestoraMesaImpl {
      * POSTCONDICIONES: - Modifica la apuesta total de la mesa pasada por parametro incrementando su valor conforme los jugadores apuesten
      *
      */
+
+    //TODO Desarrollar javadoc
 
     public void realizarJugadas(int turnoJugador, MesaImpl mesa) {
 
@@ -405,6 +419,7 @@ public class GestoraMesaImpl {
      *
      */
 
+    //TODO Desarrollar javadoc
 
     public void realizarApuestas(int turnoJugador, MesaImpl mesa){
 

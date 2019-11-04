@@ -92,43 +92,43 @@ public class CartaImpl implements Carta{
         int valor = 0;
         switch (this.getNumero()){
             case "A":
-                valor = 12;
+                valor = 13;
                 break;
             case "2":
-                valor = 0;
-                break;
-            case "3":
                 valor = 1;
                 break;
-            case "4":
+            case "3":
                 valor = 2;
                 break;
-            case "5":
+            case "4":
                 valor = 3;
                 break;
-            case "6":
+            case "5":
                 valor = 4;
                 break;
-            case "7":
+            case "6":
                 valor = 5;
                 break;
-            case "8":
+            case "7":
                 valor = 6;
                 break;
-            case "9":
+            case "8":
                 valor = 7;
                 break;
-            case "10":
+            case "9":
                 valor = 8;
                 break;
-            case "J":
+            case "10":
                 valor = 9;
                 break;
-            case "Q":
+            case "J":
                 valor = 10;
                 break;
-            case "K":
+            case "Q":
                 valor = 11;
+                break;
+            case "K":
+                valor = 12;
                 break;
         }
         return valor;

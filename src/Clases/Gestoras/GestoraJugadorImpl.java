@@ -1,6 +1,7 @@
 package Clases.Gestoras;
 
 import Clases.Basicas.JugadorImpl;
+import Clases.Basicas.MesaImpl;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -17,6 +18,8 @@ public class GestoraJugadorImpl {
      * POSTCONDICIONES: - Devuelve asociado al nombre un entero con la cantidad de dinero con el que el jugador va a iniciar el juego
      *
      */
+
+    //TODO Desarrollar javadoc
 
     public int leerYValidarSaldoInicial(){
         int dinero;
@@ -39,6 +42,8 @@ public class GestoraJugadorImpl {
      *
      */
 
+    //TODO Desarrollar javadoc
+
     public String leerUsuario(){
         String usuario;
         Scanner teclado = new Scanner(System.in);
@@ -57,6 +62,8 @@ public class GestoraJugadorImpl {
      * POSTCONDICIONES: - Modifica el array de Jugadores pasado por parametro añadiendo usuarios aleatorios
      *
      */
+
+    //TODO Desarrollar javadoc
 
     public void cargarBots(JugadorImpl[] jugadores){
 
@@ -79,6 +86,8 @@ public class GestoraJugadorImpl {
      *
      */
 
+    //TODO Desarrollar javadoc
+
     public int leerYValidarApuesta(JugadorImpl jugador){
         Scanner teclado = new Scanner(System.in);
         int cantidadApuesta;
@@ -89,5 +98,26 @@ public class GestoraJugadorImpl {
         }while (cantidadApuesta<0 || cantidadApuesta > jugador.getSaldo());
         return cantidadApuesta;
     }
+
+
+    /*
+     * SIGNATURA: public int calcularApostarBot(int apuestaMinima, MesaImpl mesa, int jugador)
+     * COMENTARIO: Metodo para calcular cuanto debe apostar el bot pasado por parametro
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Un objeto MesaImpl
+     *          - Un entero con la apuesta minima
+     *          - Un entero con el numero del jugador
+     * SALIDA: - Un entero con la cantidad a apostar
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Devuelve asociado al nombre un entero con la cantidad de saldo a apostar
+     */
+
+    public int calcularApostarBot(int apuestaMinima, MesaImpl mesa, int jugador){
+        int totalApostar = 0, valorCartas;
+        GestoraCartaImpl gesCarta = new GestoraCartaImpl();
+        valorCartas = gesCarta.evaluarCartas(jugador, mesa);
+        return totalApostar;
+    }
+
 
 }
