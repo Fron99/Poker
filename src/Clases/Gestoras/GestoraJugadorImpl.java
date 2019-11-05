@@ -112,12 +112,104 @@ public class GestoraJugadorImpl {
      * POSTCONDICIONES: - Devuelve asociado al nombre un entero con la cantidad de saldo a apostar
      */
 
+    //TODO Desarrollar javadoc
+
     public int calcularApostarBot(int apuestaMinima, MesaImpl mesa, int jugador){
-        int totalApostar = 0, valorCartas;
+        int totalApostar, valorCartas, porcenApostar, cantidadApostar, farol;
         GestoraCartaImpl gesCarta = new GestoraCartaImpl();
         valorCartas = gesCarta.evaluarCartas(jugador, mesa);
+        valorCartas += calcularPuntosFarol(mesa);
+        porcenApostar = (int)(((valorCartas*100)/267)*0.01);
+        cantidadApostar = (mesa.getJugadores()[jugador].getSaldo()/4)*porcenApostar;
+
+        if (cantidadApostar >= apuestaMinima){
+            if ((cantidadApostar-apuestaMinima) < (int)(cantidadApostar*0.3)){
+                totalApostar = apuestaMinima;
+            }else {
+                totalApostar = cantidadApostar;
+            }
+        }else {
+            totalApostar = 0;
+        }
+
         return totalApostar;
     }
+
+
+
+    /*
+     * SIGNATURA: public int calcularPuntosFarol(MesaImpl mesa);
+     * COMENTARIO: Calcular cantidad de puntos que debe incrementar la apuesta el bot
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Un objeto MesaImpl
+     * SALIDA: - Un entero
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Devuelve asociado al nombre la cantidad de puntos que debe incrementar en un farol el bot dependiendo de la ronda en la que se encuentre
+     */
+
+    //TODO Desarrollar javadoc
+
+    public int calcularPuntosFarol(MesaImpl mesa){
+        int puntosFarol = 0,porcentaje;
+        Random r = new Random();
+
+        if (mesa.getApuestasJugadores()[0][0] == 0
+                && mesa.getApuestasJugadores()[1][0] == 0
+                && mesa.getApuestasJugadores()[2][0] == 0
+                && mesa.getApuestasJugadores()[3][0] == 0){
+
+            //PROBABILIDAD PRIMERA MANO
+            porcentaje = r.nextInt(99)+1;
+            if (porcentaje > 0 && porcentaje < 6){
+                puntosFarol = 10;
+            }
+
+        }else{
+            if (mesa.getApuestasJugadores()[0][1] == 0
+                    && mesa.getApuestasJugadores()[1][1] == 0
+                    && mesa.getApuestasJugadores()[2][1] == 0
+                    && mesa.getApuestasJugadores()[3][1] == 0){
+
+                //PROBABILIDAD SEGUNDA MANO
+                porcentaje = r.nextInt(99)+1;
+                if (porcentaje > 0 && porcentaje < 11){
+                    puntosFarol = 15;
+                }
+
+            }else{
+                if (mesa.getApuestasJugadores()[0][2] == 0
+                        && mesa.getApuestasJugadores()[1][2] == 0
+                        && mesa.getApuestasJugadores()[2][2] == 0
+                        && mesa.getApuestasJugadores()[3][2] == 0){
+
+                    //PROBABILIDAD TERCERA MANO
+                    porcentaje = r.nextInt(99)+1;
+                    if (porcentaje > 0 && porcentaje < 16){
+                        puntosFarol = 25;
+                    }
+
+                }else{
+                    if (mesa.getApuestasJugadores()[0][3] == 0
+                            && mesa.getApuestasJugadores()[1][3] == 0
+                            && mesa.getApuestasJugadores()[2][3] == 0
+                            && mesa.getApuestasJugadores()[3][3] == 0){
+
+                        //PROBABILIDAD CUARTA MANO
+                        porcentaje = r.nextInt(99)+1;
+                        if (porcentaje > 0 && porcentaje < 21){
+                            puntosFarol = 50;
+                        }
+
+                    }
+                }
+            }
+        }
+        return puntosFarol;
+    }
+
+
+
+
 
 
 }
