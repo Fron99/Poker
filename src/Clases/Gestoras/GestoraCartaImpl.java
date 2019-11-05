@@ -293,7 +293,7 @@ public class GestoraCartaImpl {
 
     /*
      * SIGNATURA: public int calcularValorColor(CartaImpl[] cartas);
-     * COMENTARIO:
+     * COMENTARIO: Calcula el valor de la carta mas alta cuando hay color
      * PRECONDICIONES: - El array debe estar ordenado de menor a mayor
      * ENTRADA: - Un array de CartaImpl
      * SALIDA: - Un entero
@@ -365,5 +365,109 @@ public class GestoraCartaImpl {
         }
         return puntos;
     }
+
+
+    /*
+     * SIGNATURA:
+     * COMENTARIO:
+     * PRECONDICIONES:
+     * ENTRADA:
+     * SALIDA:
+     * ENTRADA/SALIDA:
+     * POSTCONDICIONES:
+     */
+
+    //TODO Desarrollar javadoc
+    //TODO REALIZAR CALCULAR EL VALOR DE FULL
+
+
+    /*
+     * SIGNATURA: public int calcularValorPoker(CartaImpl[] cartas);
+     * COMENTARIO: Calcula el valor del poker del array de CartasImpl pasado por parametro
+     * PRECONDICIONES: - El array debe estar ordenado de menor a mayor
+     * ENTRADA: - Un array de CartaImpl
+     * SALIDA: - Un entero
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Devuelve asociado al nombre un entero con la cantidad de puntos que corresponde al poker mas alto del array pasado por parametro
+     *                  - Si no hay poker devuelve 0
+     */
+
+    //TODO Desarrollar javadoc
+
+    public int calcularValorPoker(CartaImpl[] cartas){
+        int puntos = 0;
+        if (cartas.length>3){
+            for (int i = 0;i<cartas.length-3;i++){
+                if ( (cartas[i].getNumero().equals(cartas[i+1].getNumero()))
+                        && (cartas[i].getNumero().equals(cartas[i+2].getNumero()))
+                        && (cartas[i].getNumero().equals(cartas[i+3].getNumero()))){
+
+                    puntos = 244+cartas[i].getValorNumero();
+
+                }
+            }
+        }
+        return puntos;
+    }
+
+
+    /*
+     * SIGNATURA: public int calcularValorEscaleraColor(CartaImpl[] cartas);
+     * COMENTARIO: Calcula el valor de la escalera de color del array de CartasImpl pasado por parametro
+     * PRECONDICIONES: - El array debe estar ordenado de menor a mayor
+     * ENTRADA: - Un array de CartaImpl
+     * SALIDA: - Un entero
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Devuelve asociado al nombre un entero con la cantidad de puntos que corresponde a la escalera de color mas alta del array pasado por parametro
+     *                  - Si no hay escalera de color devuelve 0
+     */
+
+    //TODO Desarrollar javadoc
+
+
+    public int calcularValorEscaleraColor(CartaImpl[] cartas){
+
+
+        //TODO TERMINAR ESTA PARTE
+
+        int puntos = 0, contadorPica = 0, contadorCorazon = 0, contadorTrevol = 0, contadorRombo = 0;
+        char paloColor;
+        CartaImpl cartaAltaColor;
+
+        for (CartaImpl carta : cartas) {
+
+            if(carta.getPalo()=='P'){
+                contadorPica++;
+            }else{
+                if(carta.getPalo()=='C'){
+                    contadorCorazon++;
+                }else{
+                    if(carta.getPalo()=='T'){
+                        contadorTrevol++;
+                    }else{
+                        if(carta.getPalo()=='R'){
+                            contadorRombo++;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        if (contadorPica>=5 || contadorCorazon>=5 || contadorTrevol>=5 || contadorRombo>=5){
+
+        }
+
+
+
+
+
+
+        return puntos;
+    }
+
+
+
+
 
 }
