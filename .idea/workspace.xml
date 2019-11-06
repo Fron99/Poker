@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b9a3eddb-34fe-4dec-b858-4173adae43d5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,20 +12,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="562" selection-start-line="562" selection-end-line="562" />
+            <state relative-caret-position="116">
+              <caret line="383" column="2" selection-start-line="383" selection-start-column="2" selection-end-line="383" selection-end-column="2" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="231" column="5" selection-start-line="231" selection-start-column="5" selection-end-line="231" selection-end-column="5" />
+            <state relative-caret-position="269">
+              <caret line="226" column="99" selection-start-line="226" selection-start-column="99" selection-end-line="226" selection-end-column="99" />
             </state>
           </provider>
         </entry>
@@ -54,8 +52,8 @@
         <option value="$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java" />
         <option value="$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java" />
         <option value="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" />
-        <option value="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" />
         <option value="$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java" />
+        <option value="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" />
       </list>
     </option>
   </component>
@@ -124,7 +122,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573044547931" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573045720693" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -266,17 +264,11 @@
       <workItem from="1572603072983" duration="2648000" />
       <workItem from="1572699044535" duration="5421000" />
       <workItem from="1572938779738" duration="15032000" />
-      <workItem from="1573025001827" duration="15566000" />
+      <workItem from="1573025001827" duration="17385000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GestoraCartaImplTest_testCalcularValorEscaleraColor8 - 2019.11.06 at 13h 07m 40s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorEscaleraColor8" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest_testCalcularValorEscaleraColor9 - 2019.11.06 at 13h 10m 27s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorEscaleraColor9" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="GestoraCartaImplTest_testCalcularValorEscaleraColor9 - 2019.11.06 at 13h 10m 31s.xml">
       <configuration name="GestoraCartaImplTest.testCalcularValorEscaleraColor9" configurationId="JUnit" />
     </history-entry>
@@ -301,13 +293,18 @@
     <history-entry file="GestoraCartaImplTest - 2019.11.06 at 13h 47m 01s.xml">
       <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="GestoraCartaImplTest_testCalcularValorEscalera5 - 2019.11.06 at 13h 48m 58s.xml">
+      <configuration name="GestoraCartaImplTest.testCalcularValorEscalera5" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GestoraCartaImplTest_testCalcularValorEscalera5 - 2019.11.06 at 13h 49m 12s.xml">
+      <configuration name="GestoraCartaImplTest.testCalcularValorEscalera5" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42704000" />
+    <option name="totallyTimeSpent" value="44523000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19667171" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -318,7 +315,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28641573" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.28641573" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.44026187" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -575,17 +572,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="562" selection-start-line="562" selection-end-line="562" />
+        <state relative-caret-position="269">
+          <caret line="226" column="99" selection-start-line="226" selection-start-column="99" selection-end-line="226" selection-end-column="99" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java">
+    <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="231" column="5" selection-start-line="231" selection-start-column="5" selection-end-line="231" selection-end-column="5" />
+        <state relative-caret-position="116">
+          <caret line="383" column="2" selection-start-line="383" selection-start-column="2" selection-end-line="383" selection-end-column="2" />
         </state>
       </provider>
     </entry>

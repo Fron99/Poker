@@ -334,8 +334,24 @@ public class GestoraCartaImpl {
 
     public int calcularValorEscalera(CartaImpl[] cartas){
         int puntos = 0;
+        CartaImpl[] cartasNoRepetidas = new CartaImpl[cartas.length];
+        //TODO Arreglar error de cartas repetidas en medio de la baraja
+       /* if (cartas.length>4){
+            cartasNoRepetidas[0] = cartas[0];
+            for (int i = 0,j = 0;i<cartas.length;i++){
+                for (){
 
-        if (cartas.length>4){
+                }
+                if (cartas[i].getValorNumero()==){
+
+                }
+            }
+*/
+
+
+
+/*
+
             //Comprueba si la escalera puede ser que sea A,2,3,4,5
             //Como la carta A es la de mayor valor no se coloca delante en el array sino detras, entonces hay que comprobarla estando detras
             if (cartas[0].getValorNumero()==1 && cartas[cartas.length-1].getValorNumero()==13){
@@ -365,7 +381,7 @@ public class GestoraCartaImpl {
                 }
 
             }
-
+*/
         }
         return puntos;
     }
