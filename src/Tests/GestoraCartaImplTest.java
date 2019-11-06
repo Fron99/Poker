@@ -181,7 +181,6 @@ public class GestoraCartaImplTest {
     public void testCalcularValorEscalera(){
         CartaImpl[] cartas = {new CartaImpl('P',"6"), new CartaImpl('R',"10"), new CartaImpl('C',"K"), new CartaImpl('T',"A"), new CartaImpl('R',"5"), new CartaImpl('R',"9")};
         GestoraCartaImpl ges = new GestoraCartaImpl();
-        ges.ordenarCartas(cartas);
         int valor = ges.calcularValorEscalera(cartas);
         assertEquals(valor,0);
     }
@@ -190,7 +189,6 @@ public class GestoraCartaImplTest {
     public void testCalcularValorEscalera1(){
         CartaImpl[] cartas = {new CartaImpl('C',"7"), new CartaImpl('T',"A"), new CartaImpl('R',"5"), new CartaImpl('R',"9")};
         GestoraCartaImpl ges = new GestoraCartaImpl();
-        ges.ordenarCartas(cartas);
         int valor = ges.calcularValorEscalera(cartas);
         assertEquals(valor,0);
     }
@@ -199,7 +197,6 @@ public class GestoraCartaImplTest {
     public void testCalcularValorEscalera2(){
         CartaImpl[] cartas = {new CartaImpl('P',"6"), new CartaImpl('R',"4"), new CartaImpl('C',"7"), new CartaImpl('T',"A"), new CartaImpl('R',"5"), new CartaImpl('R',"9"), new CartaImpl('R',"8")};
         GestoraCartaImpl ges = new GestoraCartaImpl();
-        ges.ordenarCartas(cartas);
         int valor = ges.calcularValorEscalera(cartas);
         assertEquals(valor,135);
     }
@@ -208,7 +205,6 @@ public class GestoraCartaImplTest {
     public void testCalcularValorEscalera3(){
         CartaImpl[] cartas = {new CartaImpl('P',"2"), new CartaImpl('R',"4"), new CartaImpl('C',"3"), new CartaImpl('T',"A"), new CartaImpl('R',"5"), new CartaImpl('R',"9"), new CartaImpl('R',"8")};
         GestoraCartaImpl ges = new GestoraCartaImpl();
-        ges.ordenarCartas(cartas);
         int valor = ges.calcularValorEscalera(cartas);
         assertEquals(valor,131);
     }
@@ -217,7 +213,6 @@ public class GestoraCartaImplTest {
     public void testCalcularValorEscalera4(){
         CartaImpl[] cartas = {new CartaImpl('P',"A"), new CartaImpl('R',"10"), new CartaImpl('C',"3"), new CartaImpl('T',"A"), new CartaImpl('R',"K"), new CartaImpl('R',"Q"), new CartaImpl('R',"J")};
         GestoraCartaImpl ges = new GestoraCartaImpl();
-        ges.ordenarCartas(cartas);
         int valor = ges.calcularValorEscalera(cartas);
         assertEquals(valor,140);
     }
@@ -226,7 +221,6 @@ public class GestoraCartaImplTest {
     public void testCalcularValorEscalera5(){
         CartaImpl[] cartas = {new CartaImpl('P',"A"), new CartaImpl('R',"10"), new CartaImpl('C',"Q"), new CartaImpl('T',"A"), new CartaImpl('R',"K"), new CartaImpl('R',"Q"), new CartaImpl('R',"J")};
         GestoraCartaImpl ges = new GestoraCartaImpl();
-        ges.ordenarCartas(cartas);
         int valor = ges.calcularValorEscalera(cartas);
         assertEquals(valor,140);
     }

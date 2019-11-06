@@ -3,6 +3,10 @@ package Clases.Gestoras;
 import Clases.Basicas.CartaImpl;
 import Clases.Basicas.MesaImpl;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
 public class GestoraCartaImpl {
 
     /*
@@ -318,7 +322,7 @@ public class GestoraCartaImpl {
     /*
      * SIGNATURA: public int calcularValorEscalera(CartaImpl[] cartas);
      * COMENTARIO: Calcular el valor de la escalera mas alta del array de cartas pasado por parametro
-     * PRECONDICIONES: - El array debe estar ordenado de menor a mayor
+     * PRECONDICIONES: - Nada
      * ENTRADA: - Un array de CartaImpl
      * SALIDA: - Un entero
      * ENTRADA/SALIDA: - Nada
@@ -334,54 +338,65 @@ public class GestoraCartaImpl {
 
     public int calcularValorEscalera(CartaImpl[] cartas){
         int puntos = 0;
-        CartaImpl[] cartasNoRepetidas = new CartaImpl[cartas.length];
-        //TODO Arreglar error de cartas repetidas en medio de la baraja
-       /* if (cartas.length>4){
-            cartasNoRepetidas[0] = cartas[0];
-            for (int i = 0,j = 0;i<cartas.length;i++){
-                for (){
-
+        ArrayList<CartaImpl> cartasNoRepetidas = new ArrayList<>();
+        boolean existe = false;
+        //TODO Testear con valores repetidos en medio de la baraja y testear muy a fondo
+        //TODO Ver si es rentable colocarlo con array normales
+        if (cartas.length>4){
+            cartasNoRepetidas.add(cartas[0]);
+            for (int i = 0;i<cartas.length;i++){
+                for (int j = 0; j<cartasNoRepetidas.size() && !existe;j++){
+                    if (cartas[i].getValorNumero()==cartasNoRepetidas.get(j).getValorNumero()){
+                        existe = true;
+                    }
                 }
-                if (cartas[i].getValorNumero()==){
-
+                if (!existe){
+                    cartasNoRepetidas.add(cartas[i]);
                 }
-            }
-*/
-
-
-
-/*
-
-            //Comprueba si la escalera puede ser que sea A,2,3,4,5
-            //Como la carta A es la de mayor valor no se coloca delante en el array sino detras, entonces hay que comprobarla estando detras
-            if (cartas[0].getValorNumero()==1 && cartas[cartas.length-1].getValorNumero()==13){
-                //Si se da la posibilidad de que pueda ocurrir esta escalera (A,2,3,4,5) se comprueba si de verdad ocurre
-                if ( cartas[1].getValorNumero() == ((cartas[0].getValorNumero())+1)
-                        && cartas[2].getValorNumero() == ((cartas[1].getValorNumero())+1)
-                        && cartas[3].getValorNumero() == ((cartas[2].getValorNumero())+1)
-                        && cartas[cartas.length-1].getValorNumero()==13){
-
-                    puntos = 130;
-                    puntos += cartas[0].getValorNumero();
-
-                }
-
+                existe = false;
             }
 
-            for (int i = 0; i<cartas.length-4; i++) {
+            cartasNoRepetidas.sort(CartaImpl::compareTo);
 
-                //Comprobar si hay escalera. Como las cartas estan ordenadas se puede hacer de esta forma.
-                if ( cartas[i+1].getValorNumero() == ((cartas[i].getValorNumero())+1)
-                        && cartas[i+2].getValorNumero() == ((cartas[i+1].getValorNumero())+1)
-                        && cartas[i+3].getValorNumero() == ((cartas[i+2].getValorNumero())+1)
-                        && cartas[i+4].getValorNumero() == ((cartas[i+3].getValorNumero())+1)){
+            //Comprueba si la escalera de color puede ser que sea A,2,3,4,5
+            //Como la carta A es la se mayor valor no se coloca delante en el array entonces hay que comprobarla estando detras
+            if (cartasNoRepetidas.get(0).getValorNumero() == 1 && cartasNoRepetidas.get(cartasNoRepetidas.size() - 1).getValorNumero() == 13) {
 
-                    puntos = 130 + (cartas[i].getValorNumero())+1;
+                //Como sabemos que la primera carta sera el 2 y la ultima sera la A podemos usar posiciones absolutas para comprobar si hay escalera tipo A,2,3,4,5
+                if ((cartasNoRepetidas.get(1).getValorNumero() == ((cartasNoRepetidas.get(0).getValorNumero()) + 1))
+                        && (cartasNoRepetidas.get(2).getValorNumero() == ((cartasNoRepetidas.get(1).getValorNumero()) + 1))
+                        && (cartasNoRepetidas.get(3).getValorNumero() == ((cartasNoRepetidas.get(2).getValorNumero()) + 1))) {
+
+                    //En el caso de que pueda ser A,2,3,4,5,6 o incluso A,2,3,4,5,6,7 se realizara este bucle for para coger la escalera mas alta.
+                    if (cartasNoRepetidas.get(4).getValorNumero() == cartasNoRepetidas.get(3).getValorNumero()) {
+                        for (int i = 3, j = 0; cartasNoRepetidas.get(i + 1).getValorNumero() == cartasNoRepetidas.get(i).getValorNumero(); i++, j++) {
+                            puntos = 130 + cartasNoRepetidas.get(j).getValorNumero();
+                        }
+                    } else {
+                        //En el cado de que no haya una escalera mas grande se coloca la escalera del A,2,3,4,5
+                        puntos = 130 + cartasNoRepetidas.get(0).getValorNumero();
+                    }
+                }
+
+            }else{
+
+                for (int i = 0; i < cartasNoRepetidas.size() - 4; i++) {
+
+                    if ((cartasNoRepetidas.get(i+1).getValorNumero() == ((cartasNoRepetidas.get(i).getValorNumero()) + 1))
+                            && (cartasNoRepetidas.get(i+2).getValorNumero() == ((cartasNoRepetidas.get(i+1).getValorNumero()) + 1))
+                            && (cartasNoRepetidas.get(i+3).getValorNumero() == ((cartasNoRepetidas.get(i+2).getValorNumero()) + 1))
+                            && (cartasNoRepetidas.get(i+4).getValorNumero() == ((cartasNoRepetidas.get(i+3).getValorNumero()) + 1))) {
+
+                        //Se le suma 1 a la cantidad total porque el valor 131 se deja guardado para la escalera A,2,3,4,5
+                        //Si no se le sumara 1 la escalera 2,3,4,5,6 tendria el mismo valor que la escalera A,2,3,4,5 por el echo de como se ordenan las cartas de mayor a menor
+                        puntos = 130 + (cartasNoRepetidas.get(i).getValorNumero()+1);
+
+                    }
 
                 }
 
             }
-*/
+
         }
         return puntos;
     }
