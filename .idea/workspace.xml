@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b9a3eddb-34fe-4dec-b858-4173adae43d5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,28 +15,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="119" column="39" lean-forward="true" selection-start-line="119" selection-start-column="39" selection-end-line="119" selection-end-column="39" />
+            <state relative-caret-position="184">
+              <caret line="562" selection-start-line="562" selection-end-line="562" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="456" column="8" lean-forward="true" selection-start-line="456" selection-start-column="8" selection-end-line="456" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="259" lean-forward="true" selection-start-line="259" selection-end-line="259" />
+            <state relative-caret-position="354">
+              <caret line="231" column="5" selection-start-line="231" selection-start-column="5" selection-end-line="231" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -60,14 +52,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java" />
-        <option value="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" />
         <option value="$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java" />
-        <option value="$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java" />
+        <option value="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" />
         <option value="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" />
+        <option value="$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="951" />
     <option name="height" value="735" />
@@ -132,7 +124,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572961237163" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573044547931" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -163,14 +155,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.PokerMain">
-    <configuration name="PokerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="PokerMain" />
-      <module name="ElBromas" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.GestoraCartaImplTest.testCalcularValorEscalera5">
     <configuration name="GestoraCartaImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ElBromas" />
       <extension name="coverage">
@@ -186,10 +171,77 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="GestoraCartaImplTest.testCalcularValorEscalera5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ElBromas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCartaImplTest" />
+      <option name="METHOD_NAME" value="testCalcularValorEscalera5" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GestoraCartaImplTest.testCalcularValorEscaleraColor10" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ElBromas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCartaImplTest" />
+      <option name="METHOD_NAME" value="testCalcularValorEscaleraColor10" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GestoraCartaImplTest.testCalcularValorEscaleraColor11" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ElBromas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCartaImplTest" />
+      <option name="METHOD_NAME" value="testCalcularValorEscaleraColor11" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GestoraCartaImplTest.testCalcularValorEscaleraColor9" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ElBromas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCartaImplTest" />
+      <option name="METHOD_NAME" value="testCalcularValorEscaleraColor9" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.PokerMain" />
+        <item itemvalue="JUnit.GestoraCartaImplTest.testCalcularValorEscalera5" />
         <item itemvalue="JUnit.GestoraCartaImplTest" />
+        <item itemvalue="JUnit.GestoraCartaImplTest.testCalcularValorEscaleraColor11" />
+        <item itemvalue="JUnit.GestoraCartaImplTest.testCalcularValorEscaleraColor10" />
+        <item itemvalue="JUnit.GestoraCartaImplTest.testCalcularValorEscaleraColor9" />
       </list>
     </recent_temporary>
   </component>
@@ -214,49 +266,50 @@
       <workItem from="1572603072983" duration="2648000" />
       <workItem from="1572699044535" duration="5421000" />
       <workItem from="1572938779738" duration="15032000" />
+      <workItem from="1573025001827" duration="15566000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GestoraCartaImplTest_testCalcularValorColor1 - 2019.11.05 at 14h 08m 48s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorColor1" configurationId="JUnit" />
+    <history-entry file="GestoraCartaImplTest_testCalcularValorEscaleraColor8 - 2019.11.06 at 13h 07m 40s.xml">
+      <configuration name="GestoraCartaImplTest.testCalcularValorEscaleraColor8" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GestoraCartaImplTest_testCalcularValorColor2 - 2019.11.05 at 14h 09m 27s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorColor2" configurationId="JUnit" />
+    <history-entry file="GestoraCartaImplTest_testCalcularValorEscaleraColor9 - 2019.11.06 at 13h 10m 27s.xml">
+      <configuration name="GestoraCartaImplTest.testCalcularValorEscaleraColor9" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GestoraCartaImplTest_testCalcularValorColor3 - 2019.11.05 at 14h 11m 06s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorColor3" configurationId="JUnit" />
+    <history-entry file="GestoraCartaImplTest_testCalcularValorEscaleraColor9 - 2019.11.06 at 13h 10m 31s.xml">
+      <configuration name="GestoraCartaImplTest.testCalcularValorEscaleraColor9" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GestoraCartaImplTest_testCalcularValorPoker - 2019.11.05 at 14h 26m 06s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorPoker" configurationId="JUnit" />
+    <history-entry file="GestoraCartaImplTest_testCalcularValorEscaleraColor8 - 2019.11.06 at 13h 10m 35s.xml">
+      <configuration name="GestoraCartaImplTest.testCalcularValorEscaleraColor8" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GestoraCartaImplTest_testCalcularValorPoker - 2019.11.05 at 14h 28m 27s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorPoker" configurationId="JUnit" />
+    <history-entry file="GestoraCartaImplTest_testCalcularValorEscaleraColor9 - 2019.11.06 at 13h 10m 40s.xml">
+      <configuration name="GestoraCartaImplTest.testCalcularValorEscaleraColor9" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GestoraCartaImplTest_testCalcularValorPoker - 2019.11.05 at 14h 28m 35s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorPoker" configurationId="JUnit" />
+    <history-entry file="GestoraCartaImplTest - 2019.11.06 at 13h 11m 35s.xml">
+      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GestoraCartaImplTest_testCalcularValorPoker1 - 2019.11.05 at 14h 29m 04s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorPoker1" configurationId="JUnit" />
+    <history-entry file="GestoraCartaImplTest_testCalcularValorEscaleraColor10 - 2019.11.06 at 13h 15m 06s.xml">
+      <configuration name="GestoraCartaImplTest.testCalcularValorEscaleraColor10" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GestoraCartaImplTest_testCalcularValorPoker2 - 2019.11.05 at 14h 29m 27s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorPoker2" configurationId="JUnit" />
+    <history-entry file="GestoraCartaImplTest_testCalcularValorEscaleraColor10 - 2019.11.06 at 13h 15m 16s.xml">
+      <configuration name="GestoraCartaImplTest.testCalcularValorEscaleraColor10" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GestoraCartaImplTest_testCalcularValorPoker2 - 2019.11.05 at 14h 29m 37s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorPoker2" configurationId="JUnit" />
+    <history-entry file="GestoraCartaImplTest_testCalcularValorEscaleraColor11 - 2019.11.06 at 13h 16m 16s.xml">
+      <configuration name="GestoraCartaImplTest.testCalcularValorEscaleraColor11" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GestoraCartaImplTest - 2019.11.05 at 14h 30m 27s.xml">
+    <history-entry file="GestoraCartaImplTest - 2019.11.06 at 13h 47m 01s.xml">
       <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27138000" />
+    <option name="totallyTimeSpent" value="42704000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19364598" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19667171" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -265,8 +318,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.5155483" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.46317512" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28641573" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.44026187" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -344,75 +397,73 @@
     <SUITE FILE_PATH="coverage/ElBromas$ElBromasMain.ic" NAME="ElBromasMain Coverage Results" MODIFIED="1571938195981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="debuggerHistoryManager">
+    <expressions id="setValue">
+      <expression>
+        <expression-string>'R'</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>&quot;R&quot;</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>java.util.Random</custom-info>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>'R' 80</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>cartas[i]</expression-string>
+        <expression-string>cartas[2+1].getPalo()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>cartas[i].getValorNumero()</expression-string>
+        <expression-string>cartas[2].getValorNumero()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>i</expression-string>
+        <expression-string>cartas[2+1].getValorNumero()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>cartas[0]</expression-string>
+        <expression-string>(cartas[2+1].getValorNumero() == ((cartas[2].getValorNumero()) + 1) &amp;&amp; cartas[2+1].getPalo() == color</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>cartas[i+4].getValorNumero()</expression-string>
+        <expression-string>(cartas[1+1].getValorNumero() == ((cartas[1].getValorNumero()) + 1) &amp;&amp; cartas[1+1].getPalo() == color</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>((cartas[i+3].getValorNumero())+1)</expression-string>
+        <expression-string>(cartas[0+1].getValorNumero() == ((cartas[0].getValorNumero()) + 1) &amp;&amp; cartas[0+1].getPalo() == color</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>cartasDesordenadas[i].getPalo()</expression-string>
+        <expression-string>(cartas[1+1].getValorNumero() == ((cartas[1].getValorNumero()) + 1)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>cartas[i].getPalo()</expression-string>
+        <expression-string>(cartas[1+1].getValorNumero() == ((cartas[i1].getValorNumero()) + 1)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>cartasDesordenadas[i].getNumero()</expression-string>
+        <expression-string>cartas[0].getValorNumero()+1</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/runners/ParentRunner.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="166" column="17" selection-start-line="166" selection-start-column="17" selection-end-line="166" selection-end-column="17" />
-          <folding>
-            <element signature="e#2111#2112#0" expanded="true" />
-            <element signature="e#2155#2156#0" expanded="true" />
-            <element signature="e#6484#6648#0" expanded="true" />
-            <element signature="e#6647#6648#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/runners/BlockJUnit4ClassRunner.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/JugadorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -443,27 +494,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/runners/model/FrameworkMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="119" column="39" lean-forward="true" selection-start-line="119" selection-start-column="39" selection-end-line="119" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -478,17 +508,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java">
+    <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="259" lean-forward="true" selection-start-line="259" selection-end-line="259" />
+        <state relative-caret-position="120">
+          <caret line="137" column="2" selection-start-line="137" selection-start-column="2" selection-end-line="137" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/Assert.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="237" selection-start-line="237" selection-end-line="237" />
+          <folding>
+            <element signature="e#8323#8324#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/statements/InvokeMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/runners/BlockJUnit4ClassRunner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/runners/ParentRunner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="226" column="16" selection-start-line="226" selection-start-column="16" selection-end-line="226" selection-end-column="16" />
+          <folding>
+            <element signature="e#2111#2112#0" expanded="true" />
+            <element signature="e#2155#2156#0" expanded="true" />
+            <element signature="e#5951#6086#0" expanded="true" />
+            <element signature="e#6085#6086#0" expanded="true" />
+            <element signature="e#6484#6648#0" expanded="true" />
+            <element signature="e#6647#6648#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/runner/JUnitCore.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/runners/model/FrameworkMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="456" column="8" lean-forward="true" selection-start-line="456" selection-start-column="8" selection-end-line="456" selection-end-column="8" />
+        <state relative-caret-position="184">
+          <caret line="562" selection-start-line="562" selection-end-line="562" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="231" column="5" selection-start-line="231" selection-start-column="5" selection-end-line="231" selection-end-column="5" />
         </state>
       </provider>
     </entry>

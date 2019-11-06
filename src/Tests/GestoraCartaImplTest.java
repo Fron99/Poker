@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 
 public class GestoraCartaImplTest {
 
+
     @Test
     public void testOrdenarCartas1() {
 
@@ -150,6 +151,33 @@ public class GestoraCartaImplTest {
     }
 
     @Test
+    public void testCalcularValorTrio4(){
+        CartaImpl[] cartas = {new CartaImpl('P',"2"), new CartaImpl('R',"2"), new CartaImpl('C',"2"), new CartaImpl('T',"3"), new CartaImpl('T',"3"), new CartaImpl('T',"3")};
+        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ges.ordenarCartas(cartas);
+        int valor = ges.calcularValorTrio(cartas);
+        assertEquals(valor,119);
+    }
+
+    @Test
+    public void testCalcularValorTrio5(){
+        CartaImpl[] cartas = {new CartaImpl('P',"5"), new CartaImpl('R',"3"), new CartaImpl('C',"5"), new CartaImpl('T',"5"), new CartaImpl('T',"3"), new CartaImpl('T',"3")};
+        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ges.ordenarCartas(cartas);
+        int valor = ges.calcularValorTrio(cartas);
+        assertEquals(valor,121);
+    }
+
+    @Test
+    public void testCalcularValorTrio6(){
+        CartaImpl[] cartas = {new CartaImpl('P',"5"), new CartaImpl('R',"3"), new CartaImpl('C',"5"), new CartaImpl('T',"5"), new CartaImpl('T',"3"), new CartaImpl('T',"3"), new CartaImpl('T',"5")};
+        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ges.ordenarCartas(cartas);
+        int valor = ges.calcularValorTrio(cartas);
+        assertEquals(valor,0);
+    }
+
+    @Test
     public void testCalcularValorEscalera(){
         CartaImpl[] cartas = {new CartaImpl('P',"6"), new CartaImpl('R',"10"), new CartaImpl('C',"K"), new CartaImpl('T',"A"), new CartaImpl('R',"5"), new CartaImpl('R',"9")};
         GestoraCartaImpl ges = new GestoraCartaImpl();
@@ -188,6 +216,15 @@ public class GestoraCartaImplTest {
     @Test
     public void testCalcularValorEscalera4(){
         CartaImpl[] cartas = {new CartaImpl('P',"A"), new CartaImpl('R',"10"), new CartaImpl('C',"3"), new CartaImpl('T',"A"), new CartaImpl('R',"K"), new CartaImpl('R',"Q"), new CartaImpl('R',"J")};
+        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ges.ordenarCartas(cartas);
+        int valor = ges.calcularValorEscalera(cartas);
+        assertEquals(valor,140);
+    }
+
+    @Test
+    public void testCalcularValorEscalera5(){
+        CartaImpl[] cartas = {new CartaImpl('P',"A"), new CartaImpl('R',"10"), new CartaImpl('C',"Q"), new CartaImpl('T',"A"), new CartaImpl('R',"K"), new CartaImpl('R',"Q"), new CartaImpl('R',"J")};
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorEscalera(cartas);
@@ -255,6 +292,114 @@ public class GestoraCartaImplTest {
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorPoker(cartas);
         assertEquals(valor,245);
+    }
+
+    @Test
+    public void testCalcularValorEscaleraColor(){
+        CartaImpl[] cartas = {new CartaImpl('P',"3"), new CartaImpl('P',"A"), new CartaImpl('R',"2"), new CartaImpl('T',"A"), new CartaImpl('C',"2"), new CartaImpl('P',"9"), new CartaImpl('P',"2")};
+        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ges.ordenarCartas(cartas);
+        int valor = ges.calcularValorEscaleraColor(cartas);
+        assertEquals(valor,0);
+    }
+
+    @Test
+    public void testCalcularValorEscaleraColor1(){
+        CartaImpl[] cartas = {new CartaImpl('P',"3"), new CartaImpl('P',"A"), new CartaImpl('P',"2"), new CartaImpl('T',"A"), new CartaImpl('P',"4"), new CartaImpl('P',"5")};
+        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ges.ordenarCartas(cartas);
+        int valor = ges.calcularValorEscaleraColor(cartas);
+        assertEquals(valor,258);
+    }
+
+    @Test
+    public void testCalcularValorEscaleraColor2(){
+        CartaImpl[] cartas = {new CartaImpl('P',"K"), new CartaImpl('P',"A"), new CartaImpl('P',"J"), new CartaImpl('T',"A"), new CartaImpl('P',"Q"), new CartaImpl('P',"10")};
+        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ges.ordenarCartas(cartas);
+        int valor = ges.calcularValorEscaleraColor(cartas);
+        assertEquals(valor,267);
+    }
+
+    @Test
+    public void testCalcularValorEscaleraColor3(){
+        CartaImpl[] cartas = {new CartaImpl('T',"K"), new CartaImpl('P',"A"), new CartaImpl('P',"J"), new CartaImpl('T',"A"), new CartaImpl('P',"Q"), new CartaImpl('P',"10")};
+        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ges.ordenarCartas(cartas);
+        int valor = ges.calcularValorEscaleraColor(cartas);
+        assertEquals(valor,0);
+    }
+
+    @Test
+    public void testCalcularValorEscaleraColor4(){
+        CartaImpl[] cartas = {new CartaImpl('P',"3"), new CartaImpl('P',"A"), new CartaImpl('P',"2"), new CartaImpl('T',"2"), new CartaImpl('P',"4"), new CartaImpl('P',"5")};
+        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ges.ordenarCartas(cartas);
+        int valor = ges.calcularValorEscaleraColor(cartas);
+        assertEquals(valor,258);
+    }
+
+    @Test
+    public void testCalcularValorEscaleraColor5(){
+        CartaImpl[] cartas = {new CartaImpl('P',"3"), new CartaImpl('P',"A"), new CartaImpl('P',"2"), new CartaImpl('P',"4"), new CartaImpl('P',"5"), new CartaImpl('R',"A")};
+        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ges.ordenarCartas(cartas);
+        int valor = ges.calcularValorEscaleraColor(cartas);
+        assertEquals(valor,258);
+    }
+
+    @Test
+    public void testCalcularValorEscaleraColor6(){
+        CartaImpl[] cartas = {new CartaImpl('P',"K"), new CartaImpl('P',"A"), new CartaImpl('P',"Q"), new CartaImpl('P',"J"), new CartaImpl('P',"10"), new CartaImpl('R',"A")};
+        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ges.ordenarCartas(cartas);
+        int valor = ges.calcularValorEscaleraColor(cartas);
+        assertEquals(valor,267);
+    }
+
+    @Test
+    public void testCalcularValorEscaleraColor7(){
+        CartaImpl[] cartas = {new CartaImpl('P',"K"), new CartaImpl('P',"A"), new CartaImpl('P',"Q"), new CartaImpl('P',"J"), new CartaImpl('P',"10"), new CartaImpl('R',"10")};
+        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ges.ordenarCartas(cartas);
+        int valor = ges.calcularValorEscaleraColor(cartas);
+        assertEquals(valor,267);
+    }
+
+    @Test
+    public void testCalcularValorEscaleraColor8(){
+        CartaImpl[] cartas = {new CartaImpl('P',"K"), new CartaImpl('P',"A"), new CartaImpl('P',"Q"), new CartaImpl('P',"J"), new CartaImpl('P',"10"), new CartaImpl('Z',"10"), new CartaImpl('A',"10")};
+        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ges.ordenarCartas(cartas);
+        int valor = ges.calcularValorEscaleraColor(cartas);
+        assertEquals(valor,267);
+    }
+
+    @Test
+    public void testCalcularValorEscaleraColor9(){
+        CartaImpl[] cartas = {new CartaImpl('P',"K"), new CartaImpl('P',"A"), new CartaImpl('P',"Q"), new CartaImpl('P',"J"), new CartaImpl('P',"10"), new CartaImpl('Z',"A"), new CartaImpl('A',"A")};
+        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ges.ordenarCartas(cartas);
+        int valor = ges.calcularValorEscaleraColor(cartas);
+        assertEquals(valor,267);
+    }
+
+    @Test
+    public void testCalcularValorEscaleraColor10(){
+        CartaImpl[] cartas = {new CartaImpl('P',"2"), new CartaImpl('P',"A"), new CartaImpl('P',"3"), new CartaImpl('P',"4"), new CartaImpl('P',"5"), new CartaImpl('Z',"A"), new CartaImpl('A',"A")};
+        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ges.ordenarCartas(cartas);
+        int valor = ges.calcularValorEscaleraColor(cartas);
+        assertEquals(valor,258);
+    }
+
+    @Test
+    public void testCalcularValorEscaleraColor11(){
+        CartaImpl[] cartas = {new CartaImpl('P',"2"), new CartaImpl('P',"A"), new CartaImpl('P',"3"), new CartaImpl('P',"4"), new CartaImpl('P',"5"), new CartaImpl('Z',"3"), new CartaImpl('A',"3")};
+        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ges.ordenarCartas(cartas);
+        int valor = ges.calcularValorEscaleraColor(cartas);
+        assertEquals(valor,258);
     }
 
 

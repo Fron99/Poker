@@ -114,6 +114,7 @@ public class GestoraJugadorImpl {
 
     //TODO Desarrollar javadoc
 
+    /*
     public int calcularApostarBot(int apuestaMinima, MesaImpl mesa, int jugador){
         int totalApostar, valorCartas, porcenApostar, cantidadApostar, farol;
         GestoraCartaImpl gesCarta = new GestoraCartaImpl();
@@ -134,7 +135,7 @@ public class GestoraJugadorImpl {
 
         return totalApostar;
     }
-
+*/
 
 
     /*
