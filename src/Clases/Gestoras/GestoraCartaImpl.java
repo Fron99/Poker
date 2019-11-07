@@ -4,8 +4,6 @@ import Clases.Basicas.CartaImpl;
 import Clases.Basicas.MesaImpl;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 public class GestoraCartaImpl {
 
@@ -45,7 +43,6 @@ public class GestoraCartaImpl {
         gesCarta.ordenarCartas(cartasAEvaluar);
 
         //Va comprobando todos los valores de las distintas posibilidades que tiene el jugador y se queda con la posibilidad mas alta.
-
         puntosFinales = calcularValorCartaAlta(cartasAEvaluar);
 
         puntosCalculados = calcularValorPareja(cartasAEvaluar);
@@ -252,22 +249,30 @@ public class GestoraCartaImpl {
 
     public int calcularValorDoblePareja(CartaImpl[] cartas){
         int puntos = 0, cantidadParejas = 0;
+        boolean trio = false;
         if (cartas.length>3){
-            for (int i = 0;i<cartas.length-1;i++){
+            for (int i = 0;i<cartas.length-1 && !trio;i++){
                 if (cartas[i].getNumero().equals(cartas[i+1].getNumero())){
-                    puntos += cartas[i].getValorNumero();
-                    cantidadParejas++;
+                    //Esto comprueba que no haya un trio en el array. En el caso de que exista un trio devolvera 0
+                    if (cartas[i].getNumero().equals(cartas[i+1].getNumero()) && cartas[i].getNumero().equals(cartas[i+2].getNumero())){
+                        trio = true;
+                    }else {
+                        puntos += cartas[i].getValorNumero();
+                        cantidadParejas++;
+                    }
                 }
+            }
+            if(cantidadParejas == 2 && !trio){
+
             }
             //TODO Terminar
 
             //Si cantidadPareja es menor de 1 significa que solo hay una pareja y devuelve 0
             //Si cantidad pareja es igual a 3 significa que hay un poker y se devuelve 0
 
-            if (cantidadParejas < 1 || cantidadParejas == 3){
+            //TODO ESTO CREO QUE SOBRA CON EL IF DE ARRIBA
+            if (cantidadParejas < 1 || cantidadParejas == 3 || trio){
                 puntos = 0;
-            }else{
-                puntos += 26;
             }
         }
         return puntos;

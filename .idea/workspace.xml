@@ -24,11 +24,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="951" />
-    <option name="height" value="735" />
-  </component>
   <component name="ProjectId" id="1SqUc3Vy0QBxdxqLuVotYhImE3f" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
@@ -191,6 +186,7 @@
       <workItem from="1572699044535" duration="5421000" />
       <workItem from="1572938779738" duration="15032000" />
       <workItem from="1573025001827" duration="17385000" />
+      <workItem from="1573112850731" duration="1411000" />
     </task>
     <servers />
   </component>
@@ -235,11 +231,6 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java</url>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java</url>
-          <line>215</line>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
