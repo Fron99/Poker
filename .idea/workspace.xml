@@ -2,13 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9a3eddb-34fe-4dec-b858-4173adae43d5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PokerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PokerMain.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="73">
+              <caret line="253" column="203" selection-start-line="253" selection-start-column="203" selection-end-line="253" selection-end-column="203" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="121">
+              <caret line="94" selection-start-line="94" selection-end-line="94" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -24,8 +49,73 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/PokerMain.java" />
+        <option value="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="16" />
+    <option name="y" value="69" />
+    <option name="width" value="951" />
+    <option name="height" value="735" />
+  </component>
   <component name="ProjectId" id="1SqUc3Vy0QBxdxqLuVotYhImE3f" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Poker" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Poker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Poker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Clases" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Poker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Clases" type="462c0819:PsiDirectoryNode" />
+              <item name="Gestoras" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Poker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Clases" type="462c0819:PsiDirectoryNode" />
+              <item name="Resguardos" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Poker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
@@ -33,7 +123,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573045720693" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573133892470" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -64,7 +154,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.GestoraCartaImplTest">
+  <component name="RunManager" selected="Application.PokerMain">
+    <configuration name="PokerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="PokerMain" />
+      <module name="ElBromas" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GestoraCartaImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ElBromas" />
       <extension name="coverage">
@@ -128,29 +225,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GestoraCartaImplTest.testCalcularValorEscalera5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ElBromas" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCartaImplTest" />
-      <option name="METHOD_NAME" value="testCalcularValorEscalera5" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PokerMain" />
         <item itemvalue="JUnit.GestoraCartaImplTest" />
         <item itemvalue="JUnit.GestoraCartaImplTest.testCalcularValorEscalera4" />
         <item itemvalue="JUnit.GestoraCartaImplTest.testCalcularValorEscalera3" />
         <item itemvalue="JUnit.GestoraCartaImplTest.testCalcularValorEscalera2" />
-        <item itemvalue="JUnit.GestoraCartaImplTest.testCalcularValorEscalera5" />
       </list>
     </recent_temporary>
   </component>
@@ -187,8 +268,52 @@
       <workItem from="1572938779738" duration="15032000" />
       <workItem from="1573025001827" duration="17385000" />
       <workItem from="1573112850731" duration="1411000" />
+      <workItem from="1573114999108" duration="6434000" />
     </task>
     <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="GestoraCartaImplTest - 2019.11.07 at 10h 51m 00s.xml">
+      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="6434000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.95090014" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -199,6 +324,12 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
@@ -226,11 +357,19 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/String.java</url>
           <line>371</line>
+          <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java</url>
+          <properties />
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/PokerMain.java</url>
+          <line>105</line>
+          <properties />
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -258,6 +397,11 @@
       </expression>
     </expressions>
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>baraja[numPosicionCarta]</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>cartas[2+1].getPalo()</expression-string>
         <language-id>JAVA</language-id>
@@ -298,12 +442,65 @@
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>cartas[0].getValorNumero()+1</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2226">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/Resguardos/ResguardosMesaImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1553">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/ClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="487" selection-start-line="487" selection-end-line="487" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="242" selection-start-line="242" selection-end-line="242" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PokerMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-151">
+          <caret line="128" column="57" selection-start-line="128" selection-start-column="57" selection-end-line="128" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="94" selection-start-line="94" selection-end-line="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="95" column="56" selection-start-line="95" selection-start-column="56" selection-end-line="95" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="73">
+          <caret line="253" column="203" selection-start-line="253" selection-start-column="203" selection-end-line="253" selection-end-column="203" />
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>

@@ -248,31 +248,32 @@ public class GestoraCartaImpl {
      */
 
     public int calcularValorDoblePareja(CartaImpl[] cartas){
-        int puntos = 0, cantidadParejas = 0;
+        int puntos = 0, cantidadParejas = 0, numPareja1, numPareja2, numPareja3, numPareja4;
+        int [] posicionParejas = new int[3];
         boolean trio = false;
+        int [][] posibilidades = {{1,2},{1,3},{2,3},{1,4},{2,4},{3,4},{1,5},{2,5},{3,5},{4,5},{1,6},{2,6},{3,6},{4,6},{5,6},{1,7},{2,7},{3,7},{4,7},{5,7},{6,7},{1,8},{2,8},{3,8},{4,8},{5,8},{6,8},{7,8},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}};
+
         if (cartas.length>3){
-            for (int i = 0;i<cartas.length-1 && !trio;i++){
+            for (int i = 0, j = 0;i<cartas.length-1 && !trio && cantidadParejas < 3;i++){
                 if (cartas[i].getNumero().equals(cartas[i+1].getNumero())){
-                    //Esto comprueba que no haya un trio en el array. En el caso de que exista un trio devolvera 0
-                    if (cartas[i].getNumero().equals(cartas[i+1].getNumero()) && cartas[i].getNumero().equals(cartas[i+2].getNumero())){
-                        trio = true;
-                    }else {
-                        puntos += cartas[i].getValorNumero();
-                        cantidadParejas++;
+                    //Este if se utiliza para controlar excepciones de ArrayIndexOutOfBoundsException
+                    //Si i == cartas.length-2 significa que solo quedaran 2 cartar por lo cual no hay que comoprobar la tercera para ver si hay trio
+                    if(i == cartas.length-2){
+                        //Esto comprueba que no haya un trio en el array. En el caso de que exista un trio devolvera 0
+                        if (cartas[i].getNumero().equals(cartas[i+1].getNumero()) && cartas[i].getNumero().equals(cartas[i+2].getNumero())){
+                            trio = true;
+                        }else {
+                            cantidadParejas++;
+                            posicionParejas[j] = i;
+                            j++;
+                        }
                     }
+
                 }
             }
+            //Solo se ejecutara cuando haya dos dobles parejas que sean diferentes y no haya trio
             if(cantidadParejas == 2 && !trio){
 
-            }
-            //TODO Terminar
-
-            //Si cantidadPareja es menor de 1 significa que solo hay una pareja y devuelve 0
-            //Si cantidad pareja es igual a 3 significa que hay un poker y se devuelve 0
-
-            //TODO ESTO CREO QUE SOBRA CON EL IF DE ARRIBA
-            if (cantidadParejas < 1 || cantidadParejas == 3 || trio){
-                puntos = 0;
             }
         }
         return puntos;
@@ -312,7 +313,7 @@ public class GestoraCartaImpl {
                     if ( (cartas[i].getNumero().equals(cartas[i+1].getNumero()))
                             && (cartas[i].getNumero().equals(cartas[i+2].getNumero())) ){
 
-                        puntos = 117+cartas[i].getValorNumero();
+                        puntos = 104+cartas[i].getValorNumero();
 
                     }
                 }
@@ -375,11 +376,11 @@ public class GestoraCartaImpl {
                     //En el caso de que pueda ser A,2,3,4,5,6 o incluso A,2,3,4,5,6,7 se realizara este bucle for para coger la escalera mas alta.
                     if (cartasNoRepetidas.get(4).getValorNumero() == cartasNoRepetidas.get(3).getValorNumero()) {
                         for (int i = 3, j = 0; cartasNoRepetidas.get(i + 1).getValorNumero() == cartasNoRepetidas.get(i).getValorNumero(); i++, j++) {
-                            puntos = 130 + cartasNoRepetidas.get(j).getValorNumero();
+                            puntos = 117 + cartasNoRepetidas.get(j).getValorNumero();
                         }
                     } else {
                         //En el cado de que no haya una escalera mas grande se coloca la escalera del A,2,3,4,5
-                        puntos = 130 + cartasNoRepetidas.get(0).getValorNumero();
+                        puntos = 117 + cartasNoRepetidas.get(0).getValorNumero();
                     }
                 }
 
@@ -394,7 +395,7 @@ public class GestoraCartaImpl {
 
                         //Se le suma 1 a la cantidad total porque el valor 131 se deja guardado para la escalera A,2,3,4,5
                         //Si no se le sumara 1 la escalera 2,3,4,5,6 tendria el mismo valor que la escalera A,2,3,4,5 por el echo de como se ordenan las cartas de mayor a menor
-                        puntos = 130 + (cartasNoRepetidas.get(i).getValorNumero()+1);
+                        puntos = 117 + (cartasNoRepetidas.get(i).getValorNumero()+1);
 
                     }
 
@@ -450,7 +451,7 @@ public class GestoraCartaImpl {
 
             }
 
-            puntos = 140 + cartaAltaColor.getValorNumero();
+            puntos = 127 + cartaAltaColor.getValorNumero();
 
         }
         return puntos;
@@ -497,7 +498,7 @@ public class GestoraCartaImpl {
                         && (cartas[i].getNumero().equals(cartas[i+2].getNumero()))
                         && (cartas[i].getNumero().equals(cartas[i+3].getNumero()))){
 
-                    puntos = 244+cartas[i].getValorNumero();
+                    puntos = 219+cartas[i].getValorNumero();
 
                 }
             }
@@ -568,11 +569,11 @@ public class GestoraCartaImpl {
                         //En el caso de que pueda ser A,2,3,4,5,6 o incluso A,2,3,4,5,6,7 se realizara este bucle for para coger la escalera mas alta.
                         if (cartasColor[4].getValorNumero() == cartasColor[3].getValorNumero()) {
                             for (int i = 3, j = 0; cartasColor[i + 1].getValorNumero() == cartasColor[i].getValorNumero(); i++, j++) {
-                                puntos = 257 + cartasColor[j].getValorNumero();
+                                puntos = 132 + cartasColor[j].getValorNumero();
                             }
                         } else {
                             //En el cado de que no haya una escalera mas grande se coloca la escalera del A,2,3,4,5
-                            puntos = 257 + cartasColor[0].getValorNumero();
+                            puntos = 232 + cartasColor[0].getValorNumero();
                         }
                     }
 
@@ -585,7 +586,7 @@ public class GestoraCartaImpl {
                                 && (cartasColor[i+3].getValorNumero() == ((cartasColor[i+2].getValorNumero()) + 1))
                                 && (cartasColor[i+4].getValorNumero() == ((cartasColor[i+3].getValorNumero()) + 1))) {
 
-                            puntos = 257 + (cartas[i].getValorNumero()) + 1;
+                            puntos = 232 + (cartas[i].getValorNumero()) + 1;
 
                         }
 

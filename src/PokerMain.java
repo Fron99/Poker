@@ -80,7 +80,6 @@ public class PokerMain {
         String usuarioJugador;
         int saldoInicialJugador, turnoJugador, cantidadGanadores = 0;
         MesaImpl mesa = new MesaImpl();
-        CartaImpl[] baraja = new CartaImpl[54];
 
         //leerUsuario
         usuarioJugador = gesJugador.leerUsuario();
@@ -107,7 +106,7 @@ public class PokerMain {
             mesa.restaurarBaraja();
 
             //generarCartasJugadores
-            gesMesa.generarCartasJugadores(baraja,mesa);    //Asigna 2 cartas a cada jugador sin reeptir carta.
+            gesMesa.generarCartasJugadores(mesa.getBaraja(),mesa);    //Asigna 2 cartas a cada jugador sin reeptir carta.
 
             //mostrarPanelJuego
             gesMesa.mostrarPanelJuego(mesa);
@@ -116,7 +115,7 @@ public class PokerMain {
             gesMesa.realizarApuestas(turnoJugador,mesa);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
 
             //generarTresCartasMesa
-            gesMesa.generarTresCartasMesa(baraja,mesa.getCartasMesa());  //Coloca 3 cartas aleatorias en el array de las cartas que hay en esta mesa
+            gesMesa.generarTresCartasMesa(mesa.getBaraja(),mesa.getCartasMesa());  //Coloca 3 cartas aleatorias en el array de las cartas que hay en esta mesa
 
             //mostrarPanelJuego
             gesMesa.mostrarPanelJuego(mesa);
@@ -127,7 +126,7 @@ public class PokerMain {
             for (int contador = 0; contador < 2; contador++){
 
                 //generarCartaMesa
-                gesMesa.generarCartaMesa(baraja,mesa.getCartasMesa());
+                gesMesa.generarCartaMesa(mesa.getBaraja(),mesa.getCartasMesa());
 
                 //mostrarPanelJuego
                 gesMesa.mostrarPanelJuego(mesa);
