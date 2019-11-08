@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b9a3eddb-34fe-4dec-b858-4173adae43d5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="491" column="22" selection-start-line="491" selection-start-column="22" selection-end-line="491" selection-end-column="22" />
+            <state relative-caret-position="226">
+              <caret line="496" column="75" lean-forward="true" selection-start-line="496" selection-start-column="75" selection-end-line="496" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -136,7 +135,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573210344908" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573210817157" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -291,7 +290,7 @@
       <workItem from="1573025001827" duration="17385000" />
       <workItem from="1573112850731" duration="1411000" />
       <workItem from="1573114999108" duration="6434000" />
-      <workItem from="1573197908052" duration="6537000" />
+      <workItem from="1573197908052" duration="7353000" />
     </task>
     <servers />
   </component>
@@ -328,11 +327,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12971000" />
+    <option name="totallyTimeSpent" value="13787000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -553,8 +551,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="491" column="22" selection-start-line="491" selection-start-column="22" selection-end-line="491" selection-end-column="22" />
+        <state relative-caret-position="226">
+          <caret line="496" column="75" lean-forward="true" selection-start-line="496" selection-start-column="75" selection-end-line="496" selection-end-column="75" />
         </state>
       </provider>
     </entry>

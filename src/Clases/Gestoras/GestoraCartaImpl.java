@@ -257,7 +257,7 @@ public class GestoraCartaImpl {
             for (int i = 0, j = 0;i<cartas.length-1 && !trio && cantidadParejas < 3;i++){
                 if (cartas[i].getNumero().equals(cartas[i+1].getNumero())){
                     //Este if se utiliza para controlar excepciones de ArrayIndexOutOfBoundsException
-                    //Si i == cartas.length-2 significa que solo quedaran 2 cartar por lo cual no hay que comoprobar la tercera para ver si hay trio
+                    //Si i == cartas.length-3 significa que solo quedaran 2 cartas por lo cual no hay que comoprobar la tercera para ver si hay trio
                     if(i <= cartas.length-3){
                         //Esto comprueba que no haya un trio en el array. En el caso de que exista un trio devolvera 0
                         if (cartas[i].getNumero().equals(cartas[i+1].getNumero()) && cartas[i].getNumero().equals(cartas[i+2].getNumero())){
@@ -489,6 +489,16 @@ public class GestoraCartaImpl {
 
     public int calcularValorFull(CartaImpl[] cartas){
         int puntos = 0;
+        int cantidadTrios = 0, cantidadParejas = 0;
+        int [][] posibilidades = {{0,0},{1,2},{1,3},{2,3},{1,4},{2,4},{3,4},{1,5},{2,5},{3,5},{4,5},{1,6},{2,6},{3,6},{4,6},{5,6},{1,7},{2,7},{3,7},{4,7},{5,7},{6,7},{1,8},{2,8},{3,8},{4,8},{5,8},{6,8},{7,8},{1,9},{2,9},{3,9},{4,9},{5,9},{6,9},{7,9},{8,9},{1,10},{2,10},{3,10},{4,10},{5,10},{6,10},{7,10},{8,10},{9,10},{1,11},{2,11},{3,11},{4,11},{5,11},{6,11},{7,11},{8,11},{9,11},{10,11},{1,12},{2,12},{3,12},{4,12},{5,12},{6,12},{7,12},{8,12},{9,12},{10,12},{11,12},{1,13},{2,13},{3,13},{4,13},{5,13},{6,13},{7,13},{8,13},{9,13},{10,13},{11,13},{12,13}};
+
+        if (cartas.length>4){
+            for (int i = 0;i<cartas.length-2;i++){
+                if (cartas[i].getNumero().equals(cartas[i+1].getNumero())){
+
+                }
+            }
+        }
         return puntos;
     }
 
