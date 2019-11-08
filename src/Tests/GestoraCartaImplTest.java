@@ -93,7 +93,7 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorDoblePareja(cartas);
-        assertEquals(valor,40);
+        assertEquals(valor,93);
     }
 
     @Test
@@ -111,7 +111,52 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorDoblePareja(cartas);
-        assertEquals(valor,51);
+        assertEquals(valor,104);
+    }
+
+    @Test
+    public void testCalcularValorDoblePareja3(){
+        CartaImpl[] cartas = {new CartaImpl('P',"A"), new CartaImpl('R',"K"), new CartaImpl('C',"A"), new CartaImpl('T',"K"), new CartaImpl('T',"A")};
+        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ges.ordenarCartas(cartas);
+        int valor = ges.calcularValorDoblePareja(cartas);
+        assertEquals(valor,0);
+    }
+
+    @Test
+    public void testCalcularValorDoblePareja4(){
+        CartaImpl[] cartas = {new CartaImpl('P',"2"), new CartaImpl('R',"3"), new CartaImpl('C',"4"), new CartaImpl('T',"5"), new CartaImpl('T',"6")};
+        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ges.ordenarCartas(cartas);
+        int valor = ges.calcularValorDoblePareja(cartas);
+        assertEquals(valor,0);
+    }
+
+    @Test
+    public void testCalcularValorDoblePareja5(){
+        CartaImpl[] cartas = {new CartaImpl('P',"2"), new CartaImpl('R',"2"), new CartaImpl('C',"4"), new CartaImpl('T',"5"), new CartaImpl('T',"6")};
+        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ges.ordenarCartas(cartas);
+        int valor = ges.calcularValorDoblePareja(cartas);
+        assertEquals(valor,0);
+    }
+
+    @Test
+    public void testCalcularValorDoblePareja6(){
+        CartaImpl[] cartas = {new CartaImpl('P',"2"), new CartaImpl('R',"2"), new CartaImpl('C',"3"), new CartaImpl('T',"3"), new CartaImpl('T',"4"), new CartaImpl('R',"4")};
+        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ges.ordenarCartas(cartas);
+        int valor = ges.calcularValorDoblePareja(cartas);
+        assertEquals(valor,29);
+    }
+
+    @Test
+    public void testCalcularValorDoblePareja7(){
+        CartaImpl[] cartas = {new CartaImpl('P',"2"), new CartaImpl('R',"2"), new CartaImpl('C',"2"), new CartaImpl('T',"A"), new CartaImpl('T',"A"), new CartaImpl('R',"4")};
+        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ges.ordenarCartas(cartas);
+        int valor = ges.calcularValorDoblePareja(cartas);
+        assertEquals(valor,0);
     }
 
     @Test
@@ -129,7 +174,7 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorTrio(cartas);
-        assertEquals(valor,130);
+        assertEquals(valor,117);
     }
 
     @Test
@@ -138,7 +183,7 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorTrio(cartas);
-        assertEquals(valor,118);
+        assertEquals(valor,105);
     }
 
     @Test
@@ -156,7 +201,7 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorTrio(cartas);
-        assertEquals(valor,119);
+        assertEquals(valor,106);
     }
 
     @Test
@@ -165,7 +210,7 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorTrio(cartas);
-        assertEquals(valor,121);
+        assertEquals(valor,108);
     }
 
     @Test
@@ -198,7 +243,7 @@ public class GestoraCartaImplTest {
         CartaImpl[] cartas = {new CartaImpl('P',"6"), new CartaImpl('R',"4"), new CartaImpl('C',"7"), new CartaImpl('T',"A"), new CartaImpl('R',"5"), new CartaImpl('R',"9"), new CartaImpl('R',"8")};
         GestoraCartaImpl ges = new GestoraCartaImpl();
         int valor = ges.calcularValorEscalera(cartas);
-        assertEquals(valor,135);
+        assertEquals(valor,122);
     }
 
     @Test
@@ -206,7 +251,7 @@ public class GestoraCartaImplTest {
         CartaImpl[] cartas = {new CartaImpl('P',"2"), new CartaImpl('R',"4"), new CartaImpl('C',"3"), new CartaImpl('T',"A"), new CartaImpl('R',"5"), new CartaImpl('R',"9"), new CartaImpl('R',"8")};
         GestoraCartaImpl ges = new GestoraCartaImpl();
         int valor = ges.calcularValorEscalera(cartas);
-        assertEquals(valor,131);
+        assertEquals(valor,118);
     }
 
     @Test
@@ -214,7 +259,7 @@ public class GestoraCartaImplTest {
         CartaImpl[] cartas = {new CartaImpl('P',"A"), new CartaImpl('R',"10"), new CartaImpl('C',"3"), new CartaImpl('T',"A"), new CartaImpl('R',"K"), new CartaImpl('R',"Q"), new CartaImpl('R',"J")};
         GestoraCartaImpl ges = new GestoraCartaImpl();
         int valor = ges.calcularValorEscalera(cartas);
-        assertEquals(valor,140);
+        assertEquals(valor,127);
     }
 
     @Test
@@ -222,7 +267,7 @@ public class GestoraCartaImplTest {
         CartaImpl[] cartas = {new CartaImpl('P',"A"), new CartaImpl('R',"10"), new CartaImpl('C',"Q"), new CartaImpl('T',"A"), new CartaImpl('R',"K"), new CartaImpl('R',"Q"), new CartaImpl('R',"J")};
         GestoraCartaImpl ges = new GestoraCartaImpl();
         int valor = ges.calcularValorEscalera(cartas);
-        assertEquals(valor,140);
+        assertEquals(valor,127);
     }
 
     @Test
@@ -231,7 +276,7 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorColor(cartas);
-        assertEquals(valor,152);
+        assertEquals(valor,139);
     }
 
     @Test
@@ -240,7 +285,7 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorColor(cartas);
-        assertEquals(valor,153);
+        assertEquals(valor,140);
     }
 
     @Test
@@ -258,7 +303,7 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorColor(cartas);
-        assertEquals(valor,145);
+        assertEquals(valor,132);
     }
 
     @Test
@@ -267,7 +312,7 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorPoker(cartas);
-        assertEquals(valor,249);
+        assertEquals(valor,224);
     }
 
     @Test
@@ -276,7 +321,7 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorPoker(cartas);
-        assertEquals(valor,257);
+        assertEquals(valor,232);
     }
 
     @Test
@@ -285,7 +330,7 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorPoker(cartas);
-        assertEquals(valor,245);
+        assertEquals(valor,220);
     }
 
     @Test
@@ -303,7 +348,7 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorEscaleraColor(cartas);
-        assertEquals(valor,258);
+        assertEquals(valor,233);
     }
 
     @Test
@@ -312,7 +357,7 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorEscaleraColor(cartas);
-        assertEquals(valor,267);
+        assertEquals(valor,242);
     }
 
     @Test
@@ -330,7 +375,7 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorEscaleraColor(cartas);
-        assertEquals(valor,258);
+        assertEquals(valor,233);
     }
 
     @Test
@@ -339,7 +384,7 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorEscaleraColor(cartas);
-        assertEquals(valor,258);
+        assertEquals(valor,233);
     }
 
     @Test
@@ -348,7 +393,7 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorEscaleraColor(cartas);
-        assertEquals(valor,267);
+        assertEquals(valor,242);
     }
 
     @Test
@@ -357,7 +402,7 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorEscaleraColor(cartas);
-        assertEquals(valor,267);
+        assertEquals(valor,242);
     }
 
     @Test
@@ -366,7 +411,7 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorEscaleraColor(cartas);
-        assertEquals(valor,267);
+        assertEquals(valor,242);
     }
 
     @Test
@@ -375,7 +420,7 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorEscaleraColor(cartas);
-        assertEquals(valor,267);
+        assertEquals(valor,242);
     }
 
     @Test
@@ -384,7 +429,7 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorEscaleraColor(cartas);
-        assertEquals(valor,258);
+        assertEquals(valor,233);
     }
 
     @Test
@@ -393,7 +438,7 @@ public class GestoraCartaImplTest {
         GestoraCartaImpl ges = new GestoraCartaImpl();
         ges.ordenarCartas(cartas);
         int valor = ges.calcularValorEscaleraColor(cartas);
-        assertEquals(valor,258);
+        assertEquals(valor,233);
     }
 
 
