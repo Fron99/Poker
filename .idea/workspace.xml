@@ -10,28 +10,6 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="496" column="75" lean-forward="true" selection-start-line="496" selection-start-column="75" selection-end-line="496" selection-end-column="75" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="158" column="28" selection-start-line="158" selection-start-column="28" selection-end-line="158" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -46,15 +24,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/PokerMain.java" />
-        <option value="$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java" />
-        <option value="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" />
-      </list>
-    </option>
-  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="16" />
     <option name="y" value="69" />
@@ -63,71 +32,6 @@
   </component>
   <component name="ProjectId" id="1SqUc3Vy0QBxdxqLuVotYhImE3f" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Poker" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Poker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Poker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Clases" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Poker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Clases" type="462c0819:PsiDirectoryNode" />
-              <item name="Basicas" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Poker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Clases" type="462c0819:PsiDirectoryNode" />
-              <item name="Gestoras" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Poker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Clases" type="462c0819:PsiDirectoryNode" />
-              <item name="Interfaces" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Poker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Clases" type="462c0819:PsiDirectoryNode" />
-              <item name="Resguardos" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Poker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Tests" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
-  </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
@@ -166,7 +70,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.GestoraCartaImplTest">
+  <component name="RunManager">
     <configuration name="GestoraCartaImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ElBromas" />
       <extension name="coverage">
@@ -182,77 +86,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GestoraCartaImplTest.testCalcularValorDoblePareja4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ElBromas" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCartaImplTest" />
-      <option name="METHOD_NAME" value="testCalcularValorDoblePareja4" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GestoraCartaImplTest.testCalcularValorDoblePareja5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ElBromas" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCartaImplTest" />
-      <option name="METHOD_NAME" value="testCalcularValorDoblePareja5" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GestoraCartaImplTest.testCalcularValorDoblePareja6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ElBromas" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCartaImplTest" />
-      <option name="METHOD_NAME" value="testCalcularValorDoblePareja6" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GestoraCartaImplTest.testCalcularValorDoblePareja7" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ElBromas" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCartaImplTest" />
-      <option name="METHOD_NAME" value="testCalcularValorDoblePareja7" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GestoraCartaImplTest.testCalcularValorDoblePareja7" />
         <item itemvalue="JUnit.GestoraCartaImplTest" />
-        <item itemvalue="JUnit.GestoraCartaImplTest.testCalcularValorDoblePareja6" />
-        <item itemvalue="JUnit.GestoraCartaImplTest.testCalcularValorDoblePareja5" />
-        <item itemvalue="JUnit.GestoraCartaImplTest.testCalcularValorDoblePareja4" />
       </list>
     </recent_temporary>
   </component>
@@ -294,75 +130,6 @@
     </task>
     <servers />
   </component>
-  <component name="TestHistory">
-    <history-entry file="GestoraCartaImplTest_testCalcularValorDoblePareja3 - 2019.11.08 at 09h 13m 36s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorDoblePareja3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest_testCalcularValorDoblePareja3 - 2019.11.08 at 09h 15m 09s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorDoblePareja3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest_testCalcularValorDoblePareja3 - 2019.11.08 at 09h 15m 22s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorDoblePareja3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest_testCalcularValorDoblePareja4 - 2019.11.08 at 09h 20m 51s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorDoblePareja4" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest_testCalcularValorDoblePareja5 - 2019.11.08 at 09h 21m 07s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorDoblePareja5" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest_testCalcularValorDoblePareja6 - 2019.11.08 at 09h 21m 50s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorDoblePareja6" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest - 2019.11.08 at 09h 22m 00s.xml">
-      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest - 2019.11.08 at 09h 22m 16s.xml">
-      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest_testCalcularValorDoblePareja7 - 2019.11.08 at 09h 23m 02s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorDoblePareja7" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest_testCalcularValorDoblePareja7 - 2019.11.08 at 09h 23m 08s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorDoblePareja7" configurationId="JUnit" />
-    </history-entry>
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13787000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.23240589" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="12" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Maven" order="6" />
-      <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
@@ -372,12 +139,6 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
@@ -405,18 +166,15 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/String.java</url>
           <line>371</line>
-          <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java</url>
-          <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/PokerMain.java</url>
           <line>105</line>
-          <properties />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
@@ -424,138 +182,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ElBromas$ElBromasMain.ic" NAME="ElBromasMain Coverage Results" MODIFIED="1571938195981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-  </component>
-  <component name="debuggerHistoryManager">
-    <expressions id="setValue">
-      <expression>
-        <expression-string>'R'</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>&quot;R&quot;</expression-string>
-        <language-id>JAVA</language-id>
-        <custom-info>java.util.Random</custom-info>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>'R' 80</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
-    <expressions id="evaluateExpression">
-      <expression>
-        <expression-string>baraja[numPosicionCarta]</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>cartas[2+1].getPalo()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>cartas[2].getValorNumero()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>cartas[2+1].getValorNumero()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>(cartas[2+1].getValorNumero() == ((cartas[2].getValorNumero()) + 1) &amp;&amp; cartas[2+1].getPalo() == color</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>(cartas[1+1].getValorNumero() == ((cartas[1].getValorNumero()) + 1) &amp;&amp; cartas[1+1].getPalo() == color</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>(cartas[0+1].getValorNumero() == ((cartas[0].getValorNumero()) + 1) &amp;&amp; cartas[0+1].getPalo() == color</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>(cartas[1+1].getValorNumero() == ((cartas[1].getValorNumero()) + 1)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>(cartas[1+1].getValorNumero() == ((cartas[i1].getValorNumero()) + 1)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2226">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/Resguardos/ResguardosMesaImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1553">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/ClassLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="487" selection-start-line="487" selection-end-line="487" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="242" selection-start-line="242" selection-end-line="242" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PokerMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-151">
-          <caret line="128" column="57" selection-start-line="128" selection-start-column="57" selection-end-line="128" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="95" column="56" selection-start-line="95" selection-start-column="56" selection-end-line="95" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="158" column="28" selection-start-line="158" selection-start-column="28" selection-end-line="158" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="496" column="75" lean-forward="true" selection-start-line="496" selection-start-column="75" selection-end-line="496" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>
