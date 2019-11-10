@@ -537,10 +537,18 @@ public class GestoraCartaImpl {
 
             if (cantidadParejas > 0 && cantidadTrios > 0){
 
-                for(int i = 0; i<posibilidades.length-1 && puntos==0;i++){
+                for(int i = 0; i<posibilidades.length-1 && puntos == 0;i++){
                     for (int j = 0; j<posibilidades.length && puntos==0; j++){
-                        if ((posibilidades[j][0] == valorPareja && posibilidades[j][1] == valorTrio) || (posibilidades[j][0] == valorTrio && posibilidades[j][1] == valorPareja)){
+                        if (posibilidades[j][0] == valorPareja && posibilidades[j][1] == valorTrio){
                             puntos = 140 + j;
+                        }
+                    }
+                }
+
+                for(int i = 0; i<posibilidades.length-1 && puntos == 0;i++){
+                    for (int j = 0; j<posibilidades.length && puntos==0; j++){
+                        if (posibilidades[j][0] == valorTrio && posibilidades[j][1] == valorPareja){
+                            puntos = 219 + j;
                         }
                     }
                 }
@@ -576,7 +584,7 @@ public class GestoraCartaImpl {
                         && (cartas[i].getNumero().equals(cartas[i+2].getNumero()))
                         && (cartas[i].getNumero().equals(cartas[i+3].getNumero()))){
 
-                    puntos = 219+cartas[i].getValorNumero();
+                    puntos = 298+cartas[i].getValorNumero();
 
                 }
             }
@@ -647,11 +655,11 @@ public class GestoraCartaImpl {
                         //En el caso de que pueda ser A,2,3,4,5,6 o incluso A,2,3,4,5,6,7 se realizara este bucle for para coger la escalera mas alta.
                         if (cartasColor[4].getValorNumero() == cartasColor[3].getValorNumero()) {
                             for (int i = 3, j = 0; cartasColor[i + 1].getValorNumero() == cartasColor[i].getValorNumero(); i++, j++) {
-                                puntos = 132 + cartasColor[j].getValorNumero();
+                                puntos = 311 + cartasColor[j].getValorNumero();
                             }
                         } else {
                             //En el cado de que no haya una escalera mas grande se coloca la escalera del A,2,3,4,5
-                            puntos = 232 + cartasColor[0].getValorNumero();
+                            puntos = 311 + cartasColor[0].getValorNumero();
                         }
                     }
 
@@ -664,7 +672,7 @@ public class GestoraCartaImpl {
                                 && (cartasColor[i+3].getValorNumero() == ((cartasColor[i+2].getValorNumero()) + 1))
                                 && (cartasColor[i+4].getValorNumero() == ((cartasColor[i+3].getValorNumero()) + 1))) {
 
-                            puntos = 232 + (cartas[i].getValorNumero()) + 1;
+                            puntos = 311 + (cartas[i].getValorNumero()) + 1;
 
                         }
 

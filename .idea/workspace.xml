@@ -24,12 +24,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="16" />
-    <option name="y" value="69" />
-    <option name="width" value="951" />
-    <option name="height" value="735" />
-  </component>
   <component name="ProjectId" id="1SqUc3Vy0QBxdxqLuVotYhImE3f" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
@@ -70,7 +64,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.GestoraCartaImplTest.testCalcularValorFull2">
     <configuration name="GestoraCartaImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ElBromas" />
       <extension name="coverage">
@@ -86,8 +80,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="GestoraCartaImplTest.testCalcularValorFull2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ElBromas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCartaImplTest" />
+      <option name="METHOD_NAME" value="testCalcularValorFull2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GestoraCartaImplTest.testCalcularValorFull2" />
         <item itemvalue="JUnit.GestoraCartaImplTest" />
       </list>
     </recent_temporary>
