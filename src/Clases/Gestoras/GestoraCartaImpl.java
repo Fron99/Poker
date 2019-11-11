@@ -40,7 +40,6 @@ public class GestoraCartaImpl {
 
         //Ordenar las cartas obtenidas
         gesCarta.ordenarCartas(cartasAEvaluar);
-        gesCarta.ordenarCartas(cartasAEvaluar);
 
         //Va comprobando todos los valores de las distintas posibilidades que tiene el jugador y se queda con la posibilidad mas alta.
         puntosFinales = calcularValorCartaAlta(cartasAEvaluar);
@@ -70,10 +69,10 @@ public class GestoraCartaImpl {
             puntosFinales = puntosCalculados;
         }
 
-        //puntosCalculados = calcularValorPoker(cartasAEvaluar);
-        //if (puntosCalculados>puntosFinales){
-            //puntosFinales = puntosCalculados;
-        //}
+        puntosCalculados = calcularValorPoker(cartasAEvaluar);
+        if (puntosCalculados>puntosFinales){
+            puntosFinales = puntosCalculados;
+        }
 
         puntosCalculados = calcularValorPoker(cartasAEvaluar);
         if (puntosCalculados>puntosFinales){
@@ -500,8 +499,7 @@ public class GestoraCartaImpl {
         int cantidadTrios = 0, cantidadParejas = 0;
         int valorTrio = 0, valorPareja = 0;
         boolean trio = false;
-        int [][] posibilidades = {{0,0},{1,2},{1,3},{2,3},{1,4},{2,4},{3,4},{1,5},{2,5},{3,5},{4,5},{1,6},{2,6},{3,6},{4,6},{5,6},{1,7},{2,7},{3,7},{4,7},{5,7},{6,7},{1,8},{2,8},{3,8},{4,8},{5,8},{6,8},{7,8},{1,9},{2,9},{3,9},{4,9},{5,9},{6,9},{7,9},{8,9},{1,10},{2,10},{3,10},{4,10},{5,10},{6,10},{7,10},{8,10},{9,10},{1,11},{2,11},{3,11},{4,11},{5,11},{6,11},{7,11},{8,11},{9,11},{10,11},{1,12},{2,12},{3,12},{4,12},{5,12},{6,12},{7,12},{8,12},{9,12},{10,12},{11,12},{1,13},{2,13},{3,13},{4,13},{5,13},{6,13},{7,13},{8,13},{9,13},{10,13},{11,13},{12,13}};
-
+        int [][] posibilidades = {{0,0},{1,2},{1,3},{1,4},{1,5},{1,6},{1,7},{1,8},{1,9},{1,10},{1,11},{1,12},{1,13},{2,1},{2,3},{2,4},{2,5},{2,6},{2,7},{2,8},{2,9},{2,10},{2,11},{2,12},{2,13},{3,1},{3,2},{3,4},{3,5},{3,6},{3,7},{3,8},{3,9},{3,10},{3,11},{3,12},{3,13},{4,1},{4,2},{4,3},{4,5},{4,6},{4,7},{4,8},{4,9},{4,10},{4,11},{4,12},{4,13},{5,1},{5,2},{5,3},{5,4},{5,6},{5,7},{5,8},{5,9},{5,10},{5,11},{5,12},{5,13}   ,{6,1},{6,2},{6,3},{6,4},{6,5},{6,7},{6,8},{6,9},{6,10},{6,11},{6,12},{6,13}   ,{7,1},{7,2},{7,3},{7,4},{7,5},{7,6},{7,8},{7,9},{7,10},{7,11},{7,12},{7,13}   ,{8,1},{8,2},{8,3},{8,4},{8,5},{8,6},{8,7},{8,9},{8,10},{8,11},{8,12},{8,13}    ,{9,1},{9,2},{9,3},{9,4},{9,5},{9,6},{9,7},{9,8},{9,10},{9,11},{9,12},{9,13}    ,{10,1},{10,2},{10,3},{10,4},{10,5},{10,6},{10,7},{10,8},{10,9},{10,11},{10,12},{10,13}    ,{11,1},{11,2},{11,3},{11,4},{11,5},{11,6},{11,7},{11,8},{11,9},{11,10},{11,12},{11,13}    ,{12,1},{12,2},{12,3},{12,4},{12,5},{12,6},{12,7},{12,8},{12,9},{12,10},{12,11},{12,13}    ,{13,1},{13,2},{13,3},{13,4},{13,5},{13,6},{13,7},{13,8},{13,9},{13,10},{13,11},{13,12}};
         //TODO DOCUMENTAR CODIGO Y HACER MAS PRUEBAS
         //TODO INVESTIGAR QUE UN TRIO DE 3 Y PAREJA DE 2 NO VALGA LO MISMO QUE UN TRIO DE 2 Y UNA PAREJA DE 3
 
@@ -515,9 +513,7 @@ public class GestoraCartaImpl {
             }
 
             for (int i = 0; i < cartas.length-1 && trio; i++) {
-                if (cartas[i].getValorNumero() == valorTrio){
-                    i++;
-                }else{
+                if (cartas[i].getValorNumero() != valorTrio){
                     if (cartas[i].getValorNumero() == cartas[i + 1].getValorNumero()) {
                         if (i <= cartas.length - 3) {
                             if (cartas[i].getValorNumero() != cartas[i + 2].getValorNumero()) {
@@ -539,16 +535,8 @@ public class GestoraCartaImpl {
 
                 for(int i = 0; i<posibilidades.length-1 && puntos == 0;i++){
                     for (int j = 0; j<posibilidades.length && puntos==0; j++){
-                        if (posibilidades[j][0] == valorPareja && posibilidades[j][1] == valorTrio){
-                            puntos = 140 + j;
-                        }
-                    }
-                }
-
-                for(int i = 0; i<posibilidades.length-1 && puntos == 0;i++){
-                    for (int j = 0; j<posibilidades.length && puntos==0; j++){
                         if (posibilidades[j][0] == valorTrio && posibilidades[j][1] == valorPareja){
-                            puntos = 219 + j;
+                            puntos = 140 + j;
                         }
                     }
                 }
@@ -584,7 +572,7 @@ public class GestoraCartaImpl {
                         && (cartas[i].getNumero().equals(cartas[i+2].getNumero()))
                         && (cartas[i].getNumero().equals(cartas[i+3].getNumero()))){
 
-                    puntos = 298+cartas[i].getValorNumero();
+                    puntos = 296+cartas[i].getValorNumero();
 
                 }
             }
@@ -655,11 +643,11 @@ public class GestoraCartaImpl {
                         //En el caso de que pueda ser A,2,3,4,5,6 o incluso A,2,3,4,5,6,7 se realizara este bucle for para coger la escalera mas alta.
                         if (cartasColor[4].getValorNumero() == cartasColor[3].getValorNumero()) {
                             for (int i = 3, j = 0; cartasColor[i + 1].getValorNumero() == cartasColor[i].getValorNumero(); i++, j++) {
-                                puntos = 311 + cartasColor[j].getValorNumero();
+                                puntos = 309 + cartasColor[j].getValorNumero();
                             }
                         } else {
                             //En el cado de que no haya una escalera mas grande se coloca la escalera del A,2,3,4,5
-                            puntos = 311 + cartasColor[0].getValorNumero();
+                            puntos = 309 + cartasColor[0].getValorNumero();
                         }
                     }
 
@@ -672,7 +660,7 @@ public class GestoraCartaImpl {
                                 && (cartasColor[i+3].getValorNumero() == ((cartasColor[i+2].getValorNumero()) + 1))
                                 && (cartasColor[i+4].getValorNumero() == ((cartasColor[i+3].getValorNumero()) + 1))) {
 
-                            puntos = 311 + (cartas[i].getValorNumero()) + 1;
+                            puntos = 309 + (cartas[i].getValorNumero()) + 1;
 
                         }
 

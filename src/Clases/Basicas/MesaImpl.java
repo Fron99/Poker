@@ -302,6 +302,16 @@ public class MesaImpl implements Mesa {
     }
 
     /**
+     * Add cards passed by parameter to the player
+     * @param jugador int 
+     * @param cartas
+     */
+
+    public void anhadirCartasJugador(int jugador, CartaImpl[] cartas){
+        this.jugadores[jugador].setCartas(cartas);
+    }
+
+    /**
      * Get user bet in an exact round
      * @param jugador int index of the user you want get bet
      * @param rondaApuesta int index of the round you want get bet
