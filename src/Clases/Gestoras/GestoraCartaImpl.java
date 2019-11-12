@@ -74,7 +74,7 @@ public class GestoraCartaImpl {
             puntosFinales = puntosCalculados;
         }
 
-        puntosCalculados = calcularValorPoker(cartasAEvaluar);
+        puntosCalculados = calcularValorFull(cartasAEvaluar);
         if (puntosCalculados>puntosFinales){
             puntosFinales = puntosCalculados;
         }
@@ -406,21 +406,19 @@ public class GestoraCartaImpl {
                     }
                 }
 
-            }else{
+            }
 
-                for (int i = 0; i < cartasNoRepetidas.size() - 4; i++) {
+            for (int i = 0; i < cartasNoRepetidas.size() - 4; i++) {
 
-                    //Comprueba si hay ecalera ya que las cartas estan en orden
-                    if ((cartasNoRepetidas.get(i+1).getValorNumero() == ((cartasNoRepetidas.get(i).getValorNumero()) + 1))
-                            && (cartasNoRepetidas.get(i+2).getValorNumero() == ((cartasNoRepetidas.get(i+1).getValorNumero()) + 1))
-                            && (cartasNoRepetidas.get(i+3).getValorNumero() == ((cartasNoRepetidas.get(i+2).getValorNumero()) + 1))
-                            && (cartasNoRepetidas.get(i+4).getValorNumero() == ((cartasNoRepetidas.get(i+3).getValorNumero()) + 1))) {
+                //Comprueba si hay ecalera ya que las cartas estan en orden
+                if ((cartasNoRepetidas.get(i+1).getValorNumero() == ((cartasNoRepetidas.get(i).getValorNumero()) + 1))
+                        && (cartasNoRepetidas.get(i+2).getValorNumero() == ((cartasNoRepetidas.get(i+1).getValorNumero()) + 1))
+                        && (cartasNoRepetidas.get(i+3).getValorNumero() == ((cartasNoRepetidas.get(i+2).getValorNumero()) + 1))
+                        && (cartasNoRepetidas.get(i+4).getValorNumero() == ((cartasNoRepetidas.get(i+3).getValorNumero()) + 1))) {
 
-                        //Se le suma 1 a la cantidad total porque el valor 131 se deja guardado para la escalera A,2,3,4,5
-                        //Si no se le sumara 1 la escalera 2,3,4,5,6 tendria el mismo valor que la escalera A,2,3,4,5 por el echo de como se ordenan las cartas de mayor a menor
-                        puntos = 117 + (cartasNoRepetidas.get(i).getValorNumero()+1);
-
-                    }
+                    //Se le suma 1 a la cantidad total porque el valor 131 se deja guardado para la escalera A,2,3,4,5
+                    //Si no se le sumara 1 la escalera 2,3,4,5,6 tendria el mismo valor que la escalera A,2,3,4,5 por el echo de como se ordenan las cartas de mayor a menor
+                    puntos = 117 + (cartasNoRepetidas.get(i).getValorNumero()+1);
 
                 }
 
@@ -651,23 +649,23 @@ public class GestoraCartaImpl {
                         }
                     }
 
-                }else{
+                }
 
-                    for (int i = 0; i < cartasColor.length - 4; i++) {
+                for (int i = 0; i < cartasColor.length - 4; i++) {
 
-                        if ((cartasColor[i+1].getValorNumero() == ((cartasColor[i].getValorNumero()) + 1))
-                                && (cartasColor[i+2].getValorNumero() == ((cartasColor[i+1].getValorNumero()) + 1))
-                                && (cartasColor[i+3].getValorNumero() == ((cartasColor[i+2].getValorNumero()) + 1))
-                                && (cartasColor[i+4].getValorNumero() == ((cartasColor[i+3].getValorNumero()) + 1))) {
+                    if ((cartasColor[i+1].getValorNumero() == ((cartasColor[i].getValorNumero()) + 1))
+                            && (cartasColor[i+2].getValorNumero() == ((cartasColor[i+1].getValorNumero()) + 1))
+                            && (cartasColor[i+3].getValorNumero() == ((cartasColor[i+2].getValorNumero()) + 1))
+                            && (cartasColor[i+4].getValorNumero() == ((cartasColor[i+3].getValorNumero()) + 1))) {
 
-                            puntos = 309 + (cartas[i].getValorNumero()) + 1;
-
-                        }
+                        puntos = 309 + (cartasColor[i].getValorNumero()+1);
 
                     }
 
                 }
+
             }
+
         }
         return puntos;
     }

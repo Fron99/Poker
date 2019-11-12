@@ -303,8 +303,8 @@ public class MesaImpl implements Mesa {
 
     /**
      * Add cards passed by parameter to the player
-     * @param jugador int 
-     * @param cartas
+     * @param jugador int position of player where do you want add the cards passed by parameter
+     * @param cartas CartaImpl[] with the cards you want to add to the player
      */
 
     public void anhadirCartasJugador(int jugador, CartaImpl[] cartas){
