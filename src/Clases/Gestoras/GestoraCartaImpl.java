@@ -27,8 +27,6 @@ public class GestoraCartaImpl {
      * @return int with the value of the player's cards passed by parameter on a table
      */
 
-    //TODO TERMINAR METODO
-
     public int evaluarCartas(int jugador, MesaImpl mesa){
 
         int puntosFinales, puntosCalculados;
@@ -125,6 +123,7 @@ public class GestoraCartaImpl {
 
         cartasTotales = new CartaImpl[cantidadCartas];
 
+        //Inicializar el array para no tener errores de null
         for (int i = 0; i<cartasTotales.length;i++){
             cartasTotales[i] = new CartaImpl();
         }
@@ -188,6 +187,7 @@ public class GestoraCartaImpl {
     /**
      * Calculate the highest card value in the array passed by parameter
      * @param cartas CartaImpl[] cards you want to value
+     * @return returns the value of the highest card
      */
 
     public int calcularValorCartaAlta(CartaImpl[] cartas){
