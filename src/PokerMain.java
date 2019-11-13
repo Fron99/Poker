@@ -80,6 +80,7 @@ public class PokerMain {
         String usuarioJugador;
         int saldoInicialJugador, turnoJugador, cantidadGanadores = 0;
         MesaImpl mesa = new MesaImpl();
+        int ronda = 0;
 
         //leerUsuario
         usuarioJugador = gesJugador.leerUsuario();
@@ -95,12 +96,14 @@ public class PokerMain {
         gesJugador.cargarBots(mesa.getJugadores());  //Coloca en el array de jugadores jugadores con valores generados
 
         //generarTurnoJugador
-        turnoJugador = random.nextInt(5);   //Genera un numero del 0 al 4 que es la cantidad de jugadores que hay para saber quien empieza a apostar
-
+        //turnoJugador = random.nextInt(5);   //Genera un numero del 0 al 4 que es la cantidad de jugadores que hay para saber quien empieza a apostar
+        turnoJugador = 0;
         do {
 
+            ronda = 0;
+
             //limpiarMesa
-            gesMesa.limpiarMesa(mesa);
+            gesMesa.limpiarMesa(mesa);      //TODO Barajar posibilidad de introducirlo como metodo de mesa
 
             //restaurarBaraja
             mesa.restaurarBaraja();
@@ -112,7 +115,8 @@ public class PokerMain {
             gesMesa.mostrarPanelJuego(mesa);
 
             //realizarApuestas
-            gesMesa.realizarApuestas(turnoJugador,mesa);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
+            gesMesa.realizarApuestas(turnoJugador,mesa,ronda);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
+            ronda++;
 
             //generarTresCartasMesa
             gesMesa.generarTresCartasMesa(mesa.getBaraja(),mesa.getCartasMesa());  //Coloca 3 cartas aleatorias en el array de las cartas que hay en esta mesa
@@ -121,7 +125,8 @@ public class PokerMain {
             gesMesa.mostrarPanelJuego(mesa);
 
             //realizarApuestas
-            gesMesa.realizarApuestas(turnoJugador,mesa);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
+            gesMesa.realizarApuestas(turnoJugador,mesa,ronda);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
+            ronda++;
 
             for (int contador = 0; contador < 2; contador++){
 
@@ -132,7 +137,8 @@ public class PokerMain {
                 gesMesa.mostrarPanelJuego(mesa);
 
                 //realizarApuestas
-                gesMesa.realizarApuestas(turnoJugador,mesa);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
+                gesMesa.realizarApuestas(turnoJugador,mesa,ronda);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
+                ronda++;
 
             }
 

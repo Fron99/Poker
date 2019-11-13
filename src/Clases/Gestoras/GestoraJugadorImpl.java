@@ -114,14 +114,15 @@ public class GestoraJugadorImpl {
 
     //TODO Desarrollar javadoc
 
-    /*
+
     public int calcularApostarBot(int apuestaMinima, MesaImpl mesa, int jugador){
-        int totalApostar, valorCartas, porcenApostar, cantidadApostar, farol;
+        int totalApostar, valorCartas, cantidadApostar, farol;
+        double porcenApostar;
         GestoraCartaImpl gesCarta = new GestoraCartaImpl();
         valorCartas = gesCarta.evaluarCartas(jugador, mesa);
         valorCartas += calcularPuntosFarol(mesa);
-        porcenApostar = (int)(((valorCartas*100)/267)*0.01);
-        cantidadApostar = (mesa.getJugadores()[jugador].getSaldo()/4)*porcenApostar;
+        porcenApostar = (((valorCartas*100)/267)*0.01);
+        cantidadApostar = (int)((mesa.getJugadores()[jugador].getSaldo()/4)*porcenApostar);
 
         if (cantidadApostar >= apuestaMinima){
             if ((cantidadApostar-apuestaMinima) < (int)(cantidadApostar*0.3)){
@@ -135,7 +136,7 @@ public class GestoraJugadorImpl {
 
         return totalApostar;
     }
-*/
+
 
 
     /*

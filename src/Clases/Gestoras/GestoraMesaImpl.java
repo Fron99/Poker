@@ -359,60 +359,11 @@ public class GestoraMesaImpl {
 
 
     /*
-     * SIGNATURA: public void realizarJugadas(int turnoJugador, MesaImpl mesa);
-     * COMENTARIO: Realiza el proceso de apuestas de cada ronda segun el orden pasado.
-     * PRECONDICIONES: - El turnoJugador no puede ser mayor a 4 ni menor que 0
-     * ENTRADA: - Un entero para el iniciador
-     * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Un objeto mesa con el que se este jugando
-     * POSTCONDICIONES: - Modifica la apuesta total de la mesa pasada por parametro incrementando su valor conforme los jugadores apuesten
-     *
-     */
-
-    //TODO Desarrollar javadoc
-
-    public void realizarJugadas(int turnoJugador, MesaImpl mesa) {
-
-        GestoraJugadorImpl gesJugador = new GestoraJugadorImpl();
-        int apuestaInicial, cantidadJugadas = 0;
-
-        if (turnoJugador == 0) {
-            apuestaInicial = gesJugador.leerYValidarApuesta(mesa.getJugadores()[0]);    //Pregunta al jugador cuento quiere apostar
-            mesa.getJugadores()[0].disminuirDinero(apuestaInicial);
-            //mesa.incrementarTotalApuestas(apuestaInicial);
-            turnoJugador++;
-            while (turnoJugador<mesa.getJugadores().length){
-                //TODO Falta generar apuesta conforme las cartas que tenga el bot
-                //mesa.incrementarTotalApuestas(apuestaInicial);  //Apuesta lo mismo que elige el jugador porque aun no se ha implementado la IA
-                mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaInicial);  //Disminuye el dinero apostado del saldo del usuario
-                turnoJugador++;
-            }
-        } else {
-            while (turnoJugador < mesa.getJugadores().length && cantidadJugadas < 5) {
-                apuestaInicial = 10;      //Colocamos 10 euros por defecto porque aun no se ha generado el metodo el cual el bot genere la cantidad a apostar segun sus cartas
-                if (turnoJugador == 4) {
-                    //mesa.incrementarTotalApuestas(apuestaInicial);
-                    mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaInicial);  //Disminuye el dinero apostado del saldo del usuario
-                    turnoJugador = 0;
-                    cantidadJugadas++;
-                }
-                if (cantidadJugadas < 5) {
-                    //mesa.incrementarTotalApuestas(apuestaInicial);
-                    //TODO De esta manera solo elige cantidad a apostar cuando el usuario empieza, si no empieza apuesta lo que apueste el primero.
-                    mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaInicial);  //Disminuye el dinero apostado del saldo del usuario
-                    turnoJugador++;
-                    cantidadJugadas++;
-                }
-            }
-        }
-    }
-
-
-    /*
-     * SIGNATURA: public void realizarApuestas(int turnoJugador, MesaImpl mesa)
+     * SIGNATURA: public void realizarApuestas(int turnoJugador, MesaImpl mesa, int ronda)
      * COMENTARIO: Realizar las apuestas de todos los jugadores de la mesa
      * PRECONDICIONES:
      * ENTRADA: - Un entero con el turno
+     *          - Un entero con la ronda
      * SALIDA: - Nada
      * ENTRADA/SALIDA: - Un objeto mesa
      * POSTCONDICIONES: - Modifica el objeto mesa, incrementando el total del dinero que hay en mesa.
@@ -420,50 +371,59 @@ public class GestoraMesaImpl {
      */
 
     //TODO Desarrollar javadoc
+    //TODO Documentar codigo mejor
 
-    public void realizarApuestas(int turnoJugador, MesaImpl mesa){
+    public void realizarApuestas(int turnoJugador, MesaImpl mesa,int ronda){
+        GestoraJugadorImpl gesJug = new GestoraJugadorImpl();
+        GestoraCartaImpl gesCarta = new GestoraCartaImpl();
+        int apuestaMinima, cantidadJugadas = 4, totalJugadas = 5, apuestaJugador;
 
-        GestoraJugadorImpl gesJugador = new GestoraJugadorImpl();
-        int apuestaBase, apuestaJugador, cantidadJugadas = 0, totalJugadas = 5;
-
-        if (turnoJugador == 0) {
-            apuestaJugador = gesJugador.leerYValidarApuesta(mesa.getJugadores()[0]);    //Pregunta al jugador cuento quiere apostar
-            apuestaBase = apuestaJugador;   //Como este jugador es el primero en jugar se coloca su apuesta como apuesta base
-            mesa.getJugadores()[0].disminuirDinero(apuestaJugador);
-            //mesa.incrementarTotalApuestas(apuestaJugador);
+        if (turnoJugador == 0){
+            apuestaMinima = gesJug.leerYValidarApuesta(mesa.obtenerJugador(turnoJugador));
+            mesa.anhadirApuesta(0,ronda,apuestaMinima);
+            mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaMinima);   //TODO Anhadir patron delegacion de obtener un jugador
             turnoJugador++;
-            cantidadJugadas++;
-            while (turnoJugador<mesa.getJugadores().length && cantidadJugadas < totalJugadas){
-                //TODO Falta generar apuesta conforme las cartas que tenga el bot
-                apuestaJugador = gesJugador.leerYValidarApuesta(mesa.getJugadores()[turnoJugador]);    //TODO Valor puesto de prueba mientras no se genera el metodo de la IA
-                //TODO Falta validar que la apuesta no sea menor a la apostada por en anterior jugador anteriormente
-                if (apuestaJugador > apuestaBase){
-                    apuestaBase = apuestaJugador;
-                    if (totalJugadas == 5){
-                        totalJugadas +=3;
-                    }else{
-                        totalJugadas++;
-                    }
-                    //mesa.incrementarTotalApuestas(apuestaJugador);  //Apuesta lo mismo que elige el jugador porque aun no se ha implementado la IA
-                    mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaJugador);  //Disminuye el dinero apostado del saldo del usuario
-                    turnoJugador++;
-                    cantidadJugadas++;
-                }else{
-                    if (apuestaJugador == apuestaBase){
-                        //mesa.incrementarTotalApuestas(apuestaJugador);  //Apuesta lo mismo que elige el jugador porque aun no se ha implementado la IA
-                        mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaJugador);  //Disminuye el dinero apostado del saldo del usuario
-                        turnoJugador++;
-                        cantidadJugadas++;
+            while (turnoJugador < 5 && cantidadJugadas < totalJugadas){
+                if (mesa.getJugadores()[turnoJugador].getActivo()){
+                    if (mesa.getJugadores()[turnoJugador].getSaldo()>0){
+                        apuestaJugador = gesJug.calcularApostarBot(apuestaMinima,mesa,turnoJugador);    //TODO Tener en cuenta que la cantidad a apostar no sea mayor a lo que el usuario tiene
+                                                                                                        //TODO En el caso de querer apostar y no poder por no llegar al minimo que haga all-in
+                        if (apuestaJugador == apuestaMinima){
+                            mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaMinima);   //TODO Anhadir patron delegacion de obtener un jugador
+                            mesa.anhadirApuesta(turnoJugador,ronda,apuestaJugador);
+                        }else{
+                            if (apuestaJugador == 0){
+                                mesa.getJugadores()[turnoJugador].setActivo(false);
+                            }else{
+                                if (apuestaJugador < apuestaMinima){
+                                    mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaJugador);   //TODO Anhadir patron delegacion de obtener un jugador
+                                    mesa.anhadirApuesta(turnoJugador,ronda,apuestaJugador);
+                                }else{
+                                    mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaJugador);   //TODO Anhadir patron delegacion de obtener un jugador
+                                    mesa.anhadirApuesta(turnoJugador,ronda,apuestaJugador);
+                                    totalJugadas += 4;
+                                }
+                            }
+                        }
                     }
                 }
+                //Actualizamos variables despues de realizar jugada
+                turnoJugador++;
+                cantidadJugadas++;
 
-                if (turnoJugador == 5 && cantidadJugadas<totalJugadas){
+                if (turnoJugador == 5 && cantidadJugadas < totalJugadas){
                     turnoJugador = 0;
+                }else{
+                    turnoJugador++;
                 }
-
             }
+        }else{
+
         }
+
     }
+
+
 
 
 

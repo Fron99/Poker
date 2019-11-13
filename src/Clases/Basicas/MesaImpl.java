@@ -72,6 +72,20 @@ public class MesaImpl implements Mesa {
      * @param baraja array of letters
      * @param jugadores array of players
      * @param cartas array of letters
+     */
+
+    public MesaImpl(CartaImpl[] baraja, JugadorImpl[] jugadores, CartaImpl[] cartas){
+        this.baraja = baraja;
+        this.jugadores = jugadores;
+        this.cartasMesa = cartas;
+        this.apuestasJugadores = new int[5][5];
+    }
+
+    /**
+     * This constructor places the default attributes
+     * @param baraja array of letters
+     * @param jugadores array of players
+     * @param cartas array of letters
      * @param apuestasJugadores array of int
      */
 
@@ -298,7 +312,7 @@ public class MesaImpl implements Mesa {
      */
 
     public void anhadirApuesta(int jugador, int rondaApuesta, int cantidad){
-        this.apuestasJugadores[jugador][rondaApuesta] = cantidad;
+        this.apuestasJugadores[jugador][rondaApuesta] += cantidad;
     }
 
     /**
