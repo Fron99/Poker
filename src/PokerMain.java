@@ -58,7 +58,6 @@
  */
 
 
-import Clases.Basicas.CartaImpl;
 import Clases.Basicas.JugadorImpl;
 import Clases.Basicas.MesaImpl;
 import Clases.Gestoras.GestoraJugadorImpl;
@@ -80,7 +79,7 @@ public class PokerMain {
         String usuarioJugador;
         int saldoInicialJugador, turnoJugador, cantidadGanadores = 0;
         MesaImpl mesa = new MesaImpl();
-        int ronda = 0;
+        int ronda;
 
         //leerUsuario
         usuarioJugador = gesJugador.leerUsuario();
@@ -97,7 +96,7 @@ public class PokerMain {
 
         //generarTurnoJugador
         //turnoJugador = random.nextInt(5);   //Genera un numero del 0 al 4 que es la cantidad de jugadores que hay para saber quien empieza a apostar
-        turnoJugador = 0;
+        turnoJugador = 1;
         do {
 
             ronda = 0;

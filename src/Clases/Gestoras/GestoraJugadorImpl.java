@@ -76,10 +76,11 @@ public class GestoraJugadorImpl {
     }
 
     /*
-     * SIGNATURA: public int leerYValidarApuesta(JugadorImpl jugador);
+     * SIGNATURA: public int leerYValidarApuesta(JugadorImpl jugador, int apuestaMinima);
      * COMENTARIO: Lee y valida la cantidad de dinero que puede apostar el jugador
      * PRECONDICIONES: Ninguna
      * ENTRADA: - Un jugador
+     *          - Apuesta minima
      * SALIDA: - Un entero
      * ENTRADA/SALIDA: - Nada
      * POSTCONDICIONES: - Devuelve asociado al nombre un entero con la cantidad de dinero que apuesta el jugador
@@ -88,14 +89,20 @@ public class GestoraJugadorImpl {
 
     //TODO Desarrollar javadoc
 
-    public int leerYValidarApuesta(JugadorImpl jugador){
+    public int leerYValidarApuesta(JugadorImpl jugador, int cantidadMinima){
         Scanner teclado = new Scanner(System.in);
         int cantidadApuesta;
+        boolean allIn = false;
         do {
             System.out.println("Dispone de "+jugador.getSaldo()+" de saldo");
             System.out.print("Introduce cuanto quiere apostar: ");
             cantidadApuesta = teclado.nextInt();
-        }while (cantidadApuesta<0 || cantidadApuesta > jugador.getSaldo());
+            if (cantidadApuesta < cantidadMinima){
+                if (cantidadApuesta == jugador.getSaldo()){
+                    allIn = true;
+                }
+            }
+        }while (cantidadApuesta > jugador.getSaldo() && !allIn);
         return cantidadApuesta;
     }
 
@@ -116,7 +123,7 @@ public class GestoraJugadorImpl {
 
 
     public int calcularApostarBot(int apuestaMinima, MesaImpl mesa, int jugador){
-        int totalApostar, valorCartas, cantidadApostar, farol;
+        int totalApostar, valorCartas, cantidadApostar;
         double porcenApostar;
         GestoraCartaImpl gesCarta = new GestoraCartaImpl();
         valorCartas = gesCarta.evaluarCartas(jugador, mesa);
@@ -126,6 +133,7 @@ public class GestoraJugadorImpl {
 
         //TODO Comprobar funcionamiento de este metodo y documentar
         //TODO Realizar test de este metodo
+        //TODO Controlar que cuando la apuesta minima sea 0 el bot calcule si le interesa pasar o apostar
         if (cantidadApostar >= apuestaMinima){
             if ((apuestaMinima-cantidadApostar) < (int)(cantidadApostar*0.3)){
                 totalApostar = apuestaMinima;
