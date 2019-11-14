@@ -367,7 +367,6 @@ public class GestoraMesaImpl {
      * SALIDA: - Nada
      * ENTRADA/SALIDA: - Un objeto mesa
      * POSTCONDICIONES: - Modifica el objeto mesa, incrementando el total del dinero que hay en mesa.
-     *
      */
 
     //TODO Desarrollar javadoc
@@ -376,13 +375,15 @@ public class GestoraMesaImpl {
     public void realizarApuestas(int turnoJugador, MesaImpl mesa,int ronda){
         GestoraJugadorImpl gesJug = new GestoraJugadorImpl();
         GestoraCartaImpl gesCarta = new GestoraCartaImpl();
-        int apuestaMinima, cantidadJugadas = 4, totalJugadas = 5, apuestaJugador;
+        int apuestaMinima, cantidadJugadas = 0, totalJugadas = 5, apuestaJugador;
+        //TODO Implementar que los jugadores puedan pasar
 
-        if (turnoJugador == 0){
+        if (turnoJugador == 0){     //TODO Controlar que el jugador este activo
             apuestaMinima = gesJug.leerYValidarApuesta(mesa.obtenerJugador(turnoJugador));
             mesa.anhadirApuesta(0,ronda,apuestaMinima);
             mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaMinima);   //TODO Anhadir patron delegacion de obtener un jugador
             turnoJugador++;
+            cantidadJugadas++;
             while (turnoJugador < 5 && cantidadJugadas < totalJugadas){
                 if (mesa.getJugadores()[turnoJugador].getActivo()){
                     if (mesa.getJugadores()[turnoJugador].getSaldo()>0){
@@ -408,10 +409,9 @@ public class GestoraMesaImpl {
                     }
                 }
                 //Actualizamos variables despues de realizar jugada
-                turnoJugador++;
                 cantidadJugadas++;
 
-                if (turnoJugador == 5 && cantidadJugadas < totalJugadas){
+                if (turnoJugador == 4 && cantidadJugadas < totalJugadas){
                     turnoJugador = 0;
                 }else{
                     turnoJugador++;
@@ -422,11 +422,5 @@ public class GestoraMesaImpl {
         }
 
     }
-
-
-
-
-
-
 
 }

@@ -124,8 +124,10 @@ public class GestoraJugadorImpl {
         porcenApostar = (((valorCartas*100)/267)*0.01);
         cantidadApostar = (int)((mesa.getJugadores()[jugador].getSaldo()/4)*porcenApostar);
 
+        //TODO Comprobar funcionamiento de este metodo y documentar
+        //TODO Realizar test de este metodo
         if (cantidadApostar >= apuestaMinima){
-            if ((cantidadApostar-apuestaMinima) < (int)(cantidadApostar*0.3)){
+            if ((apuestaMinima-cantidadApostar) < (int)(cantidadApostar*0.3)){
                 totalApostar = apuestaMinima;
             }else {
                 totalApostar = cantidadApostar;
