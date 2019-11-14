@@ -27,6 +27,7 @@
  *      limpiarMesa*
  *      restaurarBaraja*
  *      generarCartasJugadores*
+ *      colocarJugadoresActivos*
  *      mostrarPanelJuego*
  *      realizarApuestas*
  *      generarTresCartasMesa*
@@ -109,6 +110,9 @@ public class PokerMain {
 
             //generarCartasJugadores
             gesMesa.generarCartasJugadores(mesa.getBaraja(),mesa);    //Asigna 2 cartas a cada jugador sin reeptir carta.
+
+            //colocarActivosJugadores
+            gesJugador.colocarJugadoresActivos(mesa);
 
             //mostrarPanelJuego
             gesMesa.mostrarPanelJuego(mesa);

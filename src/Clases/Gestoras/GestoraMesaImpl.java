@@ -437,128 +437,67 @@ public class GestoraMesaImpl {
             }
         }
         if (cantidadJugadoresPasan != 4) {
-            if (turnoJugador == 0) {
-                if (mesa.getJugadores()[0].getActivo()) {
+            if (mesa.obtenerJugador(turnoJugador).getActivo() && mesa.obtenerJugador(turnoJugador).getSaldo() > 0) {
+                if (turnoJugador == 0){
                     apuestaJugador = gesJug.leerYValidarApuesta(mesa.obtenerJugador(turnoJugador), apuestaMinima);
-                    if (apuestaJugador > apuestaMinima) {
-                        apuestaMinima = apuestaJugador;
-                        mesa.anhadirApuesta(0, ronda, apuestaMinima);
-                        mesa.getJugadores()[0].disminuirDinero(apuestaMinima);   //TODO Anhadir patron delegacion de obtener un jugador
-                    } else {
-                        if (apuestaJugador == apuestaMinima) {
-                            jugadorPasa = true;
-                        }
+                }else{
+                    apuestaJugador = gesJug.calcularApostarBot(apuestaMinima,mesa,turnoJugador);
+                }
+                if (apuestaJugador > apuestaMinima) {
+                    apuestaMinima = apuestaJugador;
+                    mesa.anhadirApuesta(turnoJugador, ronda, apuestaMinima);
+                    mesa.obtenerJugador(turnoJugador).disminuirDinero(apuestaMinima);
+                } else {
+                    //Si el jugador apuesta el mismo valor que la apuesta minima (es decir 0) significa que pasa
+                    if (apuestaJugador == apuestaMinima) {
+                        jugadorPasa = true;
                     }
                 }
+            }
+            cantidadJugadas++;
+            if (turnoJugador == 4 && cantidadJugadas < totalJugadas) {
+                turnoJugador = 0;
+            } else {
                 turnoJugador++;
-                cantidadJugadas++;
-                while (turnoJugador < 5 && cantidadJugadas < totalJugadas) {
-                    if (mesa.getJugadores()[turnoJugador].getActivo()) {
-                        if (mesa.getJugadores()[turnoJugador].getSaldo() > 0) {
-                            apuestaJugador = gesJug.calcularApostarBot(apuestaMinima, mesa, turnoJugador);    //TODO Tener en cuenta que la cantidad a apostar no sea mayor a lo que el usuario tiene
-                            //TODO En el caso de querer apostar y no poder por no llegar al minimo que haga all-in  (Creo que ya esta solucionado pero tengo que comprobarlo)
-                            if (apuestaJugador != apuestaMinima || jugadorPasa) {
-                                jugadorPasa = false;
-                                if (apuestaJugador == 0) {
-                                    mesa.getJugadores()[turnoJugador].setActivo(false);
-                                } else {
-                                    if (apuestaJugador > apuestaMinima) {
-                                        totalJugadas += 4;
-                                        mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaJugador);
-                                        mesa.anhadirApuesta(turnoJugador, ronda, apuestaJugador);
-                                    } else {
-                                        mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaJugador);
-                                        mesa.anhadirApuesta(turnoJugador, ronda, apuestaJugador);
-                                    }
+            }
+            while (turnoJugador < 5 && cantidadJugadas < totalJugadas) {
+                if (mesa.obtenerJugador(turnoJugador).getActivo() && mesa.obtenerJugador(turnoJugador).getSaldo() > 0) {
+                    if (turnoJugador == 0){
+                        apuestaJugador = gesJug.leerYValidarApuesta(mesa.obtenerJugador(turnoJugador),apuestaMinima);
+                    }else{
+                        apuestaJugador = gesJug.calcularApostarBot(apuestaMinima, mesa, turnoJugador);    //TODO Tener en cuenta que la cantidad a apostar no sea mayor a lo que el usuario tiene
+                        //TODO En el caso de querer apostar y no poder por no llegar al minimo que haga all-in  (Creo que ya esta solucionado pero tengo que comprobarlo)
+                    }
+                    if (apuestaJugador != apuestaMinima || jugadorPasa) {
+                        jugadorPasa = false;
+                        if (apuestaJugador == 0) {
+                            mesa.obtenerJugador(turnoJugador).setActivo(false);
+                        } else {
+                            if (apuestaJugador > apuestaMinima) {
+                                apuestaMinima = apuestaJugador;
+                                if (totalJugadas == 5){
+                                    totalJugadas += 4;
+                                }else{
+                                    totalJugadas ++;
                                 }
+                                mesa.obtenerJugador(turnoJugador).disminuirDinero(apuestaJugador);
+                                mesa.anhadirApuesta(turnoJugador, ronda, apuestaJugador);
                             } else {
-                                mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaJugador);
+                                mesa.obtenerJugador(turnoJugador).disminuirDinero(apuestaJugador);
                                 mesa.anhadirApuesta(turnoJugador, ronda, apuestaJugador);
                             }
                         }
-                    }
-                    //Actualizamos variables despues de realizar jugada
-                    cantidadJugadas++;
-
-                    if (turnoJugador == 4 && cantidadJugadas < totalJugadas) {
-                        turnoJugador = 0;
                     } else {
-                        turnoJugador++;
+                        mesa.obtenerJugador(turnoJugador).disminuirDinero(apuestaJugador);
+                        mesa.anhadirApuesta(turnoJugador, ronda, apuestaJugador);
                     }
                 }
-            }else{
-                if (mesa.getJugadores()[turnoJugador].getActivo()) {
-                    apuestaJugador = gesJug.calcularApostarBot(turnoJugador, mesa, apuestaMinima);
-                    if (apuestaJugador > apuestaMinima) {
-                        apuestaMinima = apuestaJugador;
-                        mesa.anhadirApuesta(turnoJugador, ronda, apuestaMinima);
-                        mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaMinima);   //TODO Anhadir patron delegacion de obtener un jugador
-                    } else {
-                        if (apuestaJugador == apuestaMinima) {
-                            jugadorPasa = true;
-                        }
-                    }
-                }
+                //Actualizamos variables despues de realizar jugada
                 cantidadJugadas++;
                 if (turnoJugador == 4 && cantidadJugadas < totalJugadas) {
                     turnoJugador = 0;
                 } else {
                     turnoJugador++;
-                }
-                while (turnoJugador < 5 && cantidadJugadas < totalJugadas) {
-                    if (mesa.getJugadores()[turnoJugador].getActivo()) {
-                        if (mesa.getJugadores()[turnoJugador].getSaldo() > 0) {
-                            if (turnoJugador == 0){
-                                apuestaJugador = gesJug.leerYValidarApuesta(mesa.obtenerJugador(0),apuestaMinima);
-                                if (apuestaJugador != apuestaMinima || jugadorPasa) {
-                                    jugadorPasa = false;
-                                    if (apuestaJugador == 0) {
-                                        mesa.getJugadores()[0].setActivo(false);
-                                    } else {
-                                        if (apuestaJugador > apuestaMinima) {
-                                            totalJugadas += 4;
-                                            mesa.getJugadores()[0].disminuirDinero(apuestaJugador);
-                                            mesa.anhadirApuesta(0, ronda, apuestaJugador);
-                                        } else {
-                                            mesa.getJugadores()[0].disminuirDinero(apuestaJugador);
-                                            mesa.anhadirApuesta(0, ronda, apuestaJugador);
-                                        }
-                                    }
-                                } else {
-                                    mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaJugador);
-                                    mesa.anhadirApuesta(turnoJugador, ronda, apuestaJugador);
-                                }
-                            }else{
-                                apuestaJugador = gesJug.calcularApostarBot(apuestaMinima, mesa, turnoJugador);    //TODO Tener en cuenta que la cantidad a apostar no sea mayor a lo que el usuario tiene
-                                //TODO En el caso de querer apostar y no poder por no llegar al minimo que haga all-in  (Creo que ya esta solucionado pero tengo que comprobarlo)
-                                if (apuestaJugador != apuestaMinima || jugadorPasa) {
-                                    jugadorPasa = false;
-                                    if (apuestaJugador == 0) {
-                                        mesa.getJugadores()[turnoJugador].setActivo(false);
-                                    } else {
-                                        if (apuestaJugador > apuestaMinima) {
-                                            cantidadJugadas += 4;
-                                            mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaJugador);
-                                            mesa.anhadirApuesta(turnoJugador, ronda, apuestaJugador);
-                                        } else {
-                                            mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaJugador);
-                                            mesa.anhadirApuesta(turnoJugador, ronda, apuestaJugador);
-                                        }
-                                    }
-                                } else {
-                                    mesa.getJugadores()[turnoJugador].disminuirDinero(apuestaJugador);
-                                    mesa.anhadirApuesta(turnoJugador, ronda, apuestaJugador);
-                                }
-                            }
-                        }
-                    }
-                    //Actualizamos variables despues de realizar jugada
-                    cantidadJugadas++;
-                    if (turnoJugador == 4 && cantidadJugadas < totalJugadas) {
-                        turnoJugador = 0;
-                    } else {
-                        turnoJugador++;
-                    }
                 }
             }
         }

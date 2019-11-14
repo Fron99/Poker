@@ -102,7 +102,7 @@ public class GestoraJugadorImpl {
                     allIn = true;
                 }
             }
-        }while (cantidadApuesta > jugador.getSaldo() && !allIn);
+        }while (((cantidadApuesta > jugador.getSaldo() || cantidadApuesta < cantidadMinima) && cantidadApuesta != 0 ) && !allIn);
         return cantidadApuesta;
     }
 
@@ -126,27 +126,32 @@ public class GestoraJugadorImpl {
         int totalApostar, valorCartas, cantidadApostar;
         double porcenApostar;
         GestoraCartaImpl gesCarta = new GestoraCartaImpl();
+        //Saca el valor en puntos que tiene las cartas de las que posee
         valorCartas = gesCarta.evaluarCartas(jugador, mesa);
+        //En el caso de que se marque un farol sumara los puntos de farol
         valorCartas += calcularPuntosFarol(mesa);
-        porcenApostar = (((valorCartas*100)/267)*0.01);
-        cantidadApostar = (int)((mesa.getJugadores()[jugador].getSaldo()/4)*porcenApostar);
+        //Calcula el porcentaje
+        porcenApostar = (double)valorCartas/267;
+        cantidadApostar = (int)((mesa.obtenerJugador(jugador).getSaldo()/4)*porcenApostar);
 
         //TODO Comprobar funcionamiento de este metodo y documentar
         //TODO Realizar test de este metodo
-        //TODO Controlar que cuando la apuesta minima sea 0 el bot calcule si le interesa pasar o apostar
+
+        //Si la cantidad que desea apostar el bot es mayor o igual que la minima que hay que apostar calculara si desea igualar o subir
         if (cantidadApostar >= apuestaMinima){
-            if ((apuestaMinima-cantidadApostar) < (int)(cantidadApostar*0.3)){
+            //Si la diferencia entre lo que desea apostar y lo que debe apostar es mayor al 30% de lo que quiere apostar sube la apuesta, sino iguala la apuesta
+            if ((cantidadApostar - apuestaMinima) < (int)(cantidadApostar*0.3)){
                 totalApostar = apuestaMinima;
             }else {
                 totalApostar = cantidadApostar;
             }
+        //En el caso de que no iguale ni suba la apuesta apostara 0
+        //TODO Tener un margen de si le interesa subir o no y contolar los casos en los que hace all-in sin llegar a la cantidad minima
         }else {
             totalApostar = 0;
         }
-
         return totalApostar;
     }
-
 
 
     /*
@@ -218,6 +223,23 @@ public class GestoraJugadorImpl {
         }
         return puntosFarol;
     }
+
+    /*
+     * SIGNATURA: public void colocarJugadoresActivos(MesaImpl mesa)
+     * COMENTARIO: Metodo para colocar todos los jugadores de la mesa activos
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Un objeto MesaImpl
+     * POSTCONDICIONES: - Modifica el objeto pasado por parametro colocando todos los jugadores en activo.
+     */
+
+    public void colocarJugadoresActivos(MesaImpl mesa){
+        for(JugadorImpl jugador: mesa.getJugadores()){
+            jugador.setActivo(true);
+        }
+    }
+
 
 
 
