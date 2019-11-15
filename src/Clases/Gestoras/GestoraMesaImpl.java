@@ -105,18 +105,21 @@ public class GestoraMesaImpl {
 
 
     /*
-     * SIGNATURA: public void mostrarPanelJuego (MesaImpl mesa);
+     * SIGNATURA: public void mostrarPanelJuego (MesaImpl mesa, int ronda);
      * COMENTARIO: Imprime por pantalla las cartas que hay en la mesa, el dinero de los demas jugadores y el total del bote de la mesa
      * PRECONDICIONES: - Nada
      * ENTRADA: - Un objeto Mesa
+     *          - Un entero
      * SALIDA: - Nada
      * ENTRADA/SALIDA: - Nada
      * POSTCONDICIONES: - No devuelve nada, solo imprime por pantalla el estado actual en el que se encuentran los jugadores y las cartas
      */
 
     //TODO Desarrollar javadoc
+    //TODO Utilizar arraybidimensional para esto
+    //TODO Controlar cuando sea la ultima ronda para que muestre informacion adiciona sobre quien ha ganado y mostrar todas las cartas
 
-    public void mostrarPanelJuego(MesaImpl mesa) {
+    public void mostrarPanelJuego(MesaImpl mesa, int ronda) {
 
         int dinJugador, dinBot1, dinBot2, dinBot3, dinBot4;
         char paloCarta0, paloCarta1, paloCarta2, paloCarta3, paloCarta4;
@@ -124,8 +127,8 @@ public class GestoraMesaImpl {
         String numCar1Usuario, numCar2Usuario;
         char paloCar1Usuario, paloCar2Usuario;
 
-        numCar1Usuario = mesa.getJugadores()[0].getCartas()[0].getNumero();
-        numCar2Usuario = mesa.getJugadores()[0].getCartas()[1].getNumero();
+        numCar1Usuario = mesa.obtenerJugador(0).obtenerCarta(0).getNumero();
+        numCar2Usuario = mesa.obtenerJugador(0).obtenerCarta(1).getNumero();
 
         paloCar1Usuario = mesa.getJugadores()[0].getCartas()[0].getPalo();
         paloCar2Usuario = mesa.getJugadores()[0].getCartas()[1].getPalo();
@@ -198,104 +201,6 @@ public class GestoraMesaImpl {
         System.out.println();
 
     }
-
-
-    /*
-     * SIGNATURA:
-     * COMENTARIO:
-     * PRECONDICIONES:
-     * ENTRADA:
-     * SALIDA:
-     * ENTRADA/SALIDA:
-     * POSTCONDICIONES:
-     */
-
-    //TODO Desarrollar javadoc
-    //TODO Desarrollar interfaz
-
-    public void uj(MesaImpl mesa) {
-
-        int dinJugador, dinBot1, dinBot2, dinBot3, dinBot4;
-        char paloCarta0, paloCarta1, paloCarta2, paloCarta3, paloCarta4;
-        String numeroCarta0, numeroCarta1, numeroCarta2, numeroCarta3, numeroCarta4, userJugador, userBot1, userBot2, userBot3, userBot4;
-        String numCar1Bot1, numCar2Bot1, numCar1Bot2, numCar2Bot2, numCar1Bot3, numCar2Bot3, numCar1Bot4, numCar2Bot4, numCar1Usuario, numCar2Usuario;
-        char paloCar1Bot1, paloCar2Bot1, paloCar1Bot2, paloCar2Bot2, paloCar1Bot3, paloCar2Bot3, paloCar1Bot4, paloCar2Bot4, paloCar1Usuario, paloCar2Usuario;
-
-        numCar1Usuario = mesa.getJugadores()[0].getCartas()[0].getNumero();
-        numCar2Usuario = mesa.getJugadores()[0].getCartas()[1].getNumero();
-
-        paloCar1Usuario = mesa.getJugadores()[0].getCartas()[0].getPalo();
-        paloCar2Usuario = mesa.getJugadores()[0].getCartas()[1].getPalo();
-
-
-        userJugador = mesa.getJugadores()[0].getUsuario();
-        userBot1 = mesa.getJugadores()[1].getUsuario();
-        userBot2 = mesa.getJugadores()[2].getUsuario();
-        userBot3 = mesa.getJugadores()[3].getUsuario();
-        userBot4 = mesa.getJugadores()[4].getUsuario();
-
-        dinJugador = mesa.getJugadores()[0].getSaldo();
-        dinBot1 = mesa.getJugadores()[1].getSaldo();
-        dinBot2 = mesa.getJugadores()[2].getSaldo();
-        dinBot3 = mesa.getJugadores()[3].getSaldo();
-        dinBot4 = mesa.getJugadores()[4].getSaldo();
-
-        paloCarta0 = mesa.getCartasMesa()[0].getPalo();
-        paloCarta1 = mesa.getCartasMesa()[1].getPalo();
-        paloCarta2 = mesa.getCartasMesa()[2].getPalo();
-        paloCarta3 = mesa.getCartasMesa()[3].getPalo();
-        paloCarta4 = mesa.getCartasMesa()[4].getPalo();
-
-        numeroCarta0 = mesa.getCartasMesa()[0].getNumero();
-        numeroCarta1 = mesa.getCartasMesa()[1].getNumero();
-        numeroCarta2 = mesa.getCartasMesa()[2].getNumero();
-        numeroCarta3 = mesa.getCartasMesa()[3].getNumero();
-        numeroCarta4 = mesa.getCartasMesa()[4].getNumero();
-
-        System.out.println("                                      " + userBot2 + "                                       " + userBot3);
-        System.out.println();
-        System.out.println("                                      " + dinBot2 + "€                                               " + dinBot3 + "€");
-        System.out.println("                                      |º º|     -----        -----                                    |º º|    -----        -----");
-        System.out.println("                                      |---|    | ?   |      | ?   |                                   |---|   | ?   |      | ?   |  ");
-        System.out.println("                                               | ?   |      | ?   |                                           | ?   |      | ?   |");
-        System.out.println("                                                -----        -----                                             -----        -----");
-
-
-
-        System.out.println();
-        System.out.println();
-        System.out.println();
-
-        System.out.println("       " + userBot1 + "                                                                                                                              " + userBot4);
-        System.out.println("                                                        ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- ");
-        System.out.println("       " + dinBot1 + "€                                           | " + paloCarta0 + "   |" + "       " + "| " + paloCarta1 + "   |" + "       " + "| " + paloCarta2 + "   |" + "       " + "| " + paloCarta3 + "   |" + "       " + "| " + paloCarta4 + "   |                      " + dinBot4 + "€");
-        System.out.println("       |º º|       -----        -----                  | " + numeroCarta0 + "   |" + "       " + "| " + numeroCarta1 + "   |" + "       " + "| " + numeroCarta2 + "   |" + "       " + "| " + numeroCarta3 + "   |" + "       " + "| " + numeroCarta4 + "   |                      |º º|      -----        -----");
-        System.out.println("       |---|      | ?   |      | ?   |                 |     |" + "       " + "|     |" + "       " + "|     |" + "       " + "|     |" + "       " + "|     |" + "                      |---|     | ?   |      | ?   |");
-        System.out.println("                  | ?   |      | ?   |                  ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " -----                                 |     | ?    | ?   |");
-        System.out.println("                   -----        -----                                                                                                                  -----        -----");
-
-        System.out.println();
-        //System.out.println("                                                              DINERO EN MESA: " + mesa.getTotalApuestas() + "€");
-        System.out.println();
-        System.out.println();
-
-        System.out.println("                                                                     " + userJugador);
-        System.out.println("                                                              TU SALDO ES: " + dinJugador + "€");
-        System.out.println();
-        System.out.println("                                                           _______________________");
-        System.out.println("                                                          |                       |");
-        System.out.println("                                                          |    __           __    |");
-        System.out.println("                                                          |   |º |         |º |   |            ----------           ----------");
-        System.out.println("                                                          |    --           --    |           | "+paloCar1Usuario+"        |         | "+paloCar2Usuario+"        |");
-        System.out.println("                                                          |                       |           | "+numCar1Usuario+"        |         | "+numCar2Usuario+"        |");
-        System.out.println("                                                          |   \\              /    |           |          |         |          |");
-        System.out.println("                                                          |     \\___________/     |           |          |         |          |");
-        System.out.println("                                                          |                       |            ----------           ----------");
-        System.out.println("                                                           -----------------------");
-        System.out.println();
-
-    }
-
 
     /*
      * SIGNATURA: public void generarCartaMesa(CartaImpl[] baraja, CartaImpl[] cartas);
@@ -426,6 +331,7 @@ public class GestoraMesaImpl {
     //TODO Desarrollar javadoc
     //TODO Documentar codigo mejor
     //TODO Ver si se puede modular
+    //TODO Disminuir dinero despues de todas las jugadas
 
     public void realizarApuestas(int turnoJugador, MesaImpl mesa,int ronda){
         GestoraJugadorImpl gesJug = new GestoraJugadorImpl();
@@ -441,7 +347,7 @@ public class GestoraMesaImpl {
                 if (turnoJugador == 0){
                     apuestaJugador = gesJug.leerYValidarApuesta(mesa.obtenerJugador(turnoJugador), apuestaMinima);
                 }else{
-                    apuestaJugador = gesJug.calcularApostarBot(apuestaMinima,mesa,turnoJugador);
+                    apuestaJugador = gesJug.calcularApostarBot(apuestaMinima,mesa,turnoJugador,ronda);
                 }
                 if (apuestaJugador > apuestaMinima) {
                     apuestaMinima = apuestaJugador;
@@ -465,7 +371,7 @@ public class GestoraMesaImpl {
                     if (turnoJugador == 0){
                         apuestaJugador = gesJug.leerYValidarApuesta(mesa.obtenerJugador(turnoJugador),apuestaMinima);
                     }else{
-                        apuestaJugador = gesJug.calcularApostarBot(apuestaMinima, mesa, turnoJugador);    //TODO Tener en cuenta que la cantidad a apostar no sea mayor a lo que el usuario tiene
+                        apuestaJugador = gesJug.calcularApostarBot(apuestaMinima, mesa, turnoJugador,ronda);
                         //TODO En el caso de querer apostar y no poder por no llegar al minimo que haga all-in  (Creo que ya esta solucionado pero tengo que comprobarlo)
                     }
                     if (apuestaJugador != apuestaMinima || jugadorPasa) {
@@ -475,11 +381,7 @@ public class GestoraMesaImpl {
                         } else {
                             if (apuestaJugador > apuestaMinima) {
                                 apuestaMinima = apuestaJugador;
-                                if (totalJugadas == 5){
-                                    totalJugadas += 4;
-                                }else{
-                                    totalJugadas ++;
-                                }
+                                totalJugadas += 4;
                                 mesa.obtenerJugador(turnoJugador).disminuirDinero(apuestaJugador);
                                 mesa.anhadirApuesta(turnoJugador, ronda, apuestaJugador);
                             } else {

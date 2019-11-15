@@ -28,12 +28,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="442" />
-    <option name="y" value="-29" />
-    <option name="width" value="951" />
-    <option name="height" value="735" />
-  </component>
   <component name="ProjectId" id="1SqUc3Vy0QBxdxqLuVotYhImE3f" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
@@ -189,6 +183,7 @@
       <workItem from="1573666290180" duration="2034000" />
       <workItem from="1573717616952" duration="1451000" />
       <workItem from="1573751520141" duration="5287000" />
+      <workItem from="1573811751819" duration="2989000" />
     </task>
     <servers />
   </component>
@@ -265,6 +260,11 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java</url>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/PokerMain.java</url>
+          <line>120</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

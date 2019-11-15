@@ -115,7 +115,7 @@ public class PokerMain {
             gesJugador.colocarJugadoresActivos(mesa);
 
             //mostrarPanelJuego
-            gesMesa.mostrarPanelJuego(mesa);
+            gesMesa.mostrarPanelJuego(mesa,ronda);
 
             //realizarApuestas
             gesMesa.realizarApuestas(turnoJugador,mesa,ronda);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
@@ -125,7 +125,7 @@ public class PokerMain {
             gesMesa.generarTresCartasMesa(mesa.getBaraja(),mesa.getCartasMesa());  //Coloca 3 cartas aleatorias en el array de las cartas que hay en esta mesa
 
             //mostrarPanelJuego
-            gesMesa.mostrarPanelJuego(mesa);
+            gesMesa.mostrarPanelJuego(mesa,ronda);
 
             //realizarApuestas
             gesMesa.realizarApuestas(turnoJugador,mesa,ronda);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
@@ -137,7 +137,7 @@ public class PokerMain {
                 gesMesa.generarCartaMesa(mesa.getBaraja(),mesa.getCartasMesa());
 
                 //mostrarPanelJuego
-                gesMesa.mostrarPanelJuego(mesa);
+                gesMesa.mostrarPanelJuego(mesa,ronda);
 
                 //realizarApuestas
                 gesMesa.realizarApuestas(turnoJugador,mesa,ronda);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
@@ -146,7 +146,7 @@ public class PokerMain {
             }
 
             //mostrarPanelJuegoCompleto
-            resMesa.mostrarPanelJuegoCompleto(mesa);
+            gesMesa.mostrarPanelJuego(mesa,ronda);
 
             //calcularCantidadGanadores
 

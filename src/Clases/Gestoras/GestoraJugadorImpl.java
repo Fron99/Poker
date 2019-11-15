@@ -108,12 +108,13 @@ public class GestoraJugadorImpl {
 
 
     /*
-     * SIGNATURA: public int calcularApostarBot(int apuestaMinima, MesaImpl mesa, int jugador)
+     * SIGNATURA: public int calcularApostarBot(int apuestaMinima, MesaImpl mesa, int jugador, int ronda)
      * COMENTARIO: Metodo para calcular cuanto debe apostar el bot pasado por parametro
      * PRECONDICIONES: - Nada
      * ENTRADA: - Un objeto MesaImpl
      *          - Un entero con la apuesta minima
      *          - Un entero con el numero del jugador
+     *          - Un entero con el numero de la ronda
      * SALIDA: - Un entero con la cantidad a apostar
      * ENTRADA/SALIDA: - Nada
      * POSTCONDICIONES: - Devuelve asociado al nombre un entero con la cantidad de saldo a apostar
@@ -122,34 +123,46 @@ public class GestoraJugadorImpl {
     //TODO Desarrollar javadoc
 
 
-    public int calcularApostarBot(int apuestaMinima, MesaImpl mesa, int jugador){
-        int totalApostar, valorCartas, cantidadApostar;
+    public int calcularApostarBot(int apuestaMinima, MesaImpl mesa, int jugador, int ronda){
+        int totalApostar, valorCartas, cantidadApostar, puntosFarol;
         double porcenApostar;
         GestoraCartaImpl gesCarta = new GestoraCartaImpl();
         //Saca el valor en puntos que tiene las cartas de las que posee
         valorCartas = gesCarta.evaluarCartas(jugador, mesa);
-        //En el caso de que se marque un farol sumara los puntos de farol
-        valorCartas += calcularPuntosFarol(mesa);
-        //Calcula el porcentaje
-        porcenApostar = (double)valorCartas/267;
-        cantidadApostar = (int)((mesa.obtenerJugador(jugador).getSaldo()/4)*porcenApostar);
+        //Calcula cuantos puntos debe sumar en el caso de que haya farol, si no hay farol devuelve 0
+        puntosFarol = calcularPuntosFarol(mesa,ronda);
+        //Calcula el porcentaje a apostar
 
+
+        if (mesa.obtenerApuesta(jugador,ronda) == 0){
+            valorCartas += puntosFarol;
+            porcenApostar = (double)valorCartas/267;
+            cantidadApostar = (int)((mesa.obtenerJugador(jugador).getSaldo()/4)*porcenApostar);
+            //Si la cantidad que desea apostar el bot es mayor o igual que la minima que hay que apostar calculara si desea igualar o subir
+            if (cantidadApostar >= apuestaMinima){
+                //Si la diferencia entre lo que desea apostar y lo que debe apostar es mayor al 30% de lo que quiere apostar sube la apuesta, sino iguala la apuesta
+                if ((cantidadApostar - apuestaMinima) < (int)(cantidadApostar*0.3)){
+                    totalApostar = apuestaMinima;
+                }else {
+                    totalApostar = cantidadApostar;
+                }
+                //En el caso de que no iguale ni suba la apuesta apostara 0
+                //TODO Tener un margen de si le interesa subir o no y contolar los casos en los que hace all-in sin llegar a la cantidad minima
+            }else {
+                totalApostar = 0;
+            }
+        }else{
+            porcenApostar = (double)valorCartas/267;
+            cantidadApostar = (int)((mesa.obtenerJugador(jugador).getSaldo()/4)*porcenApostar);
+            if ((apuestaMinima - mesa.obtenerApuesta(jugador,ronda)) < (int)(cantidadApostar*0.3)){
+                totalApostar = (apuestaMinima - mesa.obtenerApuesta(jugador,ronda));
+            }else {
+                totalApostar = 0;
+            }
+        }
         //TODO Comprobar funcionamiento de este metodo y documentar
         //TODO Realizar test de este metodo
 
-        //Si la cantidad que desea apostar el bot es mayor o igual que la minima que hay que apostar calculara si desea igualar o subir
-        if (cantidadApostar >= apuestaMinima){
-            //Si la diferencia entre lo que desea apostar y lo que debe apostar es mayor al 30% de lo que quiere apostar sube la apuesta, sino iguala la apuesta
-            if ((cantidadApostar - apuestaMinima) < (int)(cantidadApostar*0.3)){
-                totalApostar = apuestaMinima;
-            }else {
-                totalApostar = cantidadApostar;
-            }
-        //En el caso de que no iguale ni suba la apuesta apostara 0
-        //TODO Tener un margen de si le interesa subir o no y contolar los casos en los que hace all-in sin llegar a la cantidad minima
-        }else {
-            totalApostar = 0;
-        }
         return totalApostar;
     }
 
@@ -166,60 +179,46 @@ public class GestoraJugadorImpl {
 
     //TODO Desarrollar javadoc
 
-    public int calcularPuntosFarol(MesaImpl mesa){
+    public int calcularPuntosFarol(MesaImpl mesa, int ronda){
         int puntosFarol = 0,porcentaje;
         Random r = new Random();
 
-        if (mesa.getApuestasJugadores()[0][0] == 0
-                && mesa.getApuestasJugadores()[1][0] == 0
-                && mesa.getApuestasJugadores()[2][0] == 0
-                && mesa.getApuestasJugadores()[3][0] == 0){
-
-            //PROBABILIDAD PRIMERA MANO
-            porcentaje = r.nextInt(99)+1;
-            if (porcentaje > 0 && porcentaje < 6){
-                puntosFarol = 10;
-            }
-
-        }else{
-            if (mesa.getApuestasJugadores()[0][1] == 0
-                    && mesa.getApuestasJugadores()[1][1] == 0
-                    && mesa.getApuestasJugadores()[2][1] == 0
-                    && mesa.getApuestasJugadores()[3][1] == 0){
-
+        switch (ronda){
+            case 0:
+                //PROBABILIDAD PRIMERA MANO
+                porcentaje = r.nextInt(99)+1;
+                if (porcentaje > 0 && porcentaje < 6){
+                    puntosFarol = 10;
+                }
+                break;
+            case 1:
                 //PROBABILIDAD SEGUNDA MANO
                 porcentaje = r.nextInt(99)+1;
                 if (porcentaje > 0 && porcentaje < 11){
                     puntosFarol = 15;
                 }
-
-            }else{
-                if (mesa.getApuestasJugadores()[0][2] == 0
-                        && mesa.getApuestasJugadores()[1][2] == 0
-                        && mesa.getApuestasJugadores()[2][2] == 0
-                        && mesa.getApuestasJugadores()[3][2] == 0){
-
-                    //PROBABILIDAD TERCERA MANO
-                    porcentaje = r.nextInt(99)+1;
-                    if (porcentaje > 0 && porcentaje < 16){
-                        puntosFarol = 25;
-                    }
-
-                }else{
-                    if (mesa.getApuestasJugadores()[0][3] == 0
-                            && mesa.getApuestasJugadores()[1][3] == 0
-                            && mesa.getApuestasJugadores()[2][3] == 0
-                            && mesa.getApuestasJugadores()[3][3] == 0){
-
-                        //PROBABILIDAD CUARTA MANO
-                        porcentaje = r.nextInt(99)+1;
-                        if (porcentaje > 0 && porcentaje < 21){
-                            puntosFarol = 50;
-                        }
-
-                    }
+                break;
+            case 2:
+                //PROBABILIDAD TERCERA MANO
+                porcentaje = r.nextInt(99)+1;
+                if (porcentaje > 0 && porcentaje < 16){
+                    puntosFarol = 25;
                 }
-            }
+                break;
+            case 3:
+                //PROBABILIDAD CUARTA MANO
+                porcentaje = r.nextInt(99)+1;
+                if (porcentaje > 0 && porcentaje < 21){
+                    puntosFarol = 50;
+                }
+                break;
+            case 4:
+                //PROBABILIDAD CUARTA MANO
+                porcentaje = r.nextInt(99)+1;
+                if (porcentaje > 0 && porcentaje < 5){
+                    puntosFarol = 100;
+                }
+                break;
         }
         return puntosFarol;
     }
