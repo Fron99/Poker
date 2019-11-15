@@ -38,7 +38,7 @@
  *          mostrarPanelJuego*
  *          realizarApuestas*
  *      finPara
- *      mostrarPanelJuegoCompleto*
+ *      mostrarPanelJuego*
  *      calcularCantidadGanadores*
  *      si(cantidad ganadores > 1)
  *          obtenerGanadores*
@@ -75,12 +75,12 @@ public class PokerMain {
         Random random = new Random();
         GestoraJugadorImpl gesJugador = new GestoraJugadorImpl();
         GestoraMesaImpl gesMesa = new GestoraMesaImpl();
-        ResguardosMesaImpl resMesa = new ResguardosMesaImpl();
 
         String usuarioJugador;
-        int saldoInicialJugador, turnoJugador, cantidadGanadores = 0;
+        int saldoInicialJugador, turnoJugador, cantidadGanadores, ronda;
         MesaImpl mesa = new MesaImpl();
-        int ronda;
+        JugadorImpl jugador;
+        JugadorImpl[] jugadores;
 
         //leerUsuario
         usuarioJugador = gesJugador.leerUsuario();
@@ -145,23 +145,26 @@ public class PokerMain {
 
             }
 
-            //mostrarPanelJuegoCompleto
+            //mostrarPanelJuego
             gesMesa.mostrarPanelJuego(mesa,ronda);
 
             //calcularCantidadGanadores
+            cantidadGanadores = gesMesa.calcularCantidadGanadores(mesa);    //TODO
 
             if (cantidadGanadores > 1){
                 //obtenerGanadores
-                //ingresarSaldoGanadores
+                for (int i = 0; i<5/*Aqui no deberia ir un 5 sino el array con los ganadores*/ ;i++){
+                    gesMesa.ingresarDineroGanador(0/*Aqui no va 0 va el ganador*/,mesa);
+                }
             }else{
                 //obtenerGanador
-                //ingresarSaldoGanador
+                gesMesa.ingresarDineroGanador(0/*Aqui no va 0 va el ganador*/,mesa);
             }
 
             if (turnoJugador == 4){
                 turnoJugador = 0;
             }else{
-                turnoJugador++; //incrementar turno jugador
+                turnoJugador++;
             }
 
         }while (mesa.getJugadores()[0].getSaldo()>0);

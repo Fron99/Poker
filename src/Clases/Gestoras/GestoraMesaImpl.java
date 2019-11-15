@@ -409,4 +409,47 @@ public class GestoraMesaImpl {
         }
     }
 
+
+    /*
+     * SIGNATURA: public int calcularCantidadGanadores(MesaImpl mesa)
+     * COMENTARIO: Calcular si puede haber mas de un ganador
+     * PRECONDICIONES:
+     * ENTRADA: - Un objeto mesa
+     * SALIDA: - Un entero
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Devuelve asociado al nombre la cantidad de ganadores posibles
+     */
+
+    //TODO Tener en cuenta cuando dos jugadores tengan las mismas puntuaciones y no se pueda desempatar
+
+    public int calcularCantidadGanadores(MesaImpl mesa){
+        int cantGanadores = 1;
+        for (JugadorImpl jugador : mesa.getJugadores()){
+            if (jugador.getActivo() && jugador.getSaldo() == 0){
+                cantGanadores++;
+            }
+        }
+        return cantGanadores;
+    }
+
+
+    /*
+     * SIGNATURA: public int obtenerGanador(MesaImpl mesa)
+     * COMENTARIO: Calcular si puede haber mas de un ganador
+     * PRECONDICIONES:
+     * ENTRADA: - Un objeto mesa
+     * SALIDA: - Un entero
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Devuelve asociado al nombre un entero con la posicion del jugador ganador
+     */
+
+    public int obtenerGanador(MesaImpl mesa){
+        int ganador = 0;
+        return ganador;
+    }
+
+
+
+
+
 }
