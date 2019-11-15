@@ -88,6 +88,8 @@ public class GestoraJugadorImpl {
      */
 
     //TODO Desarrollar javadoc
+    //TODO Pasar mesa para tener todos los datos mejor
+    //TODO Pasar int jugador, int ronda, int cantidadMinima, int ronda
 
     public int leerYValidarApuesta(JugadorImpl jugador, int cantidadMinima){
         Scanner teclado = new Scanner(System.in);
@@ -136,7 +138,7 @@ public class GestoraJugadorImpl {
 
         if (mesa.obtenerApuesta(jugador,ronda) == 0){
             valorCartas += puntosFarol;
-            porcenApostar = (double)valorCartas/267;
+            porcenApostar = (double)valorCartas/319;
             cantidadApostar = (int)((mesa.obtenerJugador(jugador).getSaldo()/4)*porcenApostar);
             //Si la cantidad que desea apostar el bot es mayor o igual que la minima que hay que apostar calculara si desea igualar o subir
             if (cantidadApostar >= apuestaMinima){
@@ -152,7 +154,7 @@ public class GestoraJugadorImpl {
                 totalApostar = 0;
             }
         }else{
-            porcenApostar = (double)valorCartas/267;
+            porcenApostar = (double)valorCartas/319;
             cantidadApostar = (int)((mesa.obtenerJugador(jugador).getSaldo()/4)*porcenApostar);
             if ((apuestaMinima - mesa.obtenerApuesta(jugador,ronda)) < (int)(cantidadApostar*0.3)){
                 totalApostar = (apuestaMinima - mesa.obtenerApuesta(jugador,ronda));

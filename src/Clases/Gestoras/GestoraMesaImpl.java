@@ -381,7 +381,11 @@ public class GestoraMesaImpl {
                         } else {
                             if (apuestaJugador > apuestaMinima) {
                                 apuestaMinima = apuestaJugador;
-                                totalJugadas += 4;
+                                if ((totalJugadas-cantidadJugadas) < 5){
+                                    totalJugadas += 4;
+                                }else{
+                                    totalJugadas++;
+                                }
                                 mesa.obtenerJugador(turnoJugador).disminuirDinero(apuestaJugador);
                                 mesa.anhadirApuesta(turnoJugador, ronda, apuestaJugador);
                             } else {

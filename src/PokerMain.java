@@ -97,7 +97,7 @@ public class PokerMain {
 
         //generarTurnoJugador
         //turnoJugador = random.nextInt(5);   //Genera un numero del 0 al 4 que es la cantidad de jugadores que hay para saber quien empieza a apostar
-        turnoJugador = 1;
+        turnoJugador = 3;
         do {
 
             ronda = 0;
