@@ -241,10 +241,4 @@ public class GestoraJugadorImpl {
         }
     }
 
-
-
-
-
-
-
 }

@@ -7,11 +7,14 @@
  * Entrada:
  *  - Un String con el usuario
  *  - Un int con la cantidad de saldo inicial
+ *  - Un int para la cantidad que apuesta el jugador
  *
  * Salida:
  *  - Mensajes al usuario
  *  - Eco de los datos
  *  - Resultado de las acciones elegidas por el usuario
+ *  - Ganadores
+ *  - La informacion de la mesa
  *
  * Restricciones:
  *  - El saldo inicial no puede ser menor de 2000€ ni superior a 10000€
@@ -77,9 +80,8 @@ public class PokerMain {
         GestoraMesaImpl gesMesa = new GestoraMesaImpl();
 
         String usuarioJugador;
-        int saldoInicialJugador, turnoJugador, cantidadGanadores, ronda;
+        int saldoInicialJugador, turnoJugador, cantidadGanadores, ronda, ganador;
         MesaImpl mesa = new MesaImpl();
-        JugadorImpl jugador;
         JugadorImpl[] jugadores;
 
         //leerUsuario
@@ -158,7 +160,9 @@ public class PokerMain {
                 }
             }else{
                 //obtenerGanador
-                gesMesa.ingresarDineroGanador(0/*Aqui no va 0 va el ganador*/,mesa);
+                ganador = gesMesa.obtenerGanador(mesa);
+                //ingresarSaldoGanador
+                gesMesa.ingresarDineroGanador(ganador,mesa);
             }
 
             if (turnoJugador == 4){

@@ -444,12 +444,16 @@ public class GestoraMesaImpl {
      */
 
     public int obtenerGanador(MesaImpl mesa){
-        int ganador = 0;
+        int ganador = 0, puntos = 0;
+        JugadorImpl[] jugadores = mesa.getJugadores();
+        GestoraCartaImpl gesCarta = new GestoraCartaImpl();
+        for (int i = 0;i<jugadores.length;i++){
+            if ((mesa.obtenerJugador(i).getActivo()) && (gesCarta.evaluarCartas(i,mesa) > puntos)){
+                ganador = i;
+            }
+        }
         return ganador;
     }
-
-
-
 
 
 }
