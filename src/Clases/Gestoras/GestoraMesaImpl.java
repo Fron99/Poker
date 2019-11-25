@@ -9,31 +9,6 @@ import java.util.Random;
 public class GestoraMesaImpl {
 
     /*
-     * SIGNATURA: public void limpiarMesa(MesaImpl mesa)
-     * COMENTARIO: Coloca en defecto todas las cartas del array pasado por parametro y coloca todas las apuestas de los jugadores a 0
-     * PRECONDICIONES: - Nada
-     * ENTRADA: - Nada
-     * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Un objeto MesaImpl
-     * POSTCONDICIONES: Modifica los atributo cartasMesa y apuestasJugadores del objeto MesaImpl pasado por
-     *                  parametro colocando en defecto todas las cartas del array pasado por parametro y coloca todas las apuestas de los jugadores a 0.
-     */
-
-    //TODO Desarrollar javadoc
-
-    public void limpiarMesa(MesaImpl mesa) {
-        for (int i = 0; i < mesa.getCartasMesa().length; i++) {
-            mesa.getCartasMesa()[i] = new CartaImpl();
-        }
-        for (int i = 0; i < mesa.getApuestasJugadores().length; i++) {
-            for (int j = 0; j < mesa.getApuestasJugadores().length; j++) {
-                mesa.getApuestasJugadores()[i][j] = 0;
-            }
-        }
-    }
-
-
-    /*
      * SIGNATURA: public void generarTresCartasMesa(CartaImpl[] baraja, CartaImpl[] cartas);
      * COMENTARIO: Saca 3 cartas de la baraja y las coloca en el segundo array pasado por parametro
      * PRECONDICIONES: - El primer array debe tener 54 campos
@@ -94,7 +69,7 @@ public class GestoraMesaImpl {
             for (int j = 0; j<2; j++){
                 do {
                     if (baraja[numPosicionCarta].getPalo() != 'D') {
-                        mesa.getJugadores()[i].getCartas()[j] = baraja[numPosicionCarta];
+                        mesa.obtenerJugador(i).getCartas()[j] = baraja[numPosicionCarta];   //TODO Mejorar esto, hacer patron delegacion
                         baraja[numPosicionCarta] = new CartaImpl();
                     }
                     numPosicionCarta = r.nextInt(52);
@@ -423,9 +398,9 @@ public class GestoraMesaImpl {
     //TODO Tener en cuenta cuando dos jugadores tengan las mismas puntuaciones y no se pueda desempatar
 
     public int calcularCantidadGanadores(MesaImpl mesa){
-        int cantGanadores = 1;
+        int cantGanadores = 0;
         for (JugadorImpl jugador : mesa.getJugadores()){
-            if (jugador.getActivo() && jugador.getSaldo() == 0){
+            if (jugador.getActivo()){
                 cantGanadores++;
             }
         }
@@ -436,7 +411,8 @@ public class GestoraMesaImpl {
     /*
      * SIGNATURA: public int obtenerGanador(MesaImpl mesa)
      * COMENTARIO: Calcular si puede haber mas de un ganador
-     * PRECONDICIONES:
+     * PRECONDICIONES: - Obtendra el ganador de la mesa
+     *                 - No puede haber mas de 1 gana
      * ENTRADA: - Un objeto mesa
      * SALIDA: - Un entero
      * ENTRADA/SALIDA: - Nada
@@ -450,6 +426,7 @@ public class GestoraMesaImpl {
         for (int i = 0;i<jugadores.length;i++){
             if ((mesa.obtenerJugador(i).getActivo()) && (gesCarta.evaluarCartas(i,mesa) > puntos)){
                 ganador = i;
+                puntos = gesCarta.evaluarCartas(i,mesa);
             }
         }
         return ganador;

@@ -27,6 +27,7 @@
  *  cargarBots*
  *  //generarTurnoJugador
  *  repetir
+ *      //actualizarRonda
  *      limpiarMesa*
  *      restaurarBaraja*
  *      generarCartasJugadores*
@@ -66,8 +67,6 @@ import Clases.Basicas.JugadorImpl;
 import Clases.Basicas.MesaImpl;
 import Clases.Gestoras.GestoraJugadorImpl;
 import Clases.Gestoras.GestoraMesaImpl;
-import Clases.Resguardos.ResguardosMesaImpl;
-
 
 import java.util.Random;
 
@@ -100,12 +99,12 @@ public class PokerMain {
         //generarTurnoJugador
         //turnoJugador = random.nextInt(5);   //Genera un numero del 0 al 4 que es la cantidad de jugadores que hay para saber quien empieza a apostar
         turnoJugador = 3;
-        do {
 
-            ronda = 0;
+        do {
+            ronda = 0;  //Se actualiza la variable ronda para cada vez que se juega una partida
 
             //limpiarMesa
-            gesMesa.limpiarMesa(mesa);      //TODO Barajar posibilidad de introducirlo como metodo de mesa
+            mesa.limpiarMesa(); //Coloca por defecto las cartas de la mesa y las apuestas de los jugadores
 
             //restaurarBaraja
             mesa.restaurarBaraja();
@@ -149,6 +148,10 @@ public class PokerMain {
 
             //mostrarPanelJuego
             gesMesa.mostrarPanelJuego(mesa,ronda);
+
+
+            //TODO Realizar un metodo que te devuelva los ganadores o ganador directamente y se ahorra trabajo
+
 
             //calcularCantidadGanadores
             cantidadGanadores = gesMesa.calcularCantidadGanadores(mesa);    //TODO

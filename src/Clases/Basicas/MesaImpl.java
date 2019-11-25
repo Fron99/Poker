@@ -43,6 +43,8 @@
  * public void anhadirApuesta(int jugador, int rondaApuesta, int cantidad)
  * public int obtenerApuesta(int jugador, int rondaApuesta)
  *
+ * public void limpiarMesa()
+ *
  */
 
 package Clases.Basicas;
@@ -233,7 +235,7 @@ public class MesaImpl implements Mesa {
      * PRECONDICIONES: - El array debe tener como minimo 52 campos
      * ENTRADA: - Nada
      * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Un array de CartaImpl
+     * ENTRADA/SALIDA: - Nada
      * POSTCONDICIONES: Modifica el array pasado por parametro anhadiendo todas las cartas posibles
      */
 
@@ -283,6 +285,33 @@ public class MesaImpl implements Mesa {
         this.baraja[51] = new CartaImpl('T', "K");
 
     }
+
+
+    /*
+     * SIGNATURA: public void limpiarMesa()
+     * COMENTARIO: Coloca en defecto todas las cartas del array pasado por parametro y coloca todas las apuestas de los jugadores a 0
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: Modifica las cartas de la mesa colocandolas por defecto y coloca todas las apuestas a 0
+     */
+
+    /**
+     * Change the cards of the table to default and set bets to 0
+     */
+
+    public void limpiarMesa() {
+        for (int i = 0; i < this.getCartasMesa().length; i++) {
+            this.getCartasMesa()[i] = new CartaImpl();
+        }
+        for (int i = 0; i < this.getApuestasJugadores().length; i++) {
+            for (int j = 0; j < this.getApuestasJugadores().length; j++) {
+                this.getApuestasJugadores()[i][j] = 0;
+            }
+        }
+    }
+
 
     /**
      * This method returns the player of the position passed by parameter

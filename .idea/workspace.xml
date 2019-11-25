@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b9a3eddb-34fe-4dec-b858-4173adae43d5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Interfaces/Mesa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Interfaces/Mesa.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PokerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PokerMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tests/GestoraMesaImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/GestoraMesaImplTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +18,20 @@
     <SUITE FILE_PATH="coverage/Poker$PokerMain.ic" NAME="PokerMain Coverage Results" MODIFIED="1573821089015" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/PokerMain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -44,10 +57,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" />
-        <option value="$PROJECT_DIR$/src/PokerMain.java" />
         <option value="$USER_HOME$/Desktop/untitled.java" />
-        <option value="$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java" />
         <option value="$PROJECT_DIR$/src/Tests/GestoraMesaImplTest.java" />
+        <option value="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" />
+        <option value="$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java" />
+        <option value="$PROJECT_DIR$/src/PokerMain.java" />
+        <option value="$PROJECT_DIR$/src/Clases/Interfaces/Mesa.java" />
       </list>
     </option>
   </component>
@@ -64,7 +79,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -96,32 +110,13 @@
               <item name="Poker" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Clases" type="462c0819:PsiDirectoryNode" />
-              <item name="Gestoras" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Poker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Clases" type="462c0819:PsiDirectoryNode" />
               <item name="Interfaces" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Poker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Clases" type="462c0819:PsiDirectoryNode" />
-              <item name="Resguardos" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Poker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Poker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -165,7 +160,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.GestoraMesaImplTest">
+  <component name="RunManager" selected="Application.PokerMain">
     <configuration name="PokerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="PokerMain" />
       <module name="ElBromas" />
@@ -227,15 +222,15 @@
     </configuration>
     <list>
       <item itemvalue="Application.PokerMain" />
+      <item itemvalue="Application.hol" />
       <item itemvalue="JUnit.GestoraCartaImplTest" />
       <item itemvalue="JUnit.GestoraCartaImplTest.testCalcularValorEscalera7" />
-      <item itemvalue="Application.hol" />
       <item itemvalue="JUnit.GestoraMesaImplTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GestoraMesaImplTest" />
         <item itemvalue="Application.PokerMain" />
+        <item itemvalue="JUnit.GestoraMesaImplTest" />
         <item itemvalue="Application.hol" />
         <item itemvalue="JUnit.GestoraCartaImplTest" />
         <item itemvalue="JUnit.GestoraCartaImplTest.testCalcularValorEscalera7" />
@@ -291,9 +286,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GestoraCartaImplTest_testCalcularValorEscaleracolor12 - 2019.11.12 at 12h 38m 07s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorEscaleracolor12" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="GestoraCartaImplTest_testCalcularValorEscaleracolor12 - 2019.11.12 at 12h 38m 31s.xml">
       <configuration name="GestoraCartaImplTest.testCalcularValorEscaleracolor12" configurationId="JUnit" />
     </history-entry>
@@ -321,14 +313,18 @@
     <history-entry file="GestoraMesaImplTest - 2019.11.21 at 14h 27m 16s.xml">
       <configuration name="GestoraMesaImplTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="GestoraMesaImplTest - 2019.11.25 at 13h 46m 00s.xml">
+      <configuration name="GestoraMesaImplTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11246000" />
+    <option name="totallyTimeSpent" value="15548000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26096824" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2685325" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -430,6 +426,16 @@
   <component name="debuggerHistoryManager">
     <expressions id="setValue">
       <expression>
+        <expression-string>31</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>74</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>8</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
@@ -466,16 +472,6 @@
       </expression>
       <expression>
         <expression-string>&quot;3&quot;</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>&quot;4&quot;</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>'C'</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -523,33 +519,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/untitled.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="23" column="19" lean-forward="true" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#1111#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/hol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-          <folding>
-            <element signature="e#0#1106#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/JugadorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-442">
-          <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Desktop/untitled.java" />
+    <entry file="file://$PROJECT_DIR$/src/hol.java" />
     <entry file="file://$PROJECT_DIR$/src/Tests/GestoraMesaImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="444">
@@ -557,24 +528,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PokerMain.java">
+    <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="162" column="41" selection-start-line="162" selection-start-column="41" selection-end-line="162" selection-end-column="41" />
+        <state relative-caret-position="221">
+          <caret line="144" column="4" selection-start-line="144" selection-start-column="4" selection-end-line="144" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/JugadorImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="166" selection-start-line="166" selection-end-line="166" />
+          <folding>
+            <element signature="e#3817#3818#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/Interfaces/Carta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#487#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/Interfaces/Mesa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="45" column="28" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="45" column="3" lean-forward="true" selection-start-line="45" selection-start-column="3" selection-end-line="45" selection-end-column="28" />
+          <folding>
+            <element signature="e#9219#9220#0" expanded="true" />
+            <element signature="e#9266#9267#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="28" />
+        <state relative-caret-position="-5612">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/PokerMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="144" column="4" selection-start-line="144" selection-start-column="4" selection-end-line="144" selection-end-column="4" />
+        <state relative-caret-position="136">
+          <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

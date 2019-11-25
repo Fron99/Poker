@@ -43,6 +43,8 @@
  * public void anhadirApuesta(int jugador, int rondaApuesta, int cantidad)
  * public int obtenerApuesta(int jugador, int rondaApuesta)
  *
+ * public void limpiarMesa()
+ *
  */
 
 package Clases.Interfaces;
