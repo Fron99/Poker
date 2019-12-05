@@ -387,7 +387,7 @@ public class GestoraMesaImpl {
 
     /*
      * SIGNATURA: public int calcularCantidadGanadores(MesaImpl mesa)
-     * COMENTARIO: Calcular si puede haber mas de un ganador
+     * COMENTARIO: Calcula cuantos ganadores hay en la ronda
      * PRECONDICIONES:
      * ENTRADA: - Un objeto mesa
      * SALIDA: - Un entero
@@ -395,7 +395,7 @@ public class GestoraMesaImpl {
      * POSTCONDICIONES: - Devuelve asociado al nombre la cantidad de ganadores posibles
      */
 
-    //TODO Tener en cuenta cuando dos jugadores tengan las mismas puntuaciones y no se pueda desempatar
+    //TODO Javadoc
 
     public int calcularCantidadGanadores(MesaImpl mesa){
         int cantGanadores = 0;
@@ -418,6 +418,8 @@ public class GestoraMesaImpl {
      * ENTRADA/SALIDA: - Nada
      * POSTCONDICIONES: - Devuelve asociado al nombre un entero con la posicion del jugador ganador
      */
+
+    //TODO Javadoc
 
     public int obtenerGanador(MesaImpl mesa){
         int ganador = 0, puntos = 0;

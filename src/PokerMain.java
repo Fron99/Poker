@@ -81,7 +81,6 @@ public class PokerMain {
         String usuarioJugador;
         int saldoInicialJugador, turnoJugador, cantidadGanadores, ronda, ganador;
         MesaImpl mesa = new MesaImpl();
-        JugadorImpl[] jugadores;
 
         //leerUsuario
         usuarioJugador = gesJugador.leerUsuario();
@@ -148,10 +147,6 @@ public class PokerMain {
 
             //mostrarPanelJuego
             gesMesa.mostrarPanelJuego(mesa,ronda);
-
-
-            //TODO Realizar un metodo que te devuelva los ganadores o ganador directamente y se ahorra trabajo
-
 
             //calcularCantidadGanadores
             cantidadGanadores = gesMesa.calcularCantidadGanadores(mesa);    //TODO
