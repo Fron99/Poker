@@ -69,7 +69,7 @@ public class GestoraMesaImpl {
             for (int j = 0; j<2; j++){
                 do {
                     if (baraja[numPosicionCarta].getPalo() != 'D') {
-                        mesa.obtenerJugador(i).getCartas()[j] = baraja[numPosicionCarta];   //TODO Mejorar esto, hacer patron delegacion
+                        mesa.getCartasJugador(i)[j] = baraja[numPosicionCarta];
                         baraja[numPosicionCarta] = new CartaImpl();
                     }
                     numPosicionCarta = r.nextInt(52);
@@ -386,19 +386,20 @@ public class GestoraMesaImpl {
 
 
     /*
-     * SIGNATURA: public int calcularCantidadGanadores(MesaImpl mesa)
-     * COMENTARIO: Calcula cuantos ganadores hay en la ronda
+     * SIGNATURA: public int[] obtenerGanadores(MesaImpl mesa)
+     * COMENTARIO: Calcula quienes son los ganadores de la ronda
      * PRECONDICIONES:
      * ENTRADA: - Un objeto mesa
-     * SALIDA: - Un entero
+     * SALIDA: - Un array de enteros
      * ENTRADA/SALIDA: - Nada
      * POSTCONDICIONES: - Devuelve asociado al nombre la cantidad de ganadores posibles
      */
 
     //TODO Javadoc
+    //TODO Hacer
 
-    public int calcularCantidadGanadores(MesaImpl mesa){
-        int cantGanadores = 0;
+    public int[] obtenerGanadores(MesaImpl mesa){
+        int[] cantGanadores;
         for (JugadorImpl jugador : mesa.getJugadores()){
             if (jugador.getActivo()){
                 cantGanadores++;
@@ -406,33 +407,5 @@ public class GestoraMesaImpl {
         }
         return cantGanadores;
     }
-
-
-    /*
-     * SIGNATURA: public int obtenerGanador(MesaImpl mesa)
-     * COMENTARIO: Calcular si puede haber mas de un ganador
-     * PRECONDICIONES: - Obtendra el ganador de la mesa
-     *                 - No puede haber mas de 1 gana
-     * ENTRADA: - Un objeto mesa
-     * SALIDA: - Un entero
-     * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: - Devuelve asociado al nombre un entero con la posicion del jugador ganador
-     */
-
-    //TODO Javadoc
-
-    public int obtenerGanador(MesaImpl mesa){
-        int ganador = 0, puntos = 0;
-        JugadorImpl[] jugadores = mesa.getJugadores();
-        GestoraCartaImpl gesCarta = new GestoraCartaImpl();
-        for (int i = 0;i<jugadores.length;i++){
-            if ((mesa.obtenerJugador(i).getActivo()) && (gesCarta.evaluarCartas(i,mesa) > puntos)){
-                ganador = i;
-                puntos = gesCarta.evaluarCartas(i,mesa);
-            }
-        }
-        return ganador;
-    }
-
-
+    
 }

@@ -43,12 +43,12 @@
  *          realizarApuestas*
  *      finPara
  *      mostrarPanelJuego*
- *      calcularCantidadGanadores*
+ *      obtenerGanadores*
  *      si(cantidad ganadores > 1)
- *          obtenerGanadores*
+ *      //TODO ver que se haria aqui
+ *
  *          ingresarSaldoGanadores*
  *      sino
- *          obtenerGanador*
  *          ingresarSaldoGanador*
  *      finSi
  *      si(turno jugador == 4)
@@ -79,7 +79,8 @@ public class PokerMain {
         GestoraMesaImpl gesMesa = new GestoraMesaImpl();
 
         String usuarioJugador;
-        int saldoInicialJugador, turnoJugador, cantidadGanadores, ronda, ganador;
+        int saldoInicialJugador, turnoJugador, ronda, ganador;
+        int[] ganadores;
         MesaImpl mesa = new MesaImpl();
 
         //leerUsuario
@@ -148,19 +149,17 @@ public class PokerMain {
             //mostrarPanelJuego
             gesMesa.mostrarPanelJuego(mesa,ronda);
 
-            //calcularCantidadGanadores
-            cantidadGanadores = gesMesa.calcularCantidadGanadores(mesa);    //TODO
+            //calcularGanadores
+            ganadores = gesMesa.obtenerGanadores(mesa);    //TODO
 
-            if (cantidadGanadores > 1){
-                //obtenerGanadores
+            if (ganadores.length > 1){
+                //TODO Ver que se haria aqui
                 for (int i = 0; i<5/*Aqui no deberia ir un 5 sino el array con los ganadores*/ ;i++){
                     gesMesa.ingresarDineroGanador(0/*Aqui no va 0 va el ganador*/,mesa);
                 }
             }else{
-                //obtenerGanador
-                ganador = gesMesa.obtenerGanador(mesa);
                 //ingresarSaldoGanador
-                gesMesa.ingresarDineroGanador(ganador,mesa);
+                gesMesa.ingresarDineroGanador(ganadores[0],mesa);   //Se coge el valor 0 del array porque solo habria un ganador en este caso
             }
 
             if (turnoJugador == 4){

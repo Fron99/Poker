@@ -138,6 +138,16 @@ public class MesaImpl implements Mesa {
     }
 
     /**
+     * Return array with cards of player
+     * @param jugador int of the player
+     * @return JugadorImpl[] array of attribute "jugadores"
+     */
+
+    public CartaImpl[] getCartasJugador(int jugador){
+        return this.obtenerJugador(jugador).getCartas();
+    }
+
+    /**
      * Set array passed by parameter in attribute "jugadores"
      * @param jugadores new value of attribute "jugadores"
      */
