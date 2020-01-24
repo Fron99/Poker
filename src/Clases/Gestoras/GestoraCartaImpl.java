@@ -104,7 +104,7 @@ public class GestoraCartaImpl {
      */
 
 
-    public CartaImpl[] obtenerCartasAEvaluar(int jugador, MesaImpl mesa){
+    private CartaImpl[] obtenerCartasAEvaluar(int jugador, MesaImpl mesa){
         CartaImpl[] cartasTotales;
 
         int cantidadCartas = 0;
@@ -369,17 +369,16 @@ public class GestoraCartaImpl {
         ArrayList<CartaImpl> cartasNoRepetidas = new ArrayList<>();
         boolean existe = false;
         //TODO Testear con valores repetidos en medio de la baraja y testear muy a fondo
-        //TODO Ver si es rentable colocarlo con array normales
         if (cartas.length>4){
             cartasNoRepetidas.add(cartas[0]);
-            for (int i = 0;i<cartas.length;i++){
+            for (CartaImpl carta: cartas){
                 for (int j = 0; j<cartasNoRepetidas.size() && !existe;j++){
-                    if (cartas[i].getValorNumero()==cartasNoRepetidas.get(j).getValorNumero()){
+                    if (carta.getValorNumero()==cartasNoRepetidas.get(j).getValorNumero()){
                         existe = true;
                     }
                 }
                 if (!existe){
-                    cartasNoRepetidas.add(cartas[i]);
+                    cartasNoRepetidas.add(carta);
                 }
                 existe = false;
             }
@@ -490,7 +489,12 @@ public class GestoraCartaImpl {
      *                  - Si no hay full devuelve 0
      */
 
-    //TODO Desarrollar javadoc
+    /**
+     * Calculate the value of the "Full" in deck of cards.
+     * @param cartas CartaImpl[] cards you want to value
+     * @return int with value of the "Full" in poker. If not exist "Full" in the deck of cards, returns 0
+     */
+
 
     public int calcularValorFull(CartaImpl[] cartas){
         int puntos = 0;
@@ -682,7 +686,7 @@ public class GestoraCartaImpl {
      *                  - Si no hay color se devolvera N
      */
 
-    public char calcularColor(CartaImpl[] cartas){
+    private char calcularColor(CartaImpl[] cartas){
         char color = 'N';
         int contadorPica = 0, contadorCorazon = 0, contadorTrevol = 0, contadorRombo = 0;
 

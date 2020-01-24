@@ -4,6 +4,7 @@ import Clases.Basicas.CartaImpl;
 import Clases.Basicas.JugadorImpl;
 import Clases.Basicas.MesaImpl;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class GestoraMesaImpl {
@@ -400,12 +401,25 @@ public class GestoraMesaImpl {
 
     public int[] obtenerGanadores(MesaImpl mesa){
         int[] cantGanadores;
-        for (JugadorImpl jugador : mesa.getJugadores()){
-            if (jugador.getActivo()){
-                cantGanadores++;
+
+        //Calcular posibles ganadores
+        ArrayList<Integer> posiblesGanadores = new ArrayList<>();
+        JugadorImpl[] jugadores = mesa.getJugadores();
+        for (int i = 0; i < jugadores.length; i++) {
+            if (jugadores[i].getActivo()){
+                posiblesGanadores.add(i);
             }
         }
+
+
+
+
+
+
+
+
+
         return cantGanadores;
     }
-    
+
 }
