@@ -18,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="105" column="25" lean-forward="true" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
+            <state relative-caret-position="328">
+              <caret line="48" column="9" lean-forward="true" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -151,7 +151,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580302537075" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580302889074" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -315,14 +315,11 @@
       <workItem from="1579268018655" duration="183000" />
       <workItem from="1579521644520" duration="1226000" />
       <workItem from="1579858449484" duration="5523000" />
-      <workItem from="1580289854033" duration="5715000" />
+      <workItem from="1580289854033" duration="6010000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GestoraCartaImplTest - 2020.01.29 at 13h 22m 00s.xml">
-      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="GestoraCartaImplTest - 2020.01.29 at 13h 22m 26s.xml">
       <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
     </history-entry>
@@ -350,9 +347,12 @@
     <history-entry file="GestoraCartaImplTest - 2020.01.29 at 13h 55m 24s.xml">
       <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="GestoraCartaImplTest - 2020.01.29 at 13h 55m 44s.xml">
+      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39408000" />
+    <option name="totallyTimeSpent" value="39703000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -632,15 +632,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="243" column="69" lean-forward="true" selection-start-line="243" selection-start-column="27" selection-end-line="243" selection-end-column="69" />
+        <state relative-caret-position="128">
+          <caret line="149" column="61" selection-start-line="149" selection-start-column="61" selection-end-line="149" selection-end-column="61" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="105" column="25" lean-forward="true" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
+        <state relative-caret-position="328">
+          <caret line="48" column="9" lean-forward="true" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
         </state>
       </provider>
     </entry>
