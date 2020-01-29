@@ -4,8 +4,8 @@
     <list default="true" id="b9a3eddb-34fe-4dec-b858-4173adae43d5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,25 +17,21 @@
     <SUITE FILE_PATH="coverage/Poker$PokerMain.ic" NAME="PokerMain Coverage Results" MODIFIED="1573821089015" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PokerMain.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="155" column="44" selection-start-line="155" selection-start-column="44" selection-end-line="155" selection-end-column="44" />
-              <folding>
-                <element signature="e#0#6156#0" expanded="true" />
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="226">
+              <caret line="372" column="8" selection-start-line="372" selection-start-column="8" selection-end-line="372" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="24" column="104" selection-start-line="24" selection-start-column="104" selection-end-line="24" selection-end-column="104" />
+            <state relative-caret-position="86">
+              <caret line="588" column="70" selection-start-line="588" selection-start-column="70" selection-end-line="588" selection-end-column="70" />
             </state>
           </provider>
         </entry>
@@ -43,24 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2523">
-              <caret line="413" selection-start-line="413" selection-end-line="413" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="145" column="39" selection-start-line="145" selection-start-column="23" selection-end-line="145" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#12631#0" expanded="true" />
-                <element signature="e#3864#3865#0" expanded="true" />
-                <element signature="e#3901#3902#0" expanded="true" />
-                <element signature="e#4530#4531#0" expanded="true" />
-                <element signature="e#4575#4576#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="110">
+              <caret line="402" column="36" selection-start-line="402" selection-start-column="36" selection-end-line="402" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -96,9 +76,10 @@
         <option value="$PROJECT_DIR$/src/Clases/Interfaces/Mesa.java" />
         <option value="$PROJECT_DIR$/src/PokerMain.java" />
         <option value="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" />
+        <option value="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" />
         <option value="$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java" />
         <option value="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" />
-        <option value="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" />
+        <option value="$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java" />
       </list>
     </option>
   </component>
@@ -115,6 +96,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -171,8 +154,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -182,11 +163,11 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574775425769" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580300825024" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../HelloWordAndroid" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -346,31 +327,11 @@
       <workItem from="1579268018655" duration="183000" />
       <workItem from="1579521644520" duration="1226000" />
       <workItem from="1579858449484" duration="5523000" />
+      <workItem from="1580289854033" duration="3968000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GestoraCartaImplTest_testCalcularValorEscaleracolor12 - 2019.11.12 at 12h 38m 49s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorEscaleracolor12" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest_testEvaluarCartas3 - 2019.11.12 at 12h 38m 56s.xml">
-      <configuration name="GestoraCartaImplTest.testEvaluarCartas3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest_testEvaluarCartas3 - 2019.11.12 at 12h 42m 15s.xml">
-      <configuration name="GestoraCartaImplTest.testEvaluarCartas3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest_testEvaluarCartas3 - 2019.11.12 at 12h 43m 59s.xml">
-      <configuration name="GestoraCartaImplTest.testEvaluarCartas3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest_testCalcularValorEscaleracolor12 - 2019.11.12 at 12h 43m 59s.xml">
-      <configuration name="GestoraCartaImplTest.testCalcularValorEscaleracolor12" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest_testEvaluarCartas3 - 2019.11.12 at 12h 44m 13s.xml">
-      <configuration name="GestoraCartaImplTest.testEvaluarCartas3" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest - 2019.11.12 at 12h 44m 31s.xml">
-      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="GestoraMesaImplTest - 2019.11.21 at 14h 27m 16s.xml">
       <configuration name="GestoraMesaImplTest" configurationId="JUnit" />
     </history-entry>
@@ -380,15 +341,36 @@
     <history-entry file="GestoraCartaImplTest - 2019.11.26 at 14h 37m 13s.xml">
       <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="GestoraCartaImplTest - 2020.01.29 at 12h 59m 59s.xml">
+      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GestoraCartaImplTest - 2020.01.29 at 13h 15m 48s.xml">
+      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GestoraCartaImplTest - 2020.01.29 at 13h 16m 49s.xml">
+      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GestoraCartaImplTest - 2020.01.29 at 13h 17m 45s.xml">
+      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GestoraCartaImplTest - 2020.01.29 at 13h 21m 42s.xml">
+      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GestoraCartaImplTest - 2020.01.29 at 13h 22m 00s.xml">
+      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GestoraCartaImplTest - 2020.01.29 at 13h 22m 26s.xml">
+      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33693000" />
+    <option name="totallyTimeSpent" value="37661000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13691376" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13918306" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -397,7 +379,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.42880523" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.42716858" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -407,7 +389,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="12" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3289689" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -609,31 +591,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9826">
-          <caret line="584" lean-forward="true" selection-start-line="584" selection-end-line="584" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-596">
           <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="145" column="39" selection-start-line="145" selection-start-column="23" selection-end-line="145" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#12631#0" expanded="true" />
-            <element signature="e#3864#3865#0" expanded="true" />
-            <element signature="e#3901#3902#0" expanded="true" />
-            <element signature="e#4530#4531#0" expanded="true" />
-            <element signature="e#4575#4576#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -648,35 +609,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/PokerMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="370" column="10" selection-start-line="370" selection-start-column="10" selection-end-line="370" selection-end-column="10" />
+        <state relative-caret-position="1802">
+          <caret line="156" column="44" selection-start-line="156" selection-start-column="44" selection-end-line="156" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PokerMain.java">
+    <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="155" column="44" selection-start-line="155" selection-start-column="44" selection-end-line="155" selection-end-column="44" />
+        <state relative-caret-position="357">
+          <caret line="28" column="19" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="155" column="35" selection-start-line="155" selection-start-column="23" selection-end-line="155" selection-end-column="35" />
           <folding>
-            <element signature="e#0#6156#0" expanded="true" />
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#12631#0" expanded="true" />
+            <element signature="e#4530#4531#0" expanded="true" />
+            <element signature="e#4575#4576#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2523">
-          <caret line="413" selection-start-line="413" selection-end-line="413" />
+        <state relative-caret-position="110">
+          <caret line="402" column="36" selection-start-line="402" selection-start-column="36" selection-end-line="402" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="24" column="104" selection-start-line="24" selection-start-column="104" selection-end-line="24" selection-end-column="104" />
+        <state relative-caret-position="86">
+          <caret line="588" column="70" selection-start-line="588" selection-start-column="70" selection-end-line="588" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="372" column="8" selection-start-line="372" selection-start-column="8" selection-end-line="372" selection-end-column="8" />
         </state>
       </provider>
     </entry>

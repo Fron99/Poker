@@ -586,7 +586,7 @@ public class GestoraCartaImpl {
     /*
      * SIGNATURA: public int calcularValorEscaleraColor(CartaImpl[] cartas);
      * COMENTARIO: Calcula el valor de la escalera de color del array de CartasImpl pasado por parametro
-     * PRECONDICIONES: - Nada
+     * PRECONDICIONES: - El array debe estar ordenado de menor a mayor
      * ENTRADA: - Un array de CartaImpl
      * SALIDA: - Un entero
      * ENTRADA/SALIDA: - Nada

@@ -400,7 +400,7 @@ public class GestoraMesaImpl {
     //TODO Hacer
 
     public int[] obtenerGanadores(MesaImpl mesa){
-        int[] cantGanadores;
+        int[] cantGanadores = {0,0,0};
 
         //Calcular posibles ganadores
         ArrayList<Integer> posiblesGanadores = new ArrayList<>();
@@ -410,9 +410,6 @@ public class GestoraMesaImpl {
                 posiblesGanadores.add(i);
             }
         }
-
-
-
 
 
 
