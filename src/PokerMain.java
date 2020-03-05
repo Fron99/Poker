@@ -28,8 +28,7 @@
  *  //generarTurnoJugador
  *  repetir
  *      //actualizarRonda
- *      limpiarMesa*
- *      restaurarBaraja*
+ *      restaurarMesa*
  *      generarCartasJugadores*
  *      colocarJugadoresActivos*
  *      mostrarPanelJuego*
@@ -94,7 +93,7 @@ public class PokerMain {
         mesa.anhadirJugador(0,new JugadorImpl(usuarioJugador,saldoInicialJugador));
 
         //cargarBots
-        gesJugador.cargarBots(mesa.getJugadores());  //Coloca en el array de jugadores jugadores con valores generados
+        mesa.cargarBots();  //Coloca en el array de jugadores jugadores con valores generados aleatoriamente
 
         //generarTurnoJugador
         //turnoJugador = random.nextInt(5);   //Genera un numero del 0 al 4 que es la cantidad de jugadores que hay para saber quien empieza a apostar
@@ -103,11 +102,10 @@ public class PokerMain {
         do {
             ronda = 0;  //Se actualiza la variable ronda para cada vez que se juega una partida
 
-            //limpiarMesa
-            mesa.limpiarMesa(); //Coloca por defecto las cartas de la mesa y las apuestas de los jugadores
+            //restaurarMesa
+            mesa.restaurarMesa();
 
-            //restaurarBaraja
-            mesa.restaurarBaraja();
+
 
             //generarCartasJugadores
             gesMesa.generarCartasJugadores(mesa.getBaraja(),mesa);    //Asigna 2 cartas a cada jugador sin reeptir carta.

@@ -51,6 +51,8 @@ package Clases.Basicas;
 
 import Clases.Interfaces.Mesa;
 
+import java.util.Random;
+
 public class MesaImpl implements Mesa {
 
     private CartaImpl[] baraja;
@@ -208,6 +210,47 @@ public class MesaImpl implements Mesa {
     }
 
     //METODOS ANHADIDOS
+
+    /*
+     * SIGNATURA: public void restaurarMesa();
+     * COMENTARIO: Elimina todos los cambios que se hayan realizado sobre los atributos y lo coloca por defecto para empezar una partida nueva.
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Modifica el valor de todos los atributos y los pone por defecto
+     *
+     */
+
+    public void restaurarMesa(){
+        limpiarMesa();
+        restaurarBaraja();
+    }
+
+
+
+    /*
+     * SIGNATURA: public void cargarJugadores(JugadorImpl[] jugadores);
+     * COMENTARIO: Carga un array pasado por parametros con jugadores aleatorios
+     * PRECONDICIONES: - El array debe ser de JugadorImpl
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Array de JugadorImpl
+     * POSTCONDICIONES: - Modifica el array de Jugadores pasado por parametro añadiendo usuarios aleatorios
+     *
+     */
+
+    //TODO Desarrollar javadoc
+
+    public void cargarBots(){
+
+        Random random = new Random();
+        String[] nombresAleatorios = {"Kun","Wang","YanYan","Zhao","Yun","Sasha","Volodia","Hedeon","Grigory"};
+        for (int i = 1; i<jugadores.length;i++){
+            this.jugadores[i] = new JugadorImpl(nombresAleatorios[random.nextInt(8)],jugadores[0].getSaldo());
+        }
+
+    }
 
     /**
      * This method add the carte passed by parameter to array of letters of table in the position passed by parameter
