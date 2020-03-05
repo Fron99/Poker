@@ -51,6 +51,8 @@ package Clases.Basicas;
 
 import Clases.Interfaces.Mesa;
 
+import java.util.Random;
+
 public class MesaImpl implements Mesa {
 
     private CartaImpl[] baraja;
@@ -143,6 +145,8 @@ public class MesaImpl implements Mesa {
      * @return JugadorImpl[] array of attribute "jugadores"
      */
 
+    //TODO Revisar
+
     public CartaImpl[] getCartasJugador(int jugador){
         return this.obtenerJugador(jugador).getCartas();
     }
@@ -160,6 +164,8 @@ public class MesaImpl implements Mesa {
      * Return array of attribute "cartasMesa"
      * @return CartaImpl[] array of attribute "cartasMesa"
      */
+
+    //TODO Revisar
 
     public CartaImpl[] getCartasMesa(){
         return this.cartasMesa;
@@ -208,6 +214,106 @@ public class MesaImpl implements Mesa {
     }
 
     //METODOS ANHADIDOS
+
+    /*
+     * SIGNATURA: public void restaurarMesa();
+     * COMENTARIO: Elimina todos los cambios que se hayan realizado sobre los atributos y lo coloca por defecto para empezar una partida nueva.
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Modifica el valor de todos los atributos y los pone por defecto
+     *
+     */
+
+    //TODO Revisar esto
+
+    public void restaurarMesa(){
+        limpiarMesa();
+        restaurarBaraja();
+        colocarJugadoresActivos();
+        generarCartasJugadores();
+    }
+
+
+    /*
+     * SIGNATURA: public void colocarJugadoresActivos(MesaImpl mesa)
+     * COMENTARIO: Metodo para colocar todos los jugadores de la mesa activos
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Un objeto MesaImpl
+     * POSTCONDICIONES: - Modifica el objeto pasado por parametro colocando todos los jugadores en activo.
+     */
+
+    //TODO Revisar interfaz
+    //TODO Desarrollar javadoc
+
+    public void colocarJugadoresActivos(){
+        for(JugadorImpl jugador: this.jugadores){
+            jugador.setActivo(true);
+        }
+    }
+
+
+    /*
+     * SIGNATURA: public void generarCartasJugadores();
+     * COMENTARIO: Saca dos cartas de la baraja para cada jugador y se las asigna a cada jugador
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Modifica el array de la baraja colocando por defecto las cartas sacadas y modifica el objeto mesa
+     *                      asignando las cartas a los jugadores de la mesa
+     */
+
+    //TODO Revisar interfaz
+    //TODO Desarrollar javadoc
+
+    public void generarCartasJugadores() {
+
+        Random r = new Random();
+        int numPosicionCarta;
+
+        numPosicionCarta = r.nextInt(52);
+
+        for (int i = 0; i<this.jugadores.length;i++){
+            for (int j = 0; j<2; j++){
+                do {
+                    if (baraja[numPosicionCarta].getPalo() != 'D') {
+                        //TODO Revisar no se hace asi, deberia hacerse con un set
+                        this.getCartasJugador(i)[j] = baraja[numPosicionCarta];
+                        baraja[numPosicionCarta] = new CartaImpl();
+                    }
+                    numPosicionCarta = r.nextInt(52);
+                } while (baraja[numPosicionCarta].getPalo() == 'D');
+            }
+        }
+    }
+
+
+    /*
+     * SIGNATURA: public void cargarJugadores(JugadorImpl[] jugadores);
+     * COMENTARIO: Carga un array pasado por parametros con jugadores aleatorios
+     * PRECONDICIONES: - El array debe ser de JugadorImpl
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Array de JugadorImpl
+     * POSTCONDICIONES: - Modifica el array de Jugadores pasado por parametro añadiendo usuarios aleatorios
+     *
+     */
+
+    //TODO Desarrollar javadoc
+
+    public void cargarBots(){
+
+        Random random = new Random();
+        String[] nombresAleatorios = {"Kun","Wang","YanYan","Zhao","Yun","Sasha","Volodia","Hedeon","Grigory"};
+        for (int i = 1; i<jugadores.length;i++){
+            this.jugadores[i] = new JugadorImpl(nombresAleatorios[random.nextInt(8)],jugadores[0].getSaldo());
+        }
+
+    }
 
     /**
      * This method add the carte passed by parameter to array of letters of table in the position passed by parameter
@@ -320,6 +426,41 @@ public class MesaImpl implements Mesa {
                 this.getApuestasJugadores()[i][j] = 0;
             }
         }
+    }
+
+    /*
+     * SIGNATURA: public void generarTresCartasMesa(CartaImpl[] baraja, CartaImpl[] cartas);
+     * COMENTARIO: Saca 3 cartas de la baraja y las coloca en el segundo array pasado por parametro
+     * PRECONDICIONES: - El primer array debe tener 54 campos
+     *                 - El segundo array debe tener 5 campos
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Un array de CartaImpl con todas las cartas posibles
+     *                 - Un array de CartaImpl con las cartas de la mesa
+     * POSTCONDICIONES: Modifica el array pasado por parametro eliminando las cartas que se saquen aleatoriamente y anhadiendose
+     *                  al segundo array pasado por parametro que son las cartas de la mesa
+     */
+
+    //TODO Desarrollar javadoc
+    //TODO Revisar interfaz
+
+    public void generarTresCartasMesa() {
+
+        Random r = new Random();
+        int numPosicionCarta;
+
+        numPosicionCarta = r.nextInt(52);
+        for (int i = 0; i < 3; i++) {
+            do {
+                if (this.baraja[numPosicionCarta].getPalo() != 'D') {
+                    this.cartasMesa[i] = this.baraja[numPosicionCarta];
+                    this.baraja[numPosicionCarta] = new CartaImpl();
+                }
+                numPosicionCarta = r.nextInt(52);
+            } while (this.baraja[numPosicionCarta].getPalo() == 'D');
+
+        }
+
     }
 
 

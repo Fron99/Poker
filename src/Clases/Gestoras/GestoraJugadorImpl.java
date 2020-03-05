@@ -56,28 +56,6 @@ public class GestoraJugadorImpl {
         return usuario;
     }
 
-    /*
-     * SIGNATURA: public void cargarJugadores(JugadorImpl[] jugadores);
-     * COMENTARIO: Carga un array pasado por parametros con jugadores aleatorios
-     * PRECONDICIONES: - El array debe ser de JugadorImpl
-     * ENTRADA: - Nada
-     * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Array de JugadorImpl
-     * POSTCONDICIONES: - Modifica el array de Jugadores pasado por parametro añadiendo usuarios aleatorios
-     *
-     */
-
-    //TODO Desarrollar javadoc
-
-    public void cargarBots(JugadorImpl[] jugadores){
-
-        Random random = new Random();
-        String[] nombresAleatorios = {"Kun","Wang","YanYan","Zhao","Yun","Sasha","Volodia","Hedeon","Grigory"};
-        for (int i = 1; i<jugadores.length;i++){
-            jugadores[i] = new JugadorImpl(nombresAleatorios[random.nextInt(8)],jugadores[0].getSaldo());
-        }
-
-    }
 
     /*
      * SIGNATURA: public int leerYValidarApuesta(JugadorImpl jugador, int apuestaMinima);
@@ -234,22 +212,6 @@ public class GestoraJugadorImpl {
                 break;
         }
         return puntosFarol;
-    }
-
-    /*
-     * SIGNATURA: public void colocarJugadoresActivos(MesaImpl mesa)
-     * COMENTARIO: Metodo para colocar todos los jugadores de la mesa activos
-     * PRECONDICIONES: - Nada
-     * ENTRADA: - Nada
-     * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Un objeto MesaImpl
-     * POSTCONDICIONES: - Modifica el objeto pasado por parametro colocando todos los jugadores en activo.
-     */
-
-    public void colocarJugadoresActivos(MesaImpl mesa){
-        for(JugadorImpl jugador: mesa.getJugadores()){
-            jugador.setActivo(true);
-        }
     }
 
 }
