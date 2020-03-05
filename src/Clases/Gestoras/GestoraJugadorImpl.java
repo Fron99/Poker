@@ -214,20 +214,4 @@ public class GestoraJugadorImpl {
         return puntosFarol;
     }
 
-    /*
-     * SIGNATURA: public void colocarJugadoresActivos(MesaImpl mesa)
-     * COMENTARIO: Metodo para colocar todos los jugadores de la mesa activos
-     * PRECONDICIONES: - Nada
-     * ENTRADA: - Nada
-     * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Un objeto MesaImpl
-     * POSTCONDICIONES: - Modifica el objeto pasado por parametro colocando todos los jugadores en activo.
-     */
-
-    public void colocarJugadoresActivos(MesaImpl mesa){
-        for(JugadorImpl jugador: mesa.getJugadores()){
-            jugador.setActivo(true);
-        }
-    }
-
 }
