@@ -51,6 +51,7 @@ package Clases.Basicas;
 
 import Clases.Interfaces.Mesa;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MesaImpl implements Mesa {
@@ -233,6 +234,7 @@ public class MesaImpl implements Mesa {
         restaurarBaraja();
         colocarJugadoresActivos();
         generarCartasJugadores();
+        generarTresCartasMesa();
     }
 
 
@@ -461,6 +463,56 @@ public class MesaImpl implements Mesa {
 
         }
 
+    }
+
+
+    /*
+     * SIGNATURA: public int[] obtenerGanadores(MesaImpl mesa)
+     * COMENTARIO: Calcula quienes son los ganadores de la ronda
+     * PRECONDICIONES:
+     * ENTRADA: - Un objeto mesa
+     * SALIDA: - Un array de enteros
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Devuelve asociado al nombre la cantidad de ganadores posibles
+     */
+
+    //TODO Javadoc
+    //TODO Hacer
+
+    public int[] obtenerGanadores(){
+        int[] cantGanadores = {0,0,0};
+
+        //Calcular posibles ganadores
+        ArrayList<Integer> posiblesGanadores = new ArrayList<>();
+        JugadorImpl[] jugadores = this.jugadores;
+        for (int i = 0; i < jugadores.length; i++) {
+            if (jugadores[i].getActivo()){
+                posiblesGanadores.add(i);
+            }
+        }
+
+        return cantGanadores;
+    }
+
+
+    /*
+     * SIGNATURA: public void ingresarDineroGanador(int ganador, MesaImpl mesa);
+     * COMENTARIO: Aumenta el saldo del usuario ganador de la mano
+     * PRECONDICIONES: - El ganador no puede ser menor de 0 ni mayor de 5
+     * ENTRADA: - Un entero con el ganador
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Un objeto mesa
+     * POSTCONDICIONES: - Modifica el objeto mesa incrementando el saldo del usuario ganador con el total de apuestas de la mano jugada.
+     *
+     */
+
+    //TODO Desarrollar javadoc
+    //TODO Revisar
+
+    public void ingresarDineroGanador(int ganador) {
+        int cantidadMesa;
+        cantidadMesa = this.getTotalApuestas();
+        this.jugadores[ganador].aumentarDinero(cantidadMesa);
     }
 
 

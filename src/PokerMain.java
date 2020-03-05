@@ -110,9 +110,6 @@ public class PokerMain {
             gesMesa.realizarApuestas(turnoJugador,mesa,ronda);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
             ronda++;
 
-            //generarTresCartasMesa
-            gesMesa.generarTresCartasMesa(mesa.getBaraja(),mesa.getCartasMesa());  //Coloca 3 cartas aleatorias en el array de las cartas que hay en esta mesa
-
             //mostrarPanelJuego
             gesMesa.mostrarPanelJuego(mesa,ronda);
 
@@ -138,16 +135,17 @@ public class PokerMain {
             gesMesa.mostrarPanelJuego(mesa,ronda);
 
             //calcularGanadores
-            ganadores = gesMesa.obtenerGanadores(mesa);    //TODO
+            ganadores = mesa.obtenerGanadores();
 
             if (ganadores.length > 1){
                 //TODO Ver que se haria aqui
-                for (int i = 0; i<5/*Aqui no deberia ir un 5 sino el array con los ganadores*/ ;i++){
-                    gesMesa.ingresarDineroGanador(0/*Aqui no va 0 va el ganador*/,mesa);
+                //TODO Esta mal se tiene que repartir el dinero segun los ganadores y los que se haan tirado.
+                for (int i = 0; i<ganadores.length;i++){
+                    mesa.ingresarDineroGanador(ganadores[i]);
                 }
             }else{
                 //ingresarSaldoGanador
-                gesMesa.ingresarDineroGanador(ganadores[0],mesa);   //Se coge el valor 0 del array porque solo habria un ganador en este caso
+                mesa.ingresarDineroGanador(ganadores[0]);
             }
 
             if (turnoJugador == 4){
