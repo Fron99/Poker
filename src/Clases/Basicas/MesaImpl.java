@@ -145,6 +145,8 @@ public class MesaImpl implements Mesa {
      * @return JugadorImpl[] array of attribute "jugadores"
      */
 
+    //TODO Revisar
+
     public CartaImpl[] getCartasJugador(int jugador){
         return this.obtenerJugador(jugador).getCartas();
     }
@@ -162,6 +164,8 @@ public class MesaImpl implements Mesa {
      * Return array of attribute "cartasMesa"
      * @return CartaImpl[] array of attribute "cartasMesa"
      */
+
+    //TODO Revisar
 
     public CartaImpl[] getCartasMesa(){
         return this.cartasMesa;
@@ -222,11 +226,70 @@ public class MesaImpl implements Mesa {
      *
      */
 
+    //TODO Revisar esto
+
     public void restaurarMesa(){
         limpiarMesa();
         restaurarBaraja();
+        colocarJugadoresActivos();
+        generarCartasJugadores();
     }
 
+
+    /*
+     * SIGNATURA: public void colocarJugadoresActivos(MesaImpl mesa)
+     * COMENTARIO: Metodo para colocar todos los jugadores de la mesa activos
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Un objeto MesaImpl
+     * POSTCONDICIONES: - Modifica el objeto pasado por parametro colocando todos los jugadores en activo.
+     */
+
+    //TODO Revisar interfaz
+    //TODO Desarrollar javadoc
+
+    public void colocarJugadoresActivos(){
+        for(JugadorImpl jugador: this.jugadores){
+            jugador.setActivo(true);
+        }
+    }
+
+
+    /*
+     * SIGNATURA: public void generarCartasJugadores();
+     * COMENTARIO: Saca dos cartas de la baraja para cada jugador y se las asigna a cada jugador
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Modifica el array de la baraja colocando por defecto las cartas sacadas y modifica el objeto mesa
+     *                      asignando las cartas a los jugadores de la mesa
+     */
+
+    //TODO Revisar interfaz
+    //TODO Desarrollar javadoc
+
+    public void generarCartasJugadores() {
+
+        Random r = new Random();
+        int numPosicionCarta;
+
+        numPosicionCarta = r.nextInt(52);
+
+        for (int i = 0; i<this.jugadores.length;i++){
+            for (int j = 0; j<2; j++){
+                do {
+                    if (baraja[numPosicionCarta].getPalo() != 'D') {
+                        //TODO Revisar no se hace asi, deberia hacerse con un set
+                        this.getCartasJugador(i)[j] = baraja[numPosicionCarta];
+                        baraja[numPosicionCarta] = new CartaImpl();
+                    }
+                    numPosicionCarta = r.nextInt(52);
+                } while (baraja[numPosicionCarta].getPalo() == 'D');
+            }
+        }
+    }
 
 
     /*
@@ -363,6 +426,41 @@ public class MesaImpl implements Mesa {
                 this.getApuestasJugadores()[i][j] = 0;
             }
         }
+    }
+
+    /*
+     * SIGNATURA: public void generarTresCartasMesa(CartaImpl[] baraja, CartaImpl[] cartas);
+     * COMENTARIO: Saca 3 cartas de la baraja y las coloca en el segundo array pasado por parametro
+     * PRECONDICIONES: - El primer array debe tener 54 campos
+     *                 - El segundo array debe tener 5 campos
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Un array de CartaImpl con todas las cartas posibles
+     *                 - Un array de CartaImpl con las cartas de la mesa
+     * POSTCONDICIONES: Modifica el array pasado por parametro eliminando las cartas que se saquen aleatoriamente y anhadiendose
+     *                  al segundo array pasado por parametro que son las cartas de la mesa
+     */
+
+    //TODO Desarrollar javadoc
+    //TODO Revisar interfaz
+
+    public void generarTresCartasMesa() {
+
+        Random r = new Random();
+        int numPosicionCarta;
+
+        numPosicionCarta = r.nextInt(52);
+        for (int i = 0; i < 3; i++) {
+            do {
+                if (this.baraja[numPosicionCarta].getPalo() != 'D') {
+                    this.cartasMesa[i] = this.baraja[numPosicionCarta];
+                    this.baraja[numPosicionCarta] = new CartaImpl();
+                }
+                numPosicionCarta = r.nextInt(52);
+            } while (this.baraja[numPosicionCarta].getPalo() == 'D');
+
+        }
+
     }
 
 
