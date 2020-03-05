@@ -149,25 +149,6 @@ public class GestoraMesaImpl {
 
     }
 
-    /*
-     * SIGNATURA: public void ingresarDineroGanador(int ganador, MesaImpl mesa);
-     * COMENTARIO: Aumenta el saldo del usuario ganador de la mano
-     * PRECONDICIONES: - El ganador no puede ser menor de 0 ni mayor de 5
-     * ENTRADA: - Un entero con el ganador
-     * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Un objeto mesa
-     * POSTCONDICIONES: - Modifica el objeto mesa incrementando el saldo del usuario ganador con el total de apuestas de la mano jugada.
-     *
-     */
-
-    //TODO Desarrollar javadoc
-
-    public void ingresarDineroGanador(int ganador, MesaImpl mesa) {
-        int cantidadMesa;
-        cantidadMesa = mesa.getTotalApuestas();
-        mesa.getJugadores()[ganador].aumentarDinero(cantidadMesa);
-    }
-
 
     /*
      * SIGNATURA: public void realizarApuestas(int turnoJugador, MesaImpl mesa, int ronda)
@@ -312,40 +293,6 @@ public class GestoraMesaImpl {
                 }
             }
         }
-    }
-
-
-    /*
-     * SIGNATURA: public int[] obtenerGanadores(MesaImpl mesa)
-     * COMENTARIO: Calcula quienes son los ganadores de la ronda
-     * PRECONDICIONES:
-     * ENTRADA: - Un objeto mesa
-     * SALIDA: - Un array de enteros
-     * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: - Devuelve asociado al nombre la cantidad de ganadores posibles
-     */
-
-    //TODO Javadoc
-    //TODO Hacer
-
-    public int[] obtenerGanadores(MesaImpl mesa){
-        int[] cantGanadores = {0,0,0};
-
-        //Calcular posibles ganadores
-        ArrayList<Integer> posiblesGanadores = new ArrayList<>();
-        JugadorImpl[] jugadores = mesa.getJugadores();
-        for (int i = 0; i < jugadores.length; i++) {
-            if (jugadores[i].getActivo()){
-                posiblesGanadores.add(i);
-            }
-        }
-
-
-
-
-
-
-        return cantGanadores;
     }
 
 }
