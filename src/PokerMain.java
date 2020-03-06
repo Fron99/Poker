@@ -21,18 +21,14 @@
  *
  * PG0
  * INICIO
- *  leerUsuario*
- *  leerYValidarSaldoInicial*
+ *  leerYValidarJugador*
  *  //añadirJugador
  *  cargarBots*
- *  //generarTurnoJugador
  *  repetir
- *      //actualizarRonda
  *      restaurarMesa*
  *      para(i = 0, mientras i < 2, incrementar i)
  *          mostrarPanelJuego*
  *          realizarApuestas*
- *          //incrementaRonda
  *          si i == 0
  *              generarTresCartasMesa*
  *          finSi
@@ -41,15 +37,10 @@
  *          generarCartaMesa*
  *          mostrarPanelJuego*
  *          realizarApuestas*
- *          //incrementaRonda
  *      finPara
  *      mostrarPanelJuego*
  *      ingresarSaldoGanadores*
- *      si(turno jugador == 4)
- *          turno jugador = 0
- *      sino
- *          //incrementar turno jugador
- *      finSi
+ *      incrementarTurno*
  *  mientras(saldo usuario > 0 && queden bots con saldo)
  *  //mostrarJuegosFin
  * FIN
@@ -57,7 +48,6 @@
  */
 
 
-import Clases.Basicas.JugadorImpl;
 import Clases.Basicas.MesaImpl;
 import Clases.Gestoras.GestoraJugadorImpl;
 
@@ -66,20 +56,13 @@ public class PokerMain {
     public static void main (String[] args){
 
         GestoraJugadorImpl gesJugador = new GestoraJugadorImpl();
-
-        String usuarioJugador;
-        int saldoInicialJugador;
         MesaImpl mesa = new MesaImpl();
+        int saldoInicialJugador;
 
-        //leerUsuario
-        usuarioJugador = gesJugador.leerUsuario();
-
-        //leerYValidarDineroInicial
-        saldoInicialJugador = gesJugador.leerYValidarSaldoInicial();
-
+        //leerYValidarJugador*
         //añadirJugador
-        //El usuario que juega se colocara siempre en la posicion 0
-        mesa.anhadirJugador(0,new JugadorImpl(usuarioJugador,saldoInicialJugador));
+        mesa.anhadirJugador(0,gesJugador.leerYValidarJugador());    //El usuario que juega se colocara siempre en la posicion 0
+        saldoInicialJugador = mesa.getJugadores()[0].getSaldo();    //Solo se utiliza para informacion al usuario al finalizar el juego
 
         //cargarBots
         mesa.cargarBots();  //Coloca en el array de jugadores jugadores con valores generados aleatoriamente
@@ -125,9 +108,11 @@ public class PokerMain {
 
             mesa.incrementarTurno();
 
+            //TODO Falta añadir que haya usuarios con saldo en el while y que el usuario quiera seguir
         }while (mesa.getJugadores()[0].getSaldo()>0);
 
-        System.out.println("El jugador "+usuarioJugador+" empezo con "+saldoInicialJugador+" y acabo con "+(saldoInicialJugador-mesa.getJugadores()[0].getSaldo())+"");
+        //TODO Solucion solo para que funcione de momento
+        System.out.println("El jugador "+mesa.getJugadores()[0].getUsuario()+" empezo con "+saldoInicialJugador+" y acabo con "+(saldoInicialJugador-mesa.getJugadores()[0].getSaldo())+"");
 
     }
 
