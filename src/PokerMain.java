@@ -29,25 +29,22 @@
  *  repetir
  *      //actualizarRonda
  *      restaurarMesa*
- *      mostrarPanelJuego*
- *      realizarApuestas*
- *      generarTresCartasMesa*
- *      mostrarPanelJuego*
- *      realizarApuestas*
+ *      para(i = 0, mientras i < 2, incrementar i)
+ *          mostrarPanelJuego*
+ *          realizarApuestas*
+ *          //incrementaRonda
+ *          si i == 0
+ *              generarTresCartasMesa*
+ *          finSi
+ *      finPara
  *      para(contador = 0; contador < 2; contador++)
  *          generarCartaMesa*
  *          mostrarPanelJuego*
  *          realizarApuestas*
+ *          //incrementaRonda
  *      finPara
  *      mostrarPanelJuego*
- *      obtenerGanadores*
- *      si(cantidad ganadores > 1)
- *      //TODO ver que se haria aqui
- *
- *          ingresarSaldoGanadores*
- *      sino
- *          ingresarSaldoGanador*
- *      finSi
+ *      ingresarSaldoGanadores*
  *      si(turno jugador == 4)
  *          turno jugador = 0
  *      sino
@@ -103,27 +100,26 @@ public class PokerMain {
             //restaurarMesa
             mesa.restaurarMesa();
 
-            //mostrarPanelJuego
-            gesMesa.mostrarPanelJuego(mesa,ronda);
+            for (int i = 0; i<2;i++){
+                //mostrarPanelJuego
+                gesMesa.mostrarPanelJuego(mesa,ronda);
 
-            //realizarApuestas
-            gesMesa.realizarApuestas(turnoJugador,mesa,ronda);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
-            ronda++;
+                //realizarApuestas
+                gesMesa.realizarApuestas(turnoJugador,mesa,ronda);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
+                ronda++;
 
-            //generarTresCartasMesa
-            gesMesa.generarTresCartasMesa(mesa.getBaraja(),mesa.getCartasMesa());  //Coloca 3 cartas aleatorias en el array de las cartas que hay en esta mesa
+                //Se utiliza este if para que solo se generen una vez las 3 cartas
+                if (i == 0) {
+                    //generarTresCartasMesa
+                    mesa.generarTresCartasMesa();
+                }
 
-            //mostrarPanelJuego
-            gesMesa.mostrarPanelJuego(mesa,ronda);
-
-            //realizarApuestas
-            gesMesa.realizarApuestas(turnoJugador,mesa,ronda);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
-            ronda++;
+            }
 
             for (int contador = 0; contador < 2; contador++){
 
                 //generarCartaMesa
-                gesMesa.generarCartaMesa(mesa.getBaraja(),mesa.getCartasMesa());
+                mesa.generarCartaMesa();
 
                 //mostrarPanelJuego
                 gesMesa.mostrarPanelJuego(mesa,ronda);
@@ -137,18 +133,8 @@ public class PokerMain {
             //mostrarPanelJuego
             gesMesa.mostrarPanelJuego(mesa,ronda);
 
-            //calcularGanadores
-            ganadores = gesMesa.obtenerGanadores(mesa);    //TODO
-
-            if (ganadores.length > 1){
-                //TODO Ver que se haria aqui
-                for (int i = 0; i<5/*Aqui no deberia ir un 5 sino el array con los ganadores*/ ;i++){
-                    gesMesa.ingresarDineroGanador(0/*Aqui no va 0 va el ganador*/,mesa);
-                }
-            }else{
-                //ingresarSaldoGanador
-                gesMesa.ingresarDineroGanador(ganadores[0],mesa);   //Se coge el valor 0 del array porque solo habria un ganador en este caso
-            }
+            //ingresarSaldoGanadores
+            mesa.ingresarSaldoGanadores();
 
             if (turnoJugador == 4){
                 turnoJugador = 0;
