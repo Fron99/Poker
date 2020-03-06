@@ -69,11 +69,12 @@ public class MesaImpl implements Mesa {
      */
 
     public MesaImpl(){
+        Random random = new Random();
         this.baraja = new CartaImpl[52];
         this.jugadores = new JugadorImpl[5];
         this.cartasMesa = new CartaImpl[5];
         this.apuestasJugadores = new int[5][5];
-        this.turnoJugador = 0;
+        this.turnoJugador = random.nextInt(5);
         this.ronda = 0;
     }
 
@@ -103,10 +104,13 @@ public class MesaImpl implements Mesa {
      */
 
     public MesaImpl(CartaImpl[] baraja, JugadorImpl[] jugadores, CartaImpl[] cartas, int[][] apuestasJugadores){
+        Random random = new Random();
         this.baraja = baraja;
         this.jugadores = jugadores;
         this.cartasMesa = cartas;
         this.apuestasJugadores = apuestasJugadores;
+        this.turnoJugador = random.nextInt(5);
+        this.ronda = 0;
     }
 
     /**
