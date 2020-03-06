@@ -26,9 +26,6 @@ public class GestoraMesaImpl {
 
     public void mostrarPanelJuego(MesaImpl mesa, int ronda) {
 
-        int dinJugador, dinBot1, dinBot2, dinBot3, dinBot4;
-        char paloCarta0, paloCarta1, paloCarta2, paloCarta3, paloCarta4;
-        String numeroCarta0, numeroCarta1, numeroCarta2, numeroCarta3, numeroCarta4, userJugador, userBot1, userBot2, userBot3, userBot4;
         String numCar1Usuario, numCar2Usuario;
         char paloCar1Usuario, paloCar2Usuario;
 
@@ -39,33 +36,34 @@ public class GestoraMesaImpl {
         paloCar2Usuario = mesa.getJugadores()[0].getCartas()[1].getPalo();
 
 
-        userJugador = mesa.getJugadores()[0].getUsuario();
-        userBot1 = mesa.getJugadores()[1].getUsuario();
-        userBot2 = mesa.getJugadores()[2].getUsuario();
-        userBot3 = mesa.getJugadores()[3].getUsuario();
-        userBot4 = mesa.getJugadores()[4].getUsuario();
+        String[] usersJugadores = new String[5];
+        //TODO Revisar esto. Se deberia hacer patron delegacion
+        for (int i = 0; i<usersJugadores.length;i++){
+            usersJugadores[i] = mesa.getJugadores()[i].getUsuario();
+        }
 
-        dinJugador = mesa.getJugadores()[0].getSaldo();
-        dinBot1 = mesa.getJugadores()[1].getSaldo();
-        dinBot2 = mesa.getJugadores()[2].getSaldo();
-        dinBot3 = mesa.getJugadores()[3].getSaldo();
-        dinBot4 = mesa.getJugadores()[4].getSaldo();
+        int[] saldoJugadores = new int[5];
+        //TODO Revisar esto. Se deberia hacer patron delegacion
+        for (int i = 0; i<saldoJugadores.length;i++){
+            saldoJugadores[i] = mesa.getJugadores()[i].getSaldo();
+        }
 
-        paloCarta0 = mesa.getCartasMesa()[0].getPalo();
-        paloCarta1 = mesa.getCartasMesa()[1].getPalo();
-        paloCarta2 = mesa.getCartasMesa()[2].getPalo();
-        paloCarta3 = mesa.getCartasMesa()[3].getPalo();
-        paloCarta4 = mesa.getCartasMesa()[4].getPalo();
+        char[] palosCartasMesa = new char[5];
+        //TODO Revisar esto. Se deberia hacer patron delegacion
+        for (int i = 0; i<palosCartasMesa.length;i++){
+            palosCartasMesa[i] = mesa.getCartasMesa()[i].getPalo();
+        }
 
-        numeroCarta0 = mesa.getCartasMesa()[0].getNumero();
-        numeroCarta1 = mesa.getCartasMesa()[1].getNumero();
-        numeroCarta2 = mesa.getCartasMesa()[2].getNumero();
-        numeroCarta3 = mesa.getCartasMesa()[3].getNumero();
-        numeroCarta4 = mesa.getCartasMesa()[4].getNumero();
+        String[] numerosCartasMesa = new String[5];
+        //TODO Revisar esto. Se deberia hacer patron delegacion
+        for (int i = 0; i<numerosCartasMesa.length;i++){
+            numerosCartasMesa[i] = mesa.getCartasMesa()[i].getNumero();
+        }
 
-        System.out.println("                                      " + userBot2 + "                                       " + userBot3);
+
+        System.out.println("                                      " + usersJugadores[2] + "                                       " + usersJugadores[3]);
         System.out.println();
-        System.out.println("                                      " + dinBot2 + "€                                               " + dinBot3 + "€");
+        System.out.println("                                      " + saldoJugadores[2] + "€                                               " + saldoJugadores[3] + "€");
         System.out.println("                                      |º º|     -----        -----                                    |º º|    -----        -----");
         System.out.println("                                      |---|    | ?   |      | ?   |                                   |---|   | ?   |      | ?   |  ");
         System.out.println("                                               | ?   |      | ?   |                                           | ?   |      | ?   |");
@@ -77,10 +75,10 @@ public class GestoraMesaImpl {
         System.out.println();
         System.out.println();
 
-        System.out.println("       " + userBot1 + "                                                                                                                              " + userBot4);
+        System.out.println("       " + usersJugadores[1] + "                                                                                                                              " + usersJugadores[4]);
         System.out.println("                                                        ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- ");
-        System.out.println("       " + dinBot1 + "€                                           | " + paloCarta0 + "   |" + "       " + "| " + paloCarta1 + "   |" + "       " + "| " + paloCarta2 + "   |" + "       " + "| " + paloCarta3 + "   |" + "       " + "| " + paloCarta4 + "   |                      " + dinBot4 + "€");
-        System.out.println("       |º º|       -----        -----                  | " + numeroCarta0 + "   |" + "       " + "| " + numeroCarta1 + "   |" + "       " + "| " + numeroCarta2 + "   |" + "       " + "| " + numeroCarta3 + "   |" + "       " + "| " + numeroCarta4 + "   |                      |º º|      -----        -----");
+        System.out.println("       " + saldoJugadores[1] + "€                                           | " + palosCartasMesa[0] + "   |" + "       " + "| " + palosCartasMesa[1] + "   |" + "       " + "| " + palosCartasMesa[2] + "   |" + "       " + "| " + palosCartasMesa[3] + "   |" + "       " + "| " + palosCartasMesa[4] + "   |                      " + saldoJugadores[4] + "€");
+        System.out.println("       |º º|       -----        -----                  | " + numerosCartasMesa[0] + "   |" + "       " + "| " + numerosCartasMesa[1] + "   |" + "       " + "| " + numerosCartasMesa[2] + "   |" + "       " + "| " + numerosCartasMesa[3] + "   |" + "       " + "| " + numerosCartasMesa[4] + "   |                      |º º|      -----        -----");
         System.out.println("       |---|      | ?   |      | ?   |                 |     |" + "       " + "|     |" + "       " + "|     |" + "       " + "|     |" + "       " + "|     |" + "                      |---|     | ?   |      | ?   |");
         System.out.println("                  | ?   |      | ?   |                  ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " -----                                 |     | ?    | ?   |");
         System.out.println("                   -----        -----                                                                                                                  -----        -----");
@@ -90,8 +88,8 @@ public class GestoraMesaImpl {
         System.out.println();
         System.out.println();
 
-        System.out.println("                                                                     " + userJugador);
-        System.out.println("                                                              TU SALDO ES: " + dinJugador + "€");
+        System.out.println("                                                                     " + usersJugadores[0]);
+        System.out.println("                                                              TU SALDO ES: " + saldoJugadores[0] + "€");
         System.out.println();
         System.out.println("                                                           _______________________");
         System.out.println("                                                          |                       |");
@@ -104,48 +102,6 @@ public class GestoraMesaImpl {
         System.out.println("                                                          |                       |            ----------           ----------");
         System.out.println("                                                           -----------------------");
         System.out.println();
-
-    }
-
-    /*
-     * SIGNATURA: public void generarCartaMesa(CartaImpl[] baraja, CartaImpl[] cartas);
-     * COMENTARIO: Saca 1 cartas de la baraja y las coloca en el segundo array pasado por parametro
-     * PRECONDICIONES: - El primer array debe tener 54 campos
-     *                 - El segundo array debe tener 5 campos
-     * ENTRADA: - Nada
-     * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Un array de CartaImpl con todas las cartas posibles
-     *                 - Un array de CartaImpl con las cartas de la mesa
-     * POSTCONDICIONES: Modifica el array pasado por parametro eliminando las cartas que se saquen aleatoriamente y anhadiendose
-     *                  al segundo array pasado por parametro que son las cartas de la mesa
-     */
-
-    //TODO Desarrollar javadoc
-
-    public void generarCartaMesa(CartaImpl[] baraja, CartaImpl[] cartas) {
-
-        Random r = new Random();
-        int numPosicionCarta, indiceCartaGenerar = 0;
-
-        numPosicionCarta = r.nextInt(52);
-
-        //Calcula cual es la siguiente carta sin levantar y guarda el indice
-        for (int i = 0; i < cartas.length && cartas[i].getPalo() != 'D'; i++) {
-            if ((i + 1) <= cartas.length) {
-                if (cartas[i + 1].getPalo() == 'D') {
-                    indiceCartaGenerar = i + 1;
-                }
-            }
-        }
-
-        //Guarda la carta que se ha sacado de la baraja en las cartas de la mesa
-        do {
-            if (baraja[numPosicionCarta].getPalo() != 'D') {
-                cartas[indiceCartaGenerar] = baraja[numPosicionCarta];
-                baraja[numPosicionCarta] = new CartaImpl();
-            }
-            numPosicionCarta = r.nextInt(52);
-        } while (baraja[numPosicionCarta].getPalo() == 'D');
 
     }
 
