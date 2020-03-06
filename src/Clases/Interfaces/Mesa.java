@@ -54,17 +54,17 @@ import Clases.Basicas.JugadorImpl;
 
 public interface Mesa {
 
-    public CartaImpl[] getBaraja();
-    public void setBaraja(CartaImpl[] baraja);
+    public CartaImpl getCartaBaraja(int indice);
+    public void setCartaBaraja(CartaImpl baraja, int indice);
 
-    public JugadorImpl[] getJugadores();
-    public void setJugadores(JugadorImpl[] jugadores);
+    public JugadorImpl getJugador(int indice);
+    public void setJugador(int jugador, JugadorImpl jugadores);
 
     public CartaImpl[] getCartasMesa();
-    public void setCartasMesa(CartaImpl[] cartas);
+    public void setCartaMesa(int indiceCarta, CartaImpl cartas);
 
-    public int[][] getApuestasJugadores();
-    public void setApuestasJugadores(int[][] apuestas);
+    public int getApuestaJugador(int jugador, int ronda);
+    public void setApuestaJugador(int jugador,int ronda, int apuestas);
 
     public int getTotalApuestas();
 

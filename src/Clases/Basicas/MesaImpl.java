@@ -130,8 +130,18 @@ public class MesaImpl implements Mesa {
      * @return CartaImpl[] array of attribute "baraja"
      */
 
-    public CartaImpl[] getBaraja(){
+    private CartaImpl[] getBaraja(){
         return this.baraja;
+    }
+
+    /**
+     * Return the card of the index in the array "baraja"
+     * @return CartaImpl card that you want get
+     * @param indice index of the card of you will want return
+     */
+
+    public CartaImpl getCartaBaraja(int indice){
+        return this.baraja[indice];
     }
 
     /**
@@ -139,8 +149,18 @@ public class MesaImpl implements Mesa {
      * @param baraja new value of attribute "baraja"
      */
 
-    public void setBaraja(CartaImpl[] baraja){
+    private void setBaraja(CartaImpl[] baraja){
         this.baraja = baraja;
+    }
+
+    /**
+     * Set value of the card that index with the card passed by parameter
+     * @param baraja new value of attribute "baraja"
+     * @param indice index of the card that will be changed the value
+     */
+
+    public void setCartaBaraja(CartaImpl baraja, int indice){
+        this.baraja[indice] = baraja;
     }
 
     /**
@@ -148,8 +168,18 @@ public class MesaImpl implements Mesa {
      * @return JugadorImpl[] array of attribute "jugadores"
      */
 
-    public JugadorImpl[] getJugadores(){
+    private JugadorImpl[] getJugadores(){
         return this.jugadores;
+    }
+
+    /**
+     * Return the player of the index in the array "jugadores"
+     * @param indice index of the card of you will want return
+     * @return JugadorImpl player that you want get
+     */
+
+    public JugadorImpl getJugador(int indice){
+        return this.jugadores[indice];
     }
 
     /**
@@ -158,10 +188,20 @@ public class MesaImpl implements Mesa {
      * @return JugadorImpl[] array of attribute "jugadores"
      */
 
-    //TODO Revisar
+    private CartaImpl[] getCartasJugador(int jugador){
+        return this.jugadores[jugador].getCartas();
+    }
 
-    public CartaImpl[] getCartasJugador(int jugador){
-        return this.obtenerJugador(jugador).getCartas();
+
+    /**
+     * @param jugador
+     * @param carta
+     * @return
+     */
+
+
+    public CartaImpl getCartaJugador(int jugador,int carta){
+        return this.jugadores[jugador].getCartas()[carta];
     }
 
     /**
@@ -169,8 +209,19 @@ public class MesaImpl implements Mesa {
      * @param jugadores new value of attribute "jugadores"
      */
 
-    public void setJugadores(JugadorImpl[] jugadores){
+    private void setJugadores(JugadorImpl[] jugadores){
         this.jugadores = jugadores;
+    }
+
+
+    /**
+     * @param jugador
+     * @param jugadores
+     */
+
+
+    public void setJugador(int jugador, JugadorImpl jugadores){
+        this.jugadores[jugador] = jugadores;
     }
 
     /**
@@ -178,10 +229,21 @@ public class MesaImpl implements Mesa {
      * @return CartaImpl[] array of attribute "cartasMesa"
      */
 
-    //TODO Revisar
-
     public CartaImpl[] getCartasMesa(){
-        return this.cartasMesa;
+        CartaImpl[] cartas = new CartaImpl[this.cartasMesa.length];
+        System.arraycopy(this.cartasMesa,0,cartas,0,this.cartasMesa.length);
+        return cartas;
+    }
+
+
+    /**
+     * @param indiceCarta
+     * @return
+     */
+
+
+    public CartaImpl getCartaMesa(int indiceCarta){
+        return this.cartasMesa[indiceCarta];
     }
 
     /**
@@ -189,8 +251,18 @@ public class MesaImpl implements Mesa {
      * @param cartas new value of attribute "cartas"
      */
 
-    public void setCartasMesa(CartaImpl[] cartas){
+    private void setCartasMesa(CartaImpl[] cartas){
         this.cartasMesa = cartas;
+    }
+
+
+    /**
+     * @param indiceCarta
+     * @param cartas
+     */
+
+    public void setCartaMesa(int indiceCarta, CartaImpl cartas){
+        this.cartasMesa[indiceCarta] = cartas;
     }
 
     /**
@@ -198,8 +270,20 @@ public class MesaImpl implements Mesa {
      * @return int[][] array of attribute "apuestasJugadores"
      */
 
-    public int[][] getApuestasJugadores(){
+    private int[][] getApuestasJugadores(){
         return this.apuestasJugadores;
+    }
+
+
+    /**
+     * @param jugador
+     * @param ronda
+     * @return
+     */
+
+
+    public int getApuestaJugador(int jugador, int ronda){
+        return this.apuestasJugadores[jugador][ronda];
     }
 
     /**
@@ -207,8 +291,20 @@ public class MesaImpl implements Mesa {
      * @param apuestas new value of attribute "apuestas"
      */
 
-    public void setApuestasJugadores(int[][] apuestas){
+    private void setApuestasJugadores(int[][] apuestas){
         this.apuestasJugadores = apuestas;
+    }
+
+
+    /**
+     * @param jugador
+     * @param ronda
+     * @param apuestas
+     */
+
+
+    public void setApuestaJugador(int jugador,int ronda, int apuestas){
+        this.apuestasJugadores[jugador][ronda] = apuestas;
     }
 
     /**
