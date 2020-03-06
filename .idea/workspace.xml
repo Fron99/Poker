@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b9a3eddb-34fe-4dec-b858-4173adae43d5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraMesaImpl.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PokerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PokerMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,13 +43,6 @@
         <option value="JUnit4 Test Class" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>obtenerGana</find>
-      <find>ingresar</find>
-      <find>jugadores</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,7 +82,7 @@
       <recent name="C:\Users\fjaviles\Documents\GitHub\Poker\src" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GestoraCartaImplTest">
+  <component name="RunManager" selected="Application.PokerMain">
     <configuration name="PokerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="PokerMain" />
       <module name="ElBromas" />
@@ -99,22 +111,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GestoraCartaImplTest.testCalcularValorEscalera7" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ElBromas" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCartaImplTest" />
-      <option name="METHOD_NAME" value="testCalcularValorEscalera7" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GestoraMesaImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ElBromas" />
       <extension name="coverage">
@@ -130,20 +126,35 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MesaImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ElBromas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.MesaImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.PokerMain" />
       <item itemvalue="Application.hol" />
       <item itemvalue="JUnit.GestoraCartaImplTest" />
-      <item itemvalue="JUnit.GestoraCartaImplTest.testCalcularValorEscalera7" />
       <item itemvalue="JUnit.GestoraMesaImplTest" />
+      <item itemvalue="JUnit.MesaImplTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GestoraCartaImplTest" />
         <item itemvalue="Application.PokerMain" />
+        <item itemvalue="JUnit.MesaImplTest" />
         <item itemvalue="JUnit.GestoraMesaImplTest" />
+        <item itemvalue="JUnit.GestoraCartaImplTest" />
         <item itemvalue="Application.hol" />
-        <item itemvalue="JUnit.GestoraCartaImplTest.testCalcularValorEscalera7" />
       </list>
     </recent_temporary>
   </component>
@@ -194,38 +205,6 @@
     </task>
     <servers />
   </component>
-  <component name="TestHistory">
-    <history-entry file="GestoraCartaImplTest - 2020.01.29 at 13h 22m 26s.xml">
-      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest - 2020.01.29 at 13h 26m 54s.xml">
-      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest - 2020.01.29 at 13h 27m 09s.xml">
-      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest - 2020.01.29 at 13h 31m 55s.xml">
-      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest - 2020.01.29 at 13h 33m 50s.xml">
-      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest - 2020.01.29 at 13h 50m 39s.xml">
-      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest - 2020.01.29 at 13h 50m 59s.xml">
-      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest - 2020.01.29 at 13h 55m 10s.xml">
-      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest - 2020.01.29 at 13h 55m 24s.xml">
-      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GestoraCartaImplTest - 2020.01.29 at 13h 55m 44s.xml">
-      <configuration name="GestoraCartaImplTest" configurationId="JUnit" />
-    </history-entry>
-  </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="39703000" />
   </component>
@@ -267,6 +246,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="744" y="268" key="FileChooserDialogImpl/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583432210128" />
+    <state width="1323" height="473" key="GridCell.Tab.0.bottom" timestamp="1583486835366">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="473" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1583486835366" />
+    <state width="1323" height="473" key="GridCell.Tab.0.center" timestamp="1583486835366">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="473" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1583486835366" />
+    <state width="1323" height="473" key="GridCell.Tab.0.left" timestamp="1583486835356">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="473" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1583486835356" />
+    <state width="1323" height="473" key="GridCell.Tab.0.right" timestamp="1583486835366">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="473" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1583486835366" />
     <state x="465" y="156" key="SettingsEditor" timestamp="1583432215826">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -275,6 +270,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="661" y="344" key="com.intellij.ide.util.TipDialog/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583431820849" />
+    <state x="694" y="0" width="679" height="735" key="dock-window-1" timestamp="1583486201064">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="694" y="0" width="679" height="735" key="dock-window-1/0.0.1366.728@0.0.1366.728" timestamp="1583486201064" />
+    <state x="517" y="216" width="1005" height="715" key="dock-window-2" timestamp="1583489470223">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="517" y="216" width="1005" height="715" key="dock-window-2/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583489470223" />
+    <state x="1531" y="47" width="1005" height="715" key="dock-window-3" timestamp="1583491704366">
+      <screen x="1366" y="0" width="1366" height="728" />
+    </state>
+    <state x="1531" y="47" width="1005" height="715" key="dock-window-3/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583491704366" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

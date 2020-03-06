@@ -158,6 +158,11 @@ public class CartaImpl implements Carta{
 
     //TODO Documentar compareTo y desarrollar javadoc
 
+    /**
+     * This method return an int with value of hashCode of the number
+     * @return int with value compare
+     */
+
     public int compareTo(CartaImpl otra){
         int resultado = -1;
         if (this.getValorNumero() == otra.getValorNumero()){

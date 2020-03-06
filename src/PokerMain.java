@@ -26,15 +26,13 @@
  *  cargarBots*
  *  repetir
  *      restaurarMesa*
- *      para(i = 0, mientras i < 2, incrementar i)
- *          mostrarPanelJuego*
- *          realizarApuestas*
- *          si i == 0
+ *      para(contador = 0, mientras contador < 5, incrementar i)
+ *          si contador == 1
  *              generarTresCartasMesa*
  *          finSi
- *      finPara
- *      para(contador = 0; contador < 2; contador++)
- *          generarCartaMesa*
+ *          si contador > 1
+ *              generarCartaMesa*
+ *          finSi
  *          mostrarPanelJuego*
  *          realizarApuestas*
  *      finPara
@@ -72,25 +70,19 @@ public class PokerMain {
             //restaurarMesa
             mesa.restaurarMesa();
 
-            for (int i = 0; i<2;i++){
-                //mostrarPanelJuego
-                mesa.mostrarPanelJuego();
+            for (int contador = 0; contador < 4; contador++){
 
-                //realizarApuestas
-                mesa.realizarApuestas();     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
-
-                //Se utiliza este if para que solo se generen una vez las 3 cartas
-                if (i == 0) {
+                //Se utiliza este if para que solo se generen una vez las 3 cartas despues de la primera jugada
+                if (contador == 1) {
                     //generarTresCartasMesa
                     mesa.generarTresCartasMesa();
                 }
 
-            }
-
-            for (int contador = 0; contador < 2; contador++){
-
-                //generarCartaMesa
-                mesa.generarCartaMesa();
+                //Se utiliza este if para que solo se generen una carta a partir de la 2 apuesta
+                if (contador > 1) {
+                    //generarCartaMesa
+                    mesa.generarCartaMesa();
+                }
 
                 //mostrarPanelJuego
                 mesa.mostrarPanelJuego();

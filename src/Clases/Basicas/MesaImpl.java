@@ -65,7 +65,7 @@ public class MesaImpl implements Mesa {
     private int ronda;
 
     /**
-     * This constructor places the default attributes
+     * This constructor put the attributes with default values
      */
 
     public MesaImpl(){
@@ -79,7 +79,7 @@ public class MesaImpl implements Mesa {
     }
 
     /**
-     * This constructor places the default attributes
+     * This constructor put the attributes with the values passed by parameter
      * @param baraja array of letters
      * @param jugadores array of players
      * @param cartas array of letters
@@ -96,7 +96,7 @@ public class MesaImpl implements Mesa {
     }
 
     /**
-     * This constructor places the default attributes
+     * This constructor put the attributes with the values passed by parameter
      * @param baraja array of letters
      * @param jugadores array of players
      * @param cartas array of letters
@@ -114,8 +114,8 @@ public class MesaImpl implements Mesa {
     }
 
     /**
-     * This constructor places the default attributes
-     * @param otro another mesa we want to copy their values ​​from
+     * This constructor put the attributes with the values of the other object passed by parameter
+     * @param otro another table of we want to copy their values
      */
 
     public MesaImpl(MesaImpl otro){
