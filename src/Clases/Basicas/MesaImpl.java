@@ -234,7 +234,6 @@ public class MesaImpl implements Mesa {
         restaurarBaraja();
         colocarJugadoresActivos();
         generarCartasJugadores();
-        generarTresCartasMesa();
     }
 
 
@@ -256,6 +255,28 @@ public class MesaImpl implements Mesa {
             jugador.setActivo(true);
         }
     }
+
+    /*
+     * SIGNATURA: public void ingresarSaldoGanadores();
+     * COMENTARIO: Saca dos cartas de la baraja para cada jugador y se las asigna a cada jugador
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Modifica el array de la baraja colocando por defecto las cartas sacadas y modifica el objeto mesa
+     *                      asignando las cartas a los jugadores de la mesa
+     */
+
+
+    public void ingresarSaldoGanadores(){
+
+    }
+
+
+
+
+
+
 
 
     /*
@@ -291,6 +312,49 @@ public class MesaImpl implements Mesa {
                 } while (baraja[numPosicionCarta].getPalo() == 'D');
             }
         }
+    }
+
+
+    /*
+     * SIGNATURA: public void generarCartaMesa(CartaImpl[] baraja, CartaImpl[] cartas);
+     * COMENTARIO: Saca 1 cartas de la baraja y las coloca en el segundo array pasado por parametro
+     * PRECONDICIONES: - El primer array debe tener 54 campos
+     *                 - El segundo array debe tener 5 campos
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Un array de CartaImpl con todas las cartas posibles
+     *                 - Un array de CartaImpl con las cartas de la mesa
+     * POSTCONDICIONES: Modifica el array pasado por parametro eliminando las cartas que se saquen aleatoriamente y anhadiendose
+     *                  al segundo array pasado por parametro que son las cartas de la mesa
+     */
+
+    //TODO Desarrollar javadoc
+
+    public void generarCartaMesa() {
+
+        Random r = new Random();
+        int numPosicionCarta, indiceCartaGenerar = 0;
+
+        numPosicionCarta = r.nextInt(52);
+
+        //Calcula cual es la siguiente carta sin levantar y guarda el indice
+        for (int i = 0; i < this.cartasMesa.length && this.cartasMesa[i].getPalo() != 'D'; i++) {
+            if ((i + 1) <= this.cartasMesa.length) {
+                if (this.cartasMesa[i + 1].getPalo() == 'D') {
+                    indiceCartaGenerar = i + 1;
+                }
+            }
+        }
+
+        //Guarda la carta que se ha sacado de la baraja en las cartas de la mesa
+        do {
+            if (this.baraja[numPosicionCarta].getPalo() != 'D') {
+                this.cartasMesa[indiceCartaGenerar] = this.baraja[numPosicionCarta];
+                this.baraja[numPosicionCarta] = new CartaImpl();
+            }
+            numPosicionCarta = r.nextInt(52);
+        } while (this.baraja[numPosicionCarta].getPalo() == 'D');
+
     }
 
 
