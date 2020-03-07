@@ -85,7 +85,7 @@ public class MesaImpl implements Mesa {
      * @param cartas array of letters
      */
 
-    public MesaImpl(CartaImpl[] baraja, JugadorImpl[] jugadores, CartaImpl[] cartas){
+    public MesaImpl(CartaImpl[] baraja, JugadorImpl[] jugadores, CartaImpl[] cartas){   //TODO No copiar los arrays con =
         Random random = new Random();
         this.baraja = baraja;
         this.jugadores = jugadores;
@@ -103,7 +103,7 @@ public class MesaImpl implements Mesa {
      * @param apuestasJugadores array of int
      */
 
-    public MesaImpl(CartaImpl[] baraja, JugadorImpl[] jugadores, CartaImpl[] cartas, int[][] apuestasJugadores){
+    public MesaImpl(CartaImpl[] baraja, JugadorImpl[] jugadores, CartaImpl[] cartas, int[][] apuestasJugadores){    //TODO No copiar los arrays con =
         Random random = new Random();
         this.baraja = baraja;
         this.jugadores = jugadores;
@@ -118,7 +118,7 @@ public class MesaImpl implements Mesa {
      * @param otro another table of we want to copy their values
      */
 
-    public MesaImpl(MesaImpl otro){
+    public MesaImpl(MesaImpl otro){     //Todo comprobar si al modificar este se modifica el original
         this.baraja = otro.getBaraja();
         this.jugadores = otro.getJugadores();
         this.cartasMesa = otro.getCartasMesa();
@@ -143,7 +143,7 @@ public class MesaImpl implements Mesa {
      */
 
     public CartaImpl getCartaBaraja(int indice){
-        return this.baraja[indice];
+        return this.baraja[indice].clone(); //todo Comprobar si el clone hace una copia por referencia.
     }
 
     /**
@@ -183,7 +183,7 @@ public class MesaImpl implements Mesa {
      */
 
     public JugadorImpl getJugador(int indice){
-        return this.jugadores[indice];
+        return this.jugadores[indice].clone();      //todo Comprobar si el clone hace una copia por referencia.
     }
 
     /**
@@ -193,16 +193,16 @@ public class MesaImpl implements Mesa {
      */
 
     private CartaImpl[] getCartasJugador(int jugador){
-        return this.jugadores[jugador].getCartas();
+        CartaImpl[] cartasJugador = new CartaImpl[2];
+        System.arraycopy(this.jugadores[jugador].getCartas(),0,cartasJugador,0,this.jugadores[jugador].getCartas().length);
+        return cartasJugador;
     }
-
 
     /**
      * @param jugador
      * @param carta
      * @return
      */
-
 
     public CartaImpl getCartaJugador(int jugador,int carta){
         return this.jugadores[jugador].getCartas()[carta];
@@ -222,7 +222,6 @@ public class MesaImpl implements Mesa {
      * @param jugador
      * @param jugadores
      */
-
 
     public void setJugador(int jugador, JugadorImpl jugadores){
         this.jugadores[jugador] = jugadores;
@@ -247,7 +246,7 @@ public class MesaImpl implements Mesa {
 
 
     public CartaImpl getCartaMesa(int indiceCarta){
-        return this.cartasMesa[indiceCarta];
+        return this.cartasMesa[indiceCarta].clone();        //todo Comprobar si el clone hace una copia por referencia.
     }
 
     /**
@@ -275,7 +274,9 @@ public class MesaImpl implements Mesa {
      */
 
     private int[][] getApuestasJugadores(){
-        return this.apuestasJugadores;
+        int[][] apeustas = new int[5][5];
+        System.arraycopy(this.apuestasJugadores,0,apeustas,0,this.apuestasJugadores.length);
+        return apeustas;
     }
 
 
@@ -284,7 +285,6 @@ public class MesaImpl implements Mesa {
      * @param ronda
      * @return
      */
-
 
     public int getApuestaJugador(int jugador, int ronda){
         return this.apuestasJugadores[jugador][ronda];
@@ -299,13 +299,11 @@ public class MesaImpl implements Mesa {
         this.apuestasJugadores = apuestas;
     }
 
-
     /**
      * @param jugador
      * @param ronda
      * @param apuestas
      */
-
 
     public void setApuestaJugador(int jugador,int ronda, int apuestas){
         this.apuestasJugadores[jugador][ronda] = apuestas;
@@ -350,33 +348,33 @@ public class MesaImpl implements Mesa {
 
 
     /*
-     * SIGNATURA: public void colocarJugadoresActivos(MesaImpl mesa)
+     * SIGNATURA: public void colocarJugadoresActivos()
      * COMENTARIO: Metodo para colocar todos los jugadores de la mesa activos
      * PRECONDICIONES: - Nada
      * ENTRADA: - Nada
      * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Un objeto MesaImpl
-     * POSTCONDICIONES: - Modifica el objeto pasado por parametro colocando todos los jugadores en activo.
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Coloca todos los jugadores del array jugadores de la mesa en activo.
      */
 
-    //TODO Revisar interfaz
-    //TODO Desarrollar javadoc
+    /**
+     * This method set active all players
+     */
 
-    public void colocarJugadoresActivos(){
+    private void colocarJugadoresActivos(){
         for(JugadorImpl jugador: this.jugadores){
             jugador.setActivo(true);
         }
     }
 
     /*
-     * SIGNATURA: public void ingresarSaldoGanadores();
-     * COMENTARIO: Saca dos cartas de la baraja para cada jugador y se las asigna a cada jugador
-     * PRECONDICIONES: - Nada
-     * ENTRADA: - Nada
-     * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: - Modifica el array de la baraja colocando por defecto las cartas sacadas y modifica el objeto mesa
-     *                      asignando las cartas a los jugadores de la mesa
+     * SIGNATURA:
+     * COMENTARIO:
+     * PRECONDICIONES: -
+     * ENTRADA: -
+     * SALIDA: -
+     * ENTRADA/SALIDA: -
+     * POSTCONDICIONES: -
      */
 
     //TODO  Desarrollar javadoc
@@ -394,12 +392,12 @@ public class MesaImpl implements Mesa {
      * ENTRADA: - Nada
      * SALIDA: - Nada
      * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: - Modifica el array de la baraja colocando por defecto las cartas sacadas y modifica el objeto mesa
-     *                      asignando las cartas a los jugadores de la mesa
+     * POSTCONDICIONES: - Modifica el array de la baraja colocando por defecto las cartas sacadas y asigna las cartas a los jugadores de la mesa
      */
 
-    //TODO Revisar interfaz
-    //TODO Desarrollar javadoc
+    /**
+     * Draw 2 cards for each player and assign them to them
+     */
 
     public void generarCartasJugadores() {
 
@@ -420,11 +418,12 @@ public class MesaImpl implements Mesa {
                 } while (baraja[numPosicionCarta].getPalo() == 'D');
             }
         }
+
     }
 
 
     /*
-     * SIGNATURA: public void generarCartaMesa(CartaImpl[] baraja, CartaImpl[] cartas);
+     * SIGNATURA: public void generarCartaMesa();
      * COMENTARIO: Saca 1 cartas de la baraja y las coloca en el segundo array pasado por parametro
      * PRECONDICIONES: - El primer array debe tener 54 campos
      *                 - El segundo array debe tener 5 campos
