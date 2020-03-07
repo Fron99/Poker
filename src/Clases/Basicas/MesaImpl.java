@@ -85,6 +85,8 @@ public class MesaImpl implements Mesa {
      * @param cartas array of letters
      */
 
+    //TODO Controlar tamaños array y colocar en javadoc
+
     public MesaImpl(CartaImpl[] baraja, JugadorImpl[] jugadores, CartaImpl[] cartas){   //TODO No copiar los arrays con =
         Random random = new Random();
         this.baraja = baraja;
@@ -102,6 +104,8 @@ public class MesaImpl implements Mesa {
      * @param cartas array of letters
      * @param apuestasJugadores array of int
      */
+
+        //TODO Controlar tamaños array y colocar en javadoc
 
     public MesaImpl(CartaImpl[] baraja, JugadorImpl[] jugadores, CartaImpl[] cartas, int[][] apuestasJugadores){    //TODO No copiar los arrays con =
         Random random = new Random();
@@ -424,18 +428,19 @@ public class MesaImpl implements Mesa {
 
     /*
      * SIGNATURA: public void generarCartaMesa();
-     * COMENTARIO: Saca 1 cartas de la baraja y las coloca en el segundo array pasado por parametro
-     * PRECONDICIONES: - El primer array debe tener 54 campos
-     *                 - El segundo array debe tener 5 campos
+     * COMENTARIO: Saca 1 cartas de la baraja y las coloca en el array de cartas de la mesa del objeto
+     * PRECONDICIONES: - Nada
      * ENTRADA: - Nada
      * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Un array de CartaImpl con todas las cartas posibles
-     *                 - Un array de CartaImpl con las cartas de la mesa
-     * POSTCONDICIONES: Modifica el array pasado por parametro eliminando las cartas que se saquen aleatoriamente y anhadiendose
-     *                  al segundo array pasado por parametro que son las cartas de la mesa
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES:
      */
 
     //TODO Desarrollar javadoc
+
+    /**
+     *
+     */
 
     public void generarCartaMesa() {
 
