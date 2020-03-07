@@ -130,8 +130,10 @@ public class MesaImpl implements Mesa {
      * @return CartaImpl[] array of attribute "baraja"
      */
 
-    private CartaImpl[] getBaraja(){
-        return this.baraja;
+    public CartaImpl[] getBaraja(){
+        CartaImpl[] baraja = new CartaImpl[this.baraja.length];
+        System.arraycopy(this.baraja,0,baraja,0,this.baraja.length);
+        return baraja;
     }
 
     /**
@@ -168,8 +170,10 @@ public class MesaImpl implements Mesa {
      * @return JugadorImpl[] array of attribute "jugadores"
      */
 
-    private JugadorImpl[] getJugadores(){
-        return this.jugadores;
+    public JugadorImpl[] getJugadores(){
+        JugadorImpl[] jugadores = new JugadorImpl[this.jugadores.length];
+        System.arraycopy(this.jugadores,0,jugadores,0,this.jugadores.length);
+        return jugadores;
     }
 
     /**
