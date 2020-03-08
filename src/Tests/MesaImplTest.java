@@ -156,7 +156,7 @@ public class MesaImplTest {
         boolean mesaA0 = true, cartasDefecto = true;
         for (int i = 0; i < mesa.getApuestasJugadores().length; i++) {
             for (int j = 0; j < mesa.getApuestasJugadores().length; j++) {
-                if (mesa.getApuestasJugadores()[i][j] != 0){
+                if (mesa.getApuestaJugador(i,j) != 0){
                     mesaA0 = false;
                 }
             }
