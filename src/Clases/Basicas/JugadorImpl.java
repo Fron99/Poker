@@ -148,6 +148,16 @@ public class JugadorImpl implements Jugador {
         this.cartas = cartas;
     }
 
+
+    /**
+     * @param posCarta
+     * @param carta
+     */
+
+    public void setCarta(int posCarta, CartaImpl carta){
+        this.cartas[posCarta] = carta;
+    }
+
     /**
      * Return value of attribute "activo"
      * @return boolean with value of attribute "activo"
