@@ -30,7 +30,7 @@ package Clases.Basicas;
 
 import Clases.Interfaces.Carta;
 
-public class CartaImpl implements Carta{
+public class CartaImpl implements Carta, Cloneable{
 
     private char palo;
     private String numero;
