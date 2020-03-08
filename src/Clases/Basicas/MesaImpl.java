@@ -82,19 +82,45 @@ public class MesaImpl implements Mesa {
     }
 
     /**
-     * This constructor put the attributes with the values passed by parameter
+     * This constructor put the attributes with the values passed by parameter.
+     * If length of baraja isn't 52, the constructor builds a array with defaults objects.
+     * If length of jugadores isn't 5, the constructor builds a array with defaults objects.
+     * If length of cartasMesa isn't 5, the constructor builds a array with defaults objects.
      * @param baraja array of letters
      * @param jugadores array of players
-     * @param cartas array of letters
+     * @param cartasMesa array of letters
      */
 
-    //TODO Controlar tamaños array y colocar en javadoc
-
-    public MesaImpl(CartaImpl[] baraja, JugadorImpl[] jugadores, CartaImpl[] cartas){   //TODO No copiar los arrays con =
+    public MesaImpl(CartaImpl[] baraja, JugadorImpl[] jugadores, CartaImpl[] cartasMesa){
         Random random = new Random();
-        this.baraja = baraja;
-        this.jugadores = jugadores;
-        this.cartasMesa = cartas;
+
+        this.baraja = new CartaImpl[52];
+        if (baraja.length == 52){
+            System.arraycopy(baraja,0,this.baraja,0,baraja.length);
+        }else{
+            for (CartaImpl carta:this.baraja) {
+                carta = new CartaImpl();
+            }
+        }
+
+        this.jugadores = new JugadorImpl[5];
+        if (jugadores.length == 5){
+            System.arraycopy(jugadores,0,this.jugadores,0,jugadores.length);
+        }else{
+            for (JugadorImpl jugador:this.jugadores) {
+                jugador = new JugadorImpl();
+            }
+        }
+
+        this.cartasMesa = new CartaImpl[5];
+        if (cartasMesa.length == 5){
+            System.arraycopy(cartasMesa,0,this.cartasMesa,0,cartasMesa.length);
+        }else{
+            for (CartaImpl carta:this.cartasMesa) {
+                carta = new CartaImpl();
+            }
+        }
+
         this.apuestasJugadores = new int[5][5];
         this.turnoJugador = random.nextInt(5);
         this.ronda = 0;
@@ -451,7 +477,7 @@ public class MesaImpl implements Mesa {
      * ENTRADA: - Nada
      * SALIDA: - Nada
      * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES:
+     * POSTCONDICIONES: - Coloca la carta que haya sacado por defecto en la baraja y la coloca en la mesa
      */
 
     /**
@@ -487,7 +513,7 @@ public class MesaImpl implements Mesa {
 
 
     /*
-     * SIGNATURA: public void cargarJugadores(JugadorImpl[] jugadores);
+     * SIGNATURA: public void cargarBots();
      * COMENTARIO: Carga un array pasado por parametros con jugadores aleatorios
      * PRECONDICIONES: - El array debe ser de JugadorImpl
      * ENTRADA: - Nada
