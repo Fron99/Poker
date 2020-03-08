@@ -136,7 +136,7 @@ public class GestoraJugadorImpl {
                 //En el caso de que no iguale ni suba la apuesta apostara 0
                 //TODO Contolar los casos en los que hace all-in sin llegar a la cantidad minima (Creo que esta solucionado, comprobar)
             }else {
-                if (cantidadApostar == mesa.getApuestasJugadores()[jugador][ronda]){
+                if (cantidadApostar == mesa.getApuestaJugador(jugador,ronda)){
                     totalApostar = cantidadApostar;
                 }else{
                     totalApostar = 0;
