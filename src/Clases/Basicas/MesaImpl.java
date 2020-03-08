@@ -47,6 +47,9 @@
  *
  */
 
+//TODO Revisar interfaz si los metodos set y gets deben ser privados o se debe modificar la interfaz
+
+
 package Clases.Basicas;
 
 import Clases.Gestoras.GestoraJugadorImpl;
@@ -210,6 +213,18 @@ public class MesaImpl implements Mesa {
 
     public CartaImpl getCartaJugador(int jugador,int carta){
         return this.jugadores[jugador].getCartas()[carta];
+    }
+
+
+    /**
+     * @param jugador
+     * @param posCarta
+     * @param carta
+     */
+
+
+    public void setCartaJugador(int jugador,int posCarta, CartaImpl carta){
+        this.jugadores[jugador].setCarta(posCarta, carta);
     }
 
     /**
@@ -410,12 +425,15 @@ public class MesaImpl implements Mesa {
 
         numPosicionCarta = r.nextInt(52);
 
+        //TODO Revisar este bucle, puede que este mal
+        //TODO Comentar mas el codigo
+
         for (int i = 0; i<this.jugadores.length;i++){
             for (int j = 0; j<2; j++){
                 do {
-                    if (baraja[numPosicionCarta].getPalo() != 'D') {
-                        //TODO Revisar no se hace asi, deberia hacerse con un set
-                        this.getCartasJugador(i)[j] = baraja[numPosicionCarta];
+                    if (baraja[numPosicionCarta].getPalo() != 'D') {    //Comprueba si la carta seleccionada de la baraja no ha salido ya (Que es cuando esta por defecto)
+                        //En el caso de que no haya salido se le asigna al jugador y se coloca por defecto en la baraja
+                        this.setCartaJugador(i,j,baraja[numPosicionCarta]);
                         baraja[numPosicionCarta] = new CartaImpl();
                     }
                     numPosicionCarta = r.nextInt(52);
@@ -436,10 +454,8 @@ public class MesaImpl implements Mesa {
      * POSTCONDICIONES:
      */
 
-    //TODO Desarrollar javadoc
-
     /**
-     *
+     * Draw 1 cards of deck of cards and put this in array of cards from the object
      */
 
     public void generarCartaMesa() {
