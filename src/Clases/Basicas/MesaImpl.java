@@ -74,8 +74,17 @@ public class MesaImpl implements Mesa {
     public MesaImpl(){
         Random random = new Random();
         this.baraja = new CartaImpl[52];
+        for (int i = 0;i<this.baraja.length;i++){
+            this.baraja[i] = new CartaImpl();
+        }
         this.jugadores = new JugadorImpl[5];
+        for (int i = 0;i<this.jugadores.length;i++){
+            this.jugadores[i] = new JugadorImpl();
+        }
         this.cartasMesa = new CartaImpl[5];
+        for (int i = 0;i<this.cartasMesa.length;i++){
+            this.cartasMesa[i] = new CartaImpl();
+        }
         this.apuestasJugadores = new int[5][5];
         this.turnoJugador = random.nextInt(5);
         this.ronda = 0;
@@ -98,8 +107,8 @@ public class MesaImpl implements Mesa {
         if (baraja.length == 52){
             System.arraycopy(baraja,0,this.baraja,0,baraja.length);
         }else{
-            for (CartaImpl carta:this.baraja) {
-                carta = new CartaImpl();
+            for (int i = 0;i<this.baraja.length;i++){
+                this.baraja[i] = new CartaImpl();
             }
         }
 
@@ -107,8 +116,8 @@ public class MesaImpl implements Mesa {
         if (jugadores.length == 5){
             System.arraycopy(jugadores,0,this.jugadores,0,jugadores.length);
         }else{
-            for (JugadorImpl jugador:this.jugadores) {
-                jugador = new JugadorImpl();
+            for (int i = 0;i<this.jugadores.length;i++){
+                this.jugadores[i] = new JugadorImpl();
             }
         }
 
@@ -116,8 +125,8 @@ public class MesaImpl implements Mesa {
         if (cartasMesa.length == 5){
             System.arraycopy(cartasMesa,0,this.cartasMesa,0,cartasMesa.length);
         }else{
-            for (CartaImpl carta:this.cartasMesa) {
-                carta = new CartaImpl();
+            for (int i = 0;i<this.cartasMesa.length;i++){
+                this.cartasMesa[i] = new CartaImpl();
             }
         }
 
@@ -176,7 +185,7 @@ public class MesaImpl implements Mesa {
      */
 
     public CartaImpl getCartaBaraja(int indice){
-        return this.baraja[indice].clone(); //todo Comprobar si el clone hace una copia por referencia.
+        return this.baraja[indice].clone();
     }
 
     /**
@@ -184,7 +193,9 @@ public class MesaImpl implements Mesa {
      * @param baraja new value of attribute "baraja"
      */
 
-    private void setBaraja(CartaImpl[] baraja){
+    //TODO Hacer private despues de las pruebas o ver si se puede dejar publico
+
+    public void setBaraja(CartaImpl[] baraja){
         this.baraja = baraja;
     }
 
@@ -299,7 +310,9 @@ public class MesaImpl implements Mesa {
      * @param cartas new value of attribute "cartas"
      */
 
-    private void setCartasMesa(CartaImpl[] cartas){
+    //TODO Hacer private despues de las pruebas o ver si se puede dejar publico
+
+    public void setCartasMesa(CartaImpl[] cartas){
         this.cartasMesa = cartas;
     }
 
@@ -318,10 +331,10 @@ public class MesaImpl implements Mesa {
      * @return int[][] array of attribute "apuestasJugadores"
      */
 
-    private int[][] getApuestasJugadores(){
-        int[][] apeustas = new int[5][5];
-        System.arraycopy(this.apuestasJugadores,0,apeustas,0,this.apuestasJugadores.length);
-        return apeustas;
+    public int[][] getApuestasJugadores(){
+        int[][] apuestas = new int[5][5];
+        System.arraycopy(this.apuestasJugadores,0,apuestas,0,this.apuestasJugadores.length);
+        return apuestas;
     }
 
 
