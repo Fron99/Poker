@@ -136,21 +136,51 @@ public class MesaImpl implements Mesa {
     }
 
     /**
-     * This constructor put the attributes with the values passed by parameter
+     * This constructor put the attributes with the values passed by parameter.
+     * If length of baraja isn't 52, the constructor builds a array with defaults objects.
+     * If length of jugadores isn't 5, the constructor builds a array with defaults objects.
+     * If length of cartasMesa isn't 5, the constructor builds a array with defaults objects.
+     * If length of apuestasJugadores isn't 5 times 5, the constructor builds a array with defaults values.
      * @param baraja array of letters
      * @param jugadores array of players
-     * @param cartas array of letters
+     * @param cartasMesa array of letters
      * @param apuestasJugadores array of int
      */
 
-        //TODO Controlar tamaños array y colocar en javadoc
-
-    public MesaImpl(CartaImpl[] baraja, JugadorImpl[] jugadores, CartaImpl[] cartas, int[][] apuestasJugadores){    //TODO No copiar los arrays con =
+    public MesaImpl(CartaImpl[] baraja, JugadorImpl[] jugadores, CartaImpl[] cartasMesa, int[][] apuestasJugadores){
         Random random = new Random();
-        this.baraja = baraja;
-        this.jugadores = jugadores;
-        this.cartasMesa = cartas;
-        this.apuestasJugadores = apuestasJugadores;
+        this.baraja = new CartaImpl[52];
+        if (baraja.length == 52){
+            System.arraycopy(baraja,0,this.baraja,0,baraja.length);
+        }else{
+            for (int i = 0;i<this.baraja.length;i++){
+                this.baraja[i] = new CartaImpl();
+            }
+        }
+
+        this.jugadores = new JugadorImpl[5];
+        if (jugadores.length == 5){
+            System.arraycopy(jugadores,0,this.jugadores,0,jugadores.length);
+        }else{
+            for (int i = 0;i<this.jugadores.length;i++){
+                this.jugadores[i] = new JugadorImpl();
+            }
+        }
+
+        this.cartasMesa = new CartaImpl[5];
+        if (cartasMesa.length == 5){
+            System.arraycopy(cartasMesa,0,this.cartasMesa,0,cartasMesa.length);
+        }else{
+            for (int i = 0;i<this.cartasMesa.length;i++){
+                this.cartasMesa[i] = new CartaImpl();
+            }
+        }
+
+        this.apuestasJugadores = new int[5][5];
+        if (apuestasJugadores.length == 5 && apuestasJugadores[0].length == 5){
+            System.arraycopy(apuestasJugadores,0,this.apuestasJugadores,0,apuestasJugadores.length);
+        }
+
         this.turnoJugador = random.nextInt(5);
         this.ronda = 0;
     }
@@ -160,11 +190,36 @@ public class MesaImpl implements Mesa {
      * @param otro another table of we want to copy their values
      */
 
-    public MesaImpl(MesaImpl otro){     //Todo comprobar si al modificar este se modifica el original
-        this.baraja = otro.getBaraja();
-        this.jugadores = otro.getJugadores();
-        this.cartasMesa = otro.getCartasMesa();
-        this.apuestasJugadores = otro.getApuestasJugadores();
+    public MesaImpl(MesaImpl otro){
+        this.baraja = new CartaImpl[52];
+        for (int i = 0; i<otro.baraja.length;i++){
+            this.baraja[i] = otro.baraja[i].clone();
+        }
+
+        //System.arraycopy(otro.baraja,0,this.baraja,0,otro.baraja.length);
+
+        this.jugadores = new JugadorImpl[5];
+        for (int i = 0; i<otro.jugadores.length;i++){
+            this.jugadores[i] = otro.jugadores[i].clone();
+        }
+
+        //System.arraycopy(otro.jugadores,0,this.jugadores,0,otro.jugadores.length);
+
+        this.cartasMesa = new CartaImpl[5];
+        for (int i = 0; i<otro.cartasMesa.length;i++){
+            this.cartasMesa[i] = otro.cartasMesa[i].clone();
+        }
+
+        //System.arraycopy(otro.cartasMesa,0,this.cartasMesa,0,otro.cartasMesa.length);
+
+        this.apuestasJugadores = new int[5][5];
+        for (int i = 0; i<otro.apuestasJugadores.length;i++){
+            for (int j = 0; j<otro.apuestasJugadores.length;j++){
+                this.apuestasJugadores[i][j] = otro.apuestasJugadores[i][j];
+            }
+        }
+        //System.arraycopy(otro.apuestasJugadores,0,this.apuestasJugadores,0,otro.apuestasJugadores.length);
+
     }
 
     /**
@@ -380,6 +435,16 @@ public class MesaImpl implements Mesa {
             }
         }
         return total;
+    }
+
+
+    /**
+     * @param jugador
+     * @return
+     */
+
+    public int obtenerSaldoJugador(int jugador){
+        return this.jugadores[jugador].getSaldo();
     }
 
     //METODOS ANHADIDOS
