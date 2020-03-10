@@ -276,11 +276,12 @@ public class JugadorImpl implements Jugador, Cloneable {
     @Override
     public JugadorImpl clone() {
         JugadorImpl jugador = null;
-        try {
-            jugador = (JugadorImpl) super.clone();
-        } catch(CloneNotSupportedException error) {
-            System.out.println("Error en la copia");
+        jugador.usuario = this.usuario;
+        jugador.saldo = this.saldo;
+        for (int i = 0;i<cartas.length; i++){
+            jugador.cartas[i] = this.cartas[i].clone();
         }
+        jugador.activo = this.activo;
         return jugador;
     }
 
