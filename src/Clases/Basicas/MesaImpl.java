@@ -1185,12 +1185,26 @@ public class MesaImpl implements Mesa {
 
     @Override
     public MesaImpl clone() {
-        MesaImpl mesa = null;
-        try {
-            mesa = (MesaImpl) super.clone();
-        } catch(CloneNotSupportedException error) {
-            System.out.println("Error en la copia");
+        MesaImpl mesa = new MesaImpl();
+        for (int i = 0;i<mesa.baraja.length;i++){
+            mesa.baraja[i] = this.baraja[i].clone();
         }
+
+        for (int i = 0;i<mesa.jugadores.length;i++){
+            mesa.jugadores[i] = this.jugadores[i].clone();
+        }
+
+        for (int i = 0;i<mesa.cartasMesa.length;i++){
+            mesa.cartasMesa[i] = this.cartasMesa[i].clone();
+        }
+
+        for (int i = 0;i<mesa.cartasMesa.length;i++){
+            System.arraycopy(this.apuestasJugadores[i],0,mesa.apuestasJugadores[i],0,5);
+        }
+
+        mesa.turnoJugador = this.turnoJugador;
+        mesa.ronda = this.ronda;
+
         return mesa;
     }
 
