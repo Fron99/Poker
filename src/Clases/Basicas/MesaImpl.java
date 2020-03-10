@@ -58,7 +58,7 @@ import Clases.Interfaces.Mesa;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class MesaImpl implements Mesa {
+public class MesaImpl implements Mesa, Cloneable {
 
     private CartaImpl[] baraja;
     private JugadorImpl[] jugadores;
@@ -151,7 +151,10 @@ public class MesaImpl implements Mesa {
         Random random = new Random();
         this.baraja = new CartaImpl[52];
         if (baraja.length == 52){
-            System.arraycopy(baraja,0,this.baraja,0,baraja.length);
+            for (int i = 0; i<baraja.length;i++){
+                this.baraja[i] = baraja[i].clone();
+            }
+            //System.arraycopy(baraja,0,this.baraja,0,baraja.length);
         }else{
             for (int i = 0;i<this.baraja.length;i++){
                 this.baraja[i] = new CartaImpl();
@@ -178,7 +181,9 @@ public class MesaImpl implements Mesa {
 
         this.apuestasJugadores = new int[5][5];
         if (apuestasJugadores.length == 5 && apuestasJugadores[0].length == 5){
-            System.arraycopy(apuestasJugadores,0,this.apuestasJugadores,0,apuestasJugadores.length);
+            for (int i = 0;i<apuestasJugadores.length;i++){
+                System.arraycopy(apuestasJugadores[i],0,this.apuestasJugadores[i],0,apuestasJugadores.length);
+            }
         }
 
         this.turnoJugador = random.nextInt(5);
@@ -192,33 +197,18 @@ public class MesaImpl implements Mesa {
 
     public MesaImpl(MesaImpl otro){
         this.baraja = new CartaImpl[52];
-        for (int i = 0; i<otro.baraja.length;i++){
-            this.baraja[i] = otro.baraja[i].clone();
-        }
-
-        //System.arraycopy(otro.baraja,0,this.baraja,0,otro.baraja.length);
+        System.arraycopy(otro.baraja,0,this.baraja,0,otro.baraja.length);
 
         this.jugadores = new JugadorImpl[5];
-        for (int i = 0; i<otro.jugadores.length;i++){
-            this.jugadores[i] = otro.jugadores[i].clone();
-        }
-
-        //System.arraycopy(otro.jugadores,0,this.jugadores,0,otro.jugadores.length);
+        System.arraycopy(otro.jugadores,0,this.jugadores,0,otro.jugadores.length);
 
         this.cartasMesa = new CartaImpl[5];
-        for (int i = 0; i<otro.cartasMesa.length;i++){
-            this.cartasMesa[i] = otro.cartasMesa[i].clone();
-        }
-
-        //System.arraycopy(otro.cartasMesa,0,this.cartasMesa,0,otro.cartasMesa.length);
+        System.arraycopy(otro.cartasMesa,0,this.cartasMesa,0,otro.cartasMesa.length);
 
         this.apuestasJugadores = new int[5][5];
-        for (int i = 0; i<otro.apuestasJugadores.length;i++){
-            for (int j = 0; j<otro.apuestasJugadores.length;j++){
-                this.apuestasJugadores[i][j] = otro.apuestasJugadores[i][j];
-            }
+        for (int i = 0;i<apuestasJugadores.length;i++){
+            System.arraycopy(otro.apuestasJugadores[i],0,this.apuestasJugadores[i],0,apuestasJugadores.length);
         }
-        //System.arraycopy(otro.apuestasJugadores,0,this.apuestasJugadores,0,otro.apuestasJugadores.length);
 
     }
 
@@ -229,6 +219,11 @@ public class MesaImpl implements Mesa {
 
     public CartaImpl[] getBaraja(){
         CartaImpl[] baraja = new CartaImpl[this.baraja.length];
+        /*for (int i = 0; i<this.baraja.length;i++){
+            baraja[i] = this.baraja[i].clone();
+        }*/
+
+        //TODO Comprobar
         System.arraycopy(this.baraja,0,baraja,0,this.baraja.length);
         return baraja;
     }
@@ -251,7 +246,10 @@ public class MesaImpl implements Mesa {
     //TODO Hacer private despues de las pruebas o ver si se puede dejar publico
 
     public void setBaraja(CartaImpl[] baraja){
-        this.baraja = baraja;
+        for (int i = 0;i<baraja.length; i++){
+            this.baraja[i] = baraja[i].clone();
+        }
+        //this.baraja = baraja;
     }
 
     /**
@@ -388,7 +386,12 @@ public class MesaImpl implements Mesa {
 
     public int[][] getApuestasJugadores(){
         int[][] apuestas = new int[5][5];
-        System.arraycopy(this.apuestasJugadores,0,apuestas,0,this.apuestasJugadores.length);
+        for(int i = 0;i<apuestasJugadores.length;i++){
+            for(int j = 0;j<apuestasJugadores.length;j++){
+                apuestas[i][j] = apuestasJugadores[i][j];
+            }
+        }
+        //System.arraycopy(this.apuestasJugadores,0,apuestas,0,this.apuestasJugadores.length);
         return apuestas;
     }
 
