@@ -1142,6 +1142,7 @@ public class MesaImpl implements Mesa, Cloneable {
      * @return String with attributes of the table
      */
 
+    @SuppressWarnings("StringConcatenationInLoop")
     @Override
     public String toString(){
         return this.getBaraja().toString()+"  "+this.getJugadores().toString()+"  "+this.getCartasMesa().toString()+"  "+this.getApuestasJugadores().toString();
@@ -1154,11 +1155,13 @@ public class MesaImpl implements Mesa, Cloneable {
 
     @Override
     public int hashCode(){
+        //noinspection ArrayHashCode
         return this.getTotalApuestas()+this.getJugadores().hashCode();
     }
 
     /**
      * This method returns a Boolean value depending on whether the value of the table passed by parameter is equal to that compared
+     * @param objeto An object with which you want to check if they are the same
      * @return boolean its value depending on whether the value of the table passed by parameter is equal to that compared
      */
 
@@ -1168,6 +1171,7 @@ public class MesaImpl implements Mesa, Cloneable {
         if (this == objeto){
             resul = true;
         }else{
+            //noinspection ConditionCoveredByFurtherCondition
             if (objeto != null && objeto instanceof MesaImpl){
                 MesaImpl nueva = (MesaImpl) objeto;
                 if (this.getBaraja()==nueva.getBaraja()
@@ -1186,6 +1190,7 @@ public class MesaImpl implements Mesa, Cloneable {
      * @return MesaImpl Cloned table
      */
 
+    @SuppressWarnings("MethodDoesntCallSuperMethod")
     @Override
     public MesaImpl clone() {
         MesaImpl mesa = new MesaImpl();
