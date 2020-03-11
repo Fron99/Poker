@@ -144,6 +144,7 @@ public class JugadorImpl implements Jugador, Cloneable {
      */
 
     public CartaImpl[] getCartas(){
+        //TODO Cambiar que no devuelva el array por referencia en todos los metodos get
         return this.cartas;
     }
 
