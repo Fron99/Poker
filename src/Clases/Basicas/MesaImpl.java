@@ -1146,7 +1146,30 @@ public class MesaImpl implements Mesa, Cloneable {
     @SuppressWarnings("StringConcatenationInLoop")
     @Override
     public String toString(){
-        return this.getBaraja().toString()+"  "+this.getJugadores().toString()+"  "+this.getCartasMesa().toString()+"  "+this.getApuestasJugadores().toString();
+        String stringBaraja = "",stringJugadores = "",stringCartasMesa = "", stringApuestas = "";
+
+        for (CartaImpl carta : baraja) {
+            stringBaraja += carta.toString() + "\n";
+        }
+
+        for (JugadorImpl jugadore : jugadores) {
+            stringJugadores += jugadore.toString() + "\n";
+        }
+
+        for (CartaImpl carta : cartasMesa) {
+            stringCartasMesa += carta.toString() + "\n";
+        }
+
+        for (int i = 0; i<apuestasJugadores.length;i++){
+            stringApuestas += "Apuestas jugador "+i+": ";
+            for (int j = 0; j<apuestasJugadores[i].length;j++){
+                stringApuestas += apuestasJugadores[i][j]+",";
+            }
+            stringApuestas += "\n";
+        }
+
+        return stringBaraja+"\n"+stringJugadores+"\n"+stringCartasMesa+"\n"+stringApuestas;
+
     }
 
     /**
