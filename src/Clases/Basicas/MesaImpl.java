@@ -988,64 +988,64 @@ public class MesaImpl implements Mesa, Cloneable {
 
 
     /*
-     * SIGNATURA: public void mostrarPanelJuego (MesaImpl mesa, int ronda);
-     * COMENTARIO: Imprime por pantalla las cartas que hay en la mesa, el dinero de los demas jugadores y el total del bote de la mesa
+     * SIGNATURA: public void mostrarPanelJuego ();
+     * COMENTARIO: Imprime por pantalla las cartas que hay en la mesa y la de los jugadores segun la ronda, el dinero de los demas jugadores y el total del bote de la mesa
      * PRECONDICIONES: - Nada
-     * ENTRADA: - Un objeto Mesa
-     *          - Un entero
+     * ENTRADA: - Nada
      * SALIDA: - Nada
      * ENTRADA/SALIDA: - Nada
      * POSTCONDICIONES: - No devuelve nada, solo imprime por pantalla el estado actual en el que se encuentran los jugadores y las cartas
      */
 
-    //TODO Desarrollar javadoc
-    //TODO Utilizar arraybidimensional para esto
-    //TODO Controlar cuando sea la ultima ronda para que muestre informacion adiciona sobre quien ha ganado y mostrar todas las cartas
-    //TODO Implementar imprimir por rondas
+    //TODO Implementar que no haya diferencias si hay mas de x dinero o si el nombre es mayor o menor
+
+    /**
+     *  Print in screen the table with all properties of users and the carts depending on the turn
+     */
 
     public void mostrarPanelJuego() {
 
-        String numCar1Usuario, numCar2Usuario;
-        char paloCar1Usuario, paloCar2Usuario;
+        String[][] numerosCartasJugadores = new String[5][2];
+        for (int i = 0;i<numerosCartasJugadores.length;i++){
+            for (int j = 0;j<numerosCartasJugadores[i].length;j++){
+                numerosCartasJugadores[i][j] = this.obtenerJugador(i).obtenerCarta(j).getNumero();
+            }
+        }
 
-        numCar1Usuario = this.obtenerJugador(0).obtenerCarta(0).getNumero();
-        numCar2Usuario = this.obtenerJugador(0).obtenerCarta(1).getNumero();
-
-        paloCar1Usuario = this.getJugadores()[0].getCartas()[0].getPalo();
-        paloCar2Usuario = this.getJugadores()[0].getCartas()[1].getPalo();
-
+        char[][] palosCartasJugadores = new char[5][2];
+        for (int i = 0;i<palosCartasJugadores.length;i++){
+            for (int j = 0;j<palosCartasJugadores[i].length;j++){
+                palosCartasJugadores[i][j] = this.obtenerJugador(i).obtenerCarta(j).getPalo();
+            }
+        }
 
         String[] usersJugadores = new String[5];
-        //TODO Revisar esto. Se deberia hacer patron delegacion
         for (int i = 0; i<usersJugadores.length;i++){
-            usersJugadores[i] = this.getJugadores()[i].getUsuario();
+            usersJugadores[i] = this.obtenerJugador(i).getUsuario();
         }
 
         int[] saldoJugadores = new int[5];
-        //TODO Revisar esto. Se deberia hacer patron delegacion
         for (int i = 0; i<saldoJugadores.length;i++){
-            saldoJugadores[i] = this.getJugadores()[i].getSaldo();
+            saldoJugadores[i] = this.obtenerJugador(i).getSaldo();
         }
 
         char[] palosCartasMesa = new char[5];
-        //TODO Revisar esto. Se deberia hacer patron delegacion
         for (int i = 0; i<palosCartasMesa.length;i++){
-            palosCartasMesa[i] = this.getCartasMesa()[i].getPalo();
+            palosCartasMesa[i] = this.obtenerCartaMesa(i).getPalo();
         }
 
         String[] numerosCartasMesa = new String[5];
-        //TODO Revisar esto. Se deberia hacer patron delegacion
         for (int i = 0; i<numerosCartasMesa.length;i++){
-            numerosCartasMesa[i] = this.getCartasMesa()[i].getNumero();
+            numerosCartasMesa[i] = this.obtenerCartaMesa(i).getNumero();
         }
 
 
-        System.out.println("                                      " + usersJugadores[2] + "                                       " + usersJugadores[3]);
+        System.out.println("                                      " + usersJugadores[2] + "                                                         " + usersJugadores[3]);
         System.out.println();
-        System.out.println("                                      " + saldoJugadores[2] + "€                                               " + saldoJugadores[3] + "€");
+        System.out.println("                                      " + saldoJugadores[2] + "€                                                              " + saldoJugadores[3] + "€");
         System.out.println("                                      |º º|     -----        -----                                    |º º|    -----        -----");
-        System.out.println("                                      |---|    | ?   |      | ?   |                                   |---|   | ?   |      | ?   |  ");
-        System.out.println("                                               | ?   |      | ?   |                                           | ?   |      | ?   |");
+        System.out.println("                                      |---|    | "+(this.ronda==4?palosCartasJugadores[2][0]:"?")+"   |      | "+(this.ronda==4?palosCartasJugadores[2][1]:"?")+"   |                                   |---|   | "+(this.ronda==4?palosCartasJugadores[3][0]:"?")+"   |      | "+(this.ronda==4?palosCartasJugadores[3][1]:"?")+"   |  ");
+        System.out.println("                                               | "+(this.ronda==4?numerosCartasJugadores[2][0]:"?")+"   |      | "+(this.ronda==4?numerosCartasJugadores[2][1]:"?")+"   |                                           | "+(this.ronda==4?numerosCartasJugadores[3][0]:"?")+"   |      | "+(this.ronda==4?numerosCartasJugadores[3][1]:"?")+"   |");
         System.out.println("                                                -----        -----                                             -----        -----");
 
 
@@ -1056,10 +1056,10 @@ public class MesaImpl implements Mesa, Cloneable {
 
         System.out.println("       " + usersJugadores[1] + "                                                                                                                              " + usersJugadores[4]);
         System.out.println("                                                        ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- ");
-        System.out.println("       " + saldoJugadores[1] + "€                                           | " + palosCartasMesa[0] + "   |" + "       " + "| " + palosCartasMesa[1] + "   |" + "       " + "| " + palosCartasMesa[2] + "   |" + "       " + "| " + palosCartasMesa[3] + "   |" + "       " + "| " + palosCartasMesa[4] + "   |                      " + saldoJugadores[4] + "€");
+        System.out.println("       " + saldoJugadores[1] + "€                                              | " + palosCartasMesa[0] + "   |" + "       " + "| " + palosCartasMesa[1] + "   |" + "       " + "| " + palosCartasMesa[2] + "   |" + "       " + "| " + palosCartasMesa[3] + "   |" + "       " + "| " + palosCartasMesa[4] + "   |                      " + saldoJugadores[4] + "€");
         System.out.println("       |º º|       -----        -----                  | " + numerosCartasMesa[0] + "   |" + "       " + "| " + numerosCartasMesa[1] + "   |" + "       " + "| " + numerosCartasMesa[2] + "   |" + "       " + "| " + numerosCartasMesa[3] + "   |" + "       " + "| " + numerosCartasMesa[4] + "   |                      |º º|      -----        -----");
-        System.out.println("       |---|      | ?   |      | ?   |                 |     |" + "       " + "|     |" + "       " + "|     |" + "       " + "|     |" + "       " + "|     |" + "                      |---|     | ?   |      | ?   |");
-        System.out.println("                  | ?   |      | ?   |                  ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " -----                                 |     | ?    | ?   |");
+        System.out.println("       |---|      | "+(this.ronda==4?palosCartasJugadores[1][0]:"?")+"   |      | "+(this.ronda==4?palosCartasJugadores[1][1]:"?")+"   |                 |     |" + "       " + "|     |" + "       " + "|     |" + "       " + "|     |" + "       " + "|     |" + "                      |---|     | "+(this.ronda==4?palosCartasJugadores[4][0]:"?")+"   |      | "+(this.ronda==4?palosCartasJugadores[4][1]:"?")+"   |");
+        System.out.println("                  | "+(this.ronda==4?numerosCartasJugadores[1][0]:"?")+"   |      | "+(this.ronda==4?numerosCartasJugadores[1][1]:"?")+"   |                  ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " -----                                 | "+(this.ronda==4?numerosCartasJugadores[4][0]:"?")+"   |      | "+(this.ronda==4?numerosCartasJugadores[4][1]:"?")+"   |");
         System.out.println("                   -----        -----                                                                                                                  -----        -----");
 
         System.out.println();
@@ -1067,15 +1067,15 @@ public class MesaImpl implements Mesa, Cloneable {
         System.out.println();
         System.out.println();
 
-        System.out.println("                                                                     " + usersJugadores[0]);
+        System.out.println("                                                                 " + usersJugadores[0]);
         System.out.println("                                                              TU SALDO ES: " + saldoJugadores[0] + "€");
         System.out.println();
         System.out.println("                                                           _______________________");
         System.out.println("                                                          |                       |");
         System.out.println("                                                          |    __           __    |");
         System.out.println("                                                          |   |º |         |º |   |            ----------           ----------");
-        System.out.println("                                                          |    --           --    |           | "+paloCar1Usuario+"        |         | "+paloCar2Usuario+"        |");
-        System.out.println("                                                          |                       |           | "+numCar1Usuario+"        |         | "+numCar2Usuario+"        |");
+        System.out.println("                                                          |    --           --    |           | "+palosCartasJugadores[0][0]+"        |         | "+palosCartasJugadores[0][1]+"        |");
+        System.out.println("                                                          |                       |           | "+numerosCartasJugadores[0][0]+"        |         | "+numerosCartasJugadores[0][1]+"        |");
         System.out.println("                                                          |   \\              /    |           |          |         |          |");
         System.out.println("                                                          |     \\___________/     |           |          |         |          |");
         System.out.println("                                                          |                       |            ----------           ----------");
@@ -1216,7 +1216,5 @@ public class MesaImpl implements Mesa, Cloneable {
 
         return mesa;
     }
-
-
 
 }
