@@ -354,7 +354,7 @@ public class MesaImpl implements Mesa, Cloneable {
      */
 
 
-    public CartaImpl getCartaMesa(int indiceCarta){
+    public CartaImpl obtenerCartaMesa(int indiceCarta){
         return this.cartasMesa[indiceCarta].clone();        //todo Comprobar si el clone hace una copia por referencia.
     }
 
@@ -470,6 +470,7 @@ public class MesaImpl implements Mesa, Cloneable {
         restaurarBaraja();
         colocarJugadoresActivos();
         generarCartasJugadores();
+        this.ronda = 0;
     }
 
 
