@@ -21,35 +21,24 @@
  *
  * PG0
  * INICIO
- *  leerUsuario*
- *  leerYValidarSaldoInicial*
+ *  leerYValidarJugador*
  *  //añadirJugador
  *  cargarBots*
- *  //generarTurnoJugador
  *  repetir
- *      //actualizarRonda
  *      restaurarMesa*
- *      para(i = 0, mientras i < 2, incrementar i)
- *          mostrarPanelJuego*
- *          realizarApuestas*
- *          //incrementaRonda
- *          si i == 0
+ *      para(contador = 0, mientras contador < 5, incrementar i)
+ *          si contador == 1
  *              generarTresCartasMesa*
  *          finSi
- *      finPara
- *      para(contador = 0; contador < 2; contador++)
- *          generarCartaMesa*
+ *          si contador > 1
+ *              generarCartaMesa*
+ *          finSi
  *          mostrarPanelJuego*
  *          realizarApuestas*
- *          //incrementaRonda
  *      finPara
  *      mostrarPanelJuego*
  *      ingresarSaldoGanadores*
- *      si(turno jugador == 4)
- *          turno jugador = 0
- *      sino
- *          //incrementar turno jugador
- *      finSi
+ *      incrementarTurno*
  *  mientras(saldo usuario > 0 && queden bots con saldo)
  *  //mostrarJuegosFin
  * FIN
@@ -57,94 +46,65 @@
  */
 
 
-import Clases.Basicas.JugadorImpl;
 import Clases.Basicas.MesaImpl;
 import Clases.Gestoras.GestoraJugadorImpl;
-import Clases.Gestoras.GestoraMesaImpl;
-
-import java.util.Random;
 
 public class PokerMain {
 
     public static void main (String[] args){
 
-        Random random = new Random();
         GestoraJugadorImpl gesJugador = new GestoraJugadorImpl();
-        GestoraMesaImpl gesMesa = new GestoraMesaImpl();
-
-        String usuarioJugador;
-        int saldoInicialJugador, turnoJugador, ronda, ganador;
-        int[] ganadores;
         MesaImpl mesa = new MesaImpl();
+        int saldoInicialJugador;
 
-        //leerUsuario
-        usuarioJugador = gesJugador.leerUsuario();
-
-        //leerYValidarDineroInicial
-        saldoInicialJugador = gesJugador.leerYValidarSaldoInicial();
-
+        //leerYValidarJugador*
         //añadirJugador
-        //El usuario que juega se colocara siempre en la posicion 0
-        mesa.anhadirJugador(0,new JugadorImpl(usuarioJugador,saldoInicialJugador));
+        mesa.anhadirJugador(0,gesJugador.leerYValidarJugador());    //El usuario que juega se colocara siempre en la posicion 0
+        saldoInicialJugador = mesa.obtenerSaldoJugador(0);    //Solo se utiliza para informacion al usuario al finalizar el juego
 
         //cargarBots
         mesa.cargarBots();  //Coloca en el array de jugadores jugadores con valores generados aleatoriamente
 
-        //generarTurnoJugador
-        //turnoJugador = random.nextInt(5);   //Genera un numero del 0 al 4 que es la cantidad de jugadores que hay para saber quien empieza a apostar
-        turnoJugador = 3;
-
         do {
-            ronda = 0;  //Se actualiza la variable ronda para cada vez que se juega una partida
 
             //restaurarMesa
             mesa.restaurarMesa();
 
-            for (int i = 0; i<2;i++){
-                //mostrarPanelJuego
-                gesMesa.mostrarPanelJuego(mesa,ronda);
+            for (int contador = 0; contador < 4; contador++){
 
-                //realizarApuestas
-                gesMesa.realizarApuestas(turnoJugador,mesa,ronda);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
-                ronda++;
-
-                //Se utiliza este if para que solo se generen una vez las 3 cartas
-                if (i == 0) {
+                //Se utiliza este if para que solo se generen una vez las 3 cartas despues de la primera jugada
+                if (contador == 1) {
                     //generarTresCartasMesa
                     mesa.generarTresCartasMesa();
                 }
 
-            }
-
-            for (int contador = 0; contador < 2; contador++){
-
-                //generarCartaMesa
-                mesa.generarCartaMesa();
+                //Se utiliza este if para que solo se generen una carta a partir de la 2 apuesta
+                if (contador > 1) {
+                    //generarCartaMesa
+                    mesa.generarCartaMesa();
+                }
 
                 //mostrarPanelJuego
-                gesMesa.mostrarPanelJuego(mesa,ronda);
+                mesa.mostrarPanelJuego();
 
                 //realizarApuestas
-                gesMesa.realizarApuestas(turnoJugador,mesa,ronda);     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
-                ronda++;
+                mesa.realizarApuestas();     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
 
             }
 
             //mostrarPanelJuego
-            gesMesa.mostrarPanelJuego(mesa,ronda);
+            mesa.mostrarPanelJuego();
 
             //ingresarSaldoGanadores
             mesa.ingresarSaldoGanadores();
 
-            if (turnoJugador == 4){
-                turnoJugador = 0;
-            }else{
-                turnoJugador++;
-            }
+            mesa.incrementarTurno();
 
+            //TODO Falta añadir que haya usuarios con saldo en el while y que el usuario quiera seguir
         }while (mesa.getJugadores()[0].getSaldo()>0);
 
-        System.out.println("El jugador "+usuarioJugador+" empezo con "+saldoInicialJugador+" y acabo con "+(saldoInicialJugador-mesa.getJugadores()[0].getSaldo())+"");
+        //TODO Solucion solo para que funcione de momento
+        System.out.println("El jugador "+mesa.getJugadores()[0].getUsuario()+" empezo con "+saldoInicialJugador+" y acabo con "+(saldoInicialJugador-mesa.getJugadores()[0].getSaldo())+"");
 
     }
 

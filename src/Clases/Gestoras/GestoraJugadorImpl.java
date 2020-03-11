@@ -2,6 +2,7 @@ package Clases.Gestoras;
 
 import Clases.Basicas.JugadorImpl;
 import Clases.Basicas.MesaImpl;
+import Clases.Interfaces.Jugador;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -135,7 +136,7 @@ public class GestoraJugadorImpl {
                 //En el caso de que no iguale ni suba la apuesta apostara 0
                 //TODO Contolar los casos en los que hace all-in sin llegar a la cantidad minima (Creo que esta solucionado, comprobar)
             }else {
-                if (cantidadApostar == mesa.getApuestasJugadores()[jugador][ronda]){
+                if (cantidadApostar == mesa.getApuestaJugador(jugador,ronda)){
                     totalApostar = cantidadApostar;
                 }else{
                     totalApostar = 0;
@@ -213,5 +214,30 @@ public class GestoraJugadorImpl {
         }
         return puntosFarol;
     }
+
+
+    /*
+     * SIGNATURA: public int calcularPuntosFarol(int ronda);
+     * COMENTARIO: Calcular cantidad de puntos que debe incrementar la apuesta el bot
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Un entero
+     * SALIDA: - Un entero
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Devuelve asociado al nombre la cantidad de puntos que debe incrementar en un farol el bot dependiendo de la ronda en la que se encuentre
+     */
+
+    //TODO Desarrollar javadoc
+    //TODO Realizar interfaz
+
+    public JugadorImpl leerYValidarJugador(){
+        JugadorImpl nuevoJugador;
+            String usuario = leerUsuario();
+            int saldo = leerYValidarSaldoInicial();
+            nuevoJugador = new JugadorImpl(usuario,saldo);
+        return nuevoJugador;
+    }
+
+
+
 
 }

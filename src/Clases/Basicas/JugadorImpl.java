@@ -46,7 +46,7 @@ package Clases.Basicas;
 
 import Clases.Interfaces.Jugador;
 
-public class JugadorImpl implements Jugador {
+public class JugadorImpl implements Jugador, Cloneable {
 
     private String usuario;
     private int saldo;
@@ -60,7 +60,10 @@ public class JugadorImpl implements Jugador {
     public JugadorImpl(){
         this.usuario = "DEFAULT";
         this.saldo = 0;
-        cartas = new CartaImpl[2];
+        this.cartas = new CartaImpl[2];
+        for (int i = 0;i<this.cartas.length;i++){
+            this.cartas[i] = new CartaImpl();
+        }
         this.activo = true;
     }
 
@@ -74,6 +77,9 @@ public class JugadorImpl implements Jugador {
         this.usuario = usuario;
         this.saldo = saldo;
         this.cartas = new CartaImpl[2];
+        for (int i = 0;i<this.cartas.length;i++){
+            this.cartas[i] = new CartaImpl();
+        }
         this.activo = true;
     }
 
@@ -83,6 +89,8 @@ public class JugadorImpl implements Jugador {
      * @param saldo int balance of player
      * @param cartas array of letters
      */
+
+    //TODO Comprobar = al asignar cartas y controlar tamaño
 
     public JugadorImpl(String usuario, int saldo, CartaImpl[] cartas){
         this.usuario = usuario;
@@ -136,6 +144,7 @@ public class JugadorImpl implements Jugador {
      */
 
     public CartaImpl[] getCartas(){
+        //TODO Cambiar que no devuelva el array por referencia en todos los metodos get
         return this.cartas;
     }
 
@@ -146,6 +155,16 @@ public class JugadorImpl implements Jugador {
 
     public void setCartas(CartaImpl[] cartas){
         this.cartas = cartas;
+    }
+
+
+    /**
+     * @param posCarta
+     * @param carta
+     */
+
+    public void setCarta(int posCarta, CartaImpl carta){
+        this.cartas[posCarta] = carta;
     }
 
     /**
@@ -258,11 +277,12 @@ public class JugadorImpl implements Jugador {
     @Override
     public JugadorImpl clone() {
         JugadorImpl jugador = null;
-        try {
-            jugador = (JugadorImpl) super.clone();
-        } catch(CloneNotSupportedException error) {
-            System.out.println("Error en la copia");
+        jugador.usuario = this.usuario;
+        jugador.saldo = this.saldo;
+        for (int i = 0;i<cartas.length; i++){
+            jugador.cartas[i] = this.cartas[i].clone();
         }
+        jugador.activo = this.activo;
         return jugador;
     }
 
