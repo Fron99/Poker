@@ -663,44 +663,14 @@ public class MesaImpl implements Mesa, Cloneable {
 
     public void restaurarBaraja(){
 
-        this.baraja[0] = new CartaImpl('P', "A");
-        for (int i = 1, numero = 2; i<10;i++){
-            this.baraja[i] = new CartaImpl('P', ""+numero);
-            numero++;
+        char[] palos = new char[]{'P','C','R','T'};
+        String[] numeros = new String[]{"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
+
+        for (int i = 0, contador = 0;i<palos.length;i++){
+            for (int j = 0;j<numeros.length;j++){
+                this.baraja[contador++] = new CartaImpl(palos[i], numeros[j]);
+            }
         }
-        this.baraja[10] = new CartaImpl('P', "J");
-        this.baraja[11] = new CartaImpl('P', "Q");
-        this.baraja[12] = new CartaImpl('P', "K");
-
-
-        this.baraja[13] = new CartaImpl('C', "A");
-        for (int i = 14, numero = 2; i<23;i++){
-            this.baraja[i] = new CartaImpl('C', ""+numero);
-            numero++;
-        }
-        this.baraja[23] = new CartaImpl('C', "J");
-        this.baraja[24] = new CartaImpl('C', "Q");
-        this.baraja[25] = new CartaImpl('C', "K");
-
-
-        this.baraja[26] = new CartaImpl('R', "A");
-        for (int i = 27, numero = 2; i<36;i++){
-            this.baraja[i] = new CartaImpl('R', ""+numero);
-            numero++;
-        }
-        this.baraja[36] = new CartaImpl('R', "J");
-        this.baraja[37] = new CartaImpl('R', "Q");
-        this.baraja[38] = new CartaImpl('R', "K");
-
-
-        this.baraja[39] = new CartaImpl('T', "A");
-        for (int i = 40, numero = 2; i<49;i++){
-            this.baraja[i] = new CartaImpl('T', ""+numero);
-            numero++;
-        }
-        this.baraja[49] = new CartaImpl('T', "J");
-        this.baraja[50] = new CartaImpl('T', "Q");
-        this.baraja[51] = new CartaImpl('T', "K");
 
     }
 
