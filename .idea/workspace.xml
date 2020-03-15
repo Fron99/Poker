@@ -21,8 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b9a3eddb-34fe-4dec-b858-4173adae43d5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +81,7 @@
       <recent name="C:\Users\fjaviles\Documents\GitHub\Poker\src" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MesaImplTest">
+  <component name="RunManager" selected="JUnit.GestoraCartaImplTest">
     <configuration name="PokerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="PokerMain" />
       <module name="ElBromas" />
@@ -96,7 +96,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GestoraMesaImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GestoraCartaImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ElBromas" />
       <extension name="coverage">
         <pattern>
@@ -105,7 +105,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.GestoraMesaImplTest" />
+      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCartaImplTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -145,17 +145,17 @@
     <list>
       <item itemvalue="Application.PokerMain" />
       <item itemvalue="Application.Prueba" />
-      <item itemvalue="JUnit.GestoraMesaImplTest" />
       <item itemvalue="JUnit.MesaImplTest" />
       <item itemvalue="JUnit.MesaImplTest.testRestaurarBaraja1" />
+      <item itemvalue="JUnit.GestoraCartaImplTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GestoraCartaImplTest" />
         <item itemvalue="JUnit.MesaImplTest" />
         <item itemvalue="JUnit.MesaImplTest.testRestaurarBaraja1" />
         <item itemvalue="Application.Prueba" />
         <item itemvalue="Application.PokerMain" />
-        <item itemvalue="JUnit.GestoraMesaImplTest" />
       </list>
     </recent_temporary>
   </component>
@@ -257,29 +257,29 @@
     </state>
     <state x="529" y="188" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583497690407" />
     <state x="744" y="268" key="FileChooserDialogImpl/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583432210128" />
-    <state width="1323" height="178" key="GridCell.Tab.0.bottom" timestamp="1584186102534">
+    <state width="1323" height="178" key="GridCell.Tab.0.bottom" timestamp="1584297221653">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="262" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583933093618" />
-    <state width="1323" height="178" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584186102534" />
+    <state width="1323" height="178" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584297221653" />
     <state width="1877" height="373" key="GridCell.Tab.0.bottom/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583692648514" />
-    <state width="1323" height="178" key="GridCell.Tab.0.center" timestamp="1584186102534">
+    <state width="1323" height="178" key="GridCell.Tab.0.center" timestamp="1584297221653">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="262" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583933093618" />
-    <state width="1323" height="178" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584186102534" />
+    <state width="1323" height="178" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584297221653" />
     <state width="1877" height="373" key="GridCell.Tab.0.center/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583692648514" />
-    <state width="1323" height="178" key="GridCell.Tab.0.left" timestamp="1584186102534">
+    <state width="1323" height="178" key="GridCell.Tab.0.left" timestamp="1584297221653">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="262" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583933093618" />
-    <state width="1323" height="178" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584186102534" />
+    <state width="1323" height="178" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584297221653" />
     <state width="1877" height="373" key="GridCell.Tab.0.left/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583692648514" />
-    <state width="1323" height="178" key="GridCell.Tab.0.right" timestamp="1584186102534">
+    <state width="1323" height="178" key="GridCell.Tab.0.right" timestamp="1584297221653">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="262" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583933093618" />
-    <state width="1323" height="178" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584186102534" />
+    <state width="1323" height="178" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584297221653" />
     <state width="1877" height="373" key="GridCell.Tab.0.right/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583692648514" />
     <state width="1323" height="239" key="GridCell.Tab.1.bottom" timestamp="1584128205087">
       <screen x="0" y="0" width="1366" height="728" />
