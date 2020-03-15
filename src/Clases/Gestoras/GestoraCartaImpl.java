@@ -561,14 +561,15 @@ public class GestoraCartaImpl {
 
     /**
      * Calculate the highest value of the poker in the array passed by parameter
-     * Returns 0 if there is no poker
      * @param cartas CartaImpl[] cards you want to value
+     * @return int Returns 0 if not exist poker. Returns the value of poker if exist poker.
      */
 
     public int calcularValorPoker(CartaImpl[] cartas){
         int puntos = 0;
         if (cartas.length>3){
             //Como el array esta ordenado las 4 cartas estaran juntas en el caso de haber poker por lo cual se comprueba de esta manera
+            //Recorre el array buscando si hay poker.
             for (int i = 0;i<cartas.length-3;i++){
                 if ( (cartas[i].getNumero().equals(cartas[i+1].getNumero()))
                         && (cartas[i].getNumero().equals(cartas[i+2].getNumero()))
@@ -607,64 +608,65 @@ public class GestoraCartaImpl {
         int cantidadCartas = 0;
         CartaImpl[] cartasColor;
 
-        if (cartas.length>4) {
+        //Calcula si hay color. N si no hay o el caracter del color que exista
+        color = calcularColor(cartas);
 
-            //Calcula si hay 5 o mas cartas del mismo color en el array pasado por parametro
-            color = calcularColor(cartas);
+        //if (cartas.length > 4 && color != 'N') {      cartas.length sobra porque si hay color significa que hay 5 cartas o mas
+        if (color != 'N') {
 
-            if (color != 'N') {
-
-                //Calcula la cantidad de cartas que hay del mismo color
-                for (CartaImpl carta : cartas){
-                    if (carta.getPalo() == color) {
-                        cantidadCartas++;
-                    }
+            //Calcula la cantidad de cartas que hay del color que se ha calculado el cual hay color
+            for (CartaImpl carta : cartas){
+                if (carta.getPalo() == color) {
+                    cantidadCartas++;
                 }
+            }
 
-                cartasColor = new CartaImpl[cantidadCartas];
+            //Array para meter las cartas del mismo color
+            cartasColor = new CartaImpl[cantidadCartas];
 
-                //Anhade todas las cartas del mismo color en un array para comprobar de este array si hay escalera de color
-                for (int i = 0, j = 0; i < cartas.length; i++) {
-                    if (cartas[i].getPalo() == color) {
-                        cartasColor[j] = cartas[i];
-                        j++;
-                    }
+            //Anhade todas las cartas del color obtenido en el array creado
+            for (int i = 0, j = 0; i < cartas.length; i++) {
+                if (cartas[i].getPalo() == color) {
+                    cartasColor[j] = cartas[i];
+                    j++;
                 }
+            }
 
-                ordenarCartas(cartasColor);
+            ordenarCartas(cartasColor);
 
-                //Comprueba si la escalera de color puede ser que sea A,2,3,4,5
-                //Como la carta A es la se mayor valor no se coloca delante en el array entonces hay que comprobarla estando detras
-                if (cartasColor[0].getValorNumero() == 1 && cartas[cartas.length - 1].getValorNumero() == 13) {
+            //Comprueba si la escalera de color puede ser que sea A,2,3,4,5
+            //Como la carta A es la se mayor valor no se coloca delante en el array entonces hay que comprobarla estando detras
+            if (cartasColor[0].getValorNumero() == 1 && cartas[cartas.length - 1].getValorNumero() == 13) {
 
-                    //Como sabemos que la primera carta sera el 2 y la ultima sera la A podemos usar posiciones absolutas para comprobar si hay escalera tipo A,2,3,4,5
-                    if ((cartasColor[1].getValorNumero() == ((cartasColor[0].getValorNumero()) + 1))
-                            && (cartasColor[2].getValorNumero() == ((cartasColor[1].getValorNumero()) + 1))
-                            && (cartasColor[3].getValorNumero() == ((cartasColor[2].getValorNumero()) + 1))) {
+                //Esta controlado que no haya numeros repetidos ya que no puede haber numeros repetidos en un palo
 
-                        //En el caso de que pueda ser A,2,3,4,5,6 o incluso A,2,3,4,5,6,7 se realizara este bucle for para coger la escalera mas alta.
-                        if (cartasColor[4].getValorNumero() == cartasColor[3].getValorNumero()) {
-                            for (int i = 3, j = 0; cartasColor[i + 1].getValorNumero() == cartasColor[i].getValorNumero(); i++, j++) {
-                                puntos = 309 + cartasColor[j].getValorNumero();
-                            }
-                        } else {
-                            //En el cado de que no haya una escalera mas grande se coloca la escalera del A,2,3,4,5
-                            puntos = 309 + cartasColor[0].getValorNumero();
+                //Como sabemos que la primera carta sera el 2 y la ultima sera la A podemos usar posiciones absolutas para comprobar si hay escalera de color tipo A,2,3,4,5
+                if ((cartasColor[1].getValorNumero() == ((cartasColor[0].getValorNumero()) + 1))
+                        && (cartasColor[2].getValorNumero() == ((cartasColor[1].getValorNumero()) + 1))
+                        && (cartasColor[3].getValorNumero() == ((cartasColor[2].getValorNumero()) + 1))) {
+
+                    //En el caso de que pueda ser A,2,3,4,5,6 o incluso A,2,3,4,5,6,7 se realizara este bucle for para coger la escalera de color mas alta.
+                    //TODO Comprobar que hace este if y documentarlo
+                    if (cartasColor[4].getValorNumero() == cartasColor[3].getValorNumero()) {
+                        for (int i = 3, j = 0; cartasColor[i + 1].getValorNumero() == cartasColor[i].getValorNumero(); i++, j++) {
+                            puntos = 309 + cartasColor[j].getValorNumero();
                         }
+                    } else {
+                        //En el cado de que no haya una escalera mas grande se coloca la escalera de color del A,2,3,4,5
+                        puntos = 309 + cartasColor[0].getValorNumero();
                     }
-
                 }
+            }
 
-                for (int i = 0; i < cartasColor.length - 4; i++) {
+            //Recorre el array para comprobar si hay escalera de color
+            for (int i = 0; i < cartasColor.length - 4; i++) {
 
-                    if ((cartasColor[i+1].getValorNumero() == ((cartasColor[i].getValorNumero()) + 1))
-                            && (cartasColor[i+2].getValorNumero() == ((cartasColor[i+1].getValorNumero()) + 1))
-                            && (cartasColor[i+3].getValorNumero() == ((cartasColor[i+2].getValorNumero()) + 1))
-                            && (cartasColor[i+4].getValorNumero() == ((cartasColor[i+3].getValorNumero()) + 1))) {
+                if ((cartasColor[i+1].getValorNumero() == ((cartasColor[i].getValorNumero()) + 1))
+                        && (cartasColor[i+2].getValorNumero() == ((cartasColor[i+1].getValorNumero()) + 1))
+                        && (cartasColor[i+3].getValorNumero() == ((cartasColor[i+2].getValorNumero()) + 1))
+                        && (cartasColor[i+4].getValorNumero() == ((cartasColor[i+3].getValorNumero()) + 1))) {
 
-                        puntos = 309 + (cartasColor[i].getValorNumero()+1);
-
-                    }
+                    puntos = 309 + (cartasColor[i].getValorNumero()+1);
 
                 }
 
@@ -686,10 +688,17 @@ public class GestoraCartaImpl {
      *                  - Si no hay color se devolvera N
      */
 
+    /**
+     * Method to calculate if there is color in the card array
+     * @param cartas Array of cards you want to check
+     * @return char with the color that exist in array of cards. Return N if not exist color.
+     */
+
     private char calcularColor(CartaImpl[] cartas){
         char color = 'N';
         int contadorPica = 0, contadorCorazon = 0, contadorTrevol = 0, contadorRombo = 0;
 
+        //Se calcula cuantas cartas hay de cada palo
         for (CartaImpl carta : cartas) {
             if (carta.getPalo() == 'P') {
                 contadorPica++;
@@ -708,6 +717,7 @@ public class GestoraCartaImpl {
             }
         }
 
+        //Con este if se comprueba de que palo es el color que hay en la baraja si hay algun color
         if (contadorPica>4 || contadorCorazon>4 ||contadorTrevol>4 || contadorRombo>4){
             if (contadorPica>4){
                 color = 'P';
