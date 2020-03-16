@@ -351,12 +351,19 @@ public class GestoraCartaImplTest {
         valor = ges.calcularValorFull(cartasP6);
         assertEquals(valor,141);
 
-        //Prueba 6
+        //Prueba 7 (prueba si hay poker)
 
-        CartaImpl[] cartasP7 = {new CartaImpl('P',"2"), new CartaImpl('P',"2"), new CartaImpl('T',"3"), new CartaImpl('C',"2"), new CartaImpl('P',"3"), new CartaImpl('T',"3")};
+        CartaImpl[] cartasP7 = {new CartaImpl('P',"2"), new CartaImpl('P',"2"), new CartaImpl('T',"3"), new CartaImpl('C',"2"), new CartaImpl('P',"2"), new CartaImpl('T',"3")};
         ges.ordenarCartas(cartasP7);
         valor = ges.calcularValorFull(cartasP7);
-        fail("Calcular resultado");
+        assertEquals(valor,0);
+
+        //Prueba 8
+
+        CartaImpl[] cartasP8 = {new CartaImpl('P',"2"), new CartaImpl('P',"2"), new CartaImpl('T',"3"), new CartaImpl('C',"2"), new CartaImpl('P',"3"), new CartaImpl('T',"3")};
+        ges.ordenarCartas(cartasP8);
+        valor = ges.calcularValorFull(cartasP8);
+        //fail("Calcular resultado");
         //assertEquals(valor,141);
     }
 
