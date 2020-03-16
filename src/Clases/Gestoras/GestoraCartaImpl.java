@@ -482,6 +482,7 @@ public class GestoraCartaImpl {
      * SIGNATURA: public int calcularValorFull(CartaImpl[] cartas);
      * COMENTARIO: Calcula el valor del full del array de CartasImpl pasado por parametro
      * PRECONDICIONES: - El array debe estar ordenado de menor a mayor
+     *                 - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
      * SALIDA: - Un entero
      * ENTRADA/SALIDA: - Nada
@@ -507,7 +508,8 @@ public class GestoraCartaImpl {
         //TODO INVESTIGAR QUE UN TRIO DE 3 Y PAREJA DE 2 NO VALGA LO MISMO QUE UN TRIO DE 2 Y UNA PAREJA DE 3
         //TODO Creo que habiendo dos trios no lo hace bien. Tiene que coger el trio mas alto y la pareja mas alta
 
-        if (cartas.length>5){
+
+        if (cartas.length>=5){
             //Recorre el array contando cuantos trios existen el la baraja
             for (int i = 0;i<cartas.length-2;i++){      //TODO Creo que se deberia añadir para comprobar que no hubiera 4 cartas iguales(poker)
                 if (cartas[i].getNumero().equals(cartas[i+1].getNumero()) && cartas[i].getNumero().equals(cartas[i+2].getNumero())){
@@ -522,13 +524,15 @@ public class GestoraCartaImpl {
                 for (int i = 0; i < cartas.length-1; i++) {
                     //En el caso de que el valor de la carta sea igual que la del trio no se evalua
                     if (cartas[i].getValorNumero() != valorTrio){
-                        if (i <= cartas.length-3){
+                        //No hace falta comprobar que se i se pase de rango por arriba porque ya esta controlado en un if de arriba
+                        if (i == 0){
                             if (cartas[i].getValorNumero() == cartas[i + 1].getValorNumero() && cartas[i].getValorNumero() != cartas[i + 2].getValorNumero()) {
                                 valorPareja = cartas[i].getValorNumero();
                                 cantidadParejas++;
                             }
                         }else{
-                            if (i > 0 && i <= cartas.length-3){
+                            //No hace falta comprobar que sea distinta de 0 porque se comprueba en el if de arriba
+                            if (i <= cartas.length-3){
                                 if (cartas[i].getValorNumero() == cartas[i + 1].getValorNumero() && cartas[i].getValorNumero() != cartas[i + 2].getValorNumero() && cartas[i].getValorNumero() != cartas[i - 1].getValorNumero()) {
                                     valorPareja = cartas[i].getValorNumero();
                                     cantidadParejas++;
