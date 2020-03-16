@@ -511,11 +511,30 @@ public class GestoraCartaImpl {
 
         if (cartas.length>=5){
             //Recorre el array contando cuantos trios existen el la baraja
-            for (int i = 0;i<cartas.length-2;i++){      //TODO Creo que se deberia añadir para comprobar que no hubiera 4 cartas iguales(poker)
-                if (cartas[i].getNumero().equals(cartas[i+1].getNumero()) && cartas[i].getNumero().equals(cartas[i+2].getNumero())){
-                    valorTrio = cartas[i].getValorNumero();     //
-                    cantidadTrios++;
-                    trio = true;
+            for (int i = 0;i<cartas.length-2;i++){
+                //Con estos ifs se controla que no haya poker
+                if (i == 0){
+                    if (cartas[i].getNumero().equals(cartas[i+1].getNumero()) && cartas[i].getNumero().equals(cartas[i+2].getNumero()) && !cartas[i].getNumero().equals(cartas[i+3].getNumero())){
+                        valorTrio = cartas[i].getValorNumero();
+                        cantidadTrios++;
+                        trio = true;
+                    }
+                }else{
+                    if (i <= cartas.length-4){
+                        if (!cartas[i].getNumero().equals(cartas[i-1].getNumero()) && cartas[i].getNumero().equals(cartas[i+1].getNumero()) && cartas[i].getNumero().equals(cartas[i+2].getNumero()) && !cartas[i].getNumero().equals(cartas[i+3].getNumero())){
+                            valorTrio = cartas[i].getValorNumero();
+                            cantidadTrios++;
+                            trio = true;
+                        }
+                    }else{
+                        if (i == cartas.length-3){
+                            if (!cartas[i].getNumero().equals(cartas[i-1].getNumero()) && cartas[i].getNumero().equals(cartas[i+1].getNumero()) && cartas[i].getNumero().equals(cartas[i+2].getNumero())){
+                                valorTrio = cartas[i].getValorNumero();
+                                cantidadTrios++;
+                                trio = true;
+                            }
+                        }
+                    }
                 }
             }
 
@@ -524,7 +543,7 @@ public class GestoraCartaImpl {
                 for (int i = 0; i < cartas.length-1; i++) {
                     //En el caso de que el valor de la carta sea igual que la del trio no se evalua
                     if (cartas[i].getValorNumero() != valorTrio){
-                        //No hace falta comprobar que se i se pase de rango por arriba porque ya esta controlado en un if de arriba
+                        //No hace falta comprobar que i se pase de rango por arriba porque ya esta controlado en un if de arriba
                         if (i == 0){
                             if (cartas[i].getValorNumero() == cartas[i + 1].getValorNumero() && cartas[i].getValorNumero() != cartas[i + 2].getValorNumero()) {
                                 valorPareja = cartas[i].getValorNumero();
@@ -606,14 +625,14 @@ public class GestoraCartaImpl {
      * ENTRADA: - Un array de CartaImpl
      * SALIDA: - Un entero
      * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: - Devuelve asociado al nombre un entero con la cantidad de puntos que corresponde a la escalera de color mas alta del array pasado por parametro
+     * POSTCONDICIONES: - Devuelve asociado al nombre un entero con la puntuacion que corresponde a la escalera de color mas alta del array pasado por parametro
      *                  - Si no hay escalera de color devuelve 0
      */
 
     /**
      * Calculate the highest value of the color stair in the array passed by parameter
-     * Returns 0 if there is no color stair
      * @param cartas CartaImpl[] cards you want to value
+     * @return Returns 0 if there is no color stair. Returns value of stair of color if exists
      */
 
     public int calcularValorEscaleraColor(CartaImpl[] cartas){
