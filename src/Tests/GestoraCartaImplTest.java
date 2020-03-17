@@ -358,11 +358,32 @@ public class GestoraCartaImplTest {
         valor = ges.calcularValorFull(cartasP7);
         assertEquals(valor,0);
 
-        //Prueba 8
+        //Prueba 8 (prueba si hay full y devuelve 0 si lo hay)
 
-        CartaImpl[] cartasP8 = {new CartaImpl('P',"2"), new CartaImpl('P',"2"), new CartaImpl('T',"3"), new CartaImpl('C',"2"), new CartaImpl('P',"3"), new CartaImpl('T',"3")};
+        CartaImpl[] cartasP8 = {new CartaImpl('P',"2"), new CartaImpl('P',"2"), new CartaImpl('T',"3"), new CartaImpl('C',"2"), new CartaImpl('P',"2"), new CartaImpl('T',"3"), new CartaImpl('T',"3")};
         ges.ordenarCartas(cartasP8);
         valor = ges.calcularValorFull(cartasP8);
+        assertEquals(valor,0);
+
+        //Prueba 9 (prueba cuando hay 2 trios)
+
+        CartaImpl[] cartasP9 = {new CartaImpl('P',"7"), new CartaImpl('P',"3"), new CartaImpl('T',"7"), new CartaImpl('C',"3"), new CartaImpl('P',"7"), new CartaImpl('T',"3")};
+        ges.ordenarCartas(cartasP9);
+        valor = ges.calcularValorFull(cartasP9);
+        assertEquals(valor,202);
+
+        //Prueba 10 (prueba cuando hay 2 trios)
+
+        CartaImpl[] cartasP10 = {new CartaImpl('P',"2"), new CartaImpl('P',"3"), new CartaImpl('T',"2"), new CartaImpl('C',"2"), new CartaImpl('P',"3"), new CartaImpl('T',"3")};
+        ges.ordenarCartas(cartasP10);
+        valor = ges.calcularValorFull(cartasP10);
+        assertEquals(valor,153);
+
+        //Prueba
+
+        CartaImpl[] cartasP = {new CartaImpl('P',"2"), new CartaImpl('P',"2"), new CartaImpl('T',"3"), new CartaImpl('C',"2"), new CartaImpl('P',"3"), new CartaImpl('T',"3")};
+        ges.ordenarCartas(cartasP);
+        valor = ges.calcularValorFull(cartasP);
         //fail("Calcular resultado");
         //assertEquals(valor,141);
     }
