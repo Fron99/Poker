@@ -360,8 +360,8 @@ public class GestoraCartaImpl {
 
     /**
      * Calculate the highest value of the stair in the array passed by parameter
-     * Returns 0 if there is no stair
      * @param cartas CartaImpl[] cards you want to value
+     * @return Returns 0 if there is no stair. Returns the value of stair if exist in array.
      */
 
     public int calcularValorEscalera(CartaImpl[] cartas){
@@ -370,19 +370,26 @@ public class GestoraCartaImpl {
         boolean existe = false;
         //TODO Testear con valores repetidos en medio de la baraja y testear muy a fondo
         if (cartas.length>4){
+
             cartasNoRepetidas.add(cartas[0]);
+
             for (CartaImpl carta: cartas){
+
+                //Recorre el array comprobando que esa carta no este añadida ya
                 for (int j = 0; j<cartasNoRepetidas.size() && !existe;j++){
                     if (carta.getValorNumero()==cartasNoRepetidas.get(j).getValorNumero()){
                         existe = true;
                     }
                 }
+
+                //Si no existe la añade
                 if (!existe){
                     cartasNoRepetidas.add(carta);
                 }
                 existe = false;
             }
 
+            //Orderna el array para porder evaluarlo
             cartasNoRepetidas.sort(CartaImpl::compareTo);
 
             //Comprueba si la escalera de color puede ser que sea A,2,3,4,5
@@ -440,8 +447,8 @@ public class GestoraCartaImpl {
 
     /**
      * Calculate the highest value of the color in the array passed by parameter
-     * Returns 0 if there is no color
      * @param cartas CartaImpl[] cards you want to value
+     * @return Returns 0 if there is no color. Returns the value of color if exist color in array.
      */
 
     public int calcularValorColor(CartaImpl[] cartas){
@@ -449,7 +456,7 @@ public class GestoraCartaImpl {
         char paloColor;
         CartaImpl cartaAltaColor;
 
-        //Calcula si hay algun 5 cartas del mismo color en el array pasado por parametro
+        //Calcula si hay 5 cartas del mismo color en el array pasado por parametro
         //Si no hay devolvera N lo cual no se ejecutara
         paloColor = calcularColor(cartas);
 
@@ -460,19 +467,14 @@ public class GestoraCartaImpl {
 
             //Este for se utiliza para sacar la carta mas alta del color
             for (CartaImpl carta: cartas){
-
                 if (carta.getPalo() == paloColor){
-
                     if (carta.getValorNumero()>cartaAltaColor.getValorNumero()){
                         cartaAltaColor = carta;
                     }
-
                 }
-
             }
-
+            //El valor del color depende de la carta mas alta del color.
             puntos = 127 + cartaAltaColor.getValorNumero();
-
         }
         return puntos;
     }

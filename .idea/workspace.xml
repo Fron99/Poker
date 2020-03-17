@@ -22,7 +22,6 @@
     <list default="true" id="b9a3eddb-34fe-4dec-b858-4173adae43d5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,9 +147,9 @@
     <list>
       <item itemvalue="Application.PokerMain" />
       <item itemvalue="Application.Prueba" />
+      <item itemvalue="JUnit.GestoraCartaImplTest" />
       <item itemvalue="JUnit.MesaImplTest" />
       <item itemvalue="JUnit.MesaImplTest.testRestaurarBaraja1" />
-      <item itemvalue="JUnit.GestoraCartaImplTest" />
     </list>
     <recent_temporary>
       <list>
@@ -320,11 +319,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="465" y="156" key="SettingsEditor/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583432215826" />
-    <state x="470" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1584361517455">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="661" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1584445895471">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="470" y="241" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1584361517455" />
-    <state x="661" y="344" key="com.intellij.ide.util.TipDialog/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583431820849" />
+    <state x="661" y="344" key="com.intellij.ide.util.TipDialog/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584445895471" />
     <state x="532" y="128" width="1111" height="715" key="dock-window-1" timestamp="1583932889584">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
