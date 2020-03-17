@@ -212,24 +212,39 @@ public class GestoraCartaImpl {
 
     /**
      * Calculate the highest value of the pair in the array passed by parameter
-     * Returns 0 if there is no partner
      * @param cartas CartaImpl[] cards you want to value
+     * @return Returns 0 if there is no partner. Returns the value of the partner if exists in array.
      */
 
     public int calcularValorPareja(CartaImpl[] cartas){
         int puntos = 0;
-        boolean trio = false;
         if (cartas.length>1){
-            for (int i = 0; i < cartas.length-1 && !trio; i++){
-                if (cartas[i].getValorNumero() == cartas[i+1].getValorNumero()){
-                    if (i <= cartas.length-3){
-                        if (cartas[i].getValorNumero() == cartas[i+2].getValorNumero()){
-                            trio = true;
-                        }else{
+            for (int i = 0; i < cartas.length-1; i++){
+                if (i == 0 && cartas.length == 2){
+                    if (cartas[i].getValorNumero() == cartas[i+1].getValorNumero()){
+                        puntos = 13 + cartas[i].getValorNumero();
+                    }
+                }else{
+                    if (i == 0 && cartas.length > 2){
+                        if (cartas[i].getValorNumero() == cartas[i+1].getValorNumero()
+                            && cartas[i].getValorNumero() != cartas[i+2].getValorNumero()){
                             puntos = 13 + cartas[i].getValorNumero();
                         }
                     }else{
-                        puntos = 13 + cartas[i].getValorNumero();
+                        if (i < cartas.length - 3){
+                            if (cartas[i].getValorNumero() != cartas[i-1].getValorNumero()
+                                && cartas[i].getValorNumero() == cartas[i+1].getValorNumero()
+                                && cartas[i].getValorNumero() != cartas[i+2].getValorNumero()){
+                                puntos = 13 + cartas[i].getValorNumero();
+                            }
+                        }else{
+                            if (i != 0 && i == cartas.length - 2){
+                                if (cartas[i].getValorNumero() != cartas[i-1].getValorNumero()
+                                    && cartas[i].getValorNumero() == cartas[i+1].getValorNumero()){
+                                    puntos = 13 + cartas[i].getValorNumero();
+                                }
+                            }
+                        }
                     }
                 }
             }
