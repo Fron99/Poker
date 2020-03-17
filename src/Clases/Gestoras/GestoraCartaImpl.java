@@ -503,32 +503,56 @@ public class GestoraCartaImpl {
         int cantidadTrios = 0, cantidadParejas = 0;
         int valorTrio = 0, valorPareja = 0;
         boolean trio = false;
-        int [][] posibilidades = {{1,2},{1,3},{1,4},{1,5},{1,6},{1,7},{1,8},{1,9},{1,10},{1,11},{1,12},{1,13},{2,1},{2,3},{2,4},{2,5},{2,6},{2,7},{2,8},{2,9},{2,10},{2,11},{2,12},{2,13},{3,1},{3,2},{3,4},{3,5},{3,6},{3,7},{3,8},{3,9},{3,10},{3,11},{3,12},{3,13},{4,1},{4,2},{4,3},{4,5},{4,6},{4,7},{4,8},{4,9},{4,10},{4,11},{4,12},{4,13},{5,1},{5,2},{5,3},{5,4},{5,6},{5,7},{5,8},{5,9},{5,10},{5,11},{5,12},{5,13}   ,{6,1},{6,2},{6,3},{6,4},{6,5},{6,7},{6,8},{6,9},{6,10},{6,11},{6,12},{6,13}   ,{7,1},{7,2},{7,3},{7,4},{7,5},{7,6},{7,8},{7,9},{7,10},{7,11},{7,12},{7,13}   ,{8,1},{8,2},{8,3},{8,4},{8,5},{8,6},{8,7},{8,9},{8,10},{8,11},{8,12},{8,13}    ,{9,1},{9,2},{9,3},{9,4},{9,5},{9,6},{9,7},{9,8},{9,10},{9,11},{9,12},{9,13}    ,{10,1},{10,2},{10,3},{10,4},{10,5},{10,6},{10,7},{10,8},{10,9},{10,11},{10,12},{10,13}    ,{11,1},{11,2},{11,3},{11,4},{11,5},{11,6},{11,7},{11,8},{11,9},{11,10},{11,12},{11,13}    ,{12,1},{12,2},{12,3},{12,4},{12,5},{12,6},{12,7},{12,8},{12,9},{12,10},{12,11},{12,13}    ,{13,1},{13,2},{13,3},{13,4},{13,5},{13,6},{13,7},{13,8},{13,9},{13,10},{13,11},{13,12}};
-        //TODO HACER MAS PRUEBAS
-        //TODO INVESTIGAR QUE UN TRIO DE 3 Y PAREJA DE 2 NO VALGA LO MISMO QUE UN TRIO DE 2 Y UNA PAREJA DE 3
-        //TODO Creo que habiendo dos trios no lo hace bien. Tiene que coger el trio mas alto y la pareja mas alta
-
+        int [][] posibilidades = new int[156][2];
+        //For para colocar todas las posibilidades de full
+        for (int i = 0, contadorParcial = 1, contadorTotal = 1;i<posibilidades.length;i++,contadorParcial++){
+            if (contadorParcial == 14){
+                contadorTotal++;
+                contadorParcial = 1;
+            }
+            if (contadorTotal == contadorParcial){
+                contadorParcial++;
+                posibilidades[i][0] = contadorTotal;
+                posibilidades[i][1] = contadorParcial;
+            }else{
+                posibilidades[i][0] = contadorTotal;
+                posibilidades[i][1] = contadorParcial;
+            }
+        }
 
         if (cartas.length>=5){
-            //Recorre el array contando cuantos trios existen el la baraja
+            //Recorre el array contando cuantos trios existen el la baraja y obteniendo su valor
             for (int i = 0;i<cartas.length-2;i++){
                 //Con estos ifs se controla que no haya poker
+                //Comprueba si hay trio al principio del array
                 if (i == 0){
-                    if (cartas[i].getNumero().equals(cartas[i+1].getNumero()) && cartas[i].getNumero().equals(cartas[i+2].getNumero()) && !cartas[i].getNumero().equals(cartas[i+3].getNumero())){
+                    //Comprueba que el valor de la siguente carta a las tres del trio sea distinto, ya que si no habria full
+                    if (cartas[i].getNumero().equals(cartas[i+1].getNumero())
+                        && cartas[i].getNumero().equals(cartas[i+2].getNumero())
+                        && !cartas[i].getNumero().equals(cartas[i+3].getNumero())){
                         valorTrio = cartas[i].getValorNumero();
                         cantidadTrios++;
                         trio = true;
                     }
                 }else{
+                    //Comprueba si hay trio en medio del array
                     if (i <= cartas.length-4){
-                        if (!cartas[i].getNumero().equals(cartas[i-1].getNumero()) && cartas[i].getNumero().equals(cartas[i+1].getNumero()) && cartas[i].getNumero().equals(cartas[i+2].getNumero()) && !cartas[i].getNumero().equals(cartas[i+3].getNumero())){
+                        //Comprueba que el valor de la siguiente carta y la anterior a las tres del trio sea distinto, ya que si no habria full
+                        if (!cartas[i].getNumero().equals(cartas[i-1].getNumero())
+                            && cartas[i].getNumero().equals(cartas[i+1].getNumero())
+                            && cartas[i].getNumero().equals(cartas[i+2].getNumero())
+                            && !cartas[i].getNumero().equals(cartas[i+3].getNumero())){
                             valorTrio = cartas[i].getValorNumero();
                             cantidadTrios++;
                             trio = true;
                         }
                     }else{
+                        //Comprueba si hay trio al final del array
                         if (i == cartas.length-3){
-                            if (!cartas[i].getNumero().equals(cartas[i-1].getNumero()) && cartas[i].getNumero().equals(cartas[i+1].getNumero()) && cartas[i].getNumero().equals(cartas[i+2].getNumero())){
+                            //Comprueba que el valor de la anterior carta a las tres del trio sea distinto, ya que si no habria full
+                            if (!cartas[i].getNumero().equals(cartas[i-1].getNumero())
+                                && cartas[i].getNumero().equals(cartas[i+1].getNumero())
+                                && cartas[i].getNumero().equals(cartas[i+2].getNumero())){
                                 valorTrio = cartas[i].getValorNumero();
                                 cantidadTrios++;
                                 trio = true;
@@ -544,22 +568,78 @@ public class GestoraCartaImpl {
                     //En el caso de que el valor de la carta sea igual que la del trio no se evalua
                     if (cartas[i].getValorNumero() != valorTrio){
                         //No hace falta comprobar que i se pase de rango por arriba porque ya esta controlado en un if de arriba
+                        //Comprueba si hay pareja al principio del array
                         if (i == 0){
-                            if (cartas[i].getValorNumero() == cartas[i + 1].getValorNumero() && cartas[i].getValorNumero() != cartas[i + 2].getValorNumero()) {
+                            //Comprueba que el valor de la siguiente carta a las dos de la pareja sea distinto, ya que si no habria trio
+                            if (cartas[i].getValorNumero() == cartas[i + 1].getValorNumero()
+                                && cartas[i].getValorNumero() != cartas[i + 2].getValorNumero()) {
                                 valorPareja = cartas[i].getValorNumero();
                                 cantidadParejas++;
                             }
                         }else{
+                            //Comprueba si hay pareja en medio del array
                             if (i <= cartas.length-3){
-                                if (cartas[i].getValorNumero() == cartas[i + 1].getValorNumero() && cartas[i].getValorNumero() != cartas[i + 2].getValorNumero() && cartas[i].getValorNumero() != cartas[i - 1].getValorNumero()) {
+                                //Comprueba que el valor de la siguiente carta y la anterior a las dos de la pareja sea distinto, ya que si no habria trio
+                                if (cartas[i].getValorNumero() == cartas[i + 1].getValorNumero()
+                                    && cartas[i].getValorNumero() != cartas[i + 2].getValorNumero()
+                                    && cartas[i].getValorNumero() != cartas[i - 1].getValorNumero()) {
                                     valorPareja = cartas[i].getValorNumero();
                                     cantidadParejas++;
                                 }
                             }else{
+                                //Comprueba si hay pareja al final del array
                                 if (i == cartas.length-2){
-                                    if (cartas[i].getValorNumero() == cartas[i + 1].getValorNumero()) {
+                                    //Comprueba que el valor de la anterior carta a las dos de la pareja sea distinto, ya que si no habria trio
+                                    if (cartas[i].getValorNumero() == cartas[i + 1].getValorNumero()
+                                        && !(cartas[i].getValorNumero() == cartas[i - 1].getValorNumero())) {
                                         valorPareja = cartas[i].getValorNumero();
                                         cantidadParejas++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                //En el caso de no haber una pareja y haber 2 trios o mas se podra usar el 2 trio mas alto como pareja
+                if (cantidadParejas == 0 && cantidadTrios > 1){
+                    //Recorre el array contando cuantos trios existen el la baraja
+                    for (int i = 0;i<cartas.length-2;i++){
+                        //Este if se usa para que no se evalue el trio elegido arriba (asi se coge el segundo trio mas valorado y no se coge el primero por lo cual no se repite)
+                        if (cartas[i].getValorNumero() != valorTrio) {
+                            //Comprueba si hay trio al principio del array
+                            if (i == 0){
+                                //Comprueba que el valor de la siguente carta a las tres del trio sea distinto, ya que si no habria full
+                                if (cartas[i].getNumero().equals(cartas[i+1].getNumero())
+                                    && cartas[i].getNumero().equals(cartas[i+2].getNumero())
+                                    && !cartas[i].getNumero().equals(cartas[i+3].getNumero())){
+                                    //Se guarda en la variable de pareja porque se usa el segundo trio mas alto como pareja al no haber pareja y si mas de 1 trio
+                                    valorPareja = cartas[i].getValorNumero();
+                                    cantidadParejas++;
+                                }
+                            }else{
+                                //Comprueba si hay trio en medio del array
+                                if (i <= cartas.length-4){
+                                    //Comprueba que el valor de la siguiente carta y la anterior a las tres del trio sea distinto, ya que si no habria full
+                                    if (!cartas[i].getNumero().equals(cartas[i-1].getNumero())
+                                        && cartas[i].getNumero().equals(cartas[i+1].getNumero())
+                                        && cartas[i].getNumero().equals(cartas[i+2].getNumero())
+                                        && !cartas[i].getNumero().equals(cartas[i+3].getNumero())){
+                                        //Se guarda en la variable de pareja porque se usa el segundo trio mas alto como pareja al no haber pareja y si mas de 1 trio
+                                        valorPareja = cartas[i].getValorNumero();
+                                        cantidadParejas++;
+                                    }
+                                }else{
+                                    //Comprueba si hay trio al final del array
+                                    if (i == cartas.length-3){
+                                        //Comprueba que el valor de la anterior carta a las tres del trio sea distinto, ya que si no habria full
+                                        if (!cartas[i].getNumero().equals(cartas[i-1].getNumero())
+                                            && cartas[i].getNumero().equals(cartas[i+1].getNumero())
+                                            && cartas[i].getNumero().equals(cartas[i+2].getNumero())){
+                                            //Se guarda en la variable de pareja porque se usa el segundo trio mas alto como pareja al no haber pareja y si mas de 1 trio
+                                            valorPareja = cartas[i].getValorNumero();
+                                            cantidadParejas++;
+                                        }
                                     }
                                 }
                             }
