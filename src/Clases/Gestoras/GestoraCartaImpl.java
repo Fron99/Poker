@@ -109,7 +109,7 @@ public class GestoraCartaImpl {
 
         int cantidadCartas = 0;
         CartaImpl[] cartasMesa = mesa.getCartasMesa();
-        CartaImpl[] cartasJugador = mesa.getJugadores()[jugador].getCartas();
+        CartaImpl[] cartasJugador = mesa.obtenerJugador(jugador).getCartas();
 
         //Obtiene la cantidad de cartas que hay en la mesa con valor distinto al de defecto
         for (int i = 0;i<cartasMesa.length&&(cartasMesa[i].getPalo()!='D');i++){
