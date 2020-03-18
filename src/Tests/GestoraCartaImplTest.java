@@ -210,7 +210,7 @@ public class GestoraCartaImplTest {
         CartaImpl[] cartasP6 = {new CartaImpl('P',"5"), new CartaImpl('R',"3"), new CartaImpl('C',"5"), new CartaImpl('T',"5"), new CartaImpl('T',"3"), new CartaImpl('T',"3"), new CartaImpl('T',"5")};
         ges.ordenarCartas(cartasP6);
         valor = ges.calcularValorTrio(cartasP6);
-        assertEquals(valor,0);
+        assertEquals(valor,106);
     }
 
 
@@ -384,7 +384,7 @@ public class GestoraCartaImplTest {
         CartaImpl[] cartasP = {new CartaImpl('P',"2"), new CartaImpl('P',"2"), new CartaImpl('T',"3"), new CartaImpl('C',"2"), new CartaImpl('P',"3"), new CartaImpl('T',"3")};
         ges.ordenarCartas(cartasP);
         valor = ges.calcularValorFull(cartasP);
-        //fail("Calcular resultado");
+        fail("Calcular resultado");
         //assertEquals(valor,141);
     }
 
