@@ -105,7 +105,7 @@ public class GestoraCartaImplTest {
         //Prueba 0
 
         CartaImpl[] cartasP0 = {new CartaImpl('R',"2"), new CartaImpl('P',"2"), new CartaImpl('C',"A"), new CartaImpl('T',"A")};
-        //ges.ordenarCartas(cartasP0);
+        ges.ordenarCartas(cartasP0);
         int valor = ges.calcularValorDoblePareja(cartasP0);
         assertEquals(valor,93);
 
@@ -379,13 +379,12 @@ public class GestoraCartaImplTest {
         valor = ges.calcularValorFull(cartasP10);
         assertEquals(valor,153);
 
-        //Prueba
+        //Prueba 11 (prueba cuando no hay trios)
 
-        CartaImpl[] cartasP = {new CartaImpl('P',"2"), new CartaImpl('P',"2"), new CartaImpl('T',"3"), new CartaImpl('C',"2"), new CartaImpl('P',"3"), new CartaImpl('T',"3")};
-        ges.ordenarCartas(cartasP);
-        valor = ges.calcularValorFull(cartasP);
-        fail("Calcular resultado");
-        //assertEquals(valor,141);
+        CartaImpl[] cartasP11 = {new CartaImpl('P',"2"), new CartaImpl('C',"2"), new CartaImpl('P',"3"), new CartaImpl('T',"3"), new CartaImpl('T',"8")};
+        ges.ordenarCartas(cartasP11);
+        valor = ges.calcularValorFull(cartasP11);
+        assertEquals(valor,0);
     }
 
 
