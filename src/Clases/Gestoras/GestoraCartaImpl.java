@@ -543,11 +543,11 @@ public class GestoraCartaImpl {
      */
 
 
+
     public int calcularValorFull(CartaImpl[] cartas){
         int puntos = 0;
         int cantidadTrios = 0, cantidadParejas = 0;
         int valorTrio = 0, valorPareja = 0;
-        boolean trio = false;
         int [][] posibilidades = new int[156][2];
         //For para colocar todas las posibilidades de full
         for (int i = 0, contadorParcial = 1, contadorTotal = 1;i<posibilidades.length;i++,contadorParcial++){
@@ -577,7 +577,6 @@ public class GestoraCartaImpl {
                         && !cartas[i].getNumero().equals(cartas[i+3].getNumero())){
                         valorTrio = cartas[i].getValorNumero();
                         cantidadTrios++;
-                        trio = true;
                     }
                 }else{
                     //Comprueba si hay trio en medio del array
@@ -589,7 +588,6 @@ public class GestoraCartaImpl {
                             && !cartas[i].getNumero().equals(cartas[i+3].getNumero())){
                             valorTrio = cartas[i].getValorNumero();
                             cantidadTrios++;
-                            trio = true;
                         }
                     }else{
                         //Comprueba si hay trio al final del array
@@ -600,7 +598,6 @@ public class GestoraCartaImpl {
                                 && cartas[i].getNumero().equals(cartas[i+2].getNumero())){
                                 valorTrio = cartas[i].getValorNumero();
                                 cantidadTrios++;
-                                trio = true;
                             }
                         }
                     }
@@ -608,7 +605,7 @@ public class GestoraCartaImpl {
             }
 
             //Si hay un trio comprueba si hay parejas
-            if (trio){
+            if (cantidadTrios > 0){
                 for (int i = 0; i < cartas.length-1; i++) {
                     //En el caso de que el valor de la carta sea igual que la del trio no se evalua
                     if (cartas[i].getValorNumero() != valorTrio){
