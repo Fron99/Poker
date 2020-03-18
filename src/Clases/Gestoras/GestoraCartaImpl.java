@@ -49,7 +49,7 @@ public class GestoraCartaImpl {
     /**
      * Calculate the highest value of the pair in the array passed by parameter
      * @param cartas CartaImpl[] cards you want to value
-     * @return Returns 0 if there is no partner. Returns the value of the partner if exists in array.
+     * @return Returns 0 if not exist pair in array. Returns the value of pair if exist pair in array.
      */
 
     public int calcularValorPareja(CartaImpl[] cartas){
@@ -61,7 +61,7 @@ public class GestoraCartaImpl {
                         puntos = 13 + cartas[i].getValorNumero();
                     }
                 }else{
-                    if (i == 0 && cartas.length > 2){
+                    if (i == 0){
                         if (cartas[i].getValorNumero() == cartas[i+1].getValorNumero()
                             && cartas[i].getValorNumero() != cartas[i+2].getValorNumero()){
                             puntos = 13 + cartas[i].getValorNumero();
@@ -74,7 +74,7 @@ public class GestoraCartaImpl {
                                 puntos = 13 + cartas[i].getValorNumero();
                             }
                         }else{
-                            if (i != 0 && i == cartas.length - 2){
+                            if (i == cartas.length - 2){
                                 if (cartas[i].getValorNumero() != cartas[i-1].getValorNumero()
                                     && cartas[i].getValorNumero() == cartas[i+1].getValorNumero()){
                                     puntos = 13 + cartas[i].getValorNumero();
