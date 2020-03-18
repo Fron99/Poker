@@ -663,44 +663,14 @@ public class MesaImpl implements Mesa, Cloneable {
 
     public void restaurarBaraja(){
 
-        this.baraja[0] = new CartaImpl('P', "A");
-        for (int i = 1, numero = 2; i<10;i++){
-            this.baraja[i] = new CartaImpl('P', ""+numero);
-            numero++;
+        char[] palos = new char[]{'P','C','R','T'};
+        String[] numeros = new String[]{"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
+
+        for (int i = 0, contador = 0;i<palos.length;i++){
+            for (String numero : numeros) {
+                this.baraja[contador++] = new CartaImpl(palos[i], numero);
+            }
         }
-        this.baraja[10] = new CartaImpl('P', "J");
-        this.baraja[11] = new CartaImpl('P', "Q");
-        this.baraja[12] = new CartaImpl('P', "K");
-
-
-        this.baraja[13] = new CartaImpl('C', "A");
-        for (int i = 14, numero = 2; i<23;i++){
-            this.baraja[i] = new CartaImpl('C', ""+numero);
-            numero++;
-        }
-        this.baraja[23] = new CartaImpl('C', "J");
-        this.baraja[24] = new CartaImpl('C', "Q");
-        this.baraja[25] = new CartaImpl('C', "K");
-
-
-        this.baraja[26] = new CartaImpl('R', "A");
-        for (int i = 27, numero = 2; i<36;i++){
-            this.baraja[i] = new CartaImpl('R', ""+numero);
-            numero++;
-        }
-        this.baraja[36] = new CartaImpl('R', "J");
-        this.baraja[37] = new CartaImpl('R', "Q");
-        this.baraja[38] = new CartaImpl('R', "K");
-
-
-        this.baraja[39] = new CartaImpl('T', "A");
-        for (int i = 40, numero = 2; i<49;i++){
-            this.baraja[i] = new CartaImpl('T', ""+numero);
-            numero++;
-        }
-        this.baraja[49] = new CartaImpl('T', "J");
-        this.baraja[50] = new CartaImpl('T', "Q");
-        this.baraja[51] = new CartaImpl('T', "K");
 
     }
 
@@ -731,20 +701,17 @@ public class MesaImpl implements Mesa, Cloneable {
     }
 
     /*
-     * SIGNATURA: public void generarTresCartasMesa(CartaImpl[] baraja, CartaImpl[] cartas);
-     * COMENTARIO: Saca 3 cartas de la baraja y las coloca en el segundo array pasado por parametro
-     * PRECONDICIONES: - El primer array debe tener 54 campos
-     *                 - El segundo array debe tener 5 campos
+     * SIGNATURA: public void generarTresCartasMesa();
+     * COMENTARIO: Saca 3 cartas de la baraja y las coloca en el array de las cartas de la mesa
+     * PRECONDICIONES: - Nada
      * ENTRADA: - Nada
      * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Un array de CartaImpl con todas las cartas posibles
-     *                 - Un array de CartaImpl con las cartas de la mesa
-     * POSTCONDICIONES: Modifica el array pasado por parametro eliminando las cartas que se saquen aleatoriamente y anhadiendose
-     *                  al segundo array pasado por parametro que son las cartas de la mesa
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: Modifica el array de las barajas, colocando 3 los huecos de las 3 cartas sacadas como cartas por defecto y coloca las cartas sacadas
+     *                  en el array de las cartas de la mesa.
      */
 
     //TODO Desarrollar javadoc
-    //TODO Revisar interfaz
 
     public void generarTresCartasMesa() {
 
@@ -915,17 +882,21 @@ public class MesaImpl implements Mesa, Cloneable {
 
 
     /*
-     * SIGNATURA: public int[] obtenerGanadores(MesaImpl mesa)
-     * COMENTARIO: Calcula quienes son los ganadores de la ronda
-     * PRECONDICIONES:
-     * ENTRADA: - Un objeto mesa
+     * SIGNATURA: public int[] obtenerGanadores()
+     * COMENTARIO: Calcula quienes son los ganadores de la partida
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Nada
      * SALIDA: - Un array de enteros
      * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: - Devuelve asociado al nombre la cantidad de ganadores posibles
+     * POSTCONDICIONES: - Devuelve asociado al nombre un array con la posicion de los ganadores
      */
 
-    //TODO Javadoc
     //TODO Hacer
+
+    /**
+     * Calculate and return the positions of the game winners.
+     * @return int[] array with position in array of winner
+     */
 
     public int[] obtenerGanadores(){
         int[] cantGanadores = {0,0,0};
@@ -944,7 +915,7 @@ public class MesaImpl implements Mesa, Cloneable {
 
 
     /*
-     * SIGNATURA: public void ingresarDineroGanador(int ganador, MesaImpl mesa);
+     * SIGNATURA: public void ingresarDineroGanador(int ganador);
      * COMENTARIO: Aumenta el saldo del usuario ganador de la mano
      * PRECONDICIONES: - El ganador no puede ser menor de 0 ni mayor de 5
      * ENTRADA: - Un entero con el ganador
@@ -955,7 +926,7 @@ public class MesaImpl implements Mesa, Cloneable {
      */
 
     //TODO Desarrollar javadoc
-    //TODO Revisar
+    //TODO Revisar no  esta echo creo
 
     public void ingresarDineroGanador(int ganador) {
         int cantidadMesa;
@@ -965,18 +936,19 @@ public class MesaImpl implements Mesa, Cloneable {
 
 
     /*
-     * SIGNATURA: public void ingresarDineroGanador(int ganador, MesaImpl mesa);
-     * COMENTARIO: Aumenta el saldo del usuario ganador de la mano
-     * PRECONDICIONES: - El ganador no puede ser menor de 0 ni mayor de 5
-     * ENTRADA: - Un entero con el ganador
+     * SIGNATURA: public void incrementarTurno();
+     * COMENTARIO: Este metodo incrementa el atributo turno de la mesa controlando los limites validos.
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Nada
      * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Un objeto mesa
-     * POSTCONDICIONES: - Modifica el objeto mesa incrementando el saldo del usuario ganador con el total de apuestas de la mano jugada.
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Este metodo incrementa el atributo turno controlando los limites.
      *
      */
 
-    //TODO Desarrollar javadoc
-    //TODO Revisar
+    /**
+     * This method increases the attribute turn of the table controlling the valid limits
+     */
 
     public void incrementarTurno(){
         if (this.turnoJugador == 4){

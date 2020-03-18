@@ -21,8 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b9a3eddb-34fe-4dec-b858-4173adae43d5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Basicas/JugadorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basicas/JugadorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/MesaImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/MesaImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,14 +31,17 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Poker$PokerMain.ic" NAME="PokerMain Coverage Results" MODIFIED="1573821089015" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="190" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
         <option value="Enum" />
         <option value="Interface" />
-        <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -81,22 +83,8 @@
       <recent name="C:\Users\fjaviles\Documents\GitHub\Poker\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Prueba">
-    <configuration name="PokerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="PokerMain" />
-      <module name="ElBromas" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Prueba" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Prueba" />
-      <module name="ElBromas" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GestoraCartaImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.MesaImplTest1.getJugadores">
+    <configuration name="MesaImplTest1.getCartaBaraja" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ElBromas" />
       <extension name="coverage">
         <pattern>
@@ -105,13 +93,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCartaImplTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="Tests.MesaImplTest1" />
+      <option name="METHOD_NAME" value="getCartaBaraja" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GestoraMesaImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MesaImplTest1.getJugadores" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ElBromas" />
       <extension name="coverage">
         <pattern>
@@ -120,13 +109,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.GestoraMesaImplTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="Tests.MesaImplTest1" />
+      <option name="METHOD_NAME" value="getJugadores" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MesaImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MesaImplTest1.setBaraja" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ElBromas" />
       <extension name="coverage">
         <pattern>
@@ -135,26 +125,59 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.MesaImplTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="Tests.MesaImplTest1" />
+      <option name="METHOD_NAME" value="setBaraja" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MesaImplTest1.setCartaBaraja" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ElBromas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.MesaImplTest1" />
+      <option name="METHOD_NAME" value="setCartaBaraja" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MesaImplTest1.testGetBaraja" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ElBromas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.MesaImplTest1" />
+      <option name="METHOD_NAME" value="testGetBaraja" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.PokerMain" />
-      <item itemvalue="Application.Prueba" />
-      <item itemvalue="JUnit.GestoraCartaImplTest" />
-      <item itemvalue="JUnit.GestoraMesaImplTest" />
-      <item itemvalue="JUnit.MesaImplTest" />
+      <item itemvalue="JUnit.MesaImplTest1.testGetBaraja" />
+      <item itemvalue="JUnit.MesaImplTest1.getCartaBaraja" />
+      <item itemvalue="JUnit.MesaImplTest1.setBaraja" />
+      <item itemvalue="JUnit.MesaImplTest1.setCartaBaraja" />
+      <item itemvalue="JUnit.MesaImplTest1.getJugadores" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Prueba" />
-        <item itemvalue="Application.PokerMain" />
-        <item itemvalue="JUnit.MesaImplTest" />
-        <item itemvalue="JUnit.GestoraMesaImplTest" />
-        <item itemvalue="JUnit.GestoraCartaImplTest" />
+        <item itemvalue="JUnit.MesaImplTest1.getJugadores" />
+        <item itemvalue="JUnit.MesaImplTest1.setCartaBaraja" />
+        <item itemvalue="JUnit.MesaImplTest1.setBaraja" />
+        <item itemvalue="JUnit.MesaImplTest1.getCartaBaraja" />
+        <item itemvalue="JUnit.MesaImplTest1.testGetBaraja" />
       </list>
     </recent_temporary>
   </component>
@@ -216,7 +239,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -235,7 +260,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="811" y="409" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1583431889302">
@@ -246,6 +270,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="476" y="272" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583840288529" />
+    <state x="754" y="303" key="#xdebugger.evaluate" timestamp="1584531544339">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="375" y="134" key="#xdebugger.evaluate/0.0.1366.728@0.0.1366.728" timestamp="1584395522426" />
+    <state x="754" y="303" key="#xdebugger.evaluate/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584531544339" />
     <state x="428" y="89" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1583497696162">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -255,50 +284,54 @@
     </state>
     <state x="529" y="188" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583497690407" />
     <state x="744" y="268" key="FileChooserDialogImpl/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583432210128" />
-    <state width="1323" height="262" key="GridCell.Tab.0.bottom" timestamp="1583933093618">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1877" height="178" key="GridCell.Tab.0.bottom" timestamp="1584552292497">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="262" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583933093618" />
-    <state width="1323" height="473" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1583486835366" />
-    <state width="1877" height="373" key="GridCell.Tab.0.bottom/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583692648514" />
-    <state width="1323" height="262" key="GridCell.Tab.0.center" timestamp="1583933093618">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1323" height="178" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584399637955" />
+    <state width="1877" height="178" key="GridCell.Tab.0.bottom/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584552292497" />
+    <state width="1877" height="178" key="GridCell.Tab.0.center" timestamp="1584552292496">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="262" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583933093618" />
-    <state width="1323" height="473" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1583486835366" />
-    <state width="1877" height="373" key="GridCell.Tab.0.center/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583692648514" />
-    <state width="1323" height="262" key="GridCell.Tab.0.left" timestamp="1583933093618">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1323" height="178" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584399637955" />
+    <state width="1877" height="178" key="GridCell.Tab.0.center/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584552292496" />
+    <state width="1877" height="178" key="GridCell.Tab.0.left" timestamp="1584552292496">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="262" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583933093618" />
-    <state width="1323" height="473" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1583486835356" />
-    <state width="1877" height="373" key="GridCell.Tab.0.left/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583692648514" />
-    <state width="1323" height="262" key="GridCell.Tab.0.right" timestamp="1583933093618">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1323" height="178" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584399637955" />
+    <state width="1877" height="178" key="GridCell.Tab.0.left/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584552292496" />
+    <state width="1877" height="178" key="GridCell.Tab.0.right" timestamp="1584552292496">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="262" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583933093618" />
-    <state width="1323" height="473" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1583486835366" />
-    <state width="1877" height="373" key="GridCell.Tab.0.right/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583692648514" />
-    <state width="1323" height="249" key="GridCell.Tab.1.bottom" timestamp="1583844898236">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1323" height="178" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584399637955" />
+    <state width="1877" height="178" key="GridCell.Tab.0.right/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584552292496" />
+    <state width="1877" height="371" key="GridCell.Tab.1.bottom" timestamp="1584550011760">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="249" key="GridCell.Tab.1.bottom/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583844898236" />
-    <state width="1877" height="373" key="GridCell.Tab.1.bottom/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583692648517" />
-    <state width="1323" height="249" key="GridCell.Tab.1.center" timestamp="1583844898236">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1323" height="239" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584399196512" />
+    <state width="1877" height="371" key="GridCell.Tab.1.bottom/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584550011760" />
+    <state width="1877" height="371" key="GridCell.Tab.1.center" timestamp="1584550011758">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="249" key="GridCell.Tab.1.center/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583844898236" />
-    <state width="1877" height="373" key="GridCell.Tab.1.center/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583692648517" />
-    <state width="1323" height="249" key="GridCell.Tab.1.left" timestamp="1583844898236">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1323" height="239" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1584399196512" />
+    <state width="1877" height="371" key="GridCell.Tab.1.center/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584550011758" />
+    <state width="1877" height="371" key="GridCell.Tab.1.left" timestamp="1584550011758">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="249" key="GridCell.Tab.1.left/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583844898236" />
-    <state width="1877" height="373" key="GridCell.Tab.1.left/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583692648517" />
-    <state width="1323" height="249" key="GridCell.Tab.1.right" timestamp="1583844898236">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1323" height="239" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1584399196496" />
+    <state width="1877" height="371" key="GridCell.Tab.1.left/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584550011758" />
+    <state width="1877" height="371" key="GridCell.Tab.1.right" timestamp="1584550011759">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="249" key="GridCell.Tab.1.right/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583844898236" />
-    <state width="1877" height="373" key="GridCell.Tab.1.right/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583692648517" />
+    <state width="1323" height="239" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1584399196512" />
+    <state width="1877" height="371" key="GridCell.Tab.1.right/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584550011759" />
     <state x="263" y="107" key="IDE.errors.dialog" timestamp="1583500394751">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -307,10 +340,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="465" y="156" key="SettingsEditor/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583432215826" />
-    <state x="661" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1583431820849">
+    <state x="661" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1584445895471">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="661" y="344" key="com.intellij.ide.util.TipDialog/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583431820849" />
+    <state x="470" y="241" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1584361517455" />
+    <state x="661" y="344" key="com.intellij.ide.util.TipDialog/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584445895471" />
+    <state x="724" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1584550332212">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="724" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584550332212" />
     <state x="532" y="128" width="1111" height="715" key="dock-window-1" timestamp="1583932889584">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -324,6 +362,18 @@
       <screen x="1366" y="0" width="1366" height="728" />
     </state>
     <state x="1531" y="47" width="1005" height="715" key="dock-window-3/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583491704366" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1584394616174">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1584394616174" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1584127566341">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1584127566341" />
+    <state x="682" y="432" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1584535987268">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="682" y="432" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584535987268" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -342,6 +392,11 @@
           <line>37</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -352,88 +407,10 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ElBromas$ElBromasMain.ic" NAME="ElBromasMain Coverage Results" MODIFIED="1571938195981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Poker$GestoraCartaImplTest.ic" NAME="GestoraCartaImplTest Coverage Results" MODIFIED="1584395460059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Tests.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/Poker$Prueba.ic" NAME="Prueba Coverage Results" MODIFIED="1583830961107" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-  </component>
-  <component name="debuggerHistoryManager">
-    <expressions id="setValue">
-      <expression>
-        <expression-string>31</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>74</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>8</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>3</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>1</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>82</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>20</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>44</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>58</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>&quot;3&quot;</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
-    <expressions id="evaluateExpression">
-      <expression>
-        <expression-string>(hola &lt; 1 || hola &gt; 7) || !par</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>!par</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>(hola &lt; 1 || hola &gt; 7)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>hola</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>(hola &lt; 1 || hola &gt; 7) || !par)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
   </component>
   <component name="masterDetails">
     <states>
