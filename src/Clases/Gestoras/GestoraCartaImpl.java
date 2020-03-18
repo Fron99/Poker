@@ -415,12 +415,9 @@ public class GestoraCartaImpl {
             }
             if (contadorTotal == contadorParcial){
                 contadorParcial++;
-                posibilidades[i][0] = contadorTotal;
-                posibilidades[i][1] = contadorParcial;
-            }else{
-                posibilidades[i][0] = contadorTotal;
-                posibilidades[i][1] = contadorParcial;
             }
+            posibilidades[i][0] = contadorTotal;
+            posibilidades[i][1] = contadorParcial;
         }
 
         if (cartas.length>=5){
@@ -429,29 +426,29 @@ public class GestoraCartaImpl {
                 //Con estos ifs se controla que no haya poker
                 //Comprueba si hay trio al principio del array
                 if (i == 0){
-                    //Comprueba que el valor de la siguente carta a las tres del trio sea distinto, ya que si no habria full
+                    //Comprueba que el valor de la siguente carta a las tres del trio sea distinto, ya que si no habria poker
                     if (cartas[i].getNumero().equals(cartas[i+1].getNumero())
                         && cartas[i].getNumero().equals(cartas[i+2].getNumero())
-                        && !cartas[i].getNumero().equals(cartas[i+3].getNumero())){
+                        && !(cartas[i].getNumero().equals(cartas[i+3].getNumero()))){
                         valorTrio = cartas[i].getValorNumero();
                         cantidadTrios++;
                     }
                 }else{
                     //Comprueba si hay trio en medio del array
                     if (i <= cartas.length-4){
-                        //Comprueba que el valor de la siguiente carta y la anterior a las tres del trio sea distinto, ya que si no habria full
-                        if (!cartas[i].getNumero().equals(cartas[i-1].getNumero())
+                        //Comprueba que el valor de la siguiente carta y la anterior a las tres del trio sea distinto, ya que si no habria poker
+                        if (!(cartas[i].getNumero().equals(cartas[i-1].getNumero()))
                             && cartas[i].getNumero().equals(cartas[i+1].getNumero())
                             && cartas[i].getNumero().equals(cartas[i+2].getNumero())
-                            && !cartas[i].getNumero().equals(cartas[i+3].getNumero())){
+                            && !(cartas[i].getNumero().equals(cartas[i+3].getNumero()))){
                             valorTrio = cartas[i].getValorNumero();
                             cantidadTrios++;
                         }
                     }else{
                         //Comprueba si hay trio al final del array
                         if (i == cartas.length-3){
-                            //Comprueba que el valor de la anterior carta a las tres del trio sea distinto, ya que si no habria full
-                            if (!cartas[i].getNumero().equals(cartas[i-1].getNumero())
+                            //Comprueba que el valor de la anterior carta a las tres del trio sea distinto, ya que si no habria poker
+                            if (!(cartas[i].getNumero().equals(cartas[i-1].getNumero()))
                                 && cartas[i].getNumero().equals(cartas[i+1].getNumero())
                                 && cartas[i].getNumero().equals(cartas[i+2].getNumero())){
                                 valorTrio = cartas[i].getValorNumero();
@@ -548,7 +545,9 @@ public class GestoraCartaImpl {
                 }
             }
 
-            if (cantidadParejas > 0 && cantidadTrios > 0){
+            //No hace falta comprobar que la cantidad de trios sea superior a 0 porque si la cantidad de parejas es superior a 0 significa que se ha entrado en la condifion del if (cantidadTrios > 0)
+            //Se comprueba antes que la cantidad de trios sea superior a 0 porque asi nos evitamos buscar parejas si no hay minimo 1 trio
+            if (cantidadParejas > 0){
                 //Recorre el array buscando cual es el valor del full
                 for (int i = 0; i<posibilidades.length && puntos==0; i++){
                     if (posibilidades[i][0] == valorTrio && posibilidades[i][1] == valorPareja){
