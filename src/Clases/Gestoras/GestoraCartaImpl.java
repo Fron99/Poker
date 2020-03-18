@@ -328,35 +328,63 @@ public class GestoraCartaImpl {
 
     /**
      * Calculate the highest value of the trio in the array passed by parameter
-     * Returns 0 if there is no trio
      * @param cartas CartaImpl[] cards you want to value
+     * @return Returns 0 if not exists trio in array passed by parameter. Retunrs the value of the trio if exists trio in array passed by parameter
      */
 
     public int calcularValorTrio(CartaImpl[] cartas){
         int puntos = 0;
-        boolean poker = false;
-        if (cartas.length>2){
-            for (int i = 0;i<cartas.length-2;i++){
-                //Comprueba si hay poker
-                if ( i<cartas.length-3
-                        &&  (cartas[i].getNumero().equals(cartas[i+1].getNumero()))
-                        && (cartas[i].getNumero().equals(cartas[i+2].getNumero()))
-                        && (cartas[i].getNumero().equals(cartas[i+3].getNumero()))){
+        if (cartas.length>2) {
+            //Recorremos el array para buscar trios
+            for (int i = 0; i < cartas.length - 2; i++) {
+                //Comprobar si hay trio cuando el indice esta al principio del array
+                if (i == 0 && cartas.length > 3) {
+                    //Comprueba que haya trio y que la siguiente carta al trio sea distinta
+                    if (cartas[i].getValorNumero() == cartas[i + 1].getValorNumero()
+                        && cartas[i].getValorNumero() == cartas[i + 2].getValorNumero()
+                        && cartas[i].getValorNumero() != cartas[i + 3].getValorNumero()) {
 
-                    poker = true;
-
-                }else{
-                    //En el caso de no haber poker comprueba si hay trio
-                    if ( (cartas[i].getNumero().equals(cartas[i+1].getNumero()))
-                            && (cartas[i].getNumero().equals(cartas[i+2].getNumero())) ){
-
-                        puntos = 104+cartas[i].getValorNumero();
+                        puntos = 104 + cartas[i].getValorNumero();
 
                     }
+                } else {
+                    //No hace falta comprobar que es menor que 4 porque arriba esta comprobado > 3 y si entra aqui es porque no se ha cumplido
+                    if (i == 0) {
+                        //Comprueba que haya trio
+                        if (cartas[i].getValorNumero() == cartas[i + 1].getValorNumero()
+                                && cartas[i].getValorNumero() == cartas[i + 2].getValorNumero()) {
+
+                            puntos = 104 + cartas[i].getValorNumero();
+
+                        }
+                    } else {
+                        //No hace falta que compruebe i != 0 porque esta comprobado en los casos anteriores
+                        //Comprueba cuando el indice esta en medio
+                        if (i < cartas.length - 4) {
+                            //Comprueba que la carta anterior y posterior a las cartas que forman el trio sean de distinto valor a la del trio
+                            if (cartas[i].getValorNumero() != cartas[i - 1].getValorNumero()
+                                    && cartas[i].getValorNumero() == cartas[i + 1].getValorNumero()
+                                    && cartas[i].getValorNumero() == cartas[i + 2].getValorNumero()
+                                    && cartas[i].getValorNumero() != cartas[i + 3].getValorNumero()) {
+
+                                puntos = 104 + cartas[i].getValorNumero();
+
+                            }
+                        } else {
+                            //Comprueba cuando el indice ya es el ultimo posible a evaluar
+                            if (i == cartas.length - 3) {
+                                //Comprueba que la carta posterior a las cartas que forman el trio sean de distinto valor a la del trio
+                                if (cartas[i].getValorNumero() != cartas[i - 1].getValorNumero()
+                                        && cartas[i].getValorNumero() == cartas[i + 1].getValorNumero()
+                                        && cartas[i].getValorNumero() == cartas[i + 2].getValorNumero()) {
+
+                                    puntos = 104 + cartas[i].getValorNumero();
+
+                                }
+                            }
+                        }
+                    }
                 }
-            }
-            if (poker){
-                puntos = 0;
             }
         }
         return puntos;
