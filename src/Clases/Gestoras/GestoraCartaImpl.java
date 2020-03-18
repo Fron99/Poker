@@ -102,47 +102,69 @@ public class GestoraCartaImpl {
 
     /**
      * Calculate the highest value of the pair in the array passed by parameter
-     * Returns 0 if there is no pair
      * @param cartas CartaImpl[] cards you want to value
+     * @return Returns 0 if not exist double pair in array. Returns the value of double pair if exist double pair in array.
      */
 
     public int calcularValorDoblePareja(CartaImpl[] cartas){
-        int puntos = 0, cantidadParejas = 0;
-        int [] valorParejas = new int[3];
-        boolean trio = false;
-        int [][] posibilidades = {{0,0},{1,2},{1,3},{2,3},{1,4},{2,4},{3,4},{1,5},{2,5},{3,5},{4,5},{1,6},{2,6},{3,6},{4,6},{5,6},{1,7},{2,7},{3,7},{4,7},{5,7},{6,7},{1,8},{2,8},{3,8},{4,8},{5,8},{6,8},{7,8},{1,9},{2,9},{3,9},{4,9},{5,9},{6,9},{7,9},{8,9},{1,10},{2,10},{3,10},{4,10},{5,10},{6,10},{7,10},{8,10},{9,10},{1,11},{2,11},{3,11},{4,11},{5,11},{6,11},{7,11},{8,11},{9,11},{10,11},{1,12},{2,12},{3,12},{4,12},{5,12},{6,12},{7,12},{8,12},{9,12},{10,12},{11,12},{1,13},{2,13},{3,13},{4,13},{5,13},{6,13},{7,13},{8,13},{9,13},{10,13},{11,13},{12,13}};
+        int puntos = 0;
+        ArrayList<Integer> parejas = new ArrayList<>();
+        int [][] posibilidades = new int[78][2];
+        //Se crean todas las posibilidades que hay de doble pareja
+        for (int i = 0, contadorParcial = 1, contadorTotal = 2;i<posibilidades.length;i++,contadorParcial++){
+            if (contadorParcial == 14){
+                contadorTotal++;
+                contadorParcial = 1;
+            }
+            if (contadorTotal == contadorParcial){
+                contadorTotal++;
+                contadorParcial = 1;
+            }
+            posibilidades[i][1] = contadorTotal;
+            posibilidades[i][0] = contadorParcial;
+        }
 
+        //Si no hay minimo 4 cartas no se puede calcular la doble pareja
         if (cartas.length>3){
-            for (int i = 0, j = 0;i<cartas.length-1 && !trio && cantidadParejas < 3;i++){
-                if (cartas[i].getNumero().equals(cartas[i+1].getNumero())){
-                    //Este if se utiliza para controlar excepciones de ArrayIndexOutOfBoundsException
-                    //Si i == cartas.length-3 significa que solo quedaran 2 cartas por lo cual no hay que comoprobar la tercera para ver si hay trio
-                    if(i <= cartas.length-3){
-                        //Esto comprueba que no haya un trio en el array. En el caso de que exista un trio devolvera 0
-                        if (cartas[i].getNumero().equals(cartas[i+1].getNumero()) && cartas[i].getNumero().equals(cartas[i+2].getNumero())){
-                            trio = true;
-                        }else {
-                            cantidadParejas++;
-                            valorParejas[j] = cartas[i].getValorNumero();
-                            j++;
-                        }
-                    }else {
-                        cantidadParejas++;
-                        valorParejas[j] = cartas[i].getValorNumero();
-                        j++;
+            //Recorremos el array en busca de las doble pareja
+            for (int i = 0;i<cartas.length-1;i++){
+                //Se ejecuta cuando el indice esta al principio de la baraja
+                if (i == 0){
+                    //Comprueba que el valor de la siguiente carta a las cartas de la pareja sea distinta
+                    if (cartas[i].getValorNumero() == cartas[i+1].getValorNumero()
+                        && cartas[i].getValorNumero() != cartas[i+2].getValorNumero()) {
+                        parejas.add(cartas[i].getValorNumero());
                     }
-
+                }else{
+                    //Se ejecuta cuando el indice esta en medio de la baraja
+                    if (i < cartas.length-2){
+                        //Comprueba que el valor de la siguiente carta y la anterior a las cartas de la pareja sea distinta
+                        if (cartas[i].getValorNumero() != cartas[i-1].getValorNumero()
+                            && cartas[i].getValorNumero() == cartas[i+1].getValorNumero()
+                            && cartas[i].getValorNumero() != cartas[i+2].getValorNumero()) {
+                            parejas.add(cartas[i].getValorNumero());
+                        }
+                    }else{
+                        //Se ejecuta cuando el indice esta al final de la baraja
+                        if (i == cartas.length-2){
+                            //Comprueba que el valor de la anterior a las cartas de la pareja sea distinta
+                            if (cartas[i].getValorNumero() != cartas[i-1].getValorNumero()
+                                && cartas[i].getValorNumero() == cartas[i+1].getValorNumero()) {
+                                parejas.add(cartas[i].getValorNumero());
+                            }
+                        }
+                    }
                 }
             }
-            //Solo se ejecutara cuando haya dos dobles parejas que sean diferentes y no haya trio
-            if(cantidadParejas > 1 && !trio){
-                //En el caso de que haya doble pareja busca el valor de la pareja mas alta
-                for(int i = 0; i<valorParejas.length-1;i++){
-                    for (int j = 0; j<posibilidades.length; j++){
-                        if (posibilidades[j][0] == valorParejas[i]
-                                && posibilidades[j][1] == valorParejas[i+1]){
-                            puntos = 26 + j;
-                        }
+
+            //En el caso de que haya mas de 1 pareja buscamos el valor de la carta
+            if (parejas.size()>1){
+                //Recorre el array buscando la combinacion
+                for (int j = 0; j<posibilidades.length; j++){
+                    //Utilizamos .size()-X porque asi cogemos las dos ultimas parejas que son las de mayor valor
+                    if (posibilidades[j][0] == parejas.get(parejas.size()-2)
+                        && posibilidades[j][1] == parejas.get(parejas.size()-1)){
+                        puntos = 26 + (j+1);
                     }
                 }
             }
