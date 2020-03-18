@@ -787,7 +787,7 @@ public class GestoraCartaImpl {
      */
 
 
-    private CartaImpl[] obtenerCartasAEvaluar(int jugador, MesaImpl mesa){
+    public CartaImpl[] obtenerCartasAEvaluar(int jugador, MesaImpl mesa){
         CartaImpl[] cartasTotales;
 
         int cantidadCartas = 0;
@@ -874,7 +874,7 @@ public class GestoraCartaImpl {
      * @return char with the color that exist in array of cards. Return N if not exist color.
      */
 
-    private char calcularColor(CartaImpl[] cartas){
+    public char calcularColor(CartaImpl[] cartas){
         char color = 'N';
         int contadorPica = 0, contadorCorazon = 0, contadorTrevol = 0, contadorRombo = 0;
 
