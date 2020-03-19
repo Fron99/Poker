@@ -28,7 +28,7 @@
  * public JugadorImpl[] getJugadores();
  * private void setJugadores(JugadorImpl[] jugadores);
  * public JugadorImpl getJugador(int posicionJugador);
- * private void setJugadorMesa(int posicionJugador, JugadorImpl jugador);
+ * private void setJugador(int posicionJugador, JugadorImpl jugador);
  * public String getUsuarioJugador(int posicionJugador);
  * public double getSaldoJugador(int posicionJugador);
  * private void setSaldoJugador(int posicionJugador, double saldo);
@@ -91,6 +91,7 @@ import Clases.Interfaces.Mesa;
 import java.util.ArrayList;
 import java.util.Random;
 
+@SuppressWarnings("unused")
 public class MesaImpl implements Mesa, Cloneable {
 
     private CartaImpl[] baraja;
@@ -240,6 +241,9 @@ public class MesaImpl implements Mesa, Cloneable {
             System.arraycopy(otro.apuestasJugadores[i],0,this.apuestasJugadores[i],0,apuestasJugadores.length);
         }
 
+        this.turnoJugador = otro.turnoJugador;
+        this.ronda = otro.ronda;
+
     }
 
     /**
@@ -249,7 +253,6 @@ public class MesaImpl implements Mesa, Cloneable {
 
     public CartaImpl[] getBaraja(){
         CartaImpl[] baraja = new CartaImpl[this.baraja.length];
-        //TODO Comprobar
         System.arraycopy(this.baraja,0,baraja,0,this.baraja.length);
         return baraja;
     }
@@ -266,41 +269,51 @@ public class MesaImpl implements Mesa, Cloneable {
     }
 
     /**
-     * Return the card of the index in the array "baraja"
-     * @return CartaImpl card that you want get
-     * @param indice index of the card of you will want return
+     * Return the card of the index in the array "baraja". The allowed range of the index is 0 to 51.
+     * @param indiceBaraja index of the card of you will want return
+     * @return CartaImpl card that you want to get if the value of index passed by parameter is allowed.
+     *                   If the value of index not allowed, returns a card with value 0 and 0
      */
 
-    public CartaImpl getCartaBaraja(int indice){    //TODO Controlar que no se salga del rango
-        return this.baraja[indice].clone();
+    public CartaImpl getCartaBaraja(int indiceBaraja){
+        return (indiceBaraja >= 0 && indiceBaraja <= 51) ? this.baraja[indiceBaraja].clone() : new CartaImpl('0',"0");
     }
 
     /**
-     * Set value of the card that index with the card passed by parameter
+     * Set value of the card that index with the card passed by parameter. The allowed range of the index is 0 to 51.
      * @param baraja new value of attribute "baraja"
-     * @param indice index of the card that will be changed the value
+     * @param indiceBaraja index of the card that will be changed the value
+     * @return res Returns true if the value of the array index card passed by parameter has been changed.
+     *             Returns false if the value of the array index card passed by parameter hasn't been changed.
      */
 
-    private void setCartaBaraja(CartaImpl baraja, int indice){  //TODO Controlar que no se salga del rango
-        this.baraja[indice] = baraja;
+    private boolean setCartaBaraja(CartaImpl baraja, int indiceBaraja){
+        boolean res = false;
+        if (indiceBaraja >= 0 && indiceBaraja <= 51){
+            this.baraja[indiceBaraja] = baraja;
+            res = true;
+        }
+        return res;
     }
 
     /**
-     * @param indiceBaraja
-     * @return
+     * Get the number of the card of the desk. The allowed range of the index is 0 to 51.
+     * @param indiceBaraja index of the card that will want get number
+     * @return Returns a String with the value of number of the card. If the index not between of range allowed return 0.
      */
 
-    public String getNumeroCartaBaraja(int indiceBaraja){   //TODO Controlar indice
-        return this.baraja[indiceBaraja].getNumero();
+    public String getNumeroCartaBaraja(int indiceBaraja){
+        return (indiceBaraja >= 0 && indiceBaraja <= 51) ? this.baraja[indiceBaraja].getNumero() : "0";
     }
 
     /**
-     * @param indiceBaraja
-     * @return
+     * Get the stick of the card of the desk. The allowed range of the index is 0 to 51.
+     * @param indiceBaraja index of the card that will want get stick
+     * @return Returns a char with the value of stick of the card. If the index not between of range allowed return 0.
      */
 
-    public char getPaloCartaBaraja(int indiceBaraja){   //TODO Controlar indice
-        return this.baraja[indiceBaraja].getPalo();
+    public char getPaloCartaBaraja(int indiceBaraja){
+        return (indiceBaraja >= 0 && indiceBaraja <= 51) ? this.baraja[indiceBaraja].getPalo() : '0';
     }
 
     /**
@@ -320,106 +333,140 @@ public class MesaImpl implements Mesa, Cloneable {
      */
 
     private void setJugadores(JugadorImpl[] jugadores){
-        this.jugadores = jugadores;
+        for (int i = 0;i<jugadores.length; i++){
+            this.jugadores[i] = jugadores[i].clone();
+        }
     }
 
     /**
-     * This method returns the player of the position passed by parameter
+     * This method returns the player of the position passed by parameter. The allowed range of the index is 0 to 4.
      * @param posicion position of the player you want to get
-     * @return JugadorImpl player yo want to get
+     * @return JugadorImpl player yo want to get. If the index not between of range allowed return a player with value "IndexOvertakeRange" in "Usuario".
      */
 
-    public JugadorImpl getJugador(int posicion){    //TODO Controlar que no se salga del rango
-        return this.jugadores[posicion];    //TODO Hacer con clone
+    public JugadorImpl getJugador(int posicion){
+        return (posicion >= 0 && posicion <= 4) ? this.jugadores[posicion].clone() : new JugadorImpl("IndexOvertakeRange",0);
     }
 
     /**
-     * This method adds the player or parameter passed to the array of players
-     * @param posicion position where the player wants to add
+     * This method adds the player passed by parameter to the array of players. The allowed range of the index is 0 to 4.
+     * @param indiceJugador position where the player wants to add
      * @param jugador player you want to add
+     * @return Returns true if the value of the array index player passed by parameter has been changed.
+     *         Returns false if the value of the array index player passed by parameter hasn't been changed.
      */
 
-    private void setJugadorMesa(int posicion, JugadorImpl jugador){ //TODO Controlar que no se salga del rango
-        this.jugadores[posicion] = jugador;
+    public boolean setJugador(int indiceJugador, JugadorImpl jugador){
+        boolean res = false;
+        if (indiceJugador >= 0 && indiceJugador <= 4){
+            this.jugadores[indiceJugador] = jugador.clone();
+            res = true;
+        }
+        return res;
     }
 
     /**
-     * @param posicionJugador
-     * @return
+     * Get the "usuario" of the player. The allowed range of the index is 0 to 4.
+     * @param posicionJugador index of the player that will want get "usuario"
+     * @return Returns a String with the value of "usuario" of the player. If the index not between of range allowed return 0.
      */
 
-    public String getUsuarioJugador(int posicionJugador){   //TODO Controlar que no se salga del rango
-        return this.jugadores[posicionJugador].getUsuario();
+    public String getUsuarioJugador(int posicionJugador){
+        return (posicionJugador >= 0 && posicionJugador <= 4) ? this.jugadores[posicionJugador].getUsuario() : "0";
     }
 
     /**
-     * @param posicionJugador
-     * @return
+     * Get the "saldo" of the player. The allowed range of the index is 0 to 4.
+     * @param posicionJugador index of the player that will want get "saldo"
+     * @return Returns a int with the value of "saldo" of the player. If the index not between of range allowed return 0.
      */
 
-    public int getSaldoJugador(int posicionJugador){    //TODO Controlar que no se salga del rango
-        return this.jugadores[posicionJugador].getSaldo();
+    public int getSaldoJugador(int posicionJugador){
+        return (posicionJugador >= 0 && posicionJugador <= 4) ? this.jugadores[posicionJugador].getSaldo() : -1;
     }
 
     /**
-     * @param posicionJugador
-     * @param saldo
+     * This method adds the money passed by parameter in the player of position passed by parameter(index). The allowed range of the index is 0 to 4.
+     * @param posicionJugador Position of the player that wants to add money
+     * @param saldo Money to add to the player
+     * @return Returns true if money was added to the player.
+     *         Returns false if money wasn't added to the player.
      */
 
-    private void setSaldoJugador(int posicionJugador, int saldo){   //TODO Controlar que no se salga del rango
-        this.jugadores[posicionJugador].setSaldo(saldo);
+    private boolean setSaldoJugador(int posicionJugador, int saldo){
+        boolean res = false;
+        if (posicionJugador >= 0 && posicionJugador <= 4){
+            this.jugadores[posicionJugador].setSaldo(saldo);
+            res = true;
+        }
+        return res;
     }
 
+
     /**
-     * Return array with cards of player
-     * @param jugador int of the player
-     * @return JugadorImpl[] array of attribute "jugadores"
+     * Get all card of the player passed by parameter. The allowed range of the index is 0 to 4.
+     * @param posicionJugador Position of the player that wants get cards
+     * @return Returns all cards of the player if index passed by parameter is allowed.
+     *         Returns null if index passed by parameter isn't allowed.
      */
 
-    private CartaImpl[] getCartasJugador(int jugador){  //TODO Controlar que no se salga del rango
-        CartaImpl[] cartasJugador = new CartaImpl[2];
-        System.arraycopy(this.jugadores[jugador].getCartas(),0,cartasJugador,0,this.jugadores[jugador].getCartas().length);
+    public CartaImpl[] getCartasJugador(int posicionJugador){
+        CartaImpl[] cartasJugador = null;
+        if (posicionJugador >= 0 && posicionJugador <= 4){
+            cartasJugador = new CartaImpl[2];
+            System.arraycopy(this.getCartasJugador(posicionJugador),0,cartasJugador,0,this.getCartasJugador(posicionJugador).length);
+        }
         return cartasJugador;
     }
 
     /**
-     * Add cards passed by parameter to the player
-     * @param jugador int position of player where do you want add the cards passed by parameter
+     * Add cards passed by parameter to the player. The allowed range of the index is 0 to 4.
+     * @param posicionJugador int position of player where do you want add the cards passed by parameter
      * @param cartas CartaImpl[] with the cards you want to add to the player
+     * @return Returns true if the cards was added to the player.
+     *         Returns false if the cards wasn't added to the player.
      */
 
-    private void setCartasJugador(int jugador, CartaImpl[] cartas){ //TODO Controlar que no se salga del rango
-        this.jugadores[jugador].setCartas(cartas);
+    private boolean setCartasJugador(int posicionJugador, CartaImpl[] cartas){
+        boolean res = false;
+        if (posicionJugador >= 0 && posicionJugador <= 4){
+            this.jugadores[posicionJugador].setCartas(cartas);
+            res = true;
+        }
+        return res;
     }
 
     /**
-     * @param jugador
-     * @param carta
-     * @return
+     * @param posicionJugador index of player that you want get card. The allowed range of the index of player is 0 to 4. The allowed range of the index of card is 0 to 1.
+     * @param carta index of card you want get
+     * @return card that you want to get if the value of index passed by parameter is allowed.
+     *         If the value of index not allowed, returns a card with value 0 and 0
      */
 
-    public CartaImpl getCartaJugador(int jugador,int carta){    //TODO Controlar que no se salga del rango
-        return this.jugadores[jugador].getCartas()[carta];
+    public CartaImpl getCartaJugador(int posicionJugador,int carta){
+        return (posicionJugador >= 0 && posicionJugador <= 4) ? (carta == 0 || carta == 1) ? this.getCartasJugador(posicionJugador)[carta] : new CartaImpl('0',"0") : new CartaImpl('0',"0");
     }
 
     /**
-     * @param jugador
-     * @param carta
-     * @return
+     * Get the stick of the card of the player. The allowed range of the player of the index is 0 to 4. The allowed range of the card of the index is 0 to 1.
+     * @param posicionJugador index of the player that will want get stick from one card
+     * @param carta index of the card that will want get stick
+     * @return Returns a char with the value of stick of the card. If the index not between of range allowed return 0.
      */
 
-    public char getPaloCartaJugador(int jugador,int carta){    //TODO Controlar que no se salga del rango
-        return this.jugadores[jugador].getCartas()[carta].getPalo();
+    public char getPaloCartaJugador(int posicionJugador,int carta){
+        return (posicionJugador >= 0 && posicionJugador <= 4) ? (carta == 0 || carta == 1) ? this.getCartaJugador(posicionJugador,carta).getPalo() : '0' : '0';
     }
 
     /**
-     * @param jugador
-     * @param carta
-     * @return
+     * Get the number of the card of the player. The allowed range of the player of the index is 0 to 4. The allowed range of the card of the index is 0 to 1.
+     * @param posicionJugador index of the player that will want get stick from one card
+     * @param carta index of the card that will want get number
+     * @return Returns a String with the value of number of the card. If the index not between of range allowed return 0.
      */
 
-    public String getNumeroCartaJugador(int jugador,int carta){    //TODO Controlar que no se salga del rango
-        return this.jugadores[jugador].getCartas()[carta].getNumero();
+    public String getNumeroCartaJugador(int posicionJugador,int carta){
+        return (posicionJugador >= 0 && posicionJugador <= 4) ? (carta == 0 || carta == 1) ? this.getCartaJugador(posicionJugador,carta).getNumero() : "0" : "0";
     }
 
     /**
