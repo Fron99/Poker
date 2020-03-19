@@ -14,7 +14,7 @@ public class MesaImplTest {
 
         CartaImpl[] baraja = new CartaImpl[52];
         for (int i = 0;i<baraja.length;i++){
-            baraja[i] = new CartaImpl('Q',"14");
+            baraja[i] = new CartaImpl('P',"K");
         }
 
         JugadorImpl[] jugadores = new JugadorImpl[5];
@@ -30,6 +30,11 @@ public class MesaImplTest {
         MesaImpl mesa = new MesaImpl(baraja,jugadores,cartasMesa);
 
         assertArrayEquals(mesa.getBaraja(),baraja);
+
+        CartaImpl[] barajacopia = mesa.getBaraja();
+        barajacopia[5] = new CartaImpl('P',"A");
+        assertNotEquals(barajacopia[5],mesa.getBaraja()[5]);
+
 
     }
 
