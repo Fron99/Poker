@@ -1,10 +1,12 @@
 /*
  * PROPIEDADES BASICAS:
  *
- *  - baraja: CartaImpl[], Consultable, Modificable
- *  - jugadores: JugadorImpl[], Consultable, Modificable
- *  - cartasMesa: CartaImpl[], Consultable, Modificable
- *  - apuestasJugadores: int[][], Consultable, Modificable
+ *  - baraja: CartaImpl[], Consultable
+ *  - jugadores: JugadorImpl[], Consultable
+ *  - cartasMesa: CartaImpl[], Consultable
+ *  - apuestasJugadores: int[][], Consultable
+ *  - turnoJugador: int
+ *  - ronda: int
  *
  * PROPIEDADES DERIVADAS:
  *
@@ -16,39 +18,70 @@
  *
  * METODOS:
  *
- * public CartaImpl[] getCartasBaraja();
- * public void setCartasBaraja(CartaImpl[] baraja);
+ * public CartaImpl[] getBaraja();
+ * private void setBaraja(CartaImpl[] baraja);
+ * public CartaImpl getCartaBaraja(int indiceCarta);
+ * private void setCartaBaraja(int indiceBaraja, CartaImpl carta);
+ * public String getNumeroCartaBaraja(int indiceBaraja);
+ * public char getPaloCartaBaraja(int indiceBaraja);
  *
  * public JugadorImpl[] getJugadores();
- * public void setJugadores(JugadorImpl[] jugadores);
+ * private void setJugadores(JugadorImpl[] jugadores);
+ * public JugadorImpl getJugador(int posicionJugador);
+ * private void setJugadorMesa(int posicionJugador, JugadorImpl jugador);
+ * public String getUsuarioJugador(int posicionJugador);
+ * public double getSaldoJugador(int posicionJugador);
+ * private void setSaldoJugador(int posicionJugador, double saldo);
+ * public CartaImpl[] getCartasJugador(int posicionJugador);
+ * private void setCartasJugador(int posicionJugador, CartaImpl[] cartas);
+ * public CartaImpl getCartaJugador(int posicionJugador, int posicionCarta);
+ * private void setCartaJugador(int posicionJugador, int posicionCarta, CartaImpl carta);
+ * public boolean getActivoJugador(int posicionJugador);
  *
  * public CartaImpl[] getCartasMesa();
- * public void setCartasMesa(CartaImpl[] cartas);
+ * private void setCartasMesa(CartaImpl[] cartas);
+ * public CartaImpl getCartaMesa(int indiceCarta);
+ * private void setCartaMesa(int indiceCarta, CartaImpl carta);
+ * public String getNumeroCartaMesa(int indiceMesa);
+ * public char getPaloCartaMesa(int indiceMesa);
  *
  * public int[][] getApuestasJugadores();
- * public void setApuestasJugadores(int[][] apuestas);
+ * private void setApuestasJugadores(int[][] apuestas);
+ * public int[] getApuestasJugador(int indiceJugador);
+ * private void setApuestasJugador(int indiceJugador, int[] apuestas);
+ * public int getApuestaJugador(int indiceJugador, int rondaApuesta);
+ * private void setApuestaJugador(int indiceJugador, int indiceApuesta, int apuesta);
  *
  * public int getTotalApuestas();
  *
  * METODOS AÑADIDOS:
  *
- * public void anhadirCartaMesa(int posicion, CartaImpl carta);
  * public void limpiarCartasMesa();
- *
  * public void cargarBaraja();
- *
  * public JugadorImpl obtenerJugador(int posicion);
  * public void anhadirJugador(int posicion, JugadorImpl jugador)
- *
- * public void anhadirApuesta(int jugador, int rondaApuesta, int cantidad)
+ * public void incrementarApuesta(int jugador, int rondaApuesta, int cantidad)
  * public int obtenerApuesta(int jugador, int rondaApuesta)
- *
+ * public void restaurarMesa()
+ * private void colocarJugadoresActivos()
+ * public void ingresarSaldoGanadores()
+ * public void generarCartasJugadores()
+ * public void generarCartaMesa()
+ * public void cargarBots()
+ * public void limpiarCartasMesa()
+ * public void restaurarBaraja()
  * public void limpiarMesa()
+ * public void generarTresCartasMesa()
+ * public int[] obtenerGanadores()
+ * public void ingresarDineroGanador(int ganador)
+ * public void incrementarTurno()
+ * public void mostrarPanelJuego()
+ * public String toString()
+ * public int hashCode()
+ * public boolean equals(Object objeto)
+ * public MesaImpl clone()
  *
  */
-
-//TODO Revisar interfaz si los metodos set y gets deben ser privados o se debe modificar la interfaz
-
 
 package Clases.Basicas;
 
