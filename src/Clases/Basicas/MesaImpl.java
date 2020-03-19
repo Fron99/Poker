@@ -184,10 +184,7 @@ public class MesaImpl implements Mesa, Cloneable {
         Random random = new Random();
         this.baraja = new CartaImpl[52];
         if (baraja.length == 52){
-            for (int i = 0; i<baraja.length;i++){
-                this.baraja[i] = baraja[i].clone();
-            }
-            //System.arraycopy(baraja,0,this.baraja,0,baraja.length);
+            System.arraycopy(baraja,0,this.baraja,0,baraja.length);
         }else{
             for (int i = 0;i<this.baraja.length;i++){
                 this.baraja[i] = new CartaImpl();
@@ -252,13 +249,20 @@ public class MesaImpl implements Mesa, Cloneable {
 
     public CartaImpl[] getBaraja(){
         CartaImpl[] baraja = new CartaImpl[this.baraja.length];
-        /*for (int i = 0; i<this.baraja.length;i++){
-            baraja[i] = this.baraja[i].clone();
-        }*/
-
         //TODO Comprobar
         System.arraycopy(this.baraja,0,baraja,0,this.baraja.length);
         return baraja;
+    }
+
+    /**
+     * Set array passed by parameter in attribute "baraja"
+     * @param baraja new value of attribute "baraja"
+     */
+
+    private void setBaraja(CartaImpl[] baraja){
+        for (int i = 0;i<baraja.length; i++){
+            this.baraja[i] = baraja[i].clone();
+        }
     }
 
     /**
@@ -267,22 +271,8 @@ public class MesaImpl implements Mesa, Cloneable {
      * @param indice index of the card of you will want return
      */
 
-    public CartaImpl getCartaBaraja(int indice){
+    public CartaImpl getCartaBaraja(int indice){    //TODO Controlar que no se salga del rango
         return this.baraja[indice].clone();
-    }
-
-    /**
-     * Set array passed by parameter in attribute "baraja"
-     * @param baraja new value of attribute "baraja"
-     */
-
-    //TODO Hacer private despues de las pruebas o ver si se puede dejar publico
-
-    public void setBaraja(CartaImpl[] baraja){
-        for (int i = 0;i<baraja.length; i++){
-            this.baraja[i] = baraja[i].clone();
-        }
-        //this.baraja = baraja;
     }
 
     /**
@@ -291,8 +281,26 @@ public class MesaImpl implements Mesa, Cloneable {
      * @param indice index of the card that will be changed the value
      */
 
-    public void setCartaBaraja(CartaImpl baraja, int indice){
+    private void setCartaBaraja(CartaImpl baraja, int indice){  //TODO Controlar que no se salga del rango
         this.baraja[indice] = baraja;
+    }
+
+    /**
+     * @param indiceBaraja
+     * @return
+     */
+
+    public String getNumeroCartaBaraja(int indiceBaraja){   //TODO Controlar indice
+        return this.baraja[indiceBaraja].getNumero();
+    }
+
+    /**
+     * @param indiceBaraja
+     * @return
+     */
+
+    public char getPaloCartaBaraja(int indiceBaraja){   //TODO Controlar indice
+        return this.baraja[indiceBaraja].getPalo();
     }
 
     /**
@@ -307,50 +315,6 @@ public class MesaImpl implements Mesa, Cloneable {
     }
 
     /**
-     * Return the player of the index in the array "jugadores"
-     * @param indice index of the card of you will want return
-     * @return JugadorImpl player that you want get
-     */
-
-    public JugadorImpl getJugador(int indice){
-        return this.jugadores[indice].clone();      //todo Comprobar si el clone hace una copia por referencia.
-    }
-
-    /**
-     * Return array with cards of player
-     * @param jugador int of the player
-     * @return JugadorImpl[] array of attribute "jugadores"
-     */
-
-    private CartaImpl[] getCartasJugador(int jugador){
-        CartaImpl[] cartasJugador = new CartaImpl[2];
-        System.arraycopy(this.jugadores[jugador].getCartas(),0,cartasJugador,0,this.jugadores[jugador].getCartas().length);
-        return cartasJugador;
-    }
-
-    /**
-     * @param jugador
-     * @param carta
-     * @return
-     */
-
-    public CartaImpl getCartaJugador(int jugador,int carta){
-        return this.jugadores[jugador].getCartas()[carta];
-    }
-
-
-    /**
-     * @param jugador
-     * @param posCarta
-     * @param carta
-     */
-
-
-    public void setCartaJugador(int jugador,int posCarta, CartaImpl carta){
-        this.jugadores[jugador].setCarta(posCarta, carta);
-    }
-
-    /**
      * Set array passed by parameter in attribute "jugadores"
      * @param jugadores new value of attribute "jugadores"
      */
@@ -359,18 +323,126 @@ public class MesaImpl implements Mesa, Cloneable {
         this.jugadores = jugadores;
     }
 
-
     /**
-     * @param jugador
-     * @param jugadores
+     * This method returns the player of the position passed by parameter
+     * @param posicion position of the player you want to get
+     * @return JugadorImpl player yo want to get
      */
 
-    public void setJugador(int jugador, JugadorImpl jugadores){
-        this.jugadores[jugador] = jugadores;
+    public JugadorImpl getJugador(int posicion){    //TODO Controlar que no se salga del rango
+        return this.jugadores[posicion];    //TODO Hacer con clone
     }
 
     /**
-     * Return array of attribute "cartasMesa"
+     * This method adds the player or parameter passed to the array of players
+     * @param posicion position where the player wants to add
+     * @param jugador player you want to add
+     */
+
+    private void setJugadorMesa(int posicion, JugadorImpl jugador){ //TODO Controlar que no se salga del rango
+        this.jugadores[posicion] = jugador;
+    }
+
+    /**
+     * @param posicionJugador
+     * @return
+     */
+
+    public String getUsuarioJugador(int posicionJugador){   //TODO Controlar que no se salga del rango
+        return this.jugadores[posicionJugador].getUsuario();
+    }
+
+    /**
+     * @param posicionJugador
+     * @return
+     */
+
+    public int getSaldoJugador(int posicionJugador){    //TODO Controlar que no se salga del rango
+        return this.jugadores[posicionJugador].getSaldo();
+    }
+
+    /**
+     * @param posicionJugador
+     * @param saldo
+     */
+
+    private void setSaldoJugador(int posicionJugador, int saldo){   //TODO Controlar que no se salga del rango
+        this.jugadores[posicionJugador].setSaldo(saldo);
+    }
+
+    /**
+     * Return array with cards of player
+     * @param jugador int of the player
+     * @return JugadorImpl[] array of attribute "jugadores"
+     */
+
+    private CartaImpl[] getCartasJugador(int jugador){  //TODO Controlar que no se salga del rango
+        CartaImpl[] cartasJugador = new CartaImpl[2];
+        System.arraycopy(this.jugadores[jugador].getCartas(),0,cartasJugador,0,this.jugadores[jugador].getCartas().length);
+        return cartasJugador;
+    }
+
+    /**
+     * Add cards passed by parameter to the player
+     * @param jugador int position of player where do you want add the cards passed by parameter
+     * @param cartas CartaImpl[] with the cards you want to add to the player
+     */
+
+    private void setCartasJugador(int jugador, CartaImpl[] cartas){ //TODO Controlar que no se salga del rango
+        this.jugadores[jugador].setCartas(cartas);
+    }
+
+    /**
+     * @param jugador
+     * @param carta
+     * @return
+     */
+
+    public CartaImpl getCartaJugador(int jugador,int carta){    //TODO Controlar que no se salga del rango
+        return this.jugadores[jugador].getCartas()[carta];
+    }
+
+    /**
+     * @param jugador
+     * @param carta
+     * @return
+     */
+
+    public char getPaloCartaJugador(int jugador,int carta){    //TODO Controlar que no se salga del rango
+        return this.jugadores[jugador].getCartas()[carta].getPalo();
+    }
+
+    /**
+     * @param jugador
+     * @param carta
+     * @return
+     */
+
+    public String getNumeroCartaJugador(int jugador,int carta){    //TODO Controlar que no se salga del rango
+        return this.jugadores[jugador].getCartas()[carta].getNumero();
+    }
+
+    /**
+     * @param jugador
+     * @param posCarta
+     * @param carta
+     */
+
+    private void setCartaJugador(int jugador,int posCarta, CartaImpl carta){    //TODO Controlar que no se salga del rango
+        this.jugadores[jugador].setCarta(posCarta, carta);
+    }
+
+    /**
+     * @param posicionJugador
+     * @return
+     */
+
+    public boolean getActivoJugador(int posicionJugador){   //TODO Controlar que no se salga del rango
+        return this.jugadores[posicionJugador].getActivo();
+    }
+
+    /**
+     * This method return array of attribute "cartasMesa"
      * @return CartaImpl[] array of attribute "cartasMesa"
      */
 
@@ -380,40 +452,54 @@ public class MesaImpl implements Mesa, Cloneable {
         return cartas;
     }
 
+    /**
+     * Set array passed by parameter in attribute "cartas"
+     * @param cartas new value of attribute "cartas"
+     */
+
+    private void setCartasMesa(CartaImpl[] cartas){
+        this.cartasMesa = cartas;
+    }
 
     /**
      * @param indiceCarta
      * @return
      */
 
-
-    public CartaImpl obtenerCartaMesa(int indiceCarta){
+    public CartaImpl getCartaMesa(int indiceCarta){     //TODO Controlar que no se salga del rango
         return this.cartasMesa[indiceCarta].clone();        //todo Comprobar si el clone hace una copia por referencia.
     }
 
     /**
-     * Set array passed by parameter in attribute "cartas"
-     * @param cartas new value of attribute "cartas"
+     * This method add the carte passed by parameter to array of letters of table in the position passed by parameter
+     * @param indiceCarta position where the card is added
+     * @param carta carte to add
      */
 
-    //TODO Hacer private despues de las pruebas o ver si se puede dejar publico
-
-    public void setCartasMesa(CartaImpl[] cartas){
-        this.cartasMesa = cartas;
-    }
-
-
-    /**
-     * @param indiceCarta
-     * @param cartas
-     */
-
-    public void setCartaMesa(int indiceCarta, CartaImpl cartas){
-        this.cartasMesa[indiceCarta] = cartas;
+    private void setCartaMesa(int indiceCarta, CartaImpl carta){    //TODO Controlar que no se salga del rango
+        this.cartasMesa[indiceCarta] = carta;
     }
 
     /**
-     * Return array of attribute "apuestasJugadores"
+     * @param indiceMesa
+     * @return
+     */
+
+    public String getNumeroCartaMesa(int indiceMesa){   //TODO Controlar indice
+        return this.cartasMesa[indiceMesa].getNumero();
+    }
+
+    /**
+     * @param indiceMesa
+     * @return
+     */
+
+    public char getPaloCartaMesa(int indiceMesa){   //TODO Controlar indice
+        return this.cartasMesa[indiceMesa].getPalo();
+    }
+
+    /**
+     * This method return array of attribute "apuestasJugadores"
      * @return int[][] array of attribute "apuestasJugadores"
      */
 
@@ -424,19 +510,9 @@ public class MesaImpl implements Mesa, Cloneable {
                 apuestas[i][j] = apuestasJugadores[i][j];
             }
         }
+        //TODO
         //System.arraycopy(this.apuestasJugadores,0,apuestas,0,this.apuestasJugadores.length);
         return apuestas;
-    }
-
-
-    /**
-     * @param jugador
-     * @param ronda
-     * @return
-     */
-
-    public int getApuestaJugador(int jugador, int ronda){
-        return this.apuestasJugadores[jugador][ronda];
     }
 
     /**
@@ -449,12 +525,43 @@ public class MesaImpl implements Mesa, Cloneable {
     }
 
     /**
+     * @param indiceJugador
+     * @return
+     */
+
+    public int[] getApuestasJugador(int indiceJugador){     //TODO Comprobar que no sea por referencia  //TODO Controlar que no se salga del rango
+        int[] apuestasJugador = new int[this.apuestasJugadores[indiceJugador].length];
+        System.arraycopy(this.apuestasJugadores[indiceJugador],0,apuestasJugador,0,this.apuestasJugadores[indiceJugador].length);
+        return apuestasJugador;
+    }
+
+    /**
+     * @param indiceJugador
+     * @param apuestas
+     */
+
+    private void setApuestasJugador(int indiceJugador, int[] apuestas){     //TODO Controlar que no se salga del rango
+        this.apuestasJugadores[indiceJugador] = apuestas;
+    }
+
+    /**
+     * Get user bet in an exact round
+     * @param jugador int index of the user you want get bet
+     * @param rondaApuesta int index of the round you want get bet
+     * @return int bet of the user in the round
+     */
+
+    public int getApuestaJugador(int jugador, int rondaApuesta){    //TODO Controlar que no se salga del rango
+        return this.apuestasJugadores[jugador][rondaApuesta];
+    }
+
+    /**
      * @param jugador
      * @param ronda
      * @param apuestas
      */
 
-    public void setApuestaJugador(int jugador,int ronda, int apuestas){
+    private void setApuestaJugador(int jugador,int ronda, int apuestas){    //TODO Controlar que no se salga del rango
         this.apuestasJugadores[jugador][ronda] = apuestas;
     }
 
@@ -473,17 +580,33 @@ public class MesaImpl implements Mesa, Cloneable {
         return total;
     }
 
-
-    /**
-     * @param jugador
-     * @return
+    /*
+     * SIGNATURA: public void limpiarCartasMesa()
+     * COMENTARIO: Coloca todas las cartas de la mesa con palo D y numero D
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Un array de CartaImpl
+     * POSTCONDICIONES: Modifica el array pasado por parametro colocando todas las cartas de la mesa con palo D y numero D
      */
 
-    public int obtenerSaldoJugador(int jugador){
-        return this.jugadores[jugador].getSaldo();
+    /**
+     * Set all the table cards by default
+     */
+
+    public void limpiarCartasMesa(){
+        for (int i = 0; i<this.cartasMesa.length; i++){
+            this.cartasMesa[i] = new CartaImpl();
+        }
     }
 
-    //METODOS ANHADIDOS
+    /**
+     *
+     */
+
+    public void cargarBaraja(){
+        //TODO
+    }
 
     /*
      * SIGNATURA: public void restaurarMesa();
@@ -498,6 +621,10 @@ public class MesaImpl implements Mesa, Cloneable {
 
     //TODO Revisar esto
 
+    /**
+     *
+     */
+
     public void restaurarMesa(){
         limpiarMesa();
         restaurarBaraja();
@@ -505,7 +632,6 @@ public class MesaImpl implements Mesa, Cloneable {
         generarCartasJugadores();
         this.ronda = 0;
     }
-
 
     /*
      * SIGNATURA: public void colocarJugadoresActivos()
@@ -538,6 +664,7 @@ public class MesaImpl implements Mesa, Cloneable {
      */
 
     //TODO  Desarrollar javadoc
+    //TODO Comprobar si deberia ser private
 
     public void ingresarSaldoGanadores(){
 
@@ -584,7 +711,6 @@ public class MesaImpl implements Mesa, Cloneable {
 
     }
 
-
     /*
      * SIGNATURA: public void generarCartaMesa();
      * COMENTARIO: Saca 1 cartas de la baraja y las coloca en el array de cartas de la mesa del objeto
@@ -626,7 +752,6 @@ public class MesaImpl implements Mesa, Cloneable {
 
     }
 
-
     /*
      * SIGNATURA: public void cargarBots();
      * COMENTARIO: Carga un array pasado por parametros con jugadores aleatorios
@@ -639,6 +764,7 @@ public class MesaImpl implements Mesa, Cloneable {
      */
 
     //TODO Desarrollar javadoc
+    //TODO Comprobar si deberia ser private
 
     public void cargarBots(){
 
@@ -648,36 +774,6 @@ public class MesaImpl implements Mesa, Cloneable {
             this.jugadores[i] = new JugadorImpl(nombresAleatorios[random.nextInt(8)],jugadores[0].getSaldo());
         }
 
-    }
-
-    /**
-     * This method add the carte passed by parameter to array of letters of table in the position passed by parameter
-     * @param posicion position where the card is added
-     * @param carta carte to add
-     */
-
-    public void anhadirCartaMesa(int posicion, CartaImpl carta){
-        this.cartasMesa[posicion] = carta;
-    }
-
-    /*
-     * SIGNATURA: public void limpiarCartasMesa()
-     * COMENTARIO: Coloca todas las cartas de la mesa con palo D y numero D
-     * PRECONDICIONES: - Nada
-     * ENTRADA: - Nada
-     * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Un array de CartaImpl
-     * POSTCONDICIONES: Modifica el array pasado por parametro colocando todas las cartas de la mesa con palo D y numero D
-     */
-
-    /**
-     * Set all the table cards by default
-     */
-
-    public void limpiarCartasMesa(){
-        for (int i = 0; i<this.cartasMesa.length; i++){
-            this.cartasMesa[i] = new CartaImpl();
-        }
     }
 
     /*
@@ -706,7 +802,6 @@ public class MesaImpl implements Mesa, Cloneable {
         }
 
     }
-
 
     /*
      * SIGNATURA: public void limpiarMesa()
@@ -744,7 +839,9 @@ public class MesaImpl implements Mesa, Cloneable {
      *                  en el array de las cartas de la mesa.
      */
 
-    //TODO Desarrollar javadoc
+    /**
+     *
+     */
 
     public void generarTresCartasMesa() {
 
@@ -765,155 +862,6 @@ public class MesaImpl implements Mesa, Cloneable {
 
     }
 
-
-    /*
-     * SIGNATURA: public void realizarApuestas(int turnoJugador, MesaImpl mesa, int ronda)
-     * COMENTARIO: Realizar las apuestas de todos los jugadores de la mesa
-     * PRECONDICIONES:
-     * ENTRADA: - Un entero con el turno
-     *          - Un entero con la ronda
-     * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Un objeto mesa
-     * POSTCONDICIONES: - Modifica el objeto mesa, incrementando el total del dinero que hay en mesa.
-     */
-
-    /*
-     * apuestaMinima = 0
-     * jugadorPasa = false
-     *
-     * si (turnoJugador == 0)
-     *  si (jugador[0].getActivo() == true)
-     *      apuestaJugador = leerApuesta
-     *      si (apuestaJugador > apuestaMinima)
-     *          apuestaMinima = apuestaJugador
-     *      sino
-     *          si (apuestaJugador == apuestaMinima)
-     *              jugadorPasa = true
-     *          finSi
-     *      finSi
-     *  finSi
-     *  turnoJugador++
-     *  cantidadJugadas++
-     *
-     *  mientras(turnoJugador < 5 && cantidadJugadas < totalJugadas)
-     *      si(jugador[turnoJugador].getActivo() == true)
-     *          si(jugador[turnoJugador].getSalto > 0)
-     *              apuestaJugador = calcularApuesta
-     *              si(apuestaJugador != apuestaMinima || jugadorPasa == false)
-     *                  jugadorPasa = false
-     *                  si(apuestaJugador == 0)
-     *                      jugador.seActivo(false)
-     *                      sino
-     *                          si(apuestaJugador == apuestaMinima)
-     *                              jugador.disminuirSaldo(apuestaJugador)
-     *                              mesa.anhadirApuesta(turnoJugador,ronda,apuestaJugador)
-     *                          sino
-     *                              si(apuestaJugador > apuestaMinima)
-     *                                  cantidadJugadas += 4
-     *                                  jugador.disminuirSaldo(apuestaJugador)
-     *                                  mesa.anhadirApuesta(turnoJugador,ronda,apuestaJugador)
-     *                              finSi
-     *                          finSi
-     *                   finSi
-     *              finSi
-     *          finSi
-     *      finSi
-     *      cantidadJugadas++
-     *      si(turnoJugador < 4 && cantidadJugadas < jugadasTotal)
-     *          turnoJugador == 0;
-     *      sino
-     *          turnoJugador++;
-     *      finSi
-     *  finMientras
-     *
-     *
-     */
-
-
-    //TODO Desarrollar javadoc
-    //TODO Documentar codigo mejor
-    //TODO Ver si se puede modular
-    //TODO Disminuir dinero despues de todas las jugadas
-
-    public void realizarApuestas(){
-        GestoraJugadorImpl gesJug = new GestoraJugadorImpl();
-        int apuestaMinima = 0, cantidadJugadas = 0, totalJugadas = 5, apuestaJugador, cantidadJugadoresPasan = 0;
-        boolean jugadorPasa = false;
-        for (JugadorImpl jugador: this.getJugadores()) {
-            if (!jugador.getActivo()){
-                cantidadJugadoresPasan ++;
-            }
-        }
-        if (cantidadJugadoresPasan != 4) {
-            if (this.obtenerJugador(this.turnoJugador).getActivo() && this.obtenerJugador(this.turnoJugador).getSaldo() > 0) {
-                if (this.turnoJugador == 0){
-                    apuestaJugador = gesJug.leerYValidarApuesta(this.obtenerJugador(this.turnoJugador), apuestaMinima);
-                }else{
-                    apuestaJugador = gesJug.calcularApostarBot(apuestaMinima,this,this.turnoJugador,this.ronda);
-                }
-                if (apuestaJugador > apuestaMinima) {
-                    apuestaMinima = apuestaJugador;
-                    this.anhadirApuesta(this.turnoJugador, this.ronda, apuestaMinima);
-                    this.obtenerJugador(this.turnoJugador).disminuirDinero(apuestaMinima);
-                } else {
-                    //Si el jugador apuesta el mismo valor que la apuesta minima (es decir 0) significa que pasa
-                    if (apuestaJugador == apuestaMinima) {
-                        jugadorPasa = true;
-                    }
-                }
-            }
-            cantidadJugadas++;
-            if (this.turnoJugador == 4 && cantidadJugadas < totalJugadas) {
-                this.turnoJugador = 0;
-            } else {
-                this.turnoJugador++;
-            }
-            while (turnoJugador < 5 && cantidadJugadas < totalJugadas) {
-                if (this.obtenerJugador(this.turnoJugador).getActivo() && this.obtenerJugador(this.turnoJugador).getSaldo() > 0) {
-                    if (this.turnoJugador == 0){
-                        apuestaJugador = gesJug.leerYValidarApuesta(this.obtenerJugador(this.turnoJugador),apuestaMinima);
-                    }else{
-                        apuestaJugador = gesJug.calcularApostarBot(apuestaMinima, this, this.turnoJugador,this.ronda);
-                        //TODO En el caso de querer apostar y no poder por no llegar al minimo que haga all-in  (Creo que ya esta solucionado pero tengo que comprobarlo)
-                    }
-                    if (apuestaJugador != apuestaMinima || jugadorPasa) {
-                        jugadorPasa = false;
-                        if (apuestaJugador == 0) {
-                            this.obtenerJugador(this.turnoJugador).setActivo(false);
-                        } else {
-                            if (apuestaJugador > apuestaMinima) {
-                                apuestaMinima = apuestaJugador;
-                                if ((totalJugadas-cantidadJugadas) < 5){
-                                    totalJugadas += 4;
-                                }else{
-                                    totalJugadas++;
-                                }
-                                this.obtenerJugador(this.turnoJugador).disminuirDinero(apuestaJugador);
-                                this.anhadirApuesta(this.turnoJugador, this.ronda, apuestaJugador);
-                            } else {
-                                this.obtenerJugador(this.turnoJugador).disminuirDinero(apuestaJugador);
-                                this.anhadirApuesta(this.turnoJugador, this.ronda, apuestaJugador);
-                            }
-                        }
-                    } else {
-                        this.obtenerJugador(this.turnoJugador).disminuirDinero(apuestaJugador);
-                        this.anhadirApuesta(this.turnoJugador, this.ronda, apuestaJugador);
-                    }
-                }
-                //Actualizamos variables despues de realizar jugada
-                cantidadJugadas++;
-                if (this.turnoJugador == 4 && cantidadJugadas < totalJugadas) {
-                    this.turnoJugador = 0;
-                } else {
-                    this.turnoJugador++;
-                }
-            }
-        }
-        this.ronda++;
-    }
-
-
-
     /*
      * SIGNATURA: public int[] obtenerGanadores()
      * COMENTARIO: Calcula quienes son los ganadores de la partida
@@ -924,7 +872,7 @@ public class MesaImpl implements Mesa, Cloneable {
      * POSTCONDICIONES: - Devuelve asociado al nombre un array con la posicion de los ganadores
      */
 
-    //TODO Hacer
+    //TODO Hacer metodo
 
     /**
      * Calculate and return the positions of the game winners.
@@ -946,7 +894,6 @@ public class MesaImpl implements Mesa, Cloneable {
         return cantGanadores;
     }
 
-
     /*
      * SIGNATURA: public void ingresarDineroGanador(int ganador);
      * COMENTARIO: Aumenta el saldo del usuario ganador de la mano
@@ -958,15 +905,17 @@ public class MesaImpl implements Mesa, Cloneable {
      *
      */
 
-    //TODO Desarrollar javadoc
-    //TODO Revisar no  esta echo creo
+    //TODO Hacer metodo
+
+    /**
+     * @param ganador
+     */
 
     public void ingresarDineroGanador(int ganador) {
         int cantidadMesa;
         cantidadMesa = this.getTotalApuestas();
         this.jugadores[ganador].aumentarDinero(cantidadMesa);
     }
-
 
     /*
      * SIGNATURA: public void incrementarTurno();
@@ -991,7 +940,6 @@ public class MesaImpl implements Mesa, Cloneable {
         }
     }
 
-
     /*
      * SIGNATURA: public void mostrarPanelJuego ();
      * COMENTARIO: Imprime por pantalla las cartas que hay en la mesa y la de los jugadores segun la ronda, el dinero de los demas jugadores y el total del bote de la mesa
@@ -1013,35 +961,35 @@ public class MesaImpl implements Mesa, Cloneable {
         String[][] numerosCartasJugadores = new String[5][2];
         for (int i = 0;i<numerosCartasJugadores.length;i++){
             for (int j = 0;j<numerosCartasJugadores[i].length;j++){
-                numerosCartasJugadores[i][j] = this.obtenerJugador(i).obtenerCarta(j).getNumero();
+                numerosCartasJugadores[i][j] = this.getNumeroCartaJugador(i,j);
             }
         }
 
         char[][] palosCartasJugadores = new char[5][2];
         for (int i = 0;i<palosCartasJugadores.length;i++){
             for (int j = 0;j<palosCartasJugadores[i].length;j++){
-                palosCartasJugadores[i][j] = this.obtenerJugador(i).obtenerCarta(j).getPalo();
+                palosCartasJugadores[i][j] = this.getPaloCartaJugador(i,j);
             }
         }
 
         String[] usersJugadores = new String[5];
         for (int i = 0; i<usersJugadores.length;i++){
-            usersJugadores[i] = this.obtenerJugador(i).getUsuario();
+            usersJugadores[i] = this.getUsuarioJugador(i);;
         }
 
         int[] saldoJugadores = new int[5];
         for (int i = 0; i<saldoJugadores.length;i++){
-            saldoJugadores[i] = this.obtenerJugador(i).getSaldo();
+            saldoJugadores[i] = this.getSaldoJugador(i);
         }
 
         char[] palosCartasMesa = new char[5];
         for (int i = 0; i<palosCartasMesa.length;i++){
-            palosCartasMesa[i] = this.obtenerCartaMesa(i).getPalo();
+            palosCartasMesa[i] = this.getPaloCartaMesa(i);
         }
 
         String[] numerosCartasMesa = new String[5];
         for (int i = 0; i<numerosCartasMesa.length;i++){
-            numerosCartasMesa[i] = this.obtenerCartaMesa(i).getNumero();
+            numerosCartasMesa[i] = this.getNumeroCartaMesa(i);
         }
 
 
@@ -1089,27 +1037,6 @@ public class MesaImpl implements Mesa, Cloneable {
 
     }
 
-
-    /**
-     * This method returns the player of the position passed by parameter
-     * @param posicion position of the player you want to get
-     * @return JugadorImpl player yo want to get
-     */
-
-    public JugadorImpl obtenerJugador(int posicion){
-        return this.jugadores[posicion];
-    }
-
-    /**
-     * This method adds the player or parameter passed to the array of players
-     * @param posicion position where the player wants to add
-     * @param jugador player you want to add
-     */
-
-    public void anhadirJugador(int posicion, JugadorImpl jugador){
-        this.jugadores[posicion] = jugador;
-    }
-
     /**
      * Add user bet in an exact round
      * @param jugador int index of the user you want set bet
@@ -1117,31 +1044,157 @@ public class MesaImpl implements Mesa, Cloneable {
      * @param cantidad int amount to add
      */
 
-    public void anhadirApuesta(int jugador, int rondaApuesta, int cantidad){
+    //TODO Comprobar si puede ser privado
+
+    public void incrementarApuesta(int jugador, int rondaApuesta, int cantidad){
         this.apuestasJugadores[jugador][rondaApuesta] += cantidad;
     }
 
-    /**
-     * Add cards passed by parameter to the player
-     * @param jugador int position of player where do you want add the cards passed by parameter
-     * @param cartas CartaImpl[] with the cards you want to add to the player
+    /*
+     * SIGNATURA: public void realizarApuestas(int turnoJugador, MesaImpl mesa, int ronda)
+     * COMENTARIO: Realizar las apuestas de todos los jugadores de la mesa
+     * PRECONDICIONES:
+     * ENTRADA: - Un entero con el turno
+     *          - Un entero con la ronda
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Un objeto mesa
+     * POSTCONDICIONES: - Modifica el objeto mesa, incrementando el total del dinero que hay en mesa.
      */
 
-    public void anhadirCartasJugador(int jugador, CartaImpl[] cartas){
-        this.jugadores[jugador].setCartas(cartas);
-    }
-
-    /**
-     * Get user bet in an exact round
-     * @param jugador int index of the user you want get bet
-     * @param rondaApuesta int index of the round you want get bet
-     * @return int bet of the user in the round
+    /*
+     * apuestaMinima = 0
+     * jugadorPasa = false
+     *
+     * si (turnoJugador == 0)
+     *  si (jugador[0].getActivo() == true)
+     *      apuestaJugador = leerApuesta
+     *      si (apuestaJugador > apuestaMinima)
+     *          apuestaMinima = apuestaJugador
+     *      sino
+     *          si (apuestaJugador == apuestaMinima)
+     *              jugadorPasa = true
+     *          finSi
+     *      finSi
+     *  finSi
+     *  turnoJugador++
+     *  cantidadJugadas++
+     *
+     *  mientras(turnoJugador < 5 && cantidadJugadas < totalJugadas)
+     *      si(jugador[turnoJugador].getActivo() == true)
+     *          si(jugador[turnoJugador].getSalto > 0)
+     *              apuestaJugador = calcularApuesta
+     *              si(apuestaJugador != apuestaMinima || jugadorPasa == false)
+     *                  jugadorPasa = false
+     *                  si(apuestaJugador == 0)
+     *                      jugador.seActivo(false)
+     *                      sino
+     *                          si(apuestaJugador == apuestaMinima)
+     *                              jugador.disminuirSaldo(apuestaJugador)
+     *                              mesa.incrementarApuesta(turnoJugador,ronda,apuestaJugador)
+     *                          sino
+     *                              si(apuestaJugador > apuestaMinima)
+     *                                  cantidadJugadas += 4
+     *                                  jugador.disminuirSaldo(apuestaJugador)
+     *                                  mesa.incrementarApuesta(turnoJugador,ronda,apuestaJugador)
+     *                              finSi
+     *                          finSi
+     *                   finSi
+     *              finSi
+     *          finSi
+     *      finSi
+     *      cantidadJugadas++
+     *      si(turnoJugador < 4 && cantidadJugadas < jugadasTotal)
+     *          turnoJugador == 0;
+     *      sino
+     *          turnoJugador++;
+     *      finSi
+     *  finMientras
+     *
+     *
      */
 
-    public int obtenerApuesta(int jugador, int rondaApuesta){
-        return this.apuestasJugadores[jugador][rondaApuesta];
-    }
 
+    //TODO Desarrollar javadoc
+    //TODO Documentar codigo mejor
+    //TODO Ver si se puede modular
+    //TODO Disminuir dinero despues de todas las jugadas
+
+    public void realizarApuestas(){
+        GestoraJugadorImpl gesJug = new GestoraJugadorImpl();
+        int apuestaMinima = 0, cantidadJugadas = 0, totalJugadas = 5, apuestaJugador, cantidadJugadoresPasan = 0;
+        boolean jugadorPasa = false;
+        for (JugadorImpl jugador: this.getJugadores()) {
+            if (!jugador.getActivo()){
+                cantidadJugadoresPasan ++;
+            }
+        }
+        if (cantidadJugadoresPasan != 4) {
+            if (this.getJugador(this.turnoJugador).getActivo() && this.getJugador(this.turnoJugador).getSaldo() > 0) {
+                if (this.turnoJugador == 0){
+                    apuestaJugador = gesJug.leerYValidarApuesta(this.getJugador(this.turnoJugador), apuestaMinima);
+                }else{
+                    apuestaJugador = gesJug.calcularApostarBot(apuestaMinima,this,this.turnoJugador,this.ronda);
+                }
+                if (apuestaJugador > apuestaMinima) {
+                    apuestaMinima = apuestaJugador;
+                    this.incrementarApuesta(this.turnoJugador, this.ronda, apuestaMinima);
+                    this.getJugador(this.turnoJugador).disminuirDinero(apuestaMinima);
+                } else {
+                    //Si el jugador apuesta el mismo valor que la apuesta minima (es decir 0) significa que pasa
+                    if (apuestaJugador == apuestaMinima) {
+                        jugadorPasa = true;
+                    }
+                }
+            }
+            cantidadJugadas++;
+            if (this.turnoJugador == 4 && cantidadJugadas < totalJugadas) {
+                this.turnoJugador = 0;
+            } else {
+                this.turnoJugador++;
+            }
+            while (turnoJugador < 5 && cantidadJugadas < totalJugadas) {
+                if (this.getJugador(this.turnoJugador).getActivo() && this.getJugador(this.turnoJugador).getSaldo() > 0) {
+                    if (this.turnoJugador == 0){
+                        apuestaJugador = gesJug.leerYValidarApuesta(this.getJugador(this.turnoJugador),apuestaMinima);
+                    }else{
+                        apuestaJugador = gesJug.calcularApostarBot(apuestaMinima, this, this.turnoJugador,this.ronda);
+                        //TODO En el caso de querer apostar y no poder por no llegar al minimo que haga all-in  (Creo que ya esta solucionado pero tengo que comprobarlo)
+                    }
+                    if (apuestaJugador != apuestaMinima || jugadorPasa) {
+                        jugadorPasa = false;
+                        if (apuestaJugador == 0) {
+                            this.getJugador(this.turnoJugador).setActivo(false);
+                        } else {
+                            if (apuestaJugador > apuestaMinima) {
+                                apuestaMinima = apuestaJugador;
+                                if ((totalJugadas-cantidadJugadas) < 5){
+                                    totalJugadas += 4;
+                                }else{
+                                    totalJugadas++;
+                                }
+                                this.getJugador(this.turnoJugador).disminuirDinero(apuestaJugador);
+                                this.incrementarApuesta(this.turnoJugador, this.ronda, apuestaJugador);
+                            } else {
+                                this.getJugador(this.turnoJugador).disminuirDinero(apuestaJugador);
+                                this.incrementarApuesta(this.turnoJugador, this.ronda, apuestaJugador);
+                            }
+                        }
+                    } else {
+                        this.getJugador(this.turnoJugador).disminuirDinero(apuestaJugador);
+                        this.incrementarApuesta(this.turnoJugador, this.ronda, apuestaJugador);
+                    }
+                }
+                //Actualizamos variables despues de realizar jugada
+                cantidadJugadas++;
+                if (this.turnoJugador == 4 && cantidadJugadas < totalJugadas) {
+                    this.turnoJugador = 0;
+                } else {
+                    this.turnoJugador++;
+                }
+            }
+        }
+        this.ronda++;
+    }
 
     /**
      * This method return a String with attributes of the table
@@ -1204,9 +1257,9 @@ public class MesaImpl implements Mesa, Cloneable {
             if (objeto != null && objeto instanceof MesaImpl){
                 MesaImpl nueva = (MesaImpl) objeto;
                 if (this.getBaraja()==nueva.getBaraja()
-                    && this.getCartasMesa()==nueva.getCartasMesa()
-                    && this.getJugadores()==nueva.getJugadores()
-                    && this.getApuestasJugadores()==nueva.getApuestasJugadores()){
+                        && this.getCartasMesa()==nueva.getCartasMesa()
+                        && this.getJugadores()==nueva.getJugadores()
+                        && this.getApuestasJugadores()==nueva.getApuestasJugadores()){
                     resul = true;
                 }
             }
