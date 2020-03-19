@@ -57,32 +57,6 @@ public class MesaImplTest {
 
     }
 
-    @Test
-    public void testSetBaraja() {
-
-        CartaImpl[] baraja = new CartaImpl[52];
-        for (int i = 0;i<baraja.length;i++){
-            baraja[i] = new CartaImpl('Q',"14");
-        }
-
-        MesaImpl mesa = new MesaImpl();
-
-        mesa.setBaraja(baraja);
-
-        assertArrayEquals(mesa.getBaraja(),baraja);
-
-    }
-
-    @Test
-    public void testSetCartaBaraja() {
-
-        MesaImpl mesa = new MesaImpl();
-
-        mesa.setCartaBaraja(new CartaImpl('3',"r"),5);
-
-        assertEquals(mesa.getCartaBaraja(5),(new CartaImpl('3',"r")));
-
-    }
 
     @Test
     public void testGetJugadores() {
@@ -108,85 +82,6 @@ public class MesaImplTest {
 
     }
 
-    @Test
-    public void testGetJugador() {
-    }
-
-    @Test
-    public void testGetCartaJugador() {
-    }
-
-    @Test
-    public void testSetCartaJugador() {
-    }
-
-    @Test
-    public void testSetJugador() {
-    }
-
-    @Test
-    public void testGetCartasMesa() {
-    }
-
-    @Test
-    public void testObtenerCartaMesa() {
-    }
-
-    @Test
-    public void testSetCartasMesa() {
-    }
-
-    @Test
-    public void testSetCartaMesa() {
-    }
-
-    @Test
-    public void testGetApuestasJugadores() {
-    }
-
-    @Test
-    public void testGetApuestaJugador() {
-    }
-
-    @Test
-    public void testSetApuestaJugador() {
-    }
-
-    @Test
-    public void testGetTotalApuestas() {
-    }
-
-    @Test
-    public void testObtenerSaldoJugador() {
-    }
-
-    @Test
-    public void testRestaurarMesa() {
-    }
-
-    @Test
-    public void testIngresarSaldoGanadores() {
-    }
-
-    @Test
-    public void testGenerarCartasJugadores() {
-    }
-
-    @Test
-    public void testGenerarCartaMesa() {
-    }
-
-    @Test
-    public void testCargarBots() {
-    }
-
-    @Test
-    public void testAnhadirCartaMesa() {
-    }
-
-    @Test
-    public void testLimpiarCartasMesa() {
-    }
 
     @Test
     public void testRestaurarBaraja() {
@@ -254,89 +149,6 @@ public class MesaImplTest {
 
         assertArrayEquals(mesa.getBaraja(),barajaTest);
 
-    }
-
-    @Test
-    public void testLimpiarMesa() {
-        MesaImpl mesa = new MesaImpl();
-        mesa.limpiarCartasMesa();
-        mesa.anhadirApuesta(0,4,50);
-        mesa.anhadirCartaMesa(2,new CartaImpl('P',"5"));
-        boolean mesaA0 = true, cartasDefecto = true;
-        for (int i = 0; i < mesa.getApuestasJugadores().length; i++) {
-            for (int j = 0; j < mesa.getApuestasJugadores().length; j++) {
-                if (mesa.getApuestaJugador(i,j) != 0){
-                    mesaA0 = false;
-                }
-            }
-        }
-        for (int i = 0; i < mesa.getCartasMesa().length; i++) {
-            if (mesa.getCartasMesa()[i].getPalo() != 'D'){
-                cartasDefecto = false;
-            }
-        }
-        assertFalse(mesaA0);
-        assertFalse(cartasDefecto);
-    }
-
-    @Test
-    public void testGenerarTresCartasMesa() {
-    }
-
-    @Test
-    public void testRealizarApuestas() {
-    }
-
-    @Test
-    public void testObtenerGanadores() {
-    }
-
-    @Test
-    public void testIngresarDineroGanador() {
-    }
-
-    @Test
-    public void testIncrementarTurno() {
-    }
-
-    @Test
-    public void testMostrarPanelJuego() {
-    }
-
-    @Test
-    public void testObtenerJugador() {
-    }
-
-    @Test
-    public void testAhadirJugador() {
-    }
-
-    @Test
-    public void testAnhadirApuesta() {
-    }
-
-    @Test
-    public void testAnhadirCartasJugador() {
-    }
-
-    @Test
-    public void testObtenerApuesta() {
-    }
-
-    @Test
-    public void testToString() {
-    }
-
-    @Test
-    public void testHashCode() {
-    }
-
-    @Test
-    public void testEquals() {
-    }
-
-    @Test
-    public void testClone() {
     }
 
 }
