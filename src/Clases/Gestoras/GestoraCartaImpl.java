@@ -7,9 +7,6 @@ import java.util.ArrayList;
 
 public class GestoraCartaImpl {
 
-
-
-
     /*
      * SIGNATURA: public int calcularValorCartaAlta(CartaImpl[] cartas);
      * COMENTARIO: Calcular el valor de la carta mas alta del array de cartas pasado por parametro
@@ -792,7 +789,7 @@ public class GestoraCartaImpl {
 
         int cantidadCartas = 0;
         CartaImpl[] cartasMesa = mesa.getCartasMesa();
-        CartaImpl[] cartasJugador = mesa.obtenerJugador(jugador).getCartas();
+        CartaImpl[] cartasJugador = mesa.getCartasJugador(jugador);
 
         //Obtiene la cantidad de cartas que hay en la mesa con valor distinto al de defecto
         for (int i = 0;i<cartasMesa.length&&(cartasMesa[i].getPalo()!='D');i++){

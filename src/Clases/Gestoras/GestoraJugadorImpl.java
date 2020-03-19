@@ -121,10 +121,10 @@ public class GestoraJugadorImpl {
 
         //Calcula el porcentaje a apostar
         //Se controla si es la primera vez que apuesta en la ronda o esta subiendo su apuesta
-        if (mesa.obtenerApuesta(jugador,ronda) == 0){
+        if (mesa.getApuestaJugador(jugador,ronda) == 0){
             valorCartas += puntosFarol;
             porcenApostar = (double)valorCartas/319;
-            cantidadApostar = (int)((mesa.obtenerJugador(jugador).getSaldo()/4)*porcenApostar);
+            cantidadApostar = (int)((mesa.getSaldoJugador(jugador)/4)*porcenApostar);
             //Si la cantidad que desea apostar el bot es mayor o igual que la minima que hay que apostar calculara si desea igualar o subir
             if (cantidadApostar >= apuestaMinima){
                 //Si la diferencia entre lo que desea apostar y lo que debe apostar es mayor al 30% de lo que quiere apostar sube la apuesta, sino iguala la apuesta
@@ -144,10 +144,10 @@ public class GestoraJugadorImpl {
             }
         }else{
             porcenApostar = (double)valorCartas/319;
-            cantidadApostar = (int)((mesa.obtenerJugador(jugador).getSaldo()/4)*porcenApostar);
+            cantidadApostar = (int)((mesa.getSaldoJugador(jugador)/4)*porcenApostar);
             //Calcula si le interesa subir un poco mas la apuesta o desea tirarse
-            if ((apuestaMinima - mesa.obtenerApuesta(jugador,ronda)) < (int)(cantidadApostar*0.3)){
-                totalApostar = (apuestaMinima - mesa.obtenerApuesta(jugador,ronda));
+            if ((apuestaMinima - mesa.getApuestaJugador(jugador,ronda)) < (int)(cantidadApostar*0.3)){
+                totalApostar = (apuestaMinima - mesa.getApuestaJugador(jugador,ronda));
             }else {
                 totalApostar = 0;
             }
