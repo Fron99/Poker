@@ -59,8 +59,8 @@ public class PokerMain {
 
         //leerYValidarJugador*
         //añadirJugador
-        mesa.anhadirJugador(0,gesJugador.leerYValidarJugador());    //El usuario que juega se colocara siempre en la posicion 0
-        saldoInicialJugador = mesa.obtenerSaldoJugador(0);    //Solo se utiliza para informacion al usuario al finalizar el juego
+        mesa.setJugadorMesa(0,gesJugador.leerYValidarJugador());    //El usuario que juega se colocara siempre en la posicion 0
+        saldoInicialJugador = mesa.getSaldoJugador(0);    //Solo se utiliza para informacion al usuario al finalizar el juego
 
         //cargarBots
         mesa.cargarBots();  //Coloca en el array de jugadores jugadores con valores generados aleatoriamente
