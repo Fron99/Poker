@@ -606,33 +606,48 @@ public class MesaImpl implements Mesa, Cloneable {
     }
 
     /**
-     * @param indiceJugador
-     * @param apuestas
+     * Assign the bets passed by parameter to the player of the index passed by parameter. The allowed range of the player of the index is 0 to 4.
+     * @param indiceJugador index of the player that will want assign bets.
+     * @param apuestas Bets that will want assign to player.
+     * @return Return true if the bets was added to the player.
+     *         Return false if the bets wasn't added to the player.
      */
 
-    private void setApuestasJugador(int indiceJugador, int[] apuestas){     //TODO Controlar que no se salga del rango
-        this.apuestasJugadores[indiceJugador] = apuestas;
+    private boolean setApuestasJugador(int indiceJugador, int[] apuestas){
+        boolean res = false;
+        if (indiceJugador >= 0 && indiceJugador <= 4){
+            this.apuestasJugadores[indiceJugador] = apuestas;
+            res = true;
+        }
+        return res;
     }
 
     /**
-     * Get user bet in an exact round
-     * @param jugador int index of the user you want get bet
+     * Get user bet in an exact round. The allowed range of the player of the index is 0 to 4. The allowed range of the round of the index is 0 to 4.
+     * @param posicionJugador int index of the user you want get bet
      * @param rondaApuesta int index of the round you want get bet
-     * @return int bet of the user in the round
+     * @return Return int bet of the user in the round
+     *
      */
 
-    public int getApuestaJugador(int jugador, int rondaApuesta){    //TODO Controlar que no se salga del rango
-        return this.apuestasJugadores[jugador][rondaApuesta];
+    public int getApuestaJugador(int posicionJugador, int rondaApuesta){
+        return (posicionJugador >= 0 && posicionJugador <= 4) ? (rondaApuesta >= 0 && rondaApuesta <= 4) ? this.apuestasJugadores[posicionJugador][rondaApuesta] : -1 : -1;
     }
 
     /**
-     * @param jugador
-     * @param ronda
-     * @param apuestas
+     * Assign a round set of the index passed by parameter to the player of the index passed by parameter. The allowed range of the player of the index is 0 to 4. The allowed range of the round of the index is 0 to 4.
+     * @param posicionJugador int index of the user you want get bet
+     * @param rondaApuesta int index of the round you want get bet
+     * @param apuestas int bet to assign to the player
      */
 
-    private void setApuestaJugador(int jugador,int ronda, int apuestas){    //TODO Controlar que no se salga del rango
-        this.apuestasJugadores[jugador][ronda] = apuestas;
+    private boolean setApuestaJugador(int posicionJugador,int rondaApuesta, int apuestas){
+        boolean res = false;
+        if ((posicionJugador >= 0 && posicionJugador <= 4) && (rondaApuesta >= 0 && rondaApuesta <= 4)){
+            this.apuestasJugadores[posicionJugador][rondaApuesta] = apuestas;
+            res = true;
+        }
+        return res;
     }
 
     /**
