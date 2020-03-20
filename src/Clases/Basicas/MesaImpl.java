@@ -732,7 +732,7 @@ public class MesaImpl implements Mesa, Cloneable {
      */
 
     /**
-     * Draw 2 cards for each player and assign them to them
+     * Draw 2 cards for each player and assign them to them placing by default in the deck the drawn
      */
 
     public void generarCartasJugadores() {
@@ -740,23 +740,18 @@ public class MesaImpl implements Mesa, Cloneable {
         Random r = new Random();
         int numPosicionCarta;
 
-        numPosicionCarta = r.nextInt(52);
-
-        //TODO Revisar este bucle, puede que este mal
-        //TODO Comentar mas el codigo
-
         for (int i = 0; i<this.jugadores.length;i++){
             for (int j = 0; j<2; j++){
                 do {
+                    numPosicionCarta = r.nextInt(52);
                     if (baraja[numPosicionCarta].getPalo() != 'D') {    //Comprueba si la carta seleccionada de la baraja no ha salido ya (Que es cuando esta por defecto)
                         //En el caso de que no haya salido se le asigna al jugador y se coloca por defecto en la baraja
                         if (!(this.setCartaJugador(i, j, baraja[numPosicionCarta]))) {  //Anhade la carta y compruba si se añadio correctamente
                             System.out.println("No se ha podido anhadir la carta");
                         }
-                        baraja[numPosicionCarta] = new CartaImpl();
                     }
-                    numPosicionCarta = r.nextInt(52);
                 } while (baraja[numPosicionCarta].getPalo() == 'D');
+                baraja[numPosicionCarta] = new CartaImpl();
             }
         }
 
