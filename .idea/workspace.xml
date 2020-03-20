@@ -20,14 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9a3eddb-34fe-4dec-b858-4173adae43d5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ElBromas.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Poker.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Basicas/JugadorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basicas/JugadorImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PokerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PokerMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tests/MesaImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/MesaImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,25 +92,16 @@
       <recent name="C:\Users\fjaviles\Documents\GitHub\Poker\src" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MesaImplTest.testGetBaraja">
-    <configuration name="MesaImplTest1.getCartaBaraja" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ElBromas" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.MesaImplTest1" />
-      <option name="METHOD_NAME" value="getCartaBaraja" />
-      <option name="TEST_OBJECT" value="method" />
+  <component name="RunManager" selected="Application.PokerMain">
+    <configuration name="PokerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="PokerMain" />
+      <module name="Poker" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="MesaImplTest1.getJugadores" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ElBromas" />
+      <module name="Poker" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Tests.*" />
@@ -128,7 +117,7 @@
       </method>
     </configuration>
     <configuration name="MesaImplTest1.setBaraja" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ElBromas" />
+      <module name="Poker" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Tests.*" />
@@ -144,7 +133,7 @@
       </method>
     </configuration>
     <configuration name="MesaImplTest1.setCartaBaraja" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ElBromas" />
+      <module name="Poker" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Tests.*" />
@@ -160,7 +149,7 @@
       </method>
     </configuration>
     <configuration name="MesaImplTest.testGetBaraja" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ElBromas" />
+      <module name="Poker" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Tests.*" />
@@ -175,20 +164,67 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <module name="Poker" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <module name="Poker" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="JUnit.MesaImplTest1.getCartaBaraja" />
       <item itemvalue="JUnit.MesaImplTest1.setBaraja" />
       <item itemvalue="JUnit.MesaImplTest1.setCartaBaraja" />
       <item itemvalue="JUnit.MesaImplTest1.getJugadores" />
       <item itemvalue="JUnit.MesaImplTest.testGetBaraja" />
+      <item itemvalue="Application.PokerMain" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PokerMain" />
         <item itemvalue="JUnit.MesaImplTest.testGetBaraja" />
         <item itemvalue="JUnit.MesaImplTest1.getJugadores" />
         <item itemvalue="JUnit.MesaImplTest1.setCartaBaraja" />
         <item itemvalue="JUnit.MesaImplTest1.setBaraja" />
-        <item itemvalue="JUnit.MesaImplTest1.getCartaBaraja" />
       </list>
     </recent_temporary>
   </component>
@@ -307,54 +343,54 @@
     </state>
     <state x="529" y="188" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583497690407" />
     <state x="744" y="268" key="FileChooserDialogImpl/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583432210128" />
-    <state width="1877" height="371" key="GridCell.Tab.0.bottom" timestamp="1584624115149">
+    <state width="1877" height="508" key="GridCell.Tab.0.bottom" timestamp="1584643198242">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="262" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583933093618" />
     <state width="1323" height="178" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584399637955" />
-    <state width="1877" height="371" key="GridCell.Tab.0.bottom/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584624115149" />
-    <state width="1877" height="371" key="GridCell.Tab.0.center" timestamp="1584624115149">
+    <state width="1877" height="508" key="GridCell.Tab.0.bottom/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584643198242" />
+    <state width="1877" height="508" key="GridCell.Tab.0.center" timestamp="1584643198242">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="262" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583933093618" />
     <state width="1323" height="178" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584399637955" />
-    <state width="1877" height="371" key="GridCell.Tab.0.center/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584624115149" />
-    <state width="1877" height="371" key="GridCell.Tab.0.left" timestamp="1584624115149">
+    <state width="1877" height="508" key="GridCell.Tab.0.center/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584643198242" />
+    <state width="1877" height="508" key="GridCell.Tab.0.left" timestamp="1584643198242">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="262" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583933093618" />
     <state width="1323" height="178" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584399637955" />
-    <state width="1877" height="371" key="GridCell.Tab.0.left/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584624115149" />
-    <state width="1877" height="371" key="GridCell.Tab.0.right" timestamp="1584624115149">
+    <state width="1877" height="508" key="GridCell.Tab.0.left/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584643198242" />
+    <state width="1877" height="508" key="GridCell.Tab.0.right" timestamp="1584643198242">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="262" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583933093618" />
     <state width="1323" height="178" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584399637955" />
-    <state width="1877" height="371" key="GridCell.Tab.0.right/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584624115149" />
-    <state width="1877" height="371" key="GridCell.Tab.1.bottom" timestamp="1584624115149">
+    <state width="1877" height="508" key="GridCell.Tab.0.right/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584643198242" />
+    <state width="1877" height="371" key="GridCell.Tab.1.bottom" timestamp="1584643047273">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="249" key="GridCell.Tab.1.bottom/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583844898236" />
     <state width="1323" height="239" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584399196512" />
-    <state width="1877" height="371" key="GridCell.Tab.1.bottom/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584624115149" />
-    <state width="1877" height="371" key="GridCell.Tab.1.center" timestamp="1584624115149">
+    <state width="1877" height="371" key="GridCell.Tab.1.bottom/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584643047273" />
+    <state width="1877" height="371" key="GridCell.Tab.1.center" timestamp="1584643047273">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="249" key="GridCell.Tab.1.center/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583844898236" />
     <state width="1323" height="239" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1584399196512" />
-    <state width="1877" height="371" key="GridCell.Tab.1.center/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584624115149" />
-    <state width="1877" height="371" key="GridCell.Tab.1.left" timestamp="1584624115149">
+    <state width="1877" height="371" key="GridCell.Tab.1.center/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584643047273" />
+    <state width="1877" height="371" key="GridCell.Tab.1.left" timestamp="1584643047273">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="249" key="GridCell.Tab.1.left/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583844898236" />
     <state width="1323" height="239" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1584399196496" />
-    <state width="1877" height="371" key="GridCell.Tab.1.left/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584624115149" />
-    <state width="1877" height="371" key="GridCell.Tab.1.right" timestamp="1584624115149">
+    <state width="1877" height="371" key="GridCell.Tab.1.left/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584643047273" />
+    <state width="1877" height="371" key="GridCell.Tab.1.right" timestamp="1584643047273">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="249" key="GridCell.Tab.1.right/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583844898236" />
     <state width="1323" height="239" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1584399196512" />
-    <state width="1877" height="371" key="GridCell.Tab.1.right/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584624115149" />
+    <state width="1877" height="371" key="GridCell.Tab.1.right/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584643047273" />
     <state x="263" y="107" key="IDE.errors.dialog" timestamp="1583500394751">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
