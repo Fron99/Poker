@@ -590,8 +590,10 @@ public class MesaImpl implements Mesa, Cloneable {
     }
 
     /**
-     * @param indiceJugador
-     * @return
+     * Get all bets from a player for the index passed by parameter. The allowed range of the player of the index is 0 to 4.
+     * @param indiceJugador index of the player that will want get stick
+     * @return Return a int[] with all bets of the player passed by parameter.
+     *         Return null if the index of player passed by parameter isn't allowed.
      */
 
     public int[] getApuestasJugador(int indiceJugador){
@@ -649,7 +651,7 @@ public class MesaImpl implements Mesa, Cloneable {
     }
 
     /*
-     * SIGNATURA: public void limpiarCartasMesa()
+     * SIGNATURA: public void restaurarCartasMesa()
      * COMENTARIO: Coloca todas las cartas de la mesa con palo D y numero D
      * PRECONDICIONES: - Nada
      * ENTRADA: - Nada
@@ -662,19 +664,13 @@ public class MesaImpl implements Mesa, Cloneable {
      * Set all the table cards by default
      */
 
-    public void limpiarCartasMesa(){
+    public void restaurarCartasMesa(){
         for (int i = 0; i<this.cartasMesa.length; i++){
             this.cartasMesa[i] = new CartaImpl();
         }
     }
 
-    /**
-     *
-     */
-
-    public void cargarBaraja(){
-        //TODO
-    }
+    //TODO INICIO Revisar esto
 
     /*
      * SIGNATURA: public void restaurarMesa();
@@ -687,8 +683,6 @@ public class MesaImpl implements Mesa, Cloneable {
      *
      */
 
-    //TODO Revisar esto
-
     /**
      *
      */
@@ -700,6 +694,8 @@ public class MesaImpl implements Mesa, Cloneable {
         generarCartasJugadores();
         this.ronda = 0;
     }
+
+    //TODO FIN Revisar esto
 
     /*
      * SIGNATURA: public void colocarJugadoresActivos()
