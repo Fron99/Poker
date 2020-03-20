@@ -765,11 +765,13 @@ public class MesaImpl implements Mesa, Cloneable {
     /*
      * SIGNATURA: public void generarCartaMesa();
      * COMENTARIO: Saca 1 cartas de la baraja y las coloca en el array de cartas de la mesa del objeto
-     * PRECONDICIONES: - Nada
+     * PRECONDICIONES: - Debe haber como minimo 1 hueco libre en las cartas de la mesa.
      * ENTRADA: - Nada
      * SALIDA: - Nada
      * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: - Coloca la carta que haya sacado por defecto en la baraja y la coloca en la mesa
+     * POSTCONDICIONES: - Coloca una carta sacada aleatoriamente de la baraja en la siguiente posicion libre de las cartas de la mesa.
+     *                    La posicion de la carta sacada de la baraja pasara a ser una carta por defecto.
+     *                    Si no se cumple la precondicion del hueco libre, no se sacara ninguna carta.
      */
 
     /**
@@ -779,28 +781,25 @@ public class MesaImpl implements Mesa, Cloneable {
     public void generarCartaMesa() {
 
         Random r = new Random();
-        int numPosicionCarta, indiceCartaGenerar = 0;
-
-        numPosicionCarta = r.nextInt(52);
+        int numPosicionCarta, indiceCartaGenerar = -1;
 
         //Calcula cual es la siguiente carta sin levantar y guarda el indice
-        for (int i = 0; i < this.cartasMesa.length && this.cartasMesa[i].getPalo() != 'D'; i++) {
-            if ((i + 1) <= this.cartasMesa.length) {
-                if (this.cartasMesa[i + 1].getPalo() == 'D') {
-                    indiceCartaGenerar = i + 1;
-                }
+        for (int i = 0; i < this.cartasMesa.length && indiceCartaGenerar == -1; i++) {
+            if (this.cartasMesa[i].getPalo() == 'D') {
+                indiceCartaGenerar = i;
             }
         }
 
-        //Guarda la carta que se ha sacado de la baraja en las cartas de la mesa
-        do {
-            if (this.baraja[numPosicionCarta].getPalo() != 'D') {
-                this.cartasMesa[indiceCartaGenerar] = this.baraja[numPosicionCarta];
-                this.baraja[numPosicionCarta] = new CartaImpl();
-            }
-            numPosicionCarta = r.nextInt(52);
-        } while (this.baraja[numPosicionCarta].getPalo() == 'D');
-
+        if (indiceCartaGenerar != -1){
+            //Guarda la carta que se ha sacado de la baraja en las cartas de la mesa
+            do {
+                numPosicionCarta = r.nextInt(52);
+                if (this.baraja[numPosicionCarta].getPalo() != 'D') {
+                    this.cartasMesa[indiceCartaGenerar] = this.baraja[numPosicionCarta];
+                }
+            } while (this.baraja[numPosicionCarta].getPalo() == 'D');
+            this.baraja[numPosicionCarta] = new CartaImpl();
+        }
     }
 
     /*
