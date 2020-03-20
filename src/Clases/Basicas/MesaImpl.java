@@ -271,7 +271,7 @@ public class MesaImpl implements Mesa, Cloneable {
      * Return the card of the index in the array "baraja". The allowed range of the index is 0 to 51.
      * @param indiceBaraja index of the card of you will want return
      * @return CartaImpl card that you want to get if the value of index passed by parameter is allowed.
-     *                   If the value of index not allowed, returns a card with value 0 and 0
+     *                   If the value of index not allowed, return a card with value 0 and 0
      */
 
     public CartaImpl getCartaBaraja(int indiceBaraja){
@@ -282,8 +282,8 @@ public class MesaImpl implements Mesa, Cloneable {
      * Set value of the card that index with the card passed by parameter. The allowed range of the index is 0 to 51.
      * @param baraja new value of attribute "baraja"
      * @param indiceBaraja index of the card that will be changed the value
-     * @return res Returns true if the value of the array index card passed by parameter has been changed.
-     *             Returns false if the value of the array index card passed by parameter hasn't been changed.
+     * @return res Return true if the value of the array index card passed by parameter has been changed.
+     *             Return false if the value of the array index card passed by parameter hasn't been changed.
      */
 
     private boolean setCartaBaraja(CartaImpl baraja, int indiceBaraja){
@@ -298,7 +298,7 @@ public class MesaImpl implements Mesa, Cloneable {
     /**
      * Get the number of the card of the desk. The allowed range of the index is 0 to 51.
      * @param indiceBaraja index of the card that will want get number
-     * @return Returns a String with the value of number of the card. If the index not between of range allowed return 0.
+     * @return Return a String with the value of number of the card. If the index not between of range allowed return 0.
      */
 
     public String getNumeroCartaBaraja(int indiceBaraja){
@@ -308,7 +308,7 @@ public class MesaImpl implements Mesa, Cloneable {
     /**
      * Get the stick of the card of the desk. The allowed range of the index is 0 to 51.
      * @param indiceBaraja index of the card that will want get stick
-     * @return Returns a char with the value of stick of the card. If the index not between of range allowed return 0.
+     * @return Return a char with the value of stick of the card. If the index not between of range allowed return 0.
      */
 
     public char getPaloCartaBaraja(int indiceBaraja){
@@ -338,7 +338,7 @@ public class MesaImpl implements Mesa, Cloneable {
     }
 
     /**
-     * This method returns the player of the position passed by parameter. The allowed range of the index is 0 to 4.
+     * This method return the player of the position passed by parameter. The allowed range of the index is 0 to 4.
      * @param posicion position of the player you want to get
      * @return JugadorImpl player yo want to get. If the index not between of range allowed return a player with value "IndexOvertakeRange" in "Usuario".
      */
@@ -351,8 +351,8 @@ public class MesaImpl implements Mesa, Cloneable {
      * This method adds the player passed by parameter to the array of players. The allowed range of the index is 0 to 4.
      * @param indiceJugador position where the player wants to add
      * @param jugador player you want to add
-     * @return Returns true if the value of the array index player passed by parameter has been changed.
-     *         Returns false if the value of the array index player passed by parameter hasn't been changed.
+     * @return Return true if the value of the array index player passed by parameter has been changed.
+     *         Return false if the value of the array index player passed by parameter hasn't been changed.
      */
 
     public boolean setJugador(int indiceJugador, JugadorImpl jugador){
@@ -367,7 +367,7 @@ public class MesaImpl implements Mesa, Cloneable {
     /**
      * Get the "usuario" of the player. The allowed range of the index is 0 to 4.
      * @param posicionJugador index of the player that will want get "usuario"
-     * @return Returns a String with the value of "usuario" of the player. If the index not between of range allowed return 0.
+     * @return Return a String with the value of "usuario" of the player. If the index not between of range allowed return 0.
      */
 
     public String getUsuarioJugador(int posicionJugador){
@@ -377,7 +377,7 @@ public class MesaImpl implements Mesa, Cloneable {
     /**
      * Get the "saldo" of the player. The allowed range of the index is 0 to 4.
      * @param posicionJugador index of the player that will want get "saldo"
-     * @return Returns a int with the value of "saldo" of the player. If the index not between of range allowed return 0.
+     * @return Return a int with the value of "saldo" of the player. If the index not between of range allowed return 0.
      */
 
     public int getSaldoJugador(int posicionJugador){
@@ -388,8 +388,8 @@ public class MesaImpl implements Mesa, Cloneable {
      * This method adds the money passed by parameter in the player of position passed by parameter(index). The allowed range of the index is 0 to 4.
      * @param posicionJugador Position of the player that wants to add money
      * @param saldo Money to add to the player
-     * @return Returns true if money was added to the player.
-     *         Returns false if money wasn't added to the player.
+     * @return Return true if money was added to the player.
+     *         Return false if money wasn't added to the player.
      */
 
     private boolean setSaldoJugador(int posicionJugador, int saldo){
@@ -405,8 +405,8 @@ public class MesaImpl implements Mesa, Cloneable {
     /**
      * Get all card of the player passed by parameter. The allowed range of the index is 0 to 4.
      * @param posicionJugador Position of the player that wants get cards
-     * @return Returns all cards of the player if index passed by parameter is allowed.
-     *         Returns null if index passed by parameter isn't allowed.
+     * @return Return all cards of the player if index passed by parameter is allowed.
+     *         Return null if index passed by parameter isn't allowed.
      */
 
     public CartaImpl[] getCartasJugador(int posicionJugador){
@@ -422,8 +422,8 @@ public class MesaImpl implements Mesa, Cloneable {
      * Add cards passed by parameter to the player. The allowed range of the index is 0 to 4.
      * @param posicionJugador int position of player where do you want add the cards passed by parameter
      * @param cartas CartaImpl[] with the cards you want to add to the player
-     * @return Returns true if the cards was added to the player.
-     *         Returns false if the cards wasn't added to the player.
+     * @return Return true if the cards was added to the player.
+     *         Return false if the cards wasn't added to the player.
      */
 
     private boolean setCartasJugador(int posicionJugador, CartaImpl[] cartas){
@@ -439,7 +439,7 @@ public class MesaImpl implements Mesa, Cloneable {
      * @param posicionJugador index of player that you want get card. The allowed range of the index of player is 0 to 4. The allowed range of the index of card is 0 to 1.
      * @param carta index of card you want get
      * @return card that you want to get if the value of index passed by parameter is allowed.
-     *         If the value of index not allowed, returns a card with value 0 and 0
+     *         If the value of index not allowed, return a card with value 0 and 0
      */
 
     public CartaImpl getCartaJugador(int posicionJugador,int carta){
@@ -450,7 +450,7 @@ public class MesaImpl implements Mesa, Cloneable {
      * Get the stick of the card of the player. The allowed range of the player of the index is 0 to 4. The allowed range of the card of the index is 0 to 1.
      * @param posicionJugador index of the player that will want get stick from one card
      * @param carta index of the card that will want get stick
-     * @return Returns a char with the value of stick of the card. If the index not between of range allowed return 0.
+     * @return Return a char with the value of stick of the card. If the index not between of range allowed return 0.
      */
 
     public char getPaloCartaJugador(int posicionJugador,int carta){
@@ -461,7 +461,7 @@ public class MesaImpl implements Mesa, Cloneable {
      * Get the number of the card of the player. The allowed range of the player of the index is 0 to 4. The allowed range of the card of the index is 0 to 1.
      * @param posicionJugador index of the player that will want get stick from one card
      * @param carta index of the card that will want get number
-     * @return Returns a String with the value of number of the card. If the index not between of range allowed return 0.
+     * @return Return a String with the value of number of the card. If the index not between of range allowed return 0.
      */
 
     public String getNumeroCartaJugador(int posicionJugador,int carta){
@@ -473,8 +473,8 @@ public class MesaImpl implements Mesa, Cloneable {
      * @param posicionJugador index of the player to which you want to add the card passed by parameter
      * @param posicionCarta index of the card where it will be added
      * @param carta card to add
-     * @return Returns true if the card was added to the player.
-     *         Returns false if the card wasn't added to the player.
+     * @return Return true if the card was added to the player.
+     *         Return false if the card wasn't added to the player.
      */
 
     private boolean setCartaJugador(int posicionJugador,int posicionCarta, CartaImpl carta){
@@ -521,8 +521,8 @@ public class MesaImpl implements Mesa, Cloneable {
     /**
      * This method return the card select by the index passed by parameter from atribute "cartasMesa". The allowed range of the index of cards is 0 to 4.
      * @param indiceCarta index of the card that you want obtain
-     * @return Returns card select by the index passed by parameter from atribute "cartasMesa"
-     *         If the value of index not allowed, returns a card with value 0 and 0
+     * @return Return card select by the index passed by parameter from atribute "cartasMesa"
+     *         If the value of index not allowed, return a card with value 0 and 0
      *
      */
 
@@ -534,8 +534,8 @@ public class MesaImpl implements Mesa, Cloneable {
      * This method add the carte passed by parameter to array of letters of table in the position passed by parameter. The allowed range of the cards of the index is 0 to 4.
      * @param indiceCarta position where the card is added
      * @param carta carte to add
-     * @return Returns true if the card was added to the cards of table.
-     *         Returns false if the card wasn't added to the cards of table.
+     * @return Return true if the card was added to the cards of table.
+     *         Return false if the card wasn't added to the cards of table.
      */
 
     private boolean setCartaMesa(int indiceCarta, CartaImpl carta){
@@ -550,7 +550,7 @@ public class MesaImpl implements Mesa, Cloneable {
     /**
      * Get the number of the card of the table. The allowed range of the cards of the index is 0 to 4.
      * @param indiceCarta index of the card that will want get number
-     * @return Returns a String with the value of number of the card. If the index not between of range allowed return 0.
+     * @return Return a String with the value of number of the card. If the index not between of range allowed return 0.
      */
 
     public String getNumeroCartaMesa(int indiceCarta){
@@ -560,7 +560,7 @@ public class MesaImpl implements Mesa, Cloneable {
     /**
      * Get the stick of the card of the table. The allowed range of the cards of the index is 0 to 4.
      * @param indiceCarta index of the card that will want get stick
-     * @return Returns a char with the value of stick of the card. If the index not between of range allowed return 0.
+     * @return Return a char with the value of stick of the card. If the index not between of range allowed return 0.
      */
 
     public char getPaloCartaMesa(int indiceCarta){
@@ -1260,7 +1260,7 @@ public class MesaImpl implements Mesa, Cloneable {
     }
 
     /**
-     * This method returns a Boolean value depending on whether the value of the table passed by parameter is equal to that compared
+     * This method return a Boolean value depending on whether the value of the table passed by parameter is equal to that compared
      * @param objeto An object with which you want to check if they are the same
      * @return boolean its value depending on whether the value of the table passed by parameter is equal to that compared
      */
@@ -1286,7 +1286,7 @@ public class MesaImpl implements Mesa, Cloneable {
     }
 
     /**
-     * This method returns a object MesaImpl cloned from which it is called
+     * This method return a object MesaImpl cloned from which it is called
      * @return MesaImpl Cloned table
      */
 
