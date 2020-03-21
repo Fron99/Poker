@@ -929,14 +929,12 @@ public class MesaImpl implements Mesa, Cloneable {
      * POSTCONDICIONES: -
      */
 
-    //TODO Hacer metodo
-
     /**
      *
      */
 
     public void ingresarSaldoGanadores(){
-
+        //TODO Hacer metodo
     }
 
     /*
@@ -1182,7 +1180,9 @@ public class MesaImpl implements Mesa, Cloneable {
                 }
                 if (apuestaJugador > apuestaMinima) {
                     apuestaMinima = apuestaJugador;
-                    this.incrementarApuesta(this.turnoJugador, this.ronda, apuestaMinima);
+                    if (!(this.incrementarApuesta(this.turnoJugador, this.ronda, apuestaMinima))){
+                        System.out.println("No se pudo incrementar la apuesta, se salio del limite");
+                    }
                     this.getJugador(this.turnoJugador).disminuirDinero(apuestaMinima);
                 } else {
                     //Si el jugador apuesta el mismo valor que la apuesta minima (es decir 0) significa que pasa
@@ -1218,15 +1218,21 @@ public class MesaImpl implements Mesa, Cloneable {
                                     totalJugadas++;
                                 }
                                 this.getJugador(this.turnoJugador).disminuirDinero(apuestaJugador);
-                                this.incrementarApuesta(this.turnoJugador, this.ronda, apuestaJugador);
+                                if (!(this.incrementarApuesta(this.turnoJugador, this.ronda, apuestaJugador))){
+                                    System.out.println("No se pudo incrementar la apuesta, se salio del limite algun indice");
+                                }
                             } else {
                                 this.getJugador(this.turnoJugador).disminuirDinero(apuestaJugador);
-                                this.incrementarApuesta(this.turnoJugador, this.ronda, apuestaJugador);
+                                if (!(this.incrementarApuesta(this.turnoJugador, this.ronda, apuestaJugador))){
+                                    System.out.println("No se pudo incrementar la apuesta, se salio del limite algun indice");
+                                }
                             }
                         }
                     } else {
                         this.getJugador(this.turnoJugador).disminuirDinero(apuestaJugador);
-                        this.incrementarApuesta(this.turnoJugador, this.ronda, apuestaJugador);
+                        if (!(this.incrementarApuesta(this.turnoJugador, this.ronda, apuestaJugador))){
+                            System.out.println("No se pudo incrementar la apuesta, se salio del limite algun indice");
+                        }
                     }
                 }
                 //Actualizamos variables despues de realizar jugada
