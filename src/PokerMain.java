@@ -65,7 +65,7 @@ public class PokerMain {
         saldoInicialJugador = mesa.getSaldoJugador(0);    //Solo se utiliza para informacion al usuario al finalizar el juego
 
         //cargarBots
-        mesa.cargarBots();  //Coloca en el array de jugadores jugadores con valores generados aleatoriamente
+        mesa.generarBots();  //Coloca en el array de jugadores jugadores con valores generados aleatoriamente
 
         do {
 
