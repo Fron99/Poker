@@ -1076,14 +1076,21 @@ public class MesaImpl implements Mesa, Cloneable {
     }
 
     /**
-     * Add user bet in an exact round
-     * @param jugador int index of the user you want set bet
+     * Increase the bet in the round passed by parameter for the player passed by parameter
+     * @param posicionJugador int index of the user you want set bet
      * @param rondaApuesta int index of the round you want set bet
      * @param cantidad int amount to add
+     * @return Return true if the bet was increased.
+     *         Return false if the bet wasn't increased.
      */
 
-    private void incrementarApuesta(int jugador, int rondaApuesta, int cantidad){
-        this.apuestasJugadores[jugador][rondaApuesta] += cantidad;
+    private boolean incrementarApuesta(int posicionJugador, int rondaApuesta, int cantidad){
+        boolean res = false;
+        if ((posicionJugador >= 0 && posicionJugador <= 4) && (rondaApuesta >= 0 && rondaApuesta <= 4)){
+            this.apuestasJugadores[posicionJugador][rondaApuesta] += cantidad;
+            res = true;
+        }
+        return res;
     }
 
     /*
@@ -1148,7 +1155,6 @@ public class MesaImpl implements Mesa, Cloneable {
      *
      *
      */
-
 
     //TODO Documentar codigo mejor
     //TODO Ver si se puede modular
