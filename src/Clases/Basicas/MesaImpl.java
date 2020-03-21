@@ -785,7 +785,7 @@ public class MesaImpl implements Mesa, Cloneable {
     }
 
     /*
-     * SIGNATURA: public void limpiarMesa()
+     * SIGNATURA: public void restaurarApuestas()
      * COMENTARIO: Coloca en defecto todas las cartas del array pasado por parametro y coloca todas las apuestas de los jugadores a 0
      * PRECONDICIONES: - Nada
      * ENTRADA: - Nada
@@ -798,13 +798,10 @@ public class MesaImpl implements Mesa, Cloneable {
      * Change the cards of the table to default and set bets to 0
      */
 
-    public void limpiarMesa() {
-        for (int i = 0; i < this.getCartasMesa().length; i++) {
-            this.getCartasMesa()[i] = new CartaImpl();
-        }
-        for (int i = 0; i < this.getApuestasJugadores().length; i++) {
-            for (int j = 0; j < this.getApuestasJugadores().length; j++) {
-                this.getApuestasJugadores()[i][j] = 0;
+    public void restaurarApuestas() {
+        for (int i = 0; i < this.apuestasJugadores.length; i++) {
+            for (int j = 0; j < this.apuestasJugadores.length; j++) {
+                this.apuestasJugadores[i][j] = 0;
             }
         }
     }
