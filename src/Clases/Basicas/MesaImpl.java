@@ -672,7 +672,7 @@ public class MesaImpl implements Mesa, Cloneable {
      * ENTRADA: - Nada
      * SALIDA: - Nada
      * ENTRADA/SALIDA: - Un array de CartaImpl
-     * POSTCONDICIONES: Modifica el array pasado por parametro colocando todas las cartas de la mesa con palo D y numero D
+     * POSTCONDICIONES: Modifica el atributo cartas mesa colocando todas las cartas de la mesa por defecto (con palo D y numero D)
      */
 
     /**
@@ -683,6 +683,33 @@ public class MesaImpl implements Mesa, Cloneable {
         for (int i = 0; i<this.cartasMesa.length; i++){
             this.cartasMesa[i] = new CartaImpl();
         }
+    }
+
+    /*
+     * SIGNATURA: public void restaurarBaraja()
+     * COMENTARIO: Restaura todas las cartas de la baraja del atributo baraja
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: Modifica el atributo baraja restaurando todas sus cartas.
+     */
+
+    /**
+     * Restores all cards in the deck of the deck attribute
+     */
+
+    public void restaurarBaraja(){
+
+        char[] palos = new char[]{'P','C','R','T'};
+        String[] numeros = new String[]{"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
+
+        for (int i = 0, contador = 0;i<palos.length;i++){
+            for (String numero : numeros) {
+                this.baraja[contador++] = new CartaImpl(palos[i], numero);
+            }
+        }
+
     }
 
     //TODO INICIO Revisar esto
@@ -719,7 +746,7 @@ public class MesaImpl implements Mesa, Cloneable {
      * ENTRADA: - Nada
      * SALIDA: - Nada
      * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: - Coloca todos los jugadores del array jugadores de la mesa en activo.
+     * POSTCONDICIONES: - Coloca todos los jugadores del atributo jugadores de la mesa en activo.
      */
 
     /**
@@ -730,6 +757,90 @@ public class MesaImpl implements Mesa, Cloneable {
         for(JugadorImpl jugador: this.jugadores){
             jugador.setActivo(true);
         }
+    }
+
+    /*
+     * SIGNATURA: public void generarBots();
+     * COMENTARIO: Genera jugadores con nombres aleatorios y los añade en el atributo jugadores.
+     * PRECONDICIONES: - El array debe ser de JugadorImpl
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Array de JugadorImpl
+     * POSTCONDICIONES: - Modifica el atributo jugadores anhadiendo jugadores con nombres aleatorios.
+     *
+     */
+
+    /**
+     * Generate players with random names and add them in the players attribute.
+     */
+
+    public void generarBots(){
+
+        Random random = new Random();
+        String[] nombresAleatorios = {"Kun","Wang","YanYan","Zhao","Yun","Sasha","Volodia","Hedeon","Grigory"};
+        for (int i = 1; i<jugadores.length;i++){
+            this.jugadores[i] = new JugadorImpl(nombresAleatorios[random.nextInt(8)],jugadores[0].getSaldo());
+        }
+
+    }
+
+    /*
+     * SIGNATURA: public void limpiarMesa()
+     * COMENTARIO: Coloca en defecto todas las cartas del array pasado por parametro y coloca todas las apuestas de los jugadores a 0
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: Modifica las cartas de la mesa colocandolas por defecto y coloca todas las apuestas a 0
+     */
+
+    /**
+     * Change the cards of the table to default and set bets to 0
+     */
+
+    public void limpiarMesa() {
+        for (int i = 0; i < this.getCartasMesa().length; i++) {
+            this.getCartasMesa()[i] = new CartaImpl();
+        }
+        for (int i = 0; i < this.getApuestasJugadores().length; i++) {
+            for (int j = 0; j < this.getApuestasJugadores().length; j++) {
+                this.getApuestasJugadores()[i][j] = 0;
+            }
+        }
+    }
+
+    /*
+     * SIGNATURA: public void generarTresCartasMesa();
+     * COMENTARIO: Saca 3 cartas de la baraja y las coloca en el array de las cartas de la mesa
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: Modifica el array de las barajas, colocando 3 los huecos de las 3 cartas sacadas como cartas por defecto y coloca las cartas sacadas
+     *                  en el array de las cartas de la mesa.
+     */
+
+    /**
+     *
+     */
+
+    public void generarTresCartasMesa() {
+
+        Random r = new Random();
+        int numPosicionCarta;
+
+        numPosicionCarta = r.nextInt(52);
+        for (int i = 0; i < 3; i++) {
+            do {
+                if (this.baraja[numPosicionCarta].getPalo() != 'D') {
+                    this.cartasMesa[i] = this.baraja[numPosicionCarta];
+                    this.baraja[numPosicionCarta] = new CartaImpl();
+                }
+                numPosicionCarta = r.nextInt(52);
+            } while (this.baraja[numPosicionCarta].getPalo() == 'D');
+
+        }
+
     }
 
     /*
@@ -806,117 +917,6 @@ public class MesaImpl implements Mesa, Cloneable {
             } while (this.baraja[numPosicionCarta].getPalo() == 'D');
             this.baraja[numPosicionCarta] = new CartaImpl();
         }
-    }
-
-    /*
-     * SIGNATURA: public void cargarBots();
-     * COMENTARIO: Carga un array pasado por parametros con jugadores aleatorios
-     * PRECONDICIONES: - El array debe ser de JugadorImpl
-     * ENTRADA: - Nada
-     * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Array de JugadorImpl
-     * POSTCONDICIONES: - Modifica el array de Jugadores pasado por parametro añadiendo usuarios aleatorios
-     *
-     */
-
-    /**
-     *
-     */
-
-    public void cargarBots(){
-
-        Random random = new Random();
-        String[] nombresAleatorios = {"Kun","Wang","YanYan","Zhao","Yun","Sasha","Volodia","Hedeon","Grigory"};
-        for (int i = 1; i<jugadores.length;i++){
-            this.jugadores[i] = new JugadorImpl(nombresAleatorios[random.nextInt(8)],jugadores[0].getSaldo());
-        }
-
-    }
-
-    /*
-     * SIGNATURA: public void restaurarBaraja()
-     * COMENTARIO: Anhade todas las cartas posibles al array pasado por parametro
-     * PRECONDICIONES: - El array debe tener como minimo 52 campos
-     * ENTRADA: - Nada
-     * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: Modifica el array pasado por parametro anhadiendo todas las cartas posibles
-     */
-
-    /**
-     * Place all possible cards in the deck in an array
-     */
-
-    public void restaurarBaraja(){
-
-        char[] palos = new char[]{'P','C','R','T'};
-        String[] numeros = new String[]{"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
-
-        for (int i = 0, contador = 0;i<palos.length;i++){
-            for (String numero : numeros) {
-                this.baraja[contador++] = new CartaImpl(palos[i], numero);
-            }
-        }
-
-    }
-
-    /*
-     * SIGNATURA: public void limpiarMesa()
-     * COMENTARIO: Coloca en defecto todas las cartas del array pasado por parametro y coloca todas las apuestas de los jugadores a 0
-     * PRECONDICIONES: - Nada
-     * ENTRADA: - Nada
-     * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: Modifica las cartas de la mesa colocandolas por defecto y coloca todas las apuestas a 0
-     */
-
-    /**
-     * Change the cards of the table to default and set bets to 0
-     */
-
-    public void limpiarMesa() {
-        for (int i = 0; i < this.getCartasMesa().length; i++) {
-            this.getCartasMesa()[i] = new CartaImpl();
-        }
-        for (int i = 0; i < this.getApuestasJugadores().length; i++) {
-            for (int j = 0; j < this.getApuestasJugadores().length; j++) {
-                this.getApuestasJugadores()[i][j] = 0;
-            }
-        }
-    }
-
-    /*
-     * SIGNATURA: public void generarTresCartasMesa();
-     * COMENTARIO: Saca 3 cartas de la baraja y las coloca en el array de las cartas de la mesa
-     * PRECONDICIONES: - Nada
-     * ENTRADA: - Nada
-     * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: Modifica el array de las barajas, colocando 3 los huecos de las 3 cartas sacadas como cartas por defecto y coloca las cartas sacadas
-     *                  en el array de las cartas de la mesa.
-     */
-
-    /**
-     *
-     */
-
-    public void generarTresCartasMesa() {
-
-        Random r = new Random();
-        int numPosicionCarta;
-
-        numPosicionCarta = r.nextInt(52);
-        for (int i = 0; i < 3; i++) {
-            do {
-                if (this.baraja[numPosicionCarta].getPalo() != 'D') {
-                    this.cartasMesa[i] = this.baraja[numPosicionCarta];
-                    this.baraja[numPosicionCarta] = new CartaImpl();
-                }
-                numPosicionCarta = r.nextInt(52);
-            } while (this.baraja[numPosicionCarta].getPalo() == 'D');
-
-        }
-
     }
 
     /*
