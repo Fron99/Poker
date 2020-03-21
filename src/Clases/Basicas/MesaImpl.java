@@ -666,6 +666,30 @@ public class MesaImpl implements Mesa, Cloneable {
     }
 
     /*
+     * SIGNATURA: public void restaurarMesa();
+     * COMENTARIO: Elimina todos los cambios que se hayan realizado sobre los atributos baraja, activoJugadores, cartasJugadores, cartasMesa, apuestas y ronda y lo coloca por defecto para empezar una jugada nueva.
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Elimina todos los cambios que se hayan realizado sobre los atributos baraja, activoJugadores, cartasJugadores, cartasMesa y apuestas y lo coloca por defecto para empezar una jugada nueva.
+     *
+     */
+
+    /**
+     * Removes all changes made to the "baraja", "activoJugadores", "cartasJugadores", "cartasMesa", "apuestas" and "ronda" attributes and defaults to starting a new play.
+     */
+
+    public void restaurarMesa(){
+        restaurarBaraja();
+        colocarJugadoresActivos();
+        generarCartasJugadores();
+        restaurarCartasMesa();
+        restaurarApuestas();
+        this.ronda = 0;
+    }
+
+    /*
      * SIGNATURA: public void restaurarCartasMesa()
      * COMENTARIO: Coloca todas las cartas de la mesa con palo D y numero D
      * PRECONDICIONES: - Nada
@@ -713,27 +737,25 @@ public class MesaImpl implements Mesa, Cloneable {
     }
 
     /*
-     * SIGNATURA: public void restaurarMesa();
-     * COMENTARIO: Elimina todos los cambios que se hayan realizado sobre los atributos baraja, activoJugadores, cartasJugadores, cartasMesa, apuestas y ronda y lo coloca por defecto para empezar una jugada nueva.
+     * SIGNATURA: public void restaurarApuestas()
+     * COMENTARIO: Coloca en defecto todas las cartas del array pasado por parametro y coloca todas las apuestas de los jugadores a 0
      * PRECONDICIONES: - Nada
      * ENTRADA: - Nada
      * SALIDA: - Nada
      * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: - Elimina todos los cambios que se hayan realizado sobre los atributos baraja, activoJugadores, cartasJugadores, cartasMesa y apuestas y lo coloca por defecto para empezar una jugada nueva.
-     *
+     * POSTCONDICIONES: Modifica las cartas de la mesa colocandolas por defecto y coloca todas las apuestas a 0
      */
 
     /**
-     * Removes all changes made to the "baraja", "activoJugadores", "cartasJugadores", "cartasMesa", "apuestas" and "ronda" attributes and defaults to starting a new play.
+     * Change the cards of the table to default and set bets to 0
      */
 
-    public void restaurarMesa(){
-        restaurarBaraja();
-        colocarJugadoresActivos();
-        generarCartasJugadores();
-        restaurarCartasMesa();
-        restaurarApuestas();
-        this.ronda = 0;
+    public void restaurarApuestas() {
+        for (int i = 0; i < this.apuestasJugadores.length; i++) {
+            for (int j = 0; j < this.apuestasJugadores.length; j++) {
+                this.apuestasJugadores[i][j] = 0;
+            }
+        }
     }
 
     /*
@@ -779,28 +801,6 @@ public class MesaImpl implements Mesa, Cloneable {
             this.jugadores[i] = new JugadorImpl(nombresAleatorios[random.nextInt(8)],jugadores[0].getSaldo());
         }
 
-    }
-
-    /*
-     * SIGNATURA: public void restaurarApuestas()
-     * COMENTARIO: Coloca en defecto todas las cartas del array pasado por parametro y coloca todas las apuestas de los jugadores a 0
-     * PRECONDICIONES: - Nada
-     * ENTRADA: - Nada
-     * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: Modifica las cartas de la mesa colocandolas por defecto y coloca todas las apuestas a 0
-     */
-
-    /**
-     * Change the cards of the table to default and set bets to 0
-     */
-
-    public void restaurarApuestas() {
-        for (int i = 0; i < this.apuestasJugadores.length; i++) {
-            for (int j = 0; j < this.apuestasJugadores.length; j++) {
-                this.apuestasJugadores[i][j] = 0;
-            }
-        }
     }
 
     /*
