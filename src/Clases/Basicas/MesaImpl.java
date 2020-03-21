@@ -972,8 +972,6 @@ public class MesaImpl implements Mesa, Cloneable {
      * POSTCONDICIONES: - No devuelve nada, solo imprime por pantalla el estado actual en el que se encuentran los jugadores y las cartas
      */
 
-    //TODO Implementar que no haya diferencias si hay mas de x dinero o si el nombre es mayor o menor
-
     /**
      *  Print in screen the table with all properties of users and the carts depending on the turn
      */
@@ -984,6 +982,9 @@ public class MesaImpl implements Mesa, Cloneable {
         for (int i = 0;i<numerosCartasJugadores.length;i++){
             for (int j = 0;j<numerosCartasJugadores[i].length;j++){
                 numerosCartasJugadores[i][j] = this.getNumeroCartaJugador(i,j);
+                while (numerosCartasJugadores[i][j].length() < 3){
+                    numerosCartasJugadores[i][j] += " ";
+                }
             }
         }
 
@@ -997,11 +998,23 @@ public class MesaImpl implements Mesa, Cloneable {
         String[] usersJugadores = new String[5];
         for (int i = 0; i<usersJugadores.length;i++){
             usersJugadores[i] = this.getUsuarioJugador(i);
+            while (usersJugadores[i].length() < 20){
+                usersJugadores[i] += " ";
+            }
+            if (usersJugadores[i].length() > 20){
+                usersJugadores[i] = usersJugadores[i].substring(0,20);
+            }
         }
 
-        int[] saldoJugadores = new int[5];
+        String[] saldoJugadores = new String[5];
         for (int i = 0; i<saldoJugadores.length;i++){
-            saldoJugadores[i] = this.getSaldoJugador(i);
+            saldoJugadores[i] = this.getSaldoJugador(i)+"€";
+            while (saldoJugadores[i].length() < 11){
+                saldoJugadores[i] += " ";
+            }
+            if (saldoJugadores[i].length() > 11){
+                saldoJugadores[i] = saldoJugadores[i].substring(0,11);
+            }
         }
 
         char[] palosCartasMesa = new char[5];
@@ -1012,15 +1025,18 @@ public class MesaImpl implements Mesa, Cloneable {
         String[] numerosCartasMesa = new String[5];
         for (int i = 0; i<numerosCartasMesa.length;i++){
             numerosCartasMesa[i] = this.getNumeroCartaMesa(i);
+            while (numerosCartasMesa[i].length() < 3){
+                numerosCartasMesa[i] += " ";
+            }
         }
 
 
         System.out.println("                                      " + usersJugadores[2] + "                                                         " + usersJugadores[3]);
         System.out.println();
-        System.out.println("                                      " + saldoJugadores[2] + "€                                                              " + saldoJugadores[3] + "€");
+        System.out.println("                                      " + saldoJugadores[2] + "                                                     " + saldoJugadores[3]);
         System.out.println("                                      |º º|     -----        -----                                    |º º|    -----        -----");
         System.out.println("                                      |---|    | "+(this.ronda==4?palosCartasJugadores[2][0]:"?")+"   |      | "+(this.ronda==4?palosCartasJugadores[2][1]:"?")+"   |                                   |---|   | "+(this.ronda==4?palosCartasJugadores[3][0]:"?")+"   |      | "+(this.ronda==4?palosCartasJugadores[3][1]:"?")+"   |  ");
-        System.out.println("                                               | "+(this.ronda==4?numerosCartasJugadores[2][0]:"?")+"   |      | "+(this.ronda==4?numerosCartasJugadores[2][1]:"?")+"   |                                           | "+(this.ronda==4?numerosCartasJugadores[3][0]:"?")+"   |      | "+(this.ronda==4?numerosCartasJugadores[3][1]:"?")+"   |");
+        System.out.println("                                               | "+(this.ronda==4?numerosCartasJugadores[2][0]:"?  ")+" |      | "+(this.ronda==4?numerosCartasJugadores[2][1]:"?  ")+" |                                           | "+(this.ronda==4?numerosCartasJugadores[3][0]:"?  ")+" |      | "+(this.ronda==4?numerosCartasJugadores[3][1]:"?  ")+" |");
         System.out.println("                                                -----        -----                                             -----        -----");
 
 
@@ -1031,10 +1047,10 @@ public class MesaImpl implements Mesa, Cloneable {
 
         System.out.println("       " + usersJugadores[1] + "                                                                                                                              " + usersJugadores[4]);
         System.out.println("                                                        ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- ");
-        System.out.println("       " + saldoJugadores[1] + "€                                              | " + palosCartasMesa[0] + "   |" + "       " + "| " + palosCartasMesa[1] + "   |" + "       " + "| " + palosCartasMesa[2] + "   |" + "       " + "| " + palosCartasMesa[3] + "   |" + "       " + "| " + palosCartasMesa[4] + "   |                      " + saldoJugadores[4] + "€");
-        System.out.println("       |º º|       -----        -----                  | " + numerosCartasMesa[0] + "   |" + "       " + "| " + numerosCartasMesa[1] + "   |" + "       " + "| " + numerosCartasMesa[2] + "   |" + "       " + "| " + numerosCartasMesa[3] + "   |" + "       " + "| " + numerosCartasMesa[4] + "   |                      |º º|      -----        -----");
+        System.out.println("       " + saldoJugadores[1] + "                                     | " + palosCartasMesa[0] + "   |" + "       " + "| " + palosCartasMesa[1] + "   |" + "       " + "| " + palosCartasMesa[2] + "   |" + "       " + "| " + palosCartasMesa[3] + "   |" + "       " + "| " + palosCartasMesa[4] + "   |                      " + saldoJugadores[4]);
+        System.out.println("       |º º|       -----        -----                  | " + numerosCartasMesa[0] + " |" + "       " + "| " + numerosCartasMesa[1] + " |" + "       " + "| " + numerosCartasMesa[2] + " |" + "       " + "| " + numerosCartasMesa[3] + " |" + "       " + "| " + numerosCartasMesa[4] + " |                      |º º|      -----        -----");
         System.out.println("       |---|      | "+(this.ronda==4?palosCartasJugadores[1][0]:"?")+"   |      | "+(this.ronda==4?palosCartasJugadores[1][1]:"?")+"   |                 |     |" + "       " + "|     |" + "       " + "|     |" + "       " + "|     |" + "       " + "|     |" + "                      |---|     | "+(this.ronda==4?palosCartasJugadores[4][0]:"?")+"   |      | "+(this.ronda==4?palosCartasJugadores[4][1]:"?")+"   |");
-        System.out.println("                  | "+(this.ronda==4?numerosCartasJugadores[1][0]:"?")+"   |      | "+(this.ronda==4?numerosCartasJugadores[1][1]:"?")+"   |                  ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " -----                                 | "+(this.ronda==4?numerosCartasJugadores[4][0]:"?")+"   |      | "+(this.ronda==4?numerosCartasJugadores[4][1]:"?")+"   |");
+        System.out.println("                  | "+(this.ronda==4?numerosCartasJugadores[1][0]:"?  ")+" |      | "+(this.ronda==4?numerosCartasJugadores[1][1]:"?  ")+" |                  ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " -----                                 | "+(this.ronda==4?numerosCartasJugadores[4][0]:"?  ")+" |      | "+(this.ronda==4?numerosCartasJugadores[4][1]:"?  ")+" |");
         System.out.println("                   -----        -----                                                                                                                  -----        -----");
 
         System.out.println();
@@ -1043,14 +1059,14 @@ public class MesaImpl implements Mesa, Cloneable {
         System.out.println();
 
         System.out.println("                                                                 " + usersJugadores[0]);
-        System.out.println("                                                              TU SALDO ES: " + saldoJugadores[0] + "€");
+        System.out.println("                                                              TU SALDO ES: " + saldoJugadores[0]);
         System.out.println();
         System.out.println("                                                           _______________________");
         System.out.println("                                                          |                       |");
         System.out.println("                                                          |    __           __    |");
         System.out.println("                                                          |   |º |         |º |   |            ----------           ----------");
         System.out.println("                                                          |    --           --    |           | "+palosCartasJugadores[0][0]+"        |         | "+palosCartasJugadores[0][1]+"        |");
-        System.out.println("                                                          |                       |           | "+numerosCartasJugadores[0][0]+"        |         | "+numerosCartasJugadores[0][1]+"        |");
+        System.out.println("                                                          |                       |           | "+numerosCartasJugadores[0][0]+"      |         | "+numerosCartasJugadores[0][1]+"      |");
         System.out.println("                                                          |   \\              /    |           |          |         |          |");
         System.out.println("                                                          |     \\___________/     |           |          |         |          |");
         System.out.println("                                                          |                       |            ----------           ----------");
