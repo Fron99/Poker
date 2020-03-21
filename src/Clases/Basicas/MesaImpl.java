@@ -712,32 +712,29 @@ public class MesaImpl implements Mesa, Cloneable {
 
     }
 
-    //TODO INICIO Revisar esto
-
     /*
      * SIGNATURA: public void restaurarMesa();
-     * COMENTARIO: Elimina todos los cambios que se hayan realizado sobre los atributos y lo coloca por defecto para empezar una partida nueva.
+     * COMENTARIO: Elimina todos los cambios que se hayan realizado sobre los atributos baraja, activoJugadores, cartasJugadores, cartasMesa, apuestas y ronda y lo coloca por defecto para empezar una jugada nueva.
      * PRECONDICIONES: - Nada
      * ENTRADA: - Nada
      * SALIDA: - Nada
      * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: - Modifica el valor de todos los atributos y los pone por defecto
+     * POSTCONDICIONES: - Elimina todos los cambios que se hayan realizado sobre los atributos baraja, activoJugadores, cartasJugadores, cartasMesa y apuestas y lo coloca por defecto para empezar una jugada nueva.
      *
      */
 
     /**
-     *
+     * Removes all changes made to the "baraja", "activoJugadores", "cartasJugadores", "cartasMesa", "apuestas" and "ronda" attributes and defaults to starting a new play.
      */
 
     public void restaurarMesa(){
-        limpiarMesa();
         restaurarBaraja();
         colocarJugadoresActivos();
         generarCartasJugadores();
+        restaurarCartasMesa();
+        restaurarApuestas();
         this.ronda = 0;
     }
-
-    //TODO FIN Revisar esto
 
     /*
      * SIGNATURA: public void colocarJugadoresActivos()
