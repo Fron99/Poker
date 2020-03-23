@@ -276,7 +276,7 @@ public class JugadorImpl implements Jugador, Cloneable {
 
     @Override
     public JugadorImpl clone() {
-        JugadorImpl jugador = null;
+        JugadorImpl jugador = new JugadorImpl();
         jugador.usuario = this.usuario;
         jugador.saldo = this.saldo;
         for (int i = 0;i<cartas.length; i++){
