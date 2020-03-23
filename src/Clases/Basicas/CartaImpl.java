@@ -50,7 +50,7 @@ public class CartaImpl implements Carta, Cloneable{
      * @param numero String with value of numero
      */
 
-    public CartaImpl(char palo, String numero){//TODO Controlar palos
+    public CartaImpl(char palo, String numero){//TODO Controlar palos Solo validos algunos y 0 0
         this.palo = palo;
         this.numero = numero;
     }
