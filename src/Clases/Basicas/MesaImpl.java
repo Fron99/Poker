@@ -54,6 +54,8 @@
  *
  * public int getTotalApuestas();
  *
+ * public int getRonda();
+ *
  * METODOS AÑADIDOS:
  *
  * public void limpiarCartasMesa();
@@ -663,6 +665,15 @@ public class MesaImpl implements Mesa, Cloneable {
             }
         }
         return total;
+    }
+
+    /**
+     *
+     */
+    //TODO
+
+    public int getRonda(){
+        return this.ronda;
     }
 
     /*
