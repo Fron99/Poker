@@ -1211,18 +1211,18 @@ public class MesaImpl implements Mesa, Cloneable {
                 if (this.getJugador(turnoJugadorParcial).getActivo() && this.getJugador(turnoJugadorParcial).getSaldo() > 0) {
                     //
                     if(turnoJugadorParcial == 0){
-                        System.out.println("La apuesa minima es: "+(apuestaMinima-this.getApuestaJugador(turnoJugadorParcial,this.ronda)));
+                        System.out.println("La apuesa minima es: "+apuestaMinima);
                         apuestaJugador = gesJug.leerYValidarApuesta(this.getJugador(turnoJugadorParcial), apuestaMinima);
                     }else{
                         apuestaJugador = gesJug.calcularApostarBot(apuestaMinima,this,turnoJugadorParcial);
                     }
 
                     //Evaluar las apuestas
-                    if (apuestaMinima-this.getApuestaJugador(turnoJugadorParcial,this.ronda) == apuestaMinima){
-                        this.jugadores[turnoJugadorParcial].disminuirDinero(apuestaMinima-this.getApuestaJugador(turnoJugadorParcial,this.ronda));
+                    if (apuestaJugador == apuestaMinima){
+                        this.jugadores[turnoJugadorParcial].disminuirDinero(apuestaMinima);
                     }else{
-                        if (apuestaMinima-this.getApuestaJugador(turnoJugadorParcial,this.ronda) > apuestaMinima){
-                            this.jugadores[turnoJugadorParcial].disminuirDinero(apuestaMinima-this.getApuestaJugador(turnoJugadorParcial,this.ronda));
+                        if (apuestaJugador > apuestaMinima){
+                            this.jugadores[turnoJugadorParcial].disminuirDinero(apuestaMinima);
                             turnoJugadorFinal = turnoJugadorParcial;
                             apuestaMinima = this.getApuestaJugador(turnoJugadorParcial,this.ronda);
                         }else{

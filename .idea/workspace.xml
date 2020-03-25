@@ -66,7 +66,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../EnvironmentOfDeveloperFirst" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -278,11 +278,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="428" y="89" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583497696162" />
-    <state x="529" y="188" key="FileChooserDialogImpl" timestamp="1583497690407">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="744" y="268" key="FileChooserDialogImpl" timestamp="1585130294091">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="529" y="188" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583497690407" />
-    <state x="744" y="268" key="FileChooserDialogImpl/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1583432210128" />
+    <state x="744" y="268" key="FileChooserDialogImpl/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1585130294091" />
     <state width="1877" height="463" key="GridCell.Tab.0.bottom" timestamp="1585079363101">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -407,11 +407,6 @@
           <url>file://$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java</url>
           <line>47</line>
           <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java</url>
-          <line>660</line>
-          <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/PokerMain.java</url>
