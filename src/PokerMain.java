@@ -103,10 +103,10 @@ public class PokerMain {
             mesa.incrementarTurno();
 
             //TODO Falta añadir que haya usuarios con saldo en el while y que el usuario quiera seguir
-        }while (mesa.getJugadores()[0].getSaldo()>0);
+        }while (mesa.getSaldoJugador(0)>0);
 
         //TODO Solucion solo para que funcione de momento
-        System.out.println("El jugador "+mesa.getJugadores()[0].getUsuario()+" empezo con "+saldoInicialJugador+" y acabo con "+(saldoInicialJugador-mesa.getJugadores()[0].getSaldo())+"");
+        System.out.println("El jugador "+mesa.getUsuarioJugador(0)+" empezo con "+saldoInicialJugador+" y acabo con "+mesa.getSaldoJugador(0)+"");
 
     }
 
