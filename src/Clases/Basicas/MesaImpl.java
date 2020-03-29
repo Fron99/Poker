@@ -735,16 +735,15 @@ public class MesaImpl implements Mesa, Cloneable {
      */
 
     public void restaurarBaraja(){
-
         char[] palos = new char[]{'P','C','R','T'};
         String[] numeros = new String[]{"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
-
-        for (int i = 0, contador = 0;i<palos.length;i++){
+        int contador = 0;
+        for (char palo: palos){
             for (String numero : numeros) {
-                this.baraja[contador++] = new CartaImpl(palos[i], numero);
+                this.baraja[contador] = new CartaImpl(palo, numero);
+                contador++;
             }
         }
-
     }
 
     /*
