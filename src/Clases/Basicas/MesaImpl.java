@@ -1210,25 +1210,28 @@ public class MesaImpl implements Mesa, Cloneable {
                 if (this.getJugador(turnoJugadorParcial).getActivo() && this.getJugador(turnoJugadorParcial).getSaldo() > 0) {
                     //
                     if(turnoJugadorParcial == 0){
-                        System.out.println("La apuesa minima es: "+apuestaMinima);
-                        apuestaJugador = gesJug.leerYValidarApuesta(this.getJugador(turnoJugadorParcial), apuestaMinima);
+                        System.out.println("La apuesa minima es: "+(apuestaMinima-this.getApuestaJugador(turnoJugadorParcial,ronda)));
+                        apuestaJugador = gesJug.leerYValidarApuesta(this.getJugador(turnoJugadorParcial), apuestaMinima-this.getApuestaJugador(turnoJugadorParcial,ronda));
                     }else{
-                        apuestaJugador = gesJug.calcularApostarBot(apuestaMinima,this,turnoJugadorParcial);
+                        apuestaJugador = gesJug.calcularApostarBot(apuestaMinima-this.getApuestaJugador(turnoJugadorParcial,ronda),this,turnoJugadorParcial);
                     }
 
                     //Evaluar las apuestas
-                    if (apuestaJugador == apuestaMinima){
-                        this.jugadores[turnoJugadorParcial].disminuirDinero(apuestaMinima);
+                    if ((apuestaJugador+this.getApuestaJugador(turnoJugadorParcial,ronda)) == apuestaMinima){
+                        this.jugadores[turnoJugadorParcial].disminuirDinero(apuestaJugador);
+                        this.incrementarApuesta(turnoJugadorParcial,ronda,apuestaJugador);
                     }else{
-                        if (apuestaJugador > apuestaMinima){
-                            this.jugadores[turnoJugadorParcial].disminuirDinero(apuestaMinima);
+                        if ((apuestaJugador+this.getApuestaJugador(turnoJugadorParcial,ronda)) > apuestaMinima){
+                            this.jugadores[turnoJugadorParcial].disminuirDinero(apuestaJugador-this.getApuestaJugador(turnoJugadorParcial,ronda));
+                            this.incrementarApuesta(turnoJugadorParcial,ronda,apuestaJugador-this.getApuestaJugador(turnoJugadorParcial,ronda));
                             turnoJugadorFinal = turnoJugadorParcial;
-                            apuestaMinima = this.getApuestaJugador(turnoJugadorParcial,this.ronda);
+                            apuestaMinima = apuestaJugador;
                         }else{
                             //No hace falta comprobar que sea menor porque ya esta comprobado en los if de arriba
                             //En este caso se controla que el jugador haga all-in pero no llegue a la apuesta minima
                             if (this.jugadores[turnoJugadorParcial].getSaldo() == apuestaJugador){
                                 this.jugadores[turnoJugadorParcial].disminuirDinero(apuestaJugador);
+                                this.incrementarApuesta(turnoJugadorParcial,ronda,apuestaJugador);
                             }else{  //Este es el caso de que el jugador se tire
                                 this.jugadores[turnoJugadorParcial].setActivo(false);
                             }
