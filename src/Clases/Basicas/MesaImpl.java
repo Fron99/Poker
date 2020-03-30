@@ -1192,7 +1192,7 @@ public class MesaImpl implements Mesa, Cloneable {
                 //
                 if(turnoJugadorParcial == 0){
                     System.out.println("Introduce primera apuesta");
-                    apuestaMinima = gesJug.leerYValidarApuesta(this.getJugador(turnoJugadorParcial), apuestaMinima);
+                    apuestaMinima = gesJug.leerYValidarApuesta(turnoJugadorParcial, apuestaMinima, this);
                 }else{
                     apuestaMinima = gesJug.calcularApostarBot(apuestaMinima,this,turnoJugadorParcial);
                 }
@@ -1213,9 +1213,7 @@ public class MesaImpl implements Mesa, Cloneable {
                 if (this.getJugador(turnoJugadorParcial).getActivo() && this.getSaldoJugador(turnoJugadorParcial) > 0) {
                     //
                     if(turnoJugadorParcial == 0){
-                        System.out.println("La apuesa minima es: "+(apuestaMinima-this.getApuestaJugador(turnoJugadorParcial,ronda)));
-                        //TODO No tener que restar en la apuesta minima
-                        apuestaJugador = gesJug.leerYValidarApuesta(this.getJugador(turnoJugadorParcial), apuestaMinima-this.getApuestaJugador(turnoJugadorParcial,ronda));
+                        apuestaJugador = gesJug.leerYValidarApuesta(turnoJugadorParcial, apuestaMinima, this);
                     }else{
                         //TODO Mostrar cuanto apuesta el jugador
                         apuestaJugador = gesJug.calcularApostarBot(apuestaMinima,this,turnoJugadorParcial);
@@ -1233,9 +1231,9 @@ public class MesaImpl implements Mesa, Cloneable {
                     }else{
                         if ((apuestaJugador+this.getApuestaJugador(turnoJugadorParcial,ronda)) > apuestaMinima){
                             //En el caso de que el jugador suba la apuesta se le resta la apuesta realizada
-                            this.jugadores[turnoJugadorParcial].disminuirDinero(apuestaJugador-this.getApuestaJugador(turnoJugadorParcial,ronda));
+                            this.jugadores[turnoJugadorParcial].disminuirDinero(apuestaJugador);
                             //Se le incrementa la apuesta en la ronda
-                            if (!(this.incrementarApuesta(turnoJugadorParcial,ronda,apuestaJugador-this.getApuestaJugador(turnoJugadorParcial,ronda)))){
+                            if (!(this.incrementarApuesta(turnoJugadorParcial,ronda,apuestaJugador))){
                                 System.out.println("No se ha podido incrementar la apuesta");
                             }
                             //Se guarda su posicion para volver a recorrer el array hasta que llegue a su posicion y asi poder tirar todos los jugadores
