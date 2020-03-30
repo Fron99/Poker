@@ -87,6 +87,7 @@
 
 package Clases.Basicas;
 
+import Clases.Gestoras.GestoraCartaImpl;
 import Clases.Gestoras.GestoraJugadorImpl;
 import Clases.Interfaces.Mesa;
 
@@ -962,37 +963,45 @@ public class MesaImpl implements Mesa, Cloneable {
     //TODO ASDasd
 
     public void ingresarSaldoGanadores(){
-        boolean quedanGanadores = true;
-        int indiceGanador = -1, totalGanancias = 0;
-        do {
+        GestoraCartaImpl gestoraCarta = new GestoraCartaImpl();
+        int cantidadGanadores = 0, indiceGanador = -1, totalGanancias = 0, puntosAnteriorGanador = 99999, puntosAnteriorJugador = 0, puntosJugadorCalculados;
+
+        do{
+            //Obtener ganador
             for (int i = 0; i< this.jugadores.length;i++){
-                if (i != indiceGanador){
-                    //Calcular
-                    indiceGanador = i;
+                puntosJugadorCalculados = gestoraCarta.evaluarCartas(i,this);
+                //Se utiliza puntosAnteriorGanador
+                if (puntosAnteriorGanador > puntosJugadorCalculados
+                    && puntosJugadorCalculados > puntosAnteriorJugador
+                    && this.jugadores[i].getActivo()){
+                        puntosAnteriorJugador = gestoraCarta.evaluarCartas(i,this);
+                        indiceGanador = i;
                 }
             }
 
             if (!this.jugadores[indiceGanador].getAllInMenor()){
                 //Incrementa el saldo total del jugador con toodo el dinero de la mesa
                 this.jugadores[indiceGanador].aumentarDinero(this.getTotalApuestas());
-                quedanGanadores = false;
-            }else{
-                //Calcular el total que debe ganar el jugador
-                for (int i = 0; i < this.apuestasJugadores[indiceGanador].length;i++){
-                    totalGanancias += this.apuestasJugadores[indiceGanador][i];
-                }
-                this.jugadores[indiceGanador].aumentarDinero(totalGanancias * 5);
 
-                //Restar las apuestas a las apuestas totales
-                for (int i = 0, cantidadARestar; i < this.apuestasJugadores[indiceGanador].length;i++){
-                    cantidadARestar = this.apuestasJugadores[indiceGanador][i];
-                    for (int j = 0; j < this.apuestasJugadores.length;j++){
-                        this.apuestasJugadores[i][j] -= cantidadARestar;
-                    }
-                }
+                //Colocar todas las apuestas a 0
+                this.restaurarApuestas();
+
+            }else{
+
+                //Calcular el total que debe ganar el jugador
+
+
+                //Aumentar saldo jugador
+                this.jugadores[indiceGanador].aumentarDinero(totalGanancias);
+
+
+
+                //Disminuir dinero en las apuestas las apuestas a las apuestas totales
 
             }
-        }while (quedanGanadores);
+
+        }while (this.getTotalApuestas() > 0);
+
     }
 
     /*
