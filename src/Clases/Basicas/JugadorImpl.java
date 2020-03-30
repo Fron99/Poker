@@ -52,6 +52,7 @@ public class JugadorImpl implements Jugador, Cloneable {
     private int saldo;
     private CartaImpl[] cartas;
     private boolean activo;
+    private boolean allInMenor;
 
     /**
      * This constructor places the default attributes
@@ -65,6 +66,7 @@ public class JugadorImpl implements Jugador, Cloneable {
             this.cartas[i] = new CartaImpl();
         }
         this.activo = true;
+        this.allInMenor = false;
     }
 
     /**
@@ -81,6 +83,7 @@ public class JugadorImpl implements Jugador, Cloneable {
             this.cartas[i] = new CartaImpl();
         }
         this.activo = true;
+        this.allInMenor = false;
     }
 
     /**
@@ -97,6 +100,7 @@ public class JugadorImpl implements Jugador, Cloneable {
         this.saldo = saldo;
         this.cartas = cartas;
         this.activo = true;
+        this.allInMenor = false;
     }
 
     /**
@@ -109,6 +113,7 @@ public class JugadorImpl implements Jugador, Cloneable {
         this.saldo = otro.getSaldo();
         this.cartas = otro.getCartas();
         this.activo = otro.getActivo();
+        this.allInMenor = otro.getAllInMenor();
     }
 
     /**
@@ -183,6 +188,24 @@ public class JugadorImpl implements Jugador, Cloneable {
 
     public void setActivo(boolean activo){
         this.activo = activo;
+    }
+
+    /**
+     * Return value of attribute "allInMenor"
+     * @return boolean with value of attribute "allInMenor"
+     */
+
+    public boolean getAllInMenor(){
+        return this.allInMenor;
+    }
+
+    /**
+     * Set value passed by parameter in attribute "allInMenor"
+     * @param allInMenor new value of attribute "allInMenor"
+     */
+
+    public void setAllInMenor(boolean allInMenor){
+        this.allInMenor = allInMenor;
     }
 
     //METODOS ANHADIDOS
