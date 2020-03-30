@@ -403,7 +403,6 @@ public class MesaImpl implements Mesa, Cloneable {
         return res;
     }
 
-
     /**
      * Get all card of the player passed by parameter. The allowed range of the index is 0 to 4.
      * @param posicionJugador Position of the player that wants get cards
@@ -668,9 +667,9 @@ public class MesaImpl implements Mesa, Cloneable {
     }
 
     /**
-     *
+     * Return value of the round
+     * @return int value of the round
      */
-    //TODO
 
     public int getRonda(){
         return this.ronda;
