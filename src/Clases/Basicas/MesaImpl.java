@@ -923,7 +923,7 @@ public class MesaImpl implements Mesa, Cloneable {
     }
 
     /*
-     * SIGNATURA: public void obtenerGanadores()
+     * SIGNATURA:
      * COMENTARIO:
      * PRECONDICIONES: -
      * ENTRADA: -
@@ -932,12 +932,67 @@ public class MesaImpl implements Mesa, Cloneable {
      * POSTCONDICIONES: -
      */
 
+    /*
+     * INICIO
+     *
+     * repetir
+     *
+     *  para(i = 0; mientras i < cantidad jugadores; incrementar i)
+     *      si(jugador != indice guardado)
+     *          //obtenerJugadorMayorPuntuacion
+     *      finSi
+     *  finPara
+     *
+     *  si(allInMenor del jugador es false)
+     *      aumentarSaldoJugador //Con toodo el saldo de la mesa
+     *  sino
+     *      aumentarSaldoJugador    //Con la parte proporcional que tiene que ganar
+     *      guardarIndiceJugador
+     *  finSi
+     *
+     * mientras(queden jugadores ganadores)
+     *
+     * FIN
+     */
+
     /**
      *
      */
 
+    //TODO ASDasd
+
     public void ingresarSaldoGanadores(){
-        //TODO Hacer metodo
+        boolean quedanGanadores = true;
+        int indiceGanador = -1, totalGanancias = 0;
+        do {
+            for (int i = 0; i< this.jugadores.length;i++){
+                if (i != indiceGanador){
+                    //Calcular
+                    indiceGanador = i;
+                }
+            }
+
+            if (!this.jugadores[indiceGanador].getAllInMenor()){
+                //Incrementa el saldo total del jugador con toodo el dinero de la mesa
+                this.jugadores[indiceGanador].aumentarDinero(this.getTotalApuestas());
+                quedanGanadores = false;
+            }else{
+                //Calcular el total que debe ganar el jugador
+                for (int i = 0; i < this.apuestasJugadores[indiceGanador].length;i++){
+                    totalGanancias += this.apuestasJugadores[indiceGanador][i];
+                }
+                this.jugadores[indiceGanador].aumentarDinero(totalGanancias * 5);
+
+                //Restar las apuestas a las apuestas totales
+                for (int i = 0, cantidadARestar; i < this.apuestasJugadores[indiceGanador].length;i++){
+                    cantidadARestar = this.apuestasJugadores[indiceGanador][i];
+                    for (int j = 0; j < this.apuestasJugadores.length;j++){
+                        this.apuestasJugadores[i][j] -= cantidadARestar;
+                    }
+                }
+
+            }
+        }while (quedanGanadores);
     }
 
     /*
