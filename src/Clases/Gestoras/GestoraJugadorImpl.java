@@ -58,7 +58,7 @@ public class GestoraJugadorImpl {
 
 
     /*
-     * SIGNATURA: public int leerYValidarApuesta(JugadorImpl jugador, int apuestaMinima);
+     * SIGNATURA:
      * COMENTARIO: Lee y valida la cantidad de dinero que puede apostar el jugador
      * PRECONDICIONES: Ninguna
      * ENTRADA: - Un jugador
@@ -73,20 +73,25 @@ public class GestoraJugadorImpl {
     //TODO Pasar mesa para tener todos los datos mejor
     //TODO Pasar int jugador, int ronda, int cantidadMinima
 
-    public int leerYValidarApuesta(JugadorImpl jugador, int cantidadMinima){
+    public int leerYValidarApuesta(int jugador, int apuestaMinima, MesaImpl mesa){
         Scanner teclado = new Scanner(System.in);
         int cantidadApuesta;
         boolean allIn = false;
         do {
-            System.out.println("Dispone de "+jugador.getSaldo()+" de saldo");
+            System.out.println("Dispone de "+mesa.getSaldoJugador(jugador)+" de saldo");
+            System.out.println("La apuesa minima es: "+(apuestaMinima-mesa.getApuestaJugador(jugador,mesa.getRonda())));
             System.out.print("Introduce cuanto quiere apostar: ");
             cantidadApuesta = teclado.nextInt();
-            if (cantidadApuesta < cantidadMinima){
-                if (cantidadApuesta == jugador.getSaldo()){
+            if (cantidadApuesta < apuestaMinima-mesa.getApuestaJugador(jugador,mesa.getRonda())){
+                if (cantidadApuesta == mesa.getSaldoJugador(jugador)){
                     allIn = true;
                 }
             }
-        }while (((cantidadApuesta > jugador.getSaldo() || cantidadApuesta < cantidadMinima) && cantidadApuesta != 0 ) && !allIn);
+        }while ((cantidadApuesta+mesa.getApuestaJugador(jugador,mesa.getRonda()) < apuestaMinima)
+                || ((cantidadApuesta+mesa.getApuestaJugador(jugador,mesa.getRonda()) < apuestaMinima) && !allIn)
+                || (cantidadApuesta > mesa.getSaldoJugador(jugador))
+                || cantidadApuesta == 0);
+
         return cantidadApuesta;
     }
 
