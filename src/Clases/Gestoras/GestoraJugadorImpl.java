@@ -2,7 +2,6 @@ package Clases.Gestoras;
 
 import Clases.Basicas.JugadorImpl;
 import Clases.Basicas.MesaImpl;
-import Clases.Interfaces.Jugador;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -59,7 +58,7 @@ public class GestoraJugadorImpl {
 
 
     /*
-     * SIGNATURA: public int leerYValidarApuesta(JugadorImpl jugador, int apuestaMinima);
+     * SIGNATURA:
      * COMENTARIO: Lee y valida la cantidad de dinero que puede apostar el jugador
      * PRECONDICIONES: Ninguna
      * ENTRADA: - Un jugador
@@ -74,20 +73,24 @@ public class GestoraJugadorImpl {
     //TODO Pasar mesa para tener todos los datos mejor
     //TODO Pasar int jugador, int ronda, int cantidadMinima
 
-    public int leerYValidarApuesta(JugadorImpl jugador, int cantidadMinima){
+    public int leerYValidarApuesta(int jugador, int apuestaMinima, MesaImpl mesa){
         Scanner teclado = new Scanner(System.in);
         int cantidadApuesta;
         boolean allIn = false;
         do {
-            System.out.println("Dispone de "+jugador.getSaldo()+" de saldo");
+            System.out.println("Dispone de "+mesa.getSaldoJugador(jugador)+" de saldo");
+            System.out.println("La apuesa minima es: "+(apuestaMinima-mesa.getApuestaJugador(jugador,mesa.getRonda())));
             System.out.print("Introduce cuanto quiere apostar: ");
             cantidadApuesta = teclado.nextInt();
-            if (cantidadApuesta < cantidadMinima){
-                if (cantidadApuesta == jugador.getSaldo()){
+            if (cantidadApuesta < apuestaMinima-mesa.getApuestaJugador(jugador,mesa.getRonda())){
+                if (cantidadApuesta == mesa.getSaldoJugador(jugador)){
                     allIn = true;
                 }
             }
-        }while (((cantidadApuesta > jugador.getSaldo() || cantidadApuesta < cantidadMinima) && cantidadApuesta != 0 ) && !allIn);
+        }while ((cantidadApuesta+mesa.getApuestaJugador(jugador,mesa.getRonda()) < apuestaMinima)
+                || ((cantidadApuesta+mesa.getApuestaJugador(jugador,mesa.getRonda()) < apuestaMinima) && !allIn)
+                || (cantidadApuesta > mesa.getSaldoJugador(jugador)));
+
         return cantidadApuesta;
     }
 
@@ -107,8 +110,10 @@ public class GestoraJugadorImpl {
 
     //TODO Desarrollar javadoc
 
+    //TODO Cambiar tonda por la ronda de la mesa
 
-    public int calcularApostarBot(int apuestaMinima, MesaImpl mesa, int jugador, int ronda){
+
+    public int calcularApostarBot(int apuestaMinima, MesaImpl mesa, int jugador){
         int totalApostar, valorCartas, cantidadApostar, puntosFarol;
         double porcenApostar;
         GestoraCartaImpl gesCarta = new GestoraCartaImpl();
@@ -117,11 +122,11 @@ public class GestoraJugadorImpl {
         valorCartas = gesCarta.evaluarCartas(jugador, mesa);
 
         //Calcula cuantos puntos debe sumar en el caso de que haya farol, si no hay farol devuelve 0
-        puntosFarol = calcularPuntosFarol(ronda);
+        puntosFarol = calcularPuntosFarol(mesa.getRonda());
 
         //Calcula el porcentaje a apostar
         //Se controla si es la primera vez que apuesta en la ronda o esta subiendo su apuesta
-        if (mesa.getApuestaJugador(jugador,ronda) == 0){
+        if (mesa.getApuestaJugador(jugador,mesa.getRonda()) == 0){
             valorCartas += puntosFarol;
             porcenApostar = (double)valorCartas/319;
             cantidadApostar = (int)((mesa.getSaldoJugador(jugador)/4)*porcenApostar);
@@ -136,7 +141,7 @@ public class GestoraJugadorImpl {
                 //En el caso de que no iguale ni suba la apuesta apostara 0
                 //TODO Contolar los casos en los que hace all-in sin llegar a la cantidad minima (Creo que esta solucionado, comprobar)
             }else {
-                if (cantidadApostar == mesa.getApuestaJugador(jugador,ronda)){
+                if (cantidadApostar == mesa.getApuestaJugador(jugador,mesa.getRonda())){
                     totalApostar = cantidadApostar;
                 }else{
                     totalApostar = 0;
@@ -146,8 +151,8 @@ public class GestoraJugadorImpl {
             porcenApostar = (double)valorCartas/319;
             cantidadApostar = (int)((mesa.getSaldoJugador(jugador)/4)*porcenApostar);
             //Calcula si le interesa subir un poco mas la apuesta o desea tirarse
-            if ((apuestaMinima - mesa.getApuestaJugador(jugador,ronda)) < (int)(cantidadApostar*0.3)){
-                totalApostar = (apuestaMinima - mesa.getApuestaJugador(jugador,ronda));
+            if ((apuestaMinima - mesa.getApuestaJugador(jugador,mesa.getRonda())) < (int)(cantidadApostar*0.3)){
+                totalApostar = (apuestaMinima - mesa.getApuestaJugador(jugador,mesa.getRonda()));
             }else {
                 totalApostar = 0;
             }

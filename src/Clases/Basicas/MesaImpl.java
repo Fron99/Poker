@@ -54,6 +54,8 @@
  *
  * public int getTotalApuestas();
  *
+ * public int getRonda();
+ *
  * METODOS AÑADIDOS:
  *
  * public void limpiarCartasMesa();
@@ -85,6 +87,7 @@
 
 package Clases.Basicas;
 
+import Clases.Gestoras.GestoraCartaImpl;
 import Clases.Gestoras.GestoraJugadorImpl;
 import Clases.Interfaces.Mesa;
 
@@ -401,7 +404,6 @@ public class MesaImpl implements Mesa, Cloneable {
         return res;
     }
 
-
     /**
      * Get all card of the player passed by parameter. The allowed range of the index is 0 to 4.
      * @param posicionJugador Position of the player that wants get cards
@@ -665,6 +667,15 @@ public class MesaImpl implements Mesa, Cloneable {
         return total;
     }
 
+    /**
+     * Return value of the round
+     * @return int value of the round
+     */
+
+    public int getRonda(){
+        return this.ronda;
+    }
+
     /*
      * SIGNATURA: public void restaurarMesa();
      * COMENTARIO: Elimina todos los cambios que se hayan realizado sobre los atributos baraja, activoJugadores, cartasJugadores, cartasMesa, apuestas y ronda y lo coloca por defecto para empezar una jugada nueva.
@@ -724,16 +735,15 @@ public class MesaImpl implements Mesa, Cloneable {
      */
 
     public void restaurarBaraja(){
-
         char[] palos = new char[]{'P','C','R','T'};
         String[] numeros = new String[]{"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
-
-        for (int i = 0, contador = 0;i<palos.length;i++){
+        int contador = 0;
+        for (char palo: palos){
             for (String numero : numeros) {
-                this.baraja[contador++] = new CartaImpl(palos[i], numero);
+                this.baraja[contador] = new CartaImpl(palo, numero);
+                contador++;
             }
         }
-
     }
 
     /*
@@ -914,7 +924,7 @@ public class MesaImpl implements Mesa, Cloneable {
     }
 
     /*
-     * SIGNATURA: public void obtenerGanadores()
+     * SIGNATURA:
      * COMENTARIO:
      * PRECONDICIONES: -
      * ENTRADA: -
@@ -923,12 +933,86 @@ public class MesaImpl implements Mesa, Cloneable {
      * POSTCONDICIONES: -
      */
 
+    /*
+     * INICIO
+     *
+     * repetir
+     *
+     *  para(i = 0; mientras i < cantidad jugadores; incrementar i)
+     *      si(jugador != indice guardado)
+     *          //obtenerJugadorMayorPuntuacion
+     *      finSi
+     *  finPara
+     *
+     *  si(allInMenor del jugador es false)
+     *      aumentarSaldoJugador //Con toodo el saldo de la mesa
+     *  sino
+     *      aumentarSaldoJugador    //Con la parte proporcional que tiene que ganar
+     *      guardarIndiceJugador
+     *  finSi
+     *
+     * mientras(queden jugadores ganadores)
+     *
+     * FIN
+     */
+
     /**
      *
      */
 
+    //TODO ASDasd
+
     public void ingresarSaldoGanadores(){
-        //TODO Hacer metodo
+        GestoraCartaImpl gestoraCarta = new GestoraCartaImpl();
+        int cantidadGanadores = 0, indiceGanador = -1, totalGanancias = 0, puntosAnteriorGanador = 99999, puntosAnteriorJugador = 0, puntosJugadorCalculados;
+
+        do{
+            //Obtener ganador
+            for (int i = 0; i< this.jugadores.length;i++){
+                puntosJugadorCalculados = gestoraCarta.evaluarCartas(i,this);
+                //Se utiliza puntosAnteriorGanador
+                if (puntosAnteriorGanador > puntosJugadorCalculados
+                    && puntosJugadorCalculados > puntosAnteriorJugador
+                    && this.jugadores[i].getActivo()){
+                        puntosAnteriorJugador = gestoraCarta.evaluarCartas(i,this);
+                        indiceGanador = i;
+                }
+            }
+
+            if (!this.jugadores[indiceGanador].getAllInMenor()){
+                //Incrementa el saldo total del jugador con toodo el dinero de la mesa
+                this.jugadores[indiceGanador].aumentarDinero(this.getTotalApuestas());
+
+                //Colocar todas las apuestas a 0
+                this.restaurarApuestas();
+
+            }else{
+
+                //Calcular el total que debe ganar el jugador
+                for (int i = 0; i < this.apuestasJugadores[indiceGanador].length;i++){
+                    if (this.apuestasJugadores[indiceGanador][i] != 0){
+                        for (int j = 0;j<5;j++){
+                            totalGanancias += apuestasJugadores[j][i];
+                        }
+                    }
+                }
+
+                //Aumentar saldo jugador
+                this.jugadores[indiceGanador].aumentarDinero(totalGanancias);
+
+                //Disminuir dinero en las apuestas las apuestas a las apuestas totales
+
+                for (int i = 0; i < this.apuestasJugadores[indiceGanador].length;i++){
+                    if (this.apuestasJugadores[indiceGanador][i] != 0){
+                        for (int j = 0;j<5;j++){
+                            apuestasJugadores[j][i] -= this.apuestasJugadores[indiceGanador][i];
+                        }
+                    }
+                }
+
+            }
+        }while (this.getTotalApuestas() > 0);
+
     }
 
     /*
@@ -1096,149 +1180,118 @@ public class MesaImpl implements Mesa, Cloneable {
      * POSTCONDICIONES: - Modifica el objeto mesa, incrementando el total del dinero que hay en mesa.
      */
 
-    /*
-     * apuestaMinima = 0
-     * jugadorPasa = false
-     *
-     * si (turnoJugador == 0)
-     *  si (jugador[0].getActivo() == true)
-     *      apuestaJugador = leerApuesta
-     *      si (apuestaJugador > apuestaMinima)
-     *          apuestaMinima = apuestaJugador
-     *      sino
-     *          si (apuestaJugador == apuestaMinima)
-     *              jugadorPasa = true
-     *          finSi
-     *      finSi
-     *  finSi
-     *  turnoJugador++
-     *  cantidadJugadas++
-     *
-     *  mientras(turnoJugador < 5 && cantidadJugadas < totalJugadas)
-     *      si(jugador[turnoJugador].getActivo() == true)
-     *          si(jugador[turnoJugador].getSalto > 0)
-     *              apuestaJugador = calcularApuesta
-     *              si(apuestaJugador != apuestaMinima || jugadorPasa == false)
-     *                  jugadorPasa = false
-     *                  si(apuestaJugador == 0)
-     *                      jugador.seActivo(false)
-     *                      sino
-     *                          si(apuestaJugador == apuestaMinima)
-     *                              jugador.disminuirSaldo(apuestaJugador)
-     *                              mesa.incrementarApuesta(turnoJugador,ronda,apuestaJugador)
-     *                          sino
-     *                              si(apuestaJugador > apuestaMinima)
-     *                                  cantidadJugadas += 4
-     *                                  jugador.disminuirSaldo(apuestaJugador)
-     *                                  mesa.incrementarApuesta(turnoJugador,ronda,apuestaJugador)
-     *                              finSi
-     *                          finSi
-     *                   finSi
-     *              finSi
-     *          finSi
-     *      finSi
-     *      cantidadJugadas++
-     *      si(turnoJugador < 4 && cantidadJugadas < jugadasTotal)
-     *          turnoJugador == 0;
-     *      sino
-     *          turnoJugador++;
-     *      finSi
-     *  finMientras
-     *
-     *
-     */
-
-    //TODO Documentar codigo mejor
-    //TODO Ver si se puede modular
-    //TODO Disminuir dinero despues de todas las jugadas
-
     /**
-     *
+     * This method places the bets of the players
+     * @return Return true if there are more than 1 active players
+     *         Return false if there are less than 1 active players
      */
 
-    public void realizarApuestas(){
+    public boolean realizarApuestas(){
         GestoraJugadorImpl gesJug = new GestoraJugadorImpl();
-        int apuestaMinima = 0, cantidadJugadas = 0, totalJugadas = 5, apuestaJugador, cantidadJugadoresPasan = 0;
-        boolean jugadorPasa = false;
+        int apuestaMinima = 0, apuestaJugador, cantidadJugadoresPasan = 0, turnoJugadorParcial = this.turnoJugador, turnoJugadorFinal = this.turnoJugador;
+        boolean jugadorPasa = false, quedanJugadores = true;
+        //Calcula cuantos jugadores se han "tirado"
         for (JugadorImpl jugador: this.getJugadores()) {
-            if (!jugador.getActivo()){
-                cantidadJugadoresPasan ++;
+            if (!jugador.getActivo() && jugador.getSaldo() > 0){
+                quedanJugadores = ++cantidadJugadoresPasan < 4;
             }
         }
-        if (cantidadJugadoresPasan != 4) {
-            if (this.getJugador(this.turnoJugador).getActivo() && this.getJugador(this.turnoJugador).getSaldo() > 0) {
-                if (this.turnoJugador == 0){
-                    apuestaJugador = gesJug.leerYValidarApuesta(this.getJugador(this.turnoJugador), apuestaMinima);
+
+        //Si se han tirado 4 o mas jugadores no se realizan apuestas
+        if (quedanJugadores) {
+
+            //Este bucle se utiliza para sacar el primer jugador que va a apostar
+            //Ya que puede ocurrir que el delider se haya "tirado"
+            while (!this.jugadores[turnoJugadorParcial].getActivo()){
+                turnoJugadorParcial = (turnoJugadorParcial == 4)?0:++turnoJugadorParcial;
+            }
+
+            //Comprueba que el jugador este activo y tenga un saldo mayor a 0
+            if (this.getJugador(turnoJugadorParcial).getActivo() && this.getSaldoJugador(turnoJugadorParcial) > 0) {
+                //
+                if(turnoJugadorParcial == 0){
+                    apuestaMinima = gesJug.leerYValidarApuesta(turnoJugadorParcial, apuestaMinima, this);
                 }else{
-                    apuestaJugador = gesJug.calcularApostarBot(apuestaMinima,this,this.turnoJugador,this.ronda);
+                    apuestaMinima = gesJug.calcularApostarBot(apuestaMinima,this,turnoJugadorParcial);
                 }
-                if (apuestaJugador > apuestaMinima) {
-                    apuestaMinima = apuestaJugador;
-                    if (!(this.incrementarApuesta(this.turnoJugador, this.ronda, apuestaMinima))){
-                        System.out.println("No se pudo incrementar la apuesta, se salio del limite");
-                    }
-                    this.getJugador(this.turnoJugador).disminuirDinero(apuestaMinima);
-                } else {
-                    //Si el jugador apuesta el mismo valor que la apuesta minima (es decir 0) significa que pasa
-                    if (apuestaJugador == apuestaMinima) {
-                        jugadorPasa = true;
-                    }
+                //Disminuir el saldo del jugador
+                this.jugadores[turnoJugadorParcial].disminuirDinero(apuestaMinima);
+                //Anhadir apuesta a las apuestas de la partida
+                if (!(this.setApuestaJugador(turnoJugadorParcial,this.ronda,apuestaMinima))){
+                    System.out.println("No se pudo añadir la apuesta al jugador");
                 }
             }
-            cantidadJugadas++;
-            if (this.turnoJugador == 4 && cantidadJugadas < totalJugadas) {
-                this.turnoJugador = 0;
-            } else {
-                this.turnoJugador++;
-            }
-            while (turnoJugador < 5 && cantidadJugadas < totalJugadas) {
-                if (this.getJugador(this.turnoJugador).getActivo() && this.getJugador(this.turnoJugador).getSaldo() > 0) {
-                    if (this.turnoJugador == 0){
-                        apuestaJugador = gesJug.leerYValidarApuesta(this.getJugador(this.turnoJugador),apuestaMinima);
+
+            System.out.println("El jugador "+this.getUsuarioJugador(turnoJugadorParcial)+" ha iniciado apostando: "+apuestaMinima);
+
+            //Incrementar turno
+            turnoJugadorParcial = (turnoJugadorParcial == 4)?0:++turnoJugadorParcial;
+
+            while(turnoJugadorParcial != turnoJugadorFinal){
+
+                //Comprueba que el jugador este activo y tenga un saldo mayor a 0
+                if (this.getJugador(turnoJugadorParcial).getActivo() && this.getSaldoJugador(turnoJugadorParcial) > 0) {
+                    //
+                    if(turnoJugadorParcial == 0){
+                        //TODO No se puede apostar muchisimo porque si no los bots se tiran
+                        apuestaJugador = gesJug.leerYValidarApuesta(turnoJugadorParcial, apuestaMinima, this);
                     }else{
-                        apuestaJugador = gesJug.calcularApostarBot(apuestaMinima, this, this.turnoJugador,this.ronda);
-                        //TODO En el caso de querer apostar y no poder por no llegar al minimo que haga all-in  (Creo que ya esta solucionado pero tengo que comprobarlo)
+                        apuestaJugador = gesJug.calcularApostarBot(apuestaMinima,this,turnoJugadorParcial);
                     }
-                    if (apuestaJugador != apuestaMinima || jugadorPasa) {
-                        jugadorPasa = false;
-                        if (apuestaJugador == 0) {
-                            this.getJugador(this.turnoJugador).setActivo(false);
-                        } else {
-                            if (apuestaJugador > apuestaMinima) {
-                                apuestaMinima = apuestaJugador;
-                                if ((totalJugadas-cantidadJugadas) < 5){
-                                    totalJugadas += 4;
-                                }else{
-                                    totalJugadas++;
+
+                    //Evaluar las apuestas
+                    if ((apuestaJugador+this.getApuestaJugador(turnoJugadorParcial,ronda)) == apuestaMinima){
+                        System.out.println("El jugador "+this.getUsuarioJugador(turnoJugadorParcial)+" ha igualado la apuesta a: "+(apuestaJugador+this.getApuestaJugador(turnoJugadorParcial,ronda)));
+                        //En el caso de que el jugador iguale la apuesta se le resta la apuesta realizada
+                        this.jugadores[turnoJugadorParcial].disminuirDinero(apuestaJugador);
+                        //Se le incrementa la apuesta en la ronda
+                        if (!(this.incrementarApuesta(turnoJugadorParcial,ronda,apuestaJugador))){
+                            System.out.println("No se ha podido incrementar la apuesta");
+                        }
+
+                    }else{
+                        if ((apuestaJugador+this.getApuestaJugador(turnoJugadorParcial,ronda)) > apuestaMinima){
+                            System.out.println("El jugador "+this.getUsuarioJugador(turnoJugadorParcial)+" ha subido la apuesta a: "+(apuestaJugador+this.getApuestaJugador(turnoJugadorParcial,ronda)));
+                            //En el caso de que el jugador suba la apuesta se le resta la apuesta realizada
+                            this.jugadores[turnoJugadorParcial].disminuirDinero(apuestaJugador);
+                            //Se le incrementa la apuesta en la ronda
+                            if (!(this.incrementarApuesta(turnoJugadorParcial,ronda,apuestaJugador))){
+                                System.out.println("No se ha podido incrementar la apuesta");
+                            }
+                            //Se guarda su posicion para volver a recorrer el array hasta que llegue a su posicion y asi poder tirar todos los jugadores
+                            turnoJugadorFinal = turnoJugadorParcial;
+                            //Se coloca su apuesta como apuesta minima para los demas jugadores
+                            apuestaMinima = apuestaJugador;
+                        }else{
+                            //No hace falta comprobar que sea menor porque ya esta comprobado en los if de arriba
+                            //En este caso se controla que el jugador haga all-in pero no llegue a la apuesta minima
+                            if (this.jugadores[turnoJugadorParcial].getSaldo() == apuestaJugador){
+                                System.out.println("El jugador "+this.getUsuarioJugador(turnoJugadorParcial)+" ha hecho allIn sin llegar al minimo con: "+(apuestaJugador+this.getApuestaJugador(turnoJugadorParcial,ronda)));
+                                this.jugadores[turnoJugadorParcial].disminuirDinero(apuestaJugador);
+                                //Coloca allInMejor en true para despues poder evaluar los ganadores
+                                this.jugadores[turnoJugadorParcial].setAllInMenor(true);
+                                if (!(this.incrementarApuesta(turnoJugadorParcial,ronda,apuestaJugador))){
+                                    System.out.println("No se ha podido incrementar la apuesta");
                                 }
-                                this.getJugador(this.turnoJugador).disminuirDinero(apuestaJugador);
-                                if (!(this.incrementarApuesta(this.turnoJugador, this.ronda, apuestaJugador))){
-                                    System.out.println("No se pudo incrementar la apuesta, se salio del limite algun indice");
-                                }
-                            } else {
-                                this.getJugador(this.turnoJugador).disminuirDinero(apuestaJugador);
-                                if (!(this.incrementarApuesta(this.turnoJugador, this.ronda, apuestaJugador))){
-                                    System.out.println("No se pudo incrementar la apuesta, se salio del limite algun indice");
-                                }
+                            }else{  //Este es el caso de que el jugador se tire
+                                System.out.println("El jugador "+this.getUsuarioJugador(turnoJugadorParcial)+" se ha tirado.");
+                                this.jugadores[turnoJugadorParcial].setActivo(false);
                             }
                         }
-                    } else {
-                        this.getJugador(this.turnoJugador).disminuirDinero(apuestaJugador);
-                        if (!(this.incrementarApuesta(this.turnoJugador, this.ronda, apuestaJugador))){
-                            System.out.println("No se pudo incrementar la apuesta, se salio del limite algun indice");
-                        }
                     }
                 }
-                //Actualizamos variables despues de realizar jugada
-                cantidadJugadas++;
-                if (this.turnoJugador == 4 && cantidadJugadas < totalJugadas) {
-                    this.turnoJugador = 0;
-                } else {
-                    this.turnoJugador++;
+                turnoJugadorParcial = (turnoJugadorParcial == 4)?0:++turnoJugadorParcial;
+
+
+                try {
+                    Thread.sleep(2*1000);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
                 }
             }
         }
         this.ronda++;
+        return quedanJugadores;
     }
 
     /**
