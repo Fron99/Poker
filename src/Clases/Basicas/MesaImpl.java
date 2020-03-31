@@ -989,17 +989,28 @@ public class MesaImpl implements Mesa, Cloneable {
             }else{
 
                 //Calcular el total que debe ganar el jugador
-
+                for (int i = 0; i < this.apuestasJugadores[indiceGanador].length;i++){
+                    if (this.apuestasJugadores[indiceGanador][i] != 0){
+                        for (int j = 0;j<5;j++){
+                            totalGanancias += apuestasJugadores[j][i];
+                        }
+                    }
+                }
 
                 //Aumentar saldo jugador
                 this.jugadores[indiceGanador].aumentarDinero(totalGanancias);
 
-
-
                 //Disminuir dinero en las apuestas las apuestas a las apuestas totales
 
-            }
+                for (int i = 0; i < this.apuestasJugadores[indiceGanador].length;i++){
+                    if (this.apuestasJugadores[indiceGanador][i] != 0){
+                        for (int j = 0;j<5;j++){
+                            apuestasJugadores[j][i] -= this.apuestasJugadores[indiceGanador][i];
+                        }
+                    }
+                }
 
+            }
         }while (this.getTotalApuestas() > 0);
 
     }
