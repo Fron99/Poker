@@ -1229,12 +1229,6 @@ public class MesaImpl implements Mesa, Cloneable {
 
             while(turnoJugadorParcial != turnoJugadorFinal){
 
-                try {
-                    Thread.sleep(2*1000);
-                } catch (Exception e) {
-                    System.out.println(e);
-                }
-
                 //Comprueba que el jugador este activo y tenga un saldo mayor a 0
                 if (this.getJugador(turnoJugadorParcial).getActivo() && this.getSaldoJugador(turnoJugadorParcial) > 0) {
                     //
@@ -1287,6 +1281,13 @@ public class MesaImpl implements Mesa, Cloneable {
                     }
                 }
                 turnoJugadorParcial = (turnoJugadorParcial == 4)?0:++turnoJugadorParcial;
+
+
+                try {
+                    Thread.sleep(2*1000);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
         this.ronda++;
