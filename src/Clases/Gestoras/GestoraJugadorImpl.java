@@ -112,6 +112,7 @@ public class GestoraJugadorImpl {
 
     //TODO Cambiar tonda por la ronda de la mesa
 
+
     public int calcularApostarBot(int apuestaMinima, MesaImpl mesa, int jugador){
         int totalApostar, valorCartas, cantidadApostar, puntosFarol;
         double porcenApostar;
