@@ -1169,12 +1169,11 @@ public class MesaImpl implements Mesa, Cloneable {
      * POSTCONDICIONES: - Modifica el objeto mesa, incrementando el total del dinero que hay en mesa.
      */
 
-
     /**
-     *
+     * This method places the bets of the players
+     * @return Return true if there are more than 1 active players
+     *         Return false if there are less than 1 active players
      */
-
-    //TODO Hacer psudocodigo y javadoc
 
     public boolean realizarApuestas(){
         GestoraJugadorImpl gesJug = new GestoraJugadorImpl();
