@@ -29,6 +29,7 @@ public class GestoraJugadorImpl {
         int dinero;
         Scanner teclado = new Scanner(System.in);
         do {
+            System.out.println("La cantidad minima para iniciar es 2000€ y la maxima 10000€");
             System.out.print("Introduce dinero con el que iniciar: ");
             dinero = teclado.nextInt();
         }while (dinero < 2000 || dinero > 10000);
