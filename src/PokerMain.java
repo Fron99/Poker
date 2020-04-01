@@ -56,6 +56,7 @@ public class PokerMain {
         GestoraJugadorImpl gesJugador = new GestoraJugadorImpl();
         MesaImpl mesa = new MesaImpl();
         int saldoInicialJugador;
+        boolean quedanJugadores = true;
 
         //leerYValidarJugador*
         //añadirJugador
@@ -72,33 +73,36 @@ public class PokerMain {
             //restaurarMesa
             mesa.restaurarMesa();
 
-            for (int contador = 0; contador < 4; contador++){
+            //Actualizar variables para nuevo juego
+            quedanJugadores = true;
 
-                //Se utiliza este if para que solo se generen una vez las 3 cartas despues de la primera jugada
-                if (contador == 1) {
-                    //generarTresCartasMesa
-                    mesa.generarTresCartasMesa();
-                }
+            for (int contador = 0; contador < 4 && quedanJugadores; contador++){
+                    //Se utiliza este if para que solo se generen una vez las 3 cartas despues de la primera jugada
+                    if (contador == 1) {
+                        //generarTresCartasMesa
+                        mesa.generarTresCartasMesa();
+                    }
 
-                //Se utiliza este if para que solo se generen una carta a partir de la 2 apuesta
-                if (contador > 1) {
-                    //generarCartaMesa
-                    mesa.generarCartaMesa();
-                }
+                    //Se utiliza este if para que solo se generen una carta a partir de la 2 apuesta
+                    if (contador > 1) {
+                        //generarCartaMesa
+                        mesa.generarCartaMesa();
+                    }
+                    
+                    //mostrarPanelJuego
+                    mesa.mostrarPanelJuego();
 
-                //mostrarPanelJuego
-                mesa.mostrarPanelJuego();
-                //TODO SI EL METODO REALIZAR APUESTA DEVUELVE  SE APUESTA MAS Y ACABA LA RONDA
-                //realizarApuestas
-                mesa.realizarApuestas();     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
-
+                    //realizarApuestas
+                    quedanJugadores = mesa.realizarApuestas();     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
             }
 
-            //mostrarPanelJuego
-            mesa.mostrarPanelJuego();
+            if (quedanJugadores){
+                //mostrarPanelJuego
+                mesa.mostrarPanelJuego();
+            }
 
             //ingresarSaldoGanadores
-            mesa.ingresarSaldoGanadores();
+            mesa.ingresarSaldoGanadoresYMostrarGanador();
 
             mesa.incrementarTurno();
 
