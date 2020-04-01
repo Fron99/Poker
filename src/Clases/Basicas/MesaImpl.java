@@ -962,7 +962,7 @@ public class MesaImpl implements Mesa, Cloneable {
 
     //TODO ASDasd
 
-    public void ingresarSaldoGanadores(){
+    public void ingresarSaldoGanadoresYMostrarGanador(){
         GestoraCartaImpl gestoraCarta = new GestoraCartaImpl();
         int cantidadGanadores = 0, indiceGanador = -1, totalGanancias = 0, puntosAnteriorGanador = 99999, puntosAnteriorJugador = 0, puntosJugadorCalculados;
 
@@ -983,6 +983,9 @@ public class MesaImpl implements Mesa, Cloneable {
                 //Incrementa el saldo total del jugador con toodo el dinero de la mesa
                 this.jugadores[indiceGanador].aumentarDinero(this.getTotalApuestas());
 
+                //Informar del ganador
+                System.out.println("El ganador de la partida es: "+this.getUsuarioJugador(indiceGanador));
+
                 //Colocar todas las apuestas a 0
                 this.restaurarApuestas();
 
@@ -996,6 +999,9 @@ public class MesaImpl implements Mesa, Cloneable {
                         }
                     }
                 }
+
+                //Informar del ganador
+                System.out.println("El ganador de la partida es: "+this.getUsuarioJugador(indiceGanador)+" pero como no llego a las apuestas minimas solo se llevo una parte del bote: "+totalGanancias+"€");
 
                 //Aumentar saldo jugador
                 this.jugadores[indiceGanador].aumentarDinero(totalGanancias);
