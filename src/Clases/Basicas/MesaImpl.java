@@ -1288,11 +1288,16 @@ public class MesaImpl implements Mesa, Cloneable {
                 }
                 turnoJugadorParcial = (turnoJugadorParcial == 4)?0:++turnoJugadorParcial;
 
-
                 try {
                     Thread.sleep(2*1000);
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
+                }
+            }
+
+            for (JugadorImpl jugador: this.getJugadores()) {
+                if (!jugador.getActivo() && jugador.getSaldo() > 0){
+                    quedanJugadores = ++cantidadJugadoresPasan < 4;
                 }
             }
         }
