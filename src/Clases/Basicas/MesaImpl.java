@@ -924,13 +924,13 @@ public class MesaImpl implements Mesa, Cloneable {
     }
 
     /*
-     * SIGNATURA:
-     * COMENTARIO:
-     * PRECONDICIONES: -
-     * ENTRADA: -
-     * SALIDA: -
-     * ENTRADA/SALIDA: -
-     * POSTCONDICIONES: -
+     * SIGNATURA: public void ingresarSaldoGanadoresYMostrarGanador();
+     * COMENTARIO: Ingresa el saldo al ganador/ganadores de la partida
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Nada
+     * SALIDA: - Nada
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Modifica el saldo de los jugadores que hayan ganado incrementando su saldo en la cantidad correspondiente
      */
 
     /*
@@ -957,10 +957,8 @@ public class MesaImpl implements Mesa, Cloneable {
      */
 
     /**
-     *
+     * Modify the balance of the players who have won by increasing their balance by the corresponding amount
      */
-
-    //TODO ASDasd
 
     public void ingresarSaldoGanadoresYMostrarGanador(){
         GestoraCartaImpl gestoraCarta = new GestoraCartaImpl();
