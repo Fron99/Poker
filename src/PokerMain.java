@@ -48,15 +48,17 @@
 
 import Clases.Basicas.MesaImpl;
 import Clases.Gestoras.GestoraJugadorImpl;
+import Validaciones.Validaciones;
 
 public class PokerMain {
 
     public static void main (String[] args){
 
         GestoraJugadorImpl gesJugador = new GestoraJugadorImpl();
+        Validaciones validaciones = new Validaciones();
         MesaImpl mesa = new MesaImpl();
         int saldoInicialJugador;
-        boolean quedanJugadores = true;
+        boolean quedanJugadores, seguirJugando;
 
         //leerYValidarJugador*
         //añadirJugador
@@ -88,7 +90,7 @@ public class PokerMain {
                         //generarCartaMesa
                         mesa.generarCartaMesa();
                     }
-                    
+
                     //mostrarPanelJuego
                     mesa.mostrarPanelJuego();
 
@@ -106,10 +108,10 @@ public class PokerMain {
 
             mesa.incrementarTurno();
 
-            //TODO Falta añadir que haya usuarios con saldo en el while y que el usuario quiera seguir
-        }while (mesa.getSaldoJugador(0)>0);
+            //TODO Falta añadir que haya usuarios con saldo en el while
+            seguirJugando = validaciones.leerYValidarSeguirJugando();
+        }while ((mesa.getSaldoJugador(0)>0) && seguirJugando);
 
-        //TODO Solucion solo para que funcione de momento
         System.out.println("El jugador "+mesa.getUsuarioJugador(0)+" empezo con "+saldoInicialJugador+" y acabo con "+mesa.getSaldoJugador(0)+"");
 
     }
