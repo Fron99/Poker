@@ -20,8 +20,7 @@ public class GestoraJugadorImpl {
      */
 
     /**
-     *
-     *
+     * Read and validate the player's initial money
      * @return int This method returns the amount of money validated with which the player wants to play
      */
 
@@ -47,7 +46,9 @@ public class GestoraJugadorImpl {
      *
      */
 
-    //TODO Desarrollar javadoc
+    /**
+     * @return
+     */
 
     public String leerUsuario(){
         String usuario;
@@ -70,9 +71,12 @@ public class GestoraJugadorImpl {
      *
      */
 
-    //TODO Desarrollar javadoc
-    //TODO Pasar mesa para tener todos los datos mejor
-    //TODO Pasar int jugador, int ronda, int cantidadMinima
+    /**
+     * @param jugador
+     * @param apuestaMinima
+     * @param mesa
+     * @return
+     */
 
     public int leerYValidarApuesta(int jugador, int apuestaMinima, MesaImpl mesa){
         Scanner teclado = new Scanner(System.in);
@@ -109,10 +113,12 @@ public class GestoraJugadorImpl {
      * POSTCONDICIONES: - Devuelve asociado al nombre un entero con la cantidad de saldo a apostar
      */
 
-    //TODO Desarrollar javadoc
-
-    //TODO Cambiar tonda por la ronda de la mesa
-
+    /**
+     * @param apuestaMinima
+     * @param mesa
+     * @param jugador
+     * @return
+     */
 
     public int calcularApostarBot(int apuestaMinima, MesaImpl mesa, int jugador){
         int totalApostar, valorCartas, cantidadApostar, puntosFarol;
@@ -159,7 +165,6 @@ public class GestoraJugadorImpl {
             }
         }
         //TODO Comprobar funcionamiento de este metodo y documentar
-        //TODO Realizar test de este metodo
 
         return totalApostar;
     }
@@ -175,7 +180,10 @@ public class GestoraJugadorImpl {
      * POSTCONDICIONES: - Devuelve asociado al nombre la cantidad de puntos que debe incrementar en un farol el bot dependiendo de la ronda en la que se encuentre
      */
 
-    //TODO Desarrollar javadoc
+    /**
+     * @param ronda
+     * @return
+     */
 
     private int calcularPuntosFarol(int ronda){
         int puntosFarol = 0,porcentaje;
@@ -223,17 +231,18 @@ public class GestoraJugadorImpl {
 
 
     /*
-     * SIGNATURA: public int calcularPuntosFarol(int ronda);
-     * COMENTARIO: Calcular cantidad de puntos que debe incrementar la apuesta el bot
+     * SIGNATURA: public JugadorImpl leerYValidarJugador();
+     * COMENTARIO:
      * PRECONDICIONES: - Nada
-     * ENTRADA: - Un entero
-     * SALIDA: - Un entero
+     * ENTRADA: - Nada
+     * SALIDA: - Un objeto JugadorImpl
      * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: - Devuelve asociado al nombre la cantidad de puntos que debe incrementar en un farol el bot dependiendo de la ronda en la que se encuentre
+     * POSTCONDICIONES: -
      */
 
-    //TODO Desarrollar javadoc
-    //TODO Realizar interfaz
+    /**
+     * @return
+     */
 
     public JugadorImpl leerYValidarJugador(){
         JugadorImpl nuevoJugador;
@@ -244,6 +253,16 @@ public class GestoraJugadorImpl {
     }
 
 
+    /*
+     * SIGNATURA:
+     * COMENTARIO:
+     * PRECONDICIONES: -
+     * ENTRADA: -
+     * SALIDA: -
+     * ENTRADA/SALIDA: -
+     * POSTCONDICIONES: -
+     */
 
+    public boolean jugadoresConSaldo
 
 }
