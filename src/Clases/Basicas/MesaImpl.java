@@ -121,7 +121,7 @@ public class MesaImpl implements Mesa, Cloneable {
         for (int i = 0;i<this.cartasMesa.length;i++){
             this.cartasMesa[i] = new CartaImpl();
         }
-        this.apuestasJugadores = new int[5][5];
+        this.apuestasJugadores = new int[5][4];
         this.turnoJugador = random.nextInt(5);
         this.ronda = 0;
     }
@@ -166,7 +166,7 @@ public class MesaImpl implements Mesa, Cloneable {
             }
         }
 
-        this.apuestasJugadores = new int[5][5];
+        this.apuestasJugadores = new int[5][4];
         this.turnoJugador = random.nextInt(5);
         this.ronda = 0;
     }
@@ -212,8 +212,8 @@ public class MesaImpl implements Mesa, Cloneable {
             }
         }
 
-        this.apuestasJugadores = new int[5][5];
-        if (apuestasJugadores.length == 5 && apuestasJugadores[0].length == 5){
+        this.apuestasJugadores = new int[5][4];
+        if (apuestasJugadores.length == 5 && apuestasJugadores[0].length == 4){
             for (int i = 0;i<apuestasJugadores.length;i++){
                 System.arraycopy(apuestasJugadores[i],0,this.apuestasJugadores[i],0,apuestasJugadores.length);
             }
@@ -238,7 +238,7 @@ public class MesaImpl implements Mesa, Cloneable {
         this.cartasMesa = new CartaImpl[5];
         System.arraycopy(otro.cartasMesa,0,this.cartasMesa,0,otro.cartasMesa.length);
 
-        this.apuestasJugadores = new int[5][5];
+        this.apuestasJugadores = new int[5][4];
         for (int i = 0;i<apuestasJugadores.length;i++){
             System.arraycopy(otro.apuestasJugadores[i],0,this.apuestasJugadores[i],0,apuestasJugadores.length);
         }
@@ -428,7 +428,7 @@ public class MesaImpl implements Mesa, Cloneable {
      *         Return false if the cards wasn't added to the player.
      */
 
-    private boolean setCartasJugador(int posicionJugador, CartaImpl[] cartas){
+    public boolean setCartasJugador(int posicionJugador, CartaImpl[] cartas){
         boolean res = false;
         if (posicionJugador >= 0 && posicionJugador <= 4){
             this.jugadores[posicionJugador].setCartas(cartas);
@@ -516,7 +516,7 @@ public class MesaImpl implements Mesa, Cloneable {
      * @param cartas new value of attribute "cartas"
      */
 
-    private void setCartasMesa(CartaImpl[] cartas){
+    public void setCartasMesa(CartaImpl[] cartas){
         this.cartasMesa = cartas;
     }
 
@@ -575,7 +575,7 @@ public class MesaImpl implements Mesa, Cloneable {
      */
 
     public int[][] getApuestasJugadores(){
-        int[][] apuestas = new int[5][5];
+        int[][] apuestas = new int[5][4];
         for (int i = 0;i<this.apuestasJugadores.length;i++){
             System.arraycopy(this.apuestasJugadores[i],0,apuestas[i],0,this.apuestasJugadores[i].length);
         }
@@ -585,10 +585,17 @@ public class MesaImpl implements Mesa, Cloneable {
     /**
      * Set array passed by parameter in attribute "apuestasJugadores"
      * @param apuestas new value of attribute "apuestas"
+     * @return Return true if the bets were added.
+     *         Return false if the bets weren't added.
      */
 
-    private void setApuestasJugadores(int[][] apuestas){
-        this.apuestasJugadores = apuestas.clone();
+    private boolean setApuestasJugadores(int[][] apuestas){
+        boolean res = false;
+        if (apuestas.length == 5 && apuestas[0].length == 4){
+            this.apuestasJugadores = apuestas.clone();
+            res = true;
+        }
+        return res;
     }
 
     /**
