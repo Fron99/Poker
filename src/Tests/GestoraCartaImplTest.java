@@ -503,9 +503,9 @@ public class GestoraCartaImplTest {
         CartaImpl[] cartasJugadorP0 = {new CartaImpl('P',"2"), new CartaImpl('P',"A")};
         GestoraCartaImpl ges = new GestoraCartaImpl();
         MesaImpl mesaP0 = new MesaImpl();
-        //mesaP0.anhadirJugador(0, new JugadorImpl());
-        //mesaP0.setCartasMesa(cartasP0);
-        //mesaP0.anhadirCartasJugador(0,cartasJugadorP0);
+        mesaP0.setJugador(0, new JugadorImpl());
+        mesaP0.setCartasMesa(cartasP0);
+        mesaP0.setCartasJugador(0,cartasJugadorP0);
         int valor = ges.evaluarCartas(0,mesaP0);
         assertEquals(valor,310);
 
@@ -514,9 +514,9 @@ public class GestoraCartaImplTest {
         CartaImpl[] cartasP1 = {new CartaImpl('P',"3"), new CartaImpl('T',"5"), new CartaImpl('P',"7"), new CartaImpl('Z',"9"), new CartaImpl('A',"A")};
         CartaImpl[] cartasJugadorP1 = {new CartaImpl('T',"2"), new CartaImpl('P',"K")};
         MesaImpl mesaP1 = new MesaImpl();
-        //mesaP1.anhadirJugador(0, new JugadorImpl());
-        //mesaP1.setCartasMesa(cartasP1);
-        //mesaP1.anhadirCartasJugador(0,cartasJugadorP1);
+        mesaP1.setJugador(0, new JugadorImpl());
+        mesaP1.setCartasMesa(cartasP1);
+        mesaP1.setCartasJugador(0,cartasJugadorP1);
         valor = ges.evaluarCartas(0,mesaP1);
         assertEquals(valor,13);
 
@@ -525,9 +525,9 @@ public class GestoraCartaImplTest {
         CartaImpl[] cartasP2 = {new CartaImpl(), new CartaImpl(), new CartaImpl(), new CartaImpl(), new CartaImpl()};
         CartaImpl[] cartasJugadorP2 = {new CartaImpl('T',"2"), new CartaImpl('P',"3")};
         MesaImpl mesaP2 = new MesaImpl();
-        //mesaP2.anhadirJugador(0, new JugadorImpl());
-        //mesaP2.setCartasMesa(cartasP2);
-        //mesaP2.anhadirCartasJugador(0,cartasJugadorP2);
+        mesaP2.setJugador(0, new JugadorImpl());
+        mesaP2.setCartasMesa(cartasP2);
+        mesaP2.setCartasJugador(0,cartasJugadorP2);
         valor = ges.evaluarCartas(0,mesaP2);
         assertEquals(valor,2);
 
@@ -536,9 +536,9 @@ public class GestoraCartaImplTest {
         CartaImpl[] cartasP3 = {new CartaImpl('T',"Q"), new CartaImpl('T',"A"), new CartaImpl('T',"K"), new CartaImpl('T',"2"), new CartaImpl('T',"8")};
         CartaImpl[] cartasJugadorP3 = {new CartaImpl('T',"J"), new CartaImpl('T',"10")};
         MesaImpl mesaP3 = new MesaImpl();
-        //mesaP3.anhadirJugador(0, new JugadorImpl());
-        //mesaP3.setCartasMesa(cartasP3);
-        //mesaP3.anhadirCartasJugador(0,cartasJugadorP3);
+        mesaP3.setJugador(0, new JugadorImpl());
+        mesaP3.setCartasMesa(cartasP3);
+        mesaP3.setCartasJugador(0,cartasJugadorP3);
         valor = ges.evaluarCartas(0,mesaP3);
         assertEquals(valor,319);
 
