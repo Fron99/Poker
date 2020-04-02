@@ -47,15 +47,15 @@ import Clases.Basicas.CartaImpl;
 
 public interface Jugador {
 
-    public String getUsuario();
+    String getUsuario();
 
-    public int getSaldo();
-    public void setSaldo(int saldo);
+    int getSaldo();
+    void setSaldo(int saldo);
 
-    public CartaImpl[] getCartas();
-    public void setCartas(CartaImpl[] cartas);
+    CartaImpl[] getCartas();
+    void setCartas(CartaImpl[] cartas);
 
-    public boolean getActivo();
-    public void setActivo(boolean activo);
+    boolean getActivo();
+    void setActivo(boolean activo);
 
 }
