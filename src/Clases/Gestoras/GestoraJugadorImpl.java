@@ -92,9 +92,8 @@ public class GestoraJugadorImpl {
                     allIn = true;
                 }
             }
-        }while ((cantidadApuesta+mesa.getApuestaJugador(jugador,mesa.getRonda()) < apuestaMinima)
-                || ((cantidadApuesta+mesa.getApuestaJugador(jugador,mesa.getRonda()) < apuestaMinima) && !allIn)
-                || (cantidadApuesta > mesa.getSaldoJugador(jugador)));
+        }while (((cantidadApuesta+mesa.getApuestaJugador(jugador,mesa.getRonda()) < apuestaMinima) && !allIn)
+                  || cantidadApuesta > mesa.getSaldoJugador(jugador));
 
         return cantidadApuesta;
     }
