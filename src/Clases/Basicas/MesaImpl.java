@@ -769,7 +769,7 @@ public class MesaImpl implements Mesa, Cloneable {
 
     public void restaurarApuestas() {
         for (int i = 0; i < this.apuestasJugadores.length; i++) {
-            for (int j = 0; j < this.apuestasJugadores.length; j++) {
+            for (int j = 0; j < this.apuestasJugadores[0].length; j++) {
                 this.apuestasJugadores[i][j] = 0;
             }
         }
@@ -1299,6 +1299,8 @@ public class MesaImpl implements Mesa, Cloneable {
                     System.out.println(e.getMessage());
                 }
             }
+
+            cantidadJugadoresPasan = 0;
 
             for (JugadorImpl jugador: this.getJugadores()) {
                 if (!jugador.getActivo() && jugador.getSaldo() > 0){
