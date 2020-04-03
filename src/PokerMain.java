@@ -57,7 +57,7 @@ public class PokerMain {
         GestoraJugadorImpl gesJugador = new GestoraJugadorImpl();
         Validaciones validaciones = new Validaciones();
         MesaImpl mesa = new MesaImpl();
-        int saldoInicialJugador;
+        int saldoInicialJugador, jugadoresConSaldo;
         boolean quedanJugadores, seguirJugando;
 
         //leerYValidarJugador*
@@ -108,9 +108,12 @@ public class PokerMain {
 
             mesa.incrementarTurno();
 
-            //TODO Falta añadir que haya usuarios con saldo en el while
             seguirJugando = validaciones.leerYValidarSeguirJugando();
-        }while ((mesa.getSaldoJugador(0)>0) && seguirJugando);
+            jugadoresConSaldo = gesJugador.jugadoresConSaldo(mesa.getJugadores());
+
+        }while (mesa.getSaldoJugador(0)>0
+                && seguirJugando
+                && jugadoresConSaldo > 0);
 
         System.out.println("El jugador "+mesa.getUsuarioJugador(0)+" empezo con "+saldoInicialJugador+" y acabo con "+mesa.getSaldoJugador(0)+"");
 
