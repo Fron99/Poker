@@ -263,6 +263,16 @@ public class GestoraJugadorImpl {
      * POSTCONDICIONES: -
      */
 
-    public boolean jugadoresConSaldo
+    public int jugadoresConSaldo(JugadorImpl[] jugadores){
+        int cantidad = 0;
+        if (jugadores.length == 5){
+            for (int i = 1; i < jugadores.length; i++){
+                if (jugadores[i].getSaldo() > 0){
+                    cantidad++;
+                }
+            }
+        }
+        return cantidad;
+    }
 
 }
