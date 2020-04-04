@@ -262,6 +262,11 @@ public class GestoraJugadorImpl {
      * POSTCONDICIONES: -
      */
 
+    /**
+     * @param jugadores
+     * @return
+     */
+
     public int jugadoresConSaldo(JugadorImpl[] jugadores){
         int cantidad = 0;
         if (jugadores.length == 5){

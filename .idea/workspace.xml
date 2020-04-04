@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9a3eddb-34fe-4dec-b858-4173adae43d5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" afterDir="false" />
