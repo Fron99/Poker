@@ -10,7 +10,7 @@ public class GestoraCartaImpl {
     /*
      * SIGNATURA: public int calcularValorCartaAlta(CartaImpl[] cartas);
      * COMENTARIO: Calcular el valor de la carta mas alta del array de cartas pasado por parametro
-     * PRECONDICIONES: - El array debe estar ordenado de menor a mayor
+     * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
      * Salida: - Un entero
      * ENTRADA/SALIDA: - Nada
@@ -31,11 +31,10 @@ public class GestoraCartaImpl {
         return puntos;
     }
 
-
     /*
      * SIGNATURA: public int calcularValorPareja(CartaImpl[] cartas);
      * COMENTARIO: Calcular el valor de la pareja mas alta del array de cartas pasado por parametro
-     * PRECONDICIONES: - El array debe estar ordenado de menor a mayor
+     * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
      * Salida: - Un entero
      * ENTRADA/SALIDA: - Nada
@@ -85,11 +84,10 @@ public class GestoraCartaImpl {
         return puntos;
     }
 
-
     /*
      * SIGNATURA: public int calcularValorDoblePareja(CartaImpl[] cartas);
      * COMENTARIO: Calcular el valor de la doble pareja mas alta que haya en el array pasado por parametro
-     * PRECONDICIONES: - El array debe estar ordenado de menor a mayor
+     * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
      * SALIDA: - Un entero
      * ENTRADA/SALIDA: - Nada
@@ -169,11 +167,10 @@ public class GestoraCartaImpl {
         return puntos;
     }
 
-
     /*
      * SIGNATURA: public int calcularValorTrio(CartaImpl[] cartas);
      * COMENTARIO: Calcular el valor del trio mas alta del array de cartas pasado por parametro
-     * PRECONDICIONES: - El array debe estar ordenado de menor a mayor
+     * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
      * Salida: - Un entero
      * ENTRADA/SALIDA: - Nada
@@ -248,7 +245,7 @@ public class GestoraCartaImpl {
     /*
      * SIGNATURA: public int calcularValorEscalera(CartaImpl[] cartas);
      * COMENTARIO: Calcular el valor de la escalera mas alta del array de cartas pasado por parametro
-     * PRECONDICIONES: - Nada
+     * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
      * SALIDA: - Un entero
      * ENTRADA/SALIDA: - Nada
@@ -335,7 +332,7 @@ public class GestoraCartaImpl {
     /*
      * SIGNATURA: public int calcularValorColor(CartaImpl[] cartas);
      * COMENTARIO: Calcula el valor de la carta mas alta cuando hay color
-     * PRECONDICIONES: - Nada
+     * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
      * SALIDA: - Un entero
      * ENTRADA/SALIDA: - Nada
@@ -377,12 +374,10 @@ public class GestoraCartaImpl {
         return puntos;
     }
 
-
     /*
      * SIGNATURA: public int calcularValorFull(CartaImpl[] cartas);
      * COMENTARIO: Calcula el valor del full del array de CartasImpl pasado por parametro
-     * PRECONDICIONES: - El array debe estar ordenado de menor a mayor
-     *                 - El array de cartas pasado por parametro no puede contener cartas por defecto
+     * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
      * SALIDA: - Un entero
      * ENTRADA/SALIDA: - Nada
@@ -390,16 +385,16 @@ public class GestoraCartaImpl {
      *                  - Si no hay full devuelve 0
      */
 
-
     /**
      * Calculate the value of the "Full" in deck of cards.
      * @param cartas CartaImpl[] cards you want to value
      * @return int with value of the "Full" in poker. If not exist "Full" in the deck of cards, returns 0
      */
 
-
-
     public int calcularValorFull(CartaImpl[] cartas){
+        CartaImpl[] cartasOrdenadas = new CartaImpl[cartas.length];
+        System.arraycopy(cartas,0,cartasOrdenadas,0,cartas.length);
+        ordenarCartas(cartasOrdenadas);
         int puntos = 0;
         int cantidadTrios = 0, cantidadParejas = 0;
         int valorTrio = 0, valorPareja = 0;
@@ -557,11 +552,10 @@ public class GestoraCartaImpl {
         return puntos;
     }
 
-
     /*
      * SIGNATURA: public int calcularValorPoker(CartaImpl[] cartas);
      * COMENTARIO: Calcula el valor del poker del array de CartasImpl pasado por parametro
-     * PRECONDICIONES: - El array debe estar ordenado de menor a mayor
+     * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
      * SALIDA: - Un entero
      * ENTRADA/SALIDA: - Nada
@@ -593,11 +587,10 @@ public class GestoraCartaImpl {
         return puntos;
     }
 
-
     /*
      * SIGNATURA: public int calcularValorEscaleraColor(CartaImpl[] cartas);
      * COMENTARIO: Calcula el valor de la escalera de color del array de CartasImpl pasado por parametro
-     * PRECONDICIONES: - El array debe estar ordenado de menor a mayor
+     * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
      * SALIDA: - Un entero
      * ENTRADA/SALIDA: - Nada
@@ -686,7 +679,6 @@ public class GestoraCartaImpl {
         return puntos;
     }
 
-
     /*
      * SIGNATURA: public int evaluarCartas(int jugador, MesaImpl mesa);
      * COMENTARIO: Calcular el valor que tienen las cartas segun la puntuacion establecida.
@@ -764,7 +756,6 @@ public class GestoraCartaImpl {
         return puntosFinales;
     }
 
-
     /*
      * SIGNATURA: public CartaImpl[] obtenerCartasAEvaluar(int jugador, MesaImpl mesa);
      * COMENTARIO: Este metodo obtiene el total de cartas que tiene el jugador junto a las disponibles en la mesa para evaluarlas.
@@ -782,7 +773,6 @@ public class GestoraCartaImpl {
      * @param mesa table where the player plays
      * @return CartaImpl[] array of CartaImpl with the player's cards passed by parameter
      */
-
 
     public CartaImpl[] obtenerCartasAEvaluar(int jugador, MesaImpl mesa){
         CartaImpl[] cartasTotales;
@@ -823,11 +813,11 @@ public class GestoraCartaImpl {
         return cartasTotales;
     }
 
-
     /*
      * SIGNATURA: public void ordenarCartas(CartaImpl[] cartas);
      * COMENTARIO: Ordena las cartas de un array de cartas.
      * PRECONDICIONES: - El array debe tener como minimo 2 cartas
+     *                 - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Nada
      * SALIDA: - Nada
      * ENTRADA/SALIDA: - Un array de CartaImpl
@@ -853,11 +843,10 @@ public class GestoraCartaImpl {
         }
     }
 
-
     /*
-     * SIGNATURA: public char calcularColor(CartaImpl[] cartas);
+     * SIGNATURA: public char calcularTipoColor(CartaImpl[] cartas);
      * COMENTARIO: Metodo para calcular si hay color en el array de cartas
-     * PRECONDICIONES: - Nada
+     * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
      * SALIDA: - Un caracter
      * ENTRADA/SALIDA: - Nada

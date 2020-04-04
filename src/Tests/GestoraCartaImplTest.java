@@ -37,42 +37,36 @@ public class GestoraCartaImplTest {
         //Prueba 0
 
         CartaImpl[] cartasP0 = {new CartaImpl('R',"2"), new CartaImpl('P',"7"), new CartaImpl('T',"9"), new CartaImpl('T',"5")};
-        ges.ordenarCartas(cartasP0);
         int valor = ges.calcularValorPareja(cartasP0);
         assertEquals(valor,0);
 
         //Prueba 1
 
         CartaImpl[] cartasP1 = {new CartaImpl('R',"A"), new CartaImpl('R',"K"), new CartaImpl('T',"A"), new CartaImpl('T',"2")};
-        ges.ordenarCartas(cartasP1);
         valor = ges.calcularValorPareja(cartasP1);
         assertEquals(valor,26);
 
         //Prueba 2
 
         CartaImpl[] cartasP2 = {new CartaImpl('R',"A"), new CartaImpl('P',"K"), new CartaImpl('T',"A"), new CartaImpl('T',"K")};
-        ges.ordenarCartas(cartasP2);
         valor = ges.calcularValorPareja(cartasP2);
         assertEquals(valor,26);
 
         //Prueba 3
 
         CartaImpl[] cartasP3 = {new CartaImpl('R',"2"), new CartaImpl('P',"2"), new CartaImpl('T',"A"), new CartaImpl('T',"K")};
-        ges.ordenarCartas(cartasP3);
         valor = ges.calcularValorPareja(cartasP3);
         assertEquals(valor,14);
 
         //Prueba 4
 
         CartaImpl[] cartasP4 = {new CartaImpl('R',"5"), new CartaImpl('P',"2"), new CartaImpl('P',"2"), new CartaImpl('T',"2")};
-        ges.ordenarCartas(cartasP4);
         valor = ges.calcularValorPareja(cartasP4);
         assertEquals(valor,0);
 
         //Prueba 5
 
         CartaImpl[] cartasP5 = {new CartaImpl('R',"5"), new CartaImpl('P',"3"), new CartaImpl('P',"3"), new CartaImpl('T',"3"), new CartaImpl('T',"2")};
-        ges.ordenarCartas(cartasP5);
         valor = ges.calcularValorPareja(cartasP5);
         assertEquals(valor,0);
     }
@@ -85,56 +79,48 @@ public class GestoraCartaImplTest {
         //Prueba 0
 
         CartaImpl[] cartasP0 = {new CartaImpl('R',"2"), new CartaImpl('P',"2"), new CartaImpl('C',"A"), new CartaImpl('T',"A")};
-        ges.ordenarCartas(cartasP0);
         int valor = ges.calcularValorDoblePareja(cartasP0);
         assertEquals(valor,93);
 
         //Prueba 1
 
         CartaImpl[] cartasP1 = {new CartaImpl('P',"A"), new CartaImpl('R',"A"), new CartaImpl('C',"A"), new CartaImpl('T',"A")};
-        ges.ordenarCartas(cartasP1);
         valor = ges.calcularValorDoblePareja(cartasP1);
         assertEquals(valor,0);
 
         //Prueba 2
 
         CartaImpl[] cartasP2 = {new CartaImpl('P',"A"), new CartaImpl('R',"K"), new CartaImpl('C',"A"), new CartaImpl('T',"K")};
-        ges.ordenarCartas(cartasP2);
         valor = ges.calcularValorDoblePareja(cartasP2);
         assertEquals(valor,104);
 
         //Prueba 3
 
         CartaImpl[] cartasP3 = {new CartaImpl('P',"A"), new CartaImpl('R',"K"), new CartaImpl('C',"A"), new CartaImpl('T',"K"), new CartaImpl('T',"A")};
-        ges.ordenarCartas(cartasP3);
         valor = ges.calcularValorDoblePareja(cartasP3);
         assertEquals(valor,0);
 
         //Prueba 4
 
         CartaImpl[] cartasP4 = {new CartaImpl('P',"2"), new CartaImpl('R',"3"), new CartaImpl('C',"4"), new CartaImpl('T',"5"), new CartaImpl('T',"6")};
-        ges.ordenarCartas(cartasP4);
         valor = ges.calcularValorDoblePareja(cartasP4);
         assertEquals(valor,0);
 
         //Prueba 5
 
         CartaImpl[] cartasP5 = {new CartaImpl('P',"2"), new CartaImpl('R',"2"), new CartaImpl('C',"4"), new CartaImpl('T',"5"), new CartaImpl('T',"6")};
-        ges.ordenarCartas(cartasP5);
         valor = ges.calcularValorDoblePareja(cartasP5);
         assertEquals(valor,0);
 
         //Prueba 6
 
         CartaImpl[] cartasP6 = {new CartaImpl('P',"2"), new CartaImpl('R',"2"), new CartaImpl('C',"3"), new CartaImpl('T',"3"), new CartaImpl('T',"4"), new CartaImpl('R',"4")};
-        ges.ordenarCartas(cartasP6);
         valor = ges.calcularValorDoblePareja(cartasP6);
         assertEquals(valor,29);
 
         //Prueba 7
 
         CartaImpl[] cartasP7 = {new CartaImpl('P',"2"), new CartaImpl('R',"2"), new CartaImpl('C',"2"), new CartaImpl('T',"A"), new CartaImpl('T',"A"), new CartaImpl('R',"4")};
-        ges.ordenarCartas(cartasP7);
         valor = ges.calcularValorDoblePareja(cartasP7);
         assertEquals(valor,0);
     }
@@ -146,49 +132,42 @@ public class GestoraCartaImplTest {
         //Prueba 0
 
         CartaImpl[] cartasP0 = {new CartaImpl('P',"A"), new CartaImpl('R',"4"), new CartaImpl('C',"A"), new CartaImpl('T',"4")};
-        ges.ordenarCartas(cartasP0);
         int valor = ges.calcularValorTrio(cartasP0);
         assertEquals(valor,0);
 
         //Prueba 1
 
         CartaImpl[] cartasP1 = {new CartaImpl('P',"A"), new CartaImpl('R',"4"), new CartaImpl('C',"A"), new CartaImpl('T',"A")};
-        ges.ordenarCartas(cartasP1);
         valor = ges.calcularValorTrio(cartasP1);
         assertEquals(valor,117);
 
         //Prueba 2
 
         CartaImpl[] cartasP2 = {new CartaImpl('P',"2"), new CartaImpl('R',"4"), new CartaImpl('C',"2"), new CartaImpl('T',"2")};
-        ges.ordenarCartas(cartasP2);
         valor = ges.calcularValorTrio(cartasP2);
         assertEquals(valor,105);
 
         //Prueba 3
 
         CartaImpl[] cartasP3 = {new CartaImpl('P',"2"), new CartaImpl('R',"2"), new CartaImpl('C',"2"), new CartaImpl('T',"2")};
-        ges.ordenarCartas(cartasP3);
         valor = ges.calcularValorTrio(cartasP3);
         assertEquals(valor,0);
 
         //Prueba 4
 
         CartaImpl[] cartasP4 = {new CartaImpl('P',"2"), new CartaImpl('R',"2"), new CartaImpl('C',"2"), new CartaImpl('T',"3"), new CartaImpl('T',"3"), new CartaImpl('T',"3")};
-        ges.ordenarCartas(cartasP4);
         valor = ges.calcularValorTrio(cartasP4);
         assertEquals(valor,106);
 
         //Prueba 5
 
         CartaImpl[] cartasP5 = {new CartaImpl('P',"5"), new CartaImpl('R',"3"), new CartaImpl('C',"5"), new CartaImpl('T',"5"), new CartaImpl('T',"3"), new CartaImpl('T',"3")};
-        ges.ordenarCartas(cartasP5);
         valor = ges.calcularValorTrio(cartasP5);
         assertEquals(valor,108);
 
         //Prueba 6
 
         CartaImpl[] cartasP6 = {new CartaImpl('P',"5"), new CartaImpl('R',"3"), new CartaImpl('C',"5"), new CartaImpl('T',"5"), new CartaImpl('T',"3"), new CartaImpl('T',"3"), new CartaImpl('T',"5")};
-        ges.ordenarCartas(cartasP6);
         valor = ges.calcularValorTrio(cartasP6);
         assertEquals(valor,106);
     }
@@ -285,84 +264,72 @@ public class GestoraCartaImplTest {
         //Prueba 0
 
         CartaImpl[] cartasP0 = {new CartaImpl('P',"6"), new CartaImpl('P',"2"), new CartaImpl('P',"3"), new CartaImpl('P',"4"), new CartaImpl('P',"5"), new CartaImpl('P',"6")};
-        ges.ordenarCartas(cartasP0);
         int valor = ges.calcularValorFull(cartasP0);
         assertEquals(valor,0);
 
         //Prueba 1
 
         CartaImpl[] cartasP1 = {new CartaImpl('P',"6"), new CartaImpl('P',"2"), new CartaImpl('T',"6"), new CartaImpl('C',"2"), new CartaImpl('P',"5"), new CartaImpl('P',"6")};
-        ges.ordenarCartas(cartasP1);
         valor = ges.calcularValorFull(cartasP1);
         assertEquals(valor,189);
 
         //Prueba 2
 
         CartaImpl[] cartasP2 = {new CartaImpl('P',"6"), new CartaImpl('P',"2"), new CartaImpl('T',"6"), new CartaImpl('C',"2"), new CartaImpl('P',"5"), new CartaImpl('T',"2")};
-        ges.ordenarCartas(cartasP2);
         valor = ges.calcularValorFull(cartasP2);
         assertEquals(valor,144);
 
         //Prueba 3
 
         CartaImpl[] cartasP3 = {new CartaImpl('P',"6"), new CartaImpl('P',"3"), new CartaImpl('T',"6"), new CartaImpl('C',"3"), new CartaImpl('P',"5"), new CartaImpl('T',"3")};
-        ges.ordenarCartas(cartasP3);
         valor = ges.calcularValorFull(cartasP3);
         assertEquals(valor,156);
 
         //Prueba 4
 
         CartaImpl[] cartasP4 = {new CartaImpl('P',"6"), new CartaImpl('P',"A"), new CartaImpl('T',"6"), new CartaImpl('C',"A"), new CartaImpl('P',"5"), new CartaImpl('T',"A")};
-        ges.ordenarCartas(cartasP4);
         valor = ges.calcularValorFull(cartasP4);
         assertEquals(valor,289);
 
         //Prueba 5
 
         CartaImpl[] cartasP5 = {new CartaImpl('P',"A"), new CartaImpl('P',"A"), new CartaImpl('T',"K"), new CartaImpl('C',"A"), new CartaImpl('P',"5"), new CartaImpl('T',"K")};
-        ges.ordenarCartas(cartasP5);
         valor = ges.calcularValorFull(cartasP5);
         assertEquals(valor,296);
 
         //Prueba 6
 
         CartaImpl[] cartasP6 = {new CartaImpl('P',"2"), new CartaImpl('P',"2"), new CartaImpl('T',"3"), new CartaImpl('C',"2"), new CartaImpl('P',"5"), new CartaImpl('T',"3")};
-        ges.ordenarCartas(cartasP6);
         valor = ges.calcularValorFull(cartasP6);
         assertEquals(valor,141);
 
         //Prueba 7 (prueba si hay poker)
 
         CartaImpl[] cartasP7 = {new CartaImpl('P',"2"), new CartaImpl('P',"2"), new CartaImpl('T',"3"), new CartaImpl('C',"2"), new CartaImpl('P',"2"), new CartaImpl('T',"3")};
-        ges.ordenarCartas(cartasP7);
         valor = ges.calcularValorFull(cartasP7);
         assertEquals(valor,0);
 
         //Prueba 8 (prueba si hay full y devuelve 0 si lo hay)
 
         CartaImpl[] cartasP8 = {new CartaImpl('P',"2"), new CartaImpl('P',"2"), new CartaImpl('T',"3"), new CartaImpl('C',"2"), new CartaImpl('P',"2"), new CartaImpl('T',"3"), new CartaImpl('T',"3")};
-        ges.ordenarCartas(cartasP8);
         valor = ges.calcularValorFull(cartasP8);
         assertEquals(valor,0);
 
         //Prueba 9 (prueba cuando hay 2 trios)
 
         CartaImpl[] cartasP9 = {new CartaImpl('P',"7"), new CartaImpl('P',"3"), new CartaImpl('T',"7"), new CartaImpl('C',"3"), new CartaImpl('P',"7"), new CartaImpl('T',"3")};
-        ges.ordenarCartas(cartasP9);
         valor = ges.calcularValorFull(cartasP9);
         assertEquals(valor,202);
 
         //Prueba 10 (prueba cuando hay 2 trios)
 
         CartaImpl[] cartasP10 = {new CartaImpl('P',"2"), new CartaImpl('P',"3"), new CartaImpl('T',"2"), new CartaImpl('C',"2"), new CartaImpl('P',"3"), new CartaImpl('T',"3")};
-        ges.ordenarCartas(cartasP10);
         valor = ges.calcularValorFull(cartasP10);
         assertEquals(valor,153);
 
         //Prueba 11 (prueba cuando no hay trios)
 
         CartaImpl[] cartasP11 = {new CartaImpl('P',"2"), new CartaImpl('C',"2"), new CartaImpl('P',"3"), new CartaImpl('T',"3"), new CartaImpl('T',"8")};
-        ges.ordenarCartas(cartasP11);
         valor = ges.calcularValorFull(cartasP11);
         assertEquals(valor,0);
     }
@@ -375,21 +342,18 @@ public class GestoraCartaImplTest {
         //Prueba 0
 
         CartaImpl[] cartasP0 = {new CartaImpl('P',"6"), new CartaImpl('P',"10"), new CartaImpl('P',"6"), new CartaImpl('T',"A"), new CartaImpl('P',"6"), new CartaImpl('P',"9"), new CartaImpl('P',"6")};
-        ges.ordenarCartas(cartasP0);
         int valor = ges.calcularValorPoker(cartasP0);
         assertEquals(valor,301);
 
         //Prueba 1
 
         CartaImpl[] cartasP1 = {new CartaImpl('P',"A"), new CartaImpl('P',"A"), new CartaImpl('P',"6"), new CartaImpl('T',"A"), new CartaImpl('P',"6"), new CartaImpl('P',"9"), new CartaImpl('P',"A")};
-        ges.ordenarCartas(cartasP1);
         valor = ges.calcularValorPoker(cartasP1);
         assertEquals(valor,309);
 
         //Prueba 2
 
         CartaImpl[] cartasP2 = {new CartaImpl('P',"2"), new CartaImpl('P',"A"), new CartaImpl('P',"2"), new CartaImpl('T',"A"), new CartaImpl('P',"2"), new CartaImpl('P',"9"), new CartaImpl('P',"2")};
-        ges.ordenarCartas(cartasP2);
         valor = ges.calcularValorPoker(cartasP2);
         assertEquals(valor,297);
 
@@ -403,93 +367,93 @@ public class GestoraCartaImplTest {
         //Prueba 0
 
         CartaImpl[] cartasP0 = {new CartaImpl('P',"3"), new CartaImpl('P',"A"), new CartaImpl('R',"2"), new CartaImpl('T',"A"), new CartaImpl('C',"2"), new CartaImpl('P',"9"), new CartaImpl('P',"2")};
-        ges.ordenarCartas(cartasP0);
         int valor = ges.calcularValorEscaleraColor(cartasP0);
         assertEquals(valor,0);
 
         //Prueba 1
 
         CartaImpl[] cartasP1 = {new CartaImpl('P',"3"), new CartaImpl('P',"A"), new CartaImpl('P',"2"), new CartaImpl('T',"A"), new CartaImpl('P',"4"), new CartaImpl('P',"5")};
-        ges.ordenarCartas(cartasP1);
         valor = ges.calcularValorEscaleraColor(cartasP1);
         assertEquals(valor,310);
 
         //Prueba 2
 
         CartaImpl[] cartasP2 = {new CartaImpl('P',"K"), new CartaImpl('P',"A"), new CartaImpl('P',"J"), new CartaImpl('T',"A"), new CartaImpl('P',"Q"), new CartaImpl('P',"10")};
-        ges.ordenarCartas(cartasP2);
         valor = ges.calcularValorEscaleraColor(cartasP2);
         assertEquals(valor,319);
 
         //Prueba 3
 
         CartaImpl[] cartasP3 = {new CartaImpl('T',"K"), new CartaImpl('P',"A"), new CartaImpl('P',"J"), new CartaImpl('T',"A"), new CartaImpl('P',"Q"), new CartaImpl('P',"10")};
-        ges.ordenarCartas(cartasP3);
         valor = ges.calcularValorEscaleraColor(cartasP3);
         assertEquals(valor,0);
 
         //Prueba 4
 
         CartaImpl[] cartasP4 = {new CartaImpl('P',"3"), new CartaImpl('P',"A"), new CartaImpl('P',"2"), new CartaImpl('T',"2"), new CartaImpl('P',"4"), new CartaImpl('P',"5")};
-        ges.ordenarCartas(cartasP4);
         valor = ges.calcularValorEscaleraColor(cartasP4);
         assertEquals(valor,310);
 
         //Prueba 5
 
         CartaImpl[] cartasP5 = {new CartaImpl('P',"3"), new CartaImpl('P',"A"), new CartaImpl('P',"2"), new CartaImpl('P',"4"), new CartaImpl('P',"5"), new CartaImpl('R',"A")};
-        ges.ordenarCartas(cartasP5);
         valor = ges.calcularValorEscaleraColor(cartasP5);
         assertEquals(valor,310);
 
         //Prueba 6
 
         CartaImpl[] cartasP6 = {new CartaImpl('P',"K"), new CartaImpl('P',"A"), new CartaImpl('P',"Q"), new CartaImpl('P',"J"), new CartaImpl('P',"10"), new CartaImpl('R',"A")};
-        ges.ordenarCartas(cartasP6);
         valor = ges.calcularValorEscaleraColor(cartasP6);
         assertEquals(valor,319);
 
         //Prueba 7
 
         CartaImpl[] cartasP7 = {new CartaImpl('P',"K"), new CartaImpl('P',"A"), new CartaImpl('P',"Q"), new CartaImpl('P',"J"), new CartaImpl('P',"10"), new CartaImpl('R',"10")};
-        ges.ordenarCartas(cartasP7);
         valor = ges.calcularValorEscaleraColor(cartasP7);
         assertEquals(valor,319);
 
         //Prueba 8
 
         CartaImpl[] cartasP8 = {new CartaImpl('P',"K"), new CartaImpl('P',"A"), new CartaImpl('P',"Q"), new CartaImpl('P',"J"), new CartaImpl('P',"10"), new CartaImpl('Z',"10"), new CartaImpl('A',"10")};
-        ges.ordenarCartas(cartasP8);
         valor = ges.calcularValorEscaleraColor(cartasP8);
         assertEquals(valor,319);
 
         //Prueba 9
 
         CartaImpl[] cartasP9 = {new CartaImpl('P',"K"), new CartaImpl('P',"A"), new CartaImpl('P',"Q"), new CartaImpl('P',"J"), new CartaImpl('P',"10"), new CartaImpl('Z',"A"), new CartaImpl('A',"A")};
-        ges.ordenarCartas(cartasP9);
         valor = ges.calcularValorEscaleraColor(cartasP9);
         assertEquals(valor,319);
 
         //Prueba 10
 
         CartaImpl[] cartasP10 = {new CartaImpl('P',"2"), new CartaImpl('P',"A"), new CartaImpl('P',"3"), new CartaImpl('P',"4"), new CartaImpl('P',"5"), new CartaImpl('Z',"A"), new CartaImpl('A',"A")};
-        ges.ordenarCartas(cartasP10);
         valor = ges.calcularValorEscaleraColor(cartasP10);
         assertEquals(valor,310);
 
         //Prueba 11
 
         CartaImpl[] cartasP11 = {new CartaImpl('P',"2"), new CartaImpl('P',"A"), new CartaImpl('P',"3"), new CartaImpl('P',"4"), new CartaImpl('P',"5"), new CartaImpl('Z',"3"), new CartaImpl('A',"3")};
-        ges.ordenarCartas(cartasP11);
         valor = ges.calcularValorEscaleraColor(cartasP11);
         assertEquals(valor,310);
 
         //Prueba 12
 
         CartaImpl[] cartasP12 = {new CartaImpl('P',"A"), new CartaImpl('P',"Q"), new CartaImpl('T',"3"), new CartaImpl('P',"K"), new CartaImpl('P',"10"), new CartaImpl('P',"J")};
-        ges.ordenarCartas(cartasP12);
         valor = ges.calcularValorEscaleraColor(cartasP12);
         assertEquals(valor,319);
+
+        //Prueba 13
+
+        CartaImpl[] cartasP13 = {new CartaImpl('P',"2"), new CartaImpl('P',"A"), new CartaImpl('P',"3"), new CartaImpl('P',"4"), new CartaImpl('P',"5"), new CartaImpl('P',"6"), new CartaImpl('A',"3")};
+        valor = ges.calcularValorEscaleraColor(cartasP13);
+        assertEquals(valor,311);
+
+        //Prueba 14
+
+        CartaImpl[] cartasP14 = {new CartaImpl('P',"2"), new CartaImpl('P',"A"), new CartaImpl('P',"3"), new CartaImpl('P',"4"), new CartaImpl('P',"5"), new CartaImpl('P',"6"), new CartaImpl('P',"7"), new CartaImpl('P',"8"), new CartaImpl('P',"9"), new CartaImpl('P',"10"), new CartaImpl('P',"J"), new CartaImpl('P',"Q"), new CartaImpl('P',"K")};
+        valor = ges.calcularValorEscaleraColor(cartasP14);
+        assertEquals(valor,319);
+
 
     }
 
