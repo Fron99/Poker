@@ -224,6 +224,12 @@ public class GestoraCartaImplTest {
         CartaImpl[] cartasP7 = {new CartaImpl('T',"Q"), new CartaImpl('T',"A"), new CartaImpl('T',"K"), new CartaImpl('T',"2"), new CartaImpl('T',"8"),new CartaImpl('T',"J"), new CartaImpl('T',"10")};
         valor = ges.calcularValorEscalera(cartasP7);
         assertEquals(valor,127);
+
+        //Prueba 8(Escalera pero con numeros repetidos en medio)
+
+        CartaImpl[] cartasP8 = {new CartaImpl('T',"4"), new CartaImpl('T',"A"), new CartaImpl('T',"5"), new CartaImpl('T',"6"), new CartaImpl('P',"5"),new CartaImpl('P',"7"), new CartaImpl('C',"8")};
+        valor = ges.calcularValorEscalera(cartasP8);
+        assertEquals(valor,121);
     }
 
 
@@ -560,13 +566,6 @@ public class GestoraCartaImplTest {
     public void testOrdenarCartas() {
         GestoraCartaImpl ges = new GestoraCartaImpl();
 
-        //Prueba 0
-
-        CartaImpl[] cartasP0 = {new CartaImpl('T',"5"), new CartaImpl('P',"9"), new CartaImpl('T',"2"), new CartaImpl('R',"K")};
-        CartaImpl[] cartasDesordenadas = {new CartaImpl('R',"K"), new CartaImpl('P',"9"), new CartaImpl('T',"2"), new CartaImpl('T',"5")};
-        ges.ordenarCartas(cartasP0);
-        assertNotEquals(cartasP0,cartasDesordenadas);
-
         //Prueba 1
 
         CartaImpl[] cartasP1 = {new CartaImpl('T',"5"), new CartaImpl('P',"9"), new CartaImpl('T',"2"), new CartaImpl('R',"K")};
@@ -584,43 +583,43 @@ public class GestoraCartaImplTest {
         //Prueba 0 (Prueba con color T)
 
         CartaImpl[] cartasP0 = {new CartaImpl('T',"5"), new CartaImpl('T',"9"), new CartaImpl('T',"2"), new CartaImpl('T',"K"), new CartaImpl('T',"J")};
-        char color = ges.calcularColor(cartasP0);
+        char color = ges.calcularTipoColor(cartasP0);
         assertEquals('T',color);
 
         //Prueba 1 (Prueba con color P)
 
         CartaImpl[] cartasP1 = {new CartaImpl('P',"9"), new CartaImpl('P',"2"), new CartaImpl('P',"K"), new CartaImpl('P',"J"), new CartaImpl('P',"3")};
-        color = ges.calcularColor(cartasP1);
+        color = ges.calcularTipoColor(cartasP1);
         assertEquals('P',color);
 
         //Prueba 2 (Prueba con color R)
 
         CartaImpl[] cartasP2 = {new CartaImpl('R',"9"), new CartaImpl('R',"2"), new CartaImpl('R',"K"), new CartaImpl('R',"J"), new CartaImpl('R',"3")};
-        color = ges.calcularColor(cartasP2);
+        color = ges.calcularTipoColor(cartasP2);
         assertEquals('R',color);
 
         //Prueba 3 (Prueba con color C)
 
         CartaImpl[] cartasP3 = {new CartaImpl('C',"9"), new CartaImpl('C',"2"), new CartaImpl('C',"K"), new CartaImpl('C',"J"), new CartaImpl('C',"3")};
-        color = ges.calcularColor(cartasP3);
+        color = ges.calcularTipoColor(cartasP3);
         assertEquals('C',color);
 
         //Prueba 4 (Prueba faltando cartas para color)
 
         CartaImpl[] cartasP4 = {new CartaImpl('T',"9"), new CartaImpl('T',"2"), new CartaImpl('T',"K"), new CartaImpl('T',"J")};
-        color = ges.calcularColor(cartasP4);
+        color = ges.calcularTipoColor(cartasP4);
         assertEquals('N',color);
 
         //Prueba 5 (Prueba sin color)
 
         CartaImpl[] cartasP5 = {new CartaImpl('R',"5"), new CartaImpl('T',"9"), new CartaImpl('P',"2"), new CartaImpl('T',"K"), new CartaImpl('T',"J")};
-        color = ges.calcularColor(cartasP5);
+        color = ges.calcularTipoColor(cartasP5);
         assertEquals('N',color);
 
         //Prueba 6 (Prueba existiendo mas de 5 cartas del mismo color)
 
         CartaImpl[] cartasP6 = {new CartaImpl('T',"5"), new CartaImpl('C',"5"), new CartaImpl('T',"8"), new CartaImpl('T',"9"), new CartaImpl('T',"2"), new CartaImpl('T',"K"), new CartaImpl('T',"J")};
-        color = ges.calcularColor(cartasP6);
+        color = ges.calcularTipoColor(cartasP6);
         assertEquals('T',color);
 
     }
