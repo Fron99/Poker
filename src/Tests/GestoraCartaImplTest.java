@@ -514,14 +514,15 @@ public class GestoraCartaImplTest {
 
         GestoraCartaImpl ges = new GestoraCartaImpl();
         MesaImpl mesa = new MesaImpl();
+
         mesa.restaurarMesa();
         mesa.generarCartasJugadores();
         mesa.generarTresCartasMesa();
         CartaImpl[] cartas = ges.obtenerCartasAEvaluar(0,mesa);
         CartaImpl[] cartasObtenidas = new CartaImpl[5];
-        cartasObtenidas[0] = mesa.getCartasMesa()[0];
-        cartasObtenidas[1] = mesa.getCartasMesa()[1];
-        cartasObtenidas[2] = mesa.getCartasMesa()[2];
+        cartasObtenidas[0] = mesa.getCartaMesa(0);
+        cartasObtenidas[1] = mesa.getCartaMesa(1);
+        cartasObtenidas[2] = mesa.getCartaMesa(2);
         cartasObtenidas[3] = mesa.getCartaJugador(0,0);
         cartasObtenidas[4] = mesa.getCartaJugador(0,1);
         assertArrayEquals(cartas,cartasObtenidas);
@@ -532,9 +533,21 @@ public class GestoraCartaImplTest {
         mesa.generarTresCartasMesa();
         cartas = ges.obtenerCartasAEvaluar(0,mesa);
         cartasObtenidas = new CartaImpl[5];
-        cartasObtenidas[0] = mesa.getCartasMesa()[0];
-        cartasObtenidas[1] = mesa.getCartasMesa()[1];
-        cartasObtenidas[2] = mesa.getCartasMesa()[2];
+        cartasObtenidas[0] = mesa.getCartaMesa(0);
+        cartasObtenidas[1] = mesa.getCartaMesa(1);
+        cartasObtenidas[2] = mesa.getCartaMesa(2);
+        cartasObtenidas[3] = mesa.getCartaJugador(0,0);
+        cartasObtenidas[4] = mesa.getCartaJugador(0,1);
+        assertArrayEquals(cartas,cartasObtenidas);
+
+        mesa.restaurarMesa();
+        mesa.generarCartasJugadores();
+        mesa.generarTresCartasMesa();
+        cartas = ges.obtenerCartasAEvaluar(0,mesa);
+        cartasObtenidas = new CartaImpl[5];
+        cartasObtenidas[0] = mesa.getCartaMesa(0);
+        cartasObtenidas[1] = mesa.getCartaMesa(1);
+        cartasObtenidas[2] = mesa.getCartaMesa(2);
         cartasObtenidas[3] = mesa.getCartaJugador(0,0);
         cartasObtenidas[4] = mesa.getCartaJugador(0,1);
         assertArrayEquals(cartas,cartasObtenidas);
