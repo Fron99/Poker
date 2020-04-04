@@ -655,40 +655,44 @@ public class GestoraCartaImpl {
 
             //Comprueba si la escalera de color puede ser que sea A,2,3,4,5
             //Como la carta A es la se mayor valor no se coloca delante en el array entonces hay que comprobarla estando detras
-            if (cartasColor[0].getValorNumero() == 1 && cartas[cartas.length - 1].getValorNumero() == 13) {
+            if (cartasColor[0].getValorNumero() == 1 && cartasColor[cartasColor.length - 1].getValorNumero() == 13) {
 
                 //Esta controlado que no haya numeros repetidos ya que no puede haber numeros repetidos en un palo
 
                 //Como sabemos que la primera carta sera el 2 y la ultima sera la A podemos usar posiciones absolutas para comprobar si hay escalera de color tipo A,2,3,4,5
                 if ((cartasColor[1].getValorNumero() == ((cartasColor[0].getValorNumero()) + 1))
-                        && (cartasColor[2].getValorNumero() == ((cartasColor[1].getValorNumero()) + 1))
-                        && (cartasColor[3].getValorNumero() == ((cartasColor[2].getValorNumero()) + 1))) {
+                     && (cartasColor[2].getValorNumero() == ((cartasColor[1].getValorNumero()) + 1))
+                     && (cartasColor[3].getValorNumero() == ((cartasColor[2].getValorNumero()) + 1))) {
 
-                    //En el caso de que pueda ser A,2,3,4,5,6 o incluso A,2,3,4,5,6,7 se realizara este bucle for para coger la escalera de color mas alta.
-                    //TODO Comprobar que hace este if y documentarlo
-                    if (cartasColor[4].getValorNumero() == cartasColor[3].getValorNumero()) {
-                        for (int i = 3, j = 0; cartasColor[i + 1].getValorNumero() == cartasColor[i].getValorNumero(); i++, j++) {
+                    //If para comprobar si la carta siguiente 4 es un numero mayor a la carta 3 lo cual significaria que habra escalera mas alta que A,2,3,4,5
+                    if (cartasColor[4].getValorNumero() == cartasColor[3].getValorNumero() + 1) {
+                        //En el caso de que pueda ser A,2,3,4,5,6 o incluso A,2,3,4,5,6,7 se realizara este bucle for para coger la escalera de color mas alta.
+                        for (int i = 3, j = 0; cartasColor[i + 1].getValorNumero() == cartasColor[i].getValorNumero() + 1 && i<cartasColor.length-2; i++, j++) {
                             puntos = 309 + cartasColor[j].getValorNumero();
                         }
                     } else {
                         //En el cado de que no haya una escalera mas grande se coloca la escalera de color del A,2,3,4,5
                         puntos = 309 + cartasColor[0].getValorNumero();
+                        escaleraTipo1 = true;
                     }
                 }
             }
 
-            //Recorre el array para comprobar si hay escalera de color
-            for (int i = 0; i < cartasColor.length - 4; i++) {
+            //En el caso de que haya escalera tipo A,2,3,4,5 o algo mayor no se ejecutara
+            if (!escaleraTipo1){
+                //Recorre el array para comprobar si hay escalera de color
+                for (int i = 0; i < cartasColor.length - 4; i++) {
 
-                if ((cartasColor[i+1].getValorNumero() == ((cartasColor[i].getValorNumero()) + 1))
-                        && (cartasColor[i+2].getValorNumero() == ((cartasColor[i+1].getValorNumero()) + 1))
-                        && (cartasColor[i+3].getValorNumero() == ((cartasColor[i+2].getValorNumero()) + 1))
-                        && (cartasColor[i+4].getValorNumero() == ((cartasColor[i+3].getValorNumero()) + 1))) {
+                    if ((cartasColor[i+1].getValorNumero() == ((cartasColor[i].getValorNumero()) + 1))
+                         && (cartasColor[i+2].getValorNumero() == ((cartasColor[i+1].getValorNumero()) + 1))
+                         && (cartasColor[i+3].getValorNumero() == ((cartasColor[i+2].getValorNumero()) + 1))
+                         && (cartasColor[i+4].getValorNumero() == ((cartasColor[i+3].getValorNumero()) + 1))) {
 
-                    puntos = 309 + (cartasColor[i].getValorNumero()+1);
+                        puntos = 309 + (cartasColor[i].getValorNumero()+1);
+
+                    }
 
                 }
-
             }
 
         }
