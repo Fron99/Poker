@@ -840,16 +840,12 @@ public class MesaImpl implements Mesa, Cloneable {
         Random r = new Random();
         int numPosicionCarta;
 
-        numPosicionCarta = r.nextInt(52);
         for (int i = 0; i < 3; i++) {
             do {
-                if (this.baraja[numPosicionCarta].getPalo() != 'D') {
-                    this.cartasMesa[i] = this.baraja[numPosicionCarta];
-                    this.baraja[numPosicionCarta] = new CartaImpl();
-                }
                 numPosicionCarta = r.nextInt(52);
             } while (this.baraja[numPosicionCarta].getPalo() == 'D');
-
+            this.cartasMesa[i] = this.baraja[numPosicionCarta];
+            this.baraja[numPosicionCarta] = new CartaImpl();
         }
 
     }
