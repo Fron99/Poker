@@ -228,6 +228,77 @@ public class GestoraJugadorImpl {
         return puntosFarol;
     }
 
+    /*
+     * SIGNATURA: private int calcularPuntosPosibilidad()
+     * COMENTARIO: Calcula la posibilidad que tienen las cartas del jugador a tener algo de valor
+     * PRECONDICIONES: - El array no debe tener cartas por defecto.
+     * ENTRADA: - Un array de CartaImpl
+     * SALIDA: - Un entero
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Devuelve asociado al nombre el valor en puntos de la posibilidad de tener cartas de valor en la partida.
+     */
+
+    //TODO
+
+    /**
+     * @param cartasAEvaluar
+     * @return
+     */
+
+    private int calcularPuntosPosibilidad(CartaImpl[] cartasAEvaluar){
+        int puntosPosibilidad = 0;
+
+        switch (cartasAEvaluar.length){
+            //Si el array contiene 2 cartas significa que esta en la primera ronda
+            case 2:
+
+                for (int con = 0; con < 2; con++){
+                    if (cartasAEvaluar[con].getValorNumero() == 13 || cartasAEvaluar[con].getValorNumero() == 12 || cartasAEvaluar[con].getValorNumero() == 11 || cartasAEvaluar[con].getValorNumero() == 10){
+                        puntosPosibilidad = 20;
+                    }
+                }
+
+                if (cartasAEvaluar[0].getValorNumero() == 13 || cartasAEvaluar[0].getValorNumero() == 12 || cartasAEvaluar[0].getValorNumero() == 11 || cartasAEvaluar[0].getValorNumero() == 10
+                    && cartasAEvaluar[1].getValorNumero() == 13 || cartasAEvaluar[1].getValorNumero() == 12 || cartasAEvaluar[1].getValorNumero() == 11 || cartasAEvaluar[1].getValorNumero() == 10){
+                    puntosPosibilidad = 30;
+                }
+
+                if (cartasAEvaluar[0].getPalo() == cartasAEvaluar[1].getPalo()){
+                    puntosPosibilidad = 50;
+                }
+
+                if (cartasAEvaluar[0].getNumero().equals(cartasAEvaluar[1].getNumero())){
+                    puntosPosibilidad = 50;
+                }
+
+                break;
+            //Si el array contiene 5 cartas significa que esta en la segunda ronda
+            case 5:
+
+                for (int con = 0; con < 6; con++){
+                    if (cartasAEvaluar[con].getValorNumero() == 13 || cartasAEvaluar[con].getValorNumero() == 12 || cartasAEvaluar[con].getValorNumero() == 11 || cartasAEvaluar[con].getValorNumero() == 10){
+                        puntosPosibilidad = 10;
+                    }
+                }
+
+
+
+                break;
+            //Si el array contiene 6 cartas significa que esta en la tercera ronda
+            case 6:
+
+                for (int con = 0; con < 7; con++){
+                    if (cartasAEvaluar[con].getValorNumero() == 13 || cartasAEvaluar[con].getValorNumero() == 12 || cartasAEvaluar[con].getValorNumero() == 11 || cartasAEvaluar[con].getValorNumero() == 10){
+                        puntosPosibilidad = 10;
+                    }
+                }
+
+                break;
+            //En la cuarta ronda no hay incremento por posibilidad
+        }
+        return puntosPosibilidad;
+    }
+
 
     /*
      * SIGNATURA: public JugadorImpl leerYValidarJugador();
