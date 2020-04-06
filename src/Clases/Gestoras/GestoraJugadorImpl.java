@@ -184,7 +184,7 @@ public class GestoraJugadorImpl {
      * @return
      */
 
-    private int calcularPuntosFarol(int ronda){
+    private int calcularPuntosFarolRonda(int ronda){
         int puntosFarol = 0,porcentaje;
         Random r = new Random();
 
