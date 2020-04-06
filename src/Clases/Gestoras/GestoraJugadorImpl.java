@@ -1,5 +1,6 @@
 package Clases.Gestoras;
 
+import Clases.Basicas.CartaImpl;
 import Clases.Basicas.JugadorImpl;
 import Clases.Basicas.MesaImpl;
 
@@ -75,16 +76,17 @@ public class GestoraJugadorImpl {
      * @param jugador
      * @param apuestaMinima
      * @param mesa
+     * @param apuestaMaxima
      * @return
      */
 
-    public int leerYValidarApuesta(int jugador, int apuestaMinima, MesaImpl mesa){
+    public int leerYValidarApuesta(int jugador, int apuestaMinima, int apuestaMaxima, MesaImpl mesa){
         Scanner teclado = new Scanner(System.in);
         int cantidadApuesta;
         boolean allIn = false;
         do {
             System.out.println("Dispone de "+mesa.getSaldoJugador(jugador)+" de saldo");
-            System.out.println("La apuesa minima es: "+(apuestaMinima-mesa.getApuestaJugador(jugador,mesa.getRonda())));
+            System.out.println("La apuesa minima es: "+(apuestaMinima-mesa.getApuestaJugador(jugador,mesa.getRonda())) + " y la apuesta maxima es: "+apuestaMaxima);
             System.out.print("Introduce cuanto quiere apostar: ");
             cantidadApuesta = teclado.nextInt();
             if (cantidadApuesta < apuestaMinima-mesa.getApuestaJugador(jugador,mesa.getRonda())){
@@ -92,8 +94,10 @@ public class GestoraJugadorImpl {
                     allIn = true;
                 }
             }
-        }while (((cantidadApuesta+mesa.getApuestaJugador(jugador,mesa.getRonda()) < apuestaMinima) && !allIn)
-                  || cantidadApuesta > mesa.getSaldoJugador(jugador));
+        }while (cantidadApuesta < apuestaMinima
+                || cantidadApuesta > apuestaMaxima
+                || (cantidadApuesta < apuestaMinima && !allIn && cantidadApuesta != 0)
+                || cantidadApuesta > mesa.getSaldoJugador(jugador));
 
         return cantidadApuesta;
     }
