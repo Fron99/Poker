@@ -970,13 +970,15 @@ public class MesaImpl implements Mesa, Cloneable {
         do{
             //Obtener ganador
             for (int i = 0; i< this.jugadores.length;i++){
-                puntosJugadorCalculados = gestoraCarta.evaluarCartas(i,this);
-                //Se utiliza puntosAnteriorGanador
-                if (puntosAnteriorGanador > puntosJugadorCalculados
-                    && puntosJugadorCalculados > puntosAnteriorJugador
-                    && this.jugadores[i].getActivo()){
-                        puntosAnteriorJugador = gestoraCarta.evaluarCartas(i,this);
+                if (this.jugadores[i].getActivo()) {
+                    puntosJugadorCalculados = gestoraCarta.evaluarCartas(i, this);
+                    //Se utiliza puntosAnteriorGanador
+                    if (puntosAnteriorGanador > puntosJugadorCalculados
+                            && puntosJugadorCalculados > puntosAnteriorJugador) {
+                        puntosAnteriorJugador = puntosJugadorCalculados;
+                        //puntosAnteriorJugador = gestoraCarta.evaluarCartas(i,this);
                         indiceGanador = i;
+                    }
                 }
             }
 
