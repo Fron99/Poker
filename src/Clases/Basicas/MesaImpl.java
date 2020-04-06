@@ -1178,6 +1178,53 @@ public class MesaImpl implements Mesa, Cloneable {
         return res;
     }
 
+
+    /**
+     * Method to calculate if exist 2 or more players remain active
+     * @return Returns true if exist 2 or more players remain active
+     *         Returns false if not exist 2 or more players remain active
+     */
+
+    private boolean quedanJugadoresActivos(){
+        int cantidadJugadoresPasan = 0;
+        for (JugadorImpl jugador: this.getJugadores()) {
+            if (!jugador.getActivo() && jugador.getSaldo() > 0){
+                cantidadJugadoresPasan++;
+            }
+        }
+        return cantidadJugadoresPasan < 4;
+    }
+
+
+    /**
+     * @return
+     */
+
+    private int obtenerApuestaMaxima(){
+        int apuestaMaxima = -1, apuestaMaximaComparable = -2;
+        //Obtenemos la apuesta maxima que se puede hacer
+        for (JugadorImpl jugador: this.getJugadores()) {
+            if (jugador.getSaldo() > apuestaMaximaComparable && jugador.getActivo()){
+                apuestaMaximaComparable = jugador.getSaldo();
+            }
+        }
+
+        //Obtenemos la segunda apuesta maxima que se puede hacer
+        for (JugadorImpl jugador: this.getJugadores()) {
+            if (jugador.getSaldo() > apuestaMaxima && jugador.getActivo() && jugador.getSaldo() < apuestaMaximaComparable){
+                apuestaMaxima = jugador.getSaldo();
+            }
+        }
+
+        //En el caso de que sea la primera partida y tengan todos los jugadores activos el mismo saldo se pone uno de ellos
+        if (apuestaMaxima == -1){
+            apuestaMaxima = apuestaMaximaComparable;
+        }
+        return apuestaMaxima;
+    }
+
+
+
     /*
      * SIGNATURA: public void realizarApuestas(int turnoJugador, MesaImpl mesa, int ronda)
      * COMENTARIO: Realizar las apuestas de todos los jugadores de la mesa
