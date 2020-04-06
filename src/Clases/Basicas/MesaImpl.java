@@ -1244,14 +1244,10 @@ public class MesaImpl implements Mesa, Cloneable {
 
     public boolean realizarApuestas(){
         GestoraJugadorImpl gesJug = new GestoraJugadorImpl();
-        int apuestaMinima = 0, apuestaJugador, cantidadJugadoresPasan = 0, turnoJugadorParcial = this.turnoJugador, turnoJugadorFinal = this.turnoJugador;
-        boolean jugadorPasa = false, quedanJugadores = true;
+        int apuestaMinima = 0, apuestaJugador, turnoJugadorParcial = this.turnoJugador, turnoJugadorFinal = this.turnoJugador, apuestaMaxima;
+        boolean jugadorPasa = false, quedanJugadores;
         //Calcula cuantos jugadores se han "tirado"
-        for (JugadorImpl jugador: this.getJugadores()) {
-            if (!jugador.getActivo() && jugador.getSaldo() > 0){
-                quedanJugadores = ++cantidadJugadoresPasan < 4;
-            }
-        }
+        quedanJugadores = this.quedanJugadoresActivos();
 
         //Si se han tirado 4 o mas jugadores no se realizan apuestas
         if (quedanJugadores) {
@@ -1264,11 +1260,11 @@ public class MesaImpl implements Mesa, Cloneable {
 
             //Comprueba que el jugador este activo y tenga un saldo mayor a 0
             if (this.getJugador(turnoJugadorParcial).getActivo() && this.getSaldoJugador(turnoJugadorParcial) > 0) {
-                //
+                apuestaMaxima = obtenerApuestaMaxima();
                 if(turnoJugadorParcial == 0){
-                    apuestaMinima = gesJug.leerYValidarApuesta(turnoJugadorParcial, apuestaMinima, this);
+                    apuestaMinima = gesJug.leerYValidarApuesta(turnoJugadorParcial, apuestaMinima, apuestaMaxima,this);
                 }else{
-                    apuestaMinima = gesJug.calcularApostarBot(apuestaMinima,this,turnoJugadorParcial);
+                    apuestaMinima = gesJug.calcularApostarBot(turnoJugadorParcial, apuestaMinima, apuestaMaxima,this);
                 }
                 //Disminuir el saldo del jugador
                 this.jugadores[turnoJugadorParcial].disminuirDinero(apuestaMinima);
@@ -1287,12 +1283,17 @@ public class MesaImpl implements Mesa, Cloneable {
 
                 //Comprueba que el jugador este activo y tenga un saldo mayor a 0
                 if (this.getJugador(turnoJugadorParcial).getActivo() && this.getSaldoJugador(turnoJugadorParcial) > 0) {
-                    //
+                    apuestaMaxima = obtenerApuestaMaxima();
                     if(turnoJugadorParcial == 0){
-                        //TODO No se puede apostar muchisimo porque si no los bots se tiran
-                        apuestaJugador = gesJug.leerYValidarApuesta(turnoJugadorParcial, apuestaMinima, this);
+                        apuestaJugador = gesJug.leerYValidarApuesta(turnoJugadorParcial, apuestaMinima, apuestaMaxima,this);
                     }else{
-                        apuestaJugador = gesJug.calcularApostarBot(apuestaMinima,this,turnoJugadorParcial);
+                        apuestaJugador = gesJug.calcularApostarBot(turnoJugadorParcial, apuestaMinima, apuestaMaxima,this);
+                    }
+
+                    try {
+                        Thread.sleep(1500);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
                     }
 
                     //Evaluar las apuestas
@@ -1317,7 +1318,7 @@ public class MesaImpl implements Mesa, Cloneable {
                             //Se guarda su posicion para volver a recorrer el array hasta que llegue a su posicion y asi poder tirar todos los jugadores
                             turnoJugadorFinal = turnoJugadorParcial;
                             //Se coloca su apuesta como apuesta minima para los demas jugadores
-                            apuestaMinima = apuestaJugador;
+                            apuestaMinima = this.getApuestaJugador(turnoJugadorParcial,ronda);
                         }else{
                             //No hace falta comprobar que sea menor porque ya esta comprobado en los if de arriba
                             //En este caso se controla que el jugador haga all-in pero no llegue a la apuesta minima
@@ -1338,20 +1339,10 @@ public class MesaImpl implements Mesa, Cloneable {
                 }
                 turnoJugadorParcial = (turnoJugadorParcial == 4)?0:++turnoJugadorParcial;
 
-                try {
-                    Thread.sleep(2*1000);
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
             }
 
-            cantidadJugadoresPasan = 0;
-
-            for (JugadorImpl jugador: this.getJugadores()) {
-                if (!jugador.getActivo() && jugador.getSaldo() > 0){
-                    quedanJugadores = ++cantidadJugadoresPasan < 4;
-                }
-            }
+            //Calcula cuantos jugadores se han "tirado"
+            quedanJugadores = this.quedanJugadoresActivos();
         }
         this.ronda++;
         return quedanJugadores;
