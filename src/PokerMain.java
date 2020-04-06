@@ -108,7 +108,12 @@ public class PokerMain {
 
             mesa.incrementarTurno();
 
-            seguirJugando = validaciones.leerYValidarSeguirJugando();
+            if (mesa.getSaldoJugador(0)>0){
+                seguirJugando = validaciones.leerYValidarSeguirJugando();
+            }else{
+                System.out.println("El jugador no tiene más saldo");
+                seguirJugando = false;
+            }
             jugadoresConSaldo = gesJugador.jugadoresConSaldo(mesa.getJugadores());
 
         }while (mesa.getSaldoJugador(0)>0
