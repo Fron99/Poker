@@ -313,10 +313,49 @@ public class GestoraJugadorImpl {
             //Si el array contiene 6 cartas significa que esta en la tercera ronda
             case 6:
 
-                for (int con = 0; con < 7; con++){
-                    if (cartasAEvaluar[con].getValorNumero() == 13 || cartasAEvaluar[con].getValorNumero() == 12 || cartasAEvaluar[con].getValorNumero() == 11 || cartasAEvaluar[con].getValorNumero() == 10){
+                for (CartaImpl carta : cartasAEvaluar) {
+                    if (carta.getValorNumero() == 13 || carta.getValorNumero() == 12 || carta.getValorNumero() == 11 || carta.getValorNumero() == 10) {
                         puntosPosibilidad = 10;
                     }
+                }
+
+                puntos = gestoraCarta.calcularValorPareja(cartasAEvaluar);
+
+                if (puntos > 0){
+                    puntosPosibilidad = 20;
+                }
+
+                for (CartaImpl carta : cartasAEvaluar) {
+                    switch (carta.getPalo()){
+                        case 'P':
+                            colorP++;
+                            break;
+                        case 'T':
+                            colorT++;
+                            break;
+                        case 'R':
+                            colorR++;
+                            break;
+                        case 'C':
+                            colorC++;
+                            break;
+                    }
+                }
+
+                if (colorP == 4 || colorT == 4 || colorR == 4 || colorC == 4){
+                    puntosPosibilidad = 20;
+                }
+
+                puntos = gestoraCarta.calcularValorTrio(cartasAEvaluar);
+
+                if (puntos > 0){
+                    puntosPosibilidad = 30;
+                }
+
+                puntos = gestoraCarta.calcularValorDoblePareja(cartasAEvaluar);
+
+                if (puntos > 0){
+                    puntosPosibilidad = 40;
                 }
 
                 break;
