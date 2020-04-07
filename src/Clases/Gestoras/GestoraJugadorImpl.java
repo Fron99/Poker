@@ -246,14 +246,15 @@ public class GestoraJugadorImpl {
      */
 
     private int calcularPuntosPosibilidad(CartaImpl[] cartasAEvaluar){
-        int puntosPosibilidad = 0;
+        int puntosPosibilidad = 0, puntos = 0, colorP = 0, colorT = 0, colorR = 0, colorC = 0 ;
+        GestoraCartaImpl gestoraCarta = new GestoraCartaImpl();
 
         switch (cartasAEvaluar.length){
             //Si el array contiene 2 cartas significa que esta en la primera ronda
             case 2:
 
-                for (int con = 0; con < 2; con++){
-                    if (cartasAEvaluar[con].getValorNumero() == 13 || cartasAEvaluar[con].getValorNumero() == 12 || cartasAEvaluar[con].getValorNumero() == 11 || cartasAEvaluar[con].getValorNumero() == 10){
+                for (CartaImpl carta : cartasAEvaluar) {
+                    if (carta.getValorNumero() == 13 || carta.getValorNumero() == 12 || carta.getValorNumero() == 11 || carta.getValorNumero() == 10) {
                         puntosPosibilidad = 20;
                     }
                 }
