@@ -248,6 +248,7 @@ public class GestoraJugadorImpl {
     private int calcularPuntosPosibilidad(CartaImpl[] cartasAEvaluar){
         int puntosPosibilidad = 0, puntos = 0, colorP = 0, colorT = 0, colorR = 0, colorC = 0 ;
         GestoraCartaImpl gestoraCarta = new GestoraCartaImpl();
+        boolean unaParaEscalera;
 
         switch (cartasAEvaluar.length){
             //Si el array contiene 2 cartas significa que esta en la primera ronda
@@ -306,6 +307,12 @@ public class GestoraJugadorImpl {
                 }
 
                 if (colorP == 4 || colorT == 4 || colorR == 4 || colorC == 4){
+                    puntosPosibilidad = 50;
+                }
+
+                unaParaEscalera = gestoraCarta.unaParaEscalera(cartasAEvaluar);
+
+                if (unaParaEscalera){
                     puntosPosibilidad = 50;
                 }
 
