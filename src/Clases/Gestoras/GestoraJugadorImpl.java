@@ -365,6 +365,12 @@ public class GestoraJugadorImpl {
                     puntosPosibilidad = 40;
                 }
 
+                unaParaEscalera = gestoraCarta.unaParaEscalera(cartasAEvaluar);
+
+                if (unaParaEscalera){
+                    puntosPosibilidad = 50;
+                }
+
                 break;
             //En la cuarta ronda no hay incremento por posibilidad
         }
