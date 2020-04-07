@@ -923,4 +923,30 @@ public class GestoraCartaImpl {
         return color;
     }
 
+    /*
+     * SIGNATURA: public boolean unaParaEscalera(CartaImpl[] cartas);
+     * COMENTARIO: Metodo para calcular si queda una carta para que haya escalera
+     * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
+     * ENTRADA: - Un array de CartaImpl
+     * SALIDA: - Un boolean
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Devuelve asociado al nombre true si falta una carta para escalera
+     *                  - Devuelve asociado al nombre false si no falta una carta para escalera
+     */
+
+    /**
+     * @param cartas
+     * @return
+     */
+
+    public boolean unaParaEscalera(CartaImpl[] cartas){
+        boolean unaParaEscalera = true;
+        CartaImpl[] cartasAEvaluar = new CartaImpl[cartas.length];
+        System.arraycopy(cartas,0,cartasAEvaluar,0,cartas.length);
+        ordenarCartas(cartasAEvaluar);
+
+
+        return unaParaEscalera;
+    }
+
 }
