@@ -149,9 +149,16 @@ public class GestoraJugadorImpl {
             //En el caso de que la apuesta minima sea mayor calculamos si con un incremento del 30% al total apostar si quiere subir e igualar a la apuesta minima
             if ((int)(totalApostar*1.30) >= apuestaMinima){
                 totalApostar = apuestaMinima - mesa.getApuestaJugador(jugador,mesa.getRonda());
-            }else{//TODO aqui iria otro if que seria el de seguir la apuesta en el caso de que fuera muy alta la apuesta
-                //En el caso de que decidiera no subir la apuesta e igualarla se "tiraria"
-                totalApostar = 0;
+            }else{
+                //En el caso de que la apuesta minima sea mucho mas alta que lo que pensaba apostar el jugador, valorar si tiene suficiente buenas cartas como para subir la apuesta
+                //192 puntos concuerda con el 60% del total de puntos
+                //Quizas se deberia poner con la personalidad del jugador
+                if ((valorFarolRonda+valorCartas+puntosPosibilidad) >= 192){
+                    totalApostar = apuestaMinima - mesa.getApuestaJugador(jugador,mesa.getRonda());
+                }else{
+                    //En el caso de que decidiera no subir la apuesta e igualarla se "tiraria"
+                    totalApostar = 0;
+                }
             }
         }else{
             //Calcula si debe bajar la apuesta con un decremento del 30%. Si aun asi sigue siendo mayor que la apuesta minima seguira apostando lo que pensaba apostar
