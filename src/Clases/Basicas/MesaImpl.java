@@ -963,6 +963,8 @@ public class MesaImpl implements Mesa, Cloneable {
      * Modify the balance of the players who have won by increasing their balance by the corresponding amount
      */
 
+    //TODO Comprobar con todos los jugadores con 0$ y allInMenor
+
     public void ingresarSaldoGanadoresYMostrarGanador(){
         GestoraCartaImpl gestoraCarta = new GestoraCartaImpl();
         int cantidadGanadores = 0, indiceGanador = -1, totalGanancias = 0, puntosAnteriorGanador = 99999, puntosAnteriorJugador = 0, puntosJugadorCalculados;
@@ -1261,21 +1263,23 @@ public class MesaImpl implements Mesa, Cloneable {
     public boolean realizarApuestas(){
         GestoraJugadorImpl gesJug = new GestoraJugadorImpl();
         int apuestaMinima = 0, apuestaJugador, turnoJugadorParcial = this.turnoJugador, turnoJugadorFinal = this.turnoJugador, apuestaMaxima;
-        boolean jugadorPasa = false, quedanJugadores;
+        boolean quedanJugadoresParaJugar, quedanJugadoresSinAllIn;
         //Calcula cuantos jugadores se han "tirado"
-        quedanJugadores = this.quedanJugadoresParaJugar();
+        quedanJugadoresParaJugar = this.quedanJugadoresParaJugar();
+
+        quedanJugadoresSinAllIn = this.quedanJugadoresSinAllIn();
 
         //Si se han tirado 4 o mas jugadores no se realizan apuestas
-        if (quedanJugadores) {
+        if (quedanJugadoresParaJugar && quedanJugadoresSinAllIn) {
 
             //Este bucle se utiliza para sacar el primer jugador que va a apostar
             //Ya que puede ocurrir que el delider se haya "tirado"
-            while (!this.jugadores[turnoJugadorParcial].getActivo()){
+            while (!this.jugadores[turnoJugadorParcial].getActivo() && !this.jugadores[turnoJugadorParcial].getAllInMenor()){
                 turnoJugadorParcial = (turnoJugadorParcial == 4)?0:++turnoJugadorParcial;
             }
 
             //Comprueba que el jugador este activo y tenga un saldo mayor a 0
-            if (this.getJugador(turnoJugadorParcial).getActivo() && this.getSaldoJugador(turnoJugadorParcial) > 0) {
+            if (this.getJugador(turnoJugadorParcial).getActivo() && this.getSaldoJugador(turnoJugadorParcial) > 0 && !this.jugadores[turnoJugadorParcial].getAllInMenor()) {
                 apuestaMaxima = obtenerApuestaMaxima();
                 if(turnoJugadorParcial == 0){
                     apuestaMinima = gesJug.leerYValidarApuesta(turnoJugadorParcial, apuestaMinima, apuestaMaxima,this);
@@ -1298,7 +1302,7 @@ public class MesaImpl implements Mesa, Cloneable {
             while(turnoJugadorParcial != turnoJugadorFinal){
 
                 //Comprueba que el jugador este activo y tenga un saldo mayor a 0
-                if (this.getJugador(turnoJugadorParcial).getActivo() && this.getSaldoJugador(turnoJugadorParcial) > 0) {
+                if (this.getJugador(turnoJugadorParcial).getActivo() && this.getSaldoJugador(turnoJugadorParcial) > 0 && !this.jugadores[turnoJugadorParcial].getAllInMenor()) {
                     apuestaMaxima = obtenerApuestaMaxima();
                     if(turnoJugadorParcial == 0){
                         apuestaJugador = gesJug.leerYValidarApuesta(turnoJugadorParcial, apuestaMinima, apuestaMaxima,this);
@@ -1358,10 +1362,10 @@ public class MesaImpl implements Mesa, Cloneable {
             }
 
             //Calcula cuantos jugadores se han "tirado"
-            quedanJugadores = this.quedanJugadoresParaJugar();
+            quedanJugadoresParaJugar = this.quedanJugadoresParaJugar();
         }
         this.ronda++;
-        return quedanJugadores;
+        return quedanJugadoresParaJugar;
     }
 
     /**
