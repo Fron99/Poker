@@ -132,11 +132,13 @@ public class GestoraJugadorImpl {
         //Obtener puntos de las cartas
         valorCartas = gesCarta.evaluarCartas(jugador,mesa);
 
-        //Obtener puntos de farol
+        //Obtener puntos de farol   //TODO Revisar los faroles, ver la cantidad de ellos y como se deberian soltar.
         valorFarolRonda = calcularPuntosFarolRonda(mesa.getRonda());
 
         //Obtener puntos por posibilidad
         puntosPosibilidad = calcularPuntosPosibilidad(gesCarta.obtenerCartasAEvaluar(jugador,mesa));
+
+        //TODO Implementar cuando el saldo sea mas bajo de x cantidad para que no apueste con porcentajes.
 
         //Porcentaje apostar
         porcenApostar = ((double)((valorFarolRonda+valorCartas+puntosPosibilidad)*100) / 319)*0.01;
