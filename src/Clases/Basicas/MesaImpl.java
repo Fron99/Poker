@@ -1185,16 +1185,15 @@ public class MesaImpl implements Mesa, Cloneable {
      *         Returns false if not exist 2 or more players remain active
      */
 
-    private boolean quedanJugadoresActivos(){
-        int cantidadJugadoresPasan = 0;
+    private boolean quedanJugadoresParaJugar(){
+        int cantidadJugadoresParaJugar = 0;
         for (JugadorImpl jugador: this.getJugadores()) {
-            if (!jugador.getActivo() && jugador.getSaldo() > 0){
-                cantidadJugadoresPasan++;
+            if (!jugador.getActivo() && jugador.getSaldo() > 0 && !jugador.getAllInMenor()){
+                cantidadJugadoresParaJugar++;
             }
         }
-        return cantidadJugadoresPasan < 4;
+        return cantidadJugadoresParaJugar < 4;
     }
-
 
     /**
      * @return
