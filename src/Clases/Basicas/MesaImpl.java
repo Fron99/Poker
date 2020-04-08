@@ -1185,20 +1185,37 @@ public class MesaImpl implements Mesa, Cloneable {
      *         Returns false if not exist 2 or more players remain active
      */
 
+    //TODO Revisar
+
     private boolean quedanJugadoresParaJugar(){
         int cantidadJugadoresParaJugar = 0;
         for (JugadorImpl jugador: this.getJugadores()) {
-            if (!jugador.getActivo() && jugador.getSaldo() > 0 && !jugador.getAllInMenor()){
+            if ((jugador.getActivo() && jugador.getSaldo() > 0) ||  (jugador.getActivo() && jugador.getSaldo() == 0 && jugador.getAllInMenor())){
                 cantidadJugadoresParaJugar++;
             }
         }
-        return cantidadJugadoresParaJugar < 4;
+        return cantidadJugadoresParaJugar > 1;
     }
 
     /**
      * @return
      */
 
+    private boolean quedanJugadoresSinAllIn(){
+        int quedanJugadoresSinAllIn = 0;
+        for (JugadorImpl jugador: this.getJugadores()) {
+            if (jugador.getActivo() && jugador.getSaldo() > 0 && !jugador.getAllInMenor()){
+                quedanJugadoresSinAllIn++;
+            }
+        }
+        return quedanJugadoresSinAllIn > 1;
+    }
+
+    /**
+     * @return
+     */
+
+    //TODO No funciona bien
     private int obtenerApuestaMaxima(){
         int apuestaMaxima = -1, apuestaMaximaComparable = -2;
         //Obtenemos la apuesta maxima que se puede hacer
