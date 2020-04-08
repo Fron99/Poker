@@ -255,7 +255,7 @@ public class JugadorImpl implements Jugador, Cloneable {
 
     @Override
     public String toString(){
-        return "Usuario: "+usuario+", Saldo: "+saldo+", Activo: "+activo;
+        return "Usuario: "+usuario+", Saldo: "+saldo+", Activo: "+activo+", AllInMenor: "+allInMenor;
     }
 
     /**
