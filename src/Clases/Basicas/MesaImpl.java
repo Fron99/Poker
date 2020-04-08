@@ -33,7 +33,7 @@
  * public double getSaldoJugador(int posicionJugador);
  * private void setSaldoJugador(int posicionJugador, double saldo);
  * public CartaImpl[] getCartasJugador(int posicionJugador);
- * private void setCartasJugador(int posicionJugador, CartaImpl[] cartas);
+ * public void setCartasJugador(int posicionJugador, CartaImpl[] cartas);
  * public CartaImpl getCartaJugador(int posicionJugador, int posicionCarta);
  * private void setCartaJugador(int posicionJugador, int posicionCarta, CartaImpl carta);
  * public boolean getActivoJugador(int posicionJugador);
@@ -1246,7 +1246,7 @@ public class MesaImpl implements Mesa, Cloneable {
         int apuestaMinima = 0, apuestaJugador, turnoJugadorParcial = this.turnoJugador, turnoJugadorFinal = this.turnoJugador, apuestaMaxima;
         boolean jugadorPasa = false, quedanJugadores;
         //Calcula cuantos jugadores se han "tirado"
-        quedanJugadores = this.quedanJugadoresActivos();
+        quedanJugadores = this.quedanJugadoresParaJugar();
 
         //Si se han tirado 4 o mas jugadores no se realizan apuestas
         if (quedanJugadores) {
@@ -1341,7 +1341,7 @@ public class MesaImpl implements Mesa, Cloneable {
             }
 
             //Calcula cuantos jugadores se han "tirado"
-            quedanJugadores = this.quedanJugadoresActivos();
+            quedanJugadores = this.quedanJugadoresParaJugar();
         }
         this.ronda++;
         return quedanJugadores;
