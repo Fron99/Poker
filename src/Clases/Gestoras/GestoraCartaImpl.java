@@ -939,12 +939,48 @@ public class GestoraCartaImpl {
      * @return
      */
 
+    //TODO Mejorar este metodo
+
     public boolean unaParaEscalera(CartaImpl[] cartas){
-        boolean unaParaEscalera = true;
+        boolean unaParaEscalera = false;
         CartaImpl[] cartasAEvaluar = new CartaImpl[cartas.length];
         System.arraycopy(cartas,0,cartasAEvaluar,0,cartas.length);
         ordenarCartas(cartasAEvaluar);
 
+        if (cartas[0].getValorNumero()+1 != cartas[1].getValorNumero()
+            && cartas[1].getValorNumero()+1 == cartas[2].getValorNumero()
+            && cartas[2].getValorNumero()+1 == cartas[3].getValorNumero()
+            && cartas[3].getValorNumero()+1 == cartas[4].getValorNumero()){
+                unaParaEscalera = true;
+        }else{
+            if (cartas[0].getValorNumero()+1 != cartas[1].getValorNumero()
+                && cartas[1].getValorNumero()+1 != cartas[2].getValorNumero()
+                && cartas[2].getValorNumero()+1 == cartas[3].getValorNumero()
+                && cartas[3].getValorNumero()+1 == cartas[4].getValorNumero()){
+                    unaParaEscalera = true;
+            }else{
+                if (cartas[0].getValorNumero()+1 == cartas[1].getValorNumero()
+                    && cartas[1].getValorNumero()+1 != cartas[2].getValorNumero()
+                    && cartas[2].getValorNumero()+1 != cartas[3].getValorNumero()
+                    && cartas[3].getValorNumero()+1 == cartas[4].getValorNumero()){
+                        unaParaEscalera = true;
+                }else{
+                    if (cartas[0].getValorNumero()+1 == cartas[1].getValorNumero()
+                        && cartas[1].getValorNumero()+1 == cartas[2].getValorNumero()
+                        && cartas[2].getValorNumero()+1 != cartas[3].getValorNumero()
+                        && cartas[3].getValorNumero()+1 != cartas[4].getValorNumero()){
+                            unaParaEscalera = true;
+                    }else{
+                        if (cartas[0].getValorNumero()+1 == cartas[1].getValorNumero()
+                            && cartas[1].getValorNumero()+1 == cartas[2].getValorNumero()
+                            && cartas[2].getValorNumero()+1 == cartas[3].getValorNumero()
+                            && cartas[3].getValorNumero()+1 != cartas[4].getValorNumero()){
+                                unaParaEscalera = true;
+                        }
+                    }
+                }
+            }
+        }
 
         return unaParaEscalera;
     }
