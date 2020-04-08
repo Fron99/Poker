@@ -108,17 +108,18 @@ public class PokerMain {
 
             mesa.incrementarTurno();
 
-            if (mesa.getSaldoJugador(0)>0){
+            jugadoresConSaldo = gesJugador.jugadoresConSaldo(mesa.getJugadores());
+
+            if (mesa.getSaldoJugador(0)>0 && jugadoresConSaldo > 0){
                 seguirJugando = validaciones.leerYValidarSeguirJugando();
             }else{
                 System.out.println("El jugador no tiene más saldo");
                 seguirJugando = false;
             }
-            jugadoresConSaldo = gesJugador.jugadoresConSaldo(mesa.getJugadores());
+
 
         }while (mesa.getSaldoJugador(0)>0
-                && seguirJugando
-                && jugadoresConSaldo > 0);
+                && seguirJugando);
 
         System.out.println("El jugador "+mesa.getUsuarioJugador(0)+" empezo con "+saldoInicialJugador+" y acabo con "+mesa.getSaldoJugador(0)+"");
 
