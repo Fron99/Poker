@@ -132,46 +132,52 @@ public class GestoraJugadorImpl {
         //Obtener puntos de las cartas
         valorCartas = gesCarta.evaluarCartas(jugador,mesa);
 
-        //Obtener puntos de farol   //TODO Revisar los faroles, ver la cantidad de ellos y como se deberian soltar.
+        //Obtener puntos de farol
         valorFarolRonda = calcularPuntosFarolRonda(mesa.getRonda());
 
         //Obtener puntos por posibilidad
         puntosPosibilidad = calcularPuntosPosibilidad(gesCarta.obtenerCartasAEvaluar(jugador,mesa));
 
-        //TODO Implementar cuando el saldo sea mas bajo de x cantidad para que no apueste con porcentajes.
+        if (mesa.getSaldoJugador(jugador) < 2000){
 
-        //Porcentaje apostar
-        porcenApostar = ((double)((valorFarolRonda+valorCartas+puntosPosibilidad)*100) / 319)*0.01;
+            //TODO Implementar cuando el saldo sea mas bajo de x cantidad para que no apueste con porcentajes.
 
-        //Total calculado que va a apostar
-        totalApostar = (int)(mesa.getSaldoJugador(jugador) * porcenApostar);
+        }else{
 
-        //Comprueba si la apuesta es mayor o igual.
-        if (apuestaMinima >= totalApostar){
-            //En el caso de que la apuesta minima sea mayor calculamos si con un incremento del 30% al total apostar si quiere subir e igualar a la apuesta minima
-            if ((int)(totalApostar*1.30) >= apuestaMinima){
-                totalApostar = apuestaMinima - mesa.getApuestaJugador(jugador,mesa.getRonda());
-            }else{
-                //En el caso de que la apuesta minima sea mucho mas alta que lo que pensaba apostar el jugador, valorar si tiene suficiente buenas cartas como para subir la apuesta
-                //192 puntos concuerda con el 60% del total de puntos
-                //Quizas se deberia poner con la personalidad del jugador
-                if ((valorFarolRonda+valorCartas+puntosPosibilidad) >= 192){
+            //Porcentaje apostar
+            porcenApostar = ((double)((valorFarolRonda+valorCartas+puntosPosibilidad)*100) / 319)*0.01;
+
+            //Total calculado que va a apostar
+            totalApostar = (int)(mesa.getSaldoJugador(jugador) * porcenApostar);
+
+            //Comprueba si la apuesta es mayor o igual.
+            if (apuestaMinima >= totalApostar){
+                //En el caso de que la apuesta minima sea mayor calculamos si con un incremento del 30% al total apostar si quiere subir e igualar a la apuesta minima
+                if ((int)(totalApostar*1.30) >= apuestaMinima){
                     totalApostar = apuestaMinima - mesa.getApuestaJugador(jugador,mesa.getRonda());
                 }else{
-                    //En el caso de que decidiera no subir la apuesta e igualarla se "tiraria"
-                    totalApostar = 0;
+                    //En el caso de que la apuesta minima sea mucho mas alta que lo que pensaba apostar el jugador, valorar si tiene suficiente buenas cartas como para subir la apuesta
+                    //192 puntos concuerda con el 60% del total de puntos
+                    //Quizas se deberia poner con la personalidad del jugador
+                    if ((valorFarolRonda+valorCartas+puntosPosibilidad) >= 192){
+                        totalApostar = apuestaMinima - mesa.getApuestaJugador(jugador,mesa.getRonda());
+                    }else{
+                        //En el caso de que decidiera no subir la apuesta e igualarla se "tiraria"
+                        totalApostar = 0;
+                    }
+                }
+            }else{
+                //Calcula si debe bajar la apuesta con un decremento del 30%. Si aun asi sigue siendo mayor que la apuesta minima seguira apostando lo que pensaba apostar
+                if ((int)(totalApostar*0.70) < apuestaMinima){
+                    totalApostar = apuestaMinima - mesa.getApuestaJugador(jugador,mesa.getRonda());
                 }
             }
-        }else{
-            //Calcula si debe bajar la apuesta con un decremento del 30%. Si aun asi sigue siendo mayor que la apuesta minima seguira apostando lo que pensaba apostar
-            if ((int)(totalApostar*0.70) < apuestaMinima){
-                totalApostar = apuestaMinima - mesa.getApuestaJugador(jugador,mesa.getRonda());
-            }
-        }
 
-        //No apostar mas de lo que los demas jugadores puedan apostar
-        if (totalApostar > apuestaMaxima){
-            totalApostar = apuestaMaxima;
+            //No apostar mas de lo que los demas jugadores puedan apostar
+            if (totalApostar > apuestaMaxima){
+                totalApostar = apuestaMaxima;
+            }
+
         }
 
         return totalApostar;
