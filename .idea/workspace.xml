@@ -407,7 +407,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/String.java</url>
+          <url>jar://$PROJECT_DIR$/../../../../Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/String.java</url>
           <line>371</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -434,10 +434,10 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ElBromas$ElBromasMain.ic" NAME="ElBromasMain Coverage Results" MODIFIED="1571938195981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Poker$GestoraCartaImplTest.ic" NAME="GestoraCartaImplTest Coverage Results" MODIFIED="1584395460059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Tests.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/ElBromas$ElBromasMain.ic" NAME="ElBromasMain Coverage Results" MODIFIED="1571938195981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Poker$Prueba.ic" NAME="Prueba Coverage Results" MODIFIED="1583830961107" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
