@@ -139,7 +139,8 @@ public class GestoraJugadorImpl {
         puntosPosibilidad = calcularPuntosPosibilidad(gesCarta.obtenerCartasAEvaluar(jugador,mesa));
 
         if (mesa.getSaldoJugador(jugador) < 2000){
-
+            
+            totalApostar = 0;
             //TODO Implementar cuando el saldo sea mas bajo de x cantidad para que no apueste con porcentajes.
 
         }else{
