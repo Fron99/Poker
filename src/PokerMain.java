@@ -45,7 +45,6 @@
  *
  */
 
-
 import Clases.Basicas.MesaImpl;
 import Clases.Gestoras.GestoraJugadorImpl;
 import Validaciones.Validaciones;
@@ -116,7 +115,6 @@ public class PokerMain {
                 System.out.println("El jugador no tiene más saldo");
                 seguirJugando = false;
             }
-
 
         }while (mesa.getSaldoJugador(0)>0
                 && seguirJugando);
