@@ -31,8 +31,5 @@ package Clases.Interfaces;
 
 public interface Carta {
 
-    char getPalo();
-
-    String getNumero();
 
 }
