@@ -90,14 +90,5 @@ import Clases.Basicas.JugadorImpl;
 
 public interface Mesa {
 
-    CartaImpl getCartaBaraja(int indice);
-
-    JugadorImpl getJugador(int indice);
-
-    CartaImpl[] getCartasMesa();
-
-    int getApuestaJugador(int jugador, int ronda);
-
-    int getTotalApuestas();
 
 }
