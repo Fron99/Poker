@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class GestoraCartaImpl {
 
+    
     /*
      * SIGNATURA: public int calcularValorCartaAlta(CartaImpl[] cartas);
      * COMENTARIO: Calcular el valor de la carta mas alta del array de cartas pasado por parametro
