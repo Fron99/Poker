@@ -43,19 +43,8 @@
 
 
 package Clases.Interfaces;
-import Clases.Basicas.CartaImpl;
 
 public interface Jugador {
 
-    String getUsuario();
-
-    int getSaldo();
-    void setSaldo(int saldo);
-
-    CartaImpl[] getCartas();
-    void setCartas(CartaImpl[] cartas);
-
-    boolean getActivo();
-    void setActivo(boolean activo);
 
 }
