@@ -1,6 +1,6 @@
 package Clases.Gestoras;
 
-import Clases.Basicas.CartaImpl;
+import Clases.Basicas.CardImpl;
 import Clases.Basicas.MesaImpl;
 
 import java.util.ArrayList;
@@ -24,8 +24,8 @@ public class GestoraCartaImpl {
      * @return returns the value of the highest card
      */
 
-    public int calcularValorCartaAlta(CartaImpl[] cartas){
-        CartaImpl[] cartasOrdenadas = new CartaImpl[cartas.length];
+    public int calcularValorCartaAlta(CardImpl[] cartas){
+        CardImpl[] cartasOrdenadas = new CardImpl[cartas.length];
         System.arraycopy(cartas,0,cartasOrdenadas,0,cartas.length);
         ordenarCartas(cartasOrdenadas);
         int puntos = 0;
@@ -52,8 +52,8 @@ public class GestoraCartaImpl {
      * @return Returns 0 if not exist pair in array. Returns the value of pair if exist pair in array.
      */
 
-    public int calcularValorPareja(CartaImpl[] cartas){
-        CartaImpl[] cartasOrdenadas = new CartaImpl[cartas.length];
+    public int calcularValorPareja(CardImpl[] cartas){
+        CardImpl[] cartasOrdenadas = new CardImpl[cartas.length];
         System.arraycopy(cartas,0,cartasOrdenadas,0,cartas.length);
         ordenarCartas(cartasOrdenadas);
         int puntos = 0;
@@ -108,9 +108,9 @@ public class GestoraCartaImpl {
      * @return Returns 0 if not exist double pair in array. Returns the value of double pair if exist double pair in array.
      */
 
-    public int calcularValorDoblePareja(CartaImpl[] cartas){
+    public int calcularValorDoblePareja(CardImpl[] cartas){
         int puntos = 0;
-        CartaImpl[] cartasOrdenadas = new CartaImpl[cartas.length];
+        CardImpl[] cartasOrdenadas = new CardImpl[cartas.length];
         System.arraycopy(cartas,0,cartasOrdenadas,0,cartas.length);
         ordenarCartas(cartasOrdenadas);
         ArrayList<Integer> parejas = new ArrayList<>();
@@ -194,9 +194,9 @@ public class GestoraCartaImpl {
      * @return Returns 0 if not exists trio in array passed by parameter. Retunrs the value of the trio if exists trio in array passed by parameter
      */
 
-    public int calcularValorTrio(CartaImpl[] cartas){
+    public int calcularValorTrio(CardImpl[] cartas){
         int puntos = 0;
-        CartaImpl[] cartasOrdenadas = new CartaImpl[cartas.length];
+        CardImpl[] cartasOrdenadas = new CardImpl[cartas.length];
         System.arraycopy(cartas,0,cartasOrdenadas,0,cartas.length);
         ordenarCartas(cartasOrdenadas);
         if (cartasOrdenadas.length>2) {
@@ -272,9 +272,9 @@ public class GestoraCartaImpl {
      * @return Returns 0 if there is no stair. Returns the value of stair if exist in array.
      */
 
-    public int calcularValorEscalera(CartaImpl[] cartas){
+    public int calcularValorEscalera(CardImpl[] cartas){
         int puntos = 0;
-        ArrayList<CartaImpl> cartasNoRepetidas = new ArrayList<>();
+        ArrayList<CardImpl> cartasNoRepetidas = new ArrayList<>();
         boolean existe = false;
         if (cartas.length>4){
 
@@ -282,7 +282,7 @@ public class GestoraCartaImpl {
             cartasNoRepetidas.add(cartas[0]);
 
             //Recorremos las cartas para guardar en el ArrayList cartasNoRepetidas las cartas sin repetir
-            for (CartaImpl carta: cartas){
+            for (CardImpl carta: cartas){
 
                 //Recorre el array comprobando que esa carta no este añadida ya
                 for (int j = 0; j<cartasNoRepetidas.size() && !existe;j++){
@@ -299,7 +299,7 @@ public class GestoraCartaImpl {
             }
 
             //Orderna el array para porder evaluarlo
-            cartasNoRepetidas.sort(CartaImpl::compareTo);
+            cartasNoRepetidas.sort(CardImpl::compareTo);
 
             //Comprueba si la escalera de color puede ser que sea A,2,3,4,5
             //Como la carta A es la se mayor valor no se coloca delante en el array entonces hay que comprobarla estando detras
@@ -360,10 +360,10 @@ public class GestoraCartaImpl {
      * @return Returns 0 if there is no color. Returns the value of color if exist color in array.
      */
 
-    public int calcularValorColor(CartaImpl[] cartas){
+    public int calcularValorColor(CardImpl[] cartas){
         int puntos = 0;
         char paloColor;
-        CartaImpl cartaAltaColor;
+        CardImpl cartaAltaColor;
 
         //Calcula si hay 5 cartas del mismo color en el array pasado por parametro
         //Si no hay devolvera N lo cual no se ejecutara
@@ -372,10 +372,10 @@ public class GestoraCartaImpl {
         if (paloColor != 'N'){
 
             //Carta por defecto con el valor minimo
-            cartaAltaColor = new CartaImpl(paloColor,"2");
+            cartaAltaColor = new CardImpl(paloColor,"2");
 
             //Este for se utiliza para sacar la carta mas alta del color
-            for (CartaImpl carta: cartas){
+            for (CardImpl carta: cartas){
                 if (carta.getPalo() == paloColor){
                     if (carta.getValorNumero()>cartaAltaColor.getValorNumero()){
                         cartaAltaColor = carta;
@@ -405,8 +405,8 @@ public class GestoraCartaImpl {
      * @return int with value of the "Full" in poker. If not exist "Full" in the deck of cards, returns 0
      */
 
-    public int calcularValorFull(CartaImpl[] cartas){
-        CartaImpl[] cartasOrdenadas = new CartaImpl[cartas.length];
+    public int calcularValorFull(CardImpl[] cartas){
+        CardImpl[] cartasOrdenadas = new CardImpl[cartas.length];
         System.arraycopy(cartas,0,cartasOrdenadas,0,cartas.length);
         ordenarCartas(cartasOrdenadas);
         int puntos = 0;
@@ -583,8 +583,8 @@ public class GestoraCartaImpl {
      * @return int Returns 0 if not exist poker. Returns the value of poker if exist poker.
      */
 
-    public int calcularValorPoker(CartaImpl[] cartas){
-        CartaImpl[] cartasOrdenadas = new CartaImpl[cartas.length];
+    public int calcularValorPoker(CardImpl[] cartas){
+        CardImpl[] cartasOrdenadas = new CardImpl[cartas.length];
         System.arraycopy(cartas,0,cartasOrdenadas,0,cartas.length);
         ordenarCartas(cartasOrdenadas);
         int puntos = 0;
@@ -621,11 +621,11 @@ public class GestoraCartaImpl {
      * @return Returns 0 if there is no color stair. Returns value of stair of color if exists
      */
 
-    public int calcularValorEscaleraColor(CartaImpl[] cartas){
+    public int calcularValorEscaleraColor(CardImpl[] cartas){
         int puntos = 0;
         char color;
         int cantidadCartas = 0;
-        CartaImpl[] cartasColor;
+        CardImpl[] cartasColor;
         boolean escaleraTipo1 = false;
 
         //Calcula si hay color. N si no hay o el caracter del color que exista
@@ -635,14 +635,14 @@ public class GestoraCartaImpl {
         if (color != 'N') {
 
             //Calcula la cantidad de cartas que hay del color que se ha calculado el cual hay color
-            for (CartaImpl carta : cartas){
+            for (CardImpl carta : cartas){
                 if (carta.getPalo() == color) {
                     cantidadCartas++;
                 }
             }
 
             //Array para meter las cartas del mismo color
-            cartasColor = new CartaImpl[cantidadCartas];
+            cartasColor = new CardImpl[cantidadCartas];
 
             //Anhade todas las cartas del color obtenido en el array creado
             for (int i = 0, j = 0; i < cartas.length; i++) {
@@ -723,7 +723,7 @@ public class GestoraCartaImpl {
     public int evaluarCartas(int jugador, MesaImpl mesa){
 
         int puntosFinales, puntosCalculados;
-        CartaImpl[] cartasAEvaluar;
+        CardImpl[] cartasAEvaluar;
         GestoraCartaImpl gesCarta = new GestoraCartaImpl();
 
         //Obtener cartas que se quieren evaluar.
@@ -795,12 +795,12 @@ public class GestoraCartaImpl {
      * @return CartaImpl[] array of CartaImpl with the player's cards passed by parameter
      */
 
-    public CartaImpl[] obtenerCartasAEvaluar(int jugador, MesaImpl mesa){
-        CartaImpl[] cartasTotales;
+    public CardImpl[] obtenerCartasAEvaluar(int jugador, MesaImpl mesa){
+        CardImpl[] cartasTotales;
 
         int cantidadCartas = 0;
-        CartaImpl[] cartasMesa = mesa.getCartasMesa();
-        CartaImpl[] cartasJugador = mesa.getCartasJugador(jugador);
+        CardImpl[] cartasMesa = mesa.getCartasMesa();
+        CardImpl[] cartasJugador = mesa.getCartasJugador(jugador);
 
         //Obtiene la cantidad de cartas que hay en la mesa con valor distinto al de defecto
         for (int i = 0;i<cartasMesa.length&&(cartasMesa[i].getPalo()!='D');i++){
@@ -812,11 +812,11 @@ public class GestoraCartaImpl {
             cantidadCartas++;
         }
 
-        cartasTotales = new CartaImpl[cantidadCartas];
+        cartasTotales = new CardImpl[cantidadCartas];
 
         //Inicializar el array para no tener errores de null
         for (int i = 0; i<cartasTotales.length;i++){
-            cartasTotales[i] = new CartaImpl();
+            cartasTotales[i] = new CardImpl();
         }
 
         //Anhade al array de cartas totales todas las cartas distintas al valor por defecto que hay en la mesa
@@ -850,8 +850,8 @@ public class GestoraCartaImpl {
      * @param cartas Array of CartaImpl[] you want to order
      */
 
-    public void ordenarCartas(CartaImpl[] cartas){
-        CartaImpl cartaAux;
+    public void ordenarCartas(CardImpl[] cartas){
+        CardImpl cartaAux;
         //Para ordenar utiliza el metodo de compareTo de la clase CartaImpl
         for(int i = 0; i < cartas.length - 1; i++){
             for(int j = 0; j < cartas.length - 1; j++){
@@ -881,12 +881,12 @@ public class GestoraCartaImpl {
      * @return char with the color that exist in array of cards. Return N if not exist color.
      */
 
-    public char calcularTipoColor(CartaImpl[] cartas){
+    public char calcularTipoColor(CardImpl[] cartas){
         char color = 'N';
         int contadorPica = 0, contadorCorazon = 0, contadorTrevol = 0, contadorRombo = 0;
 
         //Se calcula cuantas cartas hay de cada palo
-        for (CartaImpl carta : cartas) {
+        for (CardImpl carta : cartas) {
             if (carta.getPalo() == 'P') {
                 contadorPica++;
             } else {
@@ -942,9 +942,9 @@ public class GestoraCartaImpl {
 
     //TODO Mejorar este metodo
 
-    public boolean unaParaEscalera(CartaImpl[] cartas){
+    public boolean unaParaEscalera(CardImpl[] cartas){
         boolean unaParaEscalera = false;
-        CartaImpl[] cartasAEvaluar = new CartaImpl[cartas.length];
+        CardImpl[] cartasAEvaluar = new CardImpl[cartas.length];
         System.arraycopy(cartas,0,cartasAEvaluar,0,cartas.length);
         ordenarCartas(cartasAEvaluar);
 

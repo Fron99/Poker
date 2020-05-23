@@ -30,7 +30,7 @@ package Clases.Basicas;
 
 import Clases.Interfaces.Carta;
 
-public class CartaImpl implements Carta, Cloneable{
+public class CardImpl implements Carta, Cloneable{
 
     private char palo;
     private String numero;
@@ -39,7 +39,7 @@ public class CartaImpl implements Carta, Cloneable{
      * This constructor put attribute "palo" and attribute numero with value "D"
      */
 
-    public CartaImpl(){
+    public CardImpl(){
         this.palo = 'D';
         this.numero = "D";
     }
@@ -50,7 +50,7 @@ public class CartaImpl implements Carta, Cloneable{
      * @param numero String with value of numero
      */
 
-    public CartaImpl(char palo, String numero){//TODO Controlar palos Solo validos algunos y 0 0
+    public CardImpl(char palo, String numero){//TODO Controlar palos Solo validos algunos y 0 0
         this.palo = palo;
         this.numero = numero;
     }
@@ -60,7 +60,7 @@ public class CartaImpl implements Carta, Cloneable{
      * @param otra CartaImpl other object CartaImpl
      */
 
-    public CartaImpl(CartaImpl otra){
+    public CardImpl(CardImpl otra){
         this.palo = otra.getPalo();
         this.numero = otra.getNumero();
     }
@@ -163,7 +163,7 @@ public class CartaImpl implements Carta, Cloneable{
      * @return int with value compare
      */
 
-    public int compareTo(CartaImpl otra){
+    public int compareTo(CardImpl otra){
         int resultado = -1;
         if (this.getValorNumero() == otra.getValorNumero()){
             resultado = 0;
@@ -186,8 +186,8 @@ public class CartaImpl implements Carta, Cloneable{
         if (this == objeto){
             resul = true;
         }else{
-            if (objeto != null && objeto instanceof CartaImpl){
-                CartaImpl nueva = (CartaImpl) objeto;
+            if (objeto != null && objeto instanceof CardImpl){
+                CardImpl nueva = (CardImpl) objeto;
                 if (this.getNumero().equals(nueva.getNumero())
                     && this.getPalo()==nueva.getPalo()){
                     resul = true;
@@ -203,10 +203,10 @@ public class CartaImpl implements Carta, Cloneable{
      */
 
     @Override
-    public CartaImpl clone() {
-        CartaImpl carta = null;
+    public CardImpl clone() {
+        CardImpl carta = null;
         try {
-            carta = (CartaImpl) super.clone();
+            carta = (CardImpl) super.clone();
         } catch(CloneNotSupportedException error) {
             System.out.println("Error en la copia");
         }

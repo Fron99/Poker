@@ -85,9 +85,6 @@
 
 package Clases.Interfaces;
 
-import Clases.Basicas.CartaImpl;
-import Clases.Basicas.JugadorImpl;
-
 public interface Mesa {
 
 

@@ -96,9 +96,9 @@ import java.util.Random;
 @SuppressWarnings("unused")
 public class MesaImpl implements Mesa, Cloneable {
 
-    private CartaImpl[] baraja;
-    private JugadorImpl[] jugadores;
-    private CartaImpl[] cartasMesa;
+    private CardImpl[] baraja;
+    private PlayerImpl[] jugadores;
+    private CardImpl[] cartasMesa;
     private int[][] apuestasJugadores;
     private int turnoJugador;
     private int ronda;
@@ -109,17 +109,17 @@ public class MesaImpl implements Mesa, Cloneable {
 
     public MesaImpl(){
         Random random = new Random();
-        this.baraja = new CartaImpl[52];
+        this.baraja = new CardImpl[52];
         for (int i = 0;i<this.baraja.length;i++){
-            this.baraja[i] = new CartaImpl();
+            this.baraja[i] = new CardImpl();
         }
-        this.jugadores = new JugadorImpl[5];
+        this.jugadores = new PlayerImpl[5];
         for (int i = 0;i<this.jugadores.length;i++){
-            this.jugadores[i] = new JugadorImpl();
+            this.jugadores[i] = new PlayerImpl();
         }
-        this.cartasMesa = new CartaImpl[5];
+        this.cartasMesa = new CardImpl[5];
         for (int i = 0;i<this.cartasMesa.length;i++){
-            this.cartasMesa[i] = new CartaImpl();
+            this.cartasMesa[i] = new CardImpl();
         }
         this.apuestasJugadores = new int[5][4];
         this.turnoJugador = random.nextInt(5);
@@ -136,33 +136,33 @@ public class MesaImpl implements Mesa, Cloneable {
      * @param cartasMesa array of letters
      */
 
-    public MesaImpl(CartaImpl[] baraja, JugadorImpl[] jugadores, CartaImpl[] cartasMesa){
+    public MesaImpl(CardImpl[] baraja, PlayerImpl[] jugadores, CardImpl[] cartasMesa){
         Random random = new Random();
 
-        this.baraja = new CartaImpl[52];
+        this.baraja = new CardImpl[52];
         if (baraja.length == 52){
             System.arraycopy(baraja,0,this.baraja,0,baraja.length);
         }else{
             for (int i = 0;i<this.baraja.length;i++){
-                this.baraja[i] = new CartaImpl();
+                this.baraja[i] = new CardImpl();
             }
         }
 
-        this.jugadores = new JugadorImpl[5];
+        this.jugadores = new PlayerImpl[5];
         if (jugadores.length == 5){
             System.arraycopy(jugadores,0,this.jugadores,0,jugadores.length);
         }else{
             for (int i = 0;i<this.jugadores.length;i++){
-                this.jugadores[i] = new JugadorImpl();
+                this.jugadores[i] = new PlayerImpl();
             }
         }
 
-        this.cartasMesa = new CartaImpl[5];
+        this.cartasMesa = new CardImpl[5];
         if (cartasMesa.length == 5){
             System.arraycopy(cartasMesa,0,this.cartasMesa,0,cartasMesa.length);
         }else{
             for (int i = 0;i<this.cartasMesa.length;i++){
-                this.cartasMesa[i] = new CartaImpl();
+                this.cartasMesa[i] = new CardImpl();
             }
         }
 
@@ -183,32 +183,32 @@ public class MesaImpl implements Mesa, Cloneable {
      * @param apuestasJugadores array of int
      */
 
-    public MesaImpl(CartaImpl[] baraja, JugadorImpl[] jugadores, CartaImpl[] cartasMesa, int[][] apuestasJugadores){
+    public MesaImpl(CardImpl[] baraja, PlayerImpl[] jugadores, CardImpl[] cartasMesa, int[][] apuestasJugadores){
         Random random = new Random();
-        this.baraja = new CartaImpl[52];
+        this.baraja = new CardImpl[52];
         if (baraja.length == 52){
             System.arraycopy(baraja,0,this.baraja,0,baraja.length);
         }else{
             for (int i = 0;i<this.baraja.length;i++){
-                this.baraja[i] = new CartaImpl();
+                this.baraja[i] = new CardImpl();
             }
         }
 
-        this.jugadores = new JugadorImpl[5];
+        this.jugadores = new PlayerImpl[5];
         if (jugadores.length == 5){
             System.arraycopy(jugadores,0,this.jugadores,0,jugadores.length);
         }else{
             for (int i = 0;i<this.jugadores.length;i++){
-                this.jugadores[i] = new JugadorImpl();
+                this.jugadores[i] = new PlayerImpl();
             }
         }
 
-        this.cartasMesa = new CartaImpl[5];
+        this.cartasMesa = new CardImpl[5];
         if (cartasMesa.length == 5){
             System.arraycopy(cartasMesa,0,this.cartasMesa,0,cartasMesa.length);
         }else{
             for (int i = 0;i<this.cartasMesa.length;i++){
-                this.cartasMesa[i] = new CartaImpl();
+                this.cartasMesa[i] = new CardImpl();
             }
         }
 
@@ -229,13 +229,13 @@ public class MesaImpl implements Mesa, Cloneable {
      */
 
     public MesaImpl(MesaImpl otro){
-        this.baraja = new CartaImpl[52];
+        this.baraja = new CardImpl[52];
         System.arraycopy(otro.baraja,0,this.baraja,0,otro.baraja.length);
 
-        this.jugadores = new JugadorImpl[5];
+        this.jugadores = new PlayerImpl[5];
         System.arraycopy(otro.jugadores,0,this.jugadores,0,otro.jugadores.length);
 
-        this.cartasMesa = new CartaImpl[5];
+        this.cartasMesa = new CardImpl[5];
         System.arraycopy(otro.cartasMesa,0,this.cartasMesa,0,otro.cartasMesa.length);
 
         this.apuestasJugadores = new int[5][4];
@@ -253,8 +253,8 @@ public class MesaImpl implements Mesa, Cloneable {
      * @return CartaImpl[] array of attribute "baraja"
      */
 
-    public CartaImpl[] getBaraja(){
-        CartaImpl[] baraja = new CartaImpl[this.baraja.length];
+    public CardImpl[] getBaraja(){
+        CardImpl[] baraja = new CardImpl[this.baraja.length];
         System.arraycopy(this.baraja,0,baraja,0,this.baraja.length);
         return baraja;
     }
@@ -264,7 +264,7 @@ public class MesaImpl implements Mesa, Cloneable {
      * @param baraja new value of attribute "baraja"
      */
 
-    private void setBaraja(CartaImpl[] baraja){
+    private void setBaraja(CardImpl[] baraja){
         for (int i = 0;i<baraja.length; i++){
             this.baraja[i] = baraja[i].clone();
         }
@@ -277,8 +277,8 @@ public class MesaImpl implements Mesa, Cloneable {
      *                   If the value of index not allowed, return a card with value 0 and 0
      */
 
-    public CartaImpl getCartaBaraja(int indiceBaraja){
-        return (indiceBaraja >= 0 && indiceBaraja <= 51) ? this.baraja[indiceBaraja].clone() : new CartaImpl('0',"0");
+    public CardImpl getCartaBaraja(int indiceBaraja){
+        return (indiceBaraja >= 0 && indiceBaraja <= 51) ? this.baraja[indiceBaraja].clone() : new CardImpl('0',"0");
     }
 
     /**
@@ -289,7 +289,7 @@ public class MesaImpl implements Mesa, Cloneable {
      *             Return false if the value of the array index card passed by parameter hasn't been changed.
      */
 
-    private boolean setCartaBaraja(CartaImpl baraja, int indiceBaraja){
+    private boolean setCartaBaraja(CardImpl baraja, int indiceBaraja){
         boolean res = false;
         if (indiceBaraja >= 0 && indiceBaraja <= 51){
             this.baraja[indiceBaraja] = baraja;
@@ -323,8 +323,8 @@ public class MesaImpl implements Mesa, Cloneable {
      * @return JugadorImpl[] array of attribute "jugadores"
      */
 
-    public JugadorImpl[] getJugadores(){
-        JugadorImpl[] jugadores = new JugadorImpl[this.jugadores.length];
+    public PlayerImpl[] getJugadores(){
+        PlayerImpl[] jugadores = new PlayerImpl[this.jugadores.length];
         System.arraycopy(this.jugadores,0,jugadores,0,this.jugadores.length);
         return jugadores;
     }
@@ -334,7 +334,7 @@ public class MesaImpl implements Mesa, Cloneable {
      * @param jugadores new value of attribute "jugadores"
      */
 
-    private void setJugadores(JugadorImpl[] jugadores){
+    private void setJugadores(PlayerImpl[] jugadores){
         for (int i = 0;i<jugadores.length; i++){
             this.jugadores[i] = jugadores[i].clone();
         }
@@ -346,8 +346,8 @@ public class MesaImpl implements Mesa, Cloneable {
      * @return JugadorImpl player yo want to get. If the index not between of range allowed return a player with value "IndexOvertakeRange" in "Usuario".
      */
 
-    public JugadorImpl getJugador(int posicion){
-        return (posicion >= 0 && posicion <= 4) ? this.jugadores[posicion].clone() : new JugadorImpl("IndexOvertakeRange",0);
+    public PlayerImpl getJugador(int posicion){
+        return (posicion >= 0 && posicion <= 4) ? this.jugadores[posicion].clone() : new PlayerImpl("IndexOvertakeRange",0);
     }
 
     /**
@@ -358,7 +358,7 @@ public class MesaImpl implements Mesa, Cloneable {
      *         Return false if the value of the array index player passed by parameter hasn't been changed.
      */
 
-    public boolean setJugador(int indiceJugador, JugadorImpl jugador){
+    public boolean setJugador(int indiceJugador, PlayerImpl jugador){
         boolean res = false;
         if (indiceJugador >= 0 && indiceJugador <= 4){
             this.jugadores[indiceJugador] = jugador.clone();
@@ -374,7 +374,7 @@ public class MesaImpl implements Mesa, Cloneable {
      */
 
     public String getUsuarioJugador(int posicionJugador){
-        return (posicionJugador >= 0 && posicionJugador <= 4) ? this.jugadores[posicionJugador].getUsuario() : "0";
+        return (posicionJugador >= 0 && posicionJugador <= 4) ? this.jugadores[posicionJugador].getUsername() : "0";
     }
 
     /**
@@ -411,11 +411,11 @@ public class MesaImpl implements Mesa, Cloneable {
      *         Return null if index passed by parameter isn't allowed.
      */
 
-    public CartaImpl[] getCartasJugador(int posicionJugador){
-        CartaImpl[] cartasJugador = null;
+    public CardImpl[] getCartasJugador(int posicionJugador){
+        CardImpl[] cartasJugador = null;
         if (posicionJugador >= 0 && posicionJugador <= 4){
-            cartasJugador = new CartaImpl[2];
-            System.arraycopy(this.jugadores[posicionJugador].getCartas(),0,cartasJugador,0,this.jugadores[posicionJugador].getCartas().length);
+            cartasJugador = new CardImpl[2];
+            System.arraycopy(this.jugadores[posicionJugador].getCards(),0,cartasJugador,0,this.jugadores[posicionJugador].getCards().length);
         }
         return cartasJugador;
     }
@@ -428,10 +428,10 @@ public class MesaImpl implements Mesa, Cloneable {
      *         Return false if the cards wasn't added to the player.
      */
 
-    public boolean setCartasJugador(int posicionJugador, CartaImpl[] cartas){
+    public boolean setCartasJugador(int posicionJugador, CardImpl[] cartas){
         boolean res = false;
         if (posicionJugador >= 0 && posicionJugador <= 4){
-            this.jugadores[posicionJugador].setCartas(cartas);
+            this.jugadores[posicionJugador].setCards(cartas);
             res = true;
         }
         return res;
@@ -444,8 +444,8 @@ public class MesaImpl implements Mesa, Cloneable {
      *         If the value of index not allowed, return a card with value 0 and 0
      */
 
-    public CartaImpl getCartaJugador(int posicionJugador,int carta){
-        return (posicionJugador >= 0 && posicionJugador <= 4) ? (carta == 0 || carta == 1) ? this.getCartasJugador(posicionJugador)[carta] : new CartaImpl('0',"0") : new CartaImpl('0',"0");
+    public CardImpl getCartaJugador(int posicionJugador, int carta){
+        return (posicionJugador >= 0 && posicionJugador <= 4) ? (carta == 0 || carta == 1) ? this.getCartasJugador(posicionJugador)[carta] : new CardImpl('0',"0") : new CardImpl('0',"0");
     }
 
     /**
@@ -479,7 +479,7 @@ public class MesaImpl implements Mesa, Cloneable {
      *         Return false if the card wasn't added to the player.
      */
 
-    private boolean setCartaJugador(int posicionJugador,int posicionCarta, CartaImpl carta){
+    private boolean setCartaJugador(int posicionJugador,int posicionCarta, CardImpl carta){
         boolean res = false;
         if ((posicionJugador >= 0 && posicionJugador <= 4) && (posicionCarta == 0 || posicionCarta == 1)){
             this.jugadores[posicionJugador].setCarta(posicionCarta, carta);
@@ -497,7 +497,7 @@ public class MesaImpl implements Mesa, Cloneable {
      */
 
     public int getActivoJugador(int posicionJugador){
-        return (posicionJugador >= 0 && posicionJugador <= 4) ? (this.getJugador(posicionJugador).getActivo()) ? 1 : 0 : -1;
+        return (posicionJugador >= 0 && posicionJugador <= 4) ? (this.getJugador(posicionJugador).getActive()) ? 1 : 0 : -1;
     }
 
     /**
@@ -505,8 +505,8 @@ public class MesaImpl implements Mesa, Cloneable {
      * @return CartaImpl[] array of attribute "cartasMesa"
      */
 
-    public CartaImpl[] getCartasMesa(){
-        CartaImpl[] cartas = new CartaImpl[this.cartasMesa.length];
+    public CardImpl[] getCartasMesa(){
+        CardImpl[] cartas = new CardImpl[this.cartasMesa.length];
         System.arraycopy(this.cartasMesa,0,cartas,0,this.cartasMesa.length);
         return cartas;
     }
@@ -516,7 +516,7 @@ public class MesaImpl implements Mesa, Cloneable {
      * @param cartas new value of attribute "cartas"
      */
 
-    public void setCartasMesa(CartaImpl[] cartas){
+    public void setCartasMesa(CardImpl[] cartas){
         this.cartasMesa = cartas;
     }
 
@@ -528,8 +528,8 @@ public class MesaImpl implements Mesa, Cloneable {
      *
      */
 
-    public CartaImpl getCartaMesa(int indiceCarta){
-        return (indiceCarta >= 0 && indiceCarta <= 4) ? this.cartasMesa[indiceCarta].clone() : new CartaImpl('0',"0");
+    public CardImpl getCartaMesa(int indiceCarta){
+        return (indiceCarta >= 0 && indiceCarta <= 4) ? this.cartasMesa[indiceCarta].clone() : new CardImpl('0',"0");
     }
 
     /**
@@ -540,7 +540,7 @@ public class MesaImpl implements Mesa, Cloneable {
      *         Return false if the card wasn't added to the cards of table.
      */
 
-    private boolean setCartaMesa(int indiceCarta, CartaImpl carta){
+    private boolean setCartaMesa(int indiceCarta, CardImpl carta){
         boolean res = false;
         if (indiceCarta >= 0 && indiceCarta <= 4){
             this.cartasMesa[indiceCarta] = carta;
@@ -723,7 +723,7 @@ public class MesaImpl implements Mesa, Cloneable {
 
     public void restaurarCartasMesa(){
         for (int i = 0; i<this.cartasMesa.length; i++){
-            this.cartasMesa[i] = new CartaImpl();
+            this.cartasMesa[i] = new CardImpl();
         }
     }
 
@@ -747,7 +747,7 @@ public class MesaImpl implements Mesa, Cloneable {
         int contador = 0;
         for (char palo: palos){
             for (String numero : numeros) {
-                this.baraja[contador] = new CartaImpl(palo, numero);
+                this.baraja[contador] = new CardImpl(palo, numero);
                 contador++;
             }
         }
@@ -790,8 +790,8 @@ public class MesaImpl implements Mesa, Cloneable {
      */
 
     private void colocarJugadoresActivos(){
-        for(JugadorImpl jugador: this.jugadores){
-            jugador.setActivo(true);
+        for(PlayerImpl jugador: this.jugadores){
+            jugador.setActive(true);
         }
     }
 
@@ -815,7 +815,7 @@ public class MesaImpl implements Mesa, Cloneable {
         Random random = new Random();
         String[] nombresAleatorios = {"Kun","Wang","YanYan","Zhao","Yun","Sasha","Volodia","Hedeon","Grigory"};
         for (int i = 1; i<jugadores.length;i++){
-            this.jugadores[i] = new JugadorImpl(nombresAleatorios[random.nextInt(8)],jugadores[0].getSaldo());
+            this.jugadores[i] = new PlayerImpl(nombresAleatorios[random.nextInt(8)],jugadores[0].getSaldo());
         }
 
     }
@@ -845,7 +845,7 @@ public class MesaImpl implements Mesa, Cloneable {
                 numPosicionCarta = r.nextInt(52);
             } while (this.baraja[numPosicionCarta].getPalo() == 'D');
             this.cartasMesa[i] = this.baraja[numPosicionCarta];
-            this.baraja[numPosicionCarta] = new CartaImpl();
+            this.baraja[numPosicionCarta] = new CardImpl();
         }
 
     }
@@ -880,7 +880,7 @@ public class MesaImpl implements Mesa, Cloneable {
                         }
                     }
                 } while (baraja[numPosicionCarta].getPalo() == 'D');
-                baraja[numPosicionCarta] = new CartaImpl();
+                baraja[numPosicionCarta] = new CardImpl();
             }
         }
 
@@ -922,7 +922,7 @@ public class MesaImpl implements Mesa, Cloneable {
                     this.cartasMesa[indiceCartaGenerar] = this.baraja[numPosicionCarta];
                 }
             } while (this.baraja[numPosicionCarta].getPalo() == 'D');
-            this.baraja[numPosicionCarta] = new CartaImpl();
+            this.baraja[numPosicionCarta] = new CardImpl();
         }
     }
 
@@ -972,7 +972,7 @@ public class MesaImpl implements Mesa, Cloneable {
         do{
             //Obtener ganador
             for (int i = 0; i< this.jugadores.length;i++){
-                if (this.jugadores[i].getActivo()) {
+                if (this.jugadores[i].getActive()) {
                     puntosJugadorCalculados = gestoraCarta.evaluarCartas(i, this);
                     //Se utiliza puntosAnteriorGanador
                     if (puntosAnteriorGanador > puntosJugadorCalculados
@@ -1191,8 +1191,8 @@ public class MesaImpl implements Mesa, Cloneable {
 
     private boolean quedanJugadoresParaJugar(){
         int cantidadJugadoresParaJugar = 0;
-        for (JugadorImpl jugador: this.getJugadores()) {
-            if ((jugador.getActivo() && jugador.getSaldo() > 0) ||  (jugador.getActivo() && jugador.getSaldo() == 0 && jugador.getAllInMenor())){
+        for (PlayerImpl jugador: this.getJugadores()) {
+            if ((jugador.getActive() && jugador.getSaldo() > 0) ||  (jugador.getActive() && jugador.getSaldo() == 0 && jugador.getAllInMenor())){
                 cantidadJugadoresParaJugar++;
             }
         }
@@ -1205,8 +1205,8 @@ public class MesaImpl implements Mesa, Cloneable {
 
     private boolean quedanJugadoresSinAllIn(){
         int quedanJugadoresSinAllIn = 0;
-        for (JugadorImpl jugador: this.getJugadores()) {
-            if (jugador.getActivo() && jugador.getSaldo() > 0 && !jugador.getAllInMenor()){
+        for (PlayerImpl jugador: this.getJugadores()) {
+            if (jugador.getActive() && jugador.getSaldo() > 0 && !jugador.getAllInMenor()){
                 quedanJugadoresSinAllIn++;
             }
         }
@@ -1221,15 +1221,15 @@ public class MesaImpl implements Mesa, Cloneable {
     private int obtenerApuestaMaxima(){
         int apuestaMaxima = -1, apuestaMaximaComparable = -2;
         //Obtenemos la apuesta maxima que se puede hacer
-        for (JugadorImpl jugador: this.getJugadores()) {
-            if (jugador.getSaldo() > apuestaMaximaComparable && jugador.getActivo()){
+        for (PlayerImpl jugador: this.getJugadores()) {
+            if (jugador.getSaldo() > apuestaMaximaComparable && jugador.getActive()){
                 apuestaMaximaComparable = jugador.getSaldo();
             }
         }
 
         //Obtenemos la segunda apuesta maxima que se puede hacer
-        for (JugadorImpl jugador: this.getJugadores()) {
-            if (jugador.getSaldo() > apuestaMaxima && jugador.getActivo() && jugador.getSaldo() < apuestaMaximaComparable){
+        for (PlayerImpl jugador: this.getJugadores()) {
+            if (jugador.getSaldo() > apuestaMaxima && jugador.getActive() && jugador.getSaldo() < apuestaMaximaComparable){
                 apuestaMaxima = jugador.getSaldo();
             }
         }
@@ -1274,12 +1274,12 @@ public class MesaImpl implements Mesa, Cloneable {
 
             //Este bucle se utiliza para sacar el primer jugador que va a apostar
             //Ya que puede ocurrir que el delider se haya "tirado"
-            while (!this.jugadores[turnoJugadorParcial].getActivo() && !this.jugadores[turnoJugadorParcial].getAllInMenor()){
+            while (!this.jugadores[turnoJugadorParcial].getActive() && !this.jugadores[turnoJugadorParcial].getAllInMenor()){
                 turnoJugadorParcial = (turnoJugadorParcial == 4)?0:++turnoJugadorParcial;
             }
 
             //Comprueba que el jugador este activo y tenga un saldo mayor a 0
-            if (this.getJugador(turnoJugadorParcial).getActivo() && this.getSaldoJugador(turnoJugadorParcial) > 0 && !this.jugadores[turnoJugadorParcial].getAllInMenor()) {
+            if (this.getJugador(turnoJugadorParcial).getActive() && this.getSaldoJugador(turnoJugadorParcial) > 0 && !this.jugadores[turnoJugadorParcial].getAllInMenor()) {
                 apuestaMaxima = obtenerApuestaMaxima();
                 if(turnoJugadorParcial == 0){
                     apuestaMinima = gesJug.leerYValidarApuesta(turnoJugadorParcial, apuestaMinima, apuestaMaxima,this);
@@ -1302,7 +1302,7 @@ public class MesaImpl implements Mesa, Cloneable {
             while(turnoJugadorParcial != turnoJugadorFinal){
 
                 //Comprueba que el jugador este activo y tenga un saldo mayor a 0
-                if (this.getJugador(turnoJugadorParcial).getActivo() && this.getSaldoJugador(turnoJugadorParcial) > 0 && !this.jugadores[turnoJugadorParcial].getAllInMenor()) {
+                if (this.getJugador(turnoJugadorParcial).getActive() && this.getSaldoJugador(turnoJugadorParcial) > 0 && !this.jugadores[turnoJugadorParcial].getAllInMenor()) {
                     apuestaMaxima = obtenerApuestaMaxima();
                     if(turnoJugadorParcial == 0){
                         apuestaJugador = gesJug.leerYValidarApuesta(turnoJugadorParcial, apuestaMinima, apuestaMaxima,this);
@@ -1352,7 +1352,7 @@ public class MesaImpl implements Mesa, Cloneable {
                                 }
                             }else{  //Este es el caso de que el jugador se tire
                                 System.out.println("El jugador "+this.getUsuarioJugador(turnoJugadorParcial)+" se ha tirado.");
-                                this.jugadores[turnoJugadorParcial].setActivo(false);
+                                this.jugadores[turnoJugadorParcial].setActive(false);
                             }
                         }
                     }
@@ -1378,15 +1378,15 @@ public class MesaImpl implements Mesa, Cloneable {
     public String toString(){
         String stringBaraja = "",stringJugadores = "",stringCartasMesa = "", stringApuestas = "";
 
-        for (CartaImpl carta : baraja) {
+        for (CardImpl carta : baraja) {
             stringBaraja += carta.toString() + "\n";
         }
 
-        for (JugadorImpl jugadore : jugadores) {
+        for (PlayerImpl jugadore : jugadores) {
             stringJugadores += jugadore.toString() + "\n";
         }
 
-        for (CartaImpl carta : cartasMesa) {
+        for (CardImpl carta : cartasMesa) {
             stringCartasMesa += carta.toString() + "\n";
         }
 

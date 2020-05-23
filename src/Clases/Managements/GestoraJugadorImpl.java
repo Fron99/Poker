@@ -1,7 +1,7 @@
 package Clases.Gestoras;
 
-import Clases.Basicas.CartaImpl;
-import Clases.Basicas.JugadorImpl;
+import Clases.Basicas.CardImpl;
+import Clases.Basicas.PlayerImpl;
 import Clases.Basicas.MesaImpl;
 
 import java.util.Random;
@@ -261,7 +261,7 @@ public class GestoraJugadorImpl {
      * @return
      */
 
-    private int calcularPuntosPosibilidad(CartaImpl[] cartasAEvaluar){
+    private int calcularPuntosPosibilidad(CardImpl[] cartasAEvaluar){
         int puntosPosibilidad = 0, puntos = 0, colorP = 0, colorT = 0, colorR = 0, colorC = 0 ;
         GestoraCartaImpl gestoraCarta = new GestoraCartaImpl();
         boolean unaParaEscalera;
@@ -270,7 +270,7 @@ public class GestoraJugadorImpl {
             //Si el array contiene 2 cartas significa que esta en la primera ronda
             case 2:
 
-                for (CartaImpl carta : cartasAEvaluar) {
+                for (CardImpl carta : cartasAEvaluar) {
                     if (carta.getValorNumero() == 13 || carta.getValorNumero() == 12 || carta.getValorNumero() == 11 || carta.getValorNumero() == 10) {
                         puntosPosibilidad = 20;
                     }
@@ -293,7 +293,7 @@ public class GestoraJugadorImpl {
             //Si el array contiene 5 cartas significa que esta en la segunda ronda
             case 5:
 
-                for (CartaImpl carta : cartasAEvaluar) {
+                for (CardImpl carta : cartasAEvaluar) {
                     if (carta.getValorNumero() == 13 || carta.getValorNumero() == 12 || carta.getValorNumero() == 11 || carta.getValorNumero() == 10) {
                         puntosPosibilidad = 10;
                     }
@@ -305,7 +305,7 @@ public class GestoraJugadorImpl {
                     puntosPosibilidad = 40;
                 }
 
-                for (CartaImpl carta : cartasAEvaluar) {
+                for (CardImpl carta : cartasAEvaluar) {
                     switch (carta.getPalo()){
                         case 'P':
                             colorP++;
@@ -336,7 +336,7 @@ public class GestoraJugadorImpl {
             //Si el array contiene 6 cartas significa que esta en la tercera ronda
             case 6:
 
-                for (CartaImpl carta : cartasAEvaluar) {
+                for (CardImpl carta : cartasAEvaluar) {
                     if (carta.getValorNumero() == 13 || carta.getValorNumero() == 12 || carta.getValorNumero() == 11 || carta.getValorNumero() == 10) {
                         puntosPosibilidad = 10;
                     }
@@ -348,7 +348,7 @@ public class GestoraJugadorImpl {
                     puntosPosibilidad = 20;
                 }
 
-                for (CartaImpl carta : cartasAEvaluar) {
+                for (CardImpl carta : cartasAEvaluar) {
                     switch (carta.getPalo()){
                         case 'P':
                             colorP++;
@@ -408,11 +408,11 @@ public class GestoraJugadorImpl {
      * @return
      */
 
-    public JugadorImpl leerYValidarJugador(){
-        JugadorImpl nuevoJugador;
+    public PlayerImpl leerYValidarJugador(){
+        PlayerImpl nuevoJugador;
             String usuario = leerUsuario();
             int saldo = leerYValidarSaldoInicial();
-            nuevoJugador = new JugadorImpl(usuario,saldo);
+            nuevoJugador = new PlayerImpl(usuario,saldo);
         return nuevoJugador;
     }
 
@@ -432,7 +432,7 @@ public class GestoraJugadorImpl {
      * @return
      */
 
-    public int jugadoresConSaldo(JugadorImpl[] jugadores){
+    public int jugadoresConSaldo(PlayerImpl[] jugadores){
         int cantidad = 0;
         if (jugadores.length == 5){
             for (int i = 1; i < jugadores.length; i++){
