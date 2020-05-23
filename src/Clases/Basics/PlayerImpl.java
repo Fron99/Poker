@@ -42,14 +42,14 @@
  */
 
 
-package Clases.Basicas;
+package Clases.Basics;
 
-import Clases.Interfaces.Jugador;
+import Clases.Interfaces.Player;
 
-public class PlayerImpl implements Jugador, Cloneable {
+public class PlayerImpl implements Player, Cloneable {
 
     private String username;
-    private int saldo;
+    private int balance;
     private CardImpl[] cards;
     private boolean active;
     private boolean allInMenor;
@@ -60,7 +60,7 @@ public class PlayerImpl implements Jugador, Cloneable {
 
     public PlayerImpl(){
         this.username = "DEFAULT";
-        this.saldo = 0;
+        this.balance = 0;
         this.cards = new CardImpl[2];
         for (int i = 0; i<this.cards.length; i++){
             this.cards[i] = new CardImpl();
@@ -72,12 +72,12 @@ public class PlayerImpl implements Jugador, Cloneable {
     /**
      * This constructor places the values of attributes with values passed by parameter
      * @param username String name of player
-     * @param saldo int balance of player
+     * @param balance int balance of player
      */
 
-    public PlayerImpl(String username, int saldo){
+    public PlayerImpl(String username, int balance){
         this.username = username;
-        this.saldo = saldo;
+        this.balance = balance;
         this.cards = new CardImpl[2];
         for (int i = 0; i<this.cards.length; i++){
             this.cards[i] = new CardImpl();
@@ -89,15 +89,15 @@ public class PlayerImpl implements Jugador, Cloneable {
     /**
      * This constructor places the values of attributes with values passed by parameter
      * @param username String name of player
-     * @param saldo int balance of player
+     * @param balance int balance of player
      * @param cards array of letters
      */
 
     //TODO Comprobar = al asignar cartas y controlar tamaño
 
-    public PlayerImpl(String username, int saldo, CardImpl[] cards){
+    public PlayerImpl(String username, int balance, CardImpl[] cards){
         this.username = username;
-        this.saldo = saldo;
+        this.balance = balance;
         this.cards = cards;
         this.active = true;
         this.allInMenor = false;
@@ -110,7 +110,7 @@ public class PlayerImpl implements Jugador, Cloneable {
 
     public PlayerImpl(PlayerImpl otro){
         this.username = otro.getUsername();
-        this.saldo = otro.getSaldo();
+        this.balance = otro.getBalance();
         this.cards = otro.getCards();
         this.active = otro.getActive();
         this.allInMenor = otro.getAllInMenor();
@@ -130,17 +130,17 @@ public class PlayerImpl implements Jugador, Cloneable {
      * @return int with value of attribute "saldo"
      */
 
-    public int getSaldo(){
-        return this.saldo;
+    public int getBalance(){
+        return this.balance;
     }
 
     /**
      * Set value passed by parameter in attribute "saldo"
-     * @param saldo new value of attribute "saldo"
+     * @param balance new value of attribute "saldo"
      */
 
-    public void setSaldo(int saldo){
-        this.saldo = saldo;
+    public void setBalance(int balance){
+        this.balance = balance;
     }
 
     /**
@@ -216,7 +216,7 @@ public class PlayerImpl implements Jugador, Cloneable {
      */
 
     public void disminuirDinero(int saldo){
-        this.saldo -= saldo;
+        this.balance -= saldo;
     }
 
     /**
@@ -225,7 +225,7 @@ public class PlayerImpl implements Jugador, Cloneable {
      */
 
     public void aumentarDinero(int saldo){
-        this.saldo += saldo;
+        this.balance += saldo;
     }
 
     /**
@@ -255,7 +255,7 @@ public class PlayerImpl implements Jugador, Cloneable {
 
     @Override
     public String toString(){
-        return "Usuario: "+ username +", Saldo: "+saldo+", Activo: "+ active +", AllInMenor: "+allInMenor;
+        return "Usuario: "+ username +", Saldo: "+ balance +", Activo: "+ active +", AllInMenor: "+allInMenor;
     }
 
     /**
@@ -265,7 +265,7 @@ public class PlayerImpl implements Jugador, Cloneable {
 
     @Override
     public int hashCode(){
-        return saldo+ username.hashCode();
+        return balance + username.hashCode();
     }
 
     /**
@@ -283,7 +283,7 @@ public class PlayerImpl implements Jugador, Cloneable {
                 PlayerImpl nueva = (PlayerImpl) objeto;
                 if (this.getUsername().equals(nueva.getUsername())
                         && this.getCards()==nueva.getCards()
-                        && this.getSaldo()==nueva.getSaldo()
+                        && this.getBalance()==nueva.getBalance()
                         && this.getActive()==nueva.getActive()){
                     resul = true;
                 }
@@ -301,7 +301,7 @@ public class PlayerImpl implements Jugador, Cloneable {
     public PlayerImpl clone() {
         PlayerImpl jugador = new PlayerImpl();
         jugador.username = this.username;
-        jugador.saldo = this.saldo;
+        jugador.balance = this.balance;
         for (int i = 0; i< cards.length; i++){
             jugador.cards[i] = this.cards[i].clone();
         }

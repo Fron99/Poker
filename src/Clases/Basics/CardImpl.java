@@ -26,43 +26,43 @@
  *
  */
 
-package Clases.Basicas;
+package Clases.Basics;
 
-import Clases.Interfaces.Carta;
+import Clases.Interfaces.Card;
 
-public class CardImpl implements Carta, Cloneable{
+public class CardImpl implements Card, Cloneable{
 
-    private char palo;
-    private String numero;
+    private final char suit;
+    private final String number;
 
     /**
      * This constructor put attribute "palo" and attribute numero with value "D"
      */
 
     public CardImpl(){
-        this.palo = 'D';
-        this.numero = "D";
+        this.suit = 'D';
+        this.number = "D";
     }
 
     /**
      * This constructor sets the value of the "palo" and "numero" attribute with the values ​​passed with the parameter
-     * @param palo char with value of palo
-     * @param numero String with value of numero
+     * @param suit char with value of palo
+     * @param number String with value of numero
      */
 
-    public CardImpl(char palo, String numero){//TODO Controlar palos Solo validos algunos y 0 0
-        this.palo = palo;
-        this.numero = numero;
+    public CardImpl(char suit, String number){//TODO Controlar palos Solo validos algunos y 0 0
+        this.suit = suit;
+        this.number = number;
     }
 
     /**
      * This constructor sets the value of the "palo" and "numero" attribute with the values ​​of the other card passed by parameter
-     * @param otra CartaImpl other object CartaImpl
+     * @param other CartaImpl other object CartaImpl
      */
 
-    public CardImpl(CardImpl otra){
-        this.palo = otra.getPalo();
-        this.numero = otra.getNumero();
+    public CardImpl(CardImpl other){
+        this.suit = other.getSuit();
+        this.number = other.getNumber();
     }
 
     /**
@@ -70,8 +70,8 @@ public class CardImpl implements Carta, Cloneable{
      * @return char with value of attribute "palo"
      */
 
-    public char getPalo(){
-        return this.palo;
+    public char getSuit(){
+        return this.suit;
     }
 
     /**
@@ -79,8 +79,8 @@ public class CardImpl implements Carta, Cloneable{
      * @return String with value of attribute "numero"
      */
 
-    public String getNumero(){
-        return this.numero;
+    public String getNumber(){
+        return this.number;
     }
 
     /**
@@ -88,50 +88,50 @@ public class CardImpl implements Carta, Cloneable{
      * @return valor int with equivalent value in int of the card number
      */
 
-    public int getValorNumero(){
-        int valor = 0;
-        switch (this.getNumero()){
+    public int getValueNumber(){
+        int value = 0;
+        switch (this.getNumber()){
             case "A":
-                valor = 13;
+                value = 13;
                 break;
             case "2":
-                valor = 1;
+                value = 1;
                 break;
             case "3":
-                valor = 2;
+                value = 2;
                 break;
             case "4":
-                valor = 3;
+                value = 3;
                 break;
             case "5":
-                valor = 4;
+                value = 4;
                 break;
             case "6":
-                valor = 5;
+                value = 5;
                 break;
             case "7":
-                valor = 6;
+                value = 6;
                 break;
             case "8":
-                valor = 7;
+                value = 7;
                 break;
             case "9":
-                valor = 8;
+                value = 8;
                 break;
             case "10":
-                valor = 9;
+                value = 9;
                 break;
             case "J":
-                valor = 10;
+                value = 10;
                 break;
             case "Q":
-                valor = 11;
+                value = 11;
                 break;
             case "K":
-                valor = 12;
+                value = 12;
                 break;
         }
-        return valor;
+        return value;
     }
 
     /**
@@ -142,7 +142,7 @@ public class CardImpl implements Carta, Cloneable{
 
     @Override
     public String toString(){
-        return ("Palo: "+this.getPalo()+" Numero: "+this.numero);
+        return ("Suit: "+this.suit+" Number: "+this.number);
     }
 
     /**
@@ -152,27 +152,27 @@ public class CardImpl implements Carta, Cloneable{
 
     @Override
     public int hashCode(){
-        return this.numero.hashCode();
+        return this.number.hashCode();
     }
 
-
-    //TODO Documentar compareTo y desarrollar javadoc
-
     /**
-     * This method return an int with value of hashCode of the number
+     * This method return an int with value of hashCode of the number.
+     * Return -1 if the number of the card passed by parameter is biggest.
+     * Return 0 if the number of the card passed by parameter is equals.
+     * Return 1 if the number of the card passed by parameter is lower.
      * @return int with value compare
      */
 
-    public int compareTo(CardImpl otra){
-        int resultado = -1;
-        if (this.getValorNumero() == otra.getValorNumero()){
-            resultado = 0;
+    public int compareTo(CardImpl other){
+        int result = -1;
+        if (this.getValueNumber() == other.getValueNumber()){
+            result = 0;
         }else{
-            if (this.getValorNumero() > otra.getValorNumero()){
-                resultado = 1;
+            if (this.getValueNumber() > other.getValueNumber()){
+                result = 1;
             }
         }
-        return resultado;
+        return result;
     }
 
     /**
@@ -181,20 +181,20 @@ public class CardImpl implements Carta, Cloneable{
      */
 
     @Override
-    public boolean equals(Object objeto){
-        boolean resul = false;
-        if (this == objeto){
-            resul = true;
+    public boolean equals(Object object){
+        boolean result = false;
+        if (this == object){
+            result = true;
         }else{
-            if (objeto != null && objeto instanceof CardImpl){
-                CardImpl nueva = (CardImpl) objeto;
-                if (this.getNumero().equals(nueva.getNumero())
-                    && this.getPalo()==nueva.getPalo()){
-                    resul = true;
+            if (object != null && object instanceof CardImpl){
+                CardImpl newCard = (CardImpl) object;
+                if (this.number.equals(newCard.number)
+                    && this.suit == newCard.suit){
+                    result = true;
                 }
             }
         }
-        return resul;
+        return result;
     }
 
     /**
@@ -204,13 +204,13 @@ public class CardImpl implements Carta, Cloneable{
 
     @Override
     public CardImpl clone() {
-        CardImpl carta = null;
+        CardImpl card = null;
         try {
-            carta = (CardImpl) super.clone();
+            card = (CardImpl) super.clone();
         } catch(CloneNotSupportedException error) {
-            System.out.println("Error en la copia");
+            System.out.println("Copy error");
         }
-        return carta;
+        return card;
     }
 
 }
