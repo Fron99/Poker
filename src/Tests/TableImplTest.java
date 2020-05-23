@@ -1,13 +1,13 @@
 package Tests;
 
-import Clases.Basicas.CardImpl;
-import Clases.Basicas.PlayerImpl;
-import Clases.Basicas.MesaImpl;
+import Clases.Basics.CardImpl;
+import Clases.Basics.PlayerImpl;
+import Clases.Basics.TableImpl;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class MesaImplTest {
+public class TableImplTest {
 
     @Test
     public void testGetBaraja() {
@@ -27,7 +27,7 @@ public class MesaImplTest {
             cartasMesa[i] = new CardImpl();
         }
 
-        MesaImpl mesa = new MesaImpl(baraja,jugadores,cartasMesa);
+        TableImpl mesa = new TableImpl(baraja,jugadores,cartasMesa);
 
         assertArrayEquals(mesa.getBaraja(),baraja);
 
@@ -56,7 +56,7 @@ public class MesaImplTest {
             cartasMesa[i] = new CardImpl();
         }
 
-        MesaImpl mesa = new MesaImpl(baraja,jugadores,cartasMesa);
+        TableImpl mesa = new TableImpl(baraja,jugadores,cartasMesa);
 
         assertEquals(mesa.getCartaBaraja(0),baraja[0]);
 
@@ -81,7 +81,7 @@ public class MesaImplTest {
             cartasMesa[i] = new CardImpl();
         }
 
-        MesaImpl mesa = new MesaImpl(baraja,jugadores,cartasMesa);
+        TableImpl mesa = new TableImpl(baraja,jugadores,cartasMesa);
 
         assertArrayEquals(mesa.getJugadores(),jugadores);
 
@@ -91,7 +91,7 @@ public class MesaImplTest {
     @Test
     public void testRestaurarBaraja() {
 
-        MesaImpl mesa = new MesaImpl();
+        TableImpl mesa = new TableImpl();
 
         CardImpl[] barajaTest = new CardImpl[52];
         barajaTest[0] = new CardImpl('P', "A");
