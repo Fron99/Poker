@@ -20,7 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9a3eddb-34fe-4dec-b858-4173adae43d5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Tests/TableImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basics/CardImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Basicas/JugadorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basics/PlayerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basics/TableImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Managements/GestoraCartaImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Managements/GestoraJugadorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Interfaces/Carta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Interfaces/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Interfaces/Jugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Interfaces/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Interfaces/Mesa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Interfaces/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PokerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PokerMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/GestoraCardImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/MesaImplTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +114,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GestoraCartaImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GestoraCardImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Poker" />
       <extension name="coverage">
         <pattern>
@@ -111,13 +123,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCartaImplTest" />
+      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCardImplTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GestoraCartaImplTest.testCalcularValorEscaleraColor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GestoraCardImplTest.testCalcularValorEscaleraColor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Poker" />
       <extension name="coverage">
         <pattern>
@@ -126,14 +138,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCartaImplTest" />
+      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCardImplTest" />
       <option name="METHOD_NAME" value="testCalcularValorEscaleraColor" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GestoraCartaImplTest.testCalcularValorPareja" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GestoraCardImplTest.testCalcularValorPareja" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Poker" />
       <extension name="coverage">
         <pattern>
@@ -142,14 +154,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCartaImplTest" />
+      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCardImplTest" />
       <option name="METHOD_NAME" value="testCalcularValorPareja" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GestoraCartaImplTest.testObtenerCartasAEvaluar" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GestoraCardImplTest.testObtenerCartasAEvaluar" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Poker" />
       <extension name="coverage">
         <pattern>
@@ -158,7 +170,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCartaImplTest" />
+      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCardImplTest" />
       <option name="METHOD_NAME" value="testObtenerCartasAEvaluar" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -167,18 +179,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.PokerMain" />
-      <item itemvalue="JUnit.GestoraCartaImplTest" />
-      <item itemvalue="JUnit.GestoraCartaImplTest.testCalcularValorEscaleraColor" />
-      <item itemvalue="JUnit.GestoraCartaImplTest.testCalcularValorPareja" />
-      <item itemvalue="JUnit.GestoraCartaImplTest.testObtenerCartasAEvaluar" />
+      <item itemvalue="JUnit.GestoraCardImplTest" />
+      <item itemvalue="JUnit.GestoraCardImplTest.testCalcularValorEscaleraColor" />
+      <item itemvalue="JUnit.GestoraCardImplTest.testCalcularValorPareja" />
+      <item itemvalue="JUnit.GestoraCardImplTest.testObtenerCartasAEvaluar" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.PokerMain" />
-        <item itemvalue="JUnit.GestoraCartaImplTest.testObtenerCartasAEvaluar" />
-        <item itemvalue="JUnit.GestoraCartaImplTest" />
-        <item itemvalue="JUnit.GestoraCartaImplTest.testCalcularValorPareja" />
-        <item itemvalue="JUnit.GestoraCartaImplTest.testCalcularValorEscaleraColor" />
+        <item itemvalue="JUnit.GestoraCardImplTest.testObtenerCartasAEvaluar" />
+        <item itemvalue="JUnit.GestoraCardImplTest" />
+        <item itemvalue="JUnit.GestoraCardImplTest.testCalcularValorPareja" />
+        <item itemvalue="JUnit.GestoraCardImplTest.testCalcularValorEscaleraColor" />
       </list>
     </recent_temporary>
   </component>
@@ -278,6 +290,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="476" y="272" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583840288529" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1590259096546">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590259096546" />
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586000833348">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -413,7 +429,7 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java</url>
+          <url>file://$PROJECT_DIR$/src/Clases/Basics/CardImpl.java</url>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

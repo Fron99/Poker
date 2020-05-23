@@ -45,8 +45,8 @@
  *
  */
 
-import Clases.Basicas.MesaImpl;
-import Clases.Gestoras.GestoraJugadorImpl;
+import Clases.Basics.TableImpl;
+import Clases.Managements.GestoraJugadorImpl;
 import Validaciones.Validaciones;
 
 public class PokerMain {
@@ -55,7 +55,7 @@ public class PokerMain {
 
         GestoraJugadorImpl gesJugador = new GestoraJugadorImpl();
         Validaciones validaciones = new Validaciones();
-        MesaImpl mesa = new MesaImpl();
+        TableImpl mesa = new TableImpl();
         int saldoInicialJugador, jugadoresConSaldo;
         boolean quedanJugadores, seguirJugando;
 
