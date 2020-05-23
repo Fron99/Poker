@@ -44,7 +44,7 @@
 
 package Clases.Interfaces;
 
-public interface Jugador {
+public interface Player {
 
 
 }

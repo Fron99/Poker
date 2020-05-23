@@ -85,7 +85,7 @@
 
 package Clases.Interfaces;
 
-public interface Mesa {
+public interface Table {
 
 
 }

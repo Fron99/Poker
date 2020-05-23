@@ -29,7 +29,7 @@
 package Clases.Interfaces;
 
 
-public interface Carta {
+public interface Card {
 
 
 }
