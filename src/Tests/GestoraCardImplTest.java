@@ -3,7 +3,7 @@ package Tests;
 import Clases.Basics.CardImpl;
 import Clases.Basics.PlayerImpl;
 import Clases.Basics.TableImpl;
-import Clases.Managements.GestoraCartaImpl;
+import Clases.Managements.ManagementCardImpl;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -13,7 +13,7 @@ public class GestoraCardImplTest {
 
     @Test
     public void testCalcularValorCartaAlta(){
-        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ManagementCardImpl ges = new ManagementCardImpl();
 
         //Prueba 0
 
@@ -32,7 +32,7 @@ public class GestoraCardImplTest {
 
     @Test
     public void testCalcularValorPareja(){
-        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ManagementCardImpl ges = new ManagementCardImpl();
 
         //Prueba 0
 
@@ -74,7 +74,7 @@ public class GestoraCardImplTest {
 
     @Test
     public void testCalcularValorDoblePareja(){
-        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ManagementCardImpl ges = new ManagementCardImpl();
 
         //Prueba 0
 
@@ -127,7 +127,7 @@ public class GestoraCardImplTest {
 
     @Test
     public void testCalcularValorTrio(){
-        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ManagementCardImpl ges = new ManagementCardImpl();
 
         //Prueba 0
 
@@ -175,7 +175,7 @@ public class GestoraCardImplTest {
 
     @Test
     public void testCalcularValorEscalera(){
-        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ManagementCardImpl ges = new ManagementCardImpl();
 
         //Prueba 0
 
@@ -235,7 +235,7 @@ public class GestoraCardImplTest {
 
     @Test
     public void testCalcularValorColor(){
-        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ManagementCardImpl ges = new ManagementCardImpl();
 
         //Prueba 0
 
@@ -265,7 +265,7 @@ public class GestoraCardImplTest {
 
     @Test
     public void testCalcularValorFull(){
-        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ManagementCardImpl ges = new ManagementCardImpl();
 
         //Prueba 0
 
@@ -343,7 +343,7 @@ public class GestoraCardImplTest {
 
     @Test
     public void testCalcularValorPoker(){
-        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ManagementCardImpl ges = new ManagementCardImpl();
 
         //Prueba 0
 
@@ -368,7 +368,7 @@ public class GestoraCardImplTest {
 
     @Test
     public void testCalcularValorEscaleraColor(){
-        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ManagementCardImpl ges = new ManagementCardImpl();
 
         //Prueba 0
 
@@ -471,7 +471,7 @@ public class GestoraCardImplTest {
 
         CardImpl[] cartasP0 = {new CardImpl('P',"3"), new CardImpl('P',"4"), new CardImpl('P',"5"), new CardImpl('Z',"3"), new CardImpl('A',"3")};
         CardImpl[] cartasJugadorP0 = {new CardImpl('P',"2"), new CardImpl('P',"A")};
-        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ManagementCardImpl ges = new ManagementCardImpl();
         TableImpl mesaP0 = new TableImpl();
         mesaP0.setJugador(0, new PlayerImpl());
         mesaP0.setCartasMesa(cartasP0);
@@ -518,7 +518,7 @@ public class GestoraCardImplTest {
     @Test
     public void testObtenerCartasAEvaluar(){
 
-        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ManagementCardImpl ges = new ManagementCardImpl();
         TableImpl mesa = new TableImpl();
 
         mesa.restaurarMesa();
@@ -564,7 +564,7 @@ public class GestoraCardImplTest {
 
     @Test
     public void testOrdenarCartas() {
-        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ManagementCardImpl ges = new ManagementCardImpl();
 
         //Prueba 1
 
@@ -578,7 +578,7 @@ public class GestoraCardImplTest {
     @Test
     public void testCalcularColor(){
 
-        GestoraCartaImpl ges = new GestoraCartaImpl();
+        ManagementCardImpl ges = new ManagementCardImpl();
 
         //Prueba 0 (Prueba con color T)
 

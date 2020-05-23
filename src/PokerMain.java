@@ -46,14 +46,14 @@
  */
 
 import Clases.Basics.TableImpl;
-import Clases.Managements.GestoraJugadorImpl;
+import Clases.Managements.ManagementPlayerImpl;
 import Validaciones.Validaciones;
 
 public class PokerMain {
 
     public static void main (String[] args){
 
-        GestoraJugadorImpl gesJugador = new GestoraJugadorImpl();
+        ManagementPlayerImpl gesJugador = new ManagementPlayerImpl();
         Validaciones validaciones = new Validaciones();
         TableImpl mesa = new TableImpl();
         int saldoInicialJugador, jugadoresConSaldo;

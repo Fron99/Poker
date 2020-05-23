@@ -20,19 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9a3eddb-34fe-4dec-b858-4173adae43d5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Tests/TableImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Basicas/CartaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basics/CardImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Basicas/JugadorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basics/PlayerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Basicas/MesaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basics/TableImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraCartaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Managements/GestoraCartaImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Gestoras/GestoraJugadorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Managements/GestoraJugadorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Interfaces/Carta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Interfaces/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Interfaces/Jugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Interfaces/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Interfaces/Mesa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Interfaces/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Basics/TableImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basics/TableImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Managements/GestoraCartaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Managements/ManagementCardImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Managements/GestoraJugadorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Managements/ManagementPlayerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PokerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PokerMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tests/GestoraCartaImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/GestoraCardImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tests/MesaImplTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/GestoraCardImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/GestoraCardImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

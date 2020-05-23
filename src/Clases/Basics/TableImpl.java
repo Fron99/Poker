@@ -87,8 +87,8 @@
 
 package Clases.Basics;
 
-import Clases.Managements.GestoraCartaImpl;
-import Clases.Managements.GestoraJugadorImpl;
+import Clases.Managements.ManagementCardImpl;
+import Clases.Managements.ManagementPlayerImpl;
 import Clases.Interfaces.Table;
 
 import java.util.Random;
@@ -966,7 +966,7 @@ public class TableImpl implements Table, Cloneable {
     //TODO Comprobar con todos los jugadores con 0$ y allInMenor
 
     public void ingresarSaldoGanadoresYMostrarGanador(){
-        GestoraCartaImpl gestoraCarta = new GestoraCartaImpl();
+        ManagementCardImpl gestoraCarta = new ManagementCardImpl();
         int cantidadGanadores = 0, indiceGanador = -1, totalGanancias = 0, puntosAnteriorGanador = 99999, puntosAnteriorJugador = 0, puntosJugadorCalculados;
 
         do{
@@ -1261,7 +1261,7 @@ public class TableImpl implements Table, Cloneable {
      */
 
     public boolean realizarApuestas(){
-        GestoraJugadorImpl gesJug = new GestoraJugadorImpl();
+        ManagementPlayerImpl gesJug = new ManagementPlayerImpl();
         int apuestaMinima = 0, apuestaJugador, turnoJugadorParcial = this.turnoJugador, turnoJugadorFinal = this.turnoJugador, apuestaMaxima;
         boolean quedanJugadoresParaJugar, quedanJugadoresSinAllIn;
         //Calcula cuantos jugadores se han "tirado"

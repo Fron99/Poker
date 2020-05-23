@@ -1,13 +1,13 @@
-package Clases.Gestoras;
+package Clases.Managements;
 
-import Clases.Basicas.CardImpl;
-import Clases.Basicas.PlayerImpl;
-import Clases.Basicas.MesaImpl;
+import Clases.Basics.CardImpl;
+import Clases.Basics.PlayerImpl;
+import Clases.Basics.TableImpl;
 
 import java.util.Random;
 import java.util.Scanner;
 
-public class GestoraJugadorImpl {
+public class ManagementPlayerImpl {
 
     /*
      * SIGNATURA: public int leerYValidarSaldoInicial();
@@ -80,7 +80,7 @@ public class GestoraJugadorImpl {
      * @return
      */
 
-    public int leerYValidarApuesta(int jugador, int apuestaMinima, int apuestaMaxima, MesaImpl mesa){
+    public int leerYValidarApuesta(int jugador, int apuestaMinima, int apuestaMaxima, TableImpl mesa){
         Scanner teclado = new Scanner(System.in);
         int cantidadApuesta;
         boolean allIn = false;
@@ -124,10 +124,10 @@ public class GestoraJugadorImpl {
      * @return
      */
 
-    public int calcularApostarBot(int jugador, int apuestaMinima, int apuestaMaxima, MesaImpl mesa){
+    public int calcularApostarBot(int jugador, int apuestaMinima, int apuestaMaxima, TableImpl mesa){
         int totalApostar, valorCartas, valorFarolRonda, puntosPosibilidad;
         double porcenApostar;
-        GestoraCartaImpl gesCarta = new GestoraCartaImpl();
+        ManagementCardImpl gesCarta = new ManagementCardImpl();
 
         //Obtener puntos de las cartas
         valorCartas = gesCarta.evaluarCartas(jugador,mesa);
@@ -263,7 +263,7 @@ public class GestoraJugadorImpl {
 
     private int calcularPuntosPosibilidad(CardImpl[] cartasAEvaluar){
         int puntosPosibilidad = 0, puntos = 0, colorP = 0, colorT = 0, colorR = 0, colorC = 0 ;
-        GestoraCartaImpl gestoraCarta = new GestoraCartaImpl();
+        ManagementCardImpl gestoraCarta = new ManagementCardImpl();
         boolean unaParaEscalera;
 
         switch (cartasAEvaluar.length){
@@ -271,21 +271,21 @@ public class GestoraJugadorImpl {
             case 2:
 
                 for (CardImpl carta : cartasAEvaluar) {
-                    if (carta.getValorNumero() == 13 || carta.getValorNumero() == 12 || carta.getValorNumero() == 11 || carta.getValorNumero() == 10) {
+                    if (carta.getValueNumber() == 13 || carta.getValueNumber() == 12 || carta.getValueNumber() == 11 || carta.getValueNumber() == 10) {
                         puntosPosibilidad = 20;
                     }
                 }
 
-                if (cartasAEvaluar[0].getValorNumero() == 13 || cartasAEvaluar[0].getValorNumero() == 12 || cartasAEvaluar[0].getValorNumero() == 11 || cartasAEvaluar[0].getValorNumero() == 10
-                    && cartasAEvaluar[1].getValorNumero() == 13 || cartasAEvaluar[1].getValorNumero() == 12 || cartasAEvaluar[1].getValorNumero() == 11 || cartasAEvaluar[1].getValorNumero() == 10){
+                if (cartasAEvaluar[0].getValueNumber() == 13 || cartasAEvaluar[0].getValueNumber() == 12 || cartasAEvaluar[0].getValueNumber() == 11 || cartasAEvaluar[0].getValueNumber() == 10
+                    && cartasAEvaluar[1].getValueNumber() == 13 || cartasAEvaluar[1].getValueNumber() == 12 || cartasAEvaluar[1].getValueNumber() == 11 || cartasAEvaluar[1].getValueNumber() == 10){
                     puntosPosibilidad = 30;
                 }
 
-                if (cartasAEvaluar[0].getPalo() == cartasAEvaluar[1].getPalo()){
+                if (cartasAEvaluar[0].getSuit() == cartasAEvaluar[1].getSuit()){
                     puntosPosibilidad = 50;
                 }
 
-                if (cartasAEvaluar[0].getNumero().equals(cartasAEvaluar[1].getNumero())){
+                if (cartasAEvaluar[0].getNumber().equals(cartasAEvaluar[1].getNumber())){
                     puntosPosibilidad = 50;
                 }
 
@@ -294,7 +294,7 @@ public class GestoraJugadorImpl {
             case 5:
 
                 for (CardImpl carta : cartasAEvaluar) {
-                    if (carta.getValorNumero() == 13 || carta.getValorNumero() == 12 || carta.getValorNumero() == 11 || carta.getValorNumero() == 10) {
+                    if (carta.getValueNumber() == 13 || carta.getValueNumber() == 12 || carta.getValueNumber() == 11 || carta.getValueNumber() == 10) {
                         puntosPosibilidad = 10;
                     }
                 }
@@ -306,7 +306,7 @@ public class GestoraJugadorImpl {
                 }
 
                 for (CardImpl carta : cartasAEvaluar) {
-                    switch (carta.getPalo()){
+                    switch (carta.getSuit()){
                         case 'P':
                             colorP++;
                             break;
@@ -337,7 +337,7 @@ public class GestoraJugadorImpl {
             case 6:
 
                 for (CardImpl carta : cartasAEvaluar) {
-                    if (carta.getValorNumero() == 13 || carta.getValorNumero() == 12 || carta.getValorNumero() == 11 || carta.getValorNumero() == 10) {
+                    if (carta.getValueNumber() == 13 || carta.getValueNumber() == 12 || carta.getValueNumber() == 11 || carta.getValueNumber() == 10) {
                         puntosPosibilidad = 10;
                     }
                 }
@@ -349,7 +349,7 @@ public class GestoraJugadorImpl {
                 }
 
                 for (CardImpl carta : cartasAEvaluar) {
-                    switch (carta.getPalo()){
+                    switch (carta.getSuit()){
                         case 'P':
                             colorP++;
                             break;
@@ -436,7 +436,7 @@ public class GestoraJugadorImpl {
         int cantidad = 0;
         if (jugadores.length == 5){
             for (int i = 1; i < jugadores.length; i++){
-                if (jugadores[i].getSaldo() > 0){
+                if (jugadores[i].getBalance() > 0){
                     cantidad++;
                 }
             }
