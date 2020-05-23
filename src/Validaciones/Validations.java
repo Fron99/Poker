@@ -2,7 +2,7 @@ package Validaciones;
 
 import java.util.Scanner;
 
-public class Validaciones {
+public class Validations {
 
     /*
      * SIGNATURA:

@@ -47,14 +47,14 @@
 
 import Clases.Basics.TableImpl;
 import Clases.Managements.ManagementPlayerImpl;
-import Validaciones.Validaciones;
+import Validaciones.Validations;
 
 public class PokerMain {
 
     public static void main (String[] args){
 
         ManagementPlayerImpl gesJugador = new ManagementPlayerImpl();
-        Validaciones validaciones = new Validaciones();
+        Validations validations = new Validations();
         TableImpl mesa = new TableImpl();
         int saldoInicialJugador, jugadoresConSaldo;
         boolean quedanJugadores, seguirJugando;
@@ -110,7 +110,7 @@ public class PokerMain {
             jugadoresConSaldo = gesJugador.jugadoresConSaldo(mesa.getJugadores());
 
             if (mesa.getSaldoJugador(0)>0 && jugadoresConSaldo > 0){
-                seguirJugando = validaciones.leerYValidarSeguirJugando();
+                seguirJugando = validations.leerYValidarSeguirJugando();
             }else{
                 System.out.println("El jugador no tiene más saldo");
                 seguirJugando = false;
