@@ -58,7 +58,7 @@ public class TableImplTest {
 
         TableImpl mesa = new TableImpl(baraja,jugadores,cartasMesa);
 
-        assertEquals(mesa.getCartaBaraja(0),baraja[0]);
+        assertEquals(mesa.getCardOfDeskOfCards(0),baraja[0]);
 
     }
 

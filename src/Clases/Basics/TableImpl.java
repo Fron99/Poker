@@ -1230,7 +1230,7 @@ public class TableImpl implements Table, Cloneable {
         return maxBet;
     }
 
-
+    //TODO corregir
 
     /*
      * SIGNATURA: public void realizarApuestas(int turnoJugador, MesaImpl mesa, int ronda)
@@ -1248,6 +1248,8 @@ public class TableImpl implements Table, Cloneable {
      * @return Return true if there are more than 1 active players
      *         Return false if there are less than 1 active players
      */
+
+    //TODO Separar realizar apuesta con comprobar lo de los jugadores, mirar que doBet no devuelva nada
 
     public boolean doBet(){
         ManagementPlayerImpl managPlayer = new ManagementPlayerImpl();

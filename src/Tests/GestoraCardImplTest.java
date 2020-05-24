@@ -523,7 +523,7 @@ public class GestoraCardImplTest {
 
         mesa.restoreTable();
         mesa.generateCardsPlayers();
-        mesa.generarTresCartasMesa();
+        mesa.generateThreeCardsToTable();
         CardImpl[] cartas = ges.obtenerCartasAEvaluar(0,mesa);
         CardImpl[] cartasObtenidas = new CardImpl[5];
         cartasObtenidas[0] = mesa.getCardTable(0);
@@ -536,7 +536,7 @@ public class GestoraCardImplTest {
 
         mesa.restoreTable();
         mesa.generateCardsPlayers();
-        mesa.generarTresCartasMesa();
+        mesa.generateThreeCardsToTable();
         cartas = ges.obtenerCartasAEvaluar(0,mesa);
         cartasObtenidas = new CardImpl[5];
         cartasObtenidas[0] = mesa.getCardTable(0);
@@ -548,7 +548,7 @@ public class GestoraCardImplTest {
 
         mesa.restoreTable();
         mesa.generateCardsPlayers();
-        mesa.generarTresCartasMesa();
+        mesa.generateThreeCardsToTable();
         cartas = ges.obtenerCartasAEvaluar(0,mesa);
         cartasObtenidas = new CardImpl[5];
         cartasObtenidas[0] = mesa.getCardTable(0);
