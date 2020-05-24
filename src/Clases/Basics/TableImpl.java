@@ -93,15 +93,14 @@ import Clases.Interfaces.Table;
 
 import java.util.Random;
 
-@SuppressWarnings("unused")
 public class TableImpl implements Table, Cloneable {
 
-    private CardImpl[] baraja;
-    private PlayerImpl[] jugadores;
-    private CardImpl[] cartasMesa;
-    private int[][] apuestasJugadores;
-    private int turnoJugador;
-    private int ronda;
+    private CardImpl[] deckOfCards;
+    private PlayerImpl[] players;
+    private CardImpl[] cardsOfTable;
+    private int[][] betsPlayers;
+    private int playerTurn;
+    private int round;
 
     /**
      * This constructor put the attributes with default values
@@ -109,190 +108,190 @@ public class TableImpl implements Table, Cloneable {
 
     public TableImpl(){
         Random random = new Random();
-        this.baraja = new CardImpl[52];
-        for (int i = 0;i<this.baraja.length;i++){
-            this.baraja[i] = new CardImpl();
+        this.deckOfCards = new CardImpl[52];
+        for (int i = 0; i<this.deckOfCards.length; i++){
+            this.deckOfCards[i] = new CardImpl();
         }
-        this.jugadores = new PlayerImpl[5];
-        for (int i = 0;i<this.jugadores.length;i++){
-            this.jugadores[i] = new PlayerImpl();
+        this.players = new PlayerImpl[5];
+        for (int i = 0; i<this.players.length; i++){
+            this.players[i] = new PlayerImpl();
         }
-        this.cartasMesa = new CardImpl[5];
-        for (int i = 0;i<this.cartasMesa.length;i++){
-            this.cartasMesa[i] = new CardImpl();
+        this.cardsOfTable = new CardImpl[5];
+        for (int i = 0; i<this.cardsOfTable.length; i++){
+            this.cardsOfTable[i] = new CardImpl();
         }
-        this.apuestasJugadores = new int[5][4];
-        this.turnoJugador = random.nextInt(5);
-        this.ronda = 0;
+        this.betsPlayers = new int[5][4];
+        this.playerTurn = random.nextInt(5);
+        this.round = 0;
     }
 
     /**
      * This constructor put the attributes with the values passed by parameter.
-     * If length of baraja isn't 52, the constructor builds a array with defaults objects.
-     * If length of jugadores isn't 5, the constructor builds a array with defaults objects.
-     * If length of cartasMesa isn't 5, the constructor builds a array with defaults objects.
-     * @param baraja array of letters
-     * @param jugadores array of players
-     * @param cartasMesa array of letters
+     * If length of deckOfCards isn't 52, the constructor builds a array with defaults objects.
+     * If length of players isn't 5, the constructor builds a array with defaults objects.
+     * If length of cardsOfTable isn't 5, the constructor builds a array with defaults objects.
+     * @param deckOfCards array of letters
+     * @param players array of players
+     * @param cardsOfTable array of letters
      */
 
-    public TableImpl(CardImpl[] baraja, PlayerImpl[] jugadores, CardImpl[] cartasMesa){
+    public TableImpl(CardImpl[] deckOfCards, PlayerImpl[] players, CardImpl[] cardsOfTable){
         Random random = new Random();
 
-        this.baraja = new CardImpl[52];
-        if (baraja.length == 52){
-            System.arraycopy(baraja,0,this.baraja,0,baraja.length);
+        this.deckOfCards = new CardImpl[52];
+        if (deckOfCards.length == 52){
+            System.arraycopy(deckOfCards,0,this.deckOfCards,0,deckOfCards.length);
         }else{
-            for (int i = 0;i<this.baraja.length;i++){
-                this.baraja[i] = new CardImpl();
+            for (int i = 0; i<this.deckOfCards.length; i++){
+                this.deckOfCards[i] = new CardImpl();
             }
         }
 
-        this.jugadores = new PlayerImpl[5];
-        if (jugadores.length == 5){
-            System.arraycopy(jugadores,0,this.jugadores,0,jugadores.length);
+        this.players = new PlayerImpl[5];
+        if (players.length == 5){
+            System.arraycopy(players,0,this.players,0,players.length);
         }else{
-            for (int i = 0;i<this.jugadores.length;i++){
-                this.jugadores[i] = new PlayerImpl();
+            for (int i = 0; i<this.players.length; i++){
+                this.players[i] = new PlayerImpl();
             }
         }
 
-        this.cartasMesa = new CardImpl[5];
-        if (cartasMesa.length == 5){
-            System.arraycopy(cartasMesa,0,this.cartasMesa,0,cartasMesa.length);
+        this.cardsOfTable = new CardImpl[5];
+        if (cardsOfTable.length == 5){
+            System.arraycopy(cardsOfTable,0,this.cardsOfTable,0,cardsOfTable.length);
         }else{
-            for (int i = 0;i<this.cartasMesa.length;i++){
-                this.cartasMesa[i] = new CardImpl();
+            for (int i = 0; i<this.cardsOfTable.length; i++){
+                this.cardsOfTable[i] = new CardImpl();
             }
         }
 
-        this.apuestasJugadores = new int[5][4];
-        this.turnoJugador = random.nextInt(5);
-        this.ronda = 0;
+        this.betsPlayers = new int[5][4];
+        this.playerTurn = random.nextInt(5);
+        this.round = 0;
     }
 
     /**
      * This constructor put the attributes with the values passed by parameter.
-     * If length of baraja isn't 52, the constructor builds a array with defaults objects.
-     * If length of jugadores isn't 5, the constructor builds a array with defaults objects.
-     * If length of cartasMesa isn't 5, the constructor builds a array with defaults objects.
-     * If length of apuestasJugadores isn't 5 times 5, the constructor builds a array with defaults values.
-     * @param baraja array of letters
-     * @param jugadores array of players
-     * @param cartasMesa array of letters
-     * @param apuestasJugadores array of int
+     * If length of deskOfCards isn't 52, the constructor builds a array with defaults objects.
+     * If length of players isn't 5, the constructor builds a array with defaults objects.
+     * If length of cardsOfTable isn't 5, the constructor builds a array with defaults objects.
+     * If length of betsPlayers isn't 5 times 5, the constructor builds a array with defaults values.
+     * @param deskOfCards array of letters
+     * @param players array of players
+     * @param cardsOfTable array of letters
+     * @param betsPlayers array of int
      */
 
-    public TableImpl(CardImpl[] baraja, PlayerImpl[] jugadores, CardImpl[] cartasMesa, int[][] apuestasJugadores){
+    public TableImpl(CardImpl[] deskOfCards, PlayerImpl[] players, CardImpl[] cardsOfTable, int[][] betsPlayers){
         Random random = new Random();
-        this.baraja = new CardImpl[52];
-        if (baraja.length == 52){
-            System.arraycopy(baraja,0,this.baraja,0,baraja.length);
+        this.deckOfCards = new CardImpl[52];
+        if (deskOfCards.length == 52){
+            System.arraycopy(deskOfCards,0,this.deckOfCards,0,deskOfCards.length);
         }else{
-            for (int i = 0;i<this.baraja.length;i++){
-                this.baraja[i] = new CardImpl();
+            for (int i = 0; i<this.deckOfCards.length; i++){
+                this.deckOfCards[i] = new CardImpl();
             }
         }
 
-        this.jugadores = new PlayerImpl[5];
-        if (jugadores.length == 5){
-            System.arraycopy(jugadores,0,this.jugadores,0,jugadores.length);
+        this.players = new PlayerImpl[5];
+        if (players.length == 5){
+            System.arraycopy(players,0,this.players,0,players.length);
         }else{
-            for (int i = 0;i<this.jugadores.length;i++){
-                this.jugadores[i] = new PlayerImpl();
+            for (int i = 0; i<this.players.length; i++){
+                this.players[i] = new PlayerImpl();
             }
         }
 
-        this.cartasMesa = new CardImpl[5];
-        if (cartasMesa.length == 5){
-            System.arraycopy(cartasMesa,0,this.cartasMesa,0,cartasMesa.length);
+        this.cardsOfTable = new CardImpl[5];
+        if (cardsOfTable.length == 5){
+            System.arraycopy(cardsOfTable,0,this.cardsOfTable,0,cardsOfTable.length);
         }else{
-            for (int i = 0;i<this.cartasMesa.length;i++){
-                this.cartasMesa[i] = new CardImpl();
+            for (int i = 0; i<this.cardsOfTable.length; i++){
+                this.cardsOfTable[i] = new CardImpl();
             }
         }
 
-        this.apuestasJugadores = new int[5][4];
-        if (apuestasJugadores.length == 5 && apuestasJugadores[0].length == 4){
-            for (int i = 0;i<apuestasJugadores.length;i++){
-                System.arraycopy(apuestasJugadores[i],0,this.apuestasJugadores[i],0,apuestasJugadores.length);
+        this.betsPlayers = new int[5][4];
+        if (betsPlayers.length == 5 && betsPlayers[0].length == 4){
+            for (int i = 0;i < betsPlayers.length;i++){
+                System.arraycopy(betsPlayers[i],0,this.betsPlayers[i],0,betsPlayers.length);
             }
         }
 
-        this.turnoJugador = random.nextInt(5);
-        this.ronda = 0;
+        this.playerTurn = random.nextInt(5);
+        this.round = 0;
     }
 
     /**
      * This constructor put the attributes with the values of the other object passed by parameter
-     * @param otro another table of we want to copy their values
+     * @param other another table of we want to copy their values
      */
 
-    public TableImpl(TableImpl otro){
-        this.baraja = new CardImpl[52];
-        System.arraycopy(otro.baraja,0,this.baraja,0,otro.baraja.length);
+    public TableImpl(TableImpl other){
+        this.deckOfCards = new CardImpl[52];
+        System.arraycopy(other.deckOfCards,0,this.deckOfCards,0,other.deckOfCards.length);
 
-        this.jugadores = new PlayerImpl[5];
-        System.arraycopy(otro.jugadores,0,this.jugadores,0,otro.jugadores.length);
+        this.players = new PlayerImpl[5];
+        System.arraycopy(other.players,0,this.players,0,other.players.length);
 
-        this.cartasMesa = new CardImpl[5];
-        System.arraycopy(otro.cartasMesa,0,this.cartasMesa,0,otro.cartasMesa.length);
+        this.cardsOfTable = new CardImpl[5];
+        System.arraycopy(other.cardsOfTable,0,this.cardsOfTable,0,other.cardsOfTable.length);
 
-        this.apuestasJugadores = new int[5][4];
-        for (int i = 0;i<apuestasJugadores.length;i++){
-            System.arraycopy(otro.apuestasJugadores[i],0,this.apuestasJugadores[i],0,apuestasJugadores.length);
+        this.betsPlayers = new int[5][4];
+        for (int i = 0; i< betsPlayers.length; i++){
+            System.arraycopy(other.betsPlayers[i],0,this.betsPlayers[i],0, betsPlayers.length);
         }
 
-        this.turnoJugador = otro.turnoJugador;
-        this.ronda = otro.ronda;
+        this.playerTurn = other.playerTurn;
+        this.round = other.round;
 
     }
 
     /**
-     * Return array of attribute "baraja"
-     * @return CartaImpl[] array of attribute "baraja"
+     * Return array of attribute "deckOfCards"
+     * @return CartaImpl[] array of attribute "deckOfCards"
      */
 
-    public CardImpl[] getBaraja(){
-        CardImpl[] baraja = new CardImpl[this.baraja.length];
-        System.arraycopy(this.baraja,0,baraja,0,this.baraja.length);
+    public CardImpl[] getDeckOfCards(){
+        CardImpl[] baraja = new CardImpl[this.deckOfCards.length];
+        System.arraycopy(this.deckOfCards,0,baraja,0,this.deckOfCards.length);
         return baraja;
     }
 
     /**
-     * Set array passed by parameter in attribute "baraja"
-     * @param baraja new value of attribute "baraja"
+     * Set array passed by parameter in attribute "deckOfCards"
+     * @param deckOfCards new value of attribute "deckOfCards"
      */
 
-    private void setBaraja(CardImpl[] baraja){
-        for (int i = 0;i<baraja.length; i++){
-            this.baraja[i] = baraja[i].clone();
+    private void setDeckOfCards(CardImpl[] deckOfCards){
+        for (int i = 0; i< deckOfCards.length; i++){
+            this.deckOfCards[i] = deckOfCards[i].clone();
         }
     }
 
     /**
-     * Return the card of the index in the array "baraja". The allowed range of the index is 0 to 51.
-     * @param indiceBaraja index of the card of you will want return
+     * Return the card of the index in the array "deckOfCards". The allowed range of the index is 0 to 51.
+     * @param indexDeskOfCards index of the card of you will want return
      * @return CartaImpl card that you want to get if the value of index passed by parameter is allowed.
      *                   If the value of index not allowed, return a card with value 0 and 0
      */
 
-    public CardImpl getCartaBaraja(int indiceBaraja){
-        return (indiceBaraja >= 0 && indiceBaraja <= 51) ? this.baraja[indiceBaraja].clone() : new CardImpl('0',"0");
+    public CardImpl getCardOfDeskOfCards(int indexDeskOfCards){
+        return (indexDeskOfCards >= 0 && indexDeskOfCards <= 51) ? this.deckOfCards[indexDeskOfCards].clone() : new CardImpl('0',"0");
     }
 
     /**
      * Set value of the card that index with the card passed by parameter. The allowed range of the index is 0 to 51.
-     * @param baraja new value of attribute "baraja"
-     * @param indiceBaraja index of the card that will be changed the value
+     * @param deskOfCards new value of attribute "deskOfCards"
+     * @param indexDeskOfCards index of the card that will be changed the value
      * @return res Return true if the value of the array index card passed by parameter has been changed.
      *             Return false if the value of the array index card passed by parameter hasn't been changed.
      */
 
-    private boolean setCartaBaraja(CardImpl baraja, int indiceBaraja){
+    private boolean setCardOfDeskOfCards(CardImpl deskOfCards, int indexDeskOfCards){
         boolean res = false;
-        if (indiceBaraja >= 0 && indiceBaraja <= 51){
-            this.baraja[indiceBaraja] = baraja;
+        if (indexDeskOfCards >= 0 && indexDeskOfCards <= 51){
+            this.deckOfCards[indexDeskOfCards] = deskOfCards;
             res = true;
         }
         return res;
@@ -300,105 +299,105 @@ public class TableImpl implements Table, Cloneable {
 
     /**
      * Get the number of the card of the desk. The allowed range of the index is 0 to 51.
-     * @param indiceBaraja index of the card that will want get number
+     * @param indexOfDeskOfCards index of the card that will want get number
      * @return Return a String with the value of number of the card. If the index not between of range allowed return 0.
      */
 
-    public String getNumeroCartaBaraja(int indiceBaraja){
-        return (indiceBaraja >= 0 && indiceBaraja <= 51) ? this.baraja[indiceBaraja].getNumber() : "0";
+    public String getNumberOfCardOfDesk(int indexOfDeskOfCards){
+        return (indexOfDeskOfCards >= 0 && indexOfDeskOfCards <= 51) ? this.deckOfCards[indexOfDeskOfCards].getNumber() : "0";
     }
 
     /**
      * Get the stick of the card of the desk. The allowed range of the index is 0 to 51.
-     * @param indiceBaraja index of the card that will want get stick
+     * @param indexOfDeskOfCards index of the card that will want get stick
      * @return Return a char with the value of stick of the card. If the index not between of range allowed return 0.
      */
 
-    public char getPaloCartaBaraja(int indiceBaraja){
-        return (indiceBaraja >= 0 && indiceBaraja <= 51) ? this.baraja[indiceBaraja].getSuit() : '0';
+    public char getSuitOfCardOfDesk(int indexOfDeskOfCards){
+        return (indexOfDeskOfCards >= 0 && indexOfDeskOfCards <= 51) ? this.deckOfCards[indexOfDeskOfCards].getSuit() : '0';
     }
 
     /**
-     * Return array of attribute "jugadores"
-     * @return JugadorImpl[] array of attribute "jugadores"
+     * Return array of attribute "players"
+     * @return JugadorImpl[] array of attribute "players"
      */
 
-    public PlayerImpl[] getJugadores(){
-        PlayerImpl[] jugadores = new PlayerImpl[this.jugadores.length];
-        System.arraycopy(this.jugadores,0,jugadores,0,this.jugadores.length);
-        return jugadores;
+    public PlayerImpl[] getPlayers(){
+        PlayerImpl[] players = new PlayerImpl[this.players.length];
+        System.arraycopy(this.players,0,players,0,this.players.length);
+        return players;
     }
 
     /**
-     * Set array passed by parameter in attribute "jugadores"
-     * @param jugadores new value of attribute "jugadores"
+     * Set array passed by parameter in attribute "players"
+     * @param players new value of attribute "players"
      */
 
-    private void setJugadores(PlayerImpl[] jugadores){
-        for (int i = 0;i<jugadores.length; i++){
-            this.jugadores[i] = jugadores[i].clone();
+    private void setPlayers(PlayerImpl[] players){
+        for (int i = 0; i< players.length; i++){
+            this.players[i] = players[i].clone();
         }
     }
 
     /**
      * This method return the player of the position passed by parameter. The allowed range of the index is 0 to 4.
-     * @param posicion position of the player you want to get
-     * @return JugadorImpl player yo want to get. If the index not between of range allowed return a player with value "IndexOvertakeRange" in "Usuario".
+     * @param index position of the player you want to get
+     * @return PlayerImpl player yo want to get. If the index not between of range allowed return a player with value "IndexOvertakeRange" in "username".
      */
 
-    public PlayerImpl getJugador(int posicion){
-        return (posicion >= 0 && posicion <= 4) ? this.jugadores[posicion].clone() : new PlayerImpl("IndexOvertakeRange",0);
+    public PlayerImpl getPlayer(int index){
+        return (index >= 0 && index <= 4) ? this.players[index].clone() : new PlayerImpl("IndexOvertakeRange",0);
     }
 
     /**
      * This method adds the player passed by parameter to the array of players. The allowed range of the index is 0 to 4.
-     * @param indiceJugador position where the player wants to add
-     * @param jugador player you want to add
+     * @param indexPlayer position where the player wants to add
+     * @param player player you want to add
      * @return Return true if the value of the array index player passed by parameter has been changed.
      *         Return false if the value of the array index player passed by parameter hasn't been changed.
      */
 
-    public boolean setJugador(int indiceJugador, PlayerImpl jugador){
+    public boolean setPlayer(int indexPlayer, PlayerImpl player){
         boolean res = false;
-        if (indiceJugador >= 0 && indiceJugador <= 4){
-            this.jugadores[indiceJugador] = jugador.clone();
+        if (indexPlayer >= 0 && indexPlayer <= 4){
+            this.players[indexPlayer] = player.clone();
             res = true;
         }
         return res;
     }
 
     /**
-     * Get the "usuario" of the player. The allowed range of the index is 0 to 4.
-     * @param posicionJugador index of the player that will want get "usuario"
-     * @return Return a String with the value of "usuario" of the player. If the index not between of range allowed return 0.
+     * Get the "username" of the player. The allowed range of the index is 0 to 4.
+     * @param indexPlayer index of the player that will want get "username"
+     * @return Return a String with the value of "username" of the player. If the index not between of range allowed return 0.
      */
 
-    public String getUsuarioJugador(int posicionJugador){
-        return (posicionJugador >= 0 && posicionJugador <= 4) ? this.jugadores[posicionJugador].getUsername() : "0";
+    public String getUsernamePlayer(int indexPlayer){
+        return (indexPlayer >= 0 && indexPlayer <= 4) ? this.players[indexPlayer].getUsername() : "0";
     }
 
     /**
-     * Get the "saldo" of the player. The allowed range of the index is 0 to 4.
-     * @param posicionJugador index of the player that will want get "saldo"
-     * @return Return a int with the value of "saldo" of the player. If the index not between of range allowed return 0.
+     * Get the "balance" of the player. The allowed range of the index is 0 to 4.
+     * @param indexPlayer index of the player that will want get "balance"
+     * @return Return a int with the value of "balance" of the player. If the index not between of range allowed return 0.
      */
 
-    public int getSaldoJugador(int posicionJugador){
-        return (posicionJugador >= 0 && posicionJugador <= 4) ? this.jugadores[posicionJugador].getBalance() : -1;
+    public int getBalancePlayer(int indexPlayer){
+        return (indexPlayer >= 0 && indexPlayer <= 4) ? this.players[indexPlayer].getBalance() : -1;
     }
 
     /**
      * This method adds the money passed by parameter in the player of position passed by parameter(index). The allowed range of the index is 0 to 4.
-     * @param posicionJugador Position of the player that wants to add money
-     * @param saldo Money to add to the player
+     * @param indexPlayer Position of the player that wants to add money
+     * @param balance Money to add to the player
      * @return Return true if money was added to the player.
      *         Return false if money wasn't added to the player.
      */
 
-    private boolean setSaldoJugador(int posicionJugador, int saldo){
+    private boolean setBalancePlayer(int indexPlayer, int balance){
         boolean res = false;
-        if (posicionJugador >= 0 && posicionJugador <= 4){
-            this.jugadores[posicionJugador].setBalance(saldo);
+        if (indexPlayer >= 0 && indexPlayer <= 4){
+            this.players[indexPlayer].setBalance(balance);
             res = true;
         }
         return res;
@@ -406,83 +405,83 @@ public class TableImpl implements Table, Cloneable {
 
     /**
      * Get all card of the player passed by parameter. The allowed range of the index is 0 to 4.
-     * @param posicionJugador Position of the player that wants get cards
+     * @param indexPlayer Position of the player that wants get cards
      * @return Return all cards of the player if index passed by parameter is allowed.
      *         Return null if index passed by parameter isn't allowed.
      */
 
-    public CardImpl[] getCartasJugador(int posicionJugador){
-        CardImpl[] cartasJugador = null;
-        if (posicionJugador >= 0 && posicionJugador <= 4){
-            cartasJugador = new CardImpl[2];
-            System.arraycopy(this.jugadores[posicionJugador].getCards(),0,cartasJugador,0,this.jugadores[posicionJugador].getCards().length);
+    public CardImpl[] getCardsPlayer(int indexPlayer){
+        CardImpl[] cardsPlayer = null;
+        if (indexPlayer >= 0 && indexPlayer <= 4){
+            cardsPlayer = new CardImpl[2];
+            System.arraycopy(this.players[indexPlayer].getCards(),0,cardsPlayer,0,this.players[indexPlayer].getCards().length);
         }
-        return cartasJugador;
+        return cardsPlayer;
     }
 
     /**
      * Add cards passed by parameter to the player. The allowed range of the index is 0 to 4.
-     * @param posicionJugador int position of player where do you want add the cards passed by parameter
-     * @param cartas CartaImpl[] with the cards you want to add to the player
+     * @param indexPlayer int position of player where do you want add the cards passed by parameter
+     * @param cards CartaImpl[] with the cards you want to add to the player
      * @return Return true if the cards was added to the player.
      *         Return false if the cards wasn't added to the player.
      */
 
-    public boolean setCartasJugador(int posicionJugador, CardImpl[] cartas){
+    public boolean getCardsPlayer(int indexPlayer, CardImpl[] cards){
         boolean res = false;
-        if (posicionJugador >= 0 && posicionJugador <= 4){
-            this.jugadores[posicionJugador].setCards(cartas);
+        if (indexPlayer >= 0 && indexPlayer <= 4){
+            this.players[indexPlayer].setCards(cards);
             res = true;
         }
         return res;
     }
 
     /**
-     * @param posicionJugador index of player that you want get card. The allowed range of the index of player is 0 to 4. The allowed range of the index of card is 0 to 1.
-     * @param carta index of card you want get
+     * @param indexPlayer index of player that you want get card. The allowed range of the index of player is 0 to 4. The allowed range of the index of card is 0 to 1.
+     * @param indexCard index of card you want get
      * @return card that you want to get if the value of index passed by parameter is allowed.
      *         If the value of index not allowed, return a card with value 0 and 0
      */
 
-    public CardImpl getCartaJugador(int posicionJugador, int carta){
-        return (posicionJugador >= 0 && posicionJugador <= 4) ? (carta == 0 || carta == 1) ? this.getCartasJugador(posicionJugador)[carta] : new CardImpl('0',"0") : new CardImpl('0',"0");
+    public CardImpl getCardPlayer(int indexPlayer, int indexCard){
+        return (indexPlayer >= 0 && indexPlayer <= 4) ? (indexCard == 0 || indexCard == 1) ? this.getCardsPlayer(indexPlayer)[indexCard] : new CardImpl('0',"0") : new CardImpl('0',"0");
     }
 
     /**
      * Get the stick of the card of the player. The allowed range of the player of the index is 0 to 4. The allowed range of the card of the index is 0 to 1.
-     * @param posicionJugador index of the player that will want get stick from one card
-     * @param carta index of the card that will want get stick
+     * @param indexPlayer index of the player that will want get stick from one card
+     * @param indexCard index of the card that will want get stick
      * @return Return a char with the value of stick of the card. If the index not between of range allowed return 0.
      */
 
-    public char getPaloCartaJugador(int posicionJugador,int carta){
-        return (posicionJugador >= 0 && posicionJugador <= 4) ? (carta == 0 || carta == 1) ? this.getCartaJugador(posicionJugador,carta).getSuit() : '0' : '0';
+    public char getSuitCardPlayer(int indexPlayer, int indexCard){
+        return (indexPlayer >= 0 && indexPlayer <= 4) ? (indexCard == 0 || indexCard == 1) ? this.getCardPlayer(indexPlayer,indexCard).getSuit() : '0' : '0';
     }
 
     /**
      * Get the number of the card of the player. The allowed range of the player of the index is 0 to 4. The allowed range of the card of the index is 0 to 1.
-     * @param posicionJugador index of the player that will want get stick from one card
-     * @param carta index of the card that will want get number
+     * @param indexPlayer index of the player that will want get stick from one card
+     * @param indexCard index of the card that will want get number
      * @return Return a String with the value of number of the card. If the index not between of range allowed return 0.
      */
 
-    public String getNumeroCartaJugador(int posicionJugador,int carta){
-        return (posicionJugador >= 0 && posicionJugador <= 4) ? (carta == 0 || carta == 1) ? this.getCartaJugador(posicionJugador,carta).getNumber() : "0" : "0";
+    public String getNumberCardPlayer(int indexPlayer, int indexCard){
+        return (indexPlayer >= 0 && indexPlayer <= 4) ? (indexCard == 0 || indexCard == 1) ? this.getCardPlayer(indexPlayer,indexCard).getNumber() : "0" : "0";
     }
 
     /**
      * This method added the card passed by parameter to the cards of the player. The allowed range of the player of the index is 0 to 4. The allowed range of the card of the index is 0 to 1.
-     * @param posicionJugador index of the player to which you want to add the card passed by parameter
-     * @param posicionCarta index of the card where it will be added
-     * @param carta card to add
+     * @param indexPlayer index of the player to which you want to add the card passed by parameter
+     * @param indexCard index of the card where it will be added
+     * @param card card to add
      * @return Return true if the card was added to the player.
      *         Return false if the card wasn't added to the player.
      */
 
-    private boolean setCartaJugador(int posicionJugador,int posicionCarta, CardImpl carta){
+    private boolean setCardPlayer(int indexPlayer, int indexCard, CardImpl card){
         boolean res = false;
-        if ((posicionJugador >= 0 && posicionJugador <= 4) && (posicionCarta == 0 || posicionCarta == 1)){
-            this.jugadores[posicionJugador].setCarta(posicionCarta, carta);
+        if ((indexPlayer >= 0 && indexPlayer <= 4) && (indexCard == 0 || indexCard == 1)){
+            this.players[indexPlayer].setCard(indexCard, card);
             res = true;
         }
         return res;
@@ -490,60 +489,60 @@ public class TableImpl implements Table, Cloneable {
 
     /**
      * Obtain if player is active or not. The allowed range of the player of the index is 0 to 4.
-     * @param posicionJugador index of the player you want to obtain if it is active or not
+     * @param indexPlayer index of the player you want to obtain if it is active or not
      * @return Return 1 is player is active.
      *         Return 0 is player isn't active.
      *         Return -1 if the index passed by parameter not between of range allowed.
      */
 
-    public int getActivoJugador(int posicionJugador){
-        return (posicionJugador >= 0 && posicionJugador <= 4) ? (this.getJugador(posicionJugador).getActive()) ? 1 : 0 : -1;
+    public int getActivePlayer(int indexPlayer){
+        return (indexPlayer >= 0 && indexPlayer <= 4) ? (this.getPlayer(indexPlayer).getActive()) ? 1 : 0 : -1;
     }
 
     /**
-     * This method return array of attribute "cartasMesa"
-     * @return CartaImpl[] array of attribute "cartasMesa"
+     * This method return array of attribute "cardsOfTable"
+     * @return CardImpl[] array of attribute "cardsOfTable"
      */
 
-    public CardImpl[] getCartasMesa(){
-        CardImpl[] cartas = new CardImpl[this.cartasMesa.length];
-        System.arraycopy(this.cartasMesa,0,cartas,0,this.cartasMesa.length);
-        return cartas;
+    public CardImpl[] getCardsOfTable(){
+        CardImpl[] cards = new CardImpl[this.cardsOfTable.length];
+        System.arraycopy(this.cardsOfTable,0,cards,0,this.cardsOfTable.length);
+        return cards;
     }
 
     /**
-     * Set array passed by parameter in attribute "cartas"
-     * @param cartas new value of attribute "cartas"
+     * Set array passed by parameter in attribute "cards"
+     * @param cards new value of attribute "cards"
      */
 
-    public void setCartasMesa(CardImpl[] cartas){
-        this.cartasMesa = cartas;
+    public void setCardsOfTable(CardImpl[] cards){
+        this.cardsOfTable = cards.clone();
     }
 
     /**
      * This method return the card select by the index passed by parameter from atribute "cartasMesa". The allowed range of the index of cards is 0 to 4.
-     * @param indiceCarta index of the card that you want obtain
+     * @param indexCard index of the card that you want obtain
      * @return Return card select by the index passed by parameter from atribute "cartasMesa"
      *         If the value of index not allowed, return a card with value 0 and 0
      *
      */
 
-    public CardImpl getCartaMesa(int indiceCarta){
-        return (indiceCarta >= 0 && indiceCarta <= 4) ? this.cartasMesa[indiceCarta].clone() : new CardImpl('0',"0");
+    public CardImpl getCardTable(int indexCard){
+        return (indexCard >= 0 && indexCard <= 4) ? this.cardsOfTable[indexCard].clone() : new CardImpl('0',"0");
     }
 
     /**
      * This method add the carte passed by parameter to array of letters of table in the position passed by parameter. The allowed range of the cards of the index is 0 to 4.
-     * @param indiceCarta position where the card is added
-     * @param carta carte to add
+     * @param indexCard position where the card is added
+     * @param card carte to add
      * @return Return true if the card was added to the cards of table.
      *         Return false if the card wasn't added to the cards of table.
      */
 
-    private boolean setCartaMesa(int indiceCarta, CardImpl carta){
+    private boolean setCardTable(int indexCard, CardImpl card){
         boolean res = false;
-        if (indiceCarta >= 0 && indiceCarta <= 4){
-            this.cartasMesa[indiceCarta] = carta;
+        if (indexCard >= 0 && indexCard <= 4){
+            this.cardsOfTable[indexCard] = card;
             res = true;
         }
         return res;
@@ -551,48 +550,48 @@ public class TableImpl implements Table, Cloneable {
 
     /**
      * Get the number of the card of the table. The allowed range of the cards of the index is 0 to 4.
-     * @param indiceCarta index of the card that will want get number
+     * @param indexCard index of the card that will want get number
      * @return Return a String with the value of number of the card. If the index not between of range allowed return 0.
      */
 
-    public String getNumeroCartaMesa(int indiceCarta){
-        return (indiceCarta >= 0 && indiceCarta <= 4) ? this.getCartaMesa(indiceCarta).getNumber() : "0";
+    public String getNumberCardTable(int indexCard){
+        return (indexCard >= 0 && indexCard <= 4) ? this.getCardTable(indexCard).getNumber() : "0";
     }
 
     /**
      * Get the stick of the card of the table. The allowed range of the cards of the index is 0 to 4.
-     * @param indiceCarta index of the card that will want get stick
+     * @param indexCard index of the card that will want get stick
      * @return Return a char with the value of stick of the card. If the index not between of range allowed return 0.
      */
 
-    public char getPaloCartaMesa(int indiceCarta){
-        return (indiceCarta >= 0 && indiceCarta <= 4) ? this.getCartaMesa(indiceCarta).getSuit() : '0';
+    public char getSuitCardTable(int indexCard){
+        return (indexCard >= 0 && indexCard <= 4) ? this.getCardTable(indexCard).getSuit() : '0';
     }
 
     /**
-     * This method return array of attribute "apuestasJugadores"
-     * @return int[][] array of attribute "apuestasJugadores"
+     * This method return array of attribute "betsPlayers"
+     * @return int[][] array of attribute "betsPlayers"
      */
 
-    public int[][] getApuestasJugadores(){
+    public int[][] getBetsPlayers(){
         int[][] apuestas = new int[5][4];
-        for (int i = 0;i<this.apuestasJugadores.length;i++){
-            System.arraycopy(this.apuestasJugadores[i],0,apuestas[i],0,this.apuestasJugadores[i].length);
+        for (int i = 0; i<this.betsPlayers.length; i++){
+            System.arraycopy(this.betsPlayers[i],0,apuestas[i],0,this.betsPlayers[i].length);
         }
         return apuestas;
     }
 
     /**
-     * Set array passed by parameter in attribute "apuestasJugadores"
-     * @param apuestas new value of attribute "apuestas"
+     * Set array passed by parameter in attribute "betsPlayers"
+     * @param bets new value of attribute "bets"
      * @return Return true if the bets were added.
      *         Return false if the bets weren't added.
      */
 
-    private boolean setApuestasJugadores(int[][] apuestas){
+    private boolean setPlayersBets(int[][] bets){
         boolean res = false;
-        if (apuestas.length == 5 && apuestas[0].length == 4){
-            this.apuestasJugadores = apuestas.clone();
+        if (bets.length == 5 && bets[0].length == 4){
+            this.betsPlayers = bets.clone();
             res = true;
         }
         return res;
@@ -600,32 +599,32 @@ public class TableImpl implements Table, Cloneable {
 
     /**
      * Get all bets from a player for the index passed by parameter. The allowed range of the player of the index is 0 to 4.
-     * @param indiceJugador index of the player that will want get stick
+     * @param indexPlayer index of the player that will want get stick
      * @return Return a int[] with all bets of the player passed by parameter.
      *         Return null if the index of player passed by parameter isn't allowed.
      */
 
-    public int[] getApuestasJugador(int indiceJugador){
-        int[] apuestasJugador = null;
-        if (indiceJugador >= 0 && indiceJugador <= 4){
-            apuestasJugador = new int[this.apuestasJugadores[indiceJugador].length];
-            System.arraycopy(this.apuestasJugadores[indiceJugador],0,apuestasJugador,0,this.apuestasJugadores[indiceJugador].length);
+    public int[] getBetsPlayer(int indexPlayer){
+        int[] playerBets = null;
+        if (indexPlayer >= 0 && indexPlayer <= 4){
+            playerBets = new int[this.betsPlayers[indexPlayer].length];
+            System.arraycopy(this.betsPlayers[indexPlayer],0,playerBets,0,this.betsPlayers[indexPlayer].length);
         }
-        return apuestasJugador;
+        return playerBets;
     }
 
     /**
      * Assign the bets passed by parameter to the player of the index passed by parameter. The allowed range of the player of the index is 0 to 4.
-     * @param indiceJugador index of the player that will want assign bets.
-     * @param apuestas Bets that will want assign to player.
+     * @param indexPlayer index of the player that will want assign bets.
+     * @param bets Bets that will want assign to player.
      * @return Return true if the bets was added to the player.
      *         Return false if the bets wasn't added to the player.
      */
 
-    private boolean setApuestasJugador(int indiceJugador, int[] apuestas){
+    private boolean setBetsPlayer(int indexPlayer, int[] bets){
         boolean res = false;
-        if (indiceJugador >= 0 && indiceJugador <= 4){
-            this.apuestasJugadores[indiceJugador] = apuestas;
+        if (indexPlayer >= 0 && indexPlayer <= 4){
+            this.betsPlayers[indexPlayer] = bets;
             res = true;
         }
         return res;
@@ -633,27 +632,27 @@ public class TableImpl implements Table, Cloneable {
 
     /**
      * Get user bet in an exact round. The allowed range of the player of the index is 0 to 4. The allowed range of the round of the index is 0 to 4.
-     * @param posicionJugador int index of the user you want get bet
-     * @param rondaApuesta int index of the round you want get bet
+     * @param indexPlayer int index of the user you want get bet
+     * @param roundBet int index of the round you want get bet
      * @return Return int bet of the user in the round
      *
      */
 
-    public int getApuestaJugador(int posicionJugador, int rondaApuesta){
-        return (posicionJugador >= 0 && posicionJugador <= 4) ? (rondaApuesta >= 0 && rondaApuesta <= 4) ? this.apuestasJugadores[posicionJugador][rondaApuesta] : -1 : -1;
+    public int getBetPlayer(int indexPlayer, int roundBet){
+        return (indexPlayer >= 0 && indexPlayer <= 4) ? (roundBet >= 0 && roundBet <= 4) ? this.betsPlayers[indexPlayer][roundBet] : -1 : -1;
     }
 
     /**
      * Assign a round set of the index passed by parameter to the player of the index passed by parameter. The allowed range of the player of the index is 0 to 4. The allowed range of the round of the index is 0 to 4.
-     * @param posicionJugador int index of the user you want get bet
-     * @param rondaApuesta int index of the round you want get bet
-     * @param apuestas int bet to assign to the player
+     * @param indexPlayer int index of the user you want get bet
+     * @param roundBet int index of the round you want get bet
+     * @param bet int bet to assign to the player
      */
 
-    private boolean setApuestaJugador(int posicionJugador,int rondaApuesta, int apuestas){
+    private boolean setBetPlayer(int indexPlayer, int roundBet, int bet){
         boolean res = false;
-        if ((posicionJugador >= 0 && posicionJugador <= 4) && (rondaApuesta >= 0 && rondaApuesta <= 4)){
-            this.apuestasJugadores[posicionJugador][rondaApuesta] = apuestas;
+        if ((indexPlayer >= 0 && indexPlayer <= 4) && (roundBet >= 0 && roundBet <= 4)){
+            this.betsPlayers[indexPlayer][roundBet] = bet;
             res = true;
         }
         return res;
@@ -664,9 +663,9 @@ public class TableImpl implements Table, Cloneable {
      * @return int value of sum all bets
      */
 
-    public int getTotalApuestas(){
+    public int getTotalAllBets(){
         int total = 0;
-        for (int[] jugador:this.apuestasJugadores) {
+        for (int[] jugador:this.betsPlayers) {
             for (int apuesta:jugador) {
                 total += apuesta;
             }
@@ -679,36 +678,25 @@ public class TableImpl implements Table, Cloneable {
      * @return int value of the round
      */
 
-    public int getRonda(){
-        return this.ronda;
+    public int getRound(){
+        return this.round;
     }
-
-    /*
-     * SIGNATURA: public void restaurarMesa();
-     * COMENTARIO: Elimina todos los cambios que se hayan realizado sobre los atributos baraja, activoJugadores, cartasJugadores, cartasMesa, apuestas y ronda y lo coloca por defecto para empezar una jugada nueva.
-     * PRECONDICIONES: - Nada
-     * ENTRADA: - Nada
-     * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: - Elimina todos los cambios que se hayan realizado sobre los atributos baraja, activoJugadores, cartasJugadores, cartasMesa y apuestas y lo coloca por defecto para empezar una jugada nueva.
-     *
-     */
 
     /**
-     * Removes all changes made to the "baraja", "activoJugadores", "cartasJugadores", "cartasMesa", "apuestas" and "ronda" attributes and defaults to starting a new play.
+     * Removes all changes made to the "deskOfCards", "activePlayer", "cardsPlayer", "cardsTable", "bets" and "round" attributes and defaults to starting a new play.
      */
 
-    public void restaurarMesa(){
-        restaurarBaraja();
-        colocarJugadoresActivos();
-        generarCartasJugadores();
-        restaurarCartasMesa();
-        restaurarApuestas();
-        this.ronda = 0;
+    public void restoreTable(){
+        restoreDeskOfCards();
+        setPlayersActive();
+        generateCardsPlayers();
+        restoreCardsTable();
+        restoreBets();
+        this.round = 0;
     }
 
     /*
-     * SIGNATURA: public void restaurarCartasMesa()
+     * SIGNATURA: public void restoreCardsTable()
      * COMENTARIO: Coloca todas las cartas de la mesa con palo D y numero D
      * PRECONDICIONES: - Nada
      * ENTRADA: - Nada
@@ -721,14 +709,14 @@ public class TableImpl implements Table, Cloneable {
      * Set all the table cards by default
      */
 
-    public void restaurarCartasMesa(){
-        for (int i = 0; i<this.cartasMesa.length; i++){
-            this.cartasMesa[i] = new CardImpl();
+    public void restoreCardsTable(){
+        for (int i = 0; i<this.cardsOfTable.length; i++){
+            this.cardsOfTable[i] = new CardImpl();
         }
     }
 
     /*
-     * SIGNATURA: public void restaurarBaraja()
+     * SIGNATURA: public void restoreDeskOfCards()
      * COMENTARIO: Restaura todas las cartas de la baraja del atributo baraja
      * PRECONDICIONES: - Nada
      * ENTRADA: - Nada
@@ -741,20 +729,20 @@ public class TableImpl implements Table, Cloneable {
      * Restores all cards in the deck of the deck attribute
      */
 
-    public void restaurarBaraja(){
-        char[] palos = new char[]{'P','C','R','T'};
-        String[] numeros = new String[]{"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
-        int contador = 0;
-        for (char palo: palos){
-            for (String numero : numeros) {
-                this.baraja[contador] = new CardImpl(palo, numero);
-                contador++;
+    public void restoreDeskOfCards(){
+        char[] suits = new char[]{'P','C','R','T'};
+        String[] numbers = new String[]{"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
+        int counter = 0;
+        for (char suit: suits){
+            for (String number : numbers) {
+                this.deckOfCards[counter] = new CardImpl(suit, number);
+                counter++;
             }
         }
     }
 
     /*
-     * SIGNATURA: public void restaurarApuestas()
+     * SIGNATURA: public void restoreBets()
      * COMENTARIO: Coloca en defecto todas las cartas del array pasado por parametro y coloca todas las apuestas de los jugadores a 0
      * PRECONDICIONES: - Nada
      * ENTRADA: - Nada
@@ -767,10 +755,10 @@ public class TableImpl implements Table, Cloneable {
      * Change the cards of the table to default and set bets to 0
      */
 
-    public void restaurarApuestas() {
-        for (int i = 0; i < this.apuestasJugadores.length; i++) {
-            for (int j = 0; j < this.apuestasJugadores[0].length; j++) {
-                this.apuestasJugadores[i][j] = 0;
+    public void restoreBets() {
+        for (int i = 0; i < this.betsPlayers.length; i++) {
+            for (int j = 0; j < this.betsPlayers[0].length; j++) {
+                this.betsPlayers[i][j] = 0;
             }
         }
     }
@@ -789,14 +777,14 @@ public class TableImpl implements Table, Cloneable {
      * This method set active all players
      */
 
-    private void colocarJugadoresActivos(){
-        for(PlayerImpl jugador: this.jugadores){
-            jugador.setActive(true);
+    private void setPlayersActive(){
+        for(PlayerImpl player: this.players){
+            player.setActive(true);
         }
     }
 
     /*
-     * SIGNATURA: public void generarBots();
+     * SIGNATURA: public void generateBots();
      * COMENTARIO: Genera jugadores con nombres aleatorios y los añade en el atributo jugadores.
      * PRECONDICIONES: - El array debe ser de JugadorImpl
      * ENTRADA: - Nada
@@ -810,18 +798,18 @@ public class TableImpl implements Table, Cloneable {
      * Generate players with random names and add them in the players attribute.
      */
 
-    public void generarBots(){
+    public void generateBots(){
 
         Random random = new Random();
-        String[] nombresAleatorios = {"Kun","Wang","YanYan","Zhao","Yun","Sasha","Volodia","Hedeon","Grigory"};
-        for (int i = 1; i<jugadores.length;i++){
-            this.jugadores[i] = new PlayerImpl(nombresAleatorios[random.nextInt(8)],jugadores[0].getBalance());
+        String[] aleatoryName = {"Kun","Wang","YanYan","Zhao","Yun","Sasha","Volodia","Hedeon","Grigory"};
+        for (int i = 1; i< players.length; i++){
+            this.players[i] = new PlayerImpl(aleatoryName[random.nextInt(8)], players[0].getBalance());
         }
 
     }
 
     /*
-     * SIGNATURA: public void generarTresCartasMesa();
+     * SIGNATURA: public void generateThreeCardsToTable();
      * COMENTARIO: Saca 3 cartas de la baraja y las coloca en el array de las cartas de la mesa
      * PRECONDICIONES: - Nada
      * ENTRADA: - Nada
@@ -832,26 +820,26 @@ public class TableImpl implements Table, Cloneable {
      */
 
     /**
-     *
+     * Takes 3 cards from the deck of the cards and places them in the array of cards on the table
      */
 
-    public void generarTresCartasMesa() {
+    public void generateThreeCardsToTable() {
 
         Random r = new Random();
-        int numPosicionCarta;
+        int indexCard;
 
         for (int i = 0; i < 3; i++) {
             do {
-                numPosicionCarta = r.nextInt(52);
-            } while (this.baraja[numPosicionCarta].getSuit() == 'D');
-            this.cartasMesa[i] = this.baraja[numPosicionCarta];
-            this.baraja[numPosicionCarta] = new CardImpl();
+                indexCard = r.nextInt(52);
+            } while (this.deckOfCards[indexCard].getSuit() == 'D');
+            this.cardsOfTable[i] = this.deckOfCards[indexCard];
+            this.deckOfCards[indexCard] = new CardImpl();
         }
 
     }
 
     /*
-     * SIGNATURA: public void generarCartasJugadores();
+     * SIGNATURA: public void generateCardsPlayers();
      * COMENTARIO: Saca dos cartas de la baraja para cada jugador y se las asigna a cada jugador
      * PRECONDICIONES: - Nada
      * ENTRADA: - Nada
@@ -864,30 +852,30 @@ public class TableImpl implements Table, Cloneable {
      * Draw 2 cards for each player and assign them to them placing by default in the deck the drawn
      */
 
-    public void generarCartasJugadores() {
+    public void generateCardsPlayers() {
 
         Random r = new Random();
-        int numPosicionCarta;
+        int indexCard;
 
-        for (int i = 0; i<this.jugadores.length;i++){
+        for (int i = 0; i<this.players.length; i++){
             for (int j = 0; j<2; j++){
                 do {
-                    numPosicionCarta = r.nextInt(52);
-                    if (baraja[numPosicionCarta].getSuit() != 'D') {    //Comprueba si la carta seleccionada de la baraja no ha salido ya (Que es cuando esta por defecto)
+                    indexCard = r.nextInt(52);
+                    if (deckOfCards[indexCard].getSuit() != 'D') {    //Comprueba si la carta seleccionada de la baraja no ha salido ya (Que es cuando esta por defecto)
                         //En el caso de que no haya salido se le asigna al jugador y se coloca por defecto en la baraja
-                        if (!(this.setCartaJugador(i, j, baraja[numPosicionCarta]))) {  //Anhade la carta y compruba si se añadio correctamente
+                        if (!(this.setCardPlayer(i, j, deckOfCards[indexCard]))) {  //Anhade la carta y compruba si se añadio correctamente
                             System.out.println("No se ha podido anhadir la carta");
                         }
                     }
-                } while (baraja[numPosicionCarta].getSuit() == 'D');
-                baraja[numPosicionCarta] = new CardImpl();
+                } while (deckOfCards[indexCard].getSuit() == 'D');
+                deckOfCards[indexCard] = new CardImpl();
             }
         }
 
     }
 
     /*
-     * SIGNATURA: public void generarCartaMesa();
+     * SIGNATURA: public void generateCardTable();
      * COMENTARIO: Saca 1 cartas de la baraja y las coloca en el array de cartas de la mesa del objeto
      * PRECONDICIONES: - Debe haber como minimo 1 hueco libre en las cartas de la mesa.
      * ENTRADA: - Nada
@@ -902,32 +890,32 @@ public class TableImpl implements Table, Cloneable {
      * Draw 1 cards of deck of cards and put this in array of cards from the object
      */
 
-    public void generarCartaMesa() {
+    public void generateCardTable() {
 
         Random r = new Random();
-        int numPosicionCarta, indiceCartaGenerar = -1;
+        int indexCard, indexGenerateCard = -1;
 
         //Calcula cual es la siguiente carta sin levantar y guarda el indice
-        for (int i = 0; i < this.cartasMesa.length && indiceCartaGenerar == -1; i++) {
-            if (this.cartasMesa[i].getSuit() == 'D') {
-                indiceCartaGenerar = i;
+        for (int i = 0; i < this.cardsOfTable.length && indexGenerateCard == -1; i++) {
+            if (this.cardsOfTable[i].getSuit() == 'D') {
+                indexGenerateCard = i;
             }
         }
 
-        if (indiceCartaGenerar != -1){
+        if (indexGenerateCard != -1){
             //Guarda la carta que se ha sacado de la baraja en las cartas de la mesa
             do {
-                numPosicionCarta = r.nextInt(52);
-                if (this.baraja[numPosicionCarta].getSuit() != 'D') {
-                    this.cartasMesa[indiceCartaGenerar] = this.baraja[numPosicionCarta];
+                indexCard = r.nextInt(52);
+                if (this.deckOfCards[indexCard].getSuit() != 'D') {
+                    this.cardsOfTable[indexGenerateCard] = this.deckOfCards[indexCard];
                 }
-            } while (this.baraja[numPosicionCarta].getSuit() == 'D');
-            this.baraja[numPosicionCarta] = new CardImpl();
+            } while (this.deckOfCards[indexCard].getSuit() == 'D');
+            this.deckOfCards[indexCard] = new CardImpl();
         }
     }
 
     /*
-     * SIGNATURA: public void ingresarSaldoGanadoresYMostrarGanador();
+     * SIGNATURA: public void depositBalanceWinnerAndShowWinner();
      * COMENTARIO: Ingresa el saldo al ganador/ganadores de la partida
      * PRECONDICIONES: - Nada
      * ENTRADA: - Nada
@@ -965,14 +953,15 @@ public class TableImpl implements Table, Cloneable {
 
     //TODO Comprobar con todos los jugadores con 0$ y allInMenor
 
-    public void ingresarSaldoGanadoresYMostrarGanador(){
+
+    public void depositBalanceWinnerAndShowWinner(){
         ManagementCardImpl gestoraCarta = new ManagementCardImpl();
-        int cantidadGanadores = 0, indiceGanador = -1, totalGanancias = 0, puntosAnteriorGanador = 99999, puntosAnteriorJugador = 0, puntosJugadorCalculados;
+        int indiceGanador = -1, totalGanancias = 0, puntosAnteriorGanador = 99999, puntosAnteriorJugador = 0, puntosJugadorCalculados;
 
         do{
             //Obtener ganador
-            for (int i = 0; i< this.jugadores.length;i++){
-                if (this.jugadores[i].getActive()) {
+            for (int i = 0; i< this.players.length; i++){
+                if (this.players[i].getActive()) {
                     puntosJugadorCalculados = gestoraCarta.evaluarCartas(i, this);
                     //Se utiliza puntosAnteriorGanador
                     if (puntosAnteriorGanador > puntosJugadorCalculados
@@ -984,50 +973,50 @@ public class TableImpl implements Table, Cloneable {
                 }
             }
 
-            if (!this.jugadores[indiceGanador].getAllInMenor()){
+            if (!this.players[indiceGanador].getAllInLower()){
                 //Incrementa el saldo total del jugador con toodo el dinero de la mesa
-                this.jugadores[indiceGanador].aumentarDinero(this.getTotalApuestas());
+                this.players[indiceGanador].increaseBalance(this.getTotalAllBets());
 
                 //Informar del ganador
-                System.out.println("El ganador de la partida es: "+this.getUsuarioJugador(indiceGanador));
+                System.out.println("El ganador de la partida es: "+this.getUsernamePlayer(indiceGanador));
 
                 //Colocar todas las apuestas a 0
-                this.restaurarApuestas();
+                this.restoreBets();
 
             }else{
 
                 //Calcular el total que debe ganar el jugador
-                for (int i = 0; i < this.apuestasJugadores[indiceGanador].length;i++){
-                    if (this.apuestasJugadores[indiceGanador][i] != 0){
+                for (int i = 0; i < this.betsPlayers[indiceGanador].length; i++){
+                    if (this.betsPlayers[indiceGanador][i] != 0){
                         for (int j = 0;j<5;j++){
-                            totalGanancias += apuestasJugadores[j][i];
+                            totalGanancias += betsPlayers[j][i];
                         }
                     }
                 }
 
                 //Informar del ganador
-                System.out.println("El ganador de la partida es: "+this.getUsuarioJugador(indiceGanador)+" pero como no llego a las apuestas minimas solo se llevo una parte del bote: "+totalGanancias+"€");
+                System.out.println("El ganador de la partida es: "+this.getUsernamePlayer(indiceGanador)+" pero como no llego a las apuestas minimas solo se llevo una parte del bote: "+totalGanancias+"€");
 
                 //Aumentar saldo jugador
-                this.jugadores[indiceGanador].aumentarDinero(totalGanancias);
+                this.players[indiceGanador].increaseBalance(totalGanancias);
 
                 //Disminuir dinero en las apuestas las apuestas a las apuestas totales
 
-                for (int i = 0; i < this.apuestasJugadores[indiceGanador].length;i++){
-                    if (this.apuestasJugadores[indiceGanador][i] != 0){
+                for (int i = 0; i < this.betsPlayers[indiceGanador].length; i++){
+                    if (this.betsPlayers[indiceGanador][i] != 0){
                         for (int j = 0;j<5;j++){
-                            apuestasJugadores[j][i] -= this.apuestasJugadores[indiceGanador][i];
+                            betsPlayers[j][i] -= this.betsPlayers[indiceGanador][i];
                         }
                     }
                 }
 
             }
-        }while (this.getTotalApuestas() > 0);
+        }while (this.getTotalAllBets() > 0);
 
     }
 
     /*
-     * SIGNATURA: public void incrementarTurno();
+     * SIGNATURA: public void increaseTurn();
      * COMENTARIO: Este metodo incrementa el atributo turno de la mesa controlando los limites validos.
      * PRECONDICIONES: - Nada
      * ENTRADA: - Nada
@@ -1041,16 +1030,16 @@ public class TableImpl implements Table, Cloneable {
      * This method increases the attribute turn of the table controlling the valid limits
      */
 
-    public void incrementarTurno(){
-        if (this.turnoJugador == 4){
-            this.turnoJugador = 0;
+    public void increaseTurn(){
+        if (this.playerTurn == 4){
+            this.playerTurn = 0;
         }else{
-            this.turnoJugador++;
+            this.playerTurn++;
         }
     }
 
     /*
-     * SIGNATURA: public void mostrarPanelJuego ();
+     * SIGNATURA: public void showPanelPlay ();
      * COMENTARIO: Imprime por pantalla las cartas que hay en la mesa y la de los jugadores segun la ronda, el dinero de los demas jugadores y el total del bote de la mesa
      * PRECONDICIONES: - Nada
      * ENTRADA: - Nada
@@ -1063,67 +1052,67 @@ public class TableImpl implements Table, Cloneable {
      *  Print in screen the table with all properties of users and the carts depending on the turn
      */
 
-    public void mostrarPanelJuego() {
+    public void showPanelPlay() {
 
-        String[][] numerosCartasJugadores = new String[5][2];
-        for (int i = 0;i<numerosCartasJugadores.length;i++){
-            for (int j = 0;j<numerosCartasJugadores[i].length;j++){
-                numerosCartasJugadores[i][j] = this.getNumeroCartaJugador(i,j);
-                while (numerosCartasJugadores[i][j].length() < 3){
-                    numerosCartasJugadores[i][j] += " ";
+        String[][] numbersCardsPlayer = new String[5][2];
+        for (int i = 0;i<numbersCardsPlayer.length;i++){
+            for (int j = 0;j<numbersCardsPlayer[i].length;j++){
+                numbersCardsPlayer[i][j] = this.getNumberCardPlayer(i,j);
+                while (numbersCardsPlayer[i][j].length() < 3){
+                    numbersCardsPlayer[i][j] += " ";
                 }
             }
         }
 
-        char[][] palosCartasJugadores = new char[5][2];
-        for (int i = 0;i<palosCartasJugadores.length;i++){
-            for (int j = 0;j<palosCartasJugadores[i].length;j++){
-                palosCartasJugadores[i][j] = this.getPaloCartaJugador(i,j);
+        char[][] suitsCardsPlayer = new char[5][2];
+        for (int i = 0;i<suitsCardsPlayer.length;i++){
+            for (int j = 0;j<suitsCardsPlayer[i].length;j++){
+                suitsCardsPlayer[i][j] = this.getSuitCardPlayer(i,j);
             }
         }
 
-        String[] usersJugadores = new String[5];
-        for (int i = 0; i<usersJugadores.length;i++){
-            usersJugadores[i] = this.getUsuarioJugador(i);
-            while (usersJugadores[i].length() < 20){
-                usersJugadores[i] += " ";
+        String[] usernamePlayers = new String[5];
+        for (int i = 0; i<usernamePlayers.length;i++){
+            usernamePlayers[i] = this.getUsernamePlayer(i);
+            while (usernamePlayers[i].length() < 20){
+                usernamePlayers[i] += " ";
             }
-            if (usersJugadores[i].length() > 20){
-                usersJugadores[i] = usersJugadores[i].substring(0,20);
-            }
-        }
-
-        String[] saldoJugadores = new String[5];
-        for (int i = 0; i<saldoJugadores.length;i++){
-            saldoJugadores[i] = this.getSaldoJugador(i)+"€";
-            while (saldoJugadores[i].length() < 11){
-                saldoJugadores[i] += " ";
-            }
-            if (saldoJugadores[i].length() > 11){
-                saldoJugadores[i] = saldoJugadores[i].substring(0,11);
+            if (usernamePlayers[i].length() > 20){
+                usernamePlayers[i] = usernamePlayers[i].substring(0,20);
             }
         }
 
-        char[] palosCartasMesa = new char[5];
-        for (int i = 0; i<palosCartasMesa.length;i++){
-            palosCartasMesa[i] = this.getPaloCartaMesa(i);
+        String[] balancePlayers = new String[5];
+        for (int i = 0; i<balancePlayers.length;i++){
+            balancePlayers[i] = this.getBalancePlayer(i)+"€";
+            while (balancePlayers[i].length() < 11){
+                balancePlayers[i] += " ";
+            }
+            if (balancePlayers[i].length() > 11){
+                balancePlayers[i] = balancePlayers[i].substring(0,11);
+            }
         }
 
-        String[] numerosCartasMesa = new String[5];
-        for (int i = 0; i<numerosCartasMesa.length;i++){
-            numerosCartasMesa[i] = this.getNumeroCartaMesa(i);
-            while (numerosCartasMesa[i].length() < 3){
-                numerosCartasMesa[i] += " ";
+        char[] suitsCardsTable = new char[5];
+        for (int i = 0; i<suitsCardsTable.length;i++){
+            suitsCardsTable[i] = this.getSuitCardTable(i);
+        }
+
+        String[] numbersCardsTable = new String[5];
+        for (int i = 0; i<numbersCardsTable.length;i++){
+            numbersCardsTable[i] = this.getNumberCardTable(i);
+            while (numbersCardsTable[i].length() < 3){
+                numbersCardsTable[i] += " ";
             }
         }
 
 
-        System.out.println("                                      " + usersJugadores[2] + "                                                         " + usersJugadores[3]);
+        System.out.println("                                      " + usernamePlayers[2] + "                                                         " + usernamePlayers[3]);
         System.out.println();
-        System.out.println("                                      " + saldoJugadores[2] + "                                                     " + saldoJugadores[3]);
+        System.out.println("                                      " + balancePlayers[2] + "                                                     " + balancePlayers[3]);
         System.out.println("                                      |º º|     -----        -----                                    |º º|    -----        -----");
-        System.out.println("                                      |---|    | "+(this.ronda==4?palosCartasJugadores[2][0]:"?")+"   |      | "+(this.ronda==4?palosCartasJugadores[2][1]:"?")+"   |                                   |---|   | "+(this.ronda==4?palosCartasJugadores[3][0]:"?")+"   |      | "+(this.ronda==4?palosCartasJugadores[3][1]:"?")+"   |  ");
-        System.out.println("                                               | "+(this.ronda==4?numerosCartasJugadores[2][0]:"?  ")+" |      | "+(this.ronda==4?numerosCartasJugadores[2][1]:"?  ")+" |                                           | "+(this.ronda==4?numerosCartasJugadores[3][0]:"?  ")+" |      | "+(this.ronda==4?numerosCartasJugadores[3][1]:"?  ")+" |");
+        System.out.println("                                      |---|    | "+(this.round ==4?suitsCardsPlayer[2][0]:"?")+"   |      | "+(this.round ==4?suitsCardsPlayer[2][1]:"?")+"   |                                   |---|   | "+(this.round ==4?suitsCardsPlayer[3][0]:"?")+"   |      | "+(this.round ==4?suitsCardsPlayer[3][1]:"?")+"   |  ");
+        System.out.println("                                               | "+(this.round ==4?numbersCardsPlayer[2][0]:"?  ")+" |      | "+(this.round ==4?numbersCardsPlayer[2][1]:"?  ")+" |                                           | "+(this.round ==4?numbersCardsPlayer[3][0]:"?  ")+" |      | "+(this.round ==4?numbersCardsPlayer[3][1]:"?  ")+" |");
         System.out.println("                                                -----        -----                                             -----        -----");
 
 
@@ -1132,28 +1121,28 @@ public class TableImpl implements Table, Cloneable {
         System.out.println();
         System.out.println();
 
-        System.out.println("       " + usersJugadores[1] + "                                                                                                                              " + usersJugadores[4]);
+        System.out.println("       " + usernamePlayers[1] + "                                                                                                                              " + usernamePlayers[4]);
         System.out.println("                                                        ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- ");
-        System.out.println("       " + saldoJugadores[1] + "                                     | " + palosCartasMesa[0] + "   |" + "       " + "| " + palosCartasMesa[1] + "   |" + "       " + "| " + palosCartasMesa[2] + "   |" + "       " + "| " + palosCartasMesa[3] + "   |" + "       " + "| " + palosCartasMesa[4] + "   |                      " + saldoJugadores[4]);
-        System.out.println("       |º º|       -----        -----                  | " + numerosCartasMesa[0] + " |" + "       " + "| " + numerosCartasMesa[1] + " |" + "       " + "| " + numerosCartasMesa[2] + " |" + "       " + "| " + numerosCartasMesa[3] + " |" + "       " + "| " + numerosCartasMesa[4] + " |                      |º º|      -----        -----");
-        System.out.println("       |---|      | "+(this.ronda==4?palosCartasJugadores[1][0]:"?")+"   |      | "+(this.ronda==4?palosCartasJugadores[1][1]:"?")+"   |                 |     |" + "       " + "|     |" + "       " + "|     |" + "       " + "|     |" + "       " + "|     |" + "                      |---|     | "+(this.ronda==4?palosCartasJugadores[4][0]:"?")+"   |      | "+(this.ronda==4?palosCartasJugadores[4][1]:"?")+"   |");
-        System.out.println("                  | "+(this.ronda==4?numerosCartasJugadores[1][0]:"?  ")+" |      | "+(this.ronda==4?numerosCartasJugadores[1][1]:"?  ")+" |                  ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " -----                                 | "+(this.ronda==4?numerosCartasJugadores[4][0]:"?  ")+" |      | "+(this.ronda==4?numerosCartasJugadores[4][1]:"?  ")+" |");
+        System.out.println("       " + balancePlayers[1] + "                                     | " + suitsCardsTable[0] + "   |" + "       " + "| " + suitsCardsTable[1] + "   |" + "       " + "| " + suitsCardsTable[2] + "   |" + "       " + "| " + suitsCardsTable[3] + "   |" + "       " + "| " + suitsCardsTable[4] + "   |                      " + balancePlayers[4]);
+        System.out.println("       |º º|       -----        -----                  | " + numbersCardsTable[0] + " |" + "       " + "| " + numbersCardsTable[1] + " |" + "       " + "| " + numbersCardsTable[2] + " |" + "       " + "| " + numbersCardsTable[3] + " |" + "       " + "| " + numbersCardsTable[4] + " |                      |º º|      -----        -----");
+        System.out.println("       |---|      | "+(this.round ==4?suitsCardsPlayer[1][0]:"?")+"   |      | "+(this.round ==4?suitsCardsPlayer[1][1]:"?")+"   |                 |     |" + "       " + "|     |" + "       " + "|     |" + "       " + "|     |" + "       " + "|     |" + "                      |---|     | "+(this.round ==4?suitsCardsPlayer[4][0]:"?")+"   |      | "+(this.round ==4?suitsCardsPlayer[4][1]:"?")+"   |");
+        System.out.println("                  | "+(this.round ==4?numbersCardsPlayer[1][0]:"?  ")+" |      | "+(this.round ==4?numbersCardsPlayer[1][1]:"?  ")+" |                  ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " ----- " + "       " + " -----                                 | "+(this.round ==4?numbersCardsPlayer[4][0]:"?  ")+" |      | "+(this.round ==4?numbersCardsPlayer[4][1]:"?  ")+" |");
         System.out.println("                   -----        -----                                                                                                                  -----        -----");
 
         System.out.println();
-        System.out.println("                                                              DINERO EN MESA: " + this.getTotalApuestas() + "€");
+        System.out.println("                                                              DINERO EN MESA: " + this.getTotalAllBets() + "€");
         System.out.println();
         System.out.println();
 
-        System.out.println("                                                                 " + usersJugadores[0]);
-        System.out.println("                                                              TU SALDO ES: " + saldoJugadores[0]);
+        System.out.println("                                                                 " + usernamePlayers[0]);
+        System.out.println("                                                              TU SALDO ES: " + balancePlayers[0]);
         System.out.println();
         System.out.println("                                                           _______________________");
         System.out.println("                                                          |                       |");
         System.out.println("                                                          |    __           __    |");
         System.out.println("                                                          |   |º |         |º |   |            ----------           ----------");
-        System.out.println("                                                          |    --           --    |           | "+palosCartasJugadores[0][0]+"        |         | "+palosCartasJugadores[0][1]+"        |");
-        System.out.println("                                                          |                       |           | "+numerosCartasJugadores[0][0]+"      |         | "+numerosCartasJugadores[0][1]+"      |");
+        System.out.println("                                                          |    --           --    |           | "+suitsCardsPlayer[0][0]+"        |         | "+suitsCardsPlayer[0][1]+"        |");
+        System.out.println("                                                          |                       |           | "+numbersCardsPlayer[0][0]+"      |         | "+numbersCardsPlayer[0][1]+"      |");
         System.out.println("                                                          |   \\              /    |           |          |         |          |");
         System.out.println("                                                          |     \\___________/     |           |          |         |          |");
         System.out.println("                                                          |                       |            ----------           ----------");
@@ -1164,17 +1153,17 @@ public class TableImpl implements Table, Cloneable {
 
     /**
      * Increase the bet in the round passed by parameter for the player passed by parameter
-     * @param posicionJugador int index of the user you want set bet
-     * @param rondaApuesta int index of the round you want set bet
-     * @param cantidad int amount to add
+     * @param indexPlayer int index of the user you want set bet
+     * @param roundBet int index of the round you want set bet
+     * @param quantity int amount to add
      * @return Return true if the bet was increased.
      *         Return false if the bet wasn't increased.
      */
 
-    private boolean incrementarApuesta(int posicionJugador, int rondaApuesta, int cantidad){
+    private boolean increaseBets(int indexPlayer, int roundBet, int quantity){
         boolean res = false;
-        if ((posicionJugador >= 0 && posicionJugador <= 4) && (rondaApuesta >= 0 && rondaApuesta <= 4)){
-            this.apuestasJugadores[posicionJugador][rondaApuesta] += cantidad;
+        if ((indexPlayer >= 0 && indexPlayer <= 4) && (roundBet >= 0 && roundBet <= 4)){
+            this.betsPlayers[indexPlayer][roundBet] += quantity;
             res = true;
         }
         return res;
@@ -1189,28 +1178,28 @@ public class TableImpl implements Table, Cloneable {
 
     //TODO Revisar
 
-    private boolean quedanJugadoresParaJugar(){
-        int cantidadJugadoresParaJugar = 0;
-        for (PlayerImpl jugador: this.getJugadores()) {
-            if ((jugador.getActive() && jugador.getBalance() > 0) ||  (jugador.getActive() && jugador.getBalance() == 0 && jugador.getAllInMenor())){
-                cantidadJugadoresParaJugar++;
+    private boolean remainPlayersToPlay(){
+        int amountPlayersToPlay = 0;
+        for (PlayerImpl player: this.getPlayers()) {
+            if ((player.getActive() && player.getBalance() > 0) ||  (player.getActive() && player.getBalance() == 0 && player.getAllInLower())){
+                amountPlayersToPlay++;
             }
         }
-        return cantidadJugadoresParaJugar > 1;
+        return amountPlayersToPlay > 1;
     }
 
     /**
      * @return
      */
 
-    private boolean quedanJugadoresSinAllIn(){
-        int quedanJugadoresSinAllIn = 0;
-        for (PlayerImpl jugador: this.getJugadores()) {
-            if (jugador.getActive() && jugador.getBalance() > 0 && !jugador.getAllInMenor()){
-                quedanJugadoresSinAllIn++;
+    private boolean remainPlayersWithoutAllIn(){
+        int amountPlayersWithoutAllIn = 0;
+        for (PlayerImpl player: this.getPlayers()) {
+            if (player.getActive() && player.getBalance() > 0 && !player.getAllInLower()){
+                amountPlayersWithoutAllIn++;
             }
         }
-        return quedanJugadoresSinAllIn > 1;
+        return amountPlayersWithoutAllIn > 1;
     }
 
     /**
@@ -1218,27 +1207,27 @@ public class TableImpl implements Table, Cloneable {
      */
 
     //TODO No funciona bien
-    private int obtenerApuestaMaxima(){
-        int apuestaMaxima = -1, apuestaMaximaComparable = -2;
+    private int getMaxBet(){
+        int maxBet = -1, maxBetComparable = -2;
         //Obtenemos la apuesta maxima que se puede hacer
-        for (PlayerImpl jugador: this.getJugadores()) {
-            if (jugador.getBalance() > apuestaMaximaComparable && jugador.getActive()){
-                apuestaMaximaComparable = jugador.getBalance();
+        for (PlayerImpl player: this.getPlayers()) {
+            if (player.getBalance() > maxBetComparable && player.getActive()){
+                maxBetComparable = player.getBalance();
             }
         }
 
         //Obtenemos la segunda apuesta maxima que se puede hacer
-        for (PlayerImpl jugador: this.getJugadores()) {
-            if (jugador.getBalance() > apuestaMaxima && jugador.getActive() && jugador.getBalance() < apuestaMaximaComparable){
-                apuestaMaxima = jugador.getBalance();
+        for (PlayerImpl player: this.getPlayers()) {
+            if (player.getBalance() > maxBet && player.getActive() && player.getBalance() < maxBetComparable){
+                maxBet = player.getBalance();
             }
         }
 
         //En el caso de que sea la primera partida y tengan todos los jugadores activos el mismo saldo se pone uno de ellos
-        if (apuestaMaxima == -1){
-            apuestaMaxima = apuestaMaximaComparable;
+        if (maxBet == -1){
+            maxBet = maxBetComparable;
         }
-        return apuestaMaxima;
+        return maxBet;
     }
 
 
@@ -1260,54 +1249,54 @@ public class TableImpl implements Table, Cloneable {
      *         Return false if there are less than 1 active players
      */
 
-    public boolean realizarApuestas(){
-        ManagementPlayerImpl gesJug = new ManagementPlayerImpl();
-        int apuestaMinima = 0, apuestaJugador, turnoJugadorParcial = this.turnoJugador, turnoJugadorFinal = this.turnoJugador, apuestaMaxima;
+    public boolean doBet(){
+        ManagementPlayerImpl managPlayer = new ManagementPlayerImpl();
+        int minBet = 0, betPlayer, turnPlayerPartial = this.playerTurn, turnPlayerFinal = this.playerTurn, maxBet;
         boolean quedanJugadoresParaJugar, quedanJugadoresSinAllIn;
         //Calcula cuantos jugadores se han "tirado"
-        quedanJugadoresParaJugar = this.quedanJugadoresParaJugar();
+        quedanJugadoresParaJugar = this.remainPlayersToPlay();
 
-        quedanJugadoresSinAllIn = this.quedanJugadoresSinAllIn();
+        quedanJugadoresSinAllIn = this.remainPlayersWithoutAllIn();
 
         //Si se han tirado 4 o mas jugadores no se realizan apuestas
         if (quedanJugadoresParaJugar && quedanJugadoresSinAllIn) {
 
             //Este bucle se utiliza para sacar el primer jugador que va a apostar
             //Ya que puede ocurrir que el delider se haya "tirado"
-            while (!this.jugadores[turnoJugadorParcial].getActive() && !this.jugadores[turnoJugadorParcial].getAllInMenor()){
-                turnoJugadorParcial = (turnoJugadorParcial == 4)?0:++turnoJugadorParcial;
+            while (!this.players[turnPlayerPartial].getActive() && !this.players[turnPlayerPartial].getAllInLower()){
+                turnPlayerPartial = (turnPlayerPartial == 4)?0:++turnPlayerPartial;
             }
 
             //Comprueba que el jugador este activo y tenga un saldo mayor a 0
-            if (this.getJugador(turnoJugadorParcial).getActive() && this.getSaldoJugador(turnoJugadorParcial) > 0 && !this.jugadores[turnoJugadorParcial].getAllInMenor()) {
-                apuestaMaxima = obtenerApuestaMaxima();
-                if(turnoJugadorParcial == 0){
-                    apuestaMinima = gesJug.leerYValidarApuesta(turnoJugadorParcial, apuestaMinima, apuestaMaxima,this);
+            if (this.getPlayer(turnPlayerPartial).getActive() && this.getBalancePlayer(turnPlayerPartial) > 0 && !this.players[turnPlayerPartial].getAllInLower()) {
+                maxBet = getMaxBet();
+                if(turnPlayerPartial == 0){
+                    minBet = managPlayer.leerYValidarApuesta(turnPlayerPartial, minBet, maxBet,this);
                 }else{
-                    apuestaMinima = gesJug.calcularApostarBot(turnoJugadorParcial, apuestaMinima, apuestaMaxima,this);
+                    minBet = managPlayer.calcularApostarBot(turnPlayerPartial, minBet, maxBet,this);
                 }
                 //Disminuir el saldo del jugador
-                this.jugadores[turnoJugadorParcial].disminuirDinero(apuestaMinima);
+                this.players[turnPlayerPartial].decreaseBalance(minBet);
                 //Anhadir apuesta a las apuestas de la partida
-                if (!(this.setApuestaJugador(turnoJugadorParcial,this.ronda,apuestaMinima))){
+                if (!(this.setBetPlayer(turnPlayerPartial,this.round,minBet))){
                     System.out.println("No se pudo añadir la apuesta al jugador");
                 }
             }
 
-            System.out.println("El jugador "+this.getUsuarioJugador(turnoJugadorParcial)+" ha iniciado apostando: "+apuestaMinima);
+            System.out.println("El jugador "+this.getUsernamePlayer(turnPlayerPartial)+" ha iniciado apostando: "+minBet);
 
             //Incrementar turno
-            turnoJugadorParcial = (turnoJugadorParcial == 4)?0:++turnoJugadorParcial;
+            turnPlayerPartial = (turnPlayerPartial == 4)?0:++turnPlayerPartial;
 
-            while(turnoJugadorParcial != turnoJugadorFinal){
+            while(turnPlayerPartial != turnPlayerFinal){
 
                 //Comprueba que el jugador este activo y tenga un saldo mayor a 0
-                if (this.getJugador(turnoJugadorParcial).getActive() && this.getSaldoJugador(turnoJugadorParcial) > 0 && !this.jugadores[turnoJugadorParcial].getAllInMenor()) {
-                    apuestaMaxima = obtenerApuestaMaxima();
-                    if(turnoJugadorParcial == 0){
-                        apuestaJugador = gesJug.leerYValidarApuesta(turnoJugadorParcial, apuestaMinima, apuestaMaxima,this);
+                if (this.getPlayer(turnPlayerPartial).getActive() && this.getBalancePlayer(turnPlayerPartial) > 0 && !this.players[turnPlayerPartial].getAllInLower()) {
+                    maxBet = getMaxBet();
+                    if(turnPlayerPartial == 0){
+                        betPlayer = managPlayer.leerYValidarApuesta(turnPlayerPartial, minBet, maxBet,this);
                     }else{
-                        apuestaJugador = gesJug.calcularApostarBot(turnoJugadorParcial, apuestaMinima, apuestaMaxima,this);
+                        betPlayer = managPlayer.calcularApostarBot(turnPlayerPartial, minBet, maxBet,this);
                     }
 
                     try {
@@ -1317,54 +1306,54 @@ public class TableImpl implements Table, Cloneable {
                     }
 
                     //Evaluar las apuestas
-                    if ((apuestaJugador+this.getApuestaJugador(turnoJugadorParcial,ronda)) == apuestaMinima){
-                        System.out.println("El jugador "+this.getUsuarioJugador(turnoJugadorParcial)+" ha igualado la apuesta a: "+(apuestaJugador+this.getApuestaJugador(turnoJugadorParcial,ronda)));
+                    if ((betPlayer+this.getBetPlayer(turnPlayerPartial, round)) == minBet){
+                        System.out.println("El jugador "+this.getUsernamePlayer(turnPlayerPartial)+" ha igualado la apuesta a: "+(betPlayer+this.getBetPlayer(turnPlayerPartial, round)));
                         //En el caso de que el jugador iguale la apuesta se le resta la apuesta realizada
-                        this.jugadores[turnoJugadorParcial].disminuirDinero(apuestaJugador);
+                        this.players[turnPlayerPartial].decreaseBalance(betPlayer);
                         //Se le incrementa la apuesta en la ronda
-                        if (!(this.incrementarApuesta(turnoJugadorParcial,ronda,apuestaJugador))){
+                        if (!(this.increaseBets(turnPlayerPartial, round,betPlayer))){
                             System.out.println("No se ha podido incrementar la apuesta");
                         }
 
                     }else{
-                        if ((apuestaJugador+this.getApuestaJugador(turnoJugadorParcial,ronda)) > apuestaMinima){
-                            System.out.println("El jugador "+this.getUsuarioJugador(turnoJugadorParcial)+" ha subido la apuesta a: "+(apuestaJugador+this.getApuestaJugador(turnoJugadorParcial,ronda)));
+                        if ((betPlayer+this.getBetPlayer(turnPlayerPartial, round)) > minBet){
+                            System.out.println("El jugador "+this.getUsernamePlayer(turnPlayerPartial)+" ha subido la apuesta a: "+(betPlayer+this.getBetPlayer(turnPlayerPartial, round)));
                             //En el caso de que el jugador suba la apuesta se le resta la apuesta realizada
-                            this.jugadores[turnoJugadorParcial].disminuirDinero(apuestaJugador);
+                            this.players[turnPlayerPartial].decreaseBalance(betPlayer);
                             //Se le incrementa la apuesta en la ronda
-                            if (!(this.incrementarApuesta(turnoJugadorParcial,ronda,apuestaJugador))){
+                            if (!(this.increaseBets(turnPlayerPartial, round,betPlayer))){
                                 System.out.println("No se ha podido incrementar la apuesta");
                             }
                             //Se guarda su posicion para volver a recorrer el array hasta que llegue a su posicion y asi poder tirar todos los jugadores
-                            turnoJugadorFinal = turnoJugadorParcial;
+                            turnPlayerFinal = turnPlayerPartial;
                             //Se coloca su apuesta como apuesta minima para los demas jugadores
-                            apuestaMinima = this.getApuestaJugador(turnoJugadorParcial,ronda);
+                            minBet = this.getBetPlayer(turnPlayerPartial, round);
                         }else{
                             //No hace falta comprobar que sea menor porque ya esta comprobado en los if de arriba
                             //En este caso se controla que el jugador haga all-in pero no llegue a la apuesta minima
-                            if (this.jugadores[turnoJugadorParcial].getBalance() == apuestaJugador){
-                                System.out.println("El jugador "+this.getUsuarioJugador(turnoJugadorParcial)+" ha hecho allIn sin llegar al minimo con: "+(apuestaJugador+this.getApuestaJugador(turnoJugadorParcial,ronda)));
-                                this.jugadores[turnoJugadorParcial].disminuirDinero(apuestaJugador);
+                            if (this.players[turnPlayerPartial].getBalance() == betPlayer){
+                                System.out.println("El jugador "+this.getUsernamePlayer(turnPlayerPartial)+" ha hecho allIn sin llegar al minimo con: "+(betPlayer+this.getBetPlayer(turnPlayerPartial, round)));
+                                this.players[turnPlayerPartial].decreaseBalance(betPlayer);
                                 //Coloca allInMejor en true para despues poder evaluar los ganadores
-                                this.jugadores[turnoJugadorParcial].setAllInMenor(true);
-                                if (!(this.incrementarApuesta(turnoJugadorParcial,ronda,apuestaJugador))){
+                                this.players[turnPlayerPartial].setAllInLower(true);
+                                if (!(this.increaseBets(turnPlayerPartial, round,betPlayer))){
                                     System.out.println("No se ha podido incrementar la apuesta");
                                 }
                             }else{  //Este es el caso de que el jugador se tire
-                                System.out.println("El jugador "+this.getUsuarioJugador(turnoJugadorParcial)+" se ha tirado.");
-                                this.jugadores[turnoJugadorParcial].setActive(false);
+                                System.out.println("El jugador "+this.getUsernamePlayer(turnPlayerPartial)+" se ha tirado.");
+                                this.players[turnPlayerPartial].setActive(false);
                             }
                         }
                     }
                 }
-                turnoJugadorParcial = (turnoJugadorParcial == 4)?0:++turnoJugadorParcial;
+                turnPlayerPartial = (turnPlayerPartial == 4)?0:++turnPlayerPartial;
 
             }
 
             //Calcula cuantos jugadores se han "tirado"
-            quedanJugadoresParaJugar = this.quedanJugadoresParaJugar();
+            quedanJugadoresParaJugar = this.remainPlayersToPlay();
         }
-        this.ronda++;
+        this.round++;
         return quedanJugadoresParaJugar;
     }
 
@@ -1376,29 +1365,29 @@ public class TableImpl implements Table, Cloneable {
     @SuppressWarnings("StringConcatenationInLoop")
     @Override
     public String toString(){
-        String stringBaraja = "",stringJugadores = "",stringCartasMesa = "", stringApuestas = "";
+        String stringDeskOfCards = "",stringPlayers = "",stringCardsTable = "", stringBets = "";
 
-        for (CardImpl carta : baraja) {
-            stringBaraja += carta.toString() + "\n";
+        for (CardImpl card : deckOfCards) {
+            stringDeskOfCards += card.toString() + "\n";
         }
 
-        for (PlayerImpl jugadore : jugadores) {
-            stringJugadores += jugadore.toString() + "\n";
+        for (PlayerImpl player : players) {
+            stringPlayers += player.toString() + "\n";
         }
 
-        for (CardImpl carta : cartasMesa) {
-            stringCartasMesa += carta.toString() + "\n";
+        for (CardImpl card : cardsOfTable) {
+            stringCardsTable += card.toString() + "\n";
         }
 
-        for (int i = 0; i<apuestasJugadores.length;i++){
-            stringApuestas += "Apuestas jugador "+i+": ";
-            for (int j = 0; j<apuestasJugadores[i].length;j++){
-                stringApuestas += apuestasJugadores[i][j]+",";
+        for (int i = 0; i< betsPlayers.length; i++){
+            stringBets += "Apuestas jugador "+i+": ";
+            for (int j = 0; j< betsPlayers[i].length; j++){
+                stringBets += betsPlayers[i][j]+",";
             }
-            stringApuestas += "\n";
+            stringBets += "\n";
         }
 
-        return stringBaraja+"\n"+stringJugadores+"\n"+stringCartasMesa+"\n"+stringApuestas;
+        return stringDeskOfCards+"\n"+stringPlayers+"\n"+stringCardsTable+"\n"+stringBets;
 
     }
 
@@ -1410,33 +1399,33 @@ public class TableImpl implements Table, Cloneable {
     @Override
     public int hashCode(){
         //noinspection ArrayHashCode
-        return this.getTotalApuestas()+this.getJugadores().hashCode();
+        return this.getTotalAllBets()+this.getPlayers().hashCode();
     }
 
     /**
      * This method return a Boolean value depending on whether the value of the table passed by parameter is equal to that compared
-     * @param objeto An object with which you want to check if they are the same
+     * @param object An object with which you want to check if they are the same
      * @return boolean its value depending on whether the value of the table passed by parameter is equal to that compared
      */
 
     @Override
-    public boolean equals(Object objeto){
-        boolean resul = false;
-        if (this == objeto){
-            resul = true;
+    public boolean equals(Object object){
+        boolean result = false;
+        if (this == object){
+            result = true;
         }else{
             //noinspection ConditionCoveredByFurtherCondition
-            if (objeto != null && objeto instanceof TableImpl){
-                TableImpl nueva = (TableImpl) objeto;
-                if (this.getBaraja()==nueva.getBaraja()
-                        && this.getCartasMesa()==nueva.getCartasMesa()
-                        && this.getJugadores()==nueva.getJugadores()
-                        && this.getApuestasJugadores()==nueva.getApuestasJugadores()){
-                    resul = true;
+            if (object != null && object instanceof TableImpl){
+                TableImpl newTable = (TableImpl) object;
+                if (this.getDeckOfCards()==newTable.getDeckOfCards()
+                        && this.getCardsOfTable()==newTable.getCardsOfTable()
+                        && this.getPlayers()==newTable.getPlayers()
+                        && this.getBetsPlayers()==newTable.getBetsPlayers()){
+                    result = true;
                 }
             }
         }
-        return resul;
+        return result;
     }
 
     /**
@@ -1447,27 +1436,27 @@ public class TableImpl implements Table, Cloneable {
     @SuppressWarnings("MethodDoesntCallSuperMethod")
     @Override
     public TableImpl clone() {
-        TableImpl mesa = new TableImpl();
-        for (int i = 0;i<mesa.baraja.length;i++){
-            mesa.baraja[i] = this.baraja[i].clone();
+        TableImpl table = new TableImpl();
+        for (int i = 0; i<table.deckOfCards.length; i++){
+            table.deckOfCards[i] = this.deckOfCards[i].clone();
         }
 
-        for (int i = 0;i<mesa.jugadores.length;i++){
-            mesa.jugadores[i] = this.jugadores[i].clone();
+        for (int i = 0; i<table.players.length; i++){
+            table.players[i] = this.players[i].clone();
         }
 
-        for (int i = 0;i<mesa.cartasMesa.length;i++){
-            mesa.cartasMesa[i] = this.cartasMesa[i].clone();
+        for (int i = 0; i<table.cardsOfTable.length; i++){
+            table.cardsOfTable[i] = this.cardsOfTable[i].clone();
         }
 
-        for (int i = 0;i<mesa.cartasMesa.length;i++){
-            System.arraycopy(this.apuestasJugadores[i],0,mesa.apuestasJugadores[i],0,5);
+        for (int i = 0; i<table.cardsOfTable.length; i++){
+            System.arraycopy(this.betsPlayers[i],0,table.betsPlayers[i],0,5);
         }
 
-        mesa.turnoJugador = this.turnoJugador;
-        mesa.ronda = this.ronda;
+        table.playerTurn = this.playerTurn;
+        table.round = this.round;
 
-        return mesa;
+        return table;
     }
 
 }
