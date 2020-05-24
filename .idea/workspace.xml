@@ -20,11 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9a3eddb-34fe-4dec-b858-4173adae43d5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Basics/PlayerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basics/PlayerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clases/Basics/TableImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basics/TableImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Managements/GestoraCartaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Managements/ManagementCardImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Managements/GestoraJugadorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Managements/ManagementPlayerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Managements/ManagementCardImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Managements/ManagementCardImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Managements/ManagementPlayerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Managements/ManagementPlayerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PokerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PokerMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tests/GestoraCardImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/GestoraCardImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/TableImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/TableImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -282,10 +285,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="476" y="272" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583840288529" />
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1590259096546">
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1590259840955">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590259096546" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590259840955" />
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586000833348">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
