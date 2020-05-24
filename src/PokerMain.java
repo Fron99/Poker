@@ -53,73 +53,71 @@ public class PokerMain {
 
     public static void main (String[] args){
 
-        ManagementPlayerImpl gesJugador = new ManagementPlayerImpl();
+        ManagementPlayerImpl managePlayer = new ManagementPlayerImpl();
         Validations validations = new Validations();
-        TableImpl mesa = new TableImpl();
-        int saldoInicialJugador, jugadoresConSaldo;
-        boolean quedanJugadores, seguirJugando;
+        TableImpl table = new TableImpl();
+        int balanceInitialPlayer, playerWithBalance;
+        boolean remainPlayers, continuePlay;
 
         //leerYValidarJugador*
         //añadirJugador
-        if (!mesa.setJugador(0,gesJugador.leerYValidarJugador())){  //El usuario que juega se colocara siempre en la posicion 0 y se comprueba que se haya introducido correctamente
-            System.out.println("No se ha podido anhadir");
-        }
-        saldoInicialJugador = mesa.getSaldoJugador(0);    //Solo se utiliza para informacion al usuario al finalizar el juego
+        table.setPlayer(0,managePlayer.leerYValidarJugador());  //El usuario que juega se colocara siempre en la posicion 0 y se comprueba que se haya introducido correctamente
+        balanceInitialPlayer = table.getBalancePlayer(0);    //Solo se utiliza para informacion al usuario al finalizar el juego
 
         //cargarBots
-        mesa.generarBots();  //Coloca en el array de jugadores jugadores con valores generados aleatoriamente
+        table.generateBots();  //Coloca en el array de jugadores jugadores con valores generados aleatoriamente
 
         do {
 
             //restaurarMesa
-            mesa.restaurarMesa();
+            table.restoreTable();
 
             //Actualizar variables para nuevo juego
-            quedanJugadores = true;
+            remainPlayers = true;
 
-            for (int contador = 0; contador < 4 && quedanJugadores; contador++){
+            for (int contador = 0; contador < 4 && remainPlayers; contador++){
                     //Se utiliza este if para que solo se generen una vez las 3 cartas despues de la primera jugada
                     if (contador == 1) {
                         //generarTresCartasMesa
-                        mesa.generarTresCartasMesa();
+                        table.generateThreeCardsToTable();
                     }
 
                     //Se utiliza este if para que solo se generen una carta a partir de la 2 apuesta
                     if (contador > 1) {
                         //generarCartaMesa
-                        mesa.generarCartaMesa();
+                        table.generateCardTable();
                     }
 
                     //mostrarPanelJuego
-                    mesa.mostrarPanelJuego();
+                    table.showPanelPlay();
 
                     //realizarApuestas
-                    quedanJugadores = mesa.realizarApuestas();     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
+                    remainPlayers = table.doBet();     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
             }
 
-            if (quedanJugadores){
+            if (remainPlayers){
                 //mostrarPanelJuego
-                mesa.mostrarPanelJuego();
+                table.showPanelPlay();
             }
 
             //ingresarSaldoGanadores
-            mesa.ingresarSaldoGanadoresYMostrarGanador();
+            table.depositBalanceWinnerAndShowWinner();
 
-            mesa.incrementarTurno();
+            table.increaseTurn();
 
-            jugadoresConSaldo = gesJugador.jugadoresConSaldo(mesa.getJugadores());
+            playerWithBalance = managePlayer.jugadoresConSaldo(table.getPlayers());
 
-            if (mesa.getSaldoJugador(0)>0 && jugadoresConSaldo > 0){
-                seguirJugando = validations.leerYValidarSeguirJugando();
+            if (table.getBalancePlayer(0)>0 && playerWithBalance > 0){
+                continuePlay = validations.leerYValidarSeguirJugando();
             }else{
                 System.out.println("El jugador no tiene más saldo");
-                seguirJugando = false;
+                continuePlay = false;
             }
 
-        }while (mesa.getSaldoJugador(0)>0
-                && seguirJugando);
+        }while (table.getBalancePlayer(0)>0
+                && continuePlay);
 
-        System.out.println("El jugador "+mesa.getUsuarioJugador(0)+" empezo con "+saldoInicialJugador+" y acabo con "+mesa.getSaldoJugador(0)+"");
+        System.out.println("El jugador "+table.getUsernamePlayer(0)+" empezo con "+balanceInitialPlayer+" y acabo con "+table.getBalancePlayer(0)+"");
 
     }
 
