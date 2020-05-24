@@ -29,11 +29,11 @@ public class TableImplTest {
 
         TableImpl mesa = new TableImpl(baraja,jugadores,cartasMesa);
 
-        assertArrayEquals(mesa.getBaraja(),baraja);
+        assertArrayEquals(mesa.getDeckOfCards(),baraja);
 
-        CardImpl[] barajacopia = mesa.getBaraja();
+        CardImpl[] barajacopia = mesa.getDeckOfCards();
         barajacopia[5] = new CardImpl('P',"A");
-        assertNotEquals(barajacopia[5],mesa.getBaraja()[5]);
+        assertNotEquals(barajacopia[5],mesa.getDeckOfCards()[5]);
 
 
     }
@@ -83,7 +83,7 @@ public class TableImplTest {
 
         TableImpl mesa = new TableImpl(baraja,jugadores,cartasMesa);
 
-        assertArrayEquals(mesa.getJugadores(),jugadores);
+        assertArrayEquals(mesa.getPlayers(),jugadores);
 
     }
 
@@ -150,9 +150,9 @@ public class TableImplTest {
         barajaTest[50] = new CardImpl('T', "Q");
         barajaTest[51] = new CardImpl('T', "K");
 
-        mesa.restaurarBaraja();
+        mesa.restoreDeskOfCards();
 
-        assertArrayEquals(mesa.getBaraja(),barajaTest);
+        assertArrayEquals(mesa.getDeckOfCards(),barajaTest);
 
     }
 

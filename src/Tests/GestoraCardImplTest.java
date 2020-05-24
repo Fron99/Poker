@@ -473,9 +473,9 @@ public class GestoraCardImplTest {
         CardImpl[] cartasJugadorP0 = {new CardImpl('P',"2"), new CardImpl('P',"A")};
         ManagementCardImpl ges = new ManagementCardImpl();
         TableImpl mesaP0 = new TableImpl();
-        mesaP0.setJugador(0, new PlayerImpl());
-        mesaP0.setCartasMesa(cartasP0);
-        mesaP0.setCartasJugador(0,cartasJugadorP0);
+        mesaP0.setPlayer(0, new PlayerImpl());
+        mesaP0.setCardsOfTable(cartasP0);
+        mesaP0.getCardsPlayer(0,cartasJugadorP0);
         int valor = ges.evaluarCartas(0,mesaP0);
         assertEquals(valor,310);
 
@@ -484,9 +484,9 @@ public class GestoraCardImplTest {
         CardImpl[] cartasP1 = {new CardImpl('P',"3"), new CardImpl('T',"5"), new CardImpl('P',"7"), new CardImpl('Z',"9"), new CardImpl('A',"A")};
         CardImpl[] cartasJugadorP1 = {new CardImpl('T',"2"), new CardImpl('P',"K")};
         TableImpl mesaP1 = new TableImpl();
-        mesaP1.setJugador(0, new PlayerImpl());
-        mesaP1.setCartasMesa(cartasP1);
-        mesaP1.setCartasJugador(0,cartasJugadorP1);
+        mesaP1.setPlayer(0, new PlayerImpl());
+        mesaP1.setCardsOfTable(cartasP1);
+        mesaP1.getCardsPlayer(0,cartasJugadorP1);
         valor = ges.evaluarCartas(0,mesaP1);
         assertEquals(valor,13);
 
@@ -495,9 +495,9 @@ public class GestoraCardImplTest {
         CardImpl[] cartasP2 = {new CardImpl(), new CardImpl(), new CardImpl(), new CardImpl(), new CardImpl()};
         CardImpl[] cartasJugadorP2 = {new CardImpl('T',"2"), new CardImpl('P',"3")};
         TableImpl mesaP2 = new TableImpl();
-        mesaP2.setJugador(0, new PlayerImpl());
-        mesaP2.setCartasMesa(cartasP2);
-        mesaP2.setCartasJugador(0,cartasJugadorP2);
+        mesaP2.setPlayer(0, new PlayerImpl());
+        mesaP2.setCardsOfTable(cartasP2);
+        mesaP2.getCardsPlayer(0,cartasJugadorP2);
         valor = ges.evaluarCartas(0,mesaP2);
         assertEquals(valor,2);
 
@@ -506,9 +506,9 @@ public class GestoraCardImplTest {
         CardImpl[] cartasP3 = {new CardImpl('T',"Q"), new CardImpl('T',"A"), new CardImpl('T',"K"), new CardImpl('T',"2"), new CardImpl('T',"8")};
         CardImpl[] cartasJugadorP3 = {new CardImpl('T',"J"), new CardImpl('T',"10")};
         TableImpl mesaP3 = new TableImpl();
-        mesaP3.setJugador(0, new PlayerImpl());
-        mesaP3.setCartasMesa(cartasP3);
-        mesaP3.setCartasJugador(0,cartasJugadorP3);
+        mesaP3.setPlayer(0, new PlayerImpl());
+        mesaP3.setCardsOfTable(cartasP3);
+        mesaP3.getCardsPlayer(0,cartasJugadorP3);
         valor = ges.evaluarCartas(0,mesaP3);
         assertEquals(valor,319);
 
@@ -521,41 +521,41 @@ public class GestoraCardImplTest {
         ManagementCardImpl ges = new ManagementCardImpl();
         TableImpl mesa = new TableImpl();
 
-        mesa.restaurarMesa();
-        mesa.generarCartasJugadores();
+        mesa.restoreTable();
+        mesa.generateCardsPlayers();
         mesa.generarTresCartasMesa();
         CardImpl[] cartas = ges.obtenerCartasAEvaluar(0,mesa);
         CardImpl[] cartasObtenidas = new CardImpl[5];
-        cartasObtenidas[0] = mesa.getCartaMesa(0);
-        cartasObtenidas[1] = mesa.getCartaMesa(1);
-        cartasObtenidas[2] = mesa.getCartaMesa(2);
-        cartasObtenidas[3] = mesa.getCartaJugador(0,0);
-        cartasObtenidas[4] = mesa.getCartaJugador(0,1);
+        cartasObtenidas[0] = mesa.getCardTable(0);
+        cartasObtenidas[1] = mesa.getCardTable(1);
+        cartasObtenidas[2] = mesa.getCardTable(2);
+        cartasObtenidas[3] = mesa.getCardPlayer(0,0);
+        cartasObtenidas[4] = mesa.getCardPlayer(0,1);
         assertArrayEquals(cartas,cartasObtenidas);
 
 
-        mesa.restaurarMesa();
-        mesa.generarCartasJugadores();
+        mesa.restoreTable();
+        mesa.generateCardsPlayers();
         mesa.generarTresCartasMesa();
         cartas = ges.obtenerCartasAEvaluar(0,mesa);
         cartasObtenidas = new CardImpl[5];
-        cartasObtenidas[0] = mesa.getCartaMesa(0);
-        cartasObtenidas[1] = mesa.getCartaMesa(1);
-        cartasObtenidas[2] = mesa.getCartaMesa(2);
-        cartasObtenidas[3] = mesa.getCartaJugador(0,0);
-        cartasObtenidas[4] = mesa.getCartaJugador(0,1);
+        cartasObtenidas[0] = mesa.getCardTable(0);
+        cartasObtenidas[1] = mesa.getCardTable(1);
+        cartasObtenidas[2] = mesa.getCardTable(2);
+        cartasObtenidas[3] = mesa.getCardPlayer(0,0);
+        cartasObtenidas[4] = mesa.getCardPlayer(0,1);
         assertArrayEquals(cartas,cartasObtenidas);
 
-        mesa.restaurarMesa();
-        mesa.generarCartasJugadores();
+        mesa.restoreTable();
+        mesa.generateCardsPlayers();
         mesa.generarTresCartasMesa();
         cartas = ges.obtenerCartasAEvaluar(0,mesa);
         cartasObtenidas = new CardImpl[5];
-        cartasObtenidas[0] = mesa.getCartaMesa(0);
-        cartasObtenidas[1] = mesa.getCartaMesa(1);
-        cartasObtenidas[2] = mesa.getCartaMesa(2);
-        cartasObtenidas[3] = mesa.getCartaJugador(0,0);
-        cartasObtenidas[4] = mesa.getCartaJugador(0,1);
+        cartasObtenidas[0] = mesa.getCardTable(0);
+        cartasObtenidas[1] = mesa.getCardTable(1);
+        cartasObtenidas[2] = mesa.getCardTable(2);
+        cartasObtenidas[3] = mesa.getCardPlayer(0,0);
+        cartasObtenidas[4] = mesa.getCardPlayer(0,1);
         assertArrayEquals(cartas,cartasObtenidas);
 
 
