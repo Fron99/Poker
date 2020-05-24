@@ -799,8 +799,8 @@ public class ManagementCardImpl {
         CardImpl[] cartasTotales;
 
         int cantidadCartas = 0;
-        CardImpl[] cartasMesa = mesa.getCartasMesa();
-        CardImpl[] cartasJugador = mesa.getCartasJugador(jugador);
+        CardImpl[] cartasMesa = mesa.getCardsOfTable();
+        CardImpl[] cartasJugador = mesa.getCardsPlayer(jugador);
 
         //Obtiene la cantidad de cartas que hay en la mesa con valor distinto al de defecto
         for (int i = 0; i<cartasMesa.length&&(cartasMesa[i].getSuit()!='D'); i++){
