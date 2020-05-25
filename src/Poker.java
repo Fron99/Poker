@@ -49,9 +49,9 @@ import Clases.Basics.TableImpl;
 import Clases.Managements.ManagementPlayerImpl;
 import Validaciones.Validations;
 
-public class PokerMain {
+public class Poker {
 
-    public static void main (String[] args){
+    public void playGame(){
 
         ManagementPlayerImpl managePlayer = new ManagementPlayerImpl();
         Validations validations = new Validations();
@@ -108,7 +108,7 @@ public class PokerMain {
             playerWithBalance = managePlayer.jugadoresConSaldo(table.getPlayers());
 
             if (table.getBalancePlayer(0)>0 && playerWithBalance > 0){
-                continuePlay = validations.leerYValidarSeguirJugando();
+                continuePlay = validations.readAndValidateContinuePlaying();
             }else{
                 System.out.println("El jugador no tiene más saldo");
                 continuePlay = false;
