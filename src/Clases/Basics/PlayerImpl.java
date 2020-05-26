@@ -46,13 +46,14 @@ package Clases.Basics;
 
 import Clases.Interfaces.Player;
 
+import java.util.GregorianCalendar;
+
 public class PlayerImpl implements Player, Cloneable {
 
-    private String username;
+    private String username, password, name, surname, gender, email, IBAN;
+    private GregorianCalendar birthday;
     private int balance;
     private CardImpl[] cards;
-    private boolean active;
-    private boolean allInLower;
 
     /**
      * This constructor places the default attributes
@@ -60,13 +61,18 @@ public class PlayerImpl implements Player, Cloneable {
 
     public PlayerImpl(){
         this.username = "DEFAULT";
+        this.password = "DEFAULT";
+        this.name = "DEFAULT";
+        this.surname = "DEFAULT";
+        this.gender = "NONE";
+        this.email = "DEFAULT@DEFAULT.COM";
+        this.IBAN = "DEFAULT";
+        this.birthday = new GregorianCalendar();
         this.balance = 0;
         this.cards = new CardImpl[2];
         for (int i = 0; i<this.cards.length; i++){
             this.cards[i] = new CardImpl();
         }
-        this.active = true;
-        this.allInLower = false;
     }
 
     /**
@@ -77,13 +83,18 @@ public class PlayerImpl implements Player, Cloneable {
 
     public PlayerImpl(String username, int balance){
         this.username = username;
+        this.password = "DEFAULT";
+        this.name = "DEFAULT";
+        this.surname = "DEFAULT";
+        this.gender = "NONE";
+        this.email = "DEFAULT@DEFAULT.COM";
+        this.IBAN = "DEFAULT";
+        this.birthday = new GregorianCalendar();
         this.balance = balance;
         this.cards = new CardImpl[2];
         for (int i = 0; i<this.cards.length; i++){
             this.cards[i] = new CardImpl();
         }
-        this.active = true;
-        this.allInLower = false;
     }
 
     /**
@@ -99,8 +110,6 @@ public class PlayerImpl implements Player, Cloneable {
         this.username = username;
         this.balance = balance;
         this.cards = cards;
-        this.active = true;
-        this.allInLower = false;
     }
 
     /**
@@ -112,8 +121,6 @@ public class PlayerImpl implements Player, Cloneable {
         this.username = other.getUsername();
         this.balance = other.getBalance();
         this.cards = other.getCards();
-        this.active = other.getActive();
-        this.allInLower = other.getAllInLower();
     }
 
     /**
@@ -182,42 +189,6 @@ public class PlayerImpl implements Player, Cloneable {
     }
 
     /**
-     * Return value of attribute "active"
-     * @return boolean with value of attribute "active"
-     */
-
-    public boolean getActive(){
-        return this.active;
-    }
-
-    /**
-     * Set value passed by parameter in attribute "active"
-     * @param active new value of attribute "active"
-     */
-
-    public void setActive(boolean active){
-        this.active = active;
-    }
-
-    /**
-     * Return value of attribute "allInLower"
-     * @return boolean with value of attribute "allInLower"
-     */
-
-    public boolean getAllInLower(){
-        return this.allInLower;
-    }
-
-    /**
-     * Set value passed by parameter in attribute "allInLower"
-     * @param allInLower new value of attribute "allInLower"
-     */
-
-    public void setAllInLower(boolean allInLower){
-        this.allInLower = allInLower;
-    }
-
-    /**
      * This method decrease value of attribute balance
      * @param balance Balance to decrease
      */
@@ -240,9 +211,10 @@ public class PlayerImpl implements Player, Cloneable {
      * @return String with attributes of the player
      */
 
+    //TODO TERMINAR
     @Override
     public String toString(){
-        return "Usuario: "+ username +", Saldo: "+ balance +", Activo: "+ active +", AllInMenor: "+ allInLower;
+        return "Usuario: "+ username +", Saldo: "+ balance;
     }
 
     /**
@@ -270,8 +242,7 @@ public class PlayerImpl implements Player, Cloneable {
                 PlayerImpl newPlayer = (PlayerImpl) object;
                 if (this.getUsername().equals(newPlayer.getUsername())
                         && this.getCards()==newPlayer.getCards()
-                        && this.getBalance()==newPlayer.getBalance()
-                        && this.getActive()==newPlayer.getActive()){
+                        && this.getBalance()==newPlayer.getBalance()){
                     result = true;
                 }
             }
@@ -292,8 +263,6 @@ public class PlayerImpl implements Player, Cloneable {
         for (int i = 0; i< cards.length; i++){
             player.cards[i] = this.cards[i].clone();
         }
-        player.active = this.active;
-        player.allInLower = this.allInLower;
         return player;
     }
 
