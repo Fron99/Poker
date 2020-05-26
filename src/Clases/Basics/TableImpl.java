@@ -91,6 +91,7 @@ import Clases.Managements.ManagementCardImpl;
 import Clases.Managements.ManagementPlayerImpl;
 import Clases.Interfaces.Table;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class TableImpl implements Table, Cloneable {
@@ -99,6 +100,8 @@ public class TableImpl implements Table, Cloneable {
     private PlayerImpl[] players;
     private CardImpl[] cardsOfTable;
     private int[][] betsPlayers;
+    private boolean[] playerActive;
+    private boolean[] playerAllInLower;
     private int playerTurn;
     private int round;
 
@@ -121,6 +124,13 @@ public class TableImpl implements Table, Cloneable {
             this.cardsOfTable[i] = new CardImpl();
         }
         this.betsPlayers = new int[5][4];
+
+        this.playerActive = new boolean[5];
+        Arrays.fill(this.playerActive, false);
+
+        this.playerAllInLower = new boolean[5];
+        Arrays.fill(this.playerAllInLower, false);
+
         this.playerTurn = random.nextInt(5);
         this.round = 0;
     }
@@ -166,9 +176,18 @@ public class TableImpl implements Table, Cloneable {
         }
 
         this.betsPlayers = new int[5][4];
+
+        this.playerActive = new boolean[5];
+        Arrays.fill(this.playerActive, false);
+
+        this.playerAllInLower = new boolean[5];
+        Arrays.fill(this.playerAllInLower, false);
+
         this.playerTurn = random.nextInt(5);
         this.round = 0;
     }
+
+    //TODO
 
     /**
      * This constructor put the attributes with the values passed by parameter.
@@ -182,7 +201,7 @@ public class TableImpl implements Table, Cloneable {
      * @param betsPlayers array of int
      */
 
-    public TableImpl(CardImpl[] deskOfCards, PlayerImpl[] players, CardImpl[] cardsOfTable, int[][] betsPlayers){
+    public TableImpl(CardImpl[] deskOfCards, PlayerImpl[] players, CardImpl[] cardsOfTable, int[][] betsPlayers, boolean[] playerActive, boolean[] playerAllInLower){
         Random random = new Random();
         this.deckOfCards = new CardImpl[52];
         if (deskOfCards.length == 52){
@@ -218,6 +237,20 @@ public class TableImpl implements Table, Cloneable {
             }
         }
 
+        this.playerActive = new boolean[5];
+        if (playerActive.length == 5){
+            System.arraycopy(playerActive,0,this.playerActive,0,playerActive.length);
+        }else{
+            Arrays.fill(this.playerActive, false);
+        }
+
+        this.playerAllInLower = new boolean[5];
+        if (playerAllInLower.length == 5){
+            System.arraycopy(playerAllInLower,0,this.playerAllInLower,0,playerAllInLower.length);
+        }else{
+            Arrays.fill(this.playerAllInLower, false);
+        }
+
         this.playerTurn = random.nextInt(5);
         this.round = 0;
     }
@@ -241,6 +274,9 @@ public class TableImpl implements Table, Cloneable {
         for (int i = 0; i< betsPlayers.length; i++){
             System.arraycopy(other.betsPlayers[i],0,this.betsPlayers[i],0, betsPlayers.length);
         }
+
+        this.cardsOfTable = new CardImpl[5];
+        System.arraycopy(other.cardsOfTable,0,this.cardsOfTable,0,other.cardsOfTable.length);
 
         this.playerTurn = other.playerTurn;
         this.round = other.round;
@@ -365,6 +401,8 @@ public class TableImpl implements Table, Cloneable {
         }
         return res;
     }
+
+    //TODO AÑADIR NUEVOS METODOS DE PLAYER
 
     /**
      * Get the "username" of the player. The allowed range of the index is 0 to 4.
@@ -496,7 +534,7 @@ public class TableImpl implements Table, Cloneable {
      */
 
     public int getActivePlayer(int indexPlayer){
-        return (indexPlayer >= 0 && indexPlayer <= 4) ? (this.getPlayer(indexPlayer).getActive()) ? 1 : 0 : -1;
+        return (indexPlayer >= 0 && indexPlayer <= 4) ? (this.playerActive[indexPlayer]) ? 1 : 0 : -1;
     }
 
     /**
@@ -778,8 +816,8 @@ public class TableImpl implements Table, Cloneable {
      */
 
     private void setPlayersActive(){
-        for(PlayerImpl player: this.players){
-            player.setActive(true);
+        for (int i = 0; i < playerActive.length; i++){
+            this.playerActive[i] = true;
         }
     }
 
@@ -961,7 +999,7 @@ public class TableImpl implements Table, Cloneable {
         do{
             //Obtener ganador
             for (int i = 0; i< this.players.length; i++){
-                if (this.players[i].getActive()) {
+                if (this.playerActive[i]) {
                     puntosJugadorCalculados = gestoraCarta.evaluarCartas(i, this);
                     //Se utiliza puntosAnteriorGanador
                     if (puntosAnteriorGanador > puntosJugadorCalculados
@@ -973,7 +1011,7 @@ public class TableImpl implements Table, Cloneable {
                 }
             }
 
-            if (!this.players[indiceGanador].getAllInLower()){
+            if (!this.playerAllInLower[indiceGanador]){
                 //Incrementa el saldo total del jugador con toodo el dinero de la mesa
                 this.players[indiceGanador].increaseBalance(this.getTotalAllBets());
 
@@ -1180,8 +1218,8 @@ public class TableImpl implements Table, Cloneable {
 
     private boolean remainPlayersToPlay(){
         int amountPlayersToPlay = 0;
-        for (PlayerImpl player: this.getPlayers()) {
-            if ((player.getActive() && player.getBalance() > 0) ||  (player.getActive() && player.getBalance() == 0 && player.getAllInLower())){
+        for (int i = 0; i < this.players.length; i++){
+            if ((this.playerActive[i] && this.players[i].getBalance() > 0) ||  (this.playerActive[i] && this.players[i].getBalance() == 0 && this.playerAllInLower[i])){
                 amountPlayersToPlay++;
             }
         }
@@ -1194,8 +1232,8 @@ public class TableImpl implements Table, Cloneable {
 
     private boolean remainPlayersWithoutAllIn(){
         int amountPlayersWithoutAllIn = 0;
-        for (PlayerImpl player: this.getPlayers()) {
-            if (player.getActive() && player.getBalance() > 0 && !player.getAllInLower()){
+        for (int i = 0; i < this.players.length; i++){
+            if (this.playerActive[i] && this.players[i].getBalance() > 0 && !this.playerAllInLower[i]){
                 amountPlayersWithoutAllIn++;
             }
         }
@@ -1210,16 +1248,16 @@ public class TableImpl implements Table, Cloneable {
     private int getMaxBet(){
         int maxBet = -1, maxBetComparable = -2;
         //Obtenemos la apuesta maxima que se puede hacer
-        for (PlayerImpl player: this.getPlayers()) {
-            if (player.getBalance() > maxBetComparable && player.getActive()){
-                maxBetComparable = player.getBalance();
+        for (int i = 0; i < this.players.length; i++){
+            if (this.players[i].getBalance() > maxBetComparable && this.playerActive[i]){
+                maxBetComparable = this.players[i].getBalance();
             }
         }
 
         //Obtenemos la segunda apuesta maxima que se puede hacer
-        for (PlayerImpl player: this.getPlayers()) {
-            if (player.getBalance() > maxBet && player.getActive() && player.getBalance() < maxBetComparable){
-                maxBet = player.getBalance();
+        for (int i = 0; i < this.players.length; i++){
+            if (this.players[i].getBalance() > maxBet && this.playerActive[i] && this.players[i].getBalance() < maxBetComparable){
+                maxBet = this.players[i].getBalance();
             }
         }
 
@@ -1265,12 +1303,12 @@ public class TableImpl implements Table, Cloneable {
 
             //Este bucle se utiliza para sacar el primer jugador que va a apostar
             //Ya que puede ocurrir que el delider se haya "tirado"
-            while (!this.players[turnPlayerPartial].getActive() && !this.players[turnPlayerPartial].getAllInLower()){
+            while (!playerActive[turnPlayerPartial] && !playerAllInLower[turnPlayerPartial]){
                 turnPlayerPartial = (turnPlayerPartial == 4)?0:++turnPlayerPartial;
             }
 
             //Comprueba que el jugador este activo y tenga un saldo mayor a 0
-            if (this.getPlayer(turnPlayerPartial).getActive() && this.getBalancePlayer(turnPlayerPartial) > 0 && !this.players[turnPlayerPartial].getAllInLower()) {
+            if (playerActive[turnPlayerPartial] && this.getBalancePlayer(turnPlayerPartial) > 0 && !playerAllInLower[turnPlayerPartial]) {
                 maxBet = getMaxBet();
                 if(turnPlayerPartial == 0){
                     minBet = managPlayer.leerYValidarApuesta(turnPlayerPartial, minBet, maxBet,this);
@@ -1293,7 +1331,7 @@ public class TableImpl implements Table, Cloneable {
             while(turnPlayerPartial != turnPlayerFinal){
 
                 //Comprueba que el jugador este activo y tenga un saldo mayor a 0
-                if (this.getPlayer(turnPlayerPartial).getActive() && this.getBalancePlayer(turnPlayerPartial) > 0 && !this.players[turnPlayerPartial].getAllInLower()) {
+                if (playerActive[turnPlayerPartial] && this.getBalancePlayer(turnPlayerPartial) > 0 && !playerAllInLower[turnPlayerPartial]) {
                     maxBet = getMaxBet();
                     if(turnPlayerPartial == 0){
                         betPlayer = managPlayer.leerYValidarApuesta(turnPlayerPartial, minBet, maxBet,this);
@@ -1337,13 +1375,14 @@ public class TableImpl implements Table, Cloneable {
                                 System.out.println("El jugador "+this.getUsernamePlayer(turnPlayerPartial)+" ha hecho allIn sin llegar al minimo con: "+(betPlayer+this.getBetPlayer(turnPlayerPartial, round)));
                                 this.players[turnPlayerPartial].decreaseBalance(betPlayer);
                                 //Coloca allInMejor en true para despues poder evaluar los ganadores
-                                this.players[turnPlayerPartial].setAllInLower(true);
+                                playerAllInLower[turnPlayerPartial] = true;
                                 if (!(this.increaseBets(turnPlayerPartial, round,betPlayer))){
                                     System.out.println("No se ha podido incrementar la apuesta");
                                 }
                             }else{  //Este es el caso de que el jugador se tire
                                 System.out.println("El jugador "+this.getUsernamePlayer(turnPlayerPartial)+" se ha tirado.");
-                                this.players[turnPlayerPartial].setActive(false);
+                                //this.players[turnPlayerPartial].setActive(false); //TODO REVISAR ESTO CREO QUE ES TRUE Y NO FALSE
+                                playerActive[turnPlayerPartial] = true;
                             }
                         }
                     }
