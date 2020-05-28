@@ -106,10 +106,22 @@ public class PlayerImpl implements Player, Cloneable {
 
     //TODO Comprobar = al asignar cartas y controlar tamaño
 
-    public PlayerImpl(String username, int balance, CardImpl[] cards){
+    public PlayerImpl(String username, String password, String name, String surname, String gender, String email, String IBAN, GregorianCalendar birthday, int balance, CardImpl[] cards){
         this.username = username;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.gender = gender;
+        this.email = email;
+        this.IBAN = IBAN;
+        this.birthday = (GregorianCalendar) birthday.clone();
         this.balance = balance;
-        this.cards = cards;
+        if (cards.length < 3){
+            this.cards = cards;
+        }else{
+            this.cards = new CardImpl[2];
+        }
+
     }
 
     /**
