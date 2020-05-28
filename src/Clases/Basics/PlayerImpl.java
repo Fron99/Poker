@@ -104,8 +104,6 @@ public class PlayerImpl implements Player, Cloneable {
      * @param cards array of letters
      */
 
-    //TODO Comprobar = al asignar cartas y controlar tamaño
-
     public PlayerImpl(String username, String password, String name, String surname, String gender, String email, String IBAN, GregorianCalendar birthday, int balance, CardImpl[] cards){
         this.username = username;
         this.password = password;
@@ -116,7 +114,7 @@ public class PlayerImpl implements Player, Cloneable {
         this.IBAN = IBAN;
         this.birthday = (GregorianCalendar) birthday.clone();
         this.balance = balance;
-        if (cards.length < 3){
+        if (cards.length < 3 && cards.length > 0){
             this.cards = cards;
         }else{
             this.cards = new CardImpl[2];
@@ -145,8 +143,128 @@ public class PlayerImpl implements Player, Cloneable {
     }
 
     /**
-     * Return value of attribute "saldo"
-     * @return int with value of attribute "saldo"
+     * @param username
+     */
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * @return
+     */
+
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param password
+     */
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * @return
+     */
+
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name
+     */
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return
+     */
+
+    public String getSurname() {
+        return surname;
+    }
+
+    /**
+     * @param surname
+     */
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    /**
+     * @return
+     */
+
+    public String getGender() {
+        return gender;
+    }
+
+    /**
+     * @param gender
+     */
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    /**
+     * @return
+     */
+
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email
+     */
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @return
+     */
+
+    public String getIBAN() {
+        return IBAN;
+    }
+
+    /**
+     * @param IBAN
+     */
+
+    public void setIBAN(String IBAN) {
+        this.IBAN = IBAN;
+    }
+
+    /**
+     * @return
+     */
+
+    public GregorianCalendar getBirthday() {
+        return (GregorianCalendar) birthday.clone();
+    }
+
+    /**
+     * @param birthday
+     */
+
+    public void setBirthday(GregorianCalendar birthday) {
+        this.birthday = birthday;
+    }
+
+    /**
+     * Return value of attribute "balance"
+     * @return int with value of attribute "balance"
      */
 
     public int getBalance(){
@@ -154,8 +272,8 @@ public class PlayerImpl implements Player, Cloneable {
     }
 
     /**
-     * Set value passed by parameter in attribute "saldo"
-     * @param balance new value of attribute "saldo"
+     * Set value passed by parameter in attribute "balance"
+     * @param balance new value of attribute "balance"
      */
 
     public void setBalance(int balance){
@@ -163,8 +281,8 @@ public class PlayerImpl implements Player, Cloneable {
     }
 
     /**
-     * Return the array of the value of the "cartas" attribute
-     * @return CartaImpl[] array of the value of the "cartas" attribute
+     * Return the array of the value of the "cards" attribute
+     * @return CartaImpl[] array of the value of the "cards" attribute
      */
 
     public CardImpl[] getCards(){
@@ -172,8 +290,8 @@ public class PlayerImpl implements Player, Cloneable {
     }
 
     /**
-     * Set value passed by parameter in attribute "cartas"
-     * @param cards new value of attribute "cartas"
+     * Set value passed by parameter in attribute "cards"
+     * @param cards new value of attribute "cards"
      */
 
     public void setCards(CardImpl[] cards){
@@ -181,8 +299,8 @@ public class PlayerImpl implements Player, Cloneable {
     }
 
     /**
-     * This method assign a carte passed by parameter in index of array
-     * @param index index of where to assign the carte
+     * This method assign a cart passed by parameter in index of array
+     * @param index index of where to assign the cart
      * @param card carte to assign in array
      */
 
