@@ -46,8 +46,10 @@ package Clases.Basics;
 
 import Clases.Interfaces.Player;
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+@SuppressWarnings("unused")
 public class PlayerImpl implements Player, Cloneable {
 
     private String username, password, name, surname, gender, email, IBAN;
@@ -66,7 +68,7 @@ public class PlayerImpl implements Player, Cloneable {
         this.surname = "DEFAULT";
         this.gender = "NONE";
         this.email = "DEFAULT@DEFAULT.COM";
-        this.IBAN = "DEFAULT";
+        this.IBAN = "ES0000000000000000000000";
         this.birthday = new GregorianCalendar();
         this.balance = 0;
         this.cards = new CardImpl[2];
@@ -88,7 +90,7 @@ public class PlayerImpl implements Player, Cloneable {
         this.surname = "DEFAULT";
         this.gender = "NONE";
         this.email = "DEFAULT@DEFAULT.COM";
-        this.IBAN = "DEFAULT";
+        this.IBAN = "ES0000000000000000000000";
         this.birthday = new GregorianCalendar();
         this.balance = balance;
         this.cards = new CardImpl[2];
@@ -119,7 +121,6 @@ public class PlayerImpl implements Player, Cloneable {
         }else{
             this.cards = new CardImpl[2];
         }
-
     }
 
     /**
@@ -128,14 +129,21 @@ public class PlayerImpl implements Player, Cloneable {
      */
 
     public PlayerImpl(PlayerImpl other){
-        this.username = other.getUsername();
-        this.balance = other.getBalance();
-        this.cards = other.getCards();
+        this.username = other.username;
+        this.password = other.password;
+        this.name = other.name;
+        this.surname = other.surname;
+        this.gender = other.gender;
+        this.email = other.email;
+        this.IBAN = other.IBAN;
+        this.birthday = (GregorianCalendar) other.birthday.clone();
+        this.balance = other.balance;
+        this.cards = other.cards;
     }
 
     /**
-     * Return value of attribute "usuario"
-     * @return String with value of attribute "usuario"
+     * Return value of attribute "username"
+     * @return String with value of attribute "username"
      */
 
     public String getUsername(){
@@ -143,7 +151,8 @@ public class PlayerImpl implements Player, Cloneable {
     }
 
     /**
-     * @param username
+     * Change value of attribute "username" whit value passed by parameter
+     * @param username New value for attribute "username"
      */
 
     public void setUsername(String username) {
@@ -151,7 +160,8 @@ public class PlayerImpl implements Player, Cloneable {
     }
 
     /**
-     * @return
+     * Return value of attribute "password"
+     * @return String with value of attribute "password"
      */
 
     public String getPassword() {
@@ -159,7 +169,8 @@ public class PlayerImpl implements Player, Cloneable {
     }
 
     /**
-     * @param password
+     * Change value of attribute "password" whit value passed by parameter
+     * @param password New value for attribute "password"
      */
 
     public void setPassword(String password) {
@@ -167,7 +178,8 @@ public class PlayerImpl implements Player, Cloneable {
     }
 
     /**
-     * @return
+     * Return value of attribute "name"
+     * @return String with value of attribute "name"
      */
 
     public String getName() {
@@ -175,7 +187,8 @@ public class PlayerImpl implements Player, Cloneable {
     }
 
     /**
-     * @param name
+     * Change value of attribute "name" whit value passed by parameter
+     * @param name New value for attribute "name"
      */
 
     public void setName(String name) {
@@ -183,7 +196,8 @@ public class PlayerImpl implements Player, Cloneable {
     }
 
     /**
-     * @return
+     * Return value of attribute "surname"
+     * @return String with value of attribute "surname"
      */
 
     public String getSurname() {
@@ -191,7 +205,8 @@ public class PlayerImpl implements Player, Cloneable {
     }
 
     /**
-     * @param surname
+     * Change value of attribute "surname" whit value passed by parameter
+     * @param surname New value for attribute "surname"
      */
 
     public void setSurname(String surname) {
@@ -199,7 +214,8 @@ public class PlayerImpl implements Player, Cloneable {
     }
 
     /**
-     * @return
+     * Return value of attribute "gender"
+     * @return String with value of attribute "gender"
      */
 
     public String getGender() {
@@ -207,7 +223,8 @@ public class PlayerImpl implements Player, Cloneable {
     }
 
     /**
-     * @param gender
+     * Change value of attribute "gender" whit value passed by parameter
+     * @param gender New value for attribute "gender"
      */
 
     public void setGender(String gender) {
@@ -215,7 +232,8 @@ public class PlayerImpl implements Player, Cloneable {
     }
 
     /**
-     * @return
+     * Return value of attribute "email"
+     * @return String with value of attribute "email"
      */
 
     public String getEmail() {
@@ -223,7 +241,8 @@ public class PlayerImpl implements Player, Cloneable {
     }
 
     /**
-     * @param email
+     * Change value of attribute "email" whit value passed by parameter
+     * @param email New value for attribute "email"
      */
 
     public void setEmail(String email) {
@@ -231,7 +250,8 @@ public class PlayerImpl implements Player, Cloneable {
     }
 
     /**
-     * @return
+     * Return value of attribute "IBAN"
+     * @return String with value of attribute "IBAN"
      */
 
     public String getIBAN() {
@@ -239,7 +259,8 @@ public class PlayerImpl implements Player, Cloneable {
     }
 
     /**
-     * @param IBAN
+     * Change value of attribute "IBAN" whit value passed by parameter
+     * @param IBAN New value for attribute "IBAN"
      */
 
     public void setIBAN(String IBAN) {
@@ -247,7 +268,8 @@ public class PlayerImpl implements Player, Cloneable {
     }
 
     /**
-     * @return
+     * Return value of attribute "birthday"
+     * @return GregorianCalendar with value of attribute "birthday"
      */
 
     public GregorianCalendar getBirthday() {
@@ -255,7 +277,8 @@ public class PlayerImpl implements Player, Cloneable {
     }
 
     /**
-     * @param birthday
+     * Change value of attribute "birthday" whit value passed by parameter
+     * @param birthday New value for attribute "birthday"
      */
 
     public void setBirthday(GregorianCalendar birthday) {
@@ -341,10 +364,14 @@ public class PlayerImpl implements Player, Cloneable {
      * @return String with attributes of the player
      */
 
-    //TODO TERMINAR
+
     @Override
     public String toString(){
-        return "Usuario: "+ username +", Saldo: "+ balance;
+
+        return "Username: "+ username +", Name: "+ name +", Surname: "+ surname +", Gender: "+ gender +"\n" +"Birthday: "+ birthday.get(Calendar.DAY_OF_MONTH)+"/"+birthday.get(Calendar.MONTH)+"/"+birthday.get(Calendar.YEAR)+
+                ", Email: "+ email +", IBAN: "+ IBAN +", Saldo: "+ balance+"\n"+
+                "First card: "+cards[0].toString()+", Second card: "+cards[1].toString();
+
     }
 
     /**
@@ -368,7 +395,7 @@ public class PlayerImpl implements Player, Cloneable {
         if (this == object){
             result = true;
         }else{
-            if (object != null && object instanceof PlayerImpl){
+            if (object instanceof PlayerImpl){
                 PlayerImpl newPlayer = (PlayerImpl) object;
                 if (this.getUsername().equals(newPlayer.getUsername())
                         && this.getCards()==newPlayer.getCards()
@@ -387,13 +414,17 @@ public class PlayerImpl implements Player, Cloneable {
 
     @Override
     public PlayerImpl clone() {
-        PlayerImpl player = new PlayerImpl();
-        player.username = this.username;
-        player.balance = this.balance;
-        for (int i = 0; i< cards.length; i++){
-            player.cards[i] = this.cards[i].clone();
+        PlayerImpl clone = null;
+        try {
+            clone = (PlayerImpl) super.clone();
+            clone.birthday = (GregorianCalendar) this.birthday.clone();
+            for (int i = 0; i< cards.length; i++){
+                clone.cards[i] = this.cards[i].clone();
+            }
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
         }
-        return player;
+        return clone;
     }
 
 }
