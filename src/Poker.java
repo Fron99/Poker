@@ -45,9 +45,9 @@
  *
  */
 
-import Clases.Basics.TableImpl;
-import Clases.Managements.ManagementPlayerImpl;
-import Validaciones.Validations;
+import classes.basics.TableImpl;
+import classes.managements.ManagementPlayerImpl;
+import validations.Validations;
 
 public class Poker {
 

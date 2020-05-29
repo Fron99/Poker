@@ -1,8 +1,8 @@
-package Clases.Managements;
+package classes.managements;
 
-import Clases.Basics.CardImpl;
-import Clases.Basics.PlayerImpl;
-import Clases.Basics.TableImpl;
+import classes.basics.CardImpl;
+import classes.basics.PlayerImpl;
+import classes.basics.TableImpl;
 
 import java.util.Random;
 import java.util.Scanner;

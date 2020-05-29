@@ -26,10 +26,10 @@
  *
  */
 
-package Clases.Basics;
+package classes.basics;
+import classes.interfaces.Card;
 
-import Clases.Interfaces.Card;
-
+@SuppressWarnings("unused")
 public class CardImpl implements Card, Cloneable{
 
     private final char suit;
@@ -186,7 +186,7 @@ public class CardImpl implements Card, Cloneable{
         if (this == object){
             result = true;
         }else{
-            if (object != null && object instanceof CardImpl){
+            if (object instanceof CardImpl){
                 CardImpl newCard = (CardImpl) object;
                 if (this.number.equals(newCard.number)
                     && this.suit == newCard.suit){

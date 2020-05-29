@@ -1,4 +1,4 @@
-package Validaciones;
+package validations;
 
 import java.util.Scanner;
 

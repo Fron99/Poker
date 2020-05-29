@@ -1,7 +1,7 @@
-package Clases.Managements;
+package classes.managements;
 
-import Clases.Basics.CardImpl;
-import Clases.Basics.TableImpl;
+import classes.basics.CardImpl;
+import classes.basics.TableImpl;
 
 import java.util.ArrayList;
 

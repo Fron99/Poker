@@ -21,7 +21,17 @@
   <component name="ChangeListManager">
     <list default="true" id="b9a3eddb-34fe-4dec-b858-4173adae43d5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Basics/PlayerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Basics/PlayerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Basics/CardImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/basics/CardImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Basics/PlayerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/basics/PlayerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Basics/TableImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/basics/TableImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Interfaces/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Interfaces/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Interfaces/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Interfaces/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Interfaces/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Interfaces/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Managements/ManagementCardImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Managements/ManagementCardImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Managements/ManagementPlayerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Managements/ManagementPlayerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Poker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Poker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/GestoraCardImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/GestoraCardImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tests/TableImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tests/TableImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,12 +124,12 @@
       <module name="Poker" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Tests.*" />
+          <option name="PATTERN" value="tests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCardImplTest" />
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.GestoraCardImplTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -129,12 +139,12 @@
       <module name="Poker" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Tests.*" />
+          <option name="PATTERN" value="tests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCardImplTest" />
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.GestoraCardImplTest" />
       <option name="METHOD_NAME" value="testCalcularValorPareja" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -145,12 +155,12 @@
       <module name="Poker" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Tests.*" />
+          <option name="PATTERN" value="tests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.GestoraCardImplTest" />
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.GestoraCardImplTest" />
       <option name="METHOD_NAME" value="testObtenerCartasAEvaluar" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -416,10 +426,6 @@
           <url>jar://$PROJECT_DIR$/../../../../Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/String.java</url>
           <line>371</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Clases/Basics/CardImpl.java</url>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/hol.java</url>

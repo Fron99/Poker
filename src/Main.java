@@ -1,4 +1,4 @@
-import Validaciones.Validations;
+import validations.Validations;
 
 public class Main {
 

@@ -1,8 +1,8 @@
-package Tests;
+package tests;
 
-import Clases.Basics.CardImpl;
-import Clases.Basics.PlayerImpl;
-import Clases.Basics.TableImpl;
+import classes.basics.CardImpl;
+import classes.basics.PlayerImpl;
+import classes.basics.TableImpl;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

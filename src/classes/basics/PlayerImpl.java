@@ -42,9 +42,9 @@
  */
 
 
-package Clases.Basics;
+package classes.basics;
 
-import Clases.Interfaces.Player;
+import classes.interfaces.Player;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;

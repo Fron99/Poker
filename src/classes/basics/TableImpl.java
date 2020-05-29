@@ -85,11 +85,11 @@
  *
  */
 
-package Clases.Basics;
+package classes.basics;
 
-import Clases.Managements.ManagementCardImpl;
-import Clases.Managements.ManagementPlayerImpl;
-import Clases.Interfaces.Table;
+import classes.managements.ManagementCardImpl;
+import classes.managements.ManagementPlayerImpl;
+import classes.interfaces.Table;
 
 import java.util.Arrays;
 import java.util.Random;

@@ -26,7 +26,7 @@
  *
  */
 
-package Clases.Interfaces;
+package classes.interfaces;
 
 
 public interface Card {
