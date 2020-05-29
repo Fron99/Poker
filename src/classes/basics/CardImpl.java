@@ -50,9 +50,15 @@ public class CardImpl implements Card, Cloneable{
      * @param number String with value of numero
      */
 
-    public CardImpl(char suit, String number){//TODO Controlar palos Solo validos algunos y 0 0
-        this.suit = suit;
-        this.number = number;
+    public CardImpl(char suit, String number){
+        if ((suit == 'P' || suit == 'C' || suit == 'R' || suit == 'T') && (number.equals("1") || number.equals("2") || number.equals("3") || number.equals("4") || number.equals("5") || number.equals("6")
+                                                                            || number.equals("7") ||number.equals("8") || number.equals("9") || number.equals("10") || number.equals("J") || number.equals("Q") || number.equals("K"))){
+                this.number = number;
+                this.suit = suit;
+        }else{
+            this.suit = 'D';
+            this.number = "D";
+        }
     }
 
     /**
