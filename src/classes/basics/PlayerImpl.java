@@ -46,6 +46,10 @@ package classes.basics;
 
 import classes.interfaces.Player;
 
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -108,7 +112,24 @@ public class PlayerImpl implements Player, Cloneable {
 
     public PlayerImpl(String username, String password, String name, String surname, String gender, String email, String IBAN, GregorianCalendar birthday, int balance, CardImpl[] cards){
         this.username = username;
-        this.password = password;
+
+        String passEncripted = null;
+        try {
+            byte[] bytesOfMessage = password.getBytes(StandardCharsets.UTF_8);
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] thedigest = md.digest(bytesOfMessage);
+            BigInteger bigInt = new BigInteger(1,thedigest);
+            passEncripted = bigInt.toString(16);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        if (passEncripted != null){
+            this.password = passEncripted;
+        }else{
+            this.password = "DEFAULT";
+        }
+
+
         this.name = name;
         this.surname = surname;
         this.gender = gender;
@@ -174,7 +195,21 @@ public class PlayerImpl implements Player, Cloneable {
      */
 
     public void setPassword(String password) {
-        this.password = password;
+        String passEncripted = null;
+
+        try {
+            byte[] bytesOfMessage = password.getBytes(StandardCharsets.UTF_8);
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] thedigest = md.digest(bytesOfMessage);
+            BigInteger bigInt = new BigInteger(1,thedigest);
+            passEncripted = bigInt.toString(16);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        if (passEncripted != null){
+            this.password = passEncripted;
+        }
+
     }
 
     /**
@@ -227,6 +262,7 @@ public class PlayerImpl implements Player, Cloneable {
      * @param gender New value for attribute "gender"
      */
 
+    //TODO COntrolar generos
     public void setGender(String gender) {
         this.gender = gender;
     }
