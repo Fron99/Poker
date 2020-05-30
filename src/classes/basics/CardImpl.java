@@ -36,7 +36,7 @@ public class CardImpl implements Card, Cloneable{
     private final String number;
 
     /**
-     * This constructor put attribute "palo" and attribute numero with value "D"
+     * This constructor put attribute "suit" and attribute "number" with value "D"
      */
 
     public CardImpl(){
@@ -45,16 +45,21 @@ public class CardImpl implements Card, Cloneable{
     }
 
     /**
-     * This constructor sets the value of the "palo" and "numero" attribute with the values ​​passed with the parameter
-     * @param suit char with value of palo
-     * @param number String with value of numero
+     * This constructor sets the value of the "suit" and "number" attribute with the values ​​passed with the parameter
+     * @param suit char with value of suit
+     * @param number String with value of number
      */
 
     public CardImpl(char suit, String number){
-        if ((suit == 'P' || suit == 'C' || suit == 'R' || suit == 'T') && (number.equals("1") || number.equals("2") || number.equals("3") || number.equals("4") || number.equals("5") || number.equals("6")
-                                                                            || number.equals("7") ||number.equals("8") || number.equals("9") || number.equals("10") || number.equals("J") || number.equals("Q") || number.equals("K"))){
+        if ((Character.toUpperCase(suit) == 'P' || Character.toUpperCase(suit) == 'C' || Character.toUpperCase(suit) == 'R' || Character.toUpperCase(suit) == 'T') &&
+            (((number.length() == 1) && (number.charAt(0) > 48 && number.charAt(0) < 58))
+            || number.equals("10") || Character.toUpperCase(number.charAt(0)) == 'J' || Character.toUpperCase(number.charAt(0)) == 'Q' || Character.toUpperCase(number.charAt(0)) == 'K')){
+            if (number.length() == 1){
+                this.number = Character.toString(Character.toUpperCase(number.charAt(0)));
+            }else{
                 this.number = number;
-                this.suit = suit;
+            }
+            this.suit = Character.toUpperCase(suit);
         }else{
             this.suit = 'D';
             this.number = "D";
@@ -62,7 +67,7 @@ public class CardImpl implements Card, Cloneable{
     }
 
     /**
-     * This constructor sets the value of the "palo" and "numero" attribute with the values ​​of the other card passed by parameter
+     * This constructor sets the value of the "suit" and "number" attribute with the values ​​of the other card passed by parameter
      * @param other CartaImpl other object CartaImpl
      */
 
