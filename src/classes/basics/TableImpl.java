@@ -415,6 +415,178 @@ public class TableImpl implements Table, Cloneable {
     }
 
     /**
+     * Set the "username" of the player. The allowed range of the indexPlayer is 0 to 4.
+     * @param indexPlayer index of the player that will want get "username"
+     * @param newUsername String with new Username
+     * @return Return true if the value of the username of player has been changed.
+     *         Return false if the value of the username of player hasn't been changed.
+     */
+
+    public boolean setUsernamePlayer(int indexPlayer, String newUsername){
+        boolean changed = false;
+        if (indexPlayer >= 0 && indexPlayer <= 4){
+            this.players[indexPlayer].setUsername(newUsername);
+            changed = true;
+        }
+        return changed;
+    }
+
+    /**
+     * @param indexPlayer
+     * @return
+     */
+
+    public String getPasswordPlayer(int indexPlayer){
+        return (indexPlayer >= 0 && indexPlayer <= 4) ? this.players[indexPlayer].getPassword() : "0";
+    }
+
+    /**
+     * This method change the password passed by parameter in the player of position passed by parameter(index). The allowed range of the index is 0 to 4.
+     * @param indexPlayer Position of the player that wants to add money
+     * @param newPassword Money to add to the player
+     * @return Return true if password was changed to the player.
+     *         Return false if password wasn't changed to the player.
+     */
+
+    public boolean setPasswordPlayer(int indexPlayer, String newPassword){
+        boolean res = false;
+        if (indexPlayer >= 0 && indexPlayer <= 4){
+            this.players[indexPlayer].setPassword(newPassword);
+            res = true;
+        }
+        return res;
+    }
+
+    /**
+     * @param indexPlayer
+     * @return
+     */
+
+    public String getNamePlayer(int indexPlayer){
+        return (indexPlayer >= 0 && indexPlayer <= 4) ? this.players[indexPlayer].getName() : "0";
+    }
+
+    /**
+     * @param indexPlayer
+     * @param newName
+     * @return
+     */
+
+    public boolean setNamePlayer(int indexPlayer, String newName){
+        boolean res = false;
+        if (indexPlayer >= 0 && indexPlayer <= 4){
+            this.players[indexPlayer].setName(newName);
+            res = true;
+        }
+        return res;
+    }
+
+    /**
+     * @param indexPlayer
+     * @return
+     */
+
+    public String getSurnamePlayer(int indexPlayer){
+        return (indexPlayer >= 0 && indexPlayer <= 4) ? this.players[indexPlayer].getSurname() : "0";
+    }
+
+    /**
+     * @param indexPlayer
+     * @param newSurname
+     * @return
+     */
+
+    public boolean setSurnamePlayer(int indexPlayer, String newSurname){
+        boolean res = false;
+        if (indexPlayer >= 0 && indexPlayer <= 4){
+            this.players[indexPlayer].setSurname(newSurname);
+            res = true;
+        }
+        return res;
+    }
+
+    /**
+     * @param indexPlayer
+     * @return
+     */
+
+    public String getGenderPlayer(int indexPlayer){
+        return (indexPlayer >= 0 && indexPlayer <= 4) ? this.players[indexPlayer].getSurname() : "0";
+    }
+
+    /**
+     * @param indexPlayer
+     * @param newGender
+     * @return
+     */
+
+    public boolean setGenderPlayer(int indexPlayer, String newGender){
+        boolean res = false;
+        if (indexPlayer >= 0 && indexPlayer <= 4){
+            this.players[indexPlayer].setGender(newGender);
+            res = true;
+        }
+        return res;
+    }
+
+    /**
+     * @param indexPlayer
+     * @return
+     */
+
+    public String getEmailPlayer(int indexPlayer){
+        return (indexPlayer >= 0 && indexPlayer <= 4) ? this.players[indexPlayer].getEmail() : "0";
+    }
+
+    /**
+     * @param indexPlayer
+     * @param newEmail
+     * @return
+     */
+
+    public boolean setEmailPlayer(int indexPlayer, String newEmail){
+        boolean res = false;
+        if (indexPlayer >= 0 && indexPlayer <= 4){
+            this.players[indexPlayer].setEmail(newEmail);
+            res = true;
+        }
+        return res;
+    }
+
+    /**
+     * @param indexPlayer
+     * @return
+     */
+
+    public String getIBANPlayer(int indexPlayer){
+        return (indexPlayer >= 0 && indexPlayer <= 4) ? this.players[indexPlayer].getIBAN() : "0";
+    }
+
+    /**
+     * @param indexPlayer
+     * @param newIBAN
+     * @return
+     */
+
+    public boolean setIBANPlayer(int indexPlayer, String newIBAN){
+        boolean res = false;
+        if (indexPlayer >= 0 && indexPlayer <= 4){
+            this.players[indexPlayer].setIBAN(newIBAN);
+            res = true;
+        }
+        return res;
+    }
+
+    /**
+     * @param indexPlayer
+     * @return
+     */
+
+    public GregorianCalendar getBirthdayPlayer(int indexPlayer){
+        return (indexPlayer >= 0 && indexPlayer <= 4) ? this.players[indexPlayer].getBirthday() : null;
+    }
+
+    /**
      * Get the "balance" of the player. The allowed range of the index is 0 to 4.
      * @param indexPlayer index of the player that will want get "balance"
      * @return Return a int with the value of "balance" of the player. If the index not between of range allowed return 0.
