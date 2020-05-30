@@ -4,10 +4,36 @@ import classes.basics.CardImpl;
 import classes.basics.PlayerImpl;
 import classes.basics.TableImpl;
 
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 import java.util.Scanner;
 
 public class ManagementPlayerImpl {
+
+    /**
+     * @param password
+     * @return
+     */
+
+    public String encriptPassword(String password){
+        String passEncripted = null;
+
+        try {
+            byte[] bytesOfMessage = password.getBytes(StandardCharsets.UTF_8);
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] thedigest = md.digest(bytesOfMessage);
+            BigInteger bigInt = new BigInteger(1,thedigest);
+            passEncripted = bigInt.toString(16);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        return passEncripted;
+    }
+
 
     /*
      * SIGNATURA: public int leerYValidarSaldoInicial();
