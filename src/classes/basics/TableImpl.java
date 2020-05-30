@@ -92,8 +92,9 @@ import classes.managements.ManagementPlayerImpl;
 import classes.interfaces.Table;
 
 import java.util.Arrays;
+import java.util.GregorianCalendar;
 import java.util.Random;
-
+@SuppressWarnings("unused")
 public class TableImpl implements Table, Cloneable {
 
     private CardImpl[] deckOfCards;
@@ -187,7 +188,6 @@ public class TableImpl implements Table, Cloneable {
         this.round = 0;
     }
 
-    //TODO
 
     /**
      * This constructor put the attributes with the values passed by parameter.
@@ -195,12 +195,15 @@ public class TableImpl implements Table, Cloneable {
      * If length of players isn't 5, the constructor builds a array with defaults objects.
      * If length of cardsOfTable isn't 5, the constructor builds a array with defaults objects.
      * If length of betsPlayers isn't 5 times 5, the constructor builds a array with defaults values.
+     * If length of playerActive isn't 5, the constructor builds a array with false.
+     * If length of playerAllInLower isn't 5, the constructor builds a array with false.
      * @param deskOfCards array of letters
      * @param players array of players
      * @param cardsOfTable array of letters
      * @param betsPlayers array of int
+     * @param playerActive array of boolean
+     * @param playerAllInLower array of boolean
      */
-
     public TableImpl(CardImpl[] deskOfCards, PlayerImpl[] players, CardImpl[] cardsOfTable, int[][] betsPlayers, boolean[] playerActive, boolean[] playerAllInLower){
         Random random = new Random();
         this.deckOfCards = new CardImpl[52];
@@ -232,8 +235,8 @@ public class TableImpl implements Table, Cloneable {
 
         this.betsPlayers = new int[5][4];
         if (betsPlayers.length == 5 && betsPlayers[0].length == 4){
-            for (int i = 0;i < betsPlayers.length;i++){
-                System.arraycopy(betsPlayers[i],0,this.betsPlayers[i],0,betsPlayers.length);
+            for (int i = 0;i < betsPlayers[0].length;i++){
+                System.arraycopy(betsPlayers[i],0,this.betsPlayers[i],0,betsPlayers[0].length);
             }
         }
 
@@ -275,8 +278,11 @@ public class TableImpl implements Table, Cloneable {
             System.arraycopy(other.betsPlayers[i],0,this.betsPlayers[i],0, betsPlayers.length);
         }
 
-        this.cardsOfTable = new CardImpl[5];
-        System.arraycopy(other.cardsOfTable,0,this.cardsOfTable,0,other.cardsOfTable.length);
+        this.playerActive = new boolean[5];
+        System.arraycopy(other.playerActive,0,this.playerActive,0,other.playerActive.length);
+
+        this.playerAllInLower = new boolean[5];
+        System.arraycopy(other.playerAllInLower,0,this.playerAllInLower,0,other.playerAllInLower.length);
 
         this.playerTurn = other.playerTurn;
         this.round = other.round;
@@ -405,7 +411,7 @@ public class TableImpl implements Table, Cloneable {
     //TODO AÑADIR NUEVOS METODOS DE PLAYER
 
     /**
-     * Get the "username" of the player. The allowed range of the index is 0 to 4.
+     * Get the "username" of the player. The allowed range of the indexPlayer is 0 to 4.
      * @param indexPlayer index of the player that will want get "username"
      * @return Return a String with the value of "username" of the player. If the index not between of range allowed return 0.
      */
@@ -597,14 +603,14 @@ public class TableImpl implements Table, Cloneable {
     }
 
     /**
-     * This method adds the money passed by parameter in the player of position passed by parameter(index). The allowed range of the index is 0 to 4.
+     * This method change the balance passed by parameter in the player of position passed by parameter(index). The allowed range of the index is 0 to 4.
      * @param indexPlayer Position of the player that wants to add money
      * @param balance Money to add to the player
-     * @return Return true if money was added to the player.
-     *         Return false if money wasn't added to the player.
+     * @return Return true if money was changed to the player.
+     *         Return false if money wasn't changed to the player.
      */
 
-    private boolean setBalancePlayer(int indexPlayer, int balance){
+    public boolean setBalancePlayer(int indexPlayer, int balance){
         boolean res = false;
         if (indexPlayer >= 0 && indexPlayer <= 4){
             this.players[indexPlayer].setBalance(balance);
@@ -1627,8 +1633,7 @@ public class TableImpl implements Table, Cloneable {
         if (this == object){
             result = true;
         }else{
-            //noinspection ConditionCoveredByFurtherCondition
-            if (object != null && object instanceof TableImpl){
+            if (object instanceof TableImpl){
                 TableImpl newTable = (TableImpl) object;
                 if (this.getDeckOfCards()==newTable.getDeckOfCards()
                         && this.getCardsOfTable()==newTable.getCardsOfTable()
@@ -1646,30 +1651,33 @@ public class TableImpl implements Table, Cloneable {
      * @return MesaImpl Cloned table
      */
 
-    @SuppressWarnings("MethodDoesntCallSuperMethod")
     @Override
     public TableImpl clone() {
-        TableImpl table = new TableImpl();
-        for (int i = 0; i<table.deckOfCards.length; i++){
-            table.deckOfCards[i] = this.deckOfCards[i].clone();
+        TableImpl clone = null;
+        try {
+            clone = (TableImpl) super.clone();
+
+            for (int i = 0; i<clone.deckOfCards.length; i++){
+                clone.deckOfCards[i] = this.deckOfCards[i].clone();
+            }
+
+            for (int i = 0; i<clone.players.length; i++){
+                clone.players[i] = this.players[i].clone();
+            }
+
+            for (int i = 0; i<clone.cardsOfTable.length; i++){
+                clone.cardsOfTable[i] = this.cardsOfTable[i].clone();
+            }
+
+            for (int i = 0; i<clone.cardsOfTable.length; i++){
+                System.arraycopy(this.betsPlayers[i],0,clone.betsPlayers[i],0,5);
+            }
+
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
         }
 
-        for (int i = 0; i<table.players.length; i++){
-            table.players[i] = this.players[i].clone();
-        }
-
-        for (int i = 0; i<table.cardsOfTable.length; i++){
-            table.cardsOfTable[i] = this.cardsOfTable[i].clone();
-        }
-
-        for (int i = 0; i<table.cardsOfTable.length; i++){
-            System.arraycopy(this.betsPlayers[i],0,table.betsPlayers[i],0,5);
-        }
-
-        table.playerTurn = this.playerTurn;
-        table.round = this.round;
-
-        return table;
+        return clone;
     }
 
 }
