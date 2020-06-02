@@ -26,8 +26,8 @@
  *
  */
 
-package classes.basics;
-import classes.interfaces.Card;
+package basicsClasses;
+import interfaces.Card;
 
 @SuppressWarnings("unused")
 public class CardImpl implements Card, Cloneable{

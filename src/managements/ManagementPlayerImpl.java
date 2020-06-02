@@ -1,8 +1,8 @@
-package classes.managements;
+package managements;
 
-import classes.basics.CardImpl;
-import classes.basics.PlayerImpl;
-import classes.basics.TableImpl;
+import basicsClasses.CardImpl;
+import basicsClasses.PlayerImpl;
+import basicsClasses.TableImpl;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;

@@ -1,9 +1,9 @@
 package tests;
 
-import classes.basics.CardImpl;
-import classes.basics.PlayerImpl;
-import classes.basics.TableImpl;
-import classes.managements.ManagementCardImpl;
+import basicsClasses.CardImpl;
+import basicsClasses.PlayerImpl;
+import basicsClasses.TableImpl;
+import managements.ManagementCardImpl;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -475,7 +475,7 @@ public class GestoraCardImplTest {
         TableImpl mesaP0 = new TableImpl();
         mesaP0.setPlayer(0, new PlayerImpl());
         mesaP0.setCardsOfTable(cartasP0);
-        mesaP0.getCardsPlayer(0,cartasJugadorP0);
+        mesaP0.setCardsPlayer(0,cartasJugadorP0);
         int valor = ges.evaluarCartas(0,mesaP0);
         assertEquals(valor,310);
 
@@ -486,7 +486,7 @@ public class GestoraCardImplTest {
         TableImpl mesaP1 = new TableImpl();
         mesaP1.setPlayer(0, new PlayerImpl());
         mesaP1.setCardsOfTable(cartasP1);
-        mesaP1.getCardsPlayer(0,cartasJugadorP1);
+        mesaP1.setCardsPlayer(0,cartasJugadorP1);
         valor = ges.evaluarCartas(0,mesaP1);
         assertEquals(valor,13);
 
@@ -497,7 +497,7 @@ public class GestoraCardImplTest {
         TableImpl mesaP2 = new TableImpl();
         mesaP2.setPlayer(0, new PlayerImpl());
         mesaP2.setCardsOfTable(cartasP2);
-        mesaP2.getCardsPlayer(0,cartasJugadorP2);
+        mesaP2.setCardsPlayer(0,cartasJugadorP2);
         valor = ges.evaluarCartas(0,mesaP2);
         assertEquals(valor,2);
 
@@ -508,7 +508,7 @@ public class GestoraCardImplTest {
         TableImpl mesaP3 = new TableImpl();
         mesaP3.setPlayer(0, new PlayerImpl());
         mesaP3.setCardsOfTable(cartasP3);
-        mesaP3.getCardsPlayer(0,cartasJugadorP3);
+        mesaP3.setCardsPlayer(0,cartasJugadorP3);
         valor = ges.evaluarCartas(0,mesaP3);
         assertEquals(valor,319);
 

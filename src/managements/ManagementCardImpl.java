@@ -1,7 +1,7 @@
-package classes.managements;
+package managements;
 
-import classes.basics.CardImpl;
-import classes.basics.TableImpl;
+import basicsClasses.CardImpl;
+import basicsClasses.TableImpl;
 
 import java.util.ArrayList;
 
@@ -800,7 +800,7 @@ public class ManagementCardImpl {
 
         int cantidadCartas = 0;
         CardImpl[] cartasMesa = mesa.getCardsOfTable();
-        CardImpl[] cartasJugador = mesa.getCardsPlayer(jugador);
+        CardImpl[] cartasJugador = mesa.setCardsPlayer(jugador);
 
         //Obtiene la cantidad de cartas que hay en la mesa con valor distinto al de defecto
         for (int i = 0; i<cartasMesa.length&&(cartasMesa[i].getSuit()!='D'); i++){
