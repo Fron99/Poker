@@ -85,17 +85,18 @@
  *
  */
 
-package classes.basics;
+package basicsClasses;
 
-import classes.managements.ManagementCardImpl;
-import classes.managements.ManagementPlayerImpl;
-import classes.interfaces.Table;
+import managements.ManagementCardImpl;
+import managements.ManagementPlayerImpl;
+import enums.Genders;
+import interfaces.Table;
 
 import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.Random;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "UnusedReturnValue"})
 public class TableImpl implements Table, Cloneable {
 
     private final CardImpl[] deckOfCards;
@@ -400,7 +401,7 @@ public class TableImpl implements Table, Cloneable {
      * @return Return true if the value of the array index player passed by parameter has been changed.
      *         Return false if the value of the array index player passed by parameter hasn't been changed.
      */
-    
+
     public boolean setPlayer(int indexPlayer, PlayerImpl player){
         boolean res = false;
         if (indexPlayer >= 0 && indexPlayer <= 4){
@@ -422,7 +423,7 @@ public class TableImpl implements Table, Cloneable {
 
     /**
      * Set the "username" of the player. The allowed range of the indexPlayer is 0 to 4.
-     * @param indexPlayer index of the player that will want get "username"
+     * @param indexPlayer index of the player that will want change "username"
      * @param newUsername String with new Username
      * @return Return true if the value of the username of player has been changed.
      *         Return false if the value of the username of player hasn't been changed.
@@ -438,8 +439,9 @@ public class TableImpl implements Table, Cloneable {
     }
 
     /**
-     * @param indexPlayer
-     * @return
+     * Get the "password" of the player. The allowed range of the indexPlayer is 0 to 4.
+     * @param indexPlayer index of the player that will want get "password"
+     * @return Return a String with the value of "password" of the player. If the index not between of range allowed return 0.
      */
 
     public String getPasswordPlayer(int indexPlayer){
@@ -448,8 +450,8 @@ public class TableImpl implements Table, Cloneable {
 
     /**
      * This method change the password passed by parameter in the player of position passed by parameter(index). The allowed range of the index is 0 to 4.
-     * @param indexPlayer Position of the player that wants to add money
-     * @param newPassword Money to add to the player
+     * @param indexPlayer Position of the player that change password
+     * @param newPassword String with new Password
      * @return Return true if password was changed to the player.
      *         Return false if password wasn't changed to the player.
      */
@@ -464,8 +466,9 @@ public class TableImpl implements Table, Cloneable {
     }
 
     /**
-     * @param indexPlayer
-     * @return
+     * Get the "name" of the player. The allowed range of the indexPlayer is 0 to 4.
+     * @param indexPlayer index of the player that will want get "name"
+     * @return Return a String with the value of "name" of the player. If the index not between of range allowed return 0.
      */
 
     public String getNamePlayer(int indexPlayer){
@@ -473,9 +476,11 @@ public class TableImpl implements Table, Cloneable {
     }
 
     /**
-     * @param indexPlayer
-     * @param newName
-     * @return
+     * This method change the name passed by parameter in the player of position passed by parameter(index). The allowed range of the index is 0 to 4.
+     * @param indexPlayer Position of the player that wants to change name
+     * @param newName String with new name
+     * @return Return true if name was changed to the player.
+     *         Return false if name wasn't changed to the player.
      */
 
     public boolean setNamePlayer(int indexPlayer, String newName){
@@ -488,8 +493,9 @@ public class TableImpl implements Table, Cloneable {
     }
 
     /**
-     * @param indexPlayer
-     * @return
+     * Get the "surname" of the player. The allowed range of the indexPlayer is 0 to 4.
+     * @param indexPlayer index of the player that will want get "surname"
+     * @return Return a String with the value of "surname" of the player. If the index not between of range allowed return 0.
      */
 
     public String getSurnamePlayer(int indexPlayer){
@@ -497,9 +503,11 @@ public class TableImpl implements Table, Cloneable {
     }
 
     /**
-     * @param indexPlayer
-     * @param newSurname
-     * @return
+     * This method change the surname passed by parameter in the player of position passed by parameter(index). The allowed range of the index is 0 to 4.
+     * @param indexPlayer Position of the player that wants to change surname
+     * @param newSurname String with new surname
+     * @return Return true if surname was changed to the player.
+     *         Return false if surname wasn't changed to the player.
      */
 
     public boolean setSurnamePlayer(int indexPlayer, String newSurname){
@@ -512,21 +520,24 @@ public class TableImpl implements Table, Cloneable {
     }
 
     /**
-     * @param indexPlayer
-     * @return
+     * Get the "gender" of the player. The allowed range of the indexPlayer is 0 to 4.
+     * @param indexPlayer index of the player that will want get "gender"
+     * @return Return a Genders with the value of "gender" of the player. If the index not between of range allowed return 0.
      */
 
-    public String getGenderPlayer(int indexPlayer){
-        return (indexPlayer >= 0 && indexPlayer <= 4) ? this.players[indexPlayer].getSurname() : "0";
+    public Genders getGenderPlayer(int indexPlayer){
+        return (indexPlayer >= 0 && indexPlayer <= 4) ? this.players[indexPlayer].getGender() : Genders.Other;
     }
 
     /**
-     * @param indexPlayer
-     * @param newGender
-     * @return
+     * This method change the gender passed by parameter in the player of position passed by parameter(index). The allowed range of the index is 0 to 4.
+     * @param indexPlayer Position of the player that wants to change gender
+     * @param newGender Genders with new gender
+     * @return Return true if gender was changed to the player.
+     *         Return false if gender wasn't changed to the player.
      */
 
-    public boolean setGenderPlayer(int indexPlayer, String newGender){
+    public boolean setGenderPlayer(int indexPlayer, Genders newGender){
         boolean res = false;
         if (indexPlayer >= 0 && indexPlayer <= 4){
             this.players[indexPlayer].setGender(newGender);
@@ -536,8 +547,9 @@ public class TableImpl implements Table, Cloneable {
     }
 
     /**
-     * @param indexPlayer
-     * @return
+     * Get the "email" of the player. The allowed range of the indexPlayer is 0 to 4.
+     * @param indexPlayer index of the player that will want get "email"
+     * @return Return a String with the value of "email" of the player. If the index not between of range allowed return 0.
      */
 
     public String getEmailPlayer(int indexPlayer){
@@ -545,9 +557,11 @@ public class TableImpl implements Table, Cloneable {
     }
 
     /**
-     * @param indexPlayer
-     * @param newEmail
-     * @return
+     * This method change the email passed by parameter in the player of position passed by parameter(index). The allowed range of the index is 0 to 4.
+     * @param indexPlayer Position of the player that wants to change email
+     * @param newEmail String with new email
+     * @return Return true if email was changed to the player.
+     *         Return false if email wasn't changed to the player.
      */
 
     public boolean setEmailPlayer(int indexPlayer, String newEmail){
@@ -560,8 +574,9 @@ public class TableImpl implements Table, Cloneable {
     }
 
     /**
-     * @param indexPlayer
-     * @return
+     * Get the "IBAN" of the player. The allowed range of the indexPlayer is 0 to 4.
+     * @param indexPlayer index of the player that will want get "IBAN"
+     * @return Return a String with the value of "IBAN" of the player. If the index not between of range allowed return 0.
      */
 
     public String getIBANPlayer(int indexPlayer){
@@ -569,9 +584,11 @@ public class TableImpl implements Table, Cloneable {
     }
 
     /**
-     * @param indexPlayer
-     * @param newIBAN
-     * @return
+     * This method change the IBAN passed by parameter in the player of position passed by parameter(index). The allowed range of the index is 0 to 4.
+     * @param indexPlayer Position of the player that wants to change IBAN
+     * @param newIBAN String with new IBAN
+     * @return Return true if IBAN was changed to the player.
+     *         Return false if IBAN wasn't changed to the player.
      */
 
     public boolean setIBANPlayer(int indexPlayer, String newIBAN){
@@ -584,8 +601,9 @@ public class TableImpl implements Table, Cloneable {
     }
 
     /**
-     * @param indexPlayer
-     * @return
+     * Get the "birthday" of the player. The allowed range of the indexPlayer is 0 to 4.
+     * @param indexPlayer index of the player that will want get "birthday"
+     * @return Return a GregorianCalendar with the value of "birthday" of the player. If the index not between of range allowed return 0.
      */
 
     public GregorianCalendar getBirthdayPlayer(int indexPlayer){
