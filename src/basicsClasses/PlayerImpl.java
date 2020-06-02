@@ -42,9 +42,10 @@
  */
 
 
-package classes.basics;
+package basicsClasses;
 
-import classes.interfaces.Player;
+import enums.Genders;
+import interfaces.Player;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -56,7 +57,8 @@ import java.util.GregorianCalendar;
 @SuppressWarnings("unused")
 public class PlayerImpl implements Player, Cloneable {
 
-    private String username, password, name, surname, gender, email, IBAN;
+    private String username, password, name, surname, email, IBAN;
+    private Genders gender;
     private GregorianCalendar birthday;
     private int balance;
     private CardImpl[] cards;
@@ -70,7 +72,7 @@ public class PlayerImpl implements Player, Cloneable {
         this.password = "DEFAULT";
         this.name = "DEFAULT";
         this.surname = "DEFAULT";
-        this.gender = "NONE";
+        this.gender = Genders.Other;
         this.email = "DEFAULT@DEFAULT.COM";
         this.IBAN = "ES0000000000000000000000";
         this.birthday = new GregorianCalendar();
@@ -92,7 +94,7 @@ public class PlayerImpl implements Player, Cloneable {
         this.password = "DEFAULT";
         this.name = "DEFAULT";
         this.surname = "DEFAULT";
-        this.gender = "NONE";
+        this.gender = Genders.Other;
         this.email = "DEFAULT@DEFAULT.COM";
         this.IBAN = "ES0000000000000000000000";
         this.birthday = new GregorianCalendar();
@@ -110,7 +112,7 @@ public class PlayerImpl implements Player, Cloneable {
      * @param cards array of letters
      */
 
-    public PlayerImpl(String username, String password, String name, String surname, String gender, String email, String IBAN, GregorianCalendar birthday, int balance, CardImpl[] cards){
+    public PlayerImpl(String username, String password, String name, String surname, Genders gender, String email, String IBAN, GregorianCalendar birthday, int balance, CardImpl[] cards){
         this.username = username;
 
         String passEncripted = null;
@@ -252,7 +254,7 @@ public class PlayerImpl implements Player, Cloneable {
      * @return String with value of attribute "gender"
      */
 
-    public String getGender() {
+    public Genders getGender() {
         return gender;
     }
 
@@ -261,8 +263,8 @@ public class PlayerImpl implements Player, Cloneable {
      * @param gender New value for attribute "gender"
      */
 
-    //TODO COntrolar generos
-    public void setGender(String gender) {
+
+    public void setGender(Genders gender) {
         this.gender = gender;
     }
 
@@ -403,7 +405,7 @@ public class PlayerImpl implements Player, Cloneable {
     @Override
     public String toString(){
 
-        return "Username: "+ username +", Name: "+ name +", Surname: "+ surname +", Gender: "+ gender +"\n" +"Birthday: "+ birthday.get(Calendar.DAY_OF_MONTH)+"/"+birthday.get(Calendar.MONTH)+"/"+birthday.get(Calendar.YEAR)+
+        return "Username: "+ username +", Name: "+ name +", Surname: "+ surname +", Gender: "+ gender.toString() +"\n" +"Birthday: "+ birthday.get(Calendar.DAY_OF_MONTH)+"/"+birthday.get(Calendar.MONTH)+"/"+birthday.get(Calendar.YEAR)+
                 ", Email: "+ email +", IBAN: "+ IBAN +", Saldo: "+ balance+"\n"+
                 "First card: "+cards[0].toString()+", Second card: "+cards[1].toString();
 
