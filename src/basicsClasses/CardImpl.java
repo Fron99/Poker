@@ -51,9 +51,8 @@ public class CardImpl implements Card, Cloneable{
      */
 
     public CardImpl(char suit, String number){
-        if ((Character.toUpperCase(suit) == 'P' || Character.toUpperCase(suit) == 'C' || Character.toUpperCase(suit) == 'R' || Character.toUpperCase(suit) == 'T') &&
-            (((number.length() == 1) && (number.charAt(0) > 48 && number.charAt(0) < 58))
-            || number.equals("10") || Character.toUpperCase(number.charAt(0)) == 'J' || Character.toUpperCase(number.charAt(0)) == 'Q' || Character.toUpperCase(number.charAt(0)) == 'K')){
+        if ((suit == '0' && number.equals("0"))
+            || (Character.toUpperCase(suit) == 'P' || Character.toUpperCase(suit) == 'C' || Character.toUpperCase(suit) == 'R' || Character.toUpperCase(suit) == 'T') && (((number.length() == 1) && (number.charAt(0) > 48 && number.charAt(0) < 58)) || number.equals("10") || Character.toUpperCase(number.charAt(0)) == 'J' || Character.toUpperCase(number.charAt(0)) == 'Q' || Character.toUpperCase(number.charAt(0)) == 'K')){
             if (number.length() == 1){
                 this.number = Character.toString(Character.toUpperCase(number.charAt(0)));
             }else{

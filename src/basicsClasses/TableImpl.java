@@ -94,15 +94,16 @@ import classes.interfaces.Table;
 import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.Random;
+
 @SuppressWarnings("unused")
 public class TableImpl implements Table, Cloneable {
 
-    private CardImpl[] deckOfCards;
-    private PlayerImpl[] players;
+    private final CardImpl[] deckOfCards;
+    private final PlayerImpl[] players;
     private CardImpl[] cardsOfTable;
     private int[][] betsPlayers;
-    private boolean[] playerActive;
-    private boolean[] playerAllInLower;
+    private final boolean[] playerActive;
+    private final boolean[] playerAllInLower;
     private int playerTurn;
     private int round;
 
@@ -188,7 +189,6 @@ public class TableImpl implements Table, Cloneable {
         this.round = 0;
     }
 
-
     /**
      * This constructor put the attributes with the values passed by parameter.
      * If length of deskOfCards isn't 52, the constructor builds a array with defaults objects.
@@ -204,6 +204,8 @@ public class TableImpl implements Table, Cloneable {
      * @param playerActive array of boolean
      * @param playerAllInLower array of boolean
      */
+
+
     public TableImpl(CardImpl[] deskOfCards, PlayerImpl[] players, CardImpl[] cardsOfTable, int[][] betsPlayers, boolean[] playerActive, boolean[] playerAllInLower){
         Random random = new Random();
         this.deckOfCards = new CardImpl[52];
@@ -398,7 +400,7 @@ public class TableImpl implements Table, Cloneable {
      * @return Return true if the value of the array index player passed by parameter has been changed.
      *         Return false if the value of the array index player passed by parameter hasn't been changed.
      */
-
+    
     public boolean setPlayer(int indexPlayer, PlayerImpl player){
         boolean res = false;
         if (indexPlayer >= 0 && indexPlayer <= 4){
@@ -407,8 +409,6 @@ public class TableImpl implements Table, Cloneable {
         }
         return res;
     }
-
-    //TODO AÑADIR NUEVOS METODOS DE PLAYER
 
     /**
      * Get the "username" of the player. The allowed range of the indexPlayer is 0 to 4.
@@ -626,7 +626,7 @@ public class TableImpl implements Table, Cloneable {
      *         Return null if index passed by parameter isn't allowed.
      */
 
-    public CardImpl[] getCardsPlayer(int indexPlayer){
+    public CardImpl[] setCardsPlayer(int indexPlayer){
         CardImpl[] cardsPlayer = null;
         if (indexPlayer >= 0 && indexPlayer <= 4){
             cardsPlayer = new CardImpl[2];
@@ -643,10 +643,10 @@ public class TableImpl implements Table, Cloneable {
      *         Return false if the cards wasn't added to the player.
      */
 
-    public boolean getCardsPlayer(int indexPlayer, CardImpl[] cards){
+    public boolean setCardsPlayer(int indexPlayer, CardImpl[] cards){
         boolean res = false;
         if (indexPlayer >= 0 && indexPlayer <= 4){
-            this.players[indexPlayer].setCards(cards);
+            this.players[indexPlayer].setCards(cards.clone());
             res = true;
         }
         return res;
@@ -660,7 +660,7 @@ public class TableImpl implements Table, Cloneable {
      */
 
     public CardImpl getCardPlayer(int indexPlayer, int indexCard){
-        return (indexPlayer >= 0 && indexPlayer <= 4) ? (indexCard == 0 || indexCard == 1) ? this.getCardsPlayer(indexPlayer)[indexCard] : new CardImpl('0',"0") : new CardImpl('0',"0");
+        return (indexPlayer >= 0 && indexPlayer <= 4) ? (indexCard == 0 || indexCard == 1) ? this.setCardsPlayer(indexPlayer)[indexCard] : new CardImpl('0',"0") : new CardImpl('0',"0");
     }
 
     /**
