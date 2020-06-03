@@ -325,7 +325,7 @@ public class ManagementPlayerImpl {
                     }
                 }
 
-                puntos = gestoraCarta.calcularValorPareja(cartasAEvaluar);
+                puntos = gestoraCarta.calculateValuePair(cartasAEvaluar);
 
                 if (puntos > 0){
                     puntosPosibilidad = 40;
@@ -368,7 +368,7 @@ public class ManagementPlayerImpl {
                     }
                 }
 
-                puntos = gestoraCarta.calcularValorPareja(cartasAEvaluar);
+                puntos = gestoraCarta.calculateValuePair(cartasAEvaluar);
 
                 if (puntos > 0){
                     puntosPosibilidad = 20;
@@ -395,13 +395,13 @@ public class ManagementPlayerImpl {
                     puntosPosibilidad = 20;
                 }
 
-                puntos = gestoraCarta.calcularValorTrio(cartasAEvaluar);
+                puntos = gestoraCarta.calculateValueTrio(cartasAEvaluar);
 
                 if (puntos > 0){
                     puntosPosibilidad = 30;
                 }
 
-                puntos = gestoraCarta.calcularValorDoblePareja(cartasAEvaluar);
+                puntos = gestoraCarta.calculateValueDoublePair(cartasAEvaluar);
 
                 if (puntos > 0){
                     puntosPosibilidad = 40;

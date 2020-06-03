@@ -20,17 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9a3eddb-34fe-4dec-b858-4173adae43d5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/enums/Genders.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/CardImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/GendersTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/PlayerImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Poker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Poker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/basics/CardImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicsClasses/CardImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/basics/PlayerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicsClasses/PlayerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/basics/TableImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicsClasses/TableImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/interfaces/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/interfaces/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/interfaces/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/Table.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/managements/ManagementCardImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/managements/ManagementPlayerImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/managements/ManagementCardImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/managements/ManagementCardImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/managements/ManagementPlayerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/managements/ManagementPlayerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tests/GestoraCardImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/GestoraCardImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tests/TableImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/TableImplTest.java" afterDir="false" />
     </list>
@@ -50,10 +45,10 @@
       <list>
         <option value="JUnit5 Test Class" />
         <option value="Interface" />
-        <option value="JUnit4 Test Class" />
         <option value="AnnotationType" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -93,20 +88,22 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="tests" />
+      <recent name="enums" />
       <recent name="Tests" />
-    </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="Tests" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Francisco Javier\Documents\Github\Poker\src\Clases\Basicas" />
       <recent name="C:\Users\fjaviles\Documents\GitHub\Poker\src" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Tests" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.test">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Poker" />
@@ -168,9 +165,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.test" />
         <item itemvalue="Application.Test" />
-        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.GestoraCardImplTest.testObtenerCartasAEvaluar" />
         <item itemvalue="JUnit.GestoraCardImplTest" />
       </list>
@@ -265,6 +262,10 @@
     </state>
     <state x="765" y="168" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1590865727392" />
     <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1585569972127" />
+    <state x="690" y="344" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1591188097881">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="344" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591188097881" />
     <state x="811" y="409" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1583431889302">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -300,33 +301,33 @@
     <state x="529" y="188" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583497690407" />
     <state x="744" y="268" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1591028252726" />
     <state x="744" y="268" key="FileChooserDialogImpl/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1585761784032" />
-    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1591122951425">
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1591186608418">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="262" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583933093618" />
     <state width="1323" height="168" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586184441528" />
-    <state width="1877" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591122951425" />
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591186608418" />
     <state width="1877" height="650" key="GridCell.Tab.0.bottom/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1586385919283" />
-    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1591122951425">
+    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1591186608417">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="262" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583933093618" />
     <state width="1323" height="168" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586184441528" />
-    <state width="1877" height="295" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591122951425" />
+    <state width="1877" height="295" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591186608417" />
     <state width="1877" height="650" key="GridCell.Tab.0.center/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1586385919283" />
-    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1591122951425">
+    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1591186608417">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="262" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583933093618" />
     <state width="1323" height="168" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586184441525" />
-    <state width="1877" height="295" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591122951425" />
+    <state width="1877" height="295" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591186608417" />
     <state width="1877" height="650" key="GridCell.Tab.0.left/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1586385919283" />
-    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1591122951425">
+    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1591186608417">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="262" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583933093618" />
     <state width="1323" height="168" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586184441528" />
-    <state width="1877" height="295" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591122951425" />
+    <state width="1877" height="295" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591186608417" />
     <state width="1877" height="650" key="GridCell.Tab.0.right/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1586385919283" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1591122928289">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -377,9 +378,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="769" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1585569972692" />
-    <state x="724" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1584621699690">
+    <state x="724" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1591188222849">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="724" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591188222849" />
     <state x="724" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584621699690" />
     <state x="1920" y="0" width="1382" height="815" key="dock-window-1" timestamp="1584554029859">
       <screen x="1920" y="0" width="1366" height="728" />
@@ -433,11 +435,6 @@
           <url>file://$PROJECT_DIR$/src/hol.java</url>
           <line>37</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test.java</url>
-          <line>6</line>
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
