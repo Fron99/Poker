@@ -9,34 +9,34 @@ public class ManagementCardImpl {
 
     
     /*
-     * SIGNATURA: public int calcularValorCartaAlta(CartaImpl[] cartas);
+     * SIGNATURA: public int calculateValueTopCard(CartaImpl[] cards);
      * COMENTARIO: Calcular el valor de la carta mas alta del array de cartas pasado por parametro
      * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
-     * Salida: - Un entero
+     * SALIDA: - Un entero
      * ENTRADA/SALIDA: - Nada
      * POSTCONDICIONES: Devuelve asociado al nombre un entero con la cantidad de puntos que tiene la carta mas alta del array pasado por parametro
      */
 
     /**
      * Calculate the highest card value in the array passed by parameter
-     * @param cartas CartaImpl[] cards you want to value
+     * @param cards CardImpl[] cards you want to value
      * @return returns the value of the highest card
      */
 
-    public int calcularValorCartaAlta(CardImpl[] cartas){
-        CardImpl[] cartasOrdenadas = new CardImpl[cartas.length];
-        System.arraycopy(cartas,0,cartasOrdenadas,0,cartas.length);
-        ordenarCartas(cartasOrdenadas);
-        int puntos = 0;
-        if (cartasOrdenadas.length>1){
-            puntos = cartasOrdenadas[cartasOrdenadas.length-1].getValueNumber();
+    public int calculateValueTopCard(CardImpl[] cards){
+        CardImpl[] organizedCard = new CardImpl[cards.length];
+        System.arraycopy(cards,0,organizedCard,0,cards.length);
+        arrangeCards(organizedCard);
+        int points = 0;
+        if (organizedCard.length>1){
+            points = organizedCard[organizedCard.length-1].getValueNumber();
         }
-        return puntos;
+        return points;
     }
 
     /*
-     * SIGNATURA: public int calcularValorPareja(CartaImpl[] cartas);
+     * SIGNATURA: public int calculateValuePair(CartaImpl[] cards);
      * COMENTARIO: Calcular el valor de la pareja mas alta del array de cartas pasado por parametro
      * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
@@ -48,39 +48,39 @@ public class ManagementCardImpl {
 
     /**
      * Calculate the highest value of the pair in the array passed by parameter
-     * @param cartas CartaImpl[] cards you want to value
+     * @param cards CardImpl[] cards you want to value
      * @return Returns 0 if not exist pair in array. Returns the value of pair if exist pair in array.
      */
 
-    public int calcularValorPareja(CardImpl[] cartas){
-        CardImpl[] cartasOrdenadas = new CardImpl[cartas.length];
-        System.arraycopy(cartas,0,cartasOrdenadas,0,cartas.length);
-        ordenarCartas(cartasOrdenadas);
-        int puntos = 0;
-        if (cartasOrdenadas.length>1){
-            for (int i = 0; i < cartasOrdenadas.length-1; i++){
-                if (i == 0 && cartasOrdenadas.length == 2){
-                    if (cartasOrdenadas[i].getValueNumber() == cartasOrdenadas[i+1].getValueNumber()){
-                        puntos = 13 + cartasOrdenadas[i].getValueNumber();
+    public int calculateValuePair(CardImpl[] cards){
+        CardImpl[] organizedCard = new CardImpl[cards.length];
+        System.arraycopy(cards,0,organizedCard,0,cards.length);
+        arrangeCards(organizedCard);
+        int points = 0;
+        if (organizedCard.length>1){
+            for (int i = 0; i < organizedCard.length-1; i++){
+                if (i == 0 && organizedCard.length == 2){
+                    if (organizedCard[i].getValueNumber() == organizedCard[i+1].getValueNumber()){
+                        points = 13 + organizedCard[i].getValueNumber();
                     }
                 }else{
                     if (i == 0){
-                        if (cartasOrdenadas[i].getValueNumber() == cartasOrdenadas[i+1].getValueNumber()
-                            && cartasOrdenadas[i].getValueNumber() != cartasOrdenadas[i+2].getValueNumber()){
-                            puntos = 13 + cartasOrdenadas[i].getValueNumber();
+                        if (organizedCard[i].getValueNumber() == organizedCard[i+1].getValueNumber()
+                            && organizedCard[i].getValueNumber() != organizedCard[i+2].getValueNumber()){
+                            points = 13 + organizedCard[i].getValueNumber();
                         }
                     }else{
-                        if (i < cartasOrdenadas.length - 3){
-                            if (cartasOrdenadas[i].getValueNumber() != cartasOrdenadas[i-1].getValueNumber()
-                                && cartasOrdenadas[i].getValueNumber() == cartasOrdenadas[i+1].getValueNumber()
-                                && cartasOrdenadas[i].getValueNumber() != cartasOrdenadas[i+2].getValueNumber()){
-                                puntos = 13 + cartasOrdenadas[i].getValueNumber();
+                        if (i < organizedCard.length - 3){
+                            if (organizedCard[i].getValueNumber() != organizedCard[i-1].getValueNumber()
+                                && organizedCard[i].getValueNumber() == organizedCard[i+1].getValueNumber()
+                                && organizedCard[i].getValueNumber() != organizedCard[i+2].getValueNumber()){
+                                points = 13 + organizedCard[i].getValueNumber();
                             }
                         }else{
-                            if (i == cartasOrdenadas.length - 2){
-                                if (cartasOrdenadas[i].getValueNumber() != cartasOrdenadas[i-1].getValueNumber()
-                                    && cartasOrdenadas[i].getValueNumber() == cartasOrdenadas[i+1].getValueNumber()){
-                                    puntos = 13 + cartasOrdenadas[i].getValueNumber();
+                            if (i == organizedCard.length - 2){
+                                if (organizedCard[i].getValueNumber() != organizedCard[i-1].getValueNumber()
+                                    && organizedCard[i].getValueNumber() == organizedCard[i+1].getValueNumber()){
+                                    points = 13 + organizedCard[i].getValueNumber();
                                 }
                             }
                         }
@@ -88,11 +88,11 @@ public class ManagementCardImpl {
                 }
             }
         }
-        return puntos;
+        return points;
     }
 
     /*
-     * SIGNATURA: public int calcularValorDoblePareja(CartaImpl[] cartas);
+     * SIGNATURA: public int calculateValueDoublePair(CartaImpl[] cards);
      * COMENTARIO: Calcular el valor de la doble pareja mas alta que haya en el array pasado por parametro
      * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
@@ -104,58 +104,58 @@ public class ManagementCardImpl {
 
     /**
      * Calculate the highest value of the pair in the array passed by parameter
-     * @param cartas CartaImpl[] cards you want to value
+     * @param cards CartaImpl[] cards you want to value
      * @return Returns 0 if not exist double pair in array. Returns the value of double pair if exist double pair in array.
      */
 
-    public int calcularValorDoblePareja(CardImpl[] cartas){
-        int puntos = 0;
-        CardImpl[] cartasOrdenadas = new CardImpl[cartas.length];
-        System.arraycopy(cartas,0,cartasOrdenadas,0,cartas.length);
-        ordenarCartas(cartasOrdenadas);
-        ArrayList<Integer> parejas = new ArrayList<>();
-        int [][] posibilidades = new int[78][2];
-        //Se crean todas las posibilidades que hay de doble pareja
-        for (int i = 0, contadorParcial = 1, contadorTotal = 2;i<posibilidades.length;i++,contadorParcial++){
-            if (contadorParcial == 14){
-                contadorTotal++;
-                contadorParcial = 1;
+    public int calculateValueDoublePair(CardImpl[] cards){
+        int points = 0;
+        CardImpl[] organizedCard = new CardImpl[cards.length];
+        System.arraycopy(cards,0,organizedCard,0,cards.length);
+        arrangeCards(organizedCard);
+        ArrayList<Integer> pairs = new ArrayList<>();
+        int [][] possibilities = new int[78][2];
+        //Se crean todas las possibilities que hay de doble pareja
+        for (int i = 0, partialCounter = 1, totalCounter = 2;i<possibilities.length;i++,partialCounter++){
+            if (partialCounter == 14){
+                totalCounter++;
+                partialCounter = 1;
             }
-            if (contadorTotal == contadorParcial){
-                contadorTotal++;
-                contadorParcial = 1;
+            if (totalCounter == partialCounter){
+                totalCounter++;
+                partialCounter = 1;
             }
-            posibilidades[i][1] = contadorTotal;
-            posibilidades[i][0] = contadorParcial;
+            possibilities[i][1] = totalCounter;
+            possibilities[i][0] = partialCounter;
         }
 
-        //Si no hay minimo 4 cartas no se puede calcular la doble pareja
-        if (cartasOrdenadas.length>3){
+        //Si no hay minimo 4 cards no se puede calcular la doble pareja
+        if (organizedCard.length>3){
             //Recorremos el array en busca de las doble pareja
-            for (int i = 0;i<cartasOrdenadas.length-1;i++){
+            for (int i = 0;i<organizedCard.length-1;i++){
                 //Se ejecuta cuando el indice esta al principio de la baraja
                 if (i == 0){
-                    //Comprueba que el valor de la siguiente carta a las cartas de la pareja sea distinta
-                    if (cartasOrdenadas[i].getValueNumber() == cartasOrdenadas[i+1].getValueNumber()
-                        && cartasOrdenadas[i].getValueNumber() != cartasOrdenadas[i+2].getValueNumber()) {
-                        parejas.add(cartasOrdenadas[i].getValueNumber());
+                    //Comprueba que el valor de la siguiente carta a las cards de la pareja sea distinta
+                    if (organizedCard[i].getValueNumber() == organizedCard[i+1].getValueNumber()
+                        && organizedCard[i].getValueNumber() != organizedCard[i+2].getValueNumber()) {
+                        pairs.add(organizedCard[i].getValueNumber());
                     }
                 }else{
                     //Se ejecuta cuando el indice esta en medio de la baraja
-                    if (i < cartasOrdenadas.length-2){
-                        //Comprueba que el valor de la siguiente carta y la anterior a las cartas de la pareja sea distinta
-                        if (cartasOrdenadas[i].getValueNumber() != cartasOrdenadas[i-1].getValueNumber()
-                            && cartasOrdenadas[i].getValueNumber() == cartasOrdenadas[i+1].getValueNumber()
-                            && cartasOrdenadas[i].getValueNumber() != cartasOrdenadas[i+2].getValueNumber()) {
-                            parejas.add(cartasOrdenadas[i].getValueNumber());
+                    if (i < organizedCard.length-2){
+                        //Comprueba que el valor de la siguiente carta y la anterior a las cards de la pareja sea distinta
+                        if (organizedCard[i].getValueNumber() != organizedCard[i-1].getValueNumber()
+                            && organizedCard[i].getValueNumber() == organizedCard[i+1].getValueNumber()
+                            && organizedCard[i].getValueNumber() != organizedCard[i+2].getValueNumber()) {
+                            pairs.add(organizedCard[i].getValueNumber());
                         }
                     }else{
                         //Se ejecuta cuando el indice esta al final de la baraja
-                        if (i == cartasOrdenadas.length-2){
-                            //Comprueba que el valor de la anterior a las cartas de la pareja sea distinta
-                            if (cartasOrdenadas[i].getValueNumber() != cartasOrdenadas[i-1].getValueNumber()
-                                && cartasOrdenadas[i].getValueNumber() == cartasOrdenadas[i+1].getValueNumber()) {
-                                parejas.add(cartasOrdenadas[i].getValueNumber());
+                        if (i == organizedCard.length-2){
+                            //Comprueba que el valor de la anterior a las cards de la pareja sea distinta
+                            if (organizedCard[i].getValueNumber() != organizedCard[i-1].getValueNumber()
+                                && organizedCard[i].getValueNumber() == organizedCard[i+1].getValueNumber()) {
+                                pairs.add(organizedCard[i].getValueNumber());
                             }
                         }
                     }
@@ -163,22 +163,22 @@ public class ManagementCardImpl {
             }
 
             //En el caso de que haya mas de 1 pareja buscamos el valor de la carta
-            if (parejas.size()>1){
+            if (pairs.size()>1){
                 //Recorre el array buscando la combinacion
-                for (int j = 0; j<posibilidades.length; j++){
-                    //Utilizamos .size()-X porque asi cogemos las dos ultimas parejas que son las de mayor valor
-                    if (posibilidades[j][0] == parejas.get(parejas.size()-2)
-                        && posibilidades[j][1] == parejas.get(parejas.size()-1)){
-                        puntos = 26 + (j+1);
+                for (int j = 0; j<possibilities.length; j++){
+                    //Utilizamos .size()-X porque asi cogemos las dos ultimas pairs que son las de mayor valor
+                    if (possibilities[j][0] == pairs.get(pairs.size()-2)
+                        && possibilities[j][1] == pairs.get(pairs.size()-1)){
+                        points = 26 + (j+1);
                     }
                 }
             }
         }
-        return puntos;
+        return points;
     }
 
     /*
-     * SIGNATURA: public int calcularValorTrio(CartaImpl[] cartas);
+     * SIGNATURA: public int calculateValueTrio(CartaImpl[] cards);
      * COMENTARIO: Calcular el valor del trio mas alta del array de cartas pasado por parametro
      * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
@@ -190,60 +190,60 @@ public class ManagementCardImpl {
 
     /**
      * Calculate the highest value of the trio in the array passed by parameter
-     * @param cartas CartaImpl[] cards you want to value
-     * @return Returns 0 if not exists trio in array passed by parameter. Retunrs the value of the trio if exists trio in array passed by parameter
+     * @param cards CardImpl[] cards you want to value
+     * @return Returns 0 if not exists trio in array passed by parameter. Return the value of the trio if exists trio in array passed by parameter
      */
 
-    public int calcularValorTrio(CardImpl[] cartas){
-        int puntos = 0;
-        CardImpl[] cartasOrdenadas = new CardImpl[cartas.length];
-        System.arraycopy(cartas,0,cartasOrdenadas,0,cartas.length);
-        ordenarCartas(cartasOrdenadas);
-        if (cartasOrdenadas.length>2) {
+    public int calculateValueTrio(CardImpl[] cards){
+        int points = 0;
+        CardImpl[] organizedCard = new CardImpl[cards.length];
+        System.arraycopy(cards,0,organizedCard,0,cards.length);
+        arrangeCards(organizedCard);
+        if (organizedCard.length>2) {
             //Recorremos el array para buscar trios
-            for (int i = 0; i < cartasOrdenadas.length - 2; i++) {
+            for (int i = 0; i < organizedCard.length - 2; i++) {
                 //Comprobar si hay trio cuando el indice esta al principio del array
-                if (i == 0 && cartasOrdenadas.length > 3) {
+                if (i == 0 && organizedCard.length > 3) {
                     //Comprueba que haya trio y que la siguiente carta al trio sea distinta
-                    if (cartasOrdenadas[i].getValueNumber() == cartasOrdenadas[i + 1].getValueNumber()
-                        && cartasOrdenadas[i].getValueNumber() == cartasOrdenadas[i + 2].getValueNumber()
-                        && cartasOrdenadas[i].getValueNumber() != cartasOrdenadas[i + 3].getValueNumber()) {
+                    if (organizedCard[i].getValueNumber() == organizedCard[i + 1].getValueNumber()
+                        && organizedCard[i].getValueNumber() == organizedCard[i + 2].getValueNumber()
+                        && organizedCard[i].getValueNumber() != organizedCard[i + 3].getValueNumber()) {
 
-                        puntos = 104 + cartasOrdenadas[i].getValueNumber();
+                        points = 104 + organizedCard[i].getValueNumber();
 
                     }
                 } else {
                     //No hace falta comprobar que es menor que 4 porque arriba esta comprobado > 3 y si entra aqui es porque no se ha cumplido
                     if (i == 0) {
                         //Comprueba que haya trio
-                        if (cartasOrdenadas[i].getValueNumber() == cartasOrdenadas[i + 1].getValueNumber()
-                                && cartasOrdenadas[i].getValueNumber() == cartasOrdenadas[i + 2].getValueNumber()) {
+                        if (organizedCard[i].getValueNumber() == organizedCard[i + 1].getValueNumber()
+                                && organizedCard[i].getValueNumber() == organizedCard[i + 2].getValueNumber()) {
 
-                            puntos = 104 + cartasOrdenadas[i].getValueNumber();
+                            points = 104 + organizedCard[i].getValueNumber();
 
                         }
                     } else {
                         //No hace falta que compruebe i != 0 porque esta comprobado en los casos anteriores
                         //Comprueba cuando el indice esta en medio
-                        if (i < cartasOrdenadas.length - 4) {
-                            //Comprueba que la carta anterior y posterior a las cartas que forman el trio sean de distinto valor a la del trio
-                            if (cartasOrdenadas[i].getValueNumber() != cartasOrdenadas[i - 1].getValueNumber()
-                                    && cartasOrdenadas[i].getValueNumber() == cartasOrdenadas[i + 1].getValueNumber()
-                                    && cartasOrdenadas[i].getValueNumber() == cartasOrdenadas[i + 2].getValueNumber()
-                                    && cartasOrdenadas[i].getValueNumber() != cartasOrdenadas[i + 3].getValueNumber()) {
+                        if (i < organizedCard.length - 4) {
+                            //Comprueba que la carta anterior y posterior a las cards que forman el trio sean de distinto valor a la del trio
+                            if (organizedCard[i].getValueNumber() != organizedCard[i - 1].getValueNumber()
+                                    && organizedCard[i].getValueNumber() == organizedCard[i + 1].getValueNumber()
+                                    && organizedCard[i].getValueNumber() == organizedCard[i + 2].getValueNumber()
+                                    && organizedCard[i].getValueNumber() != organizedCard[i + 3].getValueNumber()) {
 
-                                puntos = 104 + cartasOrdenadas[i].getValueNumber();
+                                points = 104 + organizedCard[i].getValueNumber();
 
                             }
                         } else {
                             //Comprueba cuando el indice ya es el ultimo posible a evaluar
-                            if (i == cartasOrdenadas.length - 3) {
-                                //Comprueba que la carta posterior a las cartas que forman el trio sean de distinto valor a la del trio
-                                if (cartasOrdenadas[i].getValueNumber() != cartasOrdenadas[i - 1].getValueNumber()
-                                        && cartasOrdenadas[i].getValueNumber() == cartasOrdenadas[i + 1].getValueNumber()
-                                        && cartasOrdenadas[i].getValueNumber() == cartasOrdenadas[i + 2].getValueNumber()) {
+                            if (i == organizedCard.length - 3) {
+                                //Comprueba que la carta posterior a las cards que forman el trio sean de distinto valor a la del trio
+                                if (organizedCard[i].getValueNumber() != organizedCard[i - 1].getValueNumber()
+                                        && organizedCard[i].getValueNumber() == organizedCard[i + 1].getValueNumber()
+                                        && organizedCard[i].getValueNumber() == organizedCard[i + 2].getValueNumber()) {
 
-                                    puntos = 104 + cartasOrdenadas[i].getValueNumber();
+                                    points = 104 + organizedCard[i].getValueNumber();
 
                                 }
                             }
@@ -252,11 +252,11 @@ public class ManagementCardImpl {
                 }
             }
         }
-        return puntos;
+        return points;
     }
 
     /*
-     * SIGNATURA: public int calcularValorEscalera(CartaImpl[] cartas);
+     * SIGNATURA: public int calculateValueStairs(CartaImpl[] cards);
      * COMENTARIO: Calcular el valor de la escalera mas alta del array de cartas pasado por parametro
      * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
@@ -268,83 +268,83 @@ public class ManagementCardImpl {
 
     /**
      * Calculate the highest value of the stair in the array passed by parameter
-     * @param cartas CartaImpl[] cards you want to value
-     * @return Returns 0 if there is no stair. Returns the value of stair if exist in array.
+     * @param cards CardImpl[] cards you want to value
+     * @return Return 0 if there is no stair. Return the value of stair if exist in array.
      */
 
-    public int calcularValorEscalera(CardImpl[] cartas){
-        int puntos = 0;
-        ArrayList<CardImpl> cartasNoRepetidas = new ArrayList<>();
-        boolean existe = false;
-        if (cartas.length>4){
+    public int calculateValueStairs(CardImpl[] cards){
+        int points = 0;
+        ArrayList<CardImpl> unrepeatedCards = new ArrayList<>();
+        boolean exist = false;
+        if (cards.length>4){
 
-            //Array para guardar las cartas sin que esten repetidas
-            cartasNoRepetidas.add(cartas[0]);
+            //Array para guardar las cards sin que esten repetidas
+            unrepeatedCards.add(cards[0]);
 
-            //Recorremos las cartas para guardar en el ArrayList cartasNoRepetidas las cartas sin repetir
-            for (CardImpl carta: cartas){
+            //Recorremos las cards para guardar en el ArrayList unrepeatedCards las cards sin repetir
+            for (CardImpl card: cards){
 
-                //Recorre el array comprobando que esa carta no este añadida ya
-                for (int j = 0; j<cartasNoRepetidas.size() && !existe;j++){
-                    if (carta.getValueNumber()==cartasNoRepetidas.get(j).getValueNumber()){
-                        existe = true;
+                //Recorre el array comprobando que esa card no este añadida ya
+                for (int j = 0; j<unrepeatedCards.size() && !exist;j++){
+                    if (card.getValueNumber()==unrepeatedCards.get(j).getValueNumber()){
+                        exist = true;
                     }
                 }
 
-                //Si no existe la añade
-                if (!existe){
-                    cartasNoRepetidas.add(carta);
+                //Si no exist la añade
+                if (!exist){
+                    unrepeatedCards.add(card);
                 }
-                existe = false;
+                exist = false;
             }
 
             //Orderna el array para porder evaluarlo
-            cartasNoRepetidas.sort(CardImpl::compareTo);
+            unrepeatedCards.sort(CardImpl::compareTo);
 
             //Comprueba si la escalera de color puede ser que sea A,2,3,4,5
             //Como la carta A es la se mayor valor no se coloca delante en el array entonces hay que comprobarla estando detras
-            if (cartasNoRepetidas.get(0).getValueNumber() == 1 && cartasNoRepetidas.get(cartasNoRepetidas.size() - 1).getValueNumber() == 13) {
+            if (unrepeatedCards.get(0).getValueNumber() == 1 && unrepeatedCards.get(unrepeatedCards.size() - 1).getValueNumber() == 13) {
 
                 //Como sabemos que la primera carta sera el 2 y la ultima sera la A podemos usar posiciones absolutas para comprobar si hay escalera tipo A,2,3,4,5
-                if ((cartasNoRepetidas.get(1).getValueNumber() == ((cartasNoRepetidas.get(0).getValueNumber()) + 1))
-                        && (cartasNoRepetidas.get(2).getValueNumber() == ((cartasNoRepetidas.get(1).getValueNumber()) + 1))
-                        && (cartasNoRepetidas.get(3).getValueNumber() == ((cartasNoRepetidas.get(2).getValueNumber()) + 1))) {
+                if ((unrepeatedCards.get(1).getValueNumber() == ((unrepeatedCards.get(0).getValueNumber()) + 1))
+                        && (unrepeatedCards.get(2).getValueNumber() == ((unrepeatedCards.get(1).getValueNumber()) + 1))
+                        && (unrepeatedCards.get(3).getValueNumber() == ((unrepeatedCards.get(2).getValueNumber()) + 1))) {
 
                     //En el caso de que pueda ser A,2,3,4,5,6 o incluso A,2,3,4,5,6,7 se realizara este bucle for para coger la escalera mas alta.
-                    if (cartasNoRepetidas.get(4).getValueNumber() == cartasNoRepetidas.get(3).getValueNumber()) {
-                        for (int i = 3, j = 0; cartasNoRepetidas.get(i + 1).getValueNumber() == cartasNoRepetidas.get(i).getValueNumber(); i++, j++) {
-                            puntos = 117 + cartasNoRepetidas.get(j).getValueNumber();
+                    if (unrepeatedCards.get(4).getValueNumber() == unrepeatedCards.get(3).getValueNumber()) {
+                        for (int i = 3, j = 0; unrepeatedCards.get(i + 1).getValueNumber() == unrepeatedCards.get(i).getValueNumber(); i++, j++) {
+                            points = 117 + unrepeatedCards.get(j).getValueNumber();
                         }
                     } else {
                         //En el cado de que no haya una escalera mas grande se coloca la escalera del A,2,3,4,5
-                        puntos = 117 + cartasNoRepetidas.get(0).getValueNumber();
+                        points = 117 + unrepeatedCards.get(0).getValueNumber();
                     }
                 }
 
             }
 
-            for (int i = 0; i < cartasNoRepetidas.size() - 4; i++) {
+            for (int i = 0; i < unrepeatedCards.size() - 4; i++) {
 
-                //Comprueba si hay ecalera ya que las cartas estan en orden
-                if ((cartasNoRepetidas.get(i+1).getValueNumber() == ((cartasNoRepetidas.get(i).getValueNumber()) + 1))
-                        && (cartasNoRepetidas.get(i+2).getValueNumber() == ((cartasNoRepetidas.get(i+1).getValueNumber()) + 1))
-                        && (cartasNoRepetidas.get(i+3).getValueNumber() == ((cartasNoRepetidas.get(i+2).getValueNumber()) + 1))
-                        && (cartasNoRepetidas.get(i+4).getValueNumber() == ((cartasNoRepetidas.get(i+3).getValueNumber()) + 1))) {
+                //Comprueba si hay ecalera ya que las cards estan en orden
+                if ((unrepeatedCards.get(i+1).getValueNumber() == ((unrepeatedCards.get(i).getValueNumber()) + 1))
+                        && (unrepeatedCards.get(i+2).getValueNumber() == ((unrepeatedCards.get(i+1).getValueNumber()) + 1))
+                        && (unrepeatedCards.get(i+3).getValueNumber() == ((unrepeatedCards.get(i+2).getValueNumber()) + 1))
+                        && (unrepeatedCards.get(i+4).getValueNumber() == ((unrepeatedCards.get(i+3).getValueNumber()) + 1))) {
 
                     //Se le suma 1 a la cantidad total porque el valor 131 se deja guardado para la escalera A,2,3,4,5
-                    //Si no se le sumara 1 la escalera 2,3,4,5,6 tendria el mismo valor que la escalera A,2,3,4,5 por el echo de como se ordenan las cartas de mayor a menor
-                    puntos = 117 + (cartasNoRepetidas.get(i).getValueNumber()+1);
+                    //Si no se le sumara 1 la escalera 2,3,4,5,6 tendria el mismo valor que la escalera A,2,3,4,5 por el echo de como se ordenan las cards de mayor a menor
+                    points = 117 + (unrepeatedCards.get(i).getValueNumber()+1);
 
                 }
 
             }
 
         }
-        return puntos;
+        return points;
     }
 
     /*
-     * SIGNATURA: public int calcularValorColor(CartaImpl[] cartas);
+     * SIGNATURA: public int calculateValueColor(CartaImpl[] cards);
      * COMENTARIO: Calcula el valor de la carta mas alta cuando hay color
      * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
@@ -356,40 +356,40 @@ public class ManagementCardImpl {
 
     /**
      * Calculate the highest value of the color in the array passed by parameter
-     * @param cartas CartaImpl[] cards you want to value
+     * @param cards CartaImpl[] cards you want to value
      * @return Returns 0 if there is no color. Returns the value of color if exist color in array.
      */
 
-    public int calcularValorColor(CardImpl[] cartas){
-        int puntos = 0;
-        char paloColor;
-        CardImpl cartaAltaColor;
+    public int calculateValueColor(CardImpl[] cards){
+        int points = 0;
+        char suitColor;
+        CardImpl topCardColor;
 
-        //Calcula si hay 5 cartas del mismo color en el array pasado por parametro
+        //Calcula si hay 5 cards del mismo color en el array pasado por parametro
         //Si no hay devolvera N lo cual no se ejecutara
-        paloColor = calcularTipoColor(cartas);
+        suitColor = calculateTipeColor(cards);
 
-        if (paloColor != 'N'){
+        if (suitColor != 'N'){
 
             //Carta por defecto con el valor minimo
-            cartaAltaColor = new CardImpl(paloColor,"2");
+            topCardColor = new CardImpl(suitColor,"2");
 
             //Este for se utiliza para sacar la carta mas alta del color
-            for (CardImpl carta: cartas){
-                if (carta.getSuit() == paloColor){
-                    if (carta.getValueNumber()>cartaAltaColor.getValueNumber()){
-                        cartaAltaColor = carta;
+            for (CardImpl card: cards){
+                if (card.getSuit() == suitColor){
+                    if (card.getValueNumber()>topCardColor.getValueNumber()){
+                        topCardColor = card;
                     }
                 }
             }
             //El valor del color depende de la carta mas alta del color.
-            puntos = 127 + cartaAltaColor.getValueNumber();
+            points = 127 + topCardColor.getValueNumber();
         }
-        return puntos;
+        return points;
     }
 
     /*
-     * SIGNATURA: public int calcularValorFull(CartaImpl[] cartas);
+     * SIGNATURA: public int calculateValueFull(CartaImpl[] cards);
      * COMENTARIO: Calcula el valor del full del array de CartasImpl pasado por parametro
      * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
@@ -401,14 +401,14 @@ public class ManagementCardImpl {
 
     /**
      * Calculate the value of the "Full" in deck of cards.
-     * @param cartas CartaImpl[] cards you want to value
+     * @param cards CardImpl[] cards you want to value
      * @return int with value of the "Full" in poker. If not exist "Full" in the deck of cards, returns 0
      */
 
-    public int calcularValorFull(CardImpl[] cartas){
-        CardImpl[] cartasOrdenadas = new CardImpl[cartas.length];
-        System.arraycopy(cartas,0,cartasOrdenadas,0,cartas.length);
-        ordenarCartas(cartasOrdenadas);
+    public int calculateValueFull(CardImpl[] cards){
+        CardImpl[] cartasOrdenadas = new CardImpl[cards.length];
+        System.arraycopy(cards,0,cartasOrdenadas,0,cards.length);
+        arrangeCards(cartasOrdenadas);
         int puntos = 0;
         int cantidadTrios = 0, cantidadParejas = 0;
         int valorTrio = 0, valorPareja = 0;
@@ -586,7 +586,7 @@ public class ManagementCardImpl {
     public int calcularValorPoker(CardImpl[] cartas){
         CardImpl[] cartasOrdenadas = new CardImpl[cartas.length];
         System.arraycopy(cartas,0,cartasOrdenadas,0,cartas.length);
-        ordenarCartas(cartasOrdenadas);
+        arrangeCards(cartasOrdenadas);
         int puntos = 0;
         if (cartasOrdenadas.length>3){
             //Como el array esta ordenado las 4 cartas estaran juntas en el caso de haber poker por lo cual se comprueba de esta manera
@@ -629,7 +629,7 @@ public class ManagementCardImpl {
         boolean escaleraTipo1 = false;
 
         //Calcula si hay color. N si no hay o el caracter del color que exista
-        color = calcularTipoColor(cartas);
+        color = calculateTipeColor(cartas);
 
         //if (cartas.length > 4 && color != 'N') {      cartas.length sobra porque si hay color significa que hay 5 cartas o mas
         if (color != 'N') {
@@ -652,7 +652,7 @@ public class ManagementCardImpl {
                 }
             }
 
-            ordenarCartas(cartasColor);
+            arrangeCards(cartasColor);
 
             //Comprueba si la escalera de color puede ser que sea A,2,3,4,5
             //Como la carta A es la se mayor valor no se coloca delante en el array entonces hay que comprobarla estando detras
@@ -730,32 +730,32 @@ public class ManagementCardImpl {
         cartasAEvaluar = obtenerCartasAEvaluar(jugador,mesa);
 
         //Ordenar las cartas obtenidas
-        gesCarta.ordenarCartas(cartasAEvaluar);
+        gesCarta.arrangeCards(cartasAEvaluar);
 
         //Va comprobando todos los valores de las distintas posibilidades que tiene el jugador y se queda con la posibilidad mas alta.
-        puntosFinales = calcularValorCartaAlta(cartasAEvaluar);
+        puntosFinales = calculateValueTopCard(cartasAEvaluar);
 
-        puntosCalculados = calcularValorPareja(cartasAEvaluar);
+        puntosCalculados = calculateValuePair(cartasAEvaluar);
         if (puntosCalculados>puntosFinales){
             puntosFinales = puntosCalculados;
         }
 
-        puntosCalculados = calcularValorDoblePareja(cartasAEvaluar);
+        puntosCalculados = calculateValueDoublePair(cartasAEvaluar);
         if (puntosCalculados>puntosFinales){
             puntosFinales = puntosCalculados;
         }
 
-        puntosCalculados = calcularValorTrio(cartasAEvaluar);
+        puntosCalculados = calculateValueTrio(cartasAEvaluar);
         if (puntosCalculados>puntosFinales){
             puntosFinales = puntosCalculados;
         }
 
-        puntosCalculados = calcularValorEscalera(cartasAEvaluar);
+        puntosCalculados = calculateValueStairs(cartasAEvaluar);
         if (puntosCalculados>puntosFinales){
             puntosFinales = puntosCalculados;
         }
 
-        puntosCalculados = calcularValorColor(cartasAEvaluar);
+        puntosCalculados = calculateValueColor(cartasAEvaluar);
         if (puntosCalculados>puntosFinales){
             puntosFinales = puntosCalculados;
         }
@@ -765,7 +765,7 @@ public class ManagementCardImpl {
             puntosFinales = puntosCalculados;
         }
 
-        puntosCalculados = calcularValorFull(cartasAEvaluar);
+        puntosCalculados = calculateValueFull(cartasAEvaluar);
         if (puntosCalculados>puntosFinales){
             puntosFinales = puntosCalculados;
         }
@@ -850,7 +850,7 @@ public class ManagementCardImpl {
      * @param cartas Array of CartaImpl[] you want to order
      */
 
-    public void ordenarCartas(CardImpl[] cartas){
+    public void arrangeCards(CardImpl[] cartas){
         CardImpl cartaAux;
         //Para ordenar utiliza el metodo de compareTo de la clase CartaImpl
         for(int i = 0; i < cartas.length - 1; i++){
@@ -881,7 +881,7 @@ public class ManagementCardImpl {
      * @return char with the color that exist in array of cards. Return N if not exist color.
      */
 
-    public char calcularTipoColor(CardImpl[] cartas){
+    public char calculateTipeColor(CardImpl[] cartas){
         char color = 'N';
         int contadorPica = 0, contadorCorazon = 0, contadorTrevol = 0, contadorRombo = 0;
 
@@ -946,7 +946,7 @@ public class ManagementCardImpl {
         boolean unaParaEscalera = false;
         CardImpl[] cartasAEvaluar = new CardImpl[cartas.length];
         System.arraycopy(cartas,0,cartasAEvaluar,0,cartas.length);
-        ordenarCartas(cartasAEvaluar);
+        arrangeCards(cartasAEvaluar);
 
         if (cartas[0].getValueNumber()+1 != cartas[1].getValueNumber()
             && cartas[1].getValueNumber()+1 == cartas[2].getValueNumber()
