@@ -352,7 +352,7 @@ public class ManagementPlayerImpl {
                     puntosPosibilidad = 50;
                 }
 
-                unaParaEscalera = gestoraCarta.unaParaEscalera(cartasAEvaluar);
+                unaParaEscalera = gestoraCarta.oneToStair(cartasAEvaluar);
 
                 if (unaParaEscalera){
                     puntosPosibilidad = 50;
@@ -407,7 +407,7 @@ public class ManagementPlayerImpl {
                     puntosPosibilidad = 40;
                 }
 
-                unaParaEscalera = gestoraCarta.unaParaEscalera(cartasAEvaluar);
+                unaParaEscalera = gestoraCarta.oneToStair(cartasAEvaluar);
 
                 if (unaParaEscalera){
                     puntosPosibilidad = 50;

@@ -583,43 +583,43 @@ public class GestoraCardImplTest {
         //Prueba 0 (Prueba con color T)
 
         CardImpl[] cartasP0 = {new CardImpl('T',"5"), new CardImpl('T',"9"), new CardImpl('T',"2"), new CardImpl('T',"K"), new CardImpl('T',"J")};
-        char color = ges.calculateTipeColor(cartasP0);
+        char color = ges.calculateTypeColor(cartasP0);
         assertEquals('T',color);
 
         //Prueba 1 (Prueba con color P)
 
         CardImpl[] cartasP1 = {new CardImpl('P',"9"), new CardImpl('P',"2"), new CardImpl('P',"K"), new CardImpl('P',"J"), new CardImpl('P',"3")};
-        color = ges.calculateTipeColor(cartasP1);
+        color = ges.calculateTypeColor(cartasP1);
         assertEquals('P',color);
 
         //Prueba 2 (Prueba con color R)
 
         CardImpl[] cartasP2 = {new CardImpl('R',"9"), new CardImpl('R',"2"), new CardImpl('R',"K"), new CardImpl('R',"J"), new CardImpl('R',"3")};
-        color = ges.calculateTipeColor(cartasP2);
+        color = ges.calculateTypeColor(cartasP2);
         assertEquals('R',color);
 
         //Prueba 3 (Prueba con color C)
 
         CardImpl[] cartasP3 = {new CardImpl('C',"9"), new CardImpl('C',"2"), new CardImpl('C',"K"), new CardImpl('C',"J"), new CardImpl('C',"3")};
-        color = ges.calculateTipeColor(cartasP3);
+        color = ges.calculateTypeColor(cartasP3);
         assertEquals('C',color);
 
         //Prueba 4 (Prueba faltando cartas para color)
 
         CardImpl[] cartasP4 = {new CardImpl('T',"9"), new CardImpl('T',"2"), new CardImpl('T',"K"), new CardImpl('T',"J")};
-        color = ges.calculateTipeColor(cartasP4);
+        color = ges.calculateTypeColor(cartasP4);
         assertEquals('N',color);
 
         //Prueba 5 (Prueba sin color)
 
         CardImpl[] cartasP5 = {new CardImpl('R',"5"), new CardImpl('T',"9"), new CardImpl('P',"2"), new CardImpl('T',"K"), new CardImpl('T',"J")};
-        color = ges.calculateTipeColor(cartasP5);
+        color = ges.calculateTypeColor(cartasP5);
         assertEquals('N',color);
 
         //Prueba 6 (Prueba existiendo mas de 5 cartas del mismo color)
 
         CardImpl[] cartasP6 = {new CardImpl('T',"5"), new CardImpl('C',"5"), new CardImpl('T',"8"), new CardImpl('T',"9"), new CardImpl('T',"2"), new CardImpl('T',"K"), new CardImpl('T',"J")};
-        color = ges.calculateTipeColor(cartasP6);
+        color = ges.calculateTypeColor(cartasP6);
         assertEquals('T',color);
 
     }

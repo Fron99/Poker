@@ -367,7 +367,7 @@ public class ManagementCardImpl {
 
         //Calcula si hay 5 cards del mismo color en el array pasado por parametro
         //Si no hay devolvera N lo cual no se ejecutara
-        suitColor = calculateTipeColor(cards);
+        suitColor = calculateTypeColor(cards);
 
         if (suitColor != 'N'){
 
@@ -629,7 +629,7 @@ public class ManagementCardImpl {
         boolean stairType1 = false;
 
         //Calcula si hay color. N si no hay o el caracter del color que exista
-        color = calculateTipeColor(cards);
+        color = calculateTypeColor(cards);
 
         //if (cards.length > 4 && color != 'N') {      cards.length sobra porque si hay color significa que hay 5 cards o mas
         if (color != 'N') {
@@ -864,7 +864,7 @@ public class ManagementCardImpl {
     }
 
     /*
-     * SIGNATURA: public char calcularTipoColor(CartaImpl[] cartas);
+     * SIGNATURA: public char calculateTypeColor(CartaImpl[] cards);
      * COMENTARIO: Metodo para calcular si hay color en el array de cartas
      * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
@@ -880,23 +880,23 @@ public class ManagementCardImpl {
      * @return char with the color that exist in array of cards. Return N if not exist color.
      */
 
-    public char calculateTipeColor(CardImpl[] cards){
+    public char calculateTypeColor(CardImpl[] cards){
         char color = 'N';
-        int contadorPica = 0, contadorCorazon = 0, contadorTrevol = 0, contadorRombo = 0;
+        int spadeCounter = 0, heartCounter = 0, clubsCounter = 0, diamondCounter = 0;
 
         //Se calcula cuantas cards hay de cada palo
         for (CardImpl carta : cards) {
             if (carta.getSuit() == 'P') {
-                contadorPica++;
+                spadeCounter++;
             } else {
                 if (carta.getSuit() == 'C') {
-                    contadorCorazon++;
+                    heartCounter++;
                 } else {
                     if (carta.getSuit() == 'T') {
-                        contadorTrevol++;
+                        clubsCounter++;
                     } else {
                         if (carta.getSuit() == 'R') {
-                            contadorRombo++;
+                            diamondCounter++;
                         }
                     }
                 }
@@ -904,14 +904,14 @@ public class ManagementCardImpl {
         }
 
         //Con este if se comprueba de que palo es el color que hay en la baraja si hay algun color
-        if (contadorPica>4 || contadorCorazon>4 ||contadorTrevol>4 || contadorRombo>4){
-            if (contadorPica>4){
+        if (spadeCounter>4 || heartCounter>4 ||clubsCounter>4 || diamondCounter>4){
+            if (spadeCounter>4){
                 color = 'P';
             }else{
-                if (contadorCorazon>4){
+                if (heartCounter>4){
                     color = 'C';
                 }else{
-                    if (contadorTrevol>4){
+                    if (clubsCounter>4){
                         color = 'T';
                     }else{
                         color = 'R';
@@ -924,7 +924,7 @@ public class ManagementCardImpl {
     }
 
     /*
-     * SIGNATURA: public boolean unaParaEscalera(CartaImpl[] cartas);
+     * SIGNATURA: public boolean oneToStair(CartaImpl[] cards);
      * COMENTARIO: Metodo para calcular si queda una carta para que haya escalera
      * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
@@ -935,54 +935,54 @@ public class ManagementCardImpl {
      */
 
     /**
-     * @param cartas
+     * @param cards
      * @return
      */
 
     //TODO Mejorar este metodo
 
-    public boolean unaParaEscalera(CardImpl[] cartas){
-        boolean unaParaEscalera = false;
-        CardImpl[] cartasAEvaluar = new CardImpl[cartas.length];
-        System.arraycopy(cartas,0,cartasAEvaluar,0,cartas.length);
-        arrangeCards(cartasAEvaluar);
+    public boolean oneToStair(CardImpl[] cards){
+        boolean oneToStair = false;
+        CardImpl[] cardsToEvalue = new CardImpl[cards.length];
+        System.arraycopy(cards,0,cardsToEvalue,0,cards.length);
+        arrangeCards(cardsToEvalue);
 
-        if (cartas[0].getValueNumber()+1 != cartas[1].getValueNumber()
-            && cartas[1].getValueNumber()+1 == cartas[2].getValueNumber()
-            && cartas[2].getValueNumber()+1 == cartas[3].getValueNumber()
-            && cartas[3].getValueNumber()+1 == cartas[4].getValueNumber()){
-                unaParaEscalera = true;
+        if (cards[0].getValueNumber()+1 != cards[1].getValueNumber()
+            && cards[1].getValueNumber()+1 == cards[2].getValueNumber()
+            && cards[2].getValueNumber()+1 == cards[3].getValueNumber()
+            && cards[3].getValueNumber()+1 == cards[4].getValueNumber()){
+                oneToStair = true;
         }else{
-            if (cartas[0].getValueNumber()+1 != cartas[1].getValueNumber()
-                && cartas[1].getValueNumber()+1 != cartas[2].getValueNumber()
-                && cartas[2].getValueNumber()+1 == cartas[3].getValueNumber()
-                && cartas[3].getValueNumber()+1 == cartas[4].getValueNumber()){
-                    unaParaEscalera = true;
+            if (cards[0].getValueNumber()+1 != cards[1].getValueNumber()
+                && cards[1].getValueNumber()+1 != cards[2].getValueNumber()
+                && cards[2].getValueNumber()+1 == cards[3].getValueNumber()
+                && cards[3].getValueNumber()+1 == cards[4].getValueNumber()){
+                    oneToStair = true;
             }else{
-                if (cartas[0].getValueNumber()+1 == cartas[1].getValueNumber()
-                    && cartas[1].getValueNumber()+1 != cartas[2].getValueNumber()
-                    && cartas[2].getValueNumber()+1 != cartas[3].getValueNumber()
-                    && cartas[3].getValueNumber()+1 == cartas[4].getValueNumber()){
-                        unaParaEscalera = true;
+                if (cards[0].getValueNumber()+1 == cards[1].getValueNumber()
+                    && cards[1].getValueNumber()+1 != cards[2].getValueNumber()
+                    && cards[2].getValueNumber()+1 != cards[3].getValueNumber()
+                    && cards[3].getValueNumber()+1 == cards[4].getValueNumber()){
+                        oneToStair = true;
                 }else{
-                    if (cartas[0].getValueNumber()+1 == cartas[1].getValueNumber()
-                        && cartas[1].getValueNumber()+1 == cartas[2].getValueNumber()
-                        && cartas[2].getValueNumber()+1 != cartas[3].getValueNumber()
-                        && cartas[3].getValueNumber()+1 != cartas[4].getValueNumber()){
-                            unaParaEscalera = true;
+                    if (cards[0].getValueNumber()+1 == cards[1].getValueNumber()
+                        && cards[1].getValueNumber()+1 == cards[2].getValueNumber()
+                        && cards[2].getValueNumber()+1 != cards[3].getValueNumber()
+                        && cards[3].getValueNumber()+1 != cards[4].getValueNumber()){
+                            oneToStair = true;
                     }else{
-                        if (cartas[0].getValueNumber()+1 == cartas[1].getValueNumber()
-                            && cartas[1].getValueNumber()+1 == cartas[2].getValueNumber()
-                            && cartas[2].getValueNumber()+1 == cartas[3].getValueNumber()
-                            && cartas[3].getValueNumber()+1 != cartas[4].getValueNumber()){
-                                unaParaEscalera = true;
+                        if (cards[0].getValueNumber()+1 == cards[1].getValueNumber()
+                            && cards[1].getValueNumber()+1 == cards[2].getValueNumber()
+                            && cards[2].getValueNumber()+1 == cards[3].getValueNumber()
+                            && cards[3].getValueNumber()+1 != cards[4].getValueNumber()){
+                                oneToStair = true;
                         }
                     }
                 }
             }
         }
 
-        return unaParaEscalera;
+        return oneToStair;
     }
 
 }
