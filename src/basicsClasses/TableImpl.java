@@ -1196,7 +1196,7 @@ public class TableImpl implements Table, Cloneable {
             //Obtener ganador
             for (int i = 0; i< this.players.length; i++){
                 if (this.playerActive[i]) {
-                    puntosJugadorCalculados = gestoraCarta.evaluarCartas(i, this);
+                    puntosJugadorCalculados = gestoraCarta.evaluateCardsFromPlayer(i, this);
                     //Se utiliza puntosAnteriorGanador
                     if (puntosAnteriorGanador > puntosJugadorCalculados
                             && puntosJugadorCalculados > puntosAnteriorJugador) {

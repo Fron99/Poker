@@ -156,13 +156,13 @@ public class ManagementPlayerImpl {
         ManagementCardImpl gesCarta = new ManagementCardImpl();
 
         //Obtener puntos de las cartas
-        valorCartas = gesCarta.evaluarCartas(jugador,mesa);
+        valorCartas = gesCarta.evaluateCardsFromPlayer(jugador,mesa);
 
         //Obtener puntos de farol
         valorFarolRonda = calcularPuntosFarolRonda(mesa.getRound());
 
         //Obtener puntos por posibilidad
-        puntosPosibilidad = calcularPuntosPosibilidad(gesCarta.obtenerCartasAEvaluar(jugador,mesa));
+        puntosPosibilidad = calcularPuntosPosibilidad(gesCarta.getCardsToEvaluate(jugador,mesa));
 
         if (mesa.getBalancePlayer(jugador) < 2000){
             

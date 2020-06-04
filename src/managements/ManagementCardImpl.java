@@ -406,59 +406,59 @@ public class ManagementCardImpl {
      */
 
     public int calculateValueFull(CardImpl[] cards){
-        CardImpl[] cartasOrdenadas = new CardImpl[cards.length];
-        System.arraycopy(cards,0,cartasOrdenadas,0,cards.length);
-        arrangeCards(cartasOrdenadas);
-        int puntos = 0;
-        int cantidadTrios = 0, cantidadParejas = 0;
-        int valorTrio = 0, valorPareja = 0;
-        int [][] posibilidades = new int[156][2];
-        //For para colocar todas las posibilidades de full
-        for (int i = 0, contadorParcial = 1, contadorTotal = 1;i<posibilidades.length;i++,contadorParcial++){
-            if (contadorParcial == 14){
-                contadorTotal++;
-                contadorParcial = 1;
+        CardImpl[] organizedCard = new CardImpl[cards.length];
+        System.arraycopy(cards,0,organizedCard,0,cards.length);
+        arrangeCards(organizedCard);
+        int points = 0;
+        int quantityTrio = 0, quantityCouples = 0;
+        int valueTrio = 0, valueCouple = 0;
+        int [][] possibilities = new int[156][2];
+        //For para colocar todas las possibilities de full
+        for (int i = 0, partialCounter = 1, totalCounter = 1;i<possibilities.length;i++,partialCounter++){
+            if (partialCounter == 14){
+                totalCounter++;
+                partialCounter = 1;
             }
-            if (contadorTotal == contadorParcial){
-                contadorParcial++;
+            if (totalCounter == partialCounter){
+                partialCounter++;
             }
-            posibilidades[i][0] = contadorTotal;
-            posibilidades[i][1] = contadorParcial;
+            possibilities[i][0] = totalCounter;
+            possibilities[i][1] = partialCounter;
         }
 
-        if (cartasOrdenadas.length>=5){
+        if (organizedCard.length>=5){
             //Recorre el array contando cuantos trios existen el la baraja y obteniendo su valor
-            for (int i = 0;i<cartasOrdenadas.length-2;i++){
+            for (int i = 0;i<organizedCard.length-2;i++){
                 //Con estos ifs se controla que no haya poker
                 //Comprueba si hay trio al principio del array
                 if (i == 0){
                     //Comprueba que el valor de la siguente carta a las tres del trio sea distinto, ya que si no habria poker
-                    if (cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i+1].getNumber())
-                        && cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i+2].getNumber())
-                        && !(cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i+3].getNumber()))){
-                        valorTrio = cartasOrdenadas[i].getValueNumber();
-                        cantidadTrios++;
+                    if (organizedCard[i].getNumber().equals(organizedCard[i+1].getNumber())
+                        && organizedCard[i].getNumber().equals(organizedCard[i+2].getNumber())
+                        && !(organizedCard[i].getNumber().equals(organizedCard[i+3].getNumber()))){
+                        valueTrio = organizedCard[i].getValueNumber();
+                        quantityTrio++;
                     }
                 }else{
                     //Comprueba si hay trio en medio del array
-                    if (i <= cartasOrdenadas.length-4){
+                    if (i <= organizedCard.length-4){
                         //Comprueba que el valor de la siguiente carta y la anterior a las tres del trio sea distinto, ya que si no habria poker
-                        if (!(cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i-1].getNumber()))
-                            && cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i+1].getNumber())
-                            && cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i+2].getNumber())
-                            && !(cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i+3].getNumber()))){
-                            valorTrio = cartasOrdenadas[i].getValueNumber();
-                            cantidadTrios++;
+                        if (!(organizedCard[i].getNumber().equals(organizedCard[i-1].getNumber()))
+                            && organizedCard[i].getNumber().equals(organizedCard[i+1].getNumber())
+                            && organizedCard[i].getNumber().equals(organizedCard[i+2].getNumber())
+                            && !(organizedCard[i].getNumber().equals(organizedCard[i+3].getNumber()))){
+                            valueTrio = organizedCard[i].getValueNumber();
+                            quantityTrio++;
                         }
                     }else{
                         //Comprueba si hay trio al final del array
-                        if (i == cartasOrdenadas.length-3){
+                        if (i == organizedCard.length-3){
                             //Comprueba que el valor de la anterior carta a las tres del trio sea distinto, ya que si no habria poker
-                            if (!(cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i-1].getNumber()))
-                                && cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i+1].getNumber())
-                                && cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i+2].getNumber())){
-                                valorTrio = cartasOrdenadas[i].getValueNumber();
-                                cantidadTrios++;
+                            if (!(organizedCard[i].getNumber().equals(organizedCard[i-1].getNumber()))
+                                && organizedCard[i].getNumber().equals(organizedCard[i+1].getNumber())
+                                && organizedCard[i].getNumber().equals(organizedCard[i+2].getNumber())){
+                                valueTrio = organizedCard[i].getValueNumber();
+                                quantityTrio++;
                             }
                         }
                     }
@@ -466,37 +466,37 @@ public class ManagementCardImpl {
             }
 
             //Si hay un trio comprueba si hay parejas
-            if (cantidadTrios > 0){
-                for (int i = 0; i < cartasOrdenadas.length-1; i++) {
+            if (quantityTrio > 0){
+                for (int i = 0; i < organizedCard.length-1; i++) {
                     //En el caso de que el valor de la carta sea igual que la del trio no se evalua
-                    if (cartasOrdenadas[i].getValueNumber() != valorTrio){
+                    if (organizedCard[i].getValueNumber() != valueTrio){
                         //No hace falta comprobar que i se pase de rango por arriba porque ya esta controlado en un if de arriba
                         //Comprueba si hay pareja al principio del array
                         if (i == 0){
                             //Comprueba que el valor de la siguiente carta a las dos de la pareja sea distinto, ya que si no habria trio
-                            if (cartasOrdenadas[i].getValueNumber() == cartasOrdenadas[i + 1].getValueNumber()
-                                && cartasOrdenadas[i].getValueNumber() != cartasOrdenadas[i + 2].getValueNumber()) {
-                                valorPareja = cartasOrdenadas[i].getValueNumber();
-                                cantidadParejas++;
+                            if (organizedCard[i].getValueNumber() == organizedCard[i + 1].getValueNumber()
+                                && organizedCard[i].getValueNumber() != organizedCard[i + 2].getValueNumber()) {
+                                valueCouple = organizedCard[i].getValueNumber();
+                                quantityCouples++;
                             }
                         }else{
                             //Comprueba si hay pareja en medio del array
-                            if (i <= cartasOrdenadas.length-3){
+                            if (i <= organizedCard.length-3){
                                 //Comprueba que el valor de la siguiente carta y la anterior a las dos de la pareja sea distinto, ya que si no habria trio
-                                if (cartasOrdenadas[i].getValueNumber() == cartasOrdenadas[i + 1].getValueNumber()
-                                    && cartasOrdenadas[i].getValueNumber() != cartasOrdenadas[i + 2].getValueNumber()
-                                    && cartasOrdenadas[i].getValueNumber() != cartasOrdenadas[i - 1].getValueNumber()) {
-                                    valorPareja = cartasOrdenadas[i].getValueNumber();
-                                    cantidadParejas++;
+                                if (organizedCard[i].getValueNumber() == organizedCard[i + 1].getValueNumber()
+                                    && organizedCard[i].getValueNumber() != organizedCard[i + 2].getValueNumber()
+                                    && organizedCard[i].getValueNumber() != organizedCard[i - 1].getValueNumber()) {
+                                    valueCouple = organizedCard[i].getValueNumber();
+                                    quantityCouples++;
                                 }
                             }else{
                                 //Comprueba si hay pareja al final del array
-                                if (i == cartasOrdenadas.length-2){
+                                if (i == organizedCard.length-2){
                                     //Comprueba que el valor de la anterior carta a las dos de la pareja sea distinto, ya que si no habria trio
-                                    if (cartasOrdenadas[i].getValueNumber() == cartasOrdenadas[i + 1].getValueNumber()
-                                        && !(cartasOrdenadas[i].getValueNumber() == cartasOrdenadas[i - 1].getValueNumber())) {
-                                        valorPareja = cartasOrdenadas[i].getValueNumber();
-                                        cantidadParejas++;
+                                    if (organizedCard[i].getValueNumber() == organizedCard[i + 1].getValueNumber()
+                                        && !(organizedCard[i].getValueNumber() == organizedCard[i - 1].getValueNumber())) {
+                                        valueCouple = organizedCard[i].getValueNumber();
+                                        quantityCouples++;
                                     }
                                 }
                             }
@@ -505,43 +505,43 @@ public class ManagementCardImpl {
                 }
 
                 //En el caso de no haber una pareja y haber 2 trios o mas se podra usar el 2 trio mas alto como pareja
-                if (cantidadParejas == 0 && cantidadTrios > 1){
+                if (quantityCouples == 0 && quantityTrio > 1){
                     //Recorre el array contando cuantos trios existen el la baraja
-                    for (int i = 0;i<cartasOrdenadas.length-2;i++){
+                    for (int i = 0;i<organizedCard.length-2;i++){
                         //Este if se usa para que no se evalue el trio elegido arriba (asi se coge el segundo trio mas valorado y no se coge el primero por lo cual no se repite)
-                        if (cartasOrdenadas[i].getValueNumber() != valorTrio) {
+                        if (organizedCard[i].getValueNumber() != valueTrio) {
                             //Comprueba si hay trio al principio del array
                             if (i == 0){
                                 //Comprueba que el valor de la siguente carta a las tres del trio sea distinto, ya que si no habria full
-                                if (cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i+1].getNumber())
-                                    && cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i+2].getNumber())
-                                    && !cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i+3].getNumber())){
+                                if (organizedCard[i].getNumber().equals(organizedCard[i+1].getNumber())
+                                    && organizedCard[i].getNumber().equals(organizedCard[i+2].getNumber())
+                                    && !organizedCard[i].getNumber().equals(organizedCard[i+3].getNumber())){
                                     //Se guarda en la variable de pareja porque se usa el segundo trio mas alto como pareja al no haber pareja y si mas de 1 trio
-                                    valorPareja = cartasOrdenadas[i].getValueNumber();
-                                    cantidadParejas++;
+                                    valueCouple = organizedCard[i].getValueNumber();
+                                    quantityCouples++;
                                 }
                             }else{
                                 //Comprueba si hay trio en medio del array
-                                if (i <= cartasOrdenadas.length-4){
+                                if (i <= organizedCard.length-4){
                                     //Comprueba que el valor de la siguiente carta y la anterior a las tres del trio sea distinto, ya que si no habria full
-                                    if (!cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i-1].getNumber())
-                                        && cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i+1].getNumber())
-                                        && cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i+2].getNumber())
-                                        && !cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i+3].getNumber())){
+                                    if (!organizedCard[i].getNumber().equals(organizedCard[i-1].getNumber())
+                                        && organizedCard[i].getNumber().equals(organizedCard[i+1].getNumber())
+                                        && organizedCard[i].getNumber().equals(organizedCard[i+2].getNumber())
+                                        && !organizedCard[i].getNumber().equals(organizedCard[i+3].getNumber())){
                                         //Se guarda en la variable de pareja porque se usa el segundo trio mas alto como pareja al no haber pareja y si mas de 1 trio
-                                        valorPareja = cartasOrdenadas[i].getValueNumber();
-                                        cantidadParejas++;
+                                        valueCouple = organizedCard[i].getValueNumber();
+                                        quantityCouples++;
                                     }
                                 }else{
                                     //Comprueba si hay trio al final del array
-                                    if (i == cartasOrdenadas.length-3){
+                                    if (i == organizedCard.length-3){
                                         //Comprueba que el valor de la anterior carta a las tres del trio sea distinto, ya que si no habria full
-                                        if (!cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i-1].getNumber())
-                                            && cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i+1].getNumber())
-                                            && cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i+2].getNumber())){
+                                        if (!organizedCard[i].getNumber().equals(organizedCard[i-1].getNumber())
+                                            && organizedCard[i].getNumber().equals(organizedCard[i+1].getNumber())
+                                            && organizedCard[i].getNumber().equals(organizedCard[i+2].getNumber())){
                                             //Se guarda en la variable de pareja porque se usa el segundo trio mas alto como pareja al no haber pareja y si mas de 1 trio
-                                            valorPareja = cartasOrdenadas[i].getValueNumber();
-                                            cantidadParejas++;
+                                            valueCouple = organizedCard[i].getValueNumber();
+                                            quantityCouples++;
                                         }
                                     }
                                 }
@@ -551,23 +551,23 @@ public class ManagementCardImpl {
                 }
             }
 
-            //No hace falta comprobar que la cantidad de trios sea superior a 0 porque si la cantidad de parejas es superior a 0 significa que se ha entrado en la condifion del if (cantidadTrios > 0)
+            //No hace falta comprobar que la cantidad de trios sea superior a 0 porque si la cantidad de parejas es superior a 0 significa que se ha entrado en la condifion del if (quantityTrio > 0)
             //Se comprueba antes que la cantidad de trios sea superior a 0 porque asi nos evitamos buscar parejas si no hay minimo 1 trio
-            if (cantidadParejas > 0){
+            if (quantityCouples > 0){
                 //Recorre el array buscando cual es el valor del full
-                for (int i = 0; i<posibilidades.length && puntos==0; i++){
-                    if (posibilidades[i][0] == valorTrio && posibilidades[i][1] == valorPareja){
+                for (int i = 0; i<possibilities.length && points==0; i++){
+                    if (possibilities[i][0] == valueTrio && possibilities[i][1] == valueCouple){
                         //Se le suma 1 a i ya que el array empieza por 0 y entonces la muestra un punto menos en todas las combinaciones posibles
-                        puntos = 140 + (i+1);
+                        points = 140 + (i+1);
                     }
                 }
             }
         }
-        return puntos;
+        return points;
     }
 
     /*
-     * SIGNATURA: public int calcularValorPoker(CartaImpl[] cartas);
+     * SIGNATURA: public int calculateValuePoker(CartaImpl[] cards);
      * COMENTARIO: Calcula el valor del poker del array de CartasImpl pasado por parametro
      * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
@@ -579,24 +579,24 @@ public class ManagementCardImpl {
 
     /**
      * Calculate the highest value of the poker in the array passed by parameter
-     * @param cartas CartaImpl[] cards you want to value
-     * @return int Returns 0 if not exist poker. Returns the value of poker if exist poker.
+     * @param cards CardImpl[] cards you want to value
+     * @return int Return 0 if not exist poker. Returns the value of poker if exist poker.
      */
 
-    public int calcularValorPoker(CardImpl[] cartas){
-        CardImpl[] cartasOrdenadas = new CardImpl[cartas.length];
-        System.arraycopy(cartas,0,cartasOrdenadas,0,cartas.length);
-        arrangeCards(cartasOrdenadas);
+    public int calculateValuePoker(CardImpl[] cards){
+        CardImpl[] organizedCard = new CardImpl[cards.length];
+        System.arraycopy(cards,0,organizedCard,0,cards.length);
+        arrangeCards(organizedCard);
         int puntos = 0;
-        if (cartasOrdenadas.length>3){
+        if (organizedCard.length>3){
             //Como el array esta ordenado las 4 cartas estaran juntas en el caso de haber poker por lo cual se comprueba de esta manera
             //Recorre el array buscando si hay poker.
-            for (int i = 0;i<cartasOrdenadas.length-3;i++){
-                if ( (cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i+1].getNumber()))
-                        && (cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i+2].getNumber()))
-                        && (cartasOrdenadas[i].getNumber().equals(cartasOrdenadas[i+3].getNumber()))){
+            for (int i = 0;i<organizedCard.length-3;i++){
+                if ( (organizedCard[i].getNumber().equals(organizedCard[i+1].getNumber()))
+                        && (organizedCard[i].getNumber().equals(organizedCard[i+2].getNumber()))
+                        && (organizedCard[i].getNumber().equals(organizedCard[i+3].getNumber()))){
 
-                    puntos = 296+cartasOrdenadas[i].getValueNumber();
+                    puntos = 296+organizedCard[i].getValueNumber();
 
                 }
             }
@@ -605,7 +605,7 @@ public class ManagementCardImpl {
     }
 
     /*
-     * SIGNATURA: public int calcularValorEscaleraColor(CartaImpl[] cartas);
+     * SIGNATURA: public int calculateValueColorStair(CartaImpl[] cards);
      * COMENTARIO: Calcula el valor de la escalera de color del array de CartasImpl pasado por parametro
      * PRECONDICIONES: - El array de cartas pasado por parametro no puede contener cartas por defecto
      * ENTRADA: - Un array de CartaImpl
@@ -617,79 +617,79 @@ public class ManagementCardImpl {
 
     /**
      * Calculate the highest value of the color stair in the array passed by parameter
-     * @param cartas CartaImpl[] cards you want to value
+     * @param cards CardImpl[] cards you want to value
      * @return Returns 0 if there is no color stair. Returns value of stair of color if exists
      */
 
-    public int calcularValorEscaleraColor(CardImpl[] cartas){
-        int puntos = 0;
+    public int calculateValueColorStair(CardImpl[] cards){
+        int points = 0;
         char color;
-        int cantidadCartas = 0;
-        CardImpl[] cartasColor;
-        boolean escaleraTipo1 = false;
+        int quantityCards = 0;
+        CardImpl[] colorCards;
+        boolean stairType1 = false;
 
         //Calcula si hay color. N si no hay o el caracter del color que exista
-        color = calculateTipeColor(cartas);
+        color = calculateTipeColor(cards);
 
-        //if (cartas.length > 4 && color != 'N') {      cartas.length sobra porque si hay color significa que hay 5 cartas o mas
+        //if (cards.length > 4 && color != 'N') {      cards.length sobra porque si hay color significa que hay 5 cards o mas
         if (color != 'N') {
 
-            //Calcula la cantidad de cartas que hay del color que se ha calculado el cual hay color
-            for (CardImpl carta : cartas){
+            //Calcula la cantidad de cards que hay del color que se ha calculado el cual hay color
+            for (CardImpl carta : cards){
                 if (carta.getSuit() == color) {
-                    cantidadCartas++;
+                    quantityCards++;
                 }
             }
 
-            //Array para meter las cartas del mismo color
-            cartasColor = new CardImpl[cantidadCartas];
+            //Array para meter las cards del mismo color
+            colorCards = new CardImpl[quantityCards];
 
-            //Anhade todas las cartas del color obtenido en el array creado
-            for (int i = 0, j = 0; i < cartas.length; i++) {
-                if (cartas[i].getSuit() == color) {
-                    cartasColor[j] = cartas[i];
+            //Anhade todas las cards del color obtenido en el array creado
+            for (int i = 0, j = 0; i < cards.length; i++) {
+                if (cards[i].getSuit() == color) {
+                    colorCards[j] = cards[i];
                     j++;
                 }
             }
 
-            arrangeCards(cartasColor);
+            arrangeCards(colorCards);
 
             //Comprueba si la escalera de color puede ser que sea A,2,3,4,5
             //Como la carta A es la se mayor valor no se coloca delante en el array entonces hay que comprobarla estando detras
-            if (cartasColor[0].getValueNumber() == 1 && cartasColor[cartasColor.length - 1].getValueNumber() == 13) {
+            if (colorCards[0].getValueNumber() == 1 && colorCards[colorCards.length - 1].getValueNumber() == 13) {
 
                 //Esta controlado que no haya numeros repetidos ya que no puede haber numeros repetidos en un palo
 
                 //Como sabemos que la primera carta sera el 2 y la ultima sera la A podemos usar posiciones absolutas para comprobar si hay escalera de color tipo A,2,3,4,5
-                if ((cartasColor[1].getValueNumber() == ((cartasColor[0].getValueNumber()) + 1))
-                     && (cartasColor[2].getValueNumber() == ((cartasColor[1].getValueNumber()) + 1))
-                     && (cartasColor[3].getValueNumber() == ((cartasColor[2].getValueNumber()) + 1))) {
+                if ((colorCards[1].getValueNumber() == ((colorCards[0].getValueNumber()) + 1))
+                     && (colorCards[2].getValueNumber() == ((colorCards[1].getValueNumber()) + 1))
+                     && (colorCards[3].getValueNumber() == ((colorCards[2].getValueNumber()) + 1))) {
 
                     //If para comprobar si la carta siguiente 4 es un numero mayor a la carta 3 lo cual significaria que habra escalera mas alta que A,2,3,4,5
-                    if (cartasColor[4].getValueNumber() == cartasColor[3].getValueNumber() + 1) {
+                    if (colorCards[4].getValueNumber() == colorCards[3].getValueNumber() + 1) {
                         //En el caso de que pueda ser A,2,3,4,5,6 o incluso A,2,3,4,5,6,7 se realizara este bucle for para coger la escalera de color mas alta.
-                        for (int i = 3, j = 0; cartasColor[i + 1].getValueNumber() == cartasColor[i].getValueNumber() + 1 && i<cartasColor.length-2; i++, j++) {
-                            puntos = 309 + cartasColor[j].getValueNumber();
+                        for (int i = 3, j = 0; colorCards[i + 1].getValueNumber() == colorCards[i].getValueNumber() + 1 && i<colorCards.length-2; i++, j++) {
+                            points = 309 + colorCards[j].getValueNumber();
                         }
                     } else {
                         //En el cado de que no haya una escalera mas grande se coloca la escalera de color del A,2,3,4,5
-                        puntos = 309 + cartasColor[0].getValueNumber();
-                        escaleraTipo1 = true;
+                        points = 309 + colorCards[0].getValueNumber();
+                        stairType1 = true;
                     }
                 }
             }
 
             //En el caso de que haya escalera tipo A,2,3,4,5 o algo mayor no se ejecutara
-            if (!escaleraTipo1){
+            if (!stairType1){
                 //Recorre el array para comprobar si hay escalera de color
-                for (int i = 0; i < cartasColor.length - 4; i++) {
+                for (int i = 0; i < colorCards.length - 4; i++) {
 
-                    if ((cartasColor[i+1].getValueNumber() == ((cartasColor[i].getValueNumber()) + 1))
-                         && (cartasColor[i+2].getValueNumber() == ((cartasColor[i+1].getValueNumber()) + 1))
-                         && (cartasColor[i+3].getValueNumber() == ((cartasColor[i+2].getValueNumber()) + 1))
-                         && (cartasColor[i+4].getValueNumber() == ((cartasColor[i+3].getValueNumber()) + 1))) {
+                    if ((colorCards[i+1].getValueNumber() == ((colorCards[i].getValueNumber()) + 1))
+                         && (colorCards[i+2].getValueNumber() == ((colorCards[i+1].getValueNumber()) + 1))
+                         && (colorCards[i+3].getValueNumber() == ((colorCards[i+2].getValueNumber()) + 1))
+                         && (colorCards[i+4].getValueNumber() == ((colorCards[i+3].getValueNumber()) + 1))) {
 
-                        puntos = 309 + (cartasColor[i].getValueNumber()+1);
+                        points = 309 + (colorCards[i].getValueNumber()+1);
 
                     }
 
@@ -697,7 +697,7 @@ public class ManagementCardImpl {
             }
 
         }
-        return puntos;
+        return points;
     }
 
     /*
@@ -715,70 +715,69 @@ public class ManagementCardImpl {
 
     /**
      * This method calculates the value of the cards of player passed by parameter in one table
-     * @param jugador player of which we want to evaluate the cards
-     * @param mesa table where the player plays
+     * @param player player of which we want to evaluate the cards
+     * @param table table where the player plays
      * @return int with the value of the player's cards passed by parameter on a table
      */
 
-    public int evaluarCartas(int jugador, TableImpl mesa){
+    public int evaluateCardsFromPlayer(int player, TableImpl table){
 
-        int puntosFinales, puntosCalculados;
-        CardImpl[] cartasAEvaluar;
-        ManagementCardImpl gesCarta = new ManagementCardImpl();
+        int finalPoints, calculatedPoints;
+        CardImpl[] cardsToEvaluate;
 
         //Obtener cartas que se quieren evaluar.
-        cartasAEvaluar = obtenerCartasAEvaluar(jugador,mesa);
+        cardsToEvaluate = getCardsToEvaluate(player,table);
 
         //Ordenar las cartas obtenidas
-        gesCarta.arrangeCards(cartasAEvaluar);
+        arrangeCards(cardsToEvaluate);
 
-        //Va comprobando todos los valores de las distintas posibilidades que tiene el jugador y se queda con la posibilidad mas alta.
-        puntosFinales = calculateValueTopCard(cartasAEvaluar);
+        //Va comprobando todos los valores de las distintas posibilidades que tiene el player y se queda con la posibilidad mas alta.
+        finalPoints = calculateValueTopCard(cardsToEvaluate);
 
-        puntosCalculados = calculateValuePair(cartasAEvaluar);
-        if (puntosCalculados>puntosFinales){
-            puntosFinales = puntosCalculados;
+        calculatedPoints = calculateValuePair(cardsToEvaluate);
+        if (calculatedPoints>finalPoints){
+            finalPoints = calculatedPoints;
         }
 
-        puntosCalculados = calculateValueDoublePair(cartasAEvaluar);
-        if (puntosCalculados>puntosFinales){
-            puntosFinales = puntosCalculados;
+        calculatedPoints = calculateValueDoublePair(cardsToEvaluate);
+        if (calculatedPoints>finalPoints){
+            finalPoints = calculatedPoints;
         }
 
-        puntosCalculados = calculateValueTrio(cartasAEvaluar);
-        if (puntosCalculados>puntosFinales){
-            puntosFinales = puntosCalculados;
+        calculatedPoints = calculateValueTrio(cardsToEvaluate);
+        if (calculatedPoints>finalPoints){
+            finalPoints = calculatedPoints;
         }
 
-        puntosCalculados = calculateValueStairs(cartasAEvaluar);
-        if (puntosCalculados>puntosFinales){
-            puntosFinales = puntosCalculados;
+        calculatedPoints = calculateValueStairs(cardsToEvaluate);
+        if (calculatedPoints>finalPoints){
+            finalPoints = calculatedPoints;
         }
 
-        puntosCalculados = calculateValueColor(cartasAEvaluar);
-        if (puntosCalculados>puntosFinales){
-            puntosFinales = puntosCalculados;
+        calculatedPoints = calculateValueColor(cardsToEvaluate);
+        if (calculatedPoints>finalPoints){
+            finalPoints = calculatedPoints;
         }
 
-        puntosCalculados = calcularValorPoker(cartasAEvaluar);
-        if (puntosCalculados>puntosFinales){
-            puntosFinales = puntosCalculados;
+        calculatedPoints = calculateValuePoker(cardsToEvaluate);
+        if (calculatedPoints>finalPoints){
+            finalPoints = calculatedPoints;
         }
 
-        puntosCalculados = calculateValueFull(cartasAEvaluar);
-        if (puntosCalculados>puntosFinales){
-            puntosFinales = puntosCalculados;
+        calculatedPoints = calculateValueFull(cardsToEvaluate);
+        if (calculatedPoints>finalPoints){
+            finalPoints = calculatedPoints;
         }
 
-        puntosCalculados = calcularValorEscaleraColor(cartasAEvaluar);
-        if (puntosCalculados>puntosFinales){
-            puntosFinales = puntosCalculados;
+        calculatedPoints = calculateValueColorStair(cardsToEvaluate);
+        if (calculatedPoints>finalPoints){
+            finalPoints = calculatedPoints;
         }
-        return puntosFinales;
+        return finalPoints;
     }
 
     /*
-     * SIGNATURA: public CartaImpl[] obtenerCartasAEvaluar(int jugador, MesaImpl mesa);
+     * SIGNATURA: public CartaImpl[] getCardsToEvaluate(int player, MesaImpl table);
      * COMENTARIO: Este metodo obtiene el total de cartas que tiene el jugador junto a las disponibles en la mesa para evaluarlas.
      * PRECONDICIONES: - Nada
      * ENTRADA: - Un objeto MesaImpl
@@ -790,52 +789,52 @@ public class ManagementCardImpl {
 
     /**
      * This method get the player's cards to evaluate
-     * @param jugador player of which we want to evaluate the cards
-     * @param mesa table where the player plays
-     * @return CartaImpl[] array of CartaImpl with the player's cards passed by parameter
+     * @param player player of which we want to evaluate the cards
+     * @param table table where the player plays
+     * @return CardImpl[] array of CardImpl with the player's cards passed by parameter
      */
 
-    public CardImpl[] obtenerCartasAEvaluar(int jugador, TableImpl mesa){
-        CardImpl[] cartasTotales;
+    public CardImpl[] getCardsToEvaluate(int player, TableImpl table){
+        CardImpl[] totalCards;
 
-        int cantidadCartas = 0;
-        CardImpl[] cartasMesa = mesa.getCardsOfTable();
-        CardImpl[] cartasJugador = mesa.setCardsPlayer(jugador);
+        int quantityCards = 0;
+        CardImpl[] cardsTable = table.getCardsOfTable();
+        CardImpl[] cardsPlayer = table.setCardsPlayer(player);
 
-        //Obtiene la cantidad de cartas que hay en la mesa con valor distinto al de defecto
-        for (int i = 0; i<cartasMesa.length&&(cartasMesa[i].getSuit()!='D'); i++){
-            cantidadCartas++;
+        //Obtiene la cantidad de cartas que hay en la table con valor distinto al de defecto
+        for (int i = 0; i<cardsTable.length&&(cardsTable[i].getSuit()!='D'); i++){
+            quantityCards++;
         }
 
-        //Obtiene la cantidad de cartas que posee el jugador pasado por parametro con valor distinto al de defecto
-        for (int i = 0; i<cartasJugador.length&&(cartasJugador[i].getSuit()!='D'); i++){
-            cantidadCartas++;
+        //Obtiene la cantidad de cartas que posee el player pasado por parametro con valor distinto al de defecto
+        for (int i = 0; i<cardsPlayer.length&&(cardsPlayer[i].getSuit()!='D'); i++){
+            quantityCards++;
         }
 
-        cartasTotales = new CardImpl[cantidadCartas];
+        totalCards = new CardImpl[quantityCards];
 
         //Inicializar el array para no tener errores de null
-        for (int i = 0; i<cartasTotales.length;i++){
-            cartasTotales[i] = new CardImpl();
+        for (int i = 0; i<totalCards.length;i++){
+            totalCards[i] = new CardImpl();
         }
 
-        //Anhade al array de cartas totales todas las cartas distintas al valor por defecto que hay en la mesa
-        for (int i = 0; i<cartasMesa.length&&(cartasMesa[i].getSuit()!='D'); i++){
-            cartasTotales[i] = cartasMesa[i].clone();
+        //Anhade al array de cartas totales todas las cartas distintas al valor por defecto que hay en la table
+        for (int i = 0; i<cardsTable.length&&(cardsTable[i].getSuit()!='D'); i++){
+            totalCards[i] = cardsTable[i].clone();
         }
 
-        //Anhade al array de cartas totales todas las cartas distintas al valor por defecto que posee el jugador
-        for (int i = 0,j = 0;i<cartasTotales.length;i++){
-            if (cartasTotales[i].getSuit()=='D'){
-                cartasTotales[i] = cartasJugador[j];
+        //Anhade al array de cartas totales todas las cartas distintas al valor por defecto que posee el player
+        for (int i = 0,j = 0;i<totalCards.length;i++){
+            if (totalCards[i].getSuit()=='D'){
+                totalCards[i] = cardsPlayer[j];
                 j++;
             }
         }
-        return cartasTotales;
+        return totalCards;
     }
 
     /*
-     * SIGNATURA: public void ordenarCartas(CartaImpl[] cartas);
+     * SIGNATURA: public void arrangeCards(CartaImpl[] cards);
      * COMENTARIO: Ordena las cartas de un array de cartas.
      * PRECONDICIONES: - El array debe tener como minimo 2 cartas
      *                 - El array de cartas pasado por parametro no puede contener cartas por defecto
@@ -847,18 +846,18 @@ public class ManagementCardImpl {
 
     /**
      * This method sort the array passed by parameter
-     * @param cartas Array of CartaImpl[] you want to order
+     * @param cards Array of CartaImpl[] you want to order
      */
 
-    public void arrangeCards(CardImpl[] cartas){
-        CardImpl cartaAux;
+    public void arrangeCards(CardImpl[] cards){
+        CardImpl auxCard;
         //Para ordenar utiliza el metodo de compareTo de la clase CartaImpl
-        for(int i = 0; i < cartas.length - 1; i++){
-            for(int j = 0; j < cartas.length - 1; j++){
-                if (cartas[j].compareTo(cartas[j + 1]) == 1){
-                    cartaAux = cartas[j+1];
-                    cartas[j+1] = cartas[j];
-                    cartas[j] = cartaAux;
+        for(int i = 0; i < cards.length - 1; i++){
+            for(int j = 0; j < cards.length - 1; j++){
+                if (cards[j].compareTo(cards[j + 1]) == 1){
+                    auxCard = cards[j+1];
+                    cards[j+1] = cards[j];
+                    cards[j] = auxCard;
                 }
             }
         }
@@ -877,16 +876,16 @@ public class ManagementCardImpl {
 
     /**
      * Method to calculate if there is color in the card array
-     * @param cartas Array of cards you want to check
+     * @param cards Array of cards you want to check
      * @return char with the color that exist in array of cards. Return N if not exist color.
      */
 
-    public char calculateTipeColor(CardImpl[] cartas){
+    public char calculateTipeColor(CardImpl[] cards){
         char color = 'N';
         int contadorPica = 0, contadorCorazon = 0, contadorTrevol = 0, contadorRombo = 0;
 
-        //Se calcula cuantas cartas hay de cada palo
-        for (CardImpl carta : cartas) {
+        //Se calcula cuantas cards hay de cada palo
+        for (CardImpl carta : cards) {
             if (carta.getSuit() == 'P') {
                 contadorPica++;
             } else {
