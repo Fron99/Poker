@@ -11,32 +11,34 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 import java.util.Scanner;
 
+@SuppressWarnings("unused")
 public class ManagementPlayerImpl {
 
     /**
-     * @param password
-     * @return
+     * This method encrypts the string passed by parameter with the MD5 format.
+     * @param password String to encrypt.
+     * @return Returns the string passed by encrypted parameter.
      */
 
     public String encriptPassword(String password){
-        String passEncripted = null;
+        String passEncrypted = null;
 
         try {
             byte[] bytesOfMessage = password.getBytes(StandardCharsets.UTF_8);
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] thedigest = md.digest(bytesOfMessage);
             BigInteger bigInt = new BigInteger(1,thedigest);
-            passEncripted = bigInt.toString(16);
+            passEncrypted = bigInt.toString(16);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
 
-        return passEncripted;
+        return passEncrypted;
     }
 
 
     /*
-     * SIGNATURA: public int leerYValidarSaldoInicial();
+     * SIGNATURA: public int readAndValidateInitialBalance();
      * COMENTARIO: Lee y valida el dinero inicial del jugador
      * PRECONDICIONES: - Ninguna
      * ENTRADA: - Nada
@@ -51,19 +53,19 @@ public class ManagementPlayerImpl {
      * @return int This method returns the amount of money validated with which the player wants to play
      */
 
-    public int leerYValidarSaldoInicial(){
-        int dinero;
+    public int readAndValidateInitialBalance(){
+        int balance;
         Scanner teclado = new Scanner(System.in);
         do {
-            System.out.println("La cantidad minima para iniciar es 2000€ y la maxima 10000€");
-            System.out.print("Introduce dinero con el que iniciar: ");
-            dinero = teclado.nextInt();
-        }while (dinero < 2000 || dinero > 10000);
-        return dinero;
+            System.out.println("The minimum balance is 2000€ and the maximum 10000€");
+            System.out.print("Insert init balance: ");
+            balance = teclado.nextInt();
+        }while (balance < 2000 || balance > 10000);
+        return balance;
     }
 
     /*
-     * SIGNATURA: public String leerUsuario();
+     * SIGNATURA: public String readUser();
      * COMENTARIO: Lee el usuario con el que quiere jugar el jugador
      * PRECONDICIONES: - Ninguna
      * ENTRADA: - Nada
@@ -77,12 +79,12 @@ public class ManagementPlayerImpl {
      * @return
      */
 
-    public String leerUsuario(){
-        String usuario;
-        Scanner teclado = new Scanner(System.in);
-            System.out.print("Introduce usuario con el que quiere jugar: ");
-            usuario = teclado.nextLine();
-        return usuario;
+    public String readUser(){
+        String username;
+        Scanner SC = new Scanner(System.in);
+            System.out.print("Insert username with you want play: ");
+            username = SC.nextLine();
+        return username;
     }
 
 
@@ -436,8 +438,8 @@ public class ManagementPlayerImpl {
 
     public PlayerImpl leerYValidarJugador(){
         PlayerImpl nuevoJugador;
-            String usuario = leerUsuario();
-            int saldo = leerYValidarSaldoInicial();
+            String usuario = readUser();
+            int saldo = readAndValidateInitialBalance();
             nuevoJugador = new PlayerImpl(usuario,saldo);
         return nuevoJugador;
     }

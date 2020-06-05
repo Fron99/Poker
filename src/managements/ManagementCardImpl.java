@@ -701,7 +701,7 @@ public class ManagementCardImpl {
     }
 
     /*
-     * SIGNATURA: public int evaluarCartas(int jugador, MesaImpl mesa);
+     * SIGNATURA: public int evaluateCardsFromPlayer(int player, MesaImpl table);
      * COMENTARIO: Calcular el valor que tienen las cartas segun la puntuacion establecida.
      * PRECONDICIONES: - El entero del jugador debe ser entre 0 y 4
      *                 - Las cartas del array de la mesa deben estar correlativas y todas las cartas por defecto deben estar detras de las que tienen valor definido.
