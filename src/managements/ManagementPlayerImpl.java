@@ -436,7 +436,7 @@ public class ManagementPlayerImpl {
      * @return
      */
 
-    public PlayerImpl leerYValidarJugador(){
+    public PlayerImpl readAndValidateUsername(){
         PlayerImpl nuevoJugador;
             String usuario = readUser();
             int saldo = readAndValidateInitialBalance();

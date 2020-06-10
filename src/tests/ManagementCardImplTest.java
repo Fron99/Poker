@@ -613,10 +613,4 @@ public class ManagementCardImplTest {
 
     }
 
-    @Test
-    public void oneToStair() {
-        //TODO
-    }
-
-
 }

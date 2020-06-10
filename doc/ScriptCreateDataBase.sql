@@ -5,6 +5,8 @@ GO
 USE PokerAuto
 GO
 
+CREATE LOGIN UserJava with password='newPassUser', DEFAULT_DATABASE=PokerAuto USE PokerAuto CREATE USER UserJava FOR LOGIN UserJava GRANT EXECUTE, INSERT, UPDATE, DELETE, SELECT TO UserJava 
+
 
 CREATE TABLE Users(
 	Username CHAR(40) NOT NULL,

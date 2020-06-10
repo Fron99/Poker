@@ -846,7 +846,7 @@ public class ManagementCardImpl {
 
     /**
      * This method sort the array passed by parameter
-     * @param cards Array of CartaImpl[] you want to order
+     * @param cards Array of CardImpl[] you want to order
      */
 
     public void arrangeCards(CardImpl[] cards){
@@ -935,11 +935,11 @@ public class ManagementCardImpl {
      */
 
     /**
-     * @param cards
-     * @return
+     * Method to calculate if there is a card left so there is a stair
+     * @param cards Array of cards you want to check
+     * @return Return True if left one card to stair.
+     *                False if left one card to stair.
      */
-
-    //TODO Mejorar este metodo
 
     public boolean oneToStair(CardImpl[] cards){
         boolean oneToStair = false;

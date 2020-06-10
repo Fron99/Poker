@@ -18,7 +18,7 @@ public class Main {
                     break;
 
                 case 2:
-
+                    System.out.println("Play roulette in progress");
                     break;
             }
 

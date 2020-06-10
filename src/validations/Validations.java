@@ -1,5 +1,9 @@
 package validations;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 
 public class Validations {
@@ -34,5 +38,72 @@ public class Validations {
         }while (option < 0 || option > 2);
         return option;
     }
+
+
+    /** Read and Validate a Password
+     * @return Validate password
+     */
+
+    public String readAndValidateUsername(Connection connection){
+        Scanner sc = new Scanner(System.in);
+        boolean exist = false;
+        String username;
+
+        Statement sentence = null;
+        ResultSet user = null;
+
+        do {
+            System.out.print("Insert the username: ");
+            username = sc.next();
+            String select = "SELECT Username " +
+                            "FROM Users " +
+                            "WHERE Username = '"+username+"'";
+
+            try {
+                sentence = connection.createStatement();
+                user = sentence.executeQuery(select);
+                if (!(exist = user.next())){
+                    System.out.println("The username don`t exist.");
+                }
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+
+            finally {
+                try {
+                    user.close();
+                    sentence.close();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            }
+
+        }while (!exist);
+
+        return username;
+    }
+
+
+    /**
+     * @return
+     */
+
+    public String readAndValidatePassword(){
+        Scanner sc = new Scanner(System.in);
+        Utils u = new Utils();
+        String password;
+
+        do {
+            System.out.print("Insert the password: ");
+            if ((password = sc.next()).length() < 8){
+                System.out.println("The password must be longer than 7 characters");
+            }
+        }while (password.length() < 8);
+
+        password = u.encriptPassword(password);
+        return password;
+    }
+
 
 }

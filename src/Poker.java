@@ -47,77 +47,95 @@
 
 import basicsClasses.TableImpl;
 import managements.ManagementPlayerImpl;
+import managements.ManagementPoker;
 import validations.Validations;
+
+import java.sql.Connection;
 
 public class Poker {
 
     public void playGame(){
 
+        ManagementPoker managePoker = new ManagementPoker();
         ManagementPlayerImpl managePlayer = new ManagementPlayerImpl();
         Validations validations = new Validations();
         TableImpl table = new TableImpl();
-        int balanceInitialPlayer, playerWithBalance;
-        boolean remainPlayers, continuePlay;
+        int playerWithBalance;
+        boolean remainPlayers, continuePlay, existUser;
+        Connection connectionDataBase = managePoker.getConnection();
+        String username, password;
 
-        //leerYValidarJugador*
-        //añadirJugador
-        table.setPlayer(0,managePlayer.leerYValidarJugador());  //El usuario que juega se colocara siempre en la posicion 0 y se comprueba que se haya introducido correctamente
-        balanceInitialPlayer = table.getBalancePlayer(0);    //Solo se utiliza para informacion al usuario al finalizar el juego
 
-        //cargarBots
-        table.generateBots();  //Coloca en el array de jugadores jugadores con valores generados aleatoriamente
+        if (connectionDataBase != null){
+            username = validations.readAndValidateUsername(connectionDataBase);
+            password = validations.readAndValidatePassword();
+            existUser = managePoker.existUser(username, password, connectionDataBase);
 
-        do {
+            if (existUser){
 
-            //restaurarMesa
-            table.restoreTable();
+                //cargarBots
+                table.setPlayer(0,managePoker.getUser(username, connectionDataBase));
+                table.setPlayer(1,managePoker.getRandomUser(connectionDataBase));
+                table.setPlayer(2,managePoker.getRandomUser(connectionDataBase));
+                table.setPlayer(3,managePoker.getRandomUser(connectionDataBase));
+                table.setPlayer(4,managePoker.getRandomUser(connectionDataBase));
 
-            //Actualizar variables para nuevo juego
-            remainPlayers = true;
+                do {
 
-            for (int contador = 0; contador < 4 && remainPlayers; contador++){
-                    //Se utiliza este if para que solo se generen una vez las 3 cartas despues de la primera jugada
-                    if (contador == 1) {
-                        //generarTresCartasMesa
-                        table.generateThreeCardsToTable();
+                    //restaurarMesa
+                    table.restoreTable();
+
+                    //Actualizar variables para nuevo juego
+                    remainPlayers = true;
+
+                    for (int contador = 0; contador < 4 && remainPlayers; contador++){
+                        //Se utiliza este if para que solo se generen una vez las 3 cartas despues de la primera jugada
+                        if (contador == 1) {
+                            //generarTresCartasMesa
+                            table.generateThreeCardsToTable();
+                        }
+
+                        //Se utiliza este if para que solo se generen una carta a partir de la 2 apuesta
+                        if (contador > 1) {
+                            //generarCartaMesa
+                            table.generateCardTable();
+                        }
+
+                        //mostrarPanelJuego
+                        table.showPanelPlay();
+
+                        //realizarApuestas
+                        remainPlayers = table.doBet();     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
                     }
 
-                    //Se utiliza este if para que solo se generen una carta a partir de la 2 apuesta
-                    if (contador > 1) {
-                        //generarCartaMesa
-                        table.generateCardTable();
+                    if (remainPlayers){
+                        //mostrarPanelJuego
+                        table.showPanelPlay();
                     }
 
-                    //mostrarPanelJuego
-                    table.showPanelPlay();
+                    //ingresarSaldoGanadores
+                    table.depositBalanceWinnerAndShowWinner();
 
-                    //realizarApuestas
-                    remainPlayers = table.doBet();     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
+                    table.increaseTurn();
+
+                    playerWithBalance = managePlayer.playerWithValancePositive(table.getPlayers());
+
+                    if (table.getBalancePlayer(0)>0 && playerWithBalance > 0){
+                        continuePlay = validations.readAndValidateContinuePlaying();
+                    }else{
+                        System.out.println("El jugador no tiene más saldo");
+                        continuePlay = false;
+                    }
+
+                }while (table.getBalancePlayer(0)>0
+                        && continuePlay);
+
+
             }
 
-            if (remainPlayers){
-                //mostrarPanelJuego
-                table.showPanelPlay();
-            }
-
-            //ingresarSaldoGanadores
-            table.depositBalanceWinnerAndShowWinner();
-
-            table.increaseTurn();
-
-            playerWithBalance = managePlayer.playerWithValancePositive(table.getPlayers());
-
-            if (table.getBalancePlayer(0)>0 && playerWithBalance > 0){
-                continuePlay = validations.readAndValidateContinuePlaying();
-            }else{
-                System.out.println("El jugador no tiene más saldo");
-                continuePlay = false;
-            }
-
-        }while (table.getBalancePlayer(0)>0
-                && continuePlay);
-
-        System.out.println("El jugador "+table.getUsernamePlayer(0)+" empezo con "+balanceInitialPlayer+" y acabo con "+table.getBalancePlayer(0)+"");
+        }else{
+            System.out.println("Error in connection");
+        }
 
     }
 

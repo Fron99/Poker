@@ -92,6 +92,7 @@ import managements.ManagementPlayerImpl;
 import enums.Genders;
 import interfaces.Table;
 
+import java.sql.Connection;
 import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.Random;
@@ -1041,6 +1042,7 @@ public class TableImpl implements Table, Cloneable {
 
     }
 
+
     /*
      * SIGNATURA: public void generateThreeCardsToTable();
      * COMENTARIO: Saca 3 cartas de la baraja y las coloca en el array de las cartas de la mesa
@@ -1506,9 +1508,9 @@ public class TableImpl implements Table, Cloneable {
             if (playerActive[turnPlayerPartial] && this.getBalancePlayer(turnPlayerPartial) > 0 && !playerAllInLower[turnPlayerPartial]) {
                 maxBet = getMaxBet();
                 if(turnPlayerPartial == 0){
-                    minBet = managPlayer.leerYValidarApuesta(turnPlayerPartial, minBet, maxBet,this);
+                    minBet = managPlayer.readAndValidateBet(turnPlayerPartial, minBet, maxBet,this);
                 }else{
-                    minBet = managPlayer.calcularApostarBot(turnPlayerPartial, minBet, maxBet,this);
+                    minBet = managPlayer.calculateBetBot(turnPlayerPartial, minBet, maxBet,this);
                 }
                 //Disminuir el saldo del jugador
                 this.players[turnPlayerPartial].decreaseBalance(minBet);
@@ -1529,9 +1531,9 @@ public class TableImpl implements Table, Cloneable {
                 if (playerActive[turnPlayerPartial] && this.getBalancePlayer(turnPlayerPartial) > 0 && !playerAllInLower[turnPlayerPartial]) {
                     maxBet = getMaxBet();
                     if(turnPlayerPartial == 0){
-                        betPlayer = managPlayer.leerYValidarApuesta(turnPlayerPartial, minBet, maxBet,this);
+                        betPlayer = managPlayer.readAndValidateBet(turnPlayerPartial, minBet, maxBet,this);
                     }else{
-                        betPlayer = managPlayer.calcularApostarBot(turnPlayerPartial, minBet, maxBet,this);
+                        betPlayer = managPlayer.calculateBetBot(turnPlayerPartial, minBet, maxBet,this);
                     }
 
                     try {
