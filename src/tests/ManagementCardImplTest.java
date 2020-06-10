@@ -8,11 +8,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class GestoraCardImplTest {
-
+public class ManagementCardImplTest {
 
     @Test
-    public void testCalcularValorCartaAlta(){
+    public void calculateValueTopCard(){
         ManagementCardImpl ges = new ManagementCardImpl();
 
         //Prueba 0
@@ -31,7 +30,7 @@ public class GestoraCardImplTest {
     }
 
     @Test
-    public void testCalcularValorPareja(){
+    public void calculateValuePair(){
         ManagementCardImpl ges = new ManagementCardImpl();
 
         //Prueba 0
@@ -71,9 +70,8 @@ public class GestoraCardImplTest {
         assertEquals(valor,0);
     }
 
-
     @Test
-    public void testCalcularValorDoblePareja(){
+    public void calculateValueDoublePair(){
         ManagementCardImpl ges = new ManagementCardImpl();
 
         //Prueba 0
@@ -126,7 +124,7 @@ public class GestoraCardImplTest {
     }
 
     @Test
-    public void testCalcularValorTrio(){
+    public void calculateValueTrio(){
         ManagementCardImpl ges = new ManagementCardImpl();
 
         //Prueba 0
@@ -172,9 +170,8 @@ public class GestoraCardImplTest {
         assertEquals(valor,106);
     }
 
-
     @Test
-    public void testCalcularValorEscalera(){
+    public void calculateValueStairs(){
         ManagementCardImpl ges = new ManagementCardImpl();
 
         //Prueba 0
@@ -232,9 +229,8 @@ public class GestoraCardImplTest {
         assertEquals(valor,121);
     }
 
-
     @Test
-    public void testCalcularValorColor(){
+    public void calculateValueColor(){
         ManagementCardImpl ges = new ManagementCardImpl();
 
         //Prueba 0
@@ -262,9 +258,8 @@ public class GestoraCardImplTest {
         assertEquals(valor,132);
     }
 
-
     @Test
-    public void testCalcularValorFull(){
+    public void calculateValueFull(){
         ManagementCardImpl ges = new ManagementCardImpl();
 
         //Prueba 0
@@ -340,9 +335,8 @@ public class GestoraCardImplTest {
         assertEquals(valor,0);
     }
 
-
     @Test
-    public void testCalcularValorPoker(){
+    public void calculateValuePoker(){
         ManagementCardImpl ges = new ManagementCardImpl();
 
         //Prueba 0
@@ -365,9 +359,8 @@ public class GestoraCardImplTest {
 
     }
 
-
     @Test
-    public void testCalcularValorEscaleraColor(){
+    public void calculateValueColorStair(){
         ManagementCardImpl ges = new ManagementCardImpl();
 
         //Prueba 0
@@ -463,9 +456,8 @@ public class GestoraCardImplTest {
 
     }
 
-
     @Test
-    public void testEvaluarCartas(){
+    public void evaluateCardsFromPlayer(){
 
         //Prueba 0
 
@@ -514,9 +506,8 @@ public class GestoraCardImplTest {
 
     }
 
-
     @Test
-    public void testObtenerCartasAEvaluar(){
+    public void getCardsToEvaluate(){
 
         ManagementCardImpl ges = new ManagementCardImpl();
         TableImpl mesa = new TableImpl();
@@ -561,9 +552,8 @@ public class GestoraCardImplTest {
 
     }
 
-
     @Test
-    public void testOrdenarCartas() {
+    public void arrangeCards() {
         ManagementCardImpl ges = new ManagementCardImpl();
 
         //Prueba 1
@@ -574,9 +564,8 @@ public class GestoraCardImplTest {
         assertArrayEquals(cartasP1,cartasOrdenadas);
     }
 
-
     @Test
-    public void testCalcularColor(){
+    public void calculateTypeColor(){
 
         ManagementCardImpl ges = new ManagementCardImpl();
 
@@ -623,5 +612,11 @@ public class GestoraCardImplTest {
         assertEquals('T',color);
 
     }
+
+    @Test
+    public void oneToStair() {
+        //TODO
+    }
+
 
 }
