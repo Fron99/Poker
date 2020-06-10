@@ -460,7 +460,7 @@ public class ManagementPlayerImpl {
      * @return
      */
 
-    public int jugadoresConSaldo(PlayerImpl[] jugadores){
+    public int playerWithValancePositive(PlayerImpl[] jugadores){
         int cantidad = 0;
         if (jugadores.length == 5){
             for (int i = 1; i < jugadores.length; i++){
