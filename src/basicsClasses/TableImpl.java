@@ -206,7 +206,6 @@ public class TableImpl implements Table, Cloneable {
      * @param playerAllInLower array of boolean
      */
 
-
     public TableImpl(CardImpl[] deskOfCards, PlayerImpl[] players, CardImpl[] cardsOfTable, int[][] betsPlayers, boolean[] playerActive, boolean[] playerAllInLower){
         Random random = new Random();
         this.deckOfCards = new CardImpl[52];

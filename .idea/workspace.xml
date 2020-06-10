@@ -20,9 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9a3eddb-34fe-4dec-b858-4173adae43d5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/tests/ManagementCardImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/ManagementPlayerImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/managements/ManagementCardImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/managements/ManagementCardImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Poker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Poker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/basicsClasses/PlayerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicsClasses/PlayerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/basicsClasses/TableImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicsClasses/TableImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/enums/Genders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/Genders.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/managements/ManagementPlayerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/managements/ManagementPlayerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/CardImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/CardImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/GestoraCardImplTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/TableImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/TableImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,15 +95,15 @@
       <recent name="enums" />
       <recent name="Tests" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Francisco Javier\Documents\Github\Poker\src\Clases\Basicas" />
-      <recent name="C:\Users\fjaviles\Documents\GitHub\Poker\src" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Tests" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="Tests" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Francisco Javier\Documents\Github\Poker\src\Clases\Basicas" />
+      <recent name="C:\Users\fjaviles\Documents\GitHub\Poker\src" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
@@ -167,6 +175,9 @@
         <item itemvalue="JUnit.GestoraCardImplTest" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SQLPlugin.ProjectConfiguration">
+    <queries />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -257,6 +268,10 @@
     </state>
     <state x="765" y="168" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1590865727392" />
     <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1585569972127" />
+    <state x="683" y="276" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1591631706598">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="683" y="276" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591631706598" />
     <state x="690" y="344" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1591188097881">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -294,11 +309,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="428" y="89" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583497696162" />
-    <state x="744" y="268" key="FileChooserDialogImpl" timestamp="1591028252726">
+    <state x="744" y="268" key="FileChooserDialogImpl" timestamp="1591708410411">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="529" y="188" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583497690407" />
-    <state x="744" y="268" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1591028252726" />
+    <state x="744" y="268" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1591708410411" />
     <state x="744" y="268" key="FileChooserDialogImpl/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1585761784032" />
     <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1591186608418">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -377,10 +392,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="769" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1585569972692" />
-    <state x="724" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1591188222849">
+    <state x="724" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1591705403582">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="724" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591188222849" />
+    <state x="724" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591705403582" />
     <state x="724" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584621699690" />
     <state x="1920" y="0" width="1382" height="815" key="dock-window-1" timestamp="1584554029859">
       <screen x="1920" y="0" width="1366" height="728" />
@@ -411,11 +426,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="752" y="378" key="scopes/0.0.1920.1040@0.0.1920.1040" timestamp="1591116316822" />
-    <state x="486" y="70" width="945" height="969" key="search.everywhere.popup" timestamp="1590863896369">
+    <state x="486" y="70" width="945" height="969" key="search.everywhere.popup" timestamp="1591705391611">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1584127566341" />
-    <state x="486" y="70" width="945" height="969" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590863896369" />
+    <state x="486" y="70" width="945" height="969" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1591705391611" />
     <state x="486" y="70" width="945" height="969" key="search.everywhere.popup/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1584623562599" />
     <state x="682" y="432" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1584703586922">
       <screen x="0" y="0" width="1920" height="1040" />

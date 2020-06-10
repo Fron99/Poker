@@ -263,7 +263,6 @@ public class PlayerImpl implements Player, Cloneable {
      * @param gender New value for attribute "gender"
      */
 
-
     public void setGender(Genders gender) {
         this.gender = gender;
     }
