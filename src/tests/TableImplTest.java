@@ -357,14 +357,6 @@ public class TableImplTest {
     }
 
     @Test
-    public void showPanelPlay() {
-    }
-
-    @Test
-    public void doBet() {
-    }
-
-    @Test
     public void testToString() {
     }
 

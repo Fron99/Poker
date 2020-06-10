@@ -105,7 +105,7 @@ public class Poker {
 
             table.increaseTurn();
 
-            playerWithBalance = managePlayer.jugadoresConSaldo(table.getPlayers());
+            playerWithBalance = managePlayer.playerWithValancePositive(table.getPlayers());
 
             if (table.getBalancePlayer(0)>0 && playerWithBalance > 0){
                 continuePlay = validations.readAndValidateContinuePlaying();

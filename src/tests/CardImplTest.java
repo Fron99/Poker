@@ -37,4 +37,5 @@ public class CardImplTest {
     @Test
     public void testClone() {
     }
+
 }
