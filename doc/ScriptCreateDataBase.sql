@@ -1,0 +1,105 @@
+CREATE DATABASE PokerAuto
+GO
+
+
+USE PokerAuto
+GO
+
+
+CREATE TABLE Users(
+	Username CHAR(40) NOT NULL,
+	[Password] CHAR(32) NOT NULL,
+	[Name] VARCHAR(40) NOT NULL,
+	[Surname] VARCHAR(40) NOT NULL,
+	Gender VARCHAR(10) NULL,
+	Birthday SMALLDATETIME NOT NULL,
+	Balance MONEY NOT NULL,
+	Email VARCHAR(80) NULL,
+	IBAN CHAR(40) NULL,
+	CONSTRAINT PK_Users PRIMARY KEY (Username),
+	CONSTRAINT Check_Email CHECK (Email LIKE '%@%'),
+	CONSTRAINT Check_Gender CHECK (Gender IN ('Male','Female','Other')),
+	CONSTRAINT Check_Balance CHECK (Balance >= 0),
+	CONSTRAINT Check_Birthday CHECK (Birthday <= CURRENT_TIMESTAMP)
+)
+
+
+CREATE TABLE PokerPlays(
+	ID INT IDENTITY NOT NULL,
+	Moment SMALLDATETIME NOT NULL,
+	CONSTRAINT PK_Plays PRIMARY KEY (ID)
+)
+
+
+CREATE TABLE UsersPokerPlays(
+	ID INT IDENTITY NOT NULL,
+	UsernameUser CHAR(40) NOT NULL,
+	IDPlay INT NOT NULL,
+	TotalBet MONEY NOT NULL,
+	TotalPoints INT NOT NULL,
+	CONSTRAINT PK_UsersPlays PRIMARY KEY (ID),
+	CONSTRAINT FK_UsersPlays_UsernameUser FOREIGN KEY (UsernameUser) REFERENCES Users(Username) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	CONSTRAINT FK_UsersPlays_IDPlay FOREIGN KEY (IDPlay) REFERENCES PokerPlays(ID) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	CONSTRAINT Check_TotalBet CHECK (TotalBet >= 0),
+	CONSTRAINT Check_TotalPoints CHECK (TotalPoints BETWEEN 0 AND 319)
+)
+
+
+CREATE TABLE WinnersPoker(
+	ID INT IDENTITY NOT NULL,
+	IDPlay INT NOT NULL,
+	UsernameUser CHAR(40) NOT NULL,
+	TotalWin Money NOT NULL,
+	CONSTRAINT PK_Winners PRIMARY KEY (ID),
+	CONSTRAINT FK_Winners_IDPlay FOREIGN KEY (IDPlay) REFERENCES PokerPlays(ID) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	CONSTRAINT FK_Winners_UsernameUser FOREIGN KEY (UsernameUser) REFERENCES Users(Username) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	CONSTRAINT Check_TotalWin CHECK (TotalWin >= 0)
+)
+
+
+CREATE TABLE RoulettePlays(
+	ID INT IDENTITY NOT NULL,
+	DatePlay DATE NOT NULL,
+	Result INT NULL,
+	CONSTRAINT PK_RoulettePlays PRIMARY KEY (ID),
+	CONSTRAINT Check_Result CHECK (Result BETWEEN 0 AND 36),
+	CONSTRAINT Check_DatePlay CHECK (DatePlay < CURRENT_TIMESTAMP)
+)
+
+
+CREATE TABLE BetsRoulettePlays(
+	ID INT NOT NULL,
+	[Description] VARCHAR(20) NOT NULL,
+	Fee DECIMAL(4,2) DEFAULT 1 NOT NULL,
+	CONSTRAINT PK_BetsRoulettePlays PRIMARY KEY (ID),
+	CONSTRAINT Check_Fee CHECK (Fee BETWEEN 2.0 AND 36.0)
+)
+
+
+CREATE TABLE NumbersBetsRoulette(
+	ID INT NOT NULL,
+	CONSTRAINT PK_NumbersBetsRoulette PRIMARY KEY (ID),
+	CONSTRAINT Check_ID CHECK (ID BETWEEN 0 AND 36)
+)
+
+
+CREATE TABLE NumbersBetsRoulettePlays(
+	IDBetRoulettePlay INT NOT NULL,
+	IDNumberBetRoulette INT NOT NULL,
+	CONSTRAINT PK_NumbersBetsRoulettePlays PRIMARY KEY (IDBetRoulettePlay,IDNumberBetRoulette),
+	CONSTRAINT FK_NumbersBetsRoulettePlays_IDBetRoulettePlay FOREIGN KEY (IDBetRoulettePlay) REFERENCES BetsRoulettePlays(ID) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	CONSTRAINT FK_NumbersBetsRoulettePlays_IDNumberBetRoulette FOREIGN KEY (IDNumberBetRoulette) REFERENCES NumbersBetsRoulette(ID) ON DELETE NO ACTION ON UPDATE NO ACTION
+)
+
+
+CREATE TABLE UsersBetsRoulettePlays(
+	UsernameUser CHAR(40) NOT NULL,
+	IDRoulettePlay INT NOT NULL,
+	IDBetRoulettePlay INT NOT NULL,
+	TotalBet MONEY NOT NULL,
+	Result MONEY NULL DEFAULT 0,
+	CONSTRAINT PK_UsersBetsRoulettePlays PRIMARY KEY (UsernameUser, IDRoulettePlay, IDBetRoulettePlay),
+	CONSTRAINT FK_UsersBetsRoulettePlays_UsernameUser FOREIGN KEY (UsernameUser) REFERENCES Users(Username) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	CONSTRAINT FK_UsersBetsRoulettePlays_IDRoulettePlay FOREIGN KEY (IDRoulettePlay) REFERENCES RoulettePlays(ID) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	CONSTRAINT FK_UsersBetsRoulettePlays_IDBetRoulettePlay FOREIGN KEY (IDBetRoulettePlay) REFERENCES BetsRoulettePlays(ID) ON DELETE NO ACTION ON UPDATE NO ACTION,
+)
