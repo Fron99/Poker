@@ -23,11 +23,15 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="5ef70709-6a2b-499b-9564-db60801b839f">
+        <schema name="dbo" object-types="index, function, constraint, procedure, table, view, column" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="5ef70709-6a2b-499b-9564-db60801b839f">
-      <console name="Connection" type="STANDARD" schema="INFORMATION_SCHEMA" session="Main"><![CDATA[SELECT Username FROM Users WHERE Username = 'fron99' AND Password = '25f9e794323b453885f5181f1b624d0b']]></console>
+      <console name="Connection" type="STANDARD" schema="INFORMATION_SCHEMA" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -35,6 +39,9 @@
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="5ef70709-6a2b-499b-9564-db60801b839f" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="5ef70709-6a2b-499b-9564-db60801b839f" dataset="dbo.Users" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />

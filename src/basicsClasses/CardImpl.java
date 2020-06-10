@@ -27,10 +27,9 @@
  */
 
 package basicsClasses;
-import interfaces.Card;
 
 @SuppressWarnings("unused")
-public class CardImpl implements Card, Cloneable{
+public class CardImpl implements Cloneable{
 
     private final char suit;
     private final String number;

@@ -3,7 +3,6 @@ package managements;
 import basicsClasses.CardImpl;
 import basicsClasses.PlayerImpl;
 import enums.Genders;
-import interfaces.Player;
 
 import java.sql.*;
 import java.util.GregorianCalendar;
@@ -68,7 +67,7 @@ public class ManagementPoker {
         String usernameRead, passwordRead, nameRead, surnameRead, emailRead, IBANRead;
         Genders genderRead;
         GregorianCalendar birthdayRead;
-        double balanceRead;
+        int balanceRead;
         int day, month, year;
         String dateString;
         CardImpl[] cards = new CardImpl[2];
@@ -95,8 +94,7 @@ public class ManagementPoker {
                 month = Integer.parseInt(dateString.split("-")[1]);
                 year = Integer.parseInt(dateString.split("-")[0]);
                 birthdayRead = new GregorianCalendar(year,month,day);
-                balanceRead = user.getDouble("Balance");
-
+                balanceRead = user.getInt("Balance");
 
                 player = new PlayerImpl(usernameRead, passwordRead, nameRead, surnameRead, genderRead, emailRead, IBANRead, birthdayRead, balanceRead,cards);
             }
@@ -123,7 +121,7 @@ public class ManagementPoker {
         String usernameRead, passwordRead, nameRead, surnameRead, emailRead, IBANRead;
         Genders genderRead;
         GregorianCalendar birthdayRead;
-        double balanceRead;
+        int balanceRead;
         int day, month, year;
         String dateString;
         CardImpl[] cards = new CardImpl[2];
@@ -149,7 +147,7 @@ public class ManagementPoker {
                 month = Integer.parseInt(dateString.split("-")[1]);
                 year = Integer.parseInt(dateString.split("-")[0]);
                 birthdayRead = new GregorianCalendar(year,month,day);
-                balanceRead = user.getDouble("Balance");
+                balanceRead = user.getInt("Balance");
 
 
                 player = new PlayerImpl(usernameRead, passwordRead, nameRead, surnameRead, genderRead, emailRead, IBANRead, birthdayRead, balanceRead,cards);

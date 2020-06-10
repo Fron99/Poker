@@ -45,7 +45,6 @@
 package basicsClasses;
 
 import enums.Genders;
-import interfaces.Player;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -55,7 +54,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 @SuppressWarnings("unused")
-public class PlayerImpl implements Player, Cloneable {
+public class PlayerImpl implements Cloneable {
 
     private String username, password, name, surname, email, IBAN;
     private Genders gender;

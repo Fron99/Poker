@@ -90,15 +90,13 @@ package basicsClasses;
 import managements.ManagementCardImpl;
 import managements.ManagementPlayerImpl;
 import enums.Genders;
-import interfaces.Table;
 
-import java.sql.Connection;
 import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.Random;
 
 @SuppressWarnings({"unused", "UnusedReturnValue"})
-public class TableImpl implements Table, Cloneable {
+public class TableImpl implements Cloneable {
 
     private final CardImpl[] deckOfCards;
     private final PlayerImpl[] players;
@@ -1186,8 +1184,6 @@ public class TableImpl implements Table, Cloneable {
      * Modify the balance of the players who have won by increasing their balance by the corresponding amount
      */
 
-    //TODO Comprobar con todos los jugadores con 0$ y allInMenor
-
 
     public void depositBalanceWinnerAndShowWinner(){
         ManagementCardImpl gestoraCarta = new ManagementCardImpl();
@@ -1411,9 +1407,8 @@ public class TableImpl implements Table, Cloneable {
      *         Returns false if not exist 2 or more players remain active
      */
 
-    //TODO Revisar
 
-    private boolean remainPlayersToPlay(){
+    public boolean remainPlayersToPlay(){
         int amountPlayersToPlay = 0;
         for (int i = 0; i < this.players.length; i++){
             if ((this.playerActive[i] && this.players[i].getBalance() > 0) ||  (this.playerActive[i] && this.players[i].getBalance() == 0 && this.playerAllInLower[i])){
@@ -1423,9 +1418,6 @@ public class TableImpl implements Table, Cloneable {
         return amountPlayersToPlay > 1;
     }
 
-    /**
-     * @return
-     */
 
     private boolean remainPlayersWithoutAllIn(){
         int amountPlayersWithoutAllIn = 0;
@@ -1437,58 +1429,25 @@ public class TableImpl implements Table, Cloneable {
         return amountPlayersWithoutAllIn > 1;
     }
 
-    /**
-     * @return
-     */
-
-    //TODO No funciona bien
-    private int getMaxBet(){
-        int maxBet = -1, maxBetComparable = -2;
-        //Obtenemos la apuesta maxima que se puede hacer
-        for (int i = 0; i < this.players.length; i++){
-            if (this.players[i].getBalance() > maxBetComparable && this.playerActive[i]){
-                maxBetComparable = this.players[i].getBalance();
-            }
-        }
-
-        //Obtenemos la segunda apuesta maxima que se puede hacer
-        for (int i = 0; i < this.players.length; i++){
-            if (this.players[i].getBalance() > maxBet && this.playerActive[i] && this.players[i].getBalance() < maxBetComparable){
-                maxBet = this.players[i].getBalance();
-            }
-        }
-
-        //En el caso de que sea la primera partida y tengan todos los jugadores activos el mismo saldo se pone uno de ellos
-        if (maxBet == -1){
-            maxBet = maxBetComparable;
-        }
-        return maxBet;
-    }
-
-    //TODO corregir
 
     /*
-     * SIGNATURA: public void realizarApuestas(int turnoJugador, MesaImpl mesa, int ronda)
+     * SIGNATURA: public void doBet()
      * COMENTARIO: Realizar las apuestas de todos los jugadores de la mesa
      * PRECONDICIONES:
-     * ENTRADA: - Un entero con el turno
-     *          - Un entero con la ronda
+     * ENTRADA: - Nada
      * SALIDA: - Nada
-     * ENTRADA/SALIDA: - Un objeto mesa
-     * POSTCONDICIONES: - Modifica el objeto mesa, incrementando el total del dinero que hay en mesa.
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Realiza una apuesta en la mesa con los jugadores dispuestos a jugar
      */
 
     /**
      * This method places the bets of the players
-     * @return Return true if there are more than 1 active players
-     *         Return false if there are less than 1 active players
      */
 
-    //TODO Separar realizar apuesta con comprobar lo de los jugadores, mirar que doBet no devuelva nada
 
-    public boolean doBet(){
+    public void doBet(){
         ManagementPlayerImpl managPlayer = new ManagementPlayerImpl();
-        int minBet = 0, betPlayer, turnPlayerPartial = this.playerTurn, turnPlayerFinal = this.playerTurn, maxBet;
+        int minBet = 0, betPlayer, turnPlayerPartial = this.playerTurn, turnPlayerFinal = this.playerTurn;
         boolean quedanJugadoresParaJugar, quedanJugadoresSinAllIn;
         //Calcula cuantos jugadores se han "tirado"
         quedanJugadoresParaJugar = this.remainPlayersToPlay();
@@ -1506,11 +1465,10 @@ public class TableImpl implements Table, Cloneable {
 
             //Comprueba que el jugador este activo y tenga un saldo mayor a 0
             if (playerActive[turnPlayerPartial] && this.getBalancePlayer(turnPlayerPartial) > 0 && !playerAllInLower[turnPlayerPartial]) {
-                maxBet = getMaxBet();
                 if(turnPlayerPartial == 0){
-                    minBet = managPlayer.readAndValidateBet(turnPlayerPartial, minBet, maxBet,this);
+                    minBet = managPlayer.readAndValidateBet(turnPlayerPartial, minBet,this);
                 }else{
-                    minBet = managPlayer.calculateBetBot(turnPlayerPartial, minBet, maxBet,this);
+                    minBet = managPlayer.calculateBetBot(turnPlayerPartial, minBet,this);
                 }
                 //Disminuir el saldo del jugador
                 this.players[turnPlayerPartial].decreaseBalance(minBet);
@@ -1529,17 +1487,10 @@ public class TableImpl implements Table, Cloneable {
 
                 //Comprueba que el jugador este activo y tenga un saldo mayor a 0
                 if (playerActive[turnPlayerPartial] && this.getBalancePlayer(turnPlayerPartial) > 0 && !playerAllInLower[turnPlayerPartial]) {
-                    maxBet = getMaxBet();
                     if(turnPlayerPartial == 0){
-                        betPlayer = managPlayer.readAndValidateBet(turnPlayerPartial, minBet, maxBet,this);
+                        betPlayer = managPlayer.readAndValidateBet(turnPlayerPartial, minBet,this);
                     }else{
-                        betPlayer = managPlayer.calculateBetBot(turnPlayerPartial, minBet, maxBet,this);
-                    }
-
-                    try {
-                        Thread.sleep(1500);
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
+                        betPlayer = managPlayer.calculateBetBot(turnPlayerPartial, minBet,this);
                     }
 
                     //Evaluar las apuestas
@@ -1578,21 +1529,21 @@ public class TableImpl implements Table, Cloneable {
                                 }
                             }else{  //Este es el caso de que el jugador se tire
                                 System.out.println("El jugador "+this.getUsernamePlayer(turnPlayerPartial)+" se ha tirado.");
-                                //this.players[turnPlayerPartial].setActive(false); //TODO REVISAR ESTO CREO QUE ES TRUE Y NO FALSE
-                                playerActive[turnPlayerPartial] = true;
+                                playerActive[turnPlayerPartial] = false;
                             }
                         }
+                    }
+                    try {
+                        Thread.sleep(1500);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
                     }
                 }
                 turnPlayerPartial = (turnPlayerPartial == 4)?0:++turnPlayerPartial;
 
             }
-
-            //Calcula cuantos jugadores se han "tirado"
-            quedanJugadoresParaJugar = this.remainPlayersToPlay();
         }
         this.round++;
-        return quedanJugadoresParaJugar;
     }
 
     /**
@@ -1618,7 +1569,7 @@ public class TableImpl implements Table, Cloneable {
         }
 
         for (int i = 0; i< betsPlayers.length; i++){
-            stringBets += "Apuestas jugador "+i+": ";
+            stringBets += "Bets player "+i+": ";
             for (int j = 0; j< betsPlayers[i].length; j++){
                 stringBets += betsPlayers[i][j]+",";
             }

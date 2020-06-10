@@ -105,7 +105,8 @@ public class Poker {
                         table.showPanelPlay();
 
                         //realizarApuestas
-                        remainPlayers = table.doBet();     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
+                        table.doBet();     //Pide la cantidad de dinero que se quiere apostar a cada jugador en su orden correspondiente
+                        remainPlayers = table.remainPlayersToPlay();
                     }
 
                     if (remainPlayers){
@@ -118,7 +119,7 @@ public class Poker {
 
                     table.increaseTurn();
 
-                    playerWithBalance = managePlayer.playerWithValancePositive(table.getPlayers());
+                    playerWithBalance = managePlayer.quantityPlayerWithValancePositive(table.getPlayers());
 
                     if (table.getBalancePlayer(0)>0 && playerWithBalance > 0){
                         continuePlay = validations.readAndValidateContinuePlaying();
@@ -130,7 +131,8 @@ public class Poker {
                 }while (table.getBalancePlayer(0)>0
                         && continuePlay);
 
-
+            }else{
+                System.out.println("Error in LogIn");
             }
 
         }else{

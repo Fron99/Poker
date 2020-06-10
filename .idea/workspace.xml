@@ -20,21 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9a3eddb-34fe-4dec-b858-4173adae43d5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mssql_jdbc_8_2_2_jre11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/managements/ManagementPoker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validations/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Poker.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Poker.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/ScriptCreateDataBase.sql" beforeDir="false" afterPath="$PROJECT_DIR$/doc/ScriptCreateDataBase.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Poker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Poker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/basicsClasses/CardImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicsClasses/CardImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/basicsClasses/PlayerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicsClasses/PlayerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/basicsClasses/TableImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/basicsClasses/TableImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/managements/ManagementCardImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/managements/ManagementCardImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/Card.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/Player.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/Table.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/managements/ManagementPlayerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/managements/ManagementPlayerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/ManagementCardImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/ManagementCardImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validations/Validations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/validations/Validations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/managements/ManagementPoker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/managements/ManagementPoker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/CardImplTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/GendersTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/ManagementPlayerImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/ManagementPlayerImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/PlayerImplTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/TableImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/TableImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +110,7 @@
       <recent name="C:\Users\fjaviles\Documents\GitHub\Poker\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.ManagementPlayerImplTest.encriptPassword">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Poker" />
@@ -132,22 +132,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GestoraCardImplTest.testObtenerCartasAEvaluar" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Poker" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.GestoraCardImplTest" />
-      <option name="METHOD_NAME" value="testObtenerCartasAEvaluar" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ManagementCardImplTest.oneToStair" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Poker" />
       <extension name="coverage">
@@ -164,20 +148,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ManagementPlayerImplTest.encriptPassword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Poker" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.ManagementPlayerImplTest" />
+      <option name="METHOD_NAME" value="encriptPassword" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Test" />
       <item itemvalue="Application.test" />
-      <item itemvalue="JUnit.GestoraCardImplTest.testObtenerCartasAEvaluar" />
       <item itemvalue="JUnit.ManagementCardImplTest.oneToStair" />
+      <item itemvalue="JUnit.ManagementPlayerImplTest.encriptPassword" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ManagementPlayerImplTest.encriptPassword" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.ManagementCardImplTest.oneToStair" />
         <item itemvalue="Application.test" />
         <item itemvalue="Application.Test" />
-        <item itemvalue="JUnit.GestoraCardImplTest.testObtenerCartasAEvaluar" />
       </list>
     </recent_temporary>
   </component>
@@ -305,80 +305,85 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590864824301" />
-    <state x="846" y="446" key="#xdebugger.evaluate" timestamp="1586105872578">
+    <state x="846" y="446" key="#xdebugger.evaluate" timestamp="1591810490226">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="375" y="134" key="#xdebugger.evaluate/0.0.1366.728@0.0.1366.728" timestamp="1584395522426" />
+    <state x="846" y="446" key="#xdebugger.evaluate/0.0.1920.1040@0.0.1920.1040" timestamp="1591810490226" />
     <state x="846" y="446" key="#xdebugger.evaluate/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1586105872578" />
     <state x="428" y="89" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1583497696162">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="428" y="89" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583497696162" />
-    <state x="477" y="350" key="DBNavigator.ProjectSettingsDialog" timestamp="1591803940584">
+    <state x="540" y="235" key="DBNavigator.DatasetFilterDialog" timestamp="1591812115679">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="477" y="350" key="DBNavigator.ProjectSettingsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591803940584" />
+    <state x="540" y="235" key="DBNavigator.DatasetFilterDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591812115679" />
+    <state x="477" y="350" key="DBNavigator.ProjectSettingsDialog" timestamp="1591812084171">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="477" y="350" key="DBNavigator.ProjectSettingsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591812084171" />
     <state x="744" y="268" key="FileChooserDialogImpl" timestamp="1591803849952">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="529" y="188" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583497690407" />
     <state x="744" y="268" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1591803849952" />
     <state x="744" y="268" key="FileChooserDialogImpl/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1585761784032" />
-    <state width="1877" height="726" key="GridCell.Tab.0.bottom" timestamp="1591805588672">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1591811860065">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="262" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583933093618" />
     <state width="1323" height="168" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586184441528" />
-    <state width="1877" height="726" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591805588672" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591811860065" />
     <state width="1877" height="650" key="GridCell.Tab.0.bottom/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1586385919283" />
-    <state width="1877" height="726" key="GridCell.Tab.0.center" timestamp="1591805588671">
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1591811860065">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="262" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583933093618" />
     <state width="1323" height="168" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586184441528" />
-    <state width="1877" height="726" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591805588671" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591811860065" />
     <state width="1877" height="650" key="GridCell.Tab.0.center/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1586385919283" />
-    <state width="1877" height="726" key="GridCell.Tab.0.left" timestamp="1591805588671">
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1591811860065">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="262" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583933093618" />
     <state width="1323" height="168" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586184441525" />
-    <state width="1877" height="726" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591805588671" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591811860065" />
     <state width="1877" height="650" key="GridCell.Tab.0.left/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1586385919283" />
-    <state width="1877" height="726" key="GridCell.Tab.0.right" timestamp="1591805588671">
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1591811860065">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="262" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583933093618" />
     <state width="1323" height="168" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586184441528" />
-    <state width="1877" height="726" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591805588671" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591811860065" />
     <state width="1877" height="650" key="GridCell.Tab.0.right/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1586385919283" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1591804486201">
+    <state width="1877" height="470" key="GridCell.Tab.1.bottom" timestamp="1591810719555">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="249" key="GridCell.Tab.1.bottom/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583844898236" />
     <state width="1323" height="168" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586184441530" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591804486201" />
+    <state width="1877" height="470" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591810719555" />
     <state width="1877" height="650" key="GridCell.Tab.1.bottom/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1586385917939" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1591804486201">
+    <state width="1877" height="470" key="GridCell.Tab.1.center" timestamp="1591810719555">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="249" key="GridCell.Tab.1.center/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583844898236" />
     <state width="1323" height="168" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1586184441530" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591804486201" />
+    <state width="1877" height="470" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591810719555" />
     <state width="1877" height="650" key="GridCell.Tab.1.center/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1586385917939" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1591804486201">
+    <state width="1877" height="470" key="GridCell.Tab.1.left" timestamp="1591810719555">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="249" key="GridCell.Tab.1.left/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583844898236" />
     <state width="1323" height="168" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1586184441529" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591804486201" />
+    <state width="1877" height="470" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591810719555" />
     <state width="1877" height="650" key="GridCell.Tab.1.left/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1586385917939" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1591804486201">
+    <state width="1877" height="470" key="GridCell.Tab.1.right" timestamp="1591810719555">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="249" key="GridCell.Tab.1.right/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583844898236" />
     <state width="1323" height="168" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1586184441530" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591804486201" />
+    <state width="1877" height="470" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591810719555" />
     <state width="1877" height="650" key="GridCell.Tab.1.right/1920.0.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1586385917939" />
     <state x="263" y="107" key="IDE.errors.dialog" timestamp="1583500394751">
       <screen x="0" y="0" width="1366" height="728" />

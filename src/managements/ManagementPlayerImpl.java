@@ -76,7 +76,7 @@ public class ManagementPlayerImpl {
      */
 
     /**
-     * @return
+     * @return Return String with User
      */
 
     public String readUser(){
@@ -99,22 +99,15 @@ public class ManagementPlayerImpl {
      * POSTCONDICIONES: - Devuelve asociado al nombre un entero con la cantidad de dinero que apuesta el jugador
      *
      */
+    
 
-    /**
-     * @param jugador
-     * @param apuestaMinima
-     * @param mesa
-     * @param apuestaMaxima
-     * @return
-     */
-
-    public int leerYValidarApuesta(int jugador, int apuestaMinima, int apuestaMaxima, TableImpl mesa){
+    public int readAndValidateBet(int jugador, int apuestaMinima, TableImpl mesa){
         Scanner teclado = new Scanner(System.in);
         int cantidadApuesta;
         boolean allIn = false;
         do {
             System.out.println("Dispone de "+mesa.getBalancePlayer(jugador)+" de saldo");
-            System.out.println("La apuesa minima es: "+(apuestaMinima-mesa.getBetPlayer(jugador,mesa.getRound())) + " y la apuesta maxima es: "+apuestaMaxima);
+            System.out.println("La apuesa minima es: "+(apuestaMinima-mesa.getBetPlayer(jugador,mesa.getRound())));
             System.out.print("Introduce cuanto quiere apostar: ");
             cantidadApuesta = teclado.nextInt();
             if (cantidadApuesta < apuestaMinima-mesa.getBetPlayer(jugador,mesa.getRound())){
@@ -122,9 +115,8 @@ public class ManagementPlayerImpl {
                     allIn = true;
                 }
             }
-        }while (cantidadApuesta < apuestaMinima
-                || cantidadApuesta > apuestaMaxima
-                || (cantidadApuesta < apuestaMinima && !allIn && cantidadApuesta != 0)
+        }while (cantidadApuesta+mesa.getBetPlayer(jugador,mesa.getRound()) < apuestaMinima
+                || (cantidadApuesta+mesa.getBetPlayer(jugador,mesa.getRound()) < apuestaMinima && !allIn && cantidadApuesta != 0 )
                 || cantidadApuesta > mesa.getBalancePlayer(jugador));
 
         return cantidadApuesta;
@@ -143,16 +135,9 @@ public class ManagementPlayerImpl {
      * ENTRADA/SALIDA: - Nada
      * POSTCONDICIONES: - Devuelve asociado al nombre un entero con la cantidad de saldo a apostar
      */
+    
 
-    /**
-     * @param jugador
-     * @param apuestaMinima
-     * @param apuestaMaxima
-     * @param mesa
-     * @return
-     */
-
-    public int calcularApostarBot(int jugador, int apuestaMinima, int apuestaMaxima, TableImpl mesa){
+    public int calculateBetBot(int jugador, int apuestaMinima, TableImpl mesa){
         int totalApostar, valorCartas, valorFarolRonda, puntosPosibilidad;
         double porcenApostar;
         ManagementCardImpl gesCarta = new ManagementCardImpl();
@@ -161,52 +146,38 @@ public class ManagementPlayerImpl {
         valorCartas = gesCarta.evaluateCardsFromPlayer(jugador,mesa);
 
         //Obtener puntos de farol
-        valorFarolRonda = calcularPuntosFarolRonda(mesa.getRound());
+        valorFarolRonda = calculatePointBluffRound(mesa.getRound());
 
         //Obtener puntos por posibilidad
-        puntosPosibilidad = calcularPuntosPosibilidad(gesCarta.getCardsToEvaluate(jugador,mesa));
+        puntosPosibilidad = calculatePointPosibility(gesCarta.getCardsToEvaluate(jugador,mesa));
 
-        if (mesa.getBalancePlayer(jugador) < 2000){
-            
-            totalApostar = 0;
-            //TODO Implementar cuando el saldo sea mas bajo de x cantidad para que no apueste con porcentajes.
+        //Porcentaje apostar
+        porcenApostar = ((double)((valorFarolRonda+valorCartas+puntosPosibilidad)*100) / 319)*0.01;
 
-        }else{
+        //Total calculado que va a apostar
+        totalApostar = (int)(mesa.getBalancePlayer(jugador) * porcenApostar);
 
-            //Porcentaje apostar
-            porcenApostar = ((double)((valorFarolRonda+valorCartas+puntosPosibilidad)*100) / 319)*0.01;
-
-            //Total calculado que va a apostar
-            totalApostar = (int)(mesa.getBalancePlayer(jugador) * porcenApostar);
-
-            //Comprueba si la apuesta es mayor o igual.
-            if (apuestaMinima >= totalApostar){
-                //En el caso de que la apuesta minima sea mayor calculamos si con un incremento del 30% al total apostar si quiere subir e igualar a la apuesta minima
-                if ((int)(totalApostar*1.30) >= apuestaMinima){
+        //Comprueba si la apuesta es mayor o igual.
+        if (apuestaMinima >= totalApostar){
+            //En el caso de que la apuesta minima sea mayor calculamos si con un incremento del 30% al total apostar si quiere subir e igualar a la apuesta minima
+            if ((int)(totalApostar*1.30) >= apuestaMinima){
+                totalApostar = apuestaMinima - mesa.getBetPlayer(jugador,mesa.getRound());
+            }else{
+                //En el caso de que la apuesta minima sea mucho mas alta que lo que pensaba apostar el jugador, valorar si tiene suficiente buenas cartas como para subir la apuesta
+                //192 puntos concuerda con el 60% del total de puntos
+                //Quizas se deberia poner con la personalidad del jugador
+                if ((valorFarolRonda+valorCartas+puntosPosibilidad) >= 192){
                     totalApostar = apuestaMinima - mesa.getBetPlayer(jugador,mesa.getRound());
                 }else{
-                    //En el caso de que la apuesta minima sea mucho mas alta que lo que pensaba apostar el jugador, valorar si tiene suficiente buenas cartas como para subir la apuesta
-                    //192 puntos concuerda con el 60% del total de puntos
-                    //Quizas se deberia poner con la personalidad del jugador
-                    if ((valorFarolRonda+valorCartas+puntosPosibilidad) >= 192){
-                        totalApostar = apuestaMinima - mesa.getBetPlayer(jugador,mesa.getRound());
-                    }else{
-                        //En el caso de que decidiera no subir la apuesta e igualarla se "tiraria"
-                        totalApostar = 0;
-                    }
+                    //En el caso de que decidiera no subir la apuesta e igualarla se "tiraria"
+                    totalApostar = 0;
                 }
-            }else{
-                //Calcula si debe bajar la apuesta con un decremento del 30%. Si aun asi sigue siendo mayor que la apuesta minima seguira apostando lo que pensaba apostar
-                if ((int)(totalApostar*0.70) < apuestaMinima){
+            }
+        }else{
+            //Calcula si debe bajar la apuesta con un decremento del 30%. Si aun asi sigue siendo mayor que la apuesta minima seguira apostando lo que pensaba apostar
+            if ((int)(totalApostar*0.70) < apuestaMinima){
                     totalApostar = apuestaMinima - mesa.getBetPlayer(jugador,mesa.getRound());
-                }
             }
-
-            //No apostar mas de lo que los demas jugadores puedan apostar
-            if (totalApostar > apuestaMaxima){
-                totalApostar = apuestaMaxima;
-            }
-
         }
 
         return totalApostar;
@@ -214,7 +185,7 @@ public class ManagementPlayerImpl {
 
 
     /*
-     * SIGNATURA: public int calcularPuntosFarol(int ronda);
+     * SIGNATURA: public int calculatePointBluffRound(int ronda);
      * COMENTARIO: Calcular cantidad de puntos que debe incrementar la apuesta el bot
      * PRECONDICIONES: - Nada
      * ENTRADA: - Un entero
@@ -222,17 +193,13 @@ public class ManagementPlayerImpl {
      * ENTRADA/SALIDA: - Nada
      * POSTCONDICIONES: - Devuelve asociado al nombre la cantidad de puntos que debe incrementar en un farol el bot dependiendo de la ronda en la que se encuentre
      */
+    
 
-    /**
-     * @param ronda
-     * @return
-     */
-
-    private int calcularPuntosFarolRonda(int ronda){
+    private int calculatePointBluffRound(int round){
         int puntosFarol = 0,porcentaje;
         Random r = new Random();
 
-        switch (ronda){
+        switch (round){
             case 0:
                 //PROBABILIDAD PRIMERA MANO
                 porcentaje = r.nextInt(99)+1;
@@ -273,7 +240,7 @@ public class ManagementPlayerImpl {
     }
 
     /*
-     * SIGNATURA: private int calcularPuntosPosibilidad()
+     * SIGNATURA: private int calculatePointPosibility(CardImpl[] cardsToEvalue)
      * COMENTARIO: Calcula la posibilidad que tienen las cartas del jugador a tener algo de valor
      * PRECONDICIONES: - El array no debe tener cartas por defecto.
      * ENTRADA: - Un array de CartaImpl
@@ -281,39 +248,33 @@ public class ManagementPlayerImpl {
      * ENTRADA/SALIDA: - Nada
      * POSTCONDICIONES: - Devuelve asociado al nombre el valor en puntos de la posibilidad de tener cartas de valor en la partida.
      */
+    
 
-    //TODO
-
-    /**
-     * @param cartasAEvaluar
-     * @return
-     */
-
-    private int calcularPuntosPosibilidad(CardImpl[] cartasAEvaluar){
-        int puntosPosibilidad = 0, puntos = 0, colorP = 0, colorT = 0, colorR = 0, colorC = 0 ;
+    private int calculatePointPosibility(CardImpl[] cardsToEvalue){
+        int puntosPosibilidad = 0, puntos, colorP = 0, colorT = 0, colorR = 0, colorC = 0 ;
         ManagementCardImpl gestoraCarta = new ManagementCardImpl();
         boolean unaParaEscalera;
 
-        switch (cartasAEvaluar.length){
+        switch (cardsToEvalue.length){
             //Si el array contiene 2 cartas significa que esta en la primera ronda
             case 2:
 
-                for (CardImpl carta : cartasAEvaluar) {
+                for (CardImpl carta : cardsToEvalue) {
                     if (carta.getValueNumber() == 13 || carta.getValueNumber() == 12 || carta.getValueNumber() == 11 || carta.getValueNumber() == 10) {
                         puntosPosibilidad = 20;
                     }
                 }
 
-                if (cartasAEvaluar[0].getValueNumber() == 13 || cartasAEvaluar[0].getValueNumber() == 12 || cartasAEvaluar[0].getValueNumber() == 11 || cartasAEvaluar[0].getValueNumber() == 10
-                    && cartasAEvaluar[1].getValueNumber() == 13 || cartasAEvaluar[1].getValueNumber() == 12 || cartasAEvaluar[1].getValueNumber() == 11 || cartasAEvaluar[1].getValueNumber() == 10){
+                if (cardsToEvalue[0].getValueNumber() == 13 || cardsToEvalue[0].getValueNumber() == 12 || cardsToEvalue[0].getValueNumber() == 11 || cardsToEvalue[0].getValueNumber() == 10
+                    && cardsToEvalue[1].getValueNumber() == 13 || cardsToEvalue[1].getValueNumber() == 12 || cardsToEvalue[1].getValueNumber() == 11 || cardsToEvalue[1].getValueNumber() == 10){
                     puntosPosibilidad = 30;
                 }
 
-                if (cartasAEvaluar[0].getSuit() == cartasAEvaluar[1].getSuit()){
+                if (cardsToEvalue[0].getSuit() == cardsToEvalue[1].getSuit()){
                     puntosPosibilidad = 50;
                 }
 
-                if (cartasAEvaluar[0].getNumber().equals(cartasAEvaluar[1].getNumber())){
+                if (cardsToEvalue[0].getNumber().equals(cardsToEvalue[1].getNumber())){
                     puntosPosibilidad = 50;
                 }
 
@@ -321,19 +282,19 @@ public class ManagementPlayerImpl {
             //Si el array contiene 5 cartas significa que esta en la segunda ronda
             case 5:
 
-                for (CardImpl carta : cartasAEvaluar) {
+                for (CardImpl carta : cardsToEvalue) {
                     if (carta.getValueNumber() == 13 || carta.getValueNumber() == 12 || carta.getValueNumber() == 11 || carta.getValueNumber() == 10) {
                         puntosPosibilidad = 10;
                     }
                 }
 
-                puntos = gestoraCarta.calculateValuePair(cartasAEvaluar);
+                puntos = gestoraCarta.calculateValuePair(cardsToEvalue);
 
                 if (puntos > 0){
                     puntosPosibilidad = 40;
                 }
 
-                for (CardImpl carta : cartasAEvaluar) {
+                for (CardImpl carta : cardsToEvalue) {
                     switch (carta.getSuit()){
                         case 'P':
                             colorP++;
@@ -354,7 +315,7 @@ public class ManagementPlayerImpl {
                     puntosPosibilidad = 50;
                 }
 
-                unaParaEscalera = gestoraCarta.oneToStair(cartasAEvaluar);
+                unaParaEscalera = gestoraCarta.oneToStair(cardsToEvalue);
 
                 if (unaParaEscalera){
                     puntosPosibilidad = 50;
@@ -364,19 +325,19 @@ public class ManagementPlayerImpl {
             //Si el array contiene 6 cartas significa que esta en la tercera ronda
             case 6:
 
-                for (CardImpl carta : cartasAEvaluar) {
+                for (CardImpl carta : cardsToEvalue) {
                     if (carta.getValueNumber() == 13 || carta.getValueNumber() == 12 || carta.getValueNumber() == 11 || carta.getValueNumber() == 10) {
                         puntosPosibilidad = 10;
                     }
                 }
 
-                puntos = gestoraCarta.calculateValuePair(cartasAEvaluar);
+                puntos = gestoraCarta.calculateValuePair(cardsToEvalue);
 
                 if (puntos > 0){
                     puntosPosibilidad = 20;
                 }
 
-                for (CardImpl carta : cartasAEvaluar) {
+                for (CardImpl carta : cardsToEvalue) {
                     switch (carta.getSuit()){
                         case 'P':
                             colorP++;
@@ -397,19 +358,19 @@ public class ManagementPlayerImpl {
                     puntosPosibilidad = 20;
                 }
 
-                puntos = gestoraCarta.calculateValueTrio(cartasAEvaluar);
+                puntos = gestoraCarta.calculateValueTrio(cardsToEvalue);
 
                 if (puntos > 0){
                     puntosPosibilidad = 30;
                 }
 
-                puntos = gestoraCarta.calculateValueDoublePair(cartasAEvaluar);
+                puntos = gestoraCarta.calculateValueDoublePair(cardsToEvalue);
 
                 if (puntos > 0){
                     puntosPosibilidad = 40;
                 }
 
-                unaParaEscalera = gestoraCarta.oneToStair(cartasAEvaluar);
+                unaParaEscalera = gestoraCarta.oneToStair(cardsToEvalue);
 
                 if (unaParaEscalera){
                     puntosPosibilidad = 50;
@@ -423,18 +384,15 @@ public class ManagementPlayerImpl {
 
 
     /*
-     * SIGNATURA: public JugadorImpl leerYValidarJugador();
+     * SIGNATURA: public JugadorImpl readAndValidateUsername();
      * COMENTARIO:
      * PRECONDICIONES: - Nada
      * ENTRADA: - Nada
      * SALIDA: - Un objeto JugadorImpl
      * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: -
+     * POSTCONDICIONES: - Devuelve un usuario creado
      */
 
-    /**
-     * @return
-     */
 
     public PlayerImpl readAndValidateUsername(){
         PlayerImpl nuevoJugador;
@@ -444,27 +402,21 @@ public class ManagementPlayerImpl {
         return nuevoJugador;
     }
 
-
     /*
-     * SIGNATURA:
-     * COMENTARIO:
-     * PRECONDICIONES: -
-     * ENTRADA: -
-     * SALIDA: -
-     * ENTRADA/SALIDA: -
-     * POSTCONDICIONES: -
+     * SIGNATURA: public JugadorImpl quantityPlayerWithValancePositive(PlayerImpl[] players);
+     * COMENTARIO: Devuelve la cantidad de jugadores que tienen saldo positivo en la partida
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Nada
+     * SALIDA: - Un entero
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Devuelve asociado al nombre la cantidad de jugadores que tienen saldo positivo en la partida
      */
 
-    /**
-     * @param jugadores
-     * @return
-     */
-
-    public int playerWithValancePositive(PlayerImpl[] jugadores){
+    public int quantityPlayerWithValancePositive(PlayerImpl[] players){
         int cantidad = 0;
-        if (jugadores.length == 5){
-            for (int i = 1; i < jugadores.length; i++){
-                if (jugadores[i].getBalance() > 0){
+        if (players.length == 5){
+            for (int i = 1; i < players.length; i++){
+                if (players[i].getBalance() > 0){
                     cantidad++;
                 }
             }
