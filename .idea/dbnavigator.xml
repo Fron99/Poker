@@ -23,11 +23,7 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="5ef70709-6a2b-499b-9564-db60801b839f">
-        <schema name="dbo" object-types="index, function, constraint, procedure, table, view, column" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="5ef70709-6a2b-499b-9564-db60801b839f">
@@ -74,9 +70,9 @@
           <config-type value="CUSTOM" />
           <database-version value="15.0" />
           <driver-source value="EXTERNAL" />
-          <driver-library value="C:\Users\Francisco Javier\Documents\Github\Proyecto\lib\sqljdbc_8.2.2.0_enu\sqljdbc_8.2\enu\mssql-jdbc-8.2.2.jre11.jar" />
+          <driver-library value="C:\Users\Francisco Javier\Documents\Github\Poker\lib\sqljdbc_8.2\enu\mssql-jdbc-8.2.2.jre11.jar" />
           <driver value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-          <url value="jdbc:sqlserver://localhost:1433;database=PokerAuto" />
+          <url value="jdbc:sqlserver://DESKTOP-THF3EDJ:1433;database=PokerAuto" />
           <type value="USER_PASSWORD" />
           <user value="UserJava" />
           <deprecated-pwd value="bmV3UGFzc1VzZXI=" />
