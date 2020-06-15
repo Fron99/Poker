@@ -9,6 +9,7 @@ set dateformat mdy
 
 
 INSERT INTO Users (Username, Password, Name, Surname, Gender, Birthday, Balance, Email, IBAN) VALUES ('aswatradge82', 'efd36bb8883078d75b996ee0c3a4a722', 'Alexa', 'Swatradge', 'Female', '5/15/1977', '1289.51', 'aswatradge82@pen.io', 'DK95 0601 9911 8594 57')
+INSERT INTO Users (Username, Password, Name, Surname, Gender, Birthday, Balance, Email, IBAN) VALUES ('fron99', 'e961b2ac40aac4cc36a8bf65bca9177e', 'Alexa', 'Swatradge', 'Female', '5/15/1977', '1289.51', 'aswatradge82@pen.io', 'DK95 0601 9911 8594 57')
 INSERT INTO Users (Username, Password, Name, Surname, Gender, Birthday, Balance, Email, IBAN) VALUES ('sburker83', 'ab0ad9ecce56ff95fa2ee13112d8c07e', 'Stefan', 'Burker', 'Male', '7/20/1993', '1041.85', 'sburker83@rakuten.co.jp', 'BG92 HCWY 7479 71P2 TY6T MQ')
 INSERT INTO Users (Username, Password, Name, Surname, Gender, Birthday, Balance, Email, IBAN) VALUES ('kcarlone84', '385e8fa6dda1c22c7f4b70362e51623e', 'Kerry', 'Carlone', 'Female', '4/13/1970', '1832.60', 'kcarlone84@photobucket.com', 'BE02 0837 1644 6904')
 INSERT INTO Users (Username, Password, Name, Surname, Gender, Birthday, Balance, Email, IBAN) VALUES ('hbardsley85', 'f8e7a9a72d3c8b55b208a574b3f54ba2', 'Hyacinth', 'Bardsley', 'Female', '2/13/1986', '1351.56', 'hbardsley85@ucoz.ru', 'MR97 2065 3474 4153 5429 6204 618')
