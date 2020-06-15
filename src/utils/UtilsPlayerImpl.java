@@ -1,11 +1,11 @@
-package validations;
+package utils;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class Utils {
+public class UtilsPlayerImpl {
 
     /**
      * A password passed by parameters is encrypted
