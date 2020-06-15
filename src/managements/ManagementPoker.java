@@ -9,6 +9,10 @@ import java.util.GregorianCalendar;
 
 public class ManagementPoker {
 
+    /**
+     * @return
+     */
+
     public Connection getConnection(){
         String sourceURL = "jdbc:sqlserver://localhost:1433;database=PokerAuto";
         String usernameBBDD = "UserJava";
@@ -29,7 +33,6 @@ public class ManagementPoker {
      * @param connection
      * @return
      */
-
 
     public boolean existUser(String username, String password, Connection connection){
 
@@ -58,6 +61,12 @@ public class ManagementPoker {
 
         return exist;
     }
+
+    /**
+     * @param username
+     * @param connection
+     * @return
+     */
 
     public PlayerImpl getUser(String username, Connection connection){
         PlayerImpl player = null;
@@ -112,6 +121,11 @@ public class ManagementPoker {
 
         return player;
     }
+
+    /**
+     * @param connection
+     * @return
+     */
 
     public PlayerImpl getRandomUser(Connection connection){
         PlayerImpl player = null;
