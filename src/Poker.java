@@ -57,14 +57,11 @@ public class Poker {
     public void playGame(){
 
         ManagementPoker managePoker = new ManagementPoker();
-        ManagementPlayerImpl managePlayer = new ManagementPlayerImpl();
         Validations validations = new Validations();
         TableImpl table = new TableImpl();
-        int playerWithBalance;
         boolean remainPlayers, continuePlay, existUser;
         Connection connectionDataBase = managePoker.getConnection();
         String username, password;
-
 
         if (connectionDataBase != null){
             username = validations.readAndValidateUsername(connectionDataBase);
@@ -119,9 +116,7 @@ public class Poker {
 
                     table.increaseTurn();
 
-                    playerWithBalance = table.quantityPlayerWithValancePositive();
-
-                    if (table.getBalancePlayer(0)>0 && playerWithBalance > 0){
+                    if (table.getBalancePlayer(0)>0 && table.quantityPlayerWithValancePositive() > 0){
                         continuePlay = validations.readAndValidateContinuePlaying();
                     }else{
                         System.out.println("The player haven't more money");
