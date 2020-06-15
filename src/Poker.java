@@ -88,15 +88,15 @@ public class Poker {
                     //Actualizar variables para nuevo juego
                     remainPlayers = true;
 
-                    for (int contador = 0; contador < 4 && remainPlayers; contador++){
+                    for (int counter = 0; counter < 4 && remainPlayers; counter++){
                         //Se utiliza este if para que solo se generen una vez las 3 cartas despues de la primera jugada
-                        if (contador == 1) {
+                        if (counter == 1) {
                             //generarTresCartasMesa
                             table.generateThreeCardsToTable();
                         }
 
                         //Se utiliza este if para que solo se generen una carta a partir de la 2 apuesta
-                        if (contador > 1) {
+                        if (counter > 1) {
                             //generarCartaMesa
                             table.generateCardTable();
                         }
@@ -119,12 +119,12 @@ public class Poker {
 
                     table.increaseTurn();
 
-                    playerWithBalance = managePlayer.quantityPlayerWithValancePositive(table.getPlayers());
+                    playerWithBalance = table.quantityPlayerWithValancePositive();
 
                     if (table.getBalancePlayer(0)>0 && playerWithBalance > 0){
                         continuePlay = validations.readAndValidateContinuePlaying();
                     }else{
-                        System.out.println("El jugador no tiene más saldo");
+                        System.out.println("The player haven't more money");
                         continuePlay = false;
                     }
 
