@@ -68,7 +68,7 @@ public class PlayerImpl implements Cloneable {
 
     public PlayerImpl(){
         this.username = "DEFAULT";
-        this.password = "DEFAULT";
+        this.password = "5b39c8b553c821e7cddc6da64b5bd2ee";
         this.name = "DEFAULT";
         this.surname = "DEFAULT";
         this.gender = Genders.Other;
@@ -90,7 +90,7 @@ public class PlayerImpl implements Cloneable {
 
     public PlayerImpl(String username, int balance){
         this.username = username;
-        this.password = "DEFAULT";
+        this.password = "5b39c8b553c821e7cddc6da64b5bd2ee";
         this.name = "DEFAULT";
         this.surname = "DEFAULT";
         this.gender = Genders.Other;

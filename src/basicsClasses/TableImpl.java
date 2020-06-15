@@ -90,6 +90,7 @@ package basicsClasses;
 import managements.ManagementCardImpl;
 import managements.ManagementPlayerImpl;
 import enums.Genders;
+import validations.Validations;
 
 import java.util.Arrays;
 import java.util.GregorianCalendar;
@@ -1184,7 +1185,6 @@ public class TableImpl implements Cloneable {
      * Modify the balance of the players who have won by increasing their balance by the corresponding amount
      */
 
-
     public void depositBalanceWinnerAndShowWinner(){
         ManagementCardImpl gestoraCarta = new ManagementCardImpl();
         int indiceGanador = -1, totalGanancias = 0, puntosAnteriorGanador = 99999, puntosAnteriorJugador = 0, puntosJugadorCalculados;
@@ -1418,7 +1418,6 @@ public class TableImpl implements Cloneable {
         return amountPlayersToPlay > 1;
     }
 
-
     private boolean remainPlayersWithoutAllIn(){
         int amountPlayersWithoutAllIn = 0;
         for (int i = 0; i < this.players.length; i++){
@@ -1428,7 +1427,6 @@ public class TableImpl implements Cloneable {
         }
         return amountPlayersWithoutAllIn > 1;
     }
-
 
     /*
      * SIGNATURA: public void doBet()
@@ -1444,9 +1442,9 @@ public class TableImpl implements Cloneable {
      * This method places the bets of the players
      */
 
-
     public void doBet(){
         ManagementPlayerImpl managPlayer = new ManagementPlayerImpl();
+        Validations valid = new Validations();
         int minBet = 0, betPlayer, turnPlayerPartial = this.playerTurn, turnPlayerFinal = this.playerTurn;
         boolean quedanJugadoresParaJugar, quedanJugadoresSinAllIn;
         //Calcula cuantos jugadores se han "tirado"
@@ -1466,7 +1464,7 @@ public class TableImpl implements Cloneable {
             //Comprueba que el jugador este activo y tenga un saldo mayor a 0
             if (playerActive[turnPlayerPartial] && this.getBalancePlayer(turnPlayerPartial) > 0 && !playerAllInLower[turnPlayerPartial]) {
                 if(turnPlayerPartial == 0){
-                    minBet = managPlayer.readAndValidateBet(turnPlayerPartial, minBet,this);
+                    minBet = valid.readAndValidateBet(turnPlayerPartial, minBet,this);
                 }else{
                     minBet = managPlayer.calculateBetBot(turnPlayerPartial, minBet,this);
                 }
@@ -1488,7 +1486,7 @@ public class TableImpl implements Cloneable {
                 //Comprueba que el jugador este activo y tenga un saldo mayor a 0
                 if (playerActive[turnPlayerPartial] && this.getBalancePlayer(turnPlayerPartial) > 0 && !playerAllInLower[turnPlayerPartial]) {
                     if(turnPlayerPartial == 0){
-                        betPlayer = managPlayer.readAndValidateBet(turnPlayerPartial, minBet,this);
+                        betPlayer = valid.readAndValidateBet(turnPlayerPartial, minBet,this);
                     }else{
                         betPlayer = managPlayer.calculateBetBot(turnPlayerPartial, minBet,this);
                     }
@@ -1544,6 +1542,32 @@ public class TableImpl implements Cloneable {
             }
         }
         this.round++;
+    }
+
+    /*
+     * SIGNATURA: public int quantityPlayerWithValancePositive();
+     * COMENTARIO: Devuelve la cantidad de jugadores que tienen saldo positivo en la partida
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Nada
+     * SALIDA: - Un entero
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Devuelve asociado al nombre la cantidad de jugadores que tienen saldo positivo en la partida
+     */
+
+    /**
+     * @return
+     */
+
+    public int quantityPlayerWithValancePositive(){
+        int cantidad = 0;
+        if (this.players.length == 5){
+            for (int i = 1; i < this.players.length; i++){
+                if (this.players[i].getBalance() > 0){
+                    cantidad++;
+                }
+            }
+        }
+        return cantidad;
     }
 
     /**

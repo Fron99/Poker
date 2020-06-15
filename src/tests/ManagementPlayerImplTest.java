@@ -1,17 +1,17 @@
 package tests;
 
-import managements.ManagementPlayerImpl;
 import org.junit.Test;
+import utils.UtilsPlayerImpl;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ManagementPlayerImplTest {
 
     @Test
     public void encriptPassword() {
-        ManagementPlayerImpl MPI = new ManagementPlayerImpl();
+        UtilsPlayerImpl utilsPlayer = new UtilsPlayerImpl();
         String contra = "HOLA";
-        assertEquals(MPI.encriptPassword(contra),"c6f00988430dbc8e83a7bc7ab5256346");
+        assertEquals(utilsPlayer.encriptPassword(contra),"c6f00988430dbc8e83a7bc7ab5256346");
     }
 
 

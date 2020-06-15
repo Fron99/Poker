@@ -14,115 +14,6 @@ import java.util.Scanner;
 @SuppressWarnings("unused")
 public class ManagementPlayerImpl {
 
-    /**
-     * This method encrypts the string passed by parameter with the MD5 format.
-     * @param password String to encrypt.
-     * @return Returns the string passed by encrypted parameter.
-     */
-
-    public String encriptPassword(String password){
-        String passEncrypted = null;
-
-        try {
-            byte[] bytesOfMessage = password.getBytes(StandardCharsets.UTF_8);
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] thedigest = md.digest(bytesOfMessage);
-            BigInteger bigInt = new BigInteger(1,thedigest);
-            passEncrypted = bigInt.toString(16);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-
-        return passEncrypted;
-    }
-
-
-    /*
-     * SIGNATURA: public int readAndValidateInitialBalance();
-     * COMENTARIO: Lee y valida el dinero inicial del jugador
-     * PRECONDICIONES: - Ninguna
-     * ENTRADA: - Nada
-     * SALIDA: - Un entero
-     * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: - Devuelve asociado al nombre un entero con la cantidad de dinero con el que el jugador va a iniciar el juego
-     *
-     */
-
-    /**
-     * Read and validate the player's initial money
-     * @return int This method returns the amount of money validated with which the player wants to play
-     */
-
-    public int readAndValidateInitialBalance(){
-        int balance;
-        Scanner teclado = new Scanner(System.in);
-        do {
-            System.out.println("The minimum balance is 2000€ and the maximum 10000€");
-            System.out.print("Insert init balance: ");
-            balance = teclado.nextInt();
-        }while (balance < 2000 || balance > 10000);
-        return balance;
-    }
-
-    /*
-     * SIGNATURA: public String readUser();
-     * COMENTARIO: Lee el usuario con el que quiere jugar el jugador
-     * PRECONDICIONES: - Ninguna
-     * ENTRADA: - Nada
-     * SALIDA: - Un String
-     * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: - Devuelve asociado al nombre un String con el usuario con el que quiere jugar el jugador
-     *
-     */
-
-    /**
-     * @return Return String with User
-     */
-
-    public String readUser(){
-        String username;
-        Scanner SC = new Scanner(System.in);
-            System.out.print("Insert username with you want play: ");
-            username = SC.nextLine();
-        return username;
-    }
-
-
-    /*
-     * SIGNATURA:
-     * COMENTARIO: Lee y valida la cantidad de dinero que puede apostar el jugador
-     * PRECONDICIONES: Ninguna
-     * ENTRADA: - Un jugador
-     *          - Apuesta minima
-     * SALIDA: - Un entero
-     * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: - Devuelve asociado al nombre un entero con la cantidad de dinero que apuesta el jugador
-     *
-     */
-    
-
-    public int readAndValidateBet(int jugador, int apuestaMinima, TableImpl mesa){
-        Scanner teclado = new Scanner(System.in);
-        int cantidadApuesta;
-        boolean allIn = false;
-        do {
-            System.out.println("Dispone de "+mesa.getBalancePlayer(jugador)+" de saldo");
-            System.out.println("La apuesa minima es: "+(apuestaMinima-mesa.getBetPlayer(jugador,mesa.getRound())));
-            System.out.print("Introduce cuanto quiere apostar: ");
-            cantidadApuesta = teclado.nextInt();
-            if (cantidadApuesta < apuestaMinima-mesa.getBetPlayer(jugador,mesa.getRound())){
-                if (cantidadApuesta == mesa.getBalancePlayer(jugador)){
-                    allIn = true;
-                }
-            }
-        }while (cantidadApuesta+mesa.getBetPlayer(jugador,mesa.getRound()) < apuestaMinima
-                || (cantidadApuesta+mesa.getBetPlayer(jugador,mesa.getRound()) < apuestaMinima && !allIn && cantidadApuesta != 0 )
-                || cantidadApuesta > mesa.getBalancePlayer(jugador));
-
-        return cantidadApuesta;
-    }
-
-
     /*
      * SIGNATURA: public int calcularApostarBot(int apuestaMinima, MesaImpl mesa, int jugador, int ronda)
      * COMENTARIO: Metodo para calcular cuanto debe apostar el bot pasado por parametro
@@ -135,7 +26,13 @@ public class ManagementPlayerImpl {
      * ENTRADA/SALIDA: - Nada
      * POSTCONDICIONES: - Devuelve asociado al nombre un entero con la cantidad de saldo a apostar
      */
-    
+
+    /**
+     * @param jugador
+     * @param apuestaMinima
+     * @param mesa
+     * @return
+     */
 
     public int calculateBetBot(int jugador, int apuestaMinima, TableImpl mesa){
         int totalApostar, valorCartas, valorFarolRonda, puntosPosibilidad;
@@ -183,7 +80,6 @@ public class ManagementPlayerImpl {
         return totalApostar;
     }
 
-
     /*
      * SIGNATURA: public int calculatePointBluffRound(int ronda);
      * COMENTARIO: Calcular cantidad de puntos que debe incrementar la apuesta el bot
@@ -193,7 +89,6 @@ public class ManagementPlayerImpl {
      * ENTRADA/SALIDA: - Nada
      * POSTCONDICIONES: - Devuelve asociado al nombre la cantidad de puntos que debe incrementar en un farol el bot dependiendo de la ronda en la que se encuentre
      */
-    
 
     private int calculatePointBluffRound(int round){
         int puntosFarol = 0,porcentaje;
@@ -248,7 +143,6 @@ public class ManagementPlayerImpl {
      * ENTRADA/SALIDA: - Nada
      * POSTCONDICIONES: - Devuelve asociado al nombre el valor en puntos de la posibilidad de tener cartas de valor en la partida.
      */
-    
 
     private int calculatePointPosibility(CardImpl[] cardsToEvalue){
         int puntosPosibilidad = 0, puntos, colorP = 0, colorT = 0, colorR = 0, colorC = 0 ;
@@ -380,48 +274,6 @@ public class ManagementPlayerImpl {
             //En la cuarta ronda no hay incremento por posibilidad
         }
         return puntosPosibilidad;
-    }
-
-
-    /*
-     * SIGNATURA: public JugadorImpl readAndValidateUsername();
-     * COMENTARIO:
-     * PRECONDICIONES: - Nada
-     * ENTRADA: - Nada
-     * SALIDA: - Un objeto JugadorImpl
-     * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: - Devuelve un usuario creado
-     */
-
-
-    public PlayerImpl readAndValidateUsername(){
-        PlayerImpl nuevoJugador;
-            String usuario = readUser();
-            int saldo = readAndValidateInitialBalance();
-            nuevoJugador = new PlayerImpl(usuario,saldo);
-        return nuevoJugador;
-    }
-
-    /*
-     * SIGNATURA: public JugadorImpl quantityPlayerWithValancePositive(PlayerImpl[] players);
-     * COMENTARIO: Devuelve la cantidad de jugadores que tienen saldo positivo en la partida
-     * PRECONDICIONES: - Nada
-     * ENTRADA: - Nada
-     * SALIDA: - Un entero
-     * ENTRADA/SALIDA: - Nada
-     * POSTCONDICIONES: - Devuelve asociado al nombre la cantidad de jugadores que tienen saldo positivo en la partida
-     */
-
-    public int quantityPlayerWithValancePositive(PlayerImpl[] players){
-        int cantidad = 0;
-        if (players.length == 5){
-            for (int i = 1; i < players.length; i++){
-                if (players[i].getBalance() > 0){
-                    cantidad++;
-                }
-            }
-        }
-        return cantidad;
     }
 
 }

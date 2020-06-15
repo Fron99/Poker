@@ -1,5 +1,9 @@
 package validations;
 
+import basicsClasses.PlayerImpl;
+import basicsClasses.TableImpl;
+import utils.UtilsPlayerImpl;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -91,7 +95,7 @@ public class Validations {
 
     public String readAndValidatePassword(){
         Scanner sc = new Scanner(System.in);
-        Utils u = new Utils();
+        UtilsPlayerImpl u = new UtilsPlayerImpl();
         String password;
 
         do {
@@ -103,6 +107,119 @@ public class Validations {
 
         password = u.encriptPassword(password);
         return password;
+    }
+
+    /*
+     * SIGNATURA: public JugadorImpl readAndValidateUsername();
+     * COMENTARIO:
+     * PRECONDICIONES: - Nada
+     * ENTRADA: - Nada
+     * SALIDA: - Un objeto JugadorImpl
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Devuelve un usuario creado
+     */
+
+    /**
+     * @return
+     */
+
+    public PlayerImpl readAndValidateUsername(){
+        PlayerImpl nuevoJugador;
+        String usuario = readUser();
+        int saldo = readAndValidateInitialBalance();
+        nuevoJugador = new PlayerImpl(usuario,saldo);
+        return nuevoJugador;
+    }
+
+    /*
+     * SIGNATURA: public int readAndValidateInitialBalance();
+     * COMENTARIO: Lee y valida el dinero inicial del jugador
+     * PRECONDICIONES: - Ninguna
+     * ENTRADA: - Nada
+     * SALIDA: - Un entero
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Devuelve asociado al nombre un entero con la cantidad de dinero con el que el jugador va a iniciar el juego
+     *
+     */
+
+    /**
+     * Read and validate the player's initial money
+     * @return int This method returns the amount of money validated with which the player wants to play
+     */
+
+    public int readAndValidateInitialBalance(){
+        int balance;
+        Scanner teclado = new Scanner(System.in);
+        do {
+            System.out.println("The minimum balance is 2000€ and the maximum 10000€");
+            System.out.print("Insert init balance: ");
+            balance = teclado.nextInt();
+        }while (balance < 2000 || balance > 10000);
+        return balance;
+    }
+
+    /*
+     * SIGNATURA: public String readUser();
+     * COMENTARIO: Lee el usuario con el que quiere jugar el jugador
+     * PRECONDICIONES: - Ninguna
+     * ENTRADA: - Nada
+     * SALIDA: - Un String
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Devuelve asociado al nombre un String con el usuario con el que quiere jugar el jugador
+     *
+     */
+
+    /**
+     * @return Return String with User
+     */
+
+    public String readUser(){
+        String username;
+        Scanner SC = new Scanner(System.in);
+        System.out.print("Insert username with you want play: ");
+        username = SC.nextLine();
+        return username;
+    }
+
+
+    /*
+     * SIGNATURA:
+     * COMENTARIO: Lee y valida la cantidad de dinero que puede apostar el jugador
+     * PRECONDICIONES: Ninguna
+     * ENTRADA: - Un jugador
+     *          - Apuesta minima
+     * SALIDA: - Un entero
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Devuelve asociado al nombre un entero con la cantidad de dinero que apuesta el jugador
+     *
+     */
+
+    /**
+     * @param jugador
+     * @param apuestaMinima
+     * @param mesa
+     * @return
+     */
+
+    public int readAndValidateBet(int jugador, int apuestaMinima, TableImpl mesa){
+        Scanner teclado = new Scanner(System.in);
+        int cantidadApuesta;
+        boolean allIn = false;
+        do {
+            System.out.println("Dispone de "+mesa.getBalancePlayer(jugador)+" de saldo");
+            System.out.println("La apuesa minima es: "+(apuestaMinima-mesa.getBetPlayer(jugador,mesa.getRound())));
+            System.out.print("Introduce cuanto quiere apostar: ");
+            cantidadApuesta = teclado.nextInt();
+            if (cantidadApuesta < apuestaMinima-mesa.getBetPlayer(jugador,mesa.getRound())){
+                if (cantidadApuesta == mesa.getBalancePlayer(jugador)){
+                    allIn = true;
+                }
+            }
+        }while (cantidadApuesta+mesa.getBetPlayer(jugador,mesa.getRound()) < apuestaMinima
+                || (cantidadApuesta+mesa.getBetPlayer(jugador,mesa.getRound()) < apuestaMinima && !allIn && cantidadApuesta != 0 )
+                || cantidadApuesta > mesa.getBalancePlayer(jugador));
+
+        return cantidadApuesta;
     }
 
 
