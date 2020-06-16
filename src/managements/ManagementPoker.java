@@ -2,6 +2,7 @@ package managements;
 
 import basicsClasses.CardImpl;
 import basicsClasses.PlayerImpl;
+import basicsClasses.TableImpl;
 import enums.Genders;
 
 import java.sql.*;
@@ -179,6 +180,118 @@ public class ManagementPoker {
         }
 
         return player;
+    }
+
+    /**
+     * @param connection
+     * @return
+     */
+
+    public int createNewPokerPlay(Connection connection){
+        Statement sentence = null;
+        ResultSet pokerPlay = null;
+        int ID = 0;
+
+        String select = "DECLARE @ID INT\n" +
+                        "EXECUTE @ID = insertNewPokerPlay\n" +
+                        "SELECT @ID AS ID";
+
+        try {
+            sentence = connection.createStatement();
+            pokerPlay = sentence.executeQuery(select);
+            while (pokerPlay.next()) {
+                ID = pokerPlay.getInt("ID");
+            }
+            System.out.println(ID);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        try {
+            pokerPlay.close();
+            sentence.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return ID;
+    }
+
+    /**
+     * @param table
+     * @param IDPokerPlay
+     * @return
+     */
+
+    public String generateInsertUsersPokerPlays(TableImpl table, int IDPokerPlay){
+        String insert = "INSERT INTO UsersPokerPlays(UsernameUser,IDPlay,TotalBet,TotalPoints) VALUES ";
+        int[] pointsForPlayers = table.calculatePointsForPlayer();
+        for (int i = 0; i < table.getPlayers().length; i++){
+
+            if (i != 4){
+                insert += "('"+table.getUsernamePlayer(i)+"',"+IDPokerPlay+","+table.getTotalBetPlayer(i)+","+pointsForPlayers[i]+"),";
+            }else{
+                insert += "('"+table.getUsernamePlayer(i)+"',"+IDPokerPlay+","+table.getTotalBetPlayer(i)+","+pointsForPlayers[i]+")";
+            }
+
+        }
+        return insert;
+    }
+
+    /**
+     * @param table
+     * @param IDPokerPlay
+     * @return
+     */
+
+    public String generateInsertWinnersPoker(TableImpl table, int IDPokerPlay){
+
+        String insert = "INSERT INTO WinnersPoker(IDPlay,UsernameUser,TotalWin) VALUES ";
+        int[] winners = table.calculateWinningsForPlayer();
+        for (int i = 0; i < winners.length; i++){
+
+            if (winners[i] != 0){
+
+                if (i != 4){
+                    insert += "('"+IDPokerPlay+"',"+table.getUsernamePlayer(i)+","+winners[i]+"),";
+                }else{
+                    insert += "('"+IDPokerPlay+"',"+table.getUsernamePlayer(i)+","+winners[i]+")";
+                }
+
+            }
+
+        }
+        return insert;
+    }
+
+    /**
+     * @param table
+     * @param connection
+     * @return
+     */
+    
+    public boolean insertFinalStadistic(TableImpl table, Connection connection){
+        boolean inserted = false;
+        Statement sentence = null;
+
+        int IDPokerPlay = createNewPokerPlay(connection);
+        String insertUsersPokerPlays = generateInsertUsersPokerPlays(table, IDPokerPlay);
+        String insertWinnersPoker = generateInsertWinnersPoker(table, IDPokerPlay);
+
+        try {
+            sentence = connection.createStatement();
+            inserted = ( sentence.executeUpdate(insertUsersPokerPlays) == 5 && sentence.executeUpdate(insertWinnersPoker) > 0);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        try {
+            sentence.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return inserted;
     }
 
 }
