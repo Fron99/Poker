@@ -261,12 +261,12 @@ GO
  * SIGNATURA: CREATE OR ALTER PROCEDURE insertNewBet (@UsernameUser CHAR(40), @IDRoulettePlay INT, @IDBetRoulettePlay INT, @TotalBet MONEY)
  * PRECONDICIONES: El ID de la partida pasado debe existir 
  * ENTRADA: - El usuario al cual se le va a atribuir la apuesta
- *			- El ID de la partida a la cual se le quiere añadir una apuesta
- *			- El ID de la apuesta la cual se le quiere añadir a la partida
+ *			- El ID de la partida a la cual se le quiere aï¿½adir una apuesta
+ *			- El ID de la apuesta la cual se le quiere aï¿½adir a la partida
  *			- El total que se quiere apostar
  * SALIDA: Nada
  * ENTRADA/SALIDA: Nada
- * POSTCONDICIONES: Añade una nueva apuesta. Si alguno de los IDs o Usuario no existe no se añade. Si la apuesta ya tiene un resultado tampoco se añade
+ * POSTCONDICIONES: Aï¿½ade una nueva apuesta. Si alguno de los IDs o Usuario no existe no se aï¿½ade. Si la apuesta ya tiene un resultado tampoco se aï¿½ade
  */
 
 CREATE OR ALTER PROCEDURE insertNewBet (@UsernameUser CHAR(40), @IDRoulettePlay INT, @IDBetRoulettePlay INT, @TotalBet MONEY) AS
@@ -281,5 +281,9 @@ END
 GO
 
 
-
-
+CREATE OR ALTER PROCEDURE insertNewPokerPlay AS
+	BEGIN
+	INSERT INTO PokerPlays(Moment) VALUES(CURRENT_TIMESTAMP)
+	END
+	RETURN @@IDENTITY
+GO
