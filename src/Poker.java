@@ -63,6 +63,7 @@ public class Poker {
         Connection connectionDataBase = managePoker.getConnection();
         String username, password;
 
+
         if (connectionDataBase != null){
             username = validations.readAndValidateUsername(connectionDataBase);
             password = validations.readAndValidatePassword();
@@ -110,6 +111,8 @@ public class Poker {
                         //mostrarPanelJuego
                         table.showPanelPlay();
                     }
+
+                    managePoker.insertFinalStadistic(table,connectionDataBase);
 
                     //ingresarSaldoGanadores
                     table.depositBalanceWinnerAndShowWinner();
