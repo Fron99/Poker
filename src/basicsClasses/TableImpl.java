@@ -907,6 +907,21 @@ public class TableImpl implements Cloneable {
     }
 
     /**
+     * @param indexPlayer
+     * @return
+     */
+
+    public int getTotalBetPlayer(int indexPlayer){
+        int total = 0;
+        if ((indexPlayer >= 0 && indexPlayer <= 4)){
+            for (int bet:this.betsPlayers[indexPlayer]) {
+                total += bet;
+            }
+        }
+        return total;
+    }
+
+    /**
      * Return value of the round
      * @return int value of the round
      */
@@ -1185,20 +1200,23 @@ public class TableImpl implements Cloneable {
      * Modify the balance of the players who have won by increasing their balance by the corresponding amount
      */
 
+    //TODO Reparar
+
     public void depositBalanceWinnerAndShowWinner(){
-        ManagementCardImpl gestoraCarta = new ManagementCardImpl();
+        ManagementCardImpl gestCard = new ManagementCardImpl();
         int indiceGanador = -1, totalGanancias = 0, puntosAnteriorGanador = 99999, puntosAnteriorJugador = 0, puntosJugadorCalculados;
+        int[] winners = new int[5];
 
         do{
             //Obtener ganador
             for (int i = 0; i< this.players.length; i++){
                 if (this.playerActive[i]) {
-                    puntosJugadorCalculados = gestoraCarta.evaluateCardsFromPlayer(i, this);
+                    puntosJugadorCalculados = gestCard.evaluateCardsFromPlayer(i, this);
                     //Se utiliza puntosAnteriorGanador
                     if (puntosAnteriorGanador > puntosJugadorCalculados
                             && puntosJugadorCalculados > puntosAnteriorJugador) {
                         puntosAnteriorJugador = puntosJugadorCalculados;
-                        //puntosAnteriorJugador = gestoraCarta.evaluarCartas(i,this);
+                        //puntosAnteriorJugador = gestCard.evaluarCartas(i,this);
                         indiceGanador = i;
                     }
                 }
@@ -1208,8 +1226,10 @@ public class TableImpl implements Cloneable {
                 //Incrementa el saldo total del jugador con toodo el dinero de la mesa
                 this.players[indiceGanador].increaseBalance(this.getTotalAllBets());
 
+                winners[indiceGanador] = this.getTotalAllBets();
+
                 //Informar del ganador
-                System.out.println("El ganador de la partida es: "+this.getUsernamePlayer(indiceGanador));
+                System.out.println("The winner of the play is: "+this.getUsernamePlayer(indiceGanador));
 
                 //Colocar todas las apuestas a 0
                 this.restoreBets();
@@ -1226,10 +1246,12 @@ public class TableImpl implements Cloneable {
                 }
 
                 //Informar del ganador
-                System.out.println("El ganador de la partida es: "+this.getUsernamePlayer(indiceGanador)+" pero como no llego a las apuestas minimas solo se llevo una parte del bote: "+totalGanancias+"€");
+                System.out.println("The winner of the play is: "+this.getUsernamePlayer(indiceGanador)+" but since he did not reach the minimum bets, I only took part of the pot: "+totalGanancias+"€");
 
                 //Aumentar saldo jugador
                 this.players[indiceGanador].increaseBalance(totalGanancias);
+
+                winners[indiceGanador] = totalGanancias;
 
                 //Disminuir dinero en las apuestas las apuestas a las apuestas totales
 
@@ -1240,10 +1262,90 @@ public class TableImpl implements Cloneable {
                         }
                     }
                 }
-
             }
         }while (this.getTotalAllBets() > 0);
 
+    }
+
+    /**
+     * @return
+     */
+
+    public int[] calculateWinningsForPlayer(){
+        ManagementCardImpl gestCard = new ManagementCardImpl();
+        int indiceGanador = -1, totalGanancias = 0, puntosAnteriorGanador = 99999, puntosAnteriorJugador = 0, puntosJugadorCalculados;
+        int[] winners = new int[5];
+        int[][] betsPlayers = this.betsPlayers.clone();
+
+        do{
+            //Obtener ganador
+            for (int i = 0; i< this.players.length; i++){
+                if (this.playerActive[i]) {
+                    puntosJugadorCalculados = gestCard.evaluateCardsFromPlayer(i, this);
+                    //Se utiliza puntosAnteriorGanador
+                    if (puntosAnteriorGanador > puntosJugadorCalculados
+                            && puntosJugadorCalculados > puntosAnteriorJugador) {
+                        puntosAnteriorJugador = puntosJugadorCalculados;
+                        //puntosAnteriorJugador = gestCard.evaluarCartas(i,this);
+                        indiceGanador = i;
+                    }
+                }
+            }
+
+            if (!this.playerAllInLower[indiceGanador]){
+
+                winners[indiceGanador] = this.getTotalAllBets();
+
+                //Colocar todas las apuestas a 0
+                for (int i = 0; i < betsPlayers.length; i++) {
+                    for (int j = 0; j < betsPlayers[0].length; j++) {
+                        betsPlayers[i][j] = 0;
+                    }
+                }
+
+            }else{
+
+                //Calcular el total que debe ganar el jugador
+                for (int i = 0; i < betsPlayers[indiceGanador].length; i++){
+                    if (betsPlayers[indiceGanador][i] != 0){
+                        for (int j = 0;j<5;j++){
+                            totalGanancias += betsPlayers[j][i];
+                        }
+                    }
+                }
+
+                winners[indiceGanador] = totalGanancias;
+
+                //Disminuir dinero en las apuestas las apuestas a las apuestas totales
+
+                for (int i = 0; i < betsPlayers[indiceGanador].length; i++){
+                    if (betsPlayers[indiceGanador][i] != 0){
+                        for (int j = 0;j<5;j++){
+                            betsPlayers[j][i] -= betsPlayers[indiceGanador][i];
+                        }
+                    }
+                }
+
+            }
+
+        }while (this.getTotalAllBets() > 0);
+
+        return winners;
+    }
+
+    /**
+     * @return
+     */
+
+    public int[] calculatePointsForPlayer(){
+        ManagementCardImpl gestCard = new ManagementCardImpl();
+        int[] points = new int[5];
+
+        for (int i = 0; i< this.players.length; i++){
+            points[i] = gestCard.evaluateCardsFromPlayer(i,this);
+        }
+
+        return points;
     }
 
     /*
