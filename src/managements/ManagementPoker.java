@@ -29,10 +29,11 @@ public class ManagementPoker {
     }
 
     /**
-     * @param username
-     * @param password
-     * @param connection
-     * @return
+     * Check if the user with the password exists
+     * @param username Username
+     * @param password Password
+     * @param connection Connection where to check
+     * @return Return True if exist or False if not exist
      */
 
     public boolean existUser(String username, String password, Connection connection){
@@ -64,9 +65,9 @@ public class ManagementPoker {
     }
 
     /**
-     * @param username
-     * @param connection
-     * @return
+     * @param username The player's user
+     * @param connection Connection where to get
+     * @return Return the player from the bbdd
      */
 
     public PlayerImpl getUser(String username, Connection connection){
@@ -247,16 +248,23 @@ public class ManagementPoker {
 
         String insert = "INSERT INTO WinnersPoker(IDPlay,UsernameUser,TotalWin) VALUES ";
         int[] winners = table.calculateWinningsForPlayer();
-        for (int i = 0; i < winners.length; i++){
+        int amountOfWinners = 0;
+
+        for (int i : winners){
+            if (i > 0){
+                amountOfWinners++;
+            }
+        }
+
+        for (int i = 0, countWinners = 0; i < winners.length; i++){
 
             if (winners[i] != 0){
-
-                if (i != 4){
-                    insert += "('"+IDPokerPlay+"',"+table.getUsernamePlayer(i)+","+winners[i]+"),";
+                if (countWinners < amountOfWinners-1){
+                    insert += "("+IDPokerPlay+",'"+table.getUsernamePlayer(i)+"',"+winners[i]+"),";
                 }else{
-                    insert += "('"+IDPokerPlay+"',"+table.getUsernamePlayer(i)+","+winners[i]+")";
+                    insert += "("+IDPokerPlay+",'"+table.getUsernamePlayer(i)+"',"+winners[i]+")";
                 }
-
+                countWinners++;
             }
 
         }
@@ -268,7 +276,7 @@ public class ManagementPoker {
      * @param connection
      * @return
      */
-    
+
     public boolean insertFinalStadistic(TableImpl table, Connection connection){
         boolean inserted = false;
         Statement sentence = null;

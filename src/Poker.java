@@ -54,7 +54,7 @@ import java.sql.Connection;
 
 public class Poker {
 
-    public void playGame(){
+    public static void main(String[] args){
 
         ManagementPoker managePoker = new ManagementPoker();
         Validations validations = new Validations();
