@@ -907,8 +907,9 @@ public class TableImpl implements Cloneable {
     }
 
     /**
-     * @param indexPlayer
-     * @return
+     * Returns a player's total bet
+     * @param indexPlayer Index of player
+     * @return Total bet of a player
      */
 
     public int getTotalBetPlayer(int indexPlayer){
@@ -1171,29 +1172,6 @@ public class TableImpl implements Cloneable {
      * SALIDA: - Nada
      * ENTRADA/SALIDA: - Nada
      * POSTCONDICIONES: - Modifica el saldo de los jugadores que hayan ganado incrementando su saldo en la cantidad correspondiente
-     */
-
-    /*
-     * INICIO
-     *
-     * repetir
-     *
-     *  para(i = 0; mientras i < cantidad jugadores; incrementar i)
-     *      si(jugador != indice guardado)
-     *          //obtenerJugadorMayorPuntuacion
-     *      finSi
-     *  finPara
-     *
-     *  si(allInMenor del jugador es false)
-     *      aumentarSaldoJugador //Con toodo el saldo de la mesa
-     *  sino
-     *      aumentarSaldoJugador    //Con la parte proporcional que tiene que ganar
-     *      guardarIndiceJugador
-     *  finSi
-     *
-     * mientras(queden jugadores ganadores)
-     *
-     * FIN
      */
 
     /**
@@ -1657,6 +1635,7 @@ public class TableImpl implements Cloneable {
      */
 
     /**
+     * Returns the number of players with positive values
      * @return
      */
 
