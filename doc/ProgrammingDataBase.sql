@@ -206,6 +206,26 @@ END
 GO
 
 
+CREATE OR ALTER TRIGGER updateBalanceAfterPokerPlays ON UsersPokerPlays AFTER INSERT AS
+BEGIN
+	UPDATE Users
+	SET Balance -= TotalBet
+	FROM inserted AS INS
+	WHERE Username = INS.UsernameUser AND IDPlay = INS.IDPlay
+END
+GO
+
+
+CREATE OR ALTER TRIGGER updateBalanceAfterPokerPlaysWinners ON WinnersPoker AFTER INSERT AS
+BEGIN
+	UPDATE Users
+	SET Balance += TotalWin
+	FROM inserted AS INS
+	WHERE Username = INS.UsernameUser AND IDPlay = INS.IDPlay
+END
+GO
+
+
 /*
  * NOMBRE: insertNewRoulettePlay
  * DESCRIPCION: PROCEDIMIENTO PARA GENERAR UNA NUEVA JUGADA
@@ -261,12 +281,12 @@ GO
  * SIGNATURA: CREATE OR ALTER PROCEDURE insertNewBet (@UsernameUser CHAR(40), @IDRoulettePlay INT, @IDBetRoulettePlay INT, @TotalBet MONEY)
  * PRECONDICIONES: El ID de la partida pasado debe existir 
  * ENTRADA: - El usuario al cual se le va a atribuir la apuesta
- *			- El ID de la partida a la cual se le quiere aï¿½adir una apuesta
- *			- El ID de la apuesta la cual se le quiere aï¿½adir a la partida
+ *			- El ID de la partida a la cual se le quiere añadir una apuesta
+ *			- El ID de la apuesta la cual se le quiere añadir a la partida
  *			- El total que se quiere apostar
  * SALIDA: Nada
  * ENTRADA/SALIDA: Nada
- * POSTCONDICIONES: Aï¿½ade una nueva apuesta. Si alguno de los IDs o Usuario no existe no se aï¿½ade. Si la apuesta ya tiene un resultado tampoco se aï¿½ade
+ * POSTCONDICIONES: Añade una nueva apuesta. Si alguno de los IDs o Usuario no existe no se añade. Si la apuesta ya tiene un resultado tampoco se añade
  */
 
 CREATE OR ALTER PROCEDURE insertNewBet (@UsernameUser CHAR(40), @IDRoulettePlay INT, @IDBetRoulettePlay INT, @TotalBet MONEY) AS

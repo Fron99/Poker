@@ -1,7 +1,6 @@
 CREATE DATABASE PokerAuto
 GO
 
-
 USE PokerAuto
 GO
 
