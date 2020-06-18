@@ -985,4 +985,150 @@ public class ManagementCardImpl {
         return oneToStair;
     }
 
+    /*
+     * SIGNATURA: private int calculatePointPosibility(CardImpl[] cardsToEvalue)
+     * COMENTARIO: Calcula la posibilidad que tienen las cartas de tener algo de valor
+     * PRECONDICIONES: - El array no debe tener cartas por defecto.
+     * ENTRADA: - Un array de CartaImpl
+     * SALIDA: - Un entero
+     * ENTRADA/SALIDA: - Nada
+     * POSTCONDICIONES: - Devuelve asociado al nombre el valor en puntos de la posibilidad de tener cartas de valor en la partida.
+     */
+
+    /**
+     * @param cardsToEvalue
+     * @return
+     */
+
+    public int calculatePointPosibility(CardImpl[] cardsToEvalue){
+        int puntosPosibilidad = 0, puntos, colorP = 0, colorT = 0, colorR = 0, colorC = 0 ;
+        boolean unaParaEscalera;
+
+        switch (cardsToEvalue.length){
+            //Si el array contiene 2 cartas significa que esta en la primera ronda
+            case 2:
+
+                for (CardImpl carta : cardsToEvalue) {
+                    if (carta.getValueNumber() == 13 || carta.getValueNumber() == 12 || carta.getValueNumber() == 11 || carta.getValueNumber() == 10) {
+                        puntosPosibilidad = 20;
+                    }
+                }
+
+                if (cardsToEvalue[0].getValueNumber() == 13 || cardsToEvalue[0].getValueNumber() == 12 || cardsToEvalue[0].getValueNumber() == 11 || cardsToEvalue[0].getValueNumber() == 10
+                        && cardsToEvalue[1].getValueNumber() == 13 || cardsToEvalue[1].getValueNumber() == 12 || cardsToEvalue[1].getValueNumber() == 11 || cardsToEvalue[1].getValueNumber() == 10){
+                    puntosPosibilidad = 30;
+                }
+
+                if (cardsToEvalue[0].getSuit() == cardsToEvalue[1].getSuit()){
+                    puntosPosibilidad = 50;
+                }
+
+                if (cardsToEvalue[0].getNumber().equals(cardsToEvalue[1].getNumber())){
+                    puntosPosibilidad = 50;
+                }
+
+                break;
+            //Si el array contiene 5 cartas significa que esta en la segunda ronda
+            case 5:
+
+                for (CardImpl carta : cardsToEvalue) {
+                    if (carta.getValueNumber() == 13 || carta.getValueNumber() == 12 || carta.getValueNumber() == 11 || carta.getValueNumber() == 10) {
+                        puntosPosibilidad = 10;
+                    }
+                }
+
+                puntos = calculateValuePair(cardsToEvalue);
+
+                if (puntos > 0){
+                    puntosPosibilidad = 40;
+                }
+
+                for (CardImpl carta : cardsToEvalue) {
+                    switch (carta.getSuit()){
+                        case 'P':
+                            colorP++;
+                            break;
+                        case 'T':
+                            colorT++;
+                            break;
+                        case 'R':
+                            colorR++;
+                            break;
+                        case 'C':
+                            colorC++;
+                            break;
+                    }
+                }
+
+                if (colorP == 4 || colorT == 4 || colorR == 4 || colorC == 4){
+                    puntosPosibilidad = 50;
+                }
+
+                unaParaEscalera = oneToStair(cardsToEvalue);
+
+                if (unaParaEscalera){
+                    puntosPosibilidad = 50;
+                }
+
+                break;
+            //Si el array contiene 6 cartas significa que esta en la tercera ronda
+            case 6:
+
+                for (CardImpl carta : cardsToEvalue) {
+                    if (carta.getValueNumber() == 13 || carta.getValueNumber() == 12 || carta.getValueNumber() == 11 || carta.getValueNumber() == 10) {
+                        puntosPosibilidad = 10;
+                    }
+                }
+
+                puntos = calculateValuePair(cardsToEvalue);
+
+                if (puntos > 0){
+                    puntosPosibilidad = 20;
+                }
+
+                for (CardImpl carta : cardsToEvalue) {
+                    switch (carta.getSuit()){
+                        case 'P':
+                            colorP++;
+                            break;
+                        case 'T':
+                            colorT++;
+                            break;
+                        case 'R':
+                            colorR++;
+                            break;
+                        case 'C':
+                            colorC++;
+                            break;
+                    }
+                }
+
+                if (colorP == 4 || colorT == 4 || colorR == 4 || colorC == 4){
+                    puntosPosibilidad = 20;
+                }
+
+                puntos = calculateValueTrio(cardsToEvalue);
+
+                if (puntos > 0){
+                    puntosPosibilidad = 30;
+                }
+
+                puntos = calculateValueDoublePair(cardsToEvalue);
+
+                if (puntos > 0){
+                    puntosPosibilidad = 40;
+                }
+
+                unaParaEscalera = oneToStair(cardsToEvalue);
+
+                if (unaParaEscalera){
+                    puntosPosibilidad = 50;
+                }
+
+                break;
+            //En la cuarta ronda no hay incremento por posibilidad
+        }
+        return puntosPosibilidad;
+    }
+
 }
