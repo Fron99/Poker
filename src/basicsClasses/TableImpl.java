@@ -92,6 +92,7 @@ import managements.ManagementPlayerImpl;
 import enums.Genders;
 import validations.Validations;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.Random;
@@ -1180,10 +1181,9 @@ public class TableImpl implements Cloneable {
 
     //TODO Reparar
 
-    public void depositBalanceWinnerAndShowWinner(){
+    public void depositBalanceWinnerAndShowWinner1(){
         ManagementCardImpl gestCard = new ManagementCardImpl();
         int indiceGanador = -1, totalGanancias = 0, puntosAnteriorGanador = 99999, puntosAnteriorJugador = 0, puntosJugadorCalculados;
-        int[] winners = new int[5];
 
         do{
             //Obtener ganador
@@ -1203,8 +1203,6 @@ public class TableImpl implements Cloneable {
             if (!this.playerAllInLower[indiceGanador]){
                 //Incrementa el saldo total del jugador con toodo el dinero de la mesa
                 this.players[indiceGanador].increaseBalance(this.getTotalAllBets());
-
-                winners[indiceGanador] = this.getTotalAllBets();
 
                 //Informar del ganador
                 System.out.println("The winner of the play is: "+this.getUsernamePlayer(indiceGanador));
@@ -1229,8 +1227,6 @@ public class TableImpl implements Cloneable {
                 //Aumentar saldo jugador
                 this.players[indiceGanador].increaseBalance(totalGanancias);
 
-                winners[indiceGanador] = totalGanancias;
-
                 //Disminuir dinero en las apuestas las apuestas a las apuestas totales
 
                 for (int i = 0; i < this.betsPlayers[indiceGanador].length; i++){
@@ -1245,15 +1241,43 @@ public class TableImpl implements Cloneable {
 
     }
 
+    public void depositBalanceWinnerAndShowWinner(){
+        int[] winners = calculateWinningsForPlayer();
+        ArrayList<Integer> indexWinners = new ArrayList<>();
+
+        for (int i = 0; i < winners.length; i++){
+            if (winners[i] != 0){
+                indexWinners.add(i);
+            }
+        }
+
+        if (indexWinners.size() == 1){
+            System.out.println("The winner is: "+players[indexWinners.get(0)].getUsername());
+            players[indexWinners.get(0)].increaseBalance(winners[indexWinners.get(0)]);
+        }else{
+            System.out.println("Exists more than one winner. The winners are: ");
+            for (int i:indexWinners) {
+                System.out.println("The winner is: "+players[indexWinners.get(i)].getUsername());
+                players[indexWinners.get(i)].increaseBalance(winners[indexWinners.get(i)]);
+            }
+        }
+
+    }
+
     /**
-     * @return
+     * Calculate how much each player earns
+     * @return Array with player earnings
      */
 
     public int[] calculateWinningsForPlayer(){
         ManagementCardImpl gestCard = new ManagementCardImpl();
-        int indiceGanador = -1, totalGanancias = 0, puntosAnteriorGanador = 99999, puntosAnteriorJugador = 0, puntosJugadorCalculados;
+        int indiceGanador = -1, totalGanancias = 0, puntosAnteriorGanador = 99999, puntosAnteriorJugador = 0, puntosJugadorCalculados, totalAllBets = 0;
         int[] winners = new int[5];
-        int[][] betsPlayers = this.betsPlayers.clone();
+        int[][] betsPlayers = new int[5][4];
+        for (int i = 0; i < this.betsPlayers.length; i++){
+            System.arraycopy(this.betsPlayers[i],0,betsPlayers[i],0,this.betsPlayers[i].length);
+        }
+
 
         do{
             //Obtener ganador
@@ -1272,14 +1296,12 @@ public class TableImpl implements Cloneable {
 
             if (!this.playerAllInLower[indiceGanador]){
 
-                winners[indiceGanador] = this.getTotalAllBets();
+                totalAllBets = totalOfArray(betsPlayers);
+
+                winners[indiceGanador] = totalAllBets;
 
                 //Colocar todas las apuestas a 0
-                for (int i = 0; i < betsPlayers.length; i++) {
-                    for (int j = 0; j < betsPlayers[0].length; j++) {
-                        betsPlayers[i][j] = 0;
-                    }
-                }
+                set0Array(betsPlayers);
 
             }else{
 
@@ -1305,14 +1327,34 @@ public class TableImpl implements Cloneable {
                 }
 
             }
+            totalAllBets = totalOfArray(betsPlayers);
 
-        }while (this.getTotalAllBets() > 0);
+        }while (totalAllBets > 0);
 
         return winners;
     }
 
+    private int totalOfArray(int[][] array){
+        int totalAllBets = 0;
+        for (int[] jugador:array) {
+            for (int apuesta:jugador) {
+                totalAllBets += apuesta;
+            }
+        }
+        return totalAllBets;
+    }
+
+    private void set0Array(int[][] array){
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[0].length; j++) {
+                array[i][j] = 0;
+            }
+        }
+    }
+
     /**
-     * @return
+     * Calculate the points that users' cards have
+     * @return Array with points of players
      */
 
     public int[] calculatePointsForPlayer(){
@@ -1636,10 +1678,10 @@ public class TableImpl implements Cloneable {
 
     /**
      * Returns the number of players with positive values
-     * @return
+     * @return number of players with positive values
      */
 
-    public int quantityPlayerWithValancePositive(){
+    public int quantityPlayerWithBalancePositive(){
         int cantidad = 0;
         if (this.players.length == 5){
             for (int i = 1; i < this.players.length; i++){
