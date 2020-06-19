@@ -46,7 +46,6 @@
  */
 
 import basicsClasses.TableImpl;
-import managements.ManagementPlayerImpl;
 import managements.ManagementPoker;
 import validations.Validations;
 
@@ -112,14 +111,16 @@ public class Poker {
                         table.showPanelPlay();
                     }
 
-                    managePoker.insertFinalStadistic(table,connectionDataBase);
+                    if (!managePoker.insertFinalStadistic(table,connectionDataBase)){
+                        System.out.println("The play don't save");
+                    }
 
                     //ingresarSaldoGanadores
                     table.depositBalanceWinnerAndShowWinner();
 
                     table.increaseTurn();
 
-                    if (table.getBalancePlayer(0)>0 && table.quantityPlayerWithValancePositive() > 0){
+                    if (table.getBalancePlayer(0)>0 && table.quantityPlayerWithBalancePositive() > 0){
                         continuePlay = validations.readAndValidateContinuePlaying();
                     }else{
                         System.out.println("The player haven't more money");
