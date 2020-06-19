@@ -13,7 +13,8 @@ import java.util.Scanner;
 public class Validations {
 
     /**
-     * @return
+     * Read and validate if the player wants to continue playing
+     * @return Return True if want continue playing, False if wan't continue
      */
 
     public boolean readAndValidateContinuePlaying(){
@@ -27,24 +28,8 @@ public class Validations {
     }
 
     /**
-     * @return
-     */
-
-    public int readAndValidateGame(){
-        Scanner sc = new Scanner(System.in);
-        int option;
-        do {
-            System.out.println("0.- Leave");
-            System.out.println("1.- Play poker");
-            System.out.println("2.- Play roulette");
-            System.out.print("Insert option: ");
-            option = sc.nextInt();
-        }while (option < 0 || option > 2);
-        return option;
-    }
-
-
-    /** Read and Validate a Password
+     * Read and Validate a Username
+     * @param connection Connection to check the username
      * @return Validate password
      */
 
@@ -90,7 +75,8 @@ public class Validations {
 
 
     /**
-     * @return
+     * Read and Validate a Password
+     * @return Return password encripted
      */
 
     public String readAndValidatePassword(){
@@ -120,7 +106,8 @@ public class Validations {
      */
 
     /**
-     * @return
+     * Read and Validate a Player
+     * @return Return a player validated
      */
 
     public PlayerImpl readAndValidateUsername(){
@@ -195,31 +182,32 @@ public class Validations {
      */
 
     /**
-     * @param jugador
-     * @param apuestaMinima
-     * @param mesa
-     * @return
+     * Read and validate bet of user
+     * @param indexPlayer Index of player in table
+     * @param minBet Minimum bet
+     * @param table Table to get data
+     * @return Return quantity of the player want bet
      */
 
-    public int readAndValidateBet(int jugador, int apuestaMinima, TableImpl mesa){
-        Scanner teclado = new Scanner(System.in);
-        int cantidadApuesta;
+    public int readAndValidateBet(int indexPlayer, int minBet, TableImpl table){
+        Scanner sc = new Scanner(System.in);
+        int quantityBet;
         boolean allIn = false;
         do {
-            System.out.println("Dispone de "+mesa.getBalancePlayer(jugador)+" de saldo");
-            System.out.println("La apuesa minima es: "+(apuestaMinima-mesa.getBetPlayer(jugador,mesa.getRound())));
-            System.out.print("Introduce cuanto quiere apostar: ");
-            cantidadApuesta = teclado.nextInt();
-            if (cantidadApuesta < apuestaMinima-mesa.getBetPlayer(jugador,mesa.getRound())){
-                if (cantidadApuesta == mesa.getBalancePlayer(jugador)){
+            System.out.println("Dispose of: "+table.getBalancePlayer(indexPlayer)+" €");
+            System.out.println("The minimum bet is: "+(minBet-table.getBetPlayer(indexPlayer,table.getRound())));
+            System.out.print("Insert quantity do you want bet: ");
+            quantityBet = sc.nextInt();
+            if (quantityBet < minBet-table.getBetPlayer(indexPlayer,table.getRound())){
+                if (quantityBet == table.getBalancePlayer(indexPlayer)){
                     allIn = true;
                 }
             }
-        }while (cantidadApuesta+mesa.getBetPlayer(jugador,mesa.getRound()) < apuestaMinima
-                || (cantidadApuesta+mesa.getBetPlayer(jugador,mesa.getRound()) < apuestaMinima && !allIn && cantidadApuesta != 0 )
-                || cantidadApuesta > mesa.getBalancePlayer(jugador));
+        }while (quantityBet+table.getBetPlayer(indexPlayer,table.getRound()) < minBet
+                || (quantityBet+table.getBetPlayer(indexPlayer,table.getRound()) < minBet && !allIn && quantityBet != 0 )
+                || quantityBet > table.getBalancePlayer(indexPlayer));
 
-        return cantidadApuesta;
+        return quantityBet;
     }
 
 
