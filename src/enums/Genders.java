@@ -6,11 +6,6 @@ public enum Genders {
 
     Male, Female, Other;
 
-
-    /**
-     * @return
-     */
-
     public static Genders readAndValidateGender(){
         Scanner SC = new Scanner(System.in);
         String gender;
