@@ -11,7 +11,8 @@ import java.util.GregorianCalendar;
 public class ManagementPoker {
 
     /**
-     * @return
+     * This method return connection with database
+     * @return Return connection
      */
 
     public Connection getConnection(){
@@ -55,6 +56,7 @@ public class ManagementPoker {
         }
 
         try {
+            assert user != null;
             user.close();
             sentence.close();
         } catch (SQLException throwables) {
@@ -115,6 +117,7 @@ public class ManagementPoker {
         }
 
         try {
+            assert user != null;
             user.close();
             sentence.close();
         } catch (SQLException throwables) {
@@ -125,8 +128,9 @@ public class ManagementPoker {
     }
 
     /**
-     * @param connection
-     * @return
+     * Returns a random player from the database
+     * @param connection Connection to execute query
+     * @return Return Random user from the database
      */
 
     public PlayerImpl getRandomUser(Connection connection){
@@ -174,6 +178,7 @@ public class ManagementPoker {
         }
 
         try {
+            assert user != null;
             user.close();
             sentence.close();
         } catch (SQLException throwables) {
@@ -184,8 +189,9 @@ public class ManagementPoker {
     }
 
     /**
-     * @param connection
-     * @return
+     * Create a new poker play and retutn int with ID of new poker play
+     * @param connection Connection to execute insert
+     * @return Return int with ID of new poker play
      */
 
     public int createNewPokerPlay(Connection connection){
@@ -193,8 +199,8 @@ public class ManagementPoker {
         ResultSet pokerPlay = null;
         int ID = 0;
 
-        String select = "DECLARE @ID INT\n" +
-                        "EXECUTE @ID = insertNewPokerPlay\n" +
+        String select = "DECLARE @ID INT " +
+                        "EXECUTE @ID = insertNewPokerPlay " +
                         "SELECT @ID AS ID";
 
         try {
@@ -203,12 +209,12 @@ public class ManagementPoker {
             while (pokerPlay.next()) {
                 ID = pokerPlay.getInt("ID");
             }
-            System.out.println(ID);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
         try {
+            assert pokerPlay != null;
             pokerPlay.close();
             sentence.close();
         } catch (SQLException throwables) {
@@ -218,9 +224,10 @@ public class ManagementPoker {
     }
 
     /**
-     * @param table
-     * @param IDPokerPlay
-     * @return
+     * Generate insert for userPokerPlays
+     * @param table Table to get info
+     * @param IDPokerPlay ID of pokerPlay
+     * @return Return String with insert
      */
 
     public String generateInsertUsersPokerPlays(TableImpl table, int IDPokerPlay){
@@ -239,9 +246,10 @@ public class ManagementPoker {
     }
 
     /**
-     * @param table
-     * @param IDPokerPlay
-     * @return
+     * Generate insert for WinnersPoker
+     * @param table Table to get info
+     * @param IDPokerPlay ID of pokerPlay
+     * @return Return String with insert
      */
 
     public String generateInsertWinnersPoker(TableImpl table, int IDPokerPlay){
@@ -260,6 +268,7 @@ public class ManagementPoker {
 
             if (winners[i] != 0){
                 if (countWinners < amountOfWinners-1){
+                    //Corregir bug cuando hay mas de 1 ganador, no se hace bien el insert
                     insert += "("+IDPokerPlay+",'"+table.getUsernamePlayer(i)+"',"+winners[i]+"),";
                 }else{
                     insert += "("+IDPokerPlay+",'"+table.getUsernamePlayer(i)+"',"+winners[i]+")";
@@ -272,9 +281,10 @@ public class ManagementPoker {
     }
 
     /**
-     * @param table
-     * @param connection
-     * @return
+     * Insert the final values in database
+     * @param table Table to get info
+     * @param connection Connection to execute inserts
+     * @return Return True if the inserts execute correctly, False if the inserts failure
      */
 
     public boolean insertFinalStadistic(TableImpl table, Connection connection){
@@ -294,6 +304,7 @@ public class ManagementPoker {
         }
 
         try {
+            assert sentence != null;
             sentence.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
