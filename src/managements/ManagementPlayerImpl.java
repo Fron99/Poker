@@ -1,15 +1,9 @@
 package managements;
 
-import basicsClasses.CardImpl;
-import basicsClasses.PlayerImpl;
-import basicsClasses.TableImpl;
 
-import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import basicsClasses.TableImpl;
 import java.util.Random;
-import java.util.Scanner;
+
 
 @SuppressWarnings("unused")
 public class ManagementPlayerImpl {
@@ -28,43 +22,44 @@ public class ManagementPlayerImpl {
      */
 
     /**
-     * @param jugador
-     * @param apuestaMinima
-     * @param mesa
-     * @return
+     * Calculate how much bots have to bet based on your cards
+     * @param indexPlayer index of player
+     * @param minBet Minimum bet
+     * @param table Table to evaluate
+     * @return Return int with amount to bet
      */
 
-    public int calculateBetBot(int jugador, int apuestaMinima, TableImpl mesa){
+    public int calculateBetBot(int indexPlayer, int minBet, TableImpl table){
         int totalApostar, valorCartas, valorFarolRonda, puntosPosibilidad;
         double porcenApostar;
         ManagementCardImpl gesCarta = new ManagementCardImpl();
 
         //Obtener puntos de las cartas
-        valorCartas = gesCarta.evaluateCardsFromPlayer(jugador,mesa);
+        valorCartas = gesCarta.evaluateCardsFromPlayer(indexPlayer,table);
 
         //Obtener puntos de farol
-        valorFarolRonda = calculatePointBluffRound(mesa.getRound());
+        valorFarolRonda = calculatePointBluffRound(table.getRound());
 
         //Obtener puntos por posibilidad
-        puntosPosibilidad = gesCarta.calculatePointPosibility(gesCarta.getCardsToEvaluate(jugador,mesa));
+        puntosPosibilidad = gesCarta.calculatePointPosibility(gesCarta.getCardsToEvaluate(indexPlayer,table));
 
         //Porcentaje apostar
         porcenApostar = ((double)((valorFarolRonda+valorCartas+puntosPosibilidad)*100) / 319)*0.01;
 
         //Total calculado que va a apostar
-        totalApostar = (int)(mesa.getBalancePlayer(jugador) * porcenApostar);
+        totalApostar = (int)(table.getBalancePlayer(indexPlayer) * porcenApostar);
 
         //Comprueba si la apuesta es mayor o igual.
-        if (apuestaMinima >= totalApostar){
+        if (minBet >= totalApostar){
             //En el caso de que la apuesta minima sea mayor calculamos si con un incremento del 30% al total apostar si quiere subir e igualar a la apuesta minima
-            if ((int)(totalApostar*1.30) >= apuestaMinima){
-                totalApostar = apuestaMinima - mesa.getBetPlayer(jugador,mesa.getRound());
+            if ((int)(totalApostar*1.30) >= minBet){
+                totalApostar = minBet - table.getBetPlayer(indexPlayer,table.getRound());
             }else{
-                //En el caso de que la apuesta minima sea mucho mas alta que lo que pensaba apostar el jugador, valorar si tiene suficiente buenas cartas como para subir la apuesta
+                //En el caso de que la apuesta minima sea mucho mas alta que lo que pensaba apostar el indexPlayer, valorar si tiene suficiente buenas cartas como para subir la apuesta
                 //192 puntos concuerda con el 60% del total de puntos
-                //Quizas se deberia poner con la personalidad del jugador
+                //Quizas se deberia poner con la personalidad del indexPlayer
                 if ((valorFarolRonda+valorCartas+puntosPosibilidad) >= 192){
-                    totalApostar = apuestaMinima - mesa.getBetPlayer(jugador,mesa.getRound());
+                    totalApostar = minBet - table.getBetPlayer(indexPlayer,table.getRound());
                 }else{
                     //En el caso de que decidiera no subir la apuesta e igualarla se "tiraria"
                     totalApostar = 0;
@@ -72,8 +67,8 @@ public class ManagementPlayerImpl {
             }
         }else{
             //Calcula si debe bajar la apuesta con un decremento del 30%. Si aun asi sigue siendo mayor que la apuesta minima seguira apostando lo que pensaba apostar
-            if ((int)(totalApostar*0.70) < apuestaMinima){
-                    totalApostar = apuestaMinima - mesa.getBetPlayer(jugador,mesa.getRound());
+            if ((int)(totalApostar*0.70) < minBet){
+                    totalApostar = minBet - table.getBetPlayer(indexPlayer,table.getRound());
             }
         }
 

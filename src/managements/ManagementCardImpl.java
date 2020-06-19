@@ -996,8 +996,9 @@ public class ManagementCardImpl {
      */
 
     /**
-     * @param cardsToEvalue
-     * @return
+     * Calculate the probability of cards that can come out
+     * @param cardsToEvalue Cards to evalue
+     * @return Return int with points to increase at total points
      */
 
     public int calculatePointPosibility(CardImpl[] cardsToEvalue){
